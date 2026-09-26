@@ -1,0 +1,1498 @@
+{
+ "chosen": {
+  "form": "spread",
+  "C": 40,
+  "W": 12,
+  "mae": 1.415
+ },
+ "trainBlocked": [
+  "North West",
+  "Eastern Cape"
+ ],
+ "trainGuard": {
+  "Eastern Cape": {
+   "t1 old harness": -0.032,
+   "t1 ECMWF-heavy": -0.03,
+   "t1 mixed": -0.054,
+   "t0 old harness": 0.016,
+   "t0 ECMWF-heavy": 0.028,
+   "t0 mixed": -0.028
+  },
+  "Highveld": {
+   "t1 old harness": -0.01,
+   "t1 ECMWF-heavy": -0.014,
+   "t1 mixed": -0.027,
+   "t0 old harness": -0.031,
+   "t0 ECMWF-heavy": -0.025,
+   "t0 mixed": -0.051
+  },
+  "Free State": {
+   "t1 old harness": -0.47,
+   "t1 ECMWF-heavy": -0.373,
+   "t1 mixed": -0.543,
+   "t0 old harness": -0.631,
+   "t0 ECMWF-heavy": -0.436,
+   "t0 mixed": -0.7
+  },
+  "Northern Cape": {
+   "t1 old harness": -0.073,
+   "t1 ECMWF-heavy": -0.016,
+   "t1 mixed": -0.118,
+   "t0 old harness": -0.139,
+   "t0 ECMWF-heavy": -0.057,
+   "t0 mixed": -0.187
+  },
+  "North West": {
+   "t1 old harness": -0.016,
+   "t1 ECMWF-heavy": 0.015,
+   "t1 mixed": -0.066,
+   "t0 old harness": 0.019,
+   "t0 ECMWF-heavy": 0.089,
+   "t0 mixed": -0.02
+  },
+  "Limpopo": {
+   "t1 old harness": -0.194,
+   "t1 ECMWF-heavy": -0.131,
+   "t1 mixed": -0.239,
+   "t0 old harness": -0.435,
+   "t0 ECMWF-heavy": -0.346,
+   "t0 mixed": -0.453
+  }
+ },
+ "leads": {
+  "t1": {
+   "kAll": 0.581,
+   "kLoso": {
+    "FAUT": 0.578,
+    "FAOR": 0.631,
+    "FAWB": 0.537,
+    "FABL": 0.492,
+    "FAUP": 0.627,
+    "FAKM": 0.556,
+    "FAMM": 0.598,
+    "FAPP": 0.608
+   },
+   "airports": {
+    "old harness": {
+     "all": {
+      "diff": -0.162,
+      "lo": -0.23,
+      "hi": -0.1,
+      "days": 39,
+      "n": 1849
+     },
+     "frost": {
+      "diff": -1.04,
+      "lo": -1.205,
+      "hi": -0.848,
+      "days": 15,
+      "n": 147
+     },
+     "before": {
+      "n": 1849,
+      "mae": 1.535,
+      "bias": 0.589
+     },
+     "after": {
+      "n": 1849,
+      "mae": 1.373,
+      "bias": 0.143
+     },
+     "frostBefore": {
+      "n": 147,
+      "mae": 2.976,
+      "bias": 2.967
+     },
+     "frostAfter": {
+      "n": 147,
+      "mae": 1.936,
+      "bias": 1.765
+     }
+    },
+    "ECMWF-heavy": {
+     "all": {
+      "diff": -0.083,
+      "lo": -0.124,
+      "hi": -0.044,
+      "days": 39,
+      "n": 1849
+     },
+     "frost": {
+      "diff": -0.666,
+      "lo": -0.805,
+      "hi": -0.535,
+      "days": 15,
+      "n": 147
+     },
+     "before": {
+      "n": 1849,
+      "mae": 1.406,
+      "bias": 0.301
+     },
+     "after": {
+      "n": 1849,
+      "mae": 1.324,
+      "bias": -0.063
+     },
+     "frostBefore": {
+      "n": 147,
+      "mae": 2.333,
+      "bias": 2.293
+     },
+     "frostAfter": {
+      "n": 147,
+      "mae": 1.668,
+      "bias": 1.367
+     }
+    },
+    "mixed": {
+     "all": {
+      "diff": -0.203,
+      "lo": -0.275,
+      "hi": -0.139,
+      "days": 39,
+      "n": 1849
+     },
+     "frost": {
+      "diff": -1.098,
+      "lo": -1.277,
+      "hi": -0.893,
+      "days": 15,
+      "n": 147
+     },
+     "before": {
+      "n": 1849,
+      "mae": 1.597,
+      "bias": 0.781
+     },
+     "after": {
+      "n": 1849,
+      "mae": 1.394,
+      "bias": 0.301
+     },
+     "frostBefore": {
+      "n": 147,
+      "mae": 3.103,
+      "bias": 3.097
+     },
+     "frostAfter": {
+      "n": 147,
+      "mae": 2.005,
+      "bias": 1.849
+     }
+    }
+   },
+   "towns": {
+    "old harness": {
+     "all": {
+      "diff": -0.087,
+      "lo": -0.138,
+      "hi": -0.039,
+      "days": 39,
+      "n": 999
+     },
+     "frost": {
+      "diff": -0.63,
+      "lo": -0.758,
+      "hi": -0.487,
+      "days": 14,
+      "n": 54
+     },
+     "before": {
+      "n": 999,
+      "mae": 1.554,
+      "bias": 0.415
+     },
+     "after": {
+      "n": 999,
+      "mae": 1.467,
+      "bias": 0.148
+     },
+     "frostBefore": {
+      "n": 54,
+      "mae": 4.431,
+      "bias": 4.431
+     },
+     "frostAfter": {
+      "n": 54,
+      "mae": 3.8,
+      "bias": 3.766
+     }
+    },
+    "ECMWF-heavy": {
+     "all": {
+      "diff": -0.041,
+      "lo": -0.075,
+      "hi": -0.007,
+      "days": 39,
+      "n": 999
+     },
+     "frost": {
+      "diff": -0.388,
+      "lo": -0.498,
+      "hi": -0.285,
+      "days": 14,
+      "n": 54
+     },
+     "before": {
+      "n": 999,
+      "mae": 1.468,
+      "bias": 0.252
+     },
+     "after": {
+      "n": 999,
+      "mae": 1.427,
+      "bias": 0.035
+     },
+     "frostBefore": {
+      "n": 54,
+      "mae": 3.919,
+      "bias": 3.918
+     },
+     "frostAfter": {
+      "n": 54,
+      "mae": 3.532,
+      "bias": 3.475
+     }
+    },
+    "mixed": {
+     "all": {
+      "diff": -0.116,
+      "lo": -0.164,
+      "hi": -0.071,
+      "days": 39,
+      "n": 999
+     },
+     "frost": {
+      "diff": -0.717,
+      "lo": -0.858,
+      "hi": -0.567,
+      "days": 14,
+      "n": 54
+     },
+     "before": {
+      "n": 999,
+      "mae": 1.585,
+      "bias": 0.563
+     },
+     "after": {
+      "n": 999,
+      "mae": 1.469,
+      "bias": 0.265
+     },
+     "frostBefore": {
+      "n": 54,
+      "mae": 4.655,
+      "bias": 4.655
+     },
+     "frostAfter": {
+      "n": 54,
+      "mae": 3.938,
+      "bias": 3.905
+     }
+    }
+   },
+   "byRegion": {
+    "Eastern Cape": {
+     "old harness": {
+      "before": {
+       "n": 247,
+       "mae": 1.265,
+       "bias": -0.002
+      },
+      "after": {
+       "n": 247,
+       "mae": 1.265,
+       "bias": -0.002
+      },
+      "diff": {
+       "diff": 0,
+       "lo": 0,
+       "hi": 0,
+       "days": 39,
+       "n": 247
+      }
+     },
+     "ECMWF-heavy": {
+      "before": {
+       "n": 247,
+       "mae": 1.251,
+       "bias": -0.048
+      },
+      "after": {
+       "n": 247,
+       "mae": 1.251,
+       "bias": -0.048
+      },
+      "diff": {
+       "diff": 0,
+       "lo": 0,
+       "hi": 0,
+       "days": 39,
+       "n": 247
+      }
+     },
+     "mixed": {
+      "before": {
+       "n": 247,
+       "mae": 1.189,
+       "bias": 0.253
+      },
+      "after": {
+       "n": 247,
+       "mae": 1.189,
+       "bias": 0.253
+      },
+      "diff": {
+       "diff": 0,
+       "lo": 0,
+       "hi": 0,
+       "days": 39,
+       "n": 247
+      }
+     }
+    },
+    "Highveld": {
+     "old harness": {
+      "before": {
+       "n": 468,
+       "mae": 1.404,
+       "bias": 0.239
+      },
+      "after": {
+       "n": 468,
+       "mae": 1.377,
+       "bias": -0.258
+      },
+      "diff": {
+       "diff": -0.027,
+       "lo": -0.079,
+       "hi": 0.027,
+       "days": 39,
+       "n": 468
+      }
+     },
+     "ECMWF-heavy": {
+      "before": {
+       "n": 468,
+       "mae": 1.385,
+       "bias": -0.038
+      },
+      "after": {
+       "n": 468,
+       "mae": 1.386,
+       "bias": -0.422
+      },
+      "diff": {
+       "diff": 0,
+       "lo": -0.043,
+       "hi": 0.046,
+       "days": 39,
+       "n": 468
+      }
+     },
+     "mixed": {
+      "before": {
+       "n": 468,
+       "mae": 1.45,
+       "bias": 0.296
+      },
+      "after": {
+       "n": 468,
+       "mae": 1.384,
+       "bias": -0.213
+      },
+      "diff": {
+       "diff": -0.067,
+       "lo": -0.125,
+       "hi": -0.011,
+       "days": 39,
+       "n": 468
+      }
+     }
+    },
+    "Free State": {
+     "old harness": {
+      "before": {
+       "n": 236,
+       "mae": 2.095,
+       "bias": 1.782
+      },
+      "after": {
+       "n": 236,
+       "mae": 1.473,
+       "bias": 1.018
+      },
+      "diff": {
+       "diff": -0.622,
+       "lo": -0.802,
+       "hi": -0.463,
+       "days": 37,
+       "n": 236
+      }
+     },
+     "ECMWF-heavy": {
+      "before": {
+       "n": 236,
+       "mae": 1.755,
+       "bias": 1.375
+      },
+      "after": {
+       "n": 236,
+       "mae": 1.302,
+       "bias": 0.74
+      },
+      "diff": {
+       "diff": -0.452,
+       "lo": -0.593,
+       "hi": -0.334,
+       "days": 37,
+       "n": 236
+      }
+     },
+     "mixed": {
+      "before": {
+       "n": 236,
+       "mae": 2.288,
+       "bias": 2.063
+      },
+      "after": {
+       "n": 236,
+       "mae": 1.551,
+       "bias": 1.214
+      },
+      "diff": {
+       "diff": -0.737,
+       "lo": -0.935,
+       "hi": -0.566,
+       "days": 37,
+       "n": 236
+      }
+     }
+    },
+    "Northern Cape": {
+     "old harness": {
+      "before": {
+       "n": 411,
+       "mae": 1.645,
+       "bias": 1.156
+      },
+      "after": {
+       "n": 411,
+       "mae": 1.433,
+       "bias": 0.612
+      },
+      "diff": {
+       "diff": -0.212,
+       "lo": -0.332,
+       "hi": -0.096,
+       "days": 39,
+       "n": 411
+      }
+     },
+     "ECMWF-heavy": {
+      "before": {
+       "n": 411,
+       "mae": 1.423,
+       "bias": 0.813
+      },
+      "after": {
+       "n": 411,
+       "mae": 1.351,
+       "bias": 0.385
+      },
+      "diff": {
+       "diff": -0.071,
+       "lo": -0.14,
+       "hi": -0.004,
+       "days": 39,
+       "n": 411
+      }
+     },
+     "mixed": {
+      "before": {
+       "n": 411,
+       "mae": 1.754,
+       "bias": 1.399
+      },
+      "after": {
+       "n": 411,
+       "mae": 1.479,
+       "bias": 0.788
+      },
+      "diff": {
+       "diff": -0.276,
+       "lo": -0.404,
+       "hi": -0.153,
+       "days": 39,
+       "n": 411
+      }
+     }
+    },
+    "North West": {
+     "old harness": {
+      "before": {
+       "n": 243,
+       "mae": 1,
+       "bias": 0.497
+      },
+      "after": {
+       "n": 243,
+       "mae": 1,
+       "bias": 0.497
+      },
+      "diff": {
+       "diff": 0,
+       "lo": 0,
+       "hi": 0,
+       "days": 38,
+       "n": 243
+      }
+     },
+     "ECMWF-heavy": {
+      "before": {
+       "n": 243,
+       "mae": 0.938,
+       "bias": 0.047
+      },
+      "after": {
+       "n": 243,
+       "mae": 0.938,
+       "bias": 0.047
+      },
+      "diff": {
+       "diff": 0,
+       "lo": 0,
+       "hi": 0,
+       "days": 38,
+       "n": 243
+      }
+     },
+     "mixed": {
+      "before": {
+       "n": 243,
+       "mae": 1.137,
+       "bias": 0.756
+      },
+      "after": {
+       "n": 243,
+       "mae": 1.137,
+       "bias": 0.756
+      },
+      "diff": {
+       "diff": 0,
+       "lo": 0,
+       "hi": 0,
+       "days": 38,
+       "n": 243
+      }
+     }
+    },
+    "Limpopo": {
+     "old harness": {
+      "before": {
+       "n": 244,
+       "mae": 1.868,
+       "bias": -0.162
+      },
+      "after": {
+       "n": 244,
+       "mae": 1.651,
+       "bias": -0.927
+      },
+      "diff": {
+       "diff": -0.217,
+       "lo": -0.402,
+       "hi": -0.054,
+       "days": 39,
+       "n": 244
+      }
+     },
+     "ECMWF-heavy": {
+      "before": {
+       "n": 244,
+       "mae": 1.705,
+       "bias": -0.344
+      },
+      "after": {
+       "n": 244,
+       "mae": 1.636,
+       "bias": -1.027
+      },
+      "diff": {
+       "diff": -0.069,
+       "lo": -0.21,
+       "hi": 0.054,
+       "days": 39,
+       "n": 244
+      }
+     },
+     "mixed": {
+      "before": {
+       "n": 244,
+       "mae": 1.815,
+       "bias": -0.012
+      },
+      "after": {
+       "n": 244,
+       "mae": 1.581,
+       "bias": -0.82
+      },
+      "diff": {
+       "diff": -0.234,
+       "lo": -0.437,
+       "hi": -0.057,
+       "days": 39,
+       "n": 244
+      }
+     }
+    },
+    "Karoo": {
+     "old harness": {
+      "before": {
+       "n": 503,
+       "mae": 1.901,
+       "bias": 0.655
+      },
+      "after": {
+       "n": 503,
+       "mae": 1.829,
+       "bias": 0.349
+      },
+      "diff": {
+       "diff": -0.072,
+       "lo": -0.131,
+       "hi": -0.015,
+       "days": 39,
+       "n": 503
+      }
+     },
+     "ECMWF-heavy": {
+      "before": {
+       "n": 503,
+       "mae": 1.808,
+       "bias": 0.483
+      },
+      "after": {
+       "n": 503,
+       "mae": 1.774,
+       "bias": 0.227
+      },
+      "diff": {
+       "diff": -0.034,
+       "lo": -0.079,
+       "hi": 0.009,
+       "days": 39,
+       "n": 503
+      }
+     },
+     "mixed": {
+      "before": {
+       "n": 503,
+       "mae": 1.952,
+       "bias": 0.704
+      },
+      "after": {
+       "n": 503,
+       "mae": 1.857,
+       "bias": 0.393
+      },
+      "diff": {
+       "diff": -0.095,
+       "lo": -0.149,
+       "hi": -0.044,
+       "days": 39,
+       "n": 503
+      }
+     }
+    },
+    "KZN inland": {
+     "old harness": {
+      "before": {
+       "n": 496,
+       "mae": 1.201,
+       "bias": 0.173
+      },
+      "after": {
+       "n": 496,
+       "mae": 1.099,
+       "bias": -0.057
+      },
+      "diff": {
+       "diff": -0.102,
+       "lo": -0.164,
+       "hi": -0.044,
+       "days": 39,
+       "n": 496
+      }
+     },
+     "ECMWF-heavy": {
+      "before": {
+       "n": 496,
+       "mae": 1.124,
+       "bias": 0.018
+      },
+      "after": {
+       "n": 496,
+       "mae": 1.075,
+       "bias": -0.159
+      },
+      "diff": {
+       "diff": -0.048,
+       "lo": -0.093,
+       "hi": -0.004,
+       "days": 39,
+       "n": 496
+      }
+     },
+     "mixed": {
+      "before": {
+       "n": 496,
+       "mae": 1.213,
+       "bias": 0.419
+      },
+      "after": {
+       "n": 496,
+       "mae": 1.075,
+       "bias": 0.136
+      },
+      "diff": {
+       "diff": -0.138,
+       "lo": -0.207,
+       "hi": -0.074,
+       "days": 39,
+       "n": 496
+      }
+     }
+    }
+   },
+   "gatedShare": {
+    "airports": 0.56,
+    "towns": 0.408
+   },
+   "ships": true
+  },
+  "t0": {
+   "kAll": 0.599,
+   "kLoso": {
+    "FAUT": 0.612,
+    "FAOR": 0.653,
+    "FAWB": 0.547,
+    "FABL": 0.592,
+    "FAUP": 0.637,
+    "FAKM": 0.572,
+    "FAMM": 0.612,
+    "FAPP": 0.557
+   },
+   "airports": {
+    "old harness": {
+     "all": {
+      "diff": -0.162,
+      "lo": -0.235,
+      "hi": -0.095,
+      "days": 39,
+      "n": 1849
+     },
+     "frost": {
+      "diff": -1.103,
+      "lo": -1.351,
+      "hi": -0.886,
+      "days": 15,
+      "n": 147
+     },
+     "before": {
+      "n": 1849,
+      "mae": 1.405,
+      "bias": 0.532
+     },
+     "after": {
+      "n": 1849,
+      "mae": 1.243,
+      "bias": 0.045
+     },
+     "frostBefore": {
+      "n": 147,
+      "mae": 2.703,
+      "bias": 2.686
+     },
+     "frostAfter": {
+      "n": 147,
+      "mae": 1.6,
+      "bias": 1.383
+     }
+    },
+    "ECMWF-heavy": {
+     "all": {
+      "diff": -0.08,
+      "lo": -0.129,
+      "hi": -0.032,
+      "days": 39,
+      "n": 1849
+     },
+     "frost": {
+      "diff": -0.72,
+      "lo": -0.936,
+      "hi": -0.546,
+      "days": 15,
+      "n": 147
+     },
+     "before": {
+      "n": 1849,
+      "mae": 1.281,
+      "bias": 0.263
+     },
+     "after": {
+      "n": 1849,
+      "mae": 1.201,
+      "bias": -0.131
+     },
+     "frostBefore": {
+      "n": 147,
+      "mae": 2.098,
+      "bias": 2.045
+     },
+     "frostAfter": {
+      "n": 147,
+      "mae": 1.377,
+      "bias": 1.039
+     }
+    },
+    "mixed": {
+     "all": {
+      "diff": -0.182,
+      "lo": -0.255,
+      "hi": -0.117,
+      "days": 39,
+      "n": 1849
+     },
+     "frost": {
+      "diff": -1.109,
+      "lo": -1.354,
+      "hi": -0.889,
+      "days": 15,
+      "n": 147
+     },
+     "before": {
+      "n": 1849,
+      "mae": 1.423,
+      "bias": 0.637
+     },
+     "after": {
+      "n": 1849,
+      "mae": 1.241,
+      "bias": 0.139
+     },
+     "frostBefore": {
+      "n": 147,
+      "mae": 2.724,
+      "bias": 2.709
+     },
+     "frostAfter": {
+      "n": 147,
+      "mae": 1.615,
+      "bias": 1.404
+     }
+    }
+   },
+   "towns": {
+    "old harness": {
+     "all": {
+      "diff": -0.119,
+      "lo": -0.163,
+      "hi": -0.076,
+      "days": 39,
+      "n": 999
+     },
+     "frost": {
+      "diff": -0.652,
+      "lo": -0.782,
+      "hi": -0.453,
+      "days": 14,
+      "n": 54
+     },
+     "before": {
+      "n": 999,
+      "mae": 1.438,
+      "bias": 0.527
+     },
+     "after": {
+      "n": 999,
+      "mae": 1.319,
+      "bias": 0.2
+     },
+     "frostBefore": {
+      "n": 54,
+      "mae": 4.334,
+      "bias": 4.334
+     },
+     "frostAfter": {
+      "n": 54,
+      "mae": 3.682,
+      "bias": 3.672
+     }
+    },
+    "ECMWF-heavy": {
+     "all": {
+      "diff": -0.058,
+      "lo": -0.09,
+      "hi": -0.026,
+      "days": 39,
+      "n": 999
+     },
+     "frost": {
+      "diff": -0.415,
+      "lo": -0.526,
+      "hi": -0.259,
+      "days": 14,
+      "n": 54
+     },
+     "before": {
+      "n": 999,
+      "mae": 1.336,
+      "bias": 0.363
+     },
+     "after": {
+      "n": 999,
+      "mae": 1.278,
+      "bias": 0.101
+     },
+     "frostBefore": {
+      "n": 54,
+      "mae": 3.853,
+      "bias": 3.853
+     },
+     "frostAfter": {
+      "n": 54,
+      "mae": 3.438,
+      "bias": 3.409
+     }
+    },
+    "mixed": {
+     "all": {
+      "diff": -0.133,
+      "lo": -0.174,
+      "hi": -0.092,
+      "days": 39,
+      "n": 999
+     },
+     "frost": {
+      "diff": -0.701,
+      "lo": -0.831,
+      "hi": -0.502,
+      "days": 14,
+      "n": 54
+     },
+     "before": {
+      "n": 999,
+      "mae": 1.449,
+      "bias": 0.637
+     },
+     "after": {
+      "n": 999,
+      "mae": 1.316,
+      "bias": 0.295
+     },
+     "frostBefore": {
+      "n": 54,
+      "mae": 4.441,
+      "bias": 4.441
+     },
+     "frostAfter": {
+      "n": 54,
+      "mae": 3.739,
+      "bias": 3.728
+     }
+    }
+   },
+   "byRegion": {
+    "Eastern Cape": {
+     "old harness": {
+      "before": {
+       "n": 247,
+       "mae": 1.184,
+       "bias": 0.139
+      },
+      "after": {
+       "n": 247,
+       "mae": 1.184,
+       "bias": 0.139
+      },
+      "diff": {
+       "diff": 0,
+       "lo": 0,
+       "hi": 0,
+       "days": 39,
+       "n": 247
+      }
+     },
+     "ECMWF-heavy": {
+      "before": {
+       "n": 247,
+       "mae": 1.171,
+       "bias": 0.092
+      },
+      "after": {
+       "n": 247,
+       "mae": 1.171,
+       "bias": 0.092
+      },
+      "diff": {
+       "diff": 0,
+       "lo": 0,
+       "hi": 0,
+       "days": 39,
+       "n": 247
+      }
+     },
+     "mixed": {
+      "before": {
+       "n": 247,
+       "mae": 1.147,
+       "bias": 0.35
+      },
+      "after": {
+       "n": 247,
+       "mae": 1.147,
+       "bias": 0.35
+      },
+      "diff": {
+       "diff": 0,
+       "lo": 0,
+       "hi": 0,
+       "days": 39,
+       "n": 247
+      }
+     }
+    },
+    "Highveld": {
+     "old harness": {
+      "before": {
+       "n": 468,
+       "mae": 1.349,
+       "bias": 0.246
+      },
+      "after": {
+       "n": 468,
+       "mae": 1.349,
+       "bias": -0.29
+      },
+      "diff": {
+       "diff": 0,
+       "lo": -0.049,
+       "hi": 0.049,
+       "days": 39,
+       "n": 468
+      }
+     },
+     "ECMWF-heavy": {
+      "before": {
+       "n": 468,
+       "mae": 1.354,
+       "bias": -0.003
+      },
+      "after": {
+       "n": 468,
+       "mae": 1.36,
+       "bias": -0.412
+      },
+      "diff": {
+       "diff": 0.006,
+       "lo": -0.033,
+       "hi": 0.045,
+       "days": 39,
+       "n": 468
+      }
+     },
+     "mixed": {
+      "before": {
+       "n": 468,
+       "mae": 1.375,
+       "bias": 0.257
+      },
+      "after": {
+       "n": 468,
+       "mae": 1.353,
+       "bias": -0.264
+      },
+      "diff": {
+       "diff": -0.021,
+       "lo": -0.071,
+       "hi": 0.026,
+       "days": 39,
+       "n": 468
+      }
+     }
+    },
+    "Free State": {
+     "old harness": {
+      "before": {
+       "n": 236,
+       "mae": 1.834,
+       "bias": 1.494
+      },
+      "after": {
+       "n": 236,
+       "mae": 1.1,
+       "bias": 0.459
+      },
+      "diff": {
+       "diff": -0.734,
+       "lo": -0.948,
+       "hi": -0.531,
+       "days": 37,
+       "n": 236
+      }
+     },
+     "ECMWF-heavy": {
+      "before": {
+       "n": 236,
+       "mae": 1.504,
+       "bias": 1.089
+      },
+      "after": {
+       "n": 236,
+       "mae": 1.004,
+       "bias": 0.227
+      },
+      "diff": {
+       "diff": -0.5,
+       "lo": -0.669,
+       "hi": -0.337,
+       "days": 37,
+       "n": 236
+      }
+     },
+     "mixed": {
+      "before": {
+       "n": 236,
+       "mae": 1.931,
+       "bias": 1.654
+      },
+      "after": {
+       "n": 236,
+       "mae": 1.12,
+       "bias": 0.567
+      },
+      "diff": {
+       "diff": -0.811,
+       "lo": -1.016,
+       "hi": -0.618,
+       "days": 37,
+       "n": 236
+      }
+     }
+    },
+    "Northern Cape": {
+     "old harness": {
+      "before": {
+       "n": 411,
+       "mae": 1.448,
+       "bias": 1.023
+      },
+      "after": {
+       "n": 411,
+       "mae": 1.25,
+       "bias": 0.48
+      },
+      "diff": {
+       "diff": -0.198,
+       "lo": -0.324,
+       "hi": -0.084,
+       "days": 39,
+       "n": 411
+      }
+     },
+     "ECMWF-heavy": {
+      "before": {
+       "n": 411,
+       "mae": 1.205,
+       "bias": 0.69
+      },
+      "after": {
+       "n": 411,
+       "mae": 1.161,
+       "bias": 0.276
+      },
+      "diff": {
+       "diff": -0.044,
+       "lo": -0.114,
+       "hi": 0.03,
+       "days": 39,
+       "n": 411
+      }
+     },
+     "mixed": {
+      "before": {
+       "n": 411,
+       "mae": 1.476,
+       "bias": 1.159
+      },
+      "after": {
+       "n": 411,
+       "mae": 1.247,
+       "bias": 0.584
+      },
+      "diff": {
+       "diff": -0.229,
+       "lo": -0.353,
+       "hi": -0.119,
+       "days": 39,
+       "n": 411
+      }
+     }
+    },
+    "North West": {
+     "old harness": {
+      "before": {
+       "n": 243,
+       "mae": 0.82,
+       "bias": 0.395
+      },
+      "after": {
+       "n": 243,
+       "mae": 0.82,
+       "bias": 0.395
+      },
+      "diff": {
+       "diff": 0,
+       "lo": 0,
+       "hi": 0,
+       "days": 38,
+       "n": 243
+      }
+     },
+     "ECMWF-heavy": {
+      "before": {
+       "n": 243,
+       "mae": 0.759,
+       "bias": -0.029
+      },
+      "after": {
+       "n": 243,
+       "mae": 0.759,
+       "bias": -0.029
+      },
+      "diff": {
+       "diff": 0,
+       "lo": 0,
+       "hi": 0,
+       "days": 38,
+       "n": 243
+      }
+     },
+     "mixed": {
+      "before": {
+       "n": 243,
+       "mae": 0.866,
+       "bias": 0.525
+      },
+      "after": {
+       "n": 243,
+       "mae": 0.866,
+       "bias": 0.525
+      },
+      "diff": {
+       "diff": 0,
+       "lo": 0,
+       "hi": 0,
+       "days": 38,
+       "n": 243
+      }
+     }
+    },
+    "Limpopo": {
+     "old harness": {
+      "before": {
+       "n": 244,
+       "mae": 1.832,
+       "bias": -0.143
+      },
+      "after": {
+       "n": 244,
+       "mae": 1.649,
+       "bias": -0.891
+      },
+      "diff": {
+       "diff": -0.183,
+       "lo": -0.389,
+       "hi": 0.001,
+       "days": 39,
+       "n": 244
+      }
+     },
+     "ECMWF-heavy": {
+      "before": {
+       "n": 244,
+       "mae": 1.683,
+       "bias": -0.278
+      },
+      "after": {
+       "n": 244,
+       "mae": 1.623,
+       "bias": -0.956
+      },
+      "diff": {
+       "diff": -0.06,
+       "lo": -0.223,
+       "hi": 0.089,
+       "days": 39,
+       "n": 244
+      }
+     },
+     "mixed": {
+      "before": {
+       "n": 244,
+       "mae": 1.769,
+       "bias": -0.095
+      },
+      "after": {
+       "n": 244,
+       "mae": 1.599,
+       "bias": -0.851
+      },
+      "diff": {
+       "diff": -0.169,
+       "lo": -0.383,
+       "hi": 0.02,
+       "days": 39,
+       "n": 244
+      }
+     }
+    },
+    "Karoo": {
+     "old harness": {
+      "before": {
+       "n": 503,
+       "mae": 1.796,
+       "bias": 0.736
+      },
+      "after": {
+       "n": 503,
+       "mae": 1.712,
+       "bias": 0.375
+      },
+      "diff": {
+       "diff": -0.084,
+       "lo": -0.139,
+       "hi": -0.027,
+       "days": 39,
+       "n": 503
+      }
+     },
+     "ECMWF-heavy": {
+      "before": {
+       "n": 503,
+       "mae": 1.685,
+       "bias": 0.563
+      },
+      "after": {
+       "n": 503,
+       "mae": 1.66,
+       "bias": 0.268
+      },
+      "diff": {
+       "diff": -0.025,
+       "lo": -0.075,
+       "hi": 0.025,
+       "days": 39,
+       "n": 503
+      }
+     },
+     "mixed": {
+      "before": {
+       "n": 503,
+       "mae": 1.82,
+       "bias": 0.746
+      },
+      "after": {
+       "n": 503,
+       "mae": 1.737,
+       "bias": 0.404
+      },
+      "diff": {
+       "diff": -0.082,
+       "lo": -0.14,
+       "hi": -0.027,
+       "days": 39,
+       "n": 503
+      }
+     }
+    },
+    "KZN inland": {
+     "old harness": {
+      "before": {
+       "n": 496,
+       "mae": 1.075,
+       "bias": 0.315
+      },
+      "after": {
+       "n": 496,
+       "mae": 0.92,
+       "bias": 0.022
+      },
+      "diff": {
+       "diff": -0.154,
+       "lo": -0.223,
+       "hi": -0.092,
+       "days": 39,
+       "n": 496
+      }
+     },
+     "ECMWF-heavy": {
+      "before": {
+       "n": 496,
+       "mae": 0.983,
+       "bias": 0.16
+      },
+      "after": {
+       "n": 496,
+       "mae": 0.891,
+       "bias": -0.069
+      },
+      "diff": {
+       "diff": -0.091,
+       "lo": -0.14,
+       "hi": -0.047,
+       "days": 39,
+       "n": 496
+      }
+     },
+     "mixed": {
+      "before": {
+       "n": 496,
+       "mae": 1.073,
+       "bias": 0.527
+      },
+      "after": {
+       "n": 496,
+       "mae": 0.888,
+       "bias": 0.185
+      },
+      "diff": {
+       "diff": -0.184,
+       "lo": -0.258,
+       "hi": -0.115,
+       "days": 39,
+       "n": 496
+      }
+     }
+    }
+   },
+   "gatedShare": {
+    "airports": 0.524,
+    "towns": 0.404
+   },
+   "ships": true
+  }
+ },
+ "ships": true,
+ "testBlocked": [],
+ "shipsIn": [
+  "Highveld",
+  "Free State",
+  "Northern Cape",
+  "Limpopo",
+  "Karoo",
+  "KZN inland"
+ ]
+}
