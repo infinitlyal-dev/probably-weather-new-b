@@ -1,0 +1,193 @@
+{
+ "readings": 334,
+ "airportCalls": 18,
+ "judged": 16,
+ "right": 9,
+ "share": 0.5625,
+ "wilson": [
+  0.3318,
+  0.769
+ ],
+ "events": 6,
+ "eventsRight": 5,
+ "secondary": {
+  "judged": 17,
+  "right": 12,
+  "share": 0.7059
+ },
+ "decision": "too few to judge (6 of the 10 events needed)",
+ "callsNeeded": 232,
+ "spotCalls": [
+  {
+   "at": "2026-09-26T04:10",
+   "where": "Strand",
+   "version": "7525fd2",
+   "from": "rain-possible",
+   "detail": "Tomorrow.io radar reports 0.51 mm/h precipitation intensity"
+  }
+ ],
+ "calls": [
+  {
+   "at": "2026-09-25T18:10",
+   "where": "FAGG",
+   "version": "7525fd2",
+   "from": "rain-possible",
+   "detail": "Tomorrow.io radar reports 0.56 mm/h precipitation intensity",
+   "primary": false,
+   "secondary": false
+  },
+  {
+   "at": "2026-09-25T23:10",
+   "where": "FAPE",
+   "version": "7525fd2",
+   "from": "rain-possible",
+   "detail": "Tomorrow.io radar reports 2.42 mm/h precipitation intensity",
+   "primary": true,
+   "secondary": true
+  },
+  {
+   "at": "2026-09-26T00:10",
+   "where": "FAPE",
+   "version": "7525fd2",
+   "from": "rain-possible",
+   "detail": "Tomorrow.io radar reports 1.85 mm/h precipitation intensity",
+   "primary": null,
+   "secondary": true
+  },
+  {
+   "at": "2026-09-26T01:10",
+   "where": "FAPE",
+   "version": "7525fd2",
+   "from": "rain-possible",
+   "detail": "Tomorrow.io radar reports 2.14 mm/h precipitation intensity",
+   "primary": true,
+   "secondary": true
+  },
+  {
+   "at": "2026-09-26T02:10",
+   "where": "FAGG",
+   "version": "7525fd2",
+   "from": "rain-possible",
+   "detail": "Tomorrow.io radar reports 0.83 mm/h precipitation intensity",
+   "primary": true,
+   "secondary": true
+  },
+  {
+   "at": "2026-09-26T03:10",
+   "where": "FAPE",
+   "version": "7525fd2",
+   "from": "rain-possible",
+   "detail": "Tomorrow.io radar reports 4.27 mm/h precipitation intensity",
+   "primary": true,
+   "secondary": true
+  },
+  {
+   "at": "2026-09-26T03:10",
+   "where": "FAGG",
+   "version": "7525fd2",
+   "from": "rain-possible",
+   "detail": "Tomorrow.io radar reports 1.79 mm/h precipitation intensity",
+   "primary": false,
+   "secondary": false
+  },
+  {
+   "at": "2026-09-26T04:10",
+   "where": "FAPE",
+   "version": "7525fd2",
+   "from": "rain-possible",
+   "detail": "Tomorrow.io radar reports 3.36 mm/h precipitation intensity",
+   "primary": true,
+   "secondary": true
+  },
+  {
+   "at": "2026-09-26T04:10",
+   "where": "FAGG",
+   "version": "7525fd2",
+   "from": "rain-possible",
+   "detail": "Tomorrow.io radar reports 0.86 mm/h precipitation intensity",
+   "primary": false,
+   "secondary": false
+  },
+  {
+   "at": "2026-09-26T05:10",
+   "where": "FAPE",
+   "version": "7525fd2",
+   "from": "rain-possible",
+   "detail": "Tomorrow.io radar reports 4.22 mm/h precipitation intensity",
+   "primary": false,
+   "secondary": true
+  },
+  {
+   "at": "2026-09-26T06:10",
+   "where": "FAGG",
+   "version": "7525fd2",
+   "from": "rain-possible",
+   "detail": "Tomorrow.io radar reports 2.59 mm/h precipitation intensity",
+   "primary": true,
+   "secondary": true
+  },
+  {
+   "at": "2026-09-26T08:10",
+   "where": "FABL",
+   "version": "7525fd2",
+   "from": "thunder",
+   "detail": "Tomorrow.io radar reports 1.75 mm/h precipitation intensity",
+   "primary": false,
+   "secondary": false
+  },
+  {
+   "at": "2026-09-26T09:10",
+   "where": "FAPE",
+   "version": "7525fd2",
+   "from": "rain-possible",
+   "detail": "Tomorrow.io radar reports 1.79 mm/h precipitation intensity",
+   "primary": false,
+   "secondary": false
+  },
+  {
+   "at": "2026-09-26T10:10",
+   "where": "FABL",
+   "version": "7525fd2",
+   "from": "cloudy",
+   "detail": "Tomorrow.io radar reports 2.56 mm/h precipitation intensity",
+   "primary": true,
+   "secondary": true
+  },
+  {
+   "at": "2026-09-26T13:10",
+   "where": "FABL",
+   "version": "274e5cf",
+   "from": "rain-possible",
+   "detail": "Tomorrow.io radar reports 2.64 mm/h precipitation intensity",
+   "primary": null,
+   "secondary": null
+  },
+  {
+   "at": "2026-09-26T16:10",
+   "where": "FABL",
+   "version": "274e5cf",
+   "from": "rain-possible",
+   "detail": "Tomorrow.io radar reports 0.9 mm/h precipitation intensity",
+   "primary": false,
+   "secondary": true
+  },
+  {
+   "at": "2026-09-26T17:10",
+   "where": "FABL",
+   "version": "274e5cf",
+   "from": "rain-possible",
+   "detail": "Tomorrow.io radar reports 1.46 mm/h precipitation intensity",
+   "primary": true,
+   "secondary": true
+  },
+  {
+   "at": "2026-09-26T18:10",
+   "where": "FALE",
+   "version": "274e5cf",
+   "from": "rain-possible",
+   "detail": "Tomorrow.io radar reports 1.24 mm/h precipitation intensity",
+   "primary": true,
+   "secondary": true
+  }
+ ]
+}

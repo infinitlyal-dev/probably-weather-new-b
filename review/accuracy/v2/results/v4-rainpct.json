@@ -1,0 +1,56 @@
+{
+ "readings": 276,
+ "today": {
+  "n": 10,
+  "rained": 3,
+  "weeks": 1,
+  "completeWeeks": 0,
+  "pooled": {
+   "diff": -0.01148,
+   "lo": null,
+   "hi": null
+  },
+  "byAirport": {},
+  "met": false,
+  "why": "0 complete 7-day block(s); 4 needed before the test runs"
+ },
+ "next3h": {
+  "n": 226,
+  "rained": 24,
+  "weeks": 1,
+  "completeWeeks": 0,
+  "pooled": {
+   "diff": -0.00163,
+   "lo": null,
+   "hi": null
+  },
+  "byAirport": {},
+  "met": false,
+  "why": "0 complete 7-day block(s); 4 needed before the test runs"
+ },
+ "needed": {
+  "today": {
+   "archiveDiff": -0.0014,
+   "archiveCi": [
+    -0.0027,
+    -0.0002
+   ],
+   "archiveN": 3380,
+   "nNeeded": 2695,
+   "stationDaysNeeded": 2695,
+   "daysAtSixAirports": 450
+  },
+  "next3h": {
+   "archiveDiff": -0.0065,
+   "archiveCi": [
+    -0.009,
+    -0.004
+   ],
+   "archiveN": 17203,
+   "nNeeded": 2545,
+   "stationDaysNeeded": 501,
+   "daysAtSixAirports": 84
+  }
+ },
+ "met": false
+}
