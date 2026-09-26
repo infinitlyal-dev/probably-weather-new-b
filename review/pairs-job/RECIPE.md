@@ -77,15 +77,29 @@ photo; no slang as decoration; no "vibes". Braai plans on weekends only.
 **The rule (Al's):**
 1. **The weather is doing something to someone:** one clear subject reacting to it — squinting, sweating,
    hair blown upright, soaked, shivering, bracing. Not people posing in nice weather.
-2. **Specific, lived-in South Africa with character.** Not glossy stock. Not posed people smiling.
-3. **No waxy AI look.** It must look like a real camera photograph: natural skin with pores and flaws, a
+2. **Aspirational settings — Al's ruling (26 Sept 2026), never propose dropping it.** Cared-for homes,
+   gardens, suburbs, towns and farms, in real South Africa. No shacks, no poverty or decay, no grit. **The
+   stock look is fixed by a candid reaction to the weather, never by a grittier place.** Not posed people
+   smiling. Al, rejecting the first P01 photo: "it is for a clear day, that image feels like it is for
+   extreme heat. Plus it looks a bit like a shack, and the guy seems to be in blue collar worker clothes.
+   And its on a sunday. We want images that are more aspirational in terms of settings." (The pairs job's
+   first batch lost two loved lines' photos, M01 and M03, to grit for the same reason.)
+3. **Clothes and activity fit the slot's day and time.** Every photo is made for a slot: its weather, its
+   weekday (slot 1 = Monday … 7 = Sunday) and its time of day. Weekends are leisure; no work clothes or
+   work scenes on a Saturday or Sunday unless the joke needs them. A weekday may show the commute, the
+   school run or getting ready for work, in a cared-for setting.
+4. **The weather's strength matches the folder.** Clear is pleasant sun — bright, warm, comfortable, a
+   green garden, nobody suffering. Heat is heat — 33 °C and up, visibly too hot. Never mix them: a clear
+   photo that reads as a heat wave is wrong, and so is a heat photo that reads as a nice day. The same
+   holds for cold (wet, grey Cape winter) against cold-clear (dry, bright, frost), and rain against storm.
+5. **No waxy AI look.** It must look like a real camera photograph: natural skin with pores and flaws, a
    candid unposed moment, available light, slight grain, true colour. No retouched skin, no glossy sheen,
    no plastic faces. (Al on the first pilot photos: "some of those images look very ai waxy".)
-4. **Composed for Home:** the subject in the upper half, calm space below it for the joke. Measured on the ten
+6. **Composed for Home:** the subject in the upper half, calm space below it for the joke. Measured on the ten
    pilot pairs (25 Sept): today's Home writes the joke along the photo's bottom edge; Home D writes it
    55–75 % down the screen, not in the bottom third — a subject that reaches below the middle gets covered on D
    (the boy's legs in P03, the man and his washing in P05). Keep the subject above about 50 %.
-5. **Al's casting rules stand:** diverse South African casting, named specifically; no red face-brick by
+7. **Al's casting rules stand:** diverse South African casting, named specifically; no red face-brick by
    default; not coastal or Cape Dutch by default; no romantic couples; no text, signs, logos or number
    plates; a real place drawn right or not drawn at all (no cloned skylines, no invented cities); at night
    and in frost, people small or turned away.
@@ -104,9 +118,10 @@ photo; no slang as decoration; no "vibes". Braai plans on weekends only.
 
 ## 4. The photo brief (the shape every brief takes)
 
-> Real camera photograph, vertical 9:16. [Place in South Africa, time of day, the weather in plain
-> physical terms.] [One subject, cast specifically: age, who they are, what they wear — plain, no logos.]
-> [What the weather is doing to them, caught mid-moment.] [The architecture or landscape, named.]
+> Real camera photograph, vertical 9:16. [Place in South Africa, time of day, the slot's weekday, the
+> weather in plain physical terms at the folder's strength.] [One subject, cast specifically: age, who
+> they are, what they wear for that day and time — plain, no logos.] [What the weather is doing to them,
+> caught mid-moment: a candid reaction.] [The cared-for home, garden, suburb, town or farm, named.]
 > Composition: the subject in the upper half; the bottom third calm and empty — [what it is].
 > Natural skin with pores and flaws, candid and unposed, available light, slight grain, true colour. No
 > retouched skin, no glossy sheen, no plastic faces, not stock. No text, signs, logos or numbers anywhere.
@@ -120,6 +135,11 @@ sets up; the photo never illustrates the line's words.
   no Eskom, no photo description (the rubric in `RUBRIC-lines.md`; pass = weather-now + twist).
 - The photo: the rules above, by eye at full size; then the Home check — the joke must not sit on the
   subject (the photo check) — and the fold gate.
+- The pairs job's judge (blind to the line, told each photo's slot) says NO to a photo that is gritty
+  (poverty, decay, litter, graffiti, squalor), not aspirational (not a cared-for home, garden, suburb, town
+  or farm), wrong for its day (work clothes or a work scene on a weekend, anything that doesn't suit the
+  slot's day and time), or wrong in weather strength (clear that reads as a heat wave, heat that reads as a
+  nice day), as well as to one that is waxy or not realistic.
 - Only Al's ticks ship. Al checks English and Afrikaans; isiZulu, isiXhosa and Sesotho go through the
   language skills and lang-check.
 

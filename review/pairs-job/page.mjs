@@ -13,6 +13,7 @@ export async function buildPage({ n, targets, kept, sharp }) {
   <div class="takes">${imgs.map((src, i) => `<figure><img src="${src}" alt="take ${i + 1}"><figcaption>Take ${i + 1}</figcaption></figure>`).join('')}</div>
   ${l.coversFlag ? `<p class="flag">${esc(l.coversFlag)}</p>` : ''}
   ${l.gritFlag ? `<p class="flag">${esc(l.gritFlag)}</p>` : ''}
+  ${l.fitFlag ? `<p class="flag">${esc(l.fitFlag)}</p>` : ''}
   <div class="q"><span class="lab">Pair</span><div class="act" data-q="${l.id}.use"><button data-v="USE">Use</button><button data-v="NO">No</button></div></div>
   ${imgs.length > 1 ? `<div class="q"><span class="lab">Photo</span><div class="act" data-q="${l.id}.take">${imgs.map((_, i) => `<button data-v="${i + 1}">Take ${i + 1}</button>`).join('')}<button data-v="NEITHER">Neither</button></div></div>` : ''}
   <div class="q"><span class="lab">The line (optional)</span><div class="act" data-q="${l.id}.grade"><button data-v="LOVE">Love</button><button data-v="MEH">Meh</button></div></div>
