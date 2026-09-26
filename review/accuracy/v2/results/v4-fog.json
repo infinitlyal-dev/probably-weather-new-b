@@ -1,0 +1,1198 @@
+{
+ "period": {
+  "from": "2025-10-01",
+  "to": "2026-09-24"
+ },
+ "rows": 104681,
+ "tuneRows": 52543,
+ "testRows": 52138,
+ "modelsCounted": [
+  "best_match",
+  "gfs_seamless",
+  "icon_seamless",
+  "ukmo_seamless",
+  "meteofrance_seamless"
+ ],
+ "coverage": {
+  "best_match": 1,
+  "gfs_seamless": 1,
+  "icon_seamless": 1,
+  "ukmo_seamless": 1,
+  "meteofrance_seamless": 1
+ },
+ "gridQualifying": 45,
+ "strandConstraint": "21 May (hard); 3 Aug reported",
+ "cellsFiringOn3Aug": [
+  {
+   "k": 1,
+   "s": 1,
+   "L": 0,
+   "W": null
+  },
+  {
+   "k": 1,
+   "s": 1,
+   "L": 0,
+   "W": 10
+  },
+  {
+   "k": 1,
+   "s": 1,
+   "L": 0,
+   "W": 15
+  },
+  {
+   "k": 1,
+   "s": 1,
+   "L": 50,
+   "W": null
+  },
+  {
+   "k": 1,
+   "s": 1,
+   "L": 50,
+   "W": 10
+  },
+  {
+   "k": 1,
+   "s": 1,
+   "L": 50,
+   "W": 15
+  },
+  {
+   "k": 1,
+   "s": 1.5,
+   "L": 0,
+   "W": null
+  },
+  {
+   "k": 1,
+   "s": 1.5,
+   "L": 0,
+   "W": 10
+  },
+  {
+   "k": 1,
+   "s": 1.5,
+   "L": 0,
+   "W": 15
+  },
+  {
+   "k": 1,
+   "s": 1.5,
+   "L": 50,
+   "W": null
+  },
+  {
+   "k": 1,
+   "s": 1.5,
+   "L": 50,
+   "W": 10
+  },
+  {
+   "k": 1,
+   "s": 1.5,
+   "L": 50,
+   "W": 15
+  }
+ ],
+ "strandFires": {
+  "chosen": {
+   "21 May 21:00 → 22 May 01:59": [
+    "00",
+    "01"
+   ],
+   "3 Aug 16:00 → 17:59": []
+  },
+  "standard": {
+   "21 May 21:00 → 22 May 01:59": [
+    "22",
+    "23",
+    "00",
+    "01"
+   ],
+   "3 Aug 16:00 → 17:59": []
+  },
+  "strict": {
+   "21 May 21:00 → 22 May 01:59": [],
+   "3 Aug 16:00 → 17:59": []
+  }
+ },
+ "chosen": {
+  "k": 1,
+  "s": 0.5,
+  "L": 80,
+  "W": 10
+ },
+ "tuneTop": [
+  {
+   "k": 1,
+   "s": 0.5,
+   "L": 80,
+   "W": 10,
+   "f05": 0.1242,
+   "precision": 0.1065,
+   "recall": 0.374,
+   "calls": 1268
+  },
+  {
+   "k": 1,
+   "s": 0.5,
+   "L": 80,
+   "W": 15,
+   "f05": 0.1159,
+   "precision": 0.0985,
+   "recall": 0.3906,
+   "calls": 1431
+  },
+  {
+   "k": 1,
+   "s": 0.5,
+   "L": 80,
+   "W": null,
+   "f05": 0.1122,
+   "precision": 0.0951,
+   "recall": 0.3961,
+   "calls": 1503
+  },
+  {
+   "k": 1,
+   "s": 0.5,
+   "L": 50,
+   "W": 10,
+   "f05": 0.1096,
+   "precision": 0.0918,
+   "recall": 0.4931,
+   "calls": 1939
+  },
+  {
+   "k": 1,
+   "s": 0.5,
+   "L": 50,
+   "W": 15,
+   "f05": 0.1021,
+   "precision": 0.0851,
+   "recall": 0.5097,
+   "calls": 2162
+  },
+  {
+   "k": 1,
+   "s": 0.5,
+   "L": 50,
+   "W": null,
+   "f05": 0.0993,
+   "precision": 0.0826,
+   "recall": 0.5152,
+   "calls": 2251
+  },
+  {
+   "k": 3,
+   "s": 1.5,
+   "L": 80,
+   "W": 10,
+   "f05": 0.0974,
+   "precision": 0.0975,
+   "recall": 0.097,
+   "calls": 359
+  },
+  {
+   "k": 1,
+   "s": 1,
+   "L": 80,
+   "W": 10,
+   "f05": 0.0961,
+   "precision": 0.0808,
+   "recall": 0.3989,
+   "calls": 1782
+  },
+  {
+   "k": 2,
+   "s": 1.5,
+   "L": 80,
+   "W": 10,
+   "f05": 0.093,
+   "precision": 0.0817,
+   "recall": 0.2078,
+   "calls": 918
+  },
+  {
+   "k": 2,
+   "s": 1.5,
+   "L": 50,
+   "W": 10,
+   "f05": 0.0923,
+   "precision": 0.0778,
+   "recall": 0.3601,
+   "calls": 1670
+  }
+ ],
+ "test": {
+  "standard": {
+   "n": 52138,
+   "fogHours": 264,
+   "calls": 879,
+   "hits": 92,
+   "falseAlarms": 787,
+   "precision": 0.1047,
+   "recall": 0.3485,
+   "f05": 0.1217,
+   "wrongPer1000": 15.0946
+  },
+  "live": {
+   "n": 52138,
+   "fogHours": 264,
+   "calls": 632,
+   "hits": 77,
+   "falseAlarms": 555,
+   "precision": 0.1218,
+   "recall": 0.2917,
+   "f05": 0.1379,
+   "wrongPer1000": 10.6448
+  },
+  "chosen": {
+   "n": 52138,
+   "fogHours": 264,
+   "calls": 1245,
+   "hits": 103,
+   "falseAlarms": 1142,
+   "precision": 0.0827,
+   "recall": 0.3902,
+   "f05": 0.0982,
+   "wrongPer1000": 21.9034
+  },
+  "f05VsLive": {
+   "diff": -0.0397,
+   "lo": -0.0704,
+   "hi": -0.0075,
+   "weeks": 26
+  },
+  "f05VsStandard": {
+   "diff": -0.0235,
+   "lo": -0.0469,
+   "hi": 0.0034,
+   "weeks": 26
+  },
+  "precisionVsLive": {
+   "diff": -0.0391,
+   "lo": -0.0666,
+   "hi": -0.0092,
+   "weeks": 26
+  },
+  "wrongVsLive": {
+   "diff": 11.2586,
+   "lo": 8.2046,
+   "hi": 14.7787,
+   "weeks": 26
+  },
+  "recallVsLive": {
+   "diff": 0.0985,
+   "lo": 0.0632,
+   "hi": 0.1467,
+   "weeks": 26
+  }
+ },
+ "byRegion": {
+  "Western Cape": {
+   "liveRule": "strict",
+   "standard": {
+    "n": 4254,
+    "fogHours": 112,
+    "calls": 262,
+    "hits": 63,
+    "falseAlarms": 199,
+    "precision": 0.2405,
+    "recall": 0.5625,
+    "f05": 0.2716,
+    "wrongPer1000": 46.7795
+   },
+   "live": {
+    "n": 4254,
+    "fogHours": 112,
+    "calls": 204,
+    "hits": 57,
+    "falseAlarms": 147,
+    "precision": 0.2794,
+    "recall": 0.5089,
+    "f05": 0.3071,
+    "wrongPer1000": 34.5557
+   },
+   "chosen": {
+    "n": 4254,
+    "fogHours": 112,
+    "calls": 236,
+    "hits": 64,
+    "falseAlarms": 172,
+    "precision": 0.2712,
+    "recall": 0.5714,
+    "f05": 0.303,
+    "wrongPer1000": 40.4325
+   },
+   "wrongVsLive": {
+    "diff": 5.8768,
+    "lo": 1.8766,
+    "hi": 10.1382,
+    "weeks": 26
+   },
+   "wrongVsStandard": {
+    "diff": -6.347,
+    "lo": -13.6471,
+    "hi": 0,
+    "weeks": 26
+   },
+   "recallVsLive": {
+    "diff": 0.0625,
+    "lo": -0.0156,
+    "hi": 0.175,
+    "weeks": 26
+   },
+   "recallFloor": true,
+   "passes": false
+  },
+  "Garden Route": {
+   "liveRule": "strict",
+   "standard": {
+    "n": 4209,
+    "fogHours": 78,
+    "calls": 190,
+    "hits": 7,
+    "falseAlarms": 183,
+    "precision": 0.0368,
+    "recall": 0.0897,
+    "f05": 0.0418,
+    "wrongPer1000": 43.4783
+   },
+   "live": {
+    "n": 4209,
+    "fogHours": 78,
+    "calls": 78,
+    "hits": 2,
+    "falseAlarms": 76,
+    "precision": 0.0256,
+    "recall": 0.0256,
+    "f05": 0.0256,
+    "wrongPer1000": 18.0565
+   },
+   "chosen": {
+    "n": 4209,
+    "fogHours": 78,
+    "calls": 174,
+    "hits": 9,
+    "falseAlarms": 165,
+    "precision": 0.0517,
+    "recall": 0.1154,
+    "f05": 0.0581,
+    "wrongPer1000": 39.2017
+   },
+   "wrongVsLive": {
+    "diff": 21.1452,
+    "lo": 11.469,
+    "hi": 31.8841,
+    "weeks": 26
+   },
+   "wrongVsStandard": {
+    "diff": -4.2766,
+    "lo": -21.9268,
+    "hi": 10.6589,
+    "weeks": 26
+   },
+   "recallVsLive": {
+    "diff": 0.0897,
+    "lo": 0.0392,
+    "hi": 0.1556,
+    "weeks": 26
+   },
+   "recallFloor": true,
+   "passes": false
+  },
+  "Eastern Cape": {
+   "liveRule": "strict",
+   "standard": {
+    "n": 11070,
+    "fogHours": 33,
+    "calls": 257,
+    "hits": 11,
+    "falseAlarms": 246,
+    "precision": 0.0428,
+    "recall": 0.3333,
+    "f05": 0.0518,
+    "wrongPer1000": 22.2222
+   },
+   "live": {
+    "n": 11070,
+    "fogHours": 33,
+    "calls": 196,
+    "hits": 7,
+    "falseAlarms": 189,
+    "precision": 0.0357,
+    "recall": 0.2121,
+    "f05": 0.0428,
+    "wrongPer1000": 17.0732
+   },
+   "chosen": {
+    "n": 11070,
+    "fogHours": 33,
+    "calls": 404,
+    "hits": 15,
+    "falseAlarms": 389,
+    "precision": 0.0371,
+    "recall": 0.4545,
+    "f05": 0.0455,
+    "wrongPer1000": 35.14
+   },
+   "wrongVsLive": {
+    "diff": 18.0668,
+    "lo": 12.1146,
+    "hi": 24.8936,
+    "weeks": 26
+   },
+   "wrongVsStandard": {
+    "diff": 12.9178,
+    "lo": 6.0512,
+    "hi": 21.2001,
+    "weeks": 26
+   },
+   "recallVsLive": {
+    "diff": 0.2424,
+    "lo": 0,
+    "hi": 0.3396,
+    "weeks": 26
+   },
+   "recallFloor": true,
+   "passes": false
+  },
+  "KZN coast": {
+   "liveRule": "strict",
+   "standard": {
+    "n": 4254,
+    "fogHours": 0,
+    "calls": 27,
+    "hits": 0,
+    "falseAlarms": 27,
+    "precision": 0,
+    "recall": null,
+    "f05": 0,
+    "wrongPer1000": 6.347
+   },
+   "live": {
+    "n": 4254,
+    "fogHours": 0,
+    "calls": 16,
+    "hits": 0,
+    "falseAlarms": 16,
+    "precision": 0,
+    "recall": null,
+    "f05": 0,
+    "wrongPer1000": 3.7612
+   },
+   "chosen": {
+    "n": 4254,
+    "fogHours": 0,
+    "calls": 80,
+    "hits": 0,
+    "falseAlarms": 80,
+    "precision": 0,
+    "recall": null,
+    "f05": 0,
+    "wrongPer1000": 18.8058
+   },
+   "wrongVsLive": {
+    "diff": 15.0447,
+    "lo": 5.0239,
+    "hi": 28.3345,
+    "weeks": 26
+   },
+   "wrongVsStandard": {
+    "diff": 12.4589,
+    "lo": 2.5858,
+    "hi": 26.2855,
+    "weeks": 26
+   },
+   "recallVsLive": {
+    "diff": null,
+    "lo": null,
+    "hi": null,
+    "weeks": 26
+   },
+   "recallFloor": false,
+   "passes": false
+  },
+  "Highveld": {
+   "liveRule": "standard",
+   "standard": {
+    "n": 4070,
+    "fogHours": 10,
+    "calls": 34,
+    "hits": 5,
+    "falseAlarms": 29,
+    "precision": 0.1471,
+    "recall": 0.5,
+    "f05": 0.1712,
+    "wrongPer1000": 7.1253
+   },
+   "live": {
+    "n": 4070,
+    "fogHours": 10,
+    "calls": 34,
+    "hits": 5,
+    "falseAlarms": 29,
+    "precision": 0.1471,
+    "recall": 0.5,
+    "f05": 0.1712,
+    "wrongPer1000": 7.1253
+   },
+   "chosen": {
+    "n": 4070,
+    "fogHours": 10,
+    "calls": 96,
+    "hits": 6,
+    "falseAlarms": 90,
+    "precision": 0.0625,
+    "recall": 0.6,
+    "f05": 0.0761,
+    "wrongPer1000": 22.113
+   },
+   "wrongVsLive": {
+    "diff": 14.9877,
+    "lo": 8.4485,
+    "hi": 23.5641,
+    "weeks": 26
+   },
+   "wrongVsStandard": {
+    "diff": 14.9877,
+    "lo": 8.4485,
+    "hi": 23.5641,
+    "weeks": 26
+   },
+   "recallVsLive": {
+    "diff": 0.1,
+    "lo": 0,
+    "hi": 0.5,
+    "weeks": 26
+   },
+   "recallFloor": true,
+   "passes": false
+  },
+  "Free State": {
+   "liveRule": "standard",
+   "standard": {
+    "n": 4007,
+    "fogHours": 5,
+    "calls": 26,
+    "hits": 3,
+    "falseAlarms": 23,
+    "precision": 0.1154,
+    "recall": 0.6,
+    "f05": 0.1376,
+    "wrongPer1000": 5.74
+   },
+   "live": {
+    "n": 4007,
+    "fogHours": 5,
+    "calls": 26,
+    "hits": 3,
+    "falseAlarms": 23,
+    "precision": 0.1154,
+    "recall": 0.6,
+    "f05": 0.1376,
+    "wrongPer1000": 5.74
+   },
+   "chosen": {
+    "n": 4007,
+    "fogHours": 5,
+    "calls": 30,
+    "hits": 3,
+    "falseAlarms": 27,
+    "precision": 0.1,
+    "recall": 0.6,
+    "f05": 0.12,
+    "wrongPer1000": 6.7382
+   },
+   "wrongVsLive": {
+    "diff": 0.9983,
+    "lo": 0,
+    "hi": 2.2266,
+    "weeks": 26
+   },
+   "wrongVsStandard": {
+    "diff": 0.9983,
+    "lo": 0,
+    "hi": 2.2266,
+    "weeks": 26
+   },
+   "recallVsLive": {
+    "diff": 0,
+    "lo": 0,
+    "hi": 0,
+    "weeks": 26
+   },
+   "recallFloor": false,
+   "passes": false
+  },
+  "Northern Cape": {
+   "liveRule": "standard",
+   "standard": {
+    "n": 7914,
+    "fogHours": 9,
+    "calls": 5,
+    "hits": 0,
+    "falseAlarms": 5,
+    "precision": 0,
+    "recall": 0,
+    "f05": 0,
+    "wrongPer1000": 0.6318
+   },
+   "live": {
+    "n": 7914,
+    "fogHours": 9,
+    "calls": 5,
+    "hits": 0,
+    "falseAlarms": 5,
+    "precision": 0,
+    "recall": 0,
+    "f05": 0,
+    "wrongPer1000": 0.6318
+   },
+   "chosen": {
+    "n": 7914,
+    "fogHours": 9,
+    "calls": 14,
+    "hits": 1,
+    "falseAlarms": 13,
+    "precision": 0.0714,
+    "recall": 0.1111,
+    "f05": 0.0769,
+    "wrongPer1000": 1.6427
+   },
+   "wrongVsLive": {
+    "diff": 1.0109,
+    "lo": 0,
+    "hi": 2.6684,
+    "weeks": 26
+   },
+   "wrongVsStandard": {
+    "diff": 1.0109,
+    "lo": 0,
+    "hi": 2.6684,
+    "weeks": 26
+   },
+   "recallVsLive": {
+    "diff": 0.1111,
+    "lo": 0,
+    "hi": 0.4286,
+    "weeks": 26
+   },
+   "recallFloor": false,
+   "passes": false
+  },
+  "North West": {
+   "liveRule": "standard",
+   "standard": {
+    "n": 4069,
+    "fogHours": 2,
+    "calls": 10,
+    "hits": 0,
+    "falseAlarms": 10,
+    "precision": 0,
+    "recall": 0,
+    "f05": 0,
+    "wrongPer1000": 2.4576
+   },
+   "live": {
+    "n": 4069,
+    "fogHours": 2,
+    "calls": 10,
+    "hits": 0,
+    "falseAlarms": 10,
+    "precision": 0,
+    "recall": 0,
+    "f05": 0,
+    "wrongPer1000": 2.4576
+   },
+   "chosen": {
+    "n": 4069,
+    "fogHours": 2,
+    "calls": 22,
+    "hits": 0,
+    "falseAlarms": 22,
+    "precision": 0,
+    "recall": 0,
+    "f05": 0,
+    "wrongPer1000": 5.4067
+   },
+   "wrongVsLive": {
+    "diff": 2.9491,
+    "lo": -0.7222,
+    "hi": 8.94,
+    "weeks": 26
+   },
+   "wrongVsStandard": {
+    "diff": 2.9491,
+    "lo": -0.7222,
+    "hi": 8.94,
+    "weeks": 26
+   },
+   "recallVsLive": {
+    "diff": 0,
+    "lo": null,
+    "hi": null,
+    "weeks": 26
+   },
+   "recallFloor": false,
+   "passes": false
+  },
+  "Lowveld": {
+   "liveRule": "strict",
+   "standard": {
+    "n": 4161,
+    "fogHours": 6,
+    "calls": 37,
+    "hits": 0,
+    "falseAlarms": 37,
+    "precision": 0,
+    "recall": 0,
+    "f05": 0,
+    "wrongPer1000": 8.8921
+   },
+   "live": {
+    "n": 4161,
+    "fogHours": 6,
+    "calls": 32,
+    "hits": 0,
+    "falseAlarms": 32,
+    "precision": 0,
+    "recall": 0,
+    "f05": 0,
+    "wrongPer1000": 7.6905
+   },
+   "chosen": {
+    "n": 4161,
+    "fogHours": 6,
+    "calls": 123,
+    "hits": 2,
+    "falseAlarms": 121,
+    "precision": 0.0163,
+    "recall": 0.3333,
+    "f05": 0.0201,
+    "wrongPer1000": 29.0795
+   },
+   "wrongVsLive": {
+    "diff": 21.3891,
+    "lo": 10.6433,
+    "hi": 34.4486,
+    "weeks": 26
+   },
+   "wrongVsStandard": {
+    "diff": 20.1875,
+    "lo": 9.4877,
+    "hi": 33.1478,
+    "weeks": 26
+   },
+   "recallVsLive": {
+    "diff": 0.3333,
+    "lo": 0,
+    "hi": 1,
+    "weeks": 26
+   },
+   "recallFloor": false,
+   "passes": false
+  },
+  "Limpopo": {
+   "liveRule": "standard",
+   "standard": {
+    "n": 4130,
+    "fogHours": 9,
+    "calls": 31,
+    "hits": 3,
+    "falseAlarms": 28,
+    "precision": 0.0968,
+    "recall": 0.3333,
+    "f05": 0.1128,
+    "wrongPer1000": 6.7797
+   },
+   "live": {
+    "n": 4130,
+    "fogHours": 9,
+    "calls": 31,
+    "hits": 3,
+    "falseAlarms": 28,
+    "precision": 0.0968,
+    "recall": 0.3333,
+    "f05": 0.1128,
+    "wrongPer1000": 6.7797
+   },
+   "chosen": {
+    "n": 4130,
+    "fogHours": 9,
+    "calls": 66,
+    "hits": 3,
+    "falseAlarms": 63,
+    "precision": 0.0455,
+    "recall": 0.3333,
+    "f05": 0.0549,
+    "wrongPer1000": 15.2542
+   },
+   "wrongVsLive": {
+    "diff": 8.4746,
+    "lo": 4.0409,
+    "hi": 13.7021,
+    "weeks": 26
+   },
+   "wrongVsStandard": {
+    "diff": 8.4746,
+    "lo": 4.0409,
+    "hi": 13.7021,
+    "weeks": 26
+   },
+   "recallVsLive": {
+    "diff": 0,
+    "lo": -0.6,
+    "hi": 0.1818,
+    "weeks": 26
+   },
+   "recallFloor": false,
+   "passes": false
+  }
+ },
+ "byStation": {
+  "FACT": {
+   "live": {
+    "n": 4254,
+    "fogHours": 112,
+    "calls": 204,
+    "hits": 57,
+    "falseAlarms": 147,
+    "precision": 0.2794,
+    "recall": 0.5089,
+    "f05": 0.3071,
+    "wrongPer1000": 34.5557
+   },
+   "chosen": {
+    "n": 4254,
+    "fogHours": 112,
+    "calls": 236,
+    "hits": 64,
+    "falseAlarms": 172,
+    "precision": 0.2712,
+    "recall": 0.5714,
+    "f05": 0.303,
+    "wrongPer1000": 40.4325
+   }
+  },
+  "FAGG": {
+   "live": {
+    "n": 4209,
+    "fogHours": 78,
+    "calls": 78,
+    "hits": 2,
+    "falseAlarms": 76,
+    "precision": 0.0256,
+    "recall": 0.0256,
+    "f05": 0.0256,
+    "wrongPer1000": 18.0565
+   },
+   "chosen": {
+    "n": 4209,
+    "fogHours": 78,
+    "calls": 174,
+    "hits": 9,
+    "falseAlarms": 165,
+    "precision": 0.0517,
+    "recall": 0.1154,
+    "f05": 0.0581,
+    "wrongPer1000": 39.2017
+   }
+  },
+  "FAPE": {
+   "live": {
+    "n": 4138,
+    "fogHours": 17,
+    "calls": 5,
+    "hits": 1,
+    "falseAlarms": 4,
+    "precision": 0.2,
+    "recall": 0.0588,
+    "f05": 0.1351,
+    "wrongPer1000": 0.9667
+   },
+   "chosen": {
+    "n": 4138,
+    "fogHours": 17,
+    "calls": 21,
+    "hits": 7,
+    "falseAlarms": 14,
+    "precision": 0.3333,
+    "recall": 0.4118,
+    "f05": 0.3465,
+    "wrongPer1000": 3.3833
+   }
+  },
+  "FAEL": {
+   "live": {
+    "n": 2829,
+    "fogHours": 3,
+    "calls": 1,
+    "hits": 0,
+    "falseAlarms": 1,
+    "precision": 0,
+    "recall": 0,
+    "f05": 0,
+    "wrongPer1000": 0.3535
+   },
+   "chosen": {
+    "n": 2829,
+    "fogHours": 3,
+    "calls": 9,
+    "hits": 0,
+    "falseAlarms": 9,
+    "precision": 0,
+    "recall": 0,
+    "f05": 0,
+    "wrongPer1000": 3.1813
+   }
+  },
+  "FAUT": {
+   "live": {
+    "n": 4103,
+    "fogHours": 13,
+    "calls": 190,
+    "hits": 6,
+    "falseAlarms": 184,
+    "precision": 0.0316,
+    "recall": 0.4615,
+    "f05": 0.0388,
+    "wrongPer1000": 44.8452
+   },
+   "chosen": {
+    "n": 4103,
+    "fogHours": 13,
+    "calls": 374,
+    "hits": 8,
+    "falseAlarms": 366,
+    "precision": 0.0214,
+    "recall": 0.6154,
+    "f05": 0.0265,
+    "wrongPer1000": 89.203
+   }
+  },
+  "FALE": {
+   "live": {
+    "n": 4254,
+    "fogHours": 0,
+    "calls": 16,
+    "hits": 0,
+    "falseAlarms": 16,
+    "precision": 0,
+    "recall": null,
+    "f05": 0,
+    "wrongPer1000": 3.7612
+   },
+   "chosen": {
+    "n": 4254,
+    "fogHours": 0,
+    "calls": 80,
+    "hits": 0,
+    "falseAlarms": 80,
+    "precision": 0,
+    "recall": null,
+    "f05": 0,
+    "wrongPer1000": 18.8058
+   }
+  },
+  "FAOR": {
+   "live": {
+    "n": 4070,
+    "fogHours": 10,
+    "calls": 34,
+    "hits": 5,
+    "falseAlarms": 29,
+    "precision": 0.1471,
+    "recall": 0.5,
+    "f05": 0.1712,
+    "wrongPer1000": 7.1253
+   },
+   "chosen": {
+    "n": 4070,
+    "fogHours": 10,
+    "calls": 96,
+    "hits": 6,
+    "falseAlarms": 90,
+    "precision": 0.0625,
+    "recall": 0.6,
+    "f05": 0.0761,
+    "wrongPer1000": 22.113
+   }
+  },
+  "FABL": {
+   "live": {
+    "n": 4007,
+    "fogHours": 5,
+    "calls": 26,
+    "hits": 3,
+    "falseAlarms": 23,
+    "precision": 0.1154,
+    "recall": 0.6,
+    "f05": 0.1376,
+    "wrongPer1000": 5.74
+   },
+   "chosen": {
+    "n": 4007,
+    "fogHours": 5,
+    "calls": 30,
+    "hits": 3,
+    "falseAlarms": 27,
+    "precision": 0.1,
+    "recall": 0.6,
+    "f05": 0.12,
+    "wrongPer1000": 6.7382
+   }
+  },
+  "FAUP": {
+   "live": {
+    "n": 4209,
+    "fogHours": 5,
+    "calls": 4,
+    "hits": 0,
+    "falseAlarms": 4,
+    "precision": 0,
+    "recall": 0,
+    "f05": 0,
+    "wrongPer1000": 0.9503
+   },
+   "chosen": {
+    "n": 4209,
+    "fogHours": 5,
+    "calls": 11,
+    "hits": 0,
+    "falseAlarms": 11,
+    "precision": 0,
+    "recall": 0,
+    "f05": 0,
+    "wrongPer1000": 2.6134
+   }
+  },
+  "FAKM": {
+   "live": {
+    "n": 3705,
+    "fogHours": 4,
+    "calls": 1,
+    "hits": 0,
+    "falseAlarms": 1,
+    "precision": 0,
+    "recall": 0,
+    "f05": 0,
+    "wrongPer1000": 0.2699
+   },
+   "chosen": {
+    "n": 3705,
+    "fogHours": 4,
+    "calls": 3,
+    "hits": 1,
+    "falseAlarms": 2,
+    "precision": 0.3333,
+    "recall": 0.25,
+    "f05": 0.3125,
+    "wrongPer1000": 0.5398
+   }
+  },
+  "FAMM": {
+   "live": {
+    "n": 4069,
+    "fogHours": 2,
+    "calls": 10,
+    "hits": 0,
+    "falseAlarms": 10,
+    "precision": 0,
+    "recall": 0,
+    "f05": 0,
+    "wrongPer1000": 2.4576
+   },
+   "chosen": {
+    "n": 4069,
+    "fogHours": 2,
+    "calls": 22,
+    "hits": 0,
+    "falseAlarms": 22,
+    "precision": 0,
+    "recall": 0,
+    "f05": 0,
+    "wrongPer1000": 5.4067
+   }
+  },
+  "FAKN": {
+   "live": {
+    "n": 4161,
+    "fogHours": 6,
+    "calls": 32,
+    "hits": 0,
+    "falseAlarms": 32,
+    "precision": 0,
+    "recall": 0,
+    "f05": 0,
+    "wrongPer1000": 7.6905
+   },
+   "chosen": {
+    "n": 4161,
+    "fogHours": 6,
+    "calls": 123,
+    "hits": 2,
+    "falseAlarms": 121,
+    "precision": 0.0163,
+    "recall": 0.3333,
+    "f05": 0.0201,
+    "wrongPer1000": 29.0795
+   }
+  },
+  "FAPP": {
+   "live": {
+    "n": 4130,
+    "fogHours": 9,
+    "calls": 31,
+    "hits": 3,
+    "falseAlarms": 28,
+    "precision": 0.0968,
+    "recall": 0.3333,
+    "f05": 0.1128,
+    "wrongPer1000": 6.7797
+   },
+   "chosen": {
+    "n": 4130,
+    "fogHours": 9,
+    "calls": 66,
+    "hits": 3,
+    "falseAlarms": 63,
+    "precision": 0.0455,
+    "recall": 0.3333,
+    "f05": 0.0549,
+    "wrongPer1000": 15.2542
+   }
+  }
+ },
+ "instead": {
+  "standard": {
+   "other": 638,
+   "fog": 92,
+   "low-cloud": 74,
+   "mist": 75
+  },
+  "live": {
+   "other": 459,
+   "fog": 77,
+   "low-cloud": 52,
+   "mist": 44
+  },
+  "chosen": {
+   "other": 951,
+   "fog": 103,
+   "low-cloud": 115,
+   "mist": 76
+  }
+ },
+ "ships": [],
+ "pooledPass": false,
+ "fogCodes": {
+  "low-cloud": 70,
+  "other": 1545,
+  "mist": 69,
+  "fog": 87
+ }
+}
