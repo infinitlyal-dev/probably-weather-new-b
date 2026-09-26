@@ -41,9 +41,10 @@ import {
   responseLocationName,
 } from './_lib/weather-cache.js';
 import { consumeProviderBudgets, recordOpenMeteoCallDeferred, OPEN_METEO_PRECISION_UNIT_TENTHS } from './_lib/provider-budget.js';
-import { inSouthAfrica, inLowveld, precisionUrl, precisionConsensus, precisionMix, PRECISION_DAYS } from './_lib/precision.js';
+import { inSouthAfrica, inLowveld, precisionUrl, precisionConsensus, precisionMix, PRECISION_DAYS, PRECISION_MODELS } from './_lib/precision.js';
+import { frostNightLow, FROST_NOT_HERE } from './_lib/frost.js';
 import { PRECISION_TABLE, PRECISION_TABLE_INLAND } from './_lib/precision-table.js';
-import { regionOf } from './_lib/regions.js';
+import { regionOf, stationCellOf } from './_lib/regions.js';
 // Launch run (2026-09-25): counters for /api/health, written only on failure.
 import { recordSourceFailure, recordServerError } from './_lib/health-counters.js';
 import { parseSourcesOff } from './_lib/sources-off.js';
@@ -2146,6 +2147,9 @@ export default async function handler(req, res) {
       console.warn(`[pw-precision] ${classifyFailure(precisionResult.reason)} ${precisionResult.reason?.message || ''}`);
     }
     const precisionLog = [];
+    // Frost nights (review/accuracy/v4, api/_lib/frost.js): what the step did to days 0 and 1, for the recorder.
+    const frostLog = [];
+    const frostRegion = regionOf(lat, lon), frostCell = stationCellOf(lat, lon);
 
     // Daily aggregation (all sources)
     const aggregatedDaily = Array.from({ length: 7 }, (_, i) => {
@@ -2162,8 +2166,16 @@ export default async function handler(req, res) {
         ? precisionMix({ blendHigh, blendLow, consensus, strip: aggregatedHourly.slice(i * 24, i * 24 + 24).map(h => h?.tempC), alpha: precisionTable.alpha })
         : { highC: blendHigh, lowC: blendLow, applied: false };
       const highC        = mixed.highC;
-      const lowC         = mixed.lowC;
-      if (mixed.applied) precisionLog.push({ day: i, date: precision[i].date, consensusHigh: precision[i].high, consensusLow: precision[i].low, blendHigh, blendLow, highC, lowC });
+      // Frost nights: after the mix, only where the precision layer's five models are all there (else the low stands).
+      const frost        = i < PRECISION_DAYS && mixed.applied
+        ? frostNightLow({ day: i, lowC: mixed.lowC, region: frostRegion, cell: frostCell, elevation: omElevation, clouds: hourlies[0]?.clouds, winds: hourlies[0]?.winds,
+            bestMatch: hourlies[0]?.temps, models: precisionResult?.value?.hourly, modelNames: PRECISION_MODELS })
+        : null;
+      const lowC         = frost ? frost.lowC : mixed.lowC;
+      if (frost && !FROST_NOT_HERE.includes(frost.reason)) frostLog.push({ day: i, ...frost, lowBefore: mixed.lowC });
+      if (frost?.applied) debugLog(`[Frost night] day ${i}: low ${mixed.lowC} → ${frost.lowC} (cloud ${frost.cloud}%, wind ${frost.wind} km/h, coldest model ${frost.coldest})`);
+      // lowC here is the mix's own low, so the precision and frost layers can be scored apart (Fable, diff review 2)
+      if (mixed.applied) precisionLog.push({ day: i, date: precision[i].date, consensusHigh: precision[i].high, consensusLow: precision[i].low, blendHigh, blendLow, highC, lowC: mixed.lowC });
       const rainChance   = wAvg(dailies, dailyW, d => d.rains[i]);
       const uv           = wAvg(dailies, dailyW, d => d.uvs[i]);
       // Wind/cloud: days 0-1 sit inside the 48-hour hourly array (noon index 12
@@ -2757,6 +2769,8 @@ export default async function handler(req, res) {
           table: precisionTable.id,
           alpha: precisionTable.alpha,
           days: precisionLog,
+          // frost nights (api/_lib/frost.js): only in its regions, 500 m up; empty elsewhere
+          frost: frostLog,
         },
         sourceRanges: activeNorms.map(n => ({
           name:    n.source,

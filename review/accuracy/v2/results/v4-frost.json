@@ -770,6 +770,428 @@
     "airports": 0.56,
     "towns": 0.408
    },
+   "byStation": {
+    "68479": {
+     "old harness": {
+      "before": 1.153,
+      "after": 1.012,
+      "diff": {
+       "diff": -0.141,
+       "lo": -0.227,
+       "hi": -0.063,
+       "days": 39,
+       "n": 259
+      }
+     },
+     "ECMWF-heavy": {
+      "before": 1.041,
+      "after": 0.97,
+      "diff": {
+       "diff": -0.071,
+       "lo": -0.135,
+       "hi": -0.011,
+       "days": 39,
+       "n": 259
+      }
+     },
+     "mixed": {
+      "before": 1.219,
+      "after": 1.02,
+      "diff": {
+       "diff": -0.198,
+       "lo": -0.295,
+       "hi": -0.106,
+       "days": 39,
+       "n": 259
+      }
+     }
+    },
+    "68581": {
+     "old harness": {
+      "before": 1.254,
+      "after": 1.195,
+      "diff": {
+       "diff": -0.059,
+       "lo": -0.105,
+       "hi": -0.019,
+       "days": 39,
+       "n": 237
+      }
+     },
+     "ECMWF-heavy": {
+      "before": 1.214,
+      "after": 1.191,
+      "diff": {
+       "diff": -0.023,
+       "lo": -0.062,
+       "hi": 0.014,
+       "days": 39,
+       "n": 237
+      }
+     },
+     "mixed": {
+      "before": 1.207,
+      "after": 1.136,
+      "diff": {
+       "diff": -0.071,
+       "lo": -0.118,
+       "hi": -0.03,
+       "days": 39,
+       "n": 237
+      }
+     }
+    },
+    "68727": {
+     "old harness": {
+      "before": 1.511,
+      "after": 1.532,
+      "diff": {
+       "diff": 0.021,
+       "lo": -0.061,
+       "hi": 0.101,
+       "days": 39,
+       "n": 259
+      }
+     },
+     "ECMWF-heavy": {
+      "before": 1.503,
+      "after": 1.546,
+      "diff": {
+       "diff": 0.043,
+       "lo": -0.03,
+       "hi": 0.116,
+       "days": 39,
+       "n": 259
+      }
+     },
+     "mixed": {
+      "before": 1.442,
+      "after": 1.508,
+      "diff": {
+       "diff": 0.067,
+       "lo": -0.002,
+       "hi": 0.139,
+       "days": 39,
+       "n": 259
+      }
+     }
+    },
+    "68737": {
+     "old harness": {
+      "before": 2.315,
+      "after": 2.144,
+      "diff": {
+       "diff": -0.172,
+       "lo": -0.23,
+       "hi": -0.109,
+       "days": 39,
+       "n": 244
+      }
+     },
+     "ECMWF-heavy": {
+      "before": 2.132,
+      "after": 2.016,
+      "diff": {
+       "diff": -0.116,
+       "lo": -0.162,
+       "hi": -0.068,
+       "days": 39,
+       "n": 244
+      }
+     },
+     "mixed": {
+      "before": 2.494,
+      "after": 2.227,
+      "diff": {
+       "diff": -0.267,
+       "lo": -0.346,
+       "hi": -0.188,
+       "days": 39,
+       "n": 244
+      }
+     }
+    },
+    "FAUT": {
+     "old harness": {
+      "before": 1.265,
+      "after": 1.265,
+      "diff": {
+       "diff": 0,
+       "lo": 0,
+       "hi": 0,
+       "days": 39,
+       "n": 247
+      }
+     },
+     "ECMWF-heavy": {
+      "before": 1.251,
+      "after": 1.251,
+      "diff": {
+       "diff": 0,
+       "lo": 0,
+       "hi": 0,
+       "days": 39,
+       "n": 247
+      }
+     },
+     "mixed": {
+      "before": 1.189,
+      "after": 1.189,
+      "diff": {
+       "diff": 0,
+       "lo": 0,
+       "hi": 0,
+       "days": 39,
+       "n": 247
+      }
+     }
+    },
+    "FAOR": {
+     "old harness": {
+      "before": 1.1,
+      "after": 1.352,
+      "diff": {
+       "diff": 0.253,
+       "lo": 0.154,
+       "hi": 0.359,
+       "days": 39,
+       "n": 264
+      }
+     },
+     "ECMWF-heavy": {
+      "before": 1.217,
+      "after": 1.426,
+      "diff": {
+       "diff": 0.209,
+       "lo": 0.133,
+       "hi": 0.293,
+       "days": 39,
+       "n": 264
+      }
+     },
+     "mixed": {
+      "before": 1.185,
+      "after": 1.393,
+      "diff": {
+       "diff": 0.208,
+       "lo": 0.116,
+       "hi": 0.305,
+       "days": 39,
+       "n": 264
+      }
+     }
+    },
+    "FAWB": {
+     "old harness": {
+      "before": 1.797,
+      "after": 1.408,
+      "diff": {
+       "diff": -0.389,
+       "lo": -0.555,
+       "hi": -0.25,
+       "days": 35,
+       "n": 204
+      }
+     },
+     "ECMWF-heavy": {
+      "before": 1.603,
+      "after": 1.333,
+      "diff": {
+       "diff": -0.27,
+       "lo": -0.399,
+       "hi": -0.159,
+       "days": 35,
+       "n": 204
+      }
+     },
+     "mixed": {
+      "before": 1.794,
+      "after": 1.372,
+      "diff": {
+       "diff": -0.423,
+       "lo": -0.578,
+       "hi": -0.282,
+       "days": 35,
+       "n": 204
+      }
+     }
+    },
+    "FABL": {
+     "old harness": {
+      "before": 2.095,
+      "after": 1.473,
+      "diff": {
+       "diff": -0.622,
+       "lo": -0.802,
+       "hi": -0.463,
+       "days": 37,
+       "n": 236
+      }
+     },
+     "ECMWF-heavy": {
+      "before": 1.755,
+      "after": 1.302,
+      "diff": {
+       "diff": -0.452,
+       "lo": -0.593,
+       "hi": -0.334,
+       "days": 37,
+       "n": 236
+      }
+     },
+     "mixed": {
+      "before": 2.288,
+      "after": 1.551,
+      "diff": {
+       "diff": -0.737,
+       "lo": -0.935,
+       "hi": -0.566,
+       "days": 37,
+       "n": 236
+      }
+     }
+    },
+    "FAUP": {
+     "old harness": {
+      "before": 1.44,
+      "after": 1.318,
+      "diff": {
+       "diff": -0.122,
+       "lo": -0.253,
+       "hi": 0.01,
+       "days": 39,
+       "n": 259
+      }
+     },
+     "ECMWF-heavy": {
+      "before": 1.243,
+      "after": 1.26,
+      "diff": {
+       "diff": 0.018,
+       "lo": -0.076,
+       "hi": 0.113,
+       "days": 39,
+       "n": 259
+      }
+     },
+     "mixed": {
+      "before": 1.548,
+      "after": 1.345,
+      "diff": {
+       "diff": -0.203,
+       "lo": -0.351,
+       "hi": -0.058,
+       "days": 39,
+       "n": 259
+      }
+     }
+    },
+    "FAKM": {
+     "old harness": {
+      "before": 1.995,
+      "after": 1.629,
+      "diff": {
+       "diff": -0.366,
+       "lo": -0.513,
+       "hi": -0.229,
+       "days": 32,
+       "n": 152
+      }
+     },
+     "ECMWF-heavy": {
+      "before": 1.73,
+      "after": 1.507,
+      "diff": {
+       "diff": -0.223,
+       "lo": -0.315,
+       "hi": -0.139,
+       "days": 32,
+       "n": 152
+      }
+     },
+     "mixed": {
+      "before": 2.105,
+      "after": 1.706,
+      "diff": {
+       "diff": -0.399,
+       "lo": -0.548,
+       "hi": -0.262,
+       "days": 32,
+       "n": 152
+      }
+     }
+    },
+    "FAMM": {
+     "old harness": {
+      "before": 1,
+      "after": 1,
+      "diff": {
+       "diff": 0,
+       "lo": 0,
+       "hi": 0,
+       "days": 38,
+       "n": 243
+      }
+     },
+     "ECMWF-heavy": {
+      "before": 0.938,
+      "after": 0.938,
+      "diff": {
+       "diff": 0,
+       "lo": 0,
+       "hi": 0,
+       "days": 38,
+       "n": 243
+      }
+     },
+     "mixed": {
+      "before": 1.137,
+      "after": 1.137,
+      "diff": {
+       "diff": 0,
+       "lo": 0,
+       "hi": 0,
+       "days": 38,
+       "n": 243
+      }
+     }
+    },
+    "FAPP": {
+     "old harness": {
+      "before": 1.868,
+      "after": 1.651,
+      "diff": {
+       "diff": -0.217,
+       "lo": -0.402,
+       "hi": -0.054,
+       "days": 39,
+       "n": 244
+      }
+     },
+     "ECMWF-heavy": {
+      "before": 1.705,
+      "after": 1.636,
+      "diff": {
+       "diff": -0.069,
+       "lo": -0.21,
+       "hi": 0.054,
+       "days": 39,
+       "n": 244
+      }
+     },
+     "mixed": {
+      "before": 1.815,
+      "after": 1.581,
+      "diff": {
+       "diff": -0.234,
+       "lo": -0.437,
+       "hi": -0.057,
+       "days": 39,
+       "n": 244
+      }
+     }
+    }
+   },
    "ships": true
   },
   "t0": {
@@ -1482,11 +1904,437 @@
     "airports": 0.524,
     "towns": 0.404
    },
+   "byStation": {
+    "68479": {
+     "old harness": {
+      "before": 1.049,
+      "after": 0.834,
+      "diff": {
+       "diff": -0.215,
+       "lo": -0.304,
+       "hi": -0.133,
+       "days": 39,
+       "n": 259
+      }
+     },
+     "ECMWF-heavy": {
+      "before": 0.926,
+      "after": 0.79,
+      "diff": {
+       "diff": -0.136,
+       "lo": -0.2,
+       "hi": -0.075,
+       "days": 39,
+       "n": 259
+      }
+     },
+     "mixed": {
+      "before": 1.085,
+      "after": 0.828,
+      "diff": {
+       "diff": -0.258,
+       "lo": -0.353,
+       "hi": -0.165,
+       "days": 39,
+       "n": 259
+      }
+     }
+    },
+    "68581": {
+     "old harness": {
+      "before": 1.102,
+      "after": 1.014,
+      "diff": {
+       "diff": -0.088,
+       "lo": -0.148,
+       "hi": -0.03,
+       "days": 39,
+       "n": 237
+      }
+     },
+     "ECMWF-heavy": {
+      "before": 1.044,
+      "after": 1.002,
+      "diff": {
+       "diff": -0.042,
+       "lo": -0.086,
+       "hi": 0,
+       "days": 39,
+       "n": 237
+      }
+     },
+     "mixed": {
+      "before": 1.059,
+      "after": 0.955,
+      "diff": {
+       "diff": -0.104,
+       "lo": -0.169,
+       "hi": -0.042,
+       "days": 39,
+       "n": 237
+      }
+     }
+    },
+    "68727": {
+     "old harness": {
+      "before": 1.401,
+      "after": 1.41,
+      "diff": {
+       "diff": 0.009,
+       "lo": -0.083,
+       "hi": 0.101,
+       "days": 39,
+       "n": 259
+      }
+     },
+     "ECMWF-heavy": {
+      "before": 1.361,
+      "after": 1.416,
+      "diff": {
+       "diff": 0.054,
+       "lo": -0.031,
+       "hi": 0.143,
+       "days": 39,
+       "n": 259
+      }
+     },
+     "mixed": {
+      "before": 1.329,
+      "after": 1.416,
+      "diff": {
+       "diff": 0.087,
+       "lo": 0.002,
+       "hi": 0.18,
+       "days": 39,
+       "n": 259
+      }
+     }
+    },
+    "68737": {
+     "old harness": {
+      "before": 2.215,
+      "after": 2.033,
+      "diff": {
+       "diff": -0.182,
+       "lo": -0.23,
+       "hi": -0.137,
+       "days": 39,
+       "n": 244
+      }
+     },
+     "ECMWF-heavy": {
+      "before": 2.028,
+      "after": 1.919,
+      "diff": {
+       "diff": -0.109,
+       "lo": -0.15,
+       "hi": -0.07,
+       "days": 39,
+       "n": 244
+      }
+     },
+     "mixed": {
+      "before": 2.341,
+      "after": 2.078,
+      "diff": {
+       "diff": -0.262,
+       "lo": -0.326,
+       "hi": -0.2,
+       "days": 39,
+       "n": 244
+      }
+     }
+    },
+    "FAUT": {
+     "old harness": {
+      "before": 1.184,
+      "after": 1.184,
+      "diff": {
+       "diff": 0,
+       "lo": 0,
+       "hi": 0,
+       "days": 39,
+       "n": 247
+      }
+     },
+     "ECMWF-heavy": {
+      "before": 1.171,
+      "after": 1.171,
+      "diff": {
+       "diff": 0,
+       "lo": 0,
+       "hi": 0,
+       "days": 39,
+       "n": 247
+      }
+     },
+     "mixed": {
+      "before": 1.147,
+      "after": 1.147,
+      "diff": {
+       "diff": 0,
+       "lo": 0,
+       "hi": 0,
+       "days": 39,
+       "n": 247
+      }
+     }
+    },
+    "FAOR": {
+     "old harness": {
+      "before": 1,
+      "after": 1.347,
+      "diff": {
+       "diff": 0.347,
+       "lo": 0.237,
+       "hi": 0.475,
+       "days": 39,
+       "n": 264
+      }
+     },
+     "ECMWF-heavy": {
+      "before": 1.145,
+      "after": 1.423,
+      "diff": {
+       "diff": 0.278,
+       "lo": 0.19,
+       "hi": 0.374,
+       "days": 39,
+       "n": 264
+      }
+     },
+     "mixed": {
+      "before": 1.068,
+      "after": 1.377,
+      "diff": {
+       "diff": 0.309,
+       "lo": 0.21,
+       "hi": 0.427,
+       "days": 39,
+       "n": 264
+      }
+     }
+    },
+    "FAWB": {
+     "old harness": {
+      "before": 1.8,
+      "after": 1.352,
+      "diff": {
+       "diff": -0.448,
+       "lo": -0.602,
+       "hi": -0.309,
+       "days": 35,
+       "n": 204
+      }
+     },
+     "ECMWF-heavy": {
+      "before": 1.625,
+      "after": 1.279,
+      "diff": {
+       "diff": -0.346,
+       "lo": -0.475,
+       "hi": -0.234,
+       "days": 35,
+       "n": 204
+      }
+     },
+     "mixed": {
+      "before": 1.772,
+      "after": 1.323,
+      "diff": {
+       "diff": -0.448,
+       "lo": -0.595,
+       "hi": -0.314,
+       "days": 35,
+       "n": 204
+      }
+     }
+    },
+    "FABL": {
+     "old harness": {
+      "before": 1.834,
+      "after": 1.1,
+      "diff": {
+       "diff": -0.734,
+       "lo": -0.948,
+       "hi": -0.531,
+       "days": 37,
+       "n": 236
+      }
+     },
+     "ECMWF-heavy": {
+      "before": 1.504,
+      "after": 1.004,
+      "diff": {
+       "diff": -0.5,
+       "lo": -0.669,
+       "hi": -0.337,
+       "days": 37,
+       "n": 236
+      }
+     },
+     "mixed": {
+      "before": 1.931,
+      "after": 1.12,
+      "diff": {
+       "diff": -0.811,
+       "lo": -1.016,
+       "hi": -0.618,
+       "days": 37,
+       "n": 236
+      }
+     }
+    },
+    "FAUP": {
+     "old harness": {
+      "before": 1.272,
+      "after": 1.156,
+      "diff": {
+       "diff": -0.116,
+       "lo": -0.267,
+       "hi": 0.028,
+       "days": 39,
+       "n": 259
+      }
+     },
+     "ECMWF-heavy": {
+      "before": 1.048,
+      "after": 1.101,
+      "diff": {
+       "diff": 0.053,
+       "lo": -0.051,
+       "hi": 0.161,
+       "days": 39,
+       "n": 259
+      }
+     },
+     "mixed": {
+      "before": 1.304,
+      "after": 1.141,
+      "diff": {
+       "diff": -0.164,
+       "lo": -0.315,
+       "hi": -0.025,
+       "days": 39,
+       "n": 259
+      }
+     }
+    },
+    "FAKM": {
+     "old harness": {
+      "before": 1.749,
+      "after": 1.411,
+      "diff": {
+       "diff": -0.338,
+       "lo": -0.463,
+       "hi": -0.226,
+       "days": 32,
+       "n": 152
+      }
+     },
+     "ECMWF-heavy": {
+      "before": 1.472,
+      "after": 1.265,
+      "diff": {
+       "diff": -0.207,
+       "lo": -0.276,
+       "hi": -0.143,
+       "days": 32,
+       "n": 152
+      }
+     },
+     "mixed": {
+      "before": 1.768,
+      "after": 1.427,
+      "diff": {
+       "diff": -0.341,
+       "lo": -0.46,
+       "hi": -0.232,
+       "days": 32,
+       "n": 152
+      }
+     }
+    },
+    "FAMM": {
+     "old harness": {
+      "before": 0.82,
+      "after": 0.82,
+      "diff": {
+       "diff": 0,
+       "lo": 0,
+       "hi": 0,
+       "days": 38,
+       "n": 243
+      }
+     },
+     "ECMWF-heavy": {
+      "before": 0.759,
+      "after": 0.759,
+      "diff": {
+       "diff": 0,
+       "lo": 0,
+       "hi": 0,
+       "days": 38,
+       "n": 243
+      }
+     },
+     "mixed": {
+      "before": 0.866,
+      "after": 0.866,
+      "diff": {
+       "diff": 0,
+       "lo": 0,
+       "hi": 0,
+       "days": 38,
+       "n": 243
+      }
+     }
+    },
+    "FAPP": {
+     "old harness": {
+      "before": 1.832,
+      "after": 1.649,
+      "diff": {
+       "diff": -0.183,
+       "lo": -0.389,
+       "hi": 0.001,
+       "days": 39,
+       "n": 244
+      }
+     },
+     "ECMWF-heavy": {
+      "before": 1.683,
+      "after": 1.623,
+      "diff": {
+       "diff": -0.06,
+       "lo": -0.223,
+       "hi": 0.089,
+       "days": 39,
+       "n": 244
+      }
+     },
+     "mixed": {
+      "before": 1.769,
+      "after": 1.599,
+      "diff": {
+       "diff": -0.169,
+       "lo": -0.383,
+       "hi": 0.02,
+       "days": 39,
+       "n": 244
+      }
+     }
+    }
+   },
    "ships": true
   }
  },
  "ships": true,
  "testBlocked": [],
+ "stationsBlocked": [
+  "FAOR",
+  "68727"
+ ],
  "shipsIn": [
   "Highveld",
   "Free State",

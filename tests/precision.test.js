@@ -217,3 +217,41 @@ describe('the inland table', () => {
     } finally { delete omPayload.elevation; }
   });
 });
+
+// Frost nights (api/_lib/frost.js, review/accuracy/v4): after the mix, in its regions, 500 m up, clear and calm nights.
+describe('frost nights, through the handler', () => {
+  it('Kimberley (Northern Cape, 1,192 m) on a clear, calm night: the low moves toward the coldest model, recorded in meta', async () => {
+    process.env.OPEN_METEO_API_KEY = 'k';
+    precisionReply = () => makeResponse({ hourly: models('2026-07-10', () => Array.from({ length: 72 }, (_, i) => 5 + 16 * Math.sin(((i % 24) - 8) / 24 * Math.PI * 2 * 0.5) ** 2)) });
+    try {
+      omPayload.elevation = 1192;
+      const body = await call(-28.80, 24.77);
+      const f0 = body.meta.precision.frost.find((f) => f.day === 0);
+      expect(f0).toMatchObject({ applied: true, reason: 'frost-night', coldest: 5 });
+      expect(f0.lowC).toBeLessThan(f0.lowBefore);
+      expect(body.daily[0].lowC).toBe(f0.lowC);
+      expect(body.meta.precision.frost.map((f) => f.day)).toEqual([0, 1]);
+      // the precision log keeps the mix's own low, so the two layers are scored apart (Fable, diff review 2)
+      expect(body.meta.precision.days.find((d) => d.day === 0).lowC).toBe(f0.lowBefore);
+    } finally { delete omPayload.elevation; }
+  });
+  it('Johannesburg (1,690 m, Highveld) is blocked; Pretoria in the same region is not', async () => {
+    process.env.OPEN_METEO_API_KEY = 'k';
+    precisionReply = () => makeResponse({ hourly: models('2026-07-10', () => Array.from({ length: 72 }, (_, i) => 5 + 16 * Math.sin(((i % 24) - 8) / 24 * Math.PI * 2 * 0.5) ** 2)) });
+    try {
+      omPayload.elevation = 1690;
+      expect((await call(-26.13, 28.24)).meta.precision.frost).toEqual([]);
+      omPayload.elevation = 1330;
+      expect((await call(-25.75, 28.19)).meta.precision.frost.some((f) => f.applied)).toBe(true);
+    } finally { delete omPayload.elevation; }
+  });
+  it('Cape Town (Western Cape) and the same Kimberley below 500 m: no frost step, nothing recorded', async () => {
+    process.env.OPEN_METEO_API_KEY = 'k';
+    try {
+      omPayload.elevation = 42;
+      expect((await call(-33.97, 18.60)).meta.precision.frost).toEqual([]);
+      omPayload.elevation = 400;
+      expect((await call(-28.81, 24.77)).meta.precision.frost).toEqual([]);
+    } finally { delete omPayload.elevation; }
+  });
+});

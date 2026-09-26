@@ -40,10 +40,19 @@ function km(aLat, aLon, bLat, bLon) {
   return 12742 * Math.asin(Math.min(1, Math.sqrt(h)));
 }
 
-/** The region of the nearest measured station, or null outside South Africa's box. */
-export function regionOf(lat, lon) {
+function nearest(lat, lon) {
   if (!inSouthAfrica(lat, lon)) return null;
   let best = null, bestKm = Infinity;
   for (const s of REGION_STATIONS) { const d = km(lat, lon, s.lat, s.lon); if (d < bestKm) { bestKm = d; best = s; } }
-  return best.region;
+  return best;
+}
+
+/** The region of the nearest measured station, or null outside South Africa's box. */
+export function regionOf(lat, lon) {
+  return nearest(lat, lon)?.region ?? null;
+}
+
+/** The nearest measured station's id (its cell), or null outside South Africa's box — for a block finer than a region. */
+export function stationCellOf(lat, lon) {
+  return nearest(lat, lon)?.id ?? null;
 }

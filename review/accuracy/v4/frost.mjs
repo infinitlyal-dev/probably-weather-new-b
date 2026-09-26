@@ -168,11 +168,23 @@ for (const lead of ['t1', 't0']) {
       if (d && isNum(d.lo) && d.lo > 0) testBlocked.add(g);
     }
   }
+  // reported only (Al named Johannesburg): each airport and town, the rule as it would ship
+  res.byStation = {};
+  for (const id of [...new Set([...te, ...town].map((r) => r.id))]) for (const vn of Object.keys(VARIANTS)) {
+    const l = [...te, ...town].filter((r) => r.id === id), f = (r) => (stations.some((s) => s.id === r.id) ? corrected(best, kLoso[r.id], trainBlocked)(vn)(r) : corrected(best, kAll, trainBlocked)(vn)(r));
+    (res.byStation[id] ||= {})[vn] = { before: maeOf(l, (r) => r.base[vn]), after: maeOf(l, f), diff: bootDiff(pairs(l, f, (r) => r.base[vn]), 1000, 7, week) };
+  }
   res.ships = Object.keys(VARIANTS).every((vn) => ['all', 'frost'].every((k) => res.airports[vn][k]?.hi < 0 && res.towns[vn][k]?.hi < 0));
   out.leads[lead] = res;
 }
 out.ships = out.leads.t1.ships && out.leads.t0.ships;
 out.testBlocked = [...testBlocked];
+// Added after the test (26 Sept): Al's instruction names Johannesburg ("block any region where it's worse, as with
+// Johannesburg"), and the Highveld's pooled number hid it (Pretoria much better, Johannesburg worse). The same guard
+// as the regions', applied to the station cells production's region map is built from (api/_lib/regions.js): a
+// station whose 2026 interval is wholly above zero under any assignment at either lead is blocked. It can only
+// remove the change.
+out.stationsBlocked = [...new Set(Object.values(out.leads).flatMap((r) => Object.entries(r.byStation).filter(([, v]) => Object.values(v).some((x) => x.diff && x.diff.lo > 0)).map(([id]) => id)))];
 out.shipsIn = out.ships ? [...new Set([...byLead.t1.air, ...byLead.t1.towns].map((r) => r.region))].filter((g) => !trainBlocked.has(g) && !testBlocked.has(g)) : [];
 mkdirSync(RESULTS, { recursive: true });
 writeFileSync(path.join(RESULTS, 'v4-frost.json'), JSON.stringify(out, (k, x) => (typeof x === 'number' ? round(x, 3) : x), 1));
@@ -189,6 +201,7 @@ for (const [lead, r] of Object.entries(out.leads)) {
     console.log(`  ${''.padEnd(12)} towns    all ${f2(t.before.mae)}→${f2(t.after.mae)} ${ci(t.all)} · frost ${f2(t.frostBefore.mae)}→${f2(t.frostAfter.mae)} (bias ${f2(t.frostBefore.bias)}→${f2(t.frostAfter.bias)}, n ${t.frostBefore.n}) ${ci(t.frost)}`);
   }
   for (const [g, m] of Object.entries(r.byRegion)) console.log(`  ${g.padEnd(14)} ${Object.entries(m).map(([vn, x]) => `${vn}: ${f2(x.before.mae)}→${f2(x.after.mae)}${x.diff?.lo > 0 ? ' WORSE' : x.diff?.hi < 0 ? ' better' : ''}`).join(' · ')}`);
+  console.log('  by station:', Object.entries(r.byStation).map(([id, v]) => `${id} ${Object.values(v).map((x) => `${f2(x.before)}→${f2(x.after)}${x.diff?.lo > 0 ? '▲' : x.diff?.hi < 0 ? '▼' : ''}`).join('/')}`).join(' · '));
   console.log(`  ships at ${lead}: ${r.ships}`);
 }
-console.log(`\nSHIPS: ${out.ships}${out.ships ? ` — in ${out.shipsIn.join(', ')}; blocked ${[...trainBlocked, ...testBlocked].join(', ') || 'none'}` : ''}`);
+console.log(`\nSHIPS: ${out.ships}${out.ships ? ` — in ${out.shipsIn.join(', ')}; blocked ${[...trainBlocked, ...testBlocked].join(', ') || 'none'}; station cells blocked after the test: ${out.stationsBlocked.join(', ') || 'none'}` : ''}`);
