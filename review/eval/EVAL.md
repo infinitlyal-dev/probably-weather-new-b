@@ -857,6 +857,16 @@ tests timed out the same way on the run before and pass alone. Image budget 1,00
 desktop, bespoke 9, drift guard, rotation, month (+ control failing as it must, 12,296), precision table `--check`,
 gate shots 24.
 
-**What a push ships:** 9 commits over live `274e5cf` — two reach users' data: `0b1af00` frost nights (the low on
+**What a push ships:** 8 commits over live `274e5cf` — two reach users' data: `0b1af00` frost nights (the low on
 clear, calm nights in six regions), `25dd649` source visibility in `meta` (no visible change). The rest are records
 (`c639248`, `fd3f2ed`, `6521047`, `018e0d4`, `02510ac`, this section).
+
+### 11.6 Shipped
+
+`git push origin main` `274e5cf` → **`e688913`** (26 Sept, 19:34 UTC; `origin/main` had not moved, nothing to rebase).
+`/api/version` → `e688913…` about a minute later. Live answers (fresh, cache miss): Johannesburg airport — precision
+applied, `frost` empty (its cell blocked); Pretoria — frost night on both days, low 15.3 → 14.3 °C today and 16.5 →
+15.4 tomorrow (cloud 20–27 %, wind 6 km/h); Bloemfontein — today too cloudy (77 %), tomorrow 11.1 → 10.6; Kimberley —
+both nights too cloudy; Strand — nothing (not in scope). `meta.sourceNow[].visKm` carries Open-Meteo, WeatherAPI,
+Pirate and Tomorrow.io (MET none). Live smoke (`scripts/live-smoke.mjs`, phone 375×812 and desktop 1440×900, five
+languages): **10/10 legs, 0 console errors, 0 bad responses**. No rollback needed.
