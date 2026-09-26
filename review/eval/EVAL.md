@@ -755,3 +755,108 @@ Cape; Johannesburg airport — rainRule strict, fog standard / Highveld; Bloemfo
 standard / Free State; each live selector re-derives to the served base under the committed code. GitHub "Launch
 alert" run by hand (`gh workflow run`): success, "healthy at 2026-09-25 16:05 UTC"; the workflow is active on
 `main` (:07 and :37 each hour); no open [PW alert] issue. No rollback needed.
+
+## 11. Fog (the proper fix), the radar, the honest rain %, frost nights (Vonk / Opus 5.5 building, Fable 5.1 reviewing — 26 Sept 2026)
+
+Al: *"lets do the proper fog fix, and yes go with what you suggested on the radar and honest rain and frost night."*
+His word to ship each change that clears its pre-registered bar. Worktree `C:\Users\27741\pw-launch-run`, `main` from
+live `274e5cf`. Plan `review/accuracy/v4/PLAN.md`, committed before anything was scored (`c639248`), Fable's seven
+changes adopted before scoring (`fd3f2ed`). One candidate per job, tested once.
+
+**Found on the way.** Strand's two "pinned real fogs" are partly synthetic: on 3 Aug every source missed the fog
+(Open-Meteo 35.3 km, humidity 82 %; Tomorrow.io 14 km; MET Norway fog 0 %), the 0.8 km fixture is a what-if. On
+Open-Meteo's archive for 21 May (visibility 720–900 m, humidity 90–92 %) **the strict fog rule now live in the Western
+Cape does not fire; today's standard rule does (22:00–01:00).** MET Norway's `complete` feed carries a fog-area field
+that its docs call Nordic-only but that read up to 85 % at George on 26 Sept (not recorded; would need the other
+endpoint). Tomorrow.io answered in about half the recorder's readings.
+
+### 11.1 Fog without Open-Meteo's visibility — fails, nothing ships (`02510ac`)
+
+Candidate: at least k of the five models production can read (best_match, GFS, ICON, UK Met Office, Météo-France)
+saturated at the ground (spread ≤ s °C, low cloud ≥ L %), best_match calm (≤ W km/h), no rain; Open-Meteo's
+visibility not an input. Fetched: the short-lead archive of all five at the 13 airports with fog truth, 1 Oct 2025 →
+24 Sept 2026 (`v4/fetch4.mjs`). Tuned on even weeks (F0.5, 45 of 81 cells fire on Strand's 21 May; 12 on 3 Aug),
+chosen k ≥ 1, spread ≤ 0.5 °C, low cloud ≥ 80 %, wind ≤ 10 km/h. Test weeks, against the rule live today:
+
+| | fog calls | right | fog hours caught (of 264) | wrong fog per 1,000 h |
+|---|---:|---:|---:|---:|
+| standard (old) | 879 | 10 % | 35 % | 15.1 |
+| live (strict in 5 coastal regions) | 632 | 12 % | 29 % | 10.6 |
+| **models' saturation** | 1,245 | **8 %** | 39 % | **21.9** |
+
+F0.5 vs live −0.040 [−0.070, −0.008]; wrong fog +11.3 [+8.2, +14.8] per 1,000 h; worse in every region. The
+models' own fog codes are worse still (right 5 % of the time). Open-Meteo's visibility, bad as it is, carries more
+fog signal than the models' saturation: dropping it is not the fix. The live rule stays. `meta.sourceNow[].visKm`
+now records each source's own visibility (WeatherAPI, Pirate, Tomorrow.io, Open-Meteo) so the next fog attempt has
+the history this one lacked; the next fog family needs a fresh test period (the odd weeks are now used twice).
+
+### 11.2 The radar — too few to judge, keep recording (`6521047`)
+
+18 "Rain's here" calls made by Tomorrow.io's radar alone at the six airports (24 Sept → 26 Sept 18:10 UTC); 16
+judgeable; rain within 30 min at the airport in **9 (56 %, Wilson 33–77 %)**; within an hour, VC counting, 12 of 17.
+They come from **6 separate rain events** (Gqeberha, George, Bloemfontein, Durban), and the plan needs ≥ 10 before
+switching off or keeping. Nothing changed. At this share about 230 judged calls would decide; realistically the next
+few rainy weeks settle the event count first.
+
+### 11.3 The honest rain % — rule not met, keep recording (`6521047`)
+
+The pre-registered rule (v2 plan: calibrated % beats the served % on Brier, whole interval below zero, 7-day blocks,
+rain today) needs ≥ 4 complete weeks before it can run (Fable). The recorder has 10 airport-days (rained 3) and **0
+complete weeks**. At the archive's own effect size, rain today needs about 2,700 airport-days (~450 days at six
+airports); the next 3 hours about 2,500 windows (~12 weeks). Said plainly: at six airports the rain-today bar will not
+be reached this year; the next-3-hours lead could be in about three months, but moving the bar to it is a new
+pre-registration, not this one.
+
+### 11.4 Frost nights — ships, six regions, two station cells blocked
+
+Candidate (pre-registered): on nights Open-Meteo forecasts clear (mean cloud ≤ C) and calm (mean wind ≤ W), the low
+moves toward the coldest of the five models: low − k × max(0, low − coldest model's day minimum), ≤ 5 °C. Tuned on
+2025 leave-one-station-out at the inland airports: **cloud ≤ 40 %, wind ≤ 12 km/h, k 0.60 (today) / 0.58
+(tomorrow)** (folds 0.49–0.63). Blocked on 2025 before the test: North West, Eastern Cape (Mthatha). Test 2026, the
+rule as it would ship, all three source guesses, both leads:
+
+| | all nights, airports | frost nights, airports | all nights, 4 towns never used | frost nights, towns |
+|---|---|---|---|---|
+| tomorrow | 1.41–1.60 → 1.32–1.39 °C | 2.33–3.10 → 1.67–2.00 | 1.47–1.58 → 1.43–1.47 | 3.92–4.66 → 3.53–3.94 |
+| today | 1.28–1.42 → 1.20–1.24 | 2.10–2.72 → 1.38–1.61 | 1.34–1.45 → 1.28–1.32 | 3.85–4.44 → 3.44–3.74 |
+
+Every interval wholly below zero (e.g. tomorrow, airports −0.08 [−0.12, −0.04] under the ECMWF-heavy guess, the
+weakest). The frost-night warm lean the day before: +2.3–3.1 → +1.4–1.9 °C. No region wholly worse on 2026 → ships in
+Highveld, Free State, Northern Cape, Limpopo, Karoo, KZN inland (500 m up; days 0–1; only when the precision layer's
+five models are there).
+
+**Johannesburg, after the test.** The Highveld's pooled number hid it: Pretoria much better (1.80 → 1.41), Johannesburg
+airport clearly worse (1.10 → 1.35 tomorrow, 1.00 → 1.35 today; intervals wholly above zero under all three guesses).
+Al's instruction names Johannesburg, so the same wholly-worse guard was applied to the station cells the region map is
+built from: **Johannesburg airport's cell and Beaufort West's (worse under one guess, today) are blocked** — a block
+only removes the change. Recorded in `results/v4-frost.json` `stationsBlocked`, pinned by test.
+
+Production: `api/_lib/frost.js` (after the precision mix; the hourly strip untouched; the low only ever goes down;
+anything missing → the low as before); `meta.precision.frost` records each step; `meta.precision.days[].lowC` keeps the
+mix's own low so the recorder scores the two layers apart.
+Every other step (Fable): the region/elevation checks come before the low's own, so nothing is recorded where the step
+cannot apply; a day-0-vs-day-1 test pins the night windows and each day's own model minimum.
+
+`meta.sourceNow[].visKm` (`25dd649`) is recording only: nothing reads it.
+
+### 11.5 Fable, gates, what ships
+
+| Fable call | tokens | verdict |
+|---|---:|---|
+| the plan | 105,268 | PROCEED WITH CHANGES — seven, adopted in full before scoring (`fd3f2ed`) |
+| the frost + recording diff, and the three verdicts | 113,497 | SHIP WITH FIXES — three (the "empty elsewhere" order, the precision log's low, a day-0/day-1 test), applied as specified; the fog, radar and rain-% outcomes consistent with the plan's rules |
+| **total** | **218,765** | **cap 200,000 — over by 18,765** (the agent counts every file it reads; the 45k instruction did not hold) |
+
+Not re-reviewed, because of the cap: the three fixes as applied, and the Johannesburg / Beaufort West cell block
+(added after Fable's review; it only removes the change, pinned by test to the results).
+
+Gates on the finished tree (`25dd649`): serial suite **148 files, 21,300 of 21,301** — the one, `witty-day-tags`
+(a hard 15 s limit), timed out at 20.6 s while another project's Next.js server held the CPU at 100 %; alone it passes
+18,449 / 18,449 (and the whole suite passed 148 / 21,296 earlier on this change before Fable's fixes). Three image
+tests timed out the same way on the run before and pass alone. Image budget 1,008 ≤ 300 KiB, build, fold **80/80**,
+desktop, bespoke 9, drift guard, rotation, month (+ control failing as it must, 12,296), precision table `--check`,
+gate shots 24.
+
+**What a push ships:** 9 commits over live `274e5cf` — two reach users' data: `0b1af00` frost nights (the low on
+clear, calm nights in six regions), `25dd649` source visibility in `meta` (no visible change). The rest are records
+(`c639248`, `fd3f2ed`, `6521047`, `018e0d4`, `02510ac`, this section).
