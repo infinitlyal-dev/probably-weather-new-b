@@ -157,7 +157,7 @@ if (process.argv.includes('--rejudge')) {
   const tAll = J(path.join(DATA, 'targets.json')).targets;
   judgeAndChoose(b.pairs, bdir, 'judge-again.txt', (id) => tAll.find((t) => t.id === id));
   writeFileSync(path.join(bdir, 'batch.json'), JSON.stringify(b, null, 1));
-  log(`batch ${rn}: judged again (${b.pairs.map((p) => `${p.id} take ${p.pick + 1}${p.realOk ? '' : ' NO'}`).join(', ')})`);
+  log(`batch ${rn}: judged again (${b.pairs.map((p) => `${p.id} ${p.pick == null ? 'no pick' : `take ${p.pick + 1}`}${p.realOk ? '' : ' NO'}`).join(', ')})`);
   await rebuildPage(rn);
   process.exit(0);
 }
@@ -184,7 +184,7 @@ if (process.argv.includes('--remake')) {
   const made = work.pairs.filter((p) => p.takes?.length);
   judgeAndChoose(made, rdir, 'judge.txt', (id) => work.pairs.find((p) => p.id === id).target);
   writeFileSync(saved, JSON.stringify(work, null, 1));
-  log(`remake ${plan.name}: judged (${made.map((p) => `${p.id} take ${p.pick + 1}${p.realOk ? '' : ' NO'}`).join(', ')})`);
+  log(`remake ${plan.name}: judged (${made.map((p) => `${p.id} ${p.pick == null ? 'no pick' : `take ${p.pick + 1}`}${p.realOk ? '' : ' NO'}`).join(', ')})`);
   process.exit(0);
 }
 

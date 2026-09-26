@@ -129,10 +129,11 @@ async function shoot(page, file, box) {
         return { line: h.textContent.trim(), src: img?.currentSrc || img?.src || '', textTop: Math.round(box.top + parseFloat(cs.paddingTop)), textBottom: Math.round(box.bottom - parseFloat(cs.paddingBottom)), photoTop: photo ? Math.round(photo.top) : null, photoBottom: photo ? Math.round(photo.bottom) : null };
       });
       const tr = (l) => (lang === 'en' ? l : heroLineAf(l));
-      const wants = p.hold ? linesOf(p.standIn.hash).map(tr) : [tr(p.line)];
+      const standIn = p.hold && p.standIn;
+      const wants = standIn ? linesOf(standIn.hash).map(tr) : [tr(p.line)];
       const file = path.join(OUT, `today-${p.id}-${lang}-${vw}x${vh}.jpg`);
       await shoot(page, file, got);
-      results.push({ home: 'today', id: p.id, lang, size: `${vw}x${vh}`, pickedPairPhoto: got.src.includes(sha256.slice(0, 16)) || got.src.includes(p.slots[0]), wroteItsLine: wants.includes(got.line), standIn: p.hold ? p.standIn.hash : undefined, line: got.line, box: [got.textTop, got.textBottom], photo: [got.photoTop, got.photoBottom], shot: path.basename(file) });
+      results.push({ home: 'today', id: p.id, lang, size: `${vw}x${vh}`, pickedPairPhoto: got.src.includes(sha256.slice(0, 16)) || got.src.includes(p.slots[0]), wroteItsLine: wants.includes(got.line), standIn: standIn ? standIn.hash : undefined, line: got.line, box: [got.textTop, got.textBottom], photo: [got.photoTop, got.photoBottom], shot: path.basename(file) });
       await ctx.close();
     }
   }
