@@ -140,3 +140,30 @@ being built in `C:\Users\27741\pw-home-d` at the same time; never force) → pus
 (`scripts/live-smoke.mjs`) → the recorder's next reading carries the new version and rule. Anything wrong live:
 Vercel Instant Rollback (one step, `review/launch/RUNBOOK.md`). Nothing that fails its bar ships. No question
 pages; EVAL.md §11; the Son-Memory log.
+
+## Fable's review (26 Sept, verdict PROCEED WITH CHANGES) — adopted in full, before anything was scored
+
+1. **Fog, Strand:** 3 Aug is dropped as a hard constraint (only Météo-France at 17:00 comes near, so it would force
+   the loosest cells); 21 May 21:00 → 22 May 01:59 stays hard. Which cells fire on 3 Aug is reported. 3 Aug stays
+   pinned by the kept Tomorrow.io path's unit tests.
+2. **Fog, a recall floor:** a region does not ship when its fog hours caught (test weeks) fall by more than half
+   against the live rule, or when it has fewer than 10 fog-truth hours in the test weeks (F0.5 "not lower" is then
+   trivially met). Such a region keeps the live rule and its numbers go in Al's closing message (no page).
+3. **Fog, inputs:** a model missing the hour counts as not saturated, never saturated; best_match missing any of
+   its inputs → the region's live rule. Parity checked before scoring: `dew_point_2m` and `cloud_cover_low` exist
+   for GFS, ICON, UK Met Office and Météo-France in the live forecast API (48/48 hours each at Strand, 26 Sept) and
+   are fetched from the archive by `fetch4.mjs`; a model the archive lacks is dropped from replay and production.
+   **The Lowveld keeps the live rule and gets no extra call.**
+4. **Radar:** a switch-off or keep decision also needs **≥ 10 distinct airport-day events** among the calls; below
+   that it is "too few to judge" whatever the interval says.
+5. **Rain %:** rain today is scored on **one reading per airport-day — the first of the local day, read by 06:59**
+   (as `v2/live-rain.mjs` and the backtest); the bootstrap runs only with **≥ 4 complete 7-day blocks**; below that
+   the answer is "not met", n reported.
+6. **Frost:** k is fit leave-one-station-out (without the station scored); the 2026 bootstrap uses 7-day blocks;
+   the base replays the **2025 leave-one-station-out tables** (as v3's tests), not the shipped refit.
+7. **One candidate per section, tested once; a fail ships nothing, no second pick.** The fog test weeks (odd) are
+   now used a second time; a further fog family needs a fresh period.
+
+Optional notes taken: "wrong fog" includes mist hours (a near-miss, said so); the recorder reports how often the
+fog rule fell back for a missing input; the live strict rule's test score is winner's-cursed upward (it was chosen
+on these weeks), so beating it is conservative; the call units are stated in the diff.
