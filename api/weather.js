@@ -1390,6 +1390,8 @@ export default async function handler(req, res) {
           // in the now-ladder's wind rung (gustKph = the largest of the three).
           gustKph:   isNum(wa.current?.gust_kph) ? wa.current.gust_kph : null,
           humidity:  wa.current?.humidity        ?? null,
+          // 2026-09-26 (review/accuracy/v4): recorded for the next fog run, read by nothing else.
+          visKm:     isNum(wa.current?.vis_km) ? wa.current.vis_km : null,
           sunrise:   clockString(astro.sunrise), // "06:45 AM" — display only, never daylight (item 5 round 7)
           sunset:    clockString(astro.sunset),
         };
@@ -1525,6 +1527,8 @@ export default async function handler(req, res) {
           windKph:   curWindKph,
           gustKph:   toKph(cur.windGust),   // PW provides windGust in m/s (si units)
           humidity:  curHumPct,
+          // 2026-09-26 (review/accuracy/v4): km under si units; recorded for the next fog run, read by nothing else.
+          visKm:     isNum(cur.visibility) ? cur.visibility : null,
           sunrise:   solarPair(unixToLocalIso(dly[0]?.sunriseTime, utcOffsetSeconds), unixToLocalIso(dly[0]?.sunsetTime, utcOffsetSeconds), utcOffsetSeconds).sunrise,
           sunset:    solarPair(unixToLocalIso(dly[0]?.sunriseTime, utcOffsetSeconds), unixToLocalIso(dly[0]?.sunsetTime, utcOffsetSeconds), utcOffsetSeconds).sunset,
         };
@@ -2801,6 +2805,9 @@ export default async function handler(req, res) {
             desc: n.desc ?? null,
             rainChance: isNum(h?.rains?.[localHour]) ? h.rains[localHour] : null,
             precipMm: isNum(h?.precipMm?.[localHour]) ? h.precipMm[localHour] : null,
+            // 2026-09-26 (review/accuracy/v4 §1): each source's own visibility now, so the recorder builds the
+            // history the next fog run needs (WeatherAPI, Pirate and MET Norway keep none). MET: none offered.
+            visKm: sourceVisKm(n, h, localHour),
           };
         }),
         sourceToday: activeNorms.map((n) => ({
@@ -2994,6 +3001,14 @@ const DAILY_ARRAY_BOUNDS = {
 const HOURLY_SLOT_FOR_NORM = { 0: 0, 1: 1, 3: 2, 4: 3 };
 
 const inBounds = (v, [lo, hi]) => isNum(v) && v >= lo && v <= hi;
+// A source's own visibility for the current hour, km (meta.sourceNow; recording only): Open-Meteo's hourly metres,
+// Tomorrow.io's hourly km, WeatherAPI's and Pirate's current km. Out of range or absent → null.
+function sourceVisKm(norm, hourly, hourIdx) {
+  const v = norm?.source === 'Open-Meteo' ? (isNum(hourly?.visibility?.[hourIdx]) ? hourly.visibility[hourIdx] / 1000 : null)
+    : norm?.source === 'Tomorrow.io' ? hourly?.visibilityKm?.[hourIdx]
+    : norm?.visKm;
+  return inBounds(v, [0, 1000]) ? Math.round(v * 10) / 10 : null;
+}
 const validUtcOffset = (v) => inBounds(v, UTC_OFFSET_BOUNDS);
 
 /**
