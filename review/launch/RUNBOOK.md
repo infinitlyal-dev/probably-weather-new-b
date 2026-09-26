@@ -39,9 +39,11 @@ Vercel also emails you as usage nears the plan's limits (all plans); on Pro, Ver
 
 ## The pairs job (new lines and photos)
 
-Once a day at 07:30 a hidden task on this computer, **ProbablyWeather pairs job**, makes a few new line + photo pairs to your recipe and leaves a page for you: `review\pairs-batch-<n>.html` in the OneDrive working copy, every item already marked with its pick. Change what you disagree with and press Export (`pairs-batch-<n>-ruled.json` lands in Downloads). **Nothing it makes goes into the app** until a session wires what you ticked. It waits, making nothing, while a page is unruled; it also skips a day when Codex's weekly allowance is over 85 %.
+Every hour (since 26 Sept) a hidden task on this computer, **ProbablyWeather pairs job**, makes up to five new line + photo pairs (about 10 photos) to your recipe and adds them to one page: `review\pairs-rolling.html` in the OneDrive working copy, every item already marked with the judge's pick. Open it when you can, change what you disagree with and press Export (`pairs-rolling-ruled.json` lands in Downloads); those pairs leave the page on the next run. **Nothing it makes goes into the app** until a session wires what you ticked. It stops making more while 40 pairs wait for you, backs off after a rate limit, and stops for the week once Codex's weekly allowance passes 90 %.
 
-- **Start** (once, already done 25 Sept): `powershell -ExecutionPolicy Bypass -File review\pairs-job\install-pairs-job.ps1`. Run it now: `schtasks /run /tn "ProbablyWeather pairs job"`.
+What it makes first: replacements for your three named photos, then every photo you leave on **Replace** on `review\meh-photos-for-al.html` (most-shown first; export `meh-photos-ruled.json` and the job queues them itself), then extra photos for fog, heat and cold-clear.
+
+- **Start** (already done 26 Sept, hourly): `powershell -ExecutionPolicy Bypass -File review\pairs-job\install-pairs-job.ps1`. Run it now: `schtasks /run /tn "ProbablyWeather pairs job"`.
 - **Pause**: put an empty file named `PAUSE` in `review\pairs-job\` (OneDrive working copy). Delete it to carry on.
 - **Stop for good**: `schtasks /delete /tn "ProbablyWeather pairs job" /f`, then delete the folder `%USERPROFILE%\pw-pairs-job`.
 - What it did and why: `review\pairs-job\log.txt`. Details: `review\pairs-job\README.md` on main.
