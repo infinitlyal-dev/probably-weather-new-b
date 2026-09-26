@@ -396,10 +396,12 @@ async function clickThrough(browser, origin, viewport) {
   const isMobile = viewport.width <= 768;
   // 2026-08-07: Share moved into the bottom nav (#navShare) so it is present on
   // every screen, and Hourly became the stats-band call-to-action (#homeHourly).
-  const shareSel = isMobile ? '#navShare' : '#shareBtn';
-  const hourlySel = isMobile ? '#homeHourly' : '#navHourlyHome';
+  // 2026-09-26: Home D is the phone Home (Al's ruling): Share sits on the photograph (#dShare), Hourly is the
+  // handle's pull-up with its link to the full page, and the facts line (#dLine) carries the agreement.
+  const shareSel = isMobile ? '#dShare' : '#shareBtn';
+  const hourlySel = isMobile ? '#dHandle' : '#navHourlyHome';
   const chrome = isMobile
-    ? ['#navShare', '#homeHourly', '#agreeLine'] // strip removed 2026-08-08
+    ? ['#dShare', '#dHandle', '#dLine']
     : ['#navHourlyHome', '#shareBtn', '#myLocationHome'];
   for (const selector of [...chrome, '#navHome', '#navWeek', '#navSearch', '#navSettings', '#languageBtn']) await visible(selector);
   if (!isMobile) {
@@ -408,7 +410,9 @@ async function clickThrough(browser, origin, viewport) {
   }
   await page.click('#languageBtn'); await visible('#languageMenu'); await page.keyboard.press('Escape');
   await page.click(shareSel); assert(await page.evaluate(() => window.__PW_SHARE_CALLS.length) === 1, 'Share did not fire');
-  await page.click(hourlySel); await visible('#hourly-screen');
+  await page.click(hourlySel);
+  if (isMobile) { await visible('#dSheet .d-more'); await page.click('#dSheet .d-more'); }
+  await visible('#hourly-screen');
   await page.click('#navHome'); await visible('#home-screen');
   if (!isMobile) {
     const beforeGeo = await page.evaluate(() => window.__PW_GEO_CALLS); await page.click('#myLocationHome'); await page.waitForFunction((before) => window.__PW_GEO_CALLS > before, beforeGeo);

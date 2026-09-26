@@ -85,6 +85,7 @@ const CORE_ASSETS = [
   '/install',
   '/install.html',
   '/assets/app.css',
+  '/assets/home-d.css',
   // __CLIENT_BUNDLE_ASSETS_START__
   '/assets/app.js',
   // Every ES module app.js imports — the offline shell white-screens if any is
@@ -119,6 +120,8 @@ const CORE_ASSETS = [
   '/assets/install-loader.js',
   // ADS-READINESS (Al's ruling 2026-09-15): the slot config app.js imports.
   '/assets/ads-config.js',
+  // Home D, the phone Home (2026-09-26).
+  '/assets/home-d.js',
   // __CLIENT_BUNDLE_ASSETS_END__
   '/manifest.json',
 ];

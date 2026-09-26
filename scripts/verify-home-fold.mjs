@@ -12,7 +12,13 @@
 //
 // Checked at both caption heights (one line and the longest real AF line) in EN
 // and AF, because the witty line is the one element whose height is copy-driven
-// and the AF pool is the longest of the five.
+// and the AF pool is the longest of the five — and, since Home D (26 Sept 2026),
+// the longest isiZulu line in isiZulu at every size too (Al's brief: "Fold gate
+// 80/80, including the longest isiZulu line"), and isiXhosa and Sesotho with it: 80 + 60 = 140.
+//
+// Home D is the phone Home (every viewport here is a phone, <=768 px): the photograph
+// runs under the nav by design, and the panel handle sits on the nav, so everything
+// else must also end above the handle.
 //
 //   node scripts/verify-home-fold.mjs          -> assert the matrix
 //   node scripts/verify-home-fold.mjs --shots  -> also write screenshots
@@ -79,7 +85,7 @@ const VIEWPORTS = [
 // A layout that only fits the short line is not a layout that fits.
 const CAPTIONS = {
   short: { label: 'one line', en: 'Probably fine.', af: 'Waarskynlik reg.' },
-  long: { label: 'longest', en: null, af: null }, // filled from the copy bank below
+  long: { label: 'longest', en: null, af: null, zu: null, xh: null, st: null }, // filled from the copy bank below
 };
 
 function longestFromBank(lang) {
@@ -99,6 +105,9 @@ function longestFromBank(lang) {
 }
 CAPTIONS.long.en = longestFromBank('en');
 CAPTIONS.long.af = longestFromBank('af');
+CAPTIONS.long.zu = longestFromBank('zu');
+CAPTIONS.long.xh = longestFromBank('xh');
+CAPTIONS.long.st = longestFromBank('st');
 
 function payload() {
   const hourly = Array.from({ length: 48 }, (_, i) => ({
@@ -158,20 +167,26 @@ function startServer() {
 
 // Everything Home must show. Named, so "it fits" can never be achieved by an
 // element quietly not rendering — the count is asserted alongside the geometry.
+// Home D (26 Sept 2026) keeps the header and the nav and replaces the rest: the number
+// and "Probably …" are inline pieces of #temp (which D lays out with display:contents,
+// so it has no box of its own); the stats pill, the Hourly button and the separate
+// agreement link give way to the quiet line, Share on the photograph and the handle.
 const REQUIRED = [
   ['#logoCircle', 'brand mark'],
   ['.brand-title', 'brand title'],
   ['#location', 'place name'],
   ['#languageBtn', 'language chip'],
-  ['#heroCard', 'hero card'],
-  ['#headline', 'witty caption'],
-  ['#temp', 'temperature block'],
+  ['#heroCard', 'photograph'],
+  ['#temp .hero-now', 'temperature'],
+  ['#temp .hero-probably', 'Probably'],
   ['#description', 'condition line'],
-  ['#agreeLine', 'source agreement'],
-  ['#statsRow', 'stats pill'],
-  ['#homeHourly', 'Hourly CTA'],
+  ['#headline', 'witty caption'],
+  ['#dLine', 'quiet line (range, rain, wind, agreement)'],
+  ['#dShare', 'Share on the photograph'],
+  ['#dHandle', 'panel handle (Hourly)'],
   ['.nav', 'bottom nav'],
 ];
+const UNDER_NAV_OK = new Set(['.nav', '#heroCard']);
 
 const MEASURE = (required) => {
   const navEl = document.querySelector('.nav');
@@ -211,8 +226,9 @@ const failures = [];
 const rows = [];
 
 for (const vp of VIEWPORTS) {
-  for (const lang of ['en', 'af']) {
+  for (const lang of ['en', 'af', 'zu', 'xh', 'st']) {
     for (const [key, caption] of Object.entries(CAPTIONS)) {
+      if (!caption[lang]) continue;   // isiZulu, isiXhosa, Sesotho: the longest line only
       const ctx = await browser.newContext({
         viewport: { width: vp.w, height: vp.h }, deviceScaleFactor: 2,
         isMobile: true, hasTouch: true,
@@ -223,6 +239,9 @@ for (const vp of VIEWPORTS) {
         try {
           localStorage.setItem('pw_home', JSON.stringify({ name: 'Somerset West, Western Cape', lat: -34.08, lon: 18.85, mode: 'gps' }));
           localStorage.setItem('pw_install_dismissed_until', String(Date.now() + 864e5));
+          // The app reads "lang" (SETTINGS_KEYS.lang); the gate wrote only "pw_lang" until
+          // 26 Sept 2026, so its Afrikaans runs had rendered the English interface.
+          localStorage.setItem('lang', JSON.stringify(l));
           localStorage.setItem('pw_lang', JSON.stringify(l));
         } catch (_) {}
       }, lang);
@@ -256,8 +275,16 @@ for (const vp of VIEWPORTS) {
 
       if (m.missing.length) failures.push(`[${label}] MISSING: ${m.missing.join(', ')}`);
       if (m.maxScroll > 1) failures.push(`[${label}] page scrolls ${m.maxScroll.toFixed(0)}px — Home must fit`);
+      // The handle sits on the nav, so everything else must also end above the handle.
+      const handle = m.elements.find((e) => e.sel === '#dHandle');
+      if (handle) {
+        for (const el of m.elements) {
+          if (UNDER_NAV_OK.has(el.sel) || el.sel === '#dHandle') continue;
+          if (el.bottom > handle.top + 0.5) failures.push(`[${label}] ${el.label} runs ${(el.bottom - handle.top).toFixed(0)}px UNDER THE PANEL HANDLE`);
+        }
+      }
       for (const el of m.elements) {
-        if (el.sel === '.nav') continue;
+        if (UNDER_NAV_OK.has(el.sel)) continue;
         if (el.bottom > m.navTop + 0.5) {
           failures.push(`[${label}] ${el.label} runs ${(el.bottom - m.navTop).toFixed(0)}px UNDER THE NAV`);
         } else if (el.bottom > m.vh + 0.5) {
@@ -265,7 +292,7 @@ for (const vp of VIEWPORTS) {
         }
       }
 
-      const worst = m.elements.filter((e) => e.sel !== '.nav')
+      const worst = m.elements.filter((e) => !UNDER_NAV_OK.has(e.sel))
         .reduce((a, b) => (b.bottom > a.bottom ? b : a), { bottom: -Infinity, label: '-' });
       rows.push({
         viewport: `${vp.w}x${vp.h}`, device: vp.name, lang, caption: caption.label,
@@ -299,4 +326,4 @@ if (failures.length) {
   for (const f of failures) console.error(`  - ${f}`);
   process.exit(1);
 }
-console.log(`\n[m8 fold${LABEL ? ` ${LABEL}` : ''}] PASS — Home fits on all ${rows.length} combinations (${VIEWPORTS.length} viewports x EN/AF x one-line/longest).`);
+console.log(`\n[m8 fold${LABEL ? ` ${LABEL}` : ''}] PASS — Home fits on all ${rows.length} combinations (${VIEWPORTS.length} viewports x EN/AF x one-line/longest, + the longest isiZulu, isiXhosa and Sesotho lines at every size).`);

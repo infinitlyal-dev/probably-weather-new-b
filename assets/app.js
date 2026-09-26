@@ -33,6 +33,7 @@ import { HEAT_EXTREME_C } from './weather-thresholds.js';
 import { SEARCH_MINI_VISIBLE_LIMIT, createSearchMiniPromiseCache } from './search-mini-weather.js';
 import { setupDeferredInstallLoad } from './install-loader.js';
 import { slotEnabled } from './ads-config.js';
+import { initHomeD } from './home-d.js';
 
 // Deploy identity baked into THIS bundle. scripts/build.mjs rewrites the
 // __BUILD_ID__ placeholder to the Vercel commit SHA at build time (the string
@@ -761,7 +762,13 @@ document.addEventListener("DOMContentLoaded", () => {
         zu: "Idatha ivela ku-Open-Meteo, WeatherAPI.com, MET Norway, Pirate Weather ne-Tomorrow.io",
         xh: "Idatha ivela ku-Open-Meteo, WeatherAPI.com, MET Norway, Pirate Weather ne-Tomorrow.io",
         st: "Data e tswa ho Open-Meteo, WeatherAPI.com, MET Norway, Pirate Weather le Tomorrow.io"
-      }
+      },
+      // Home D (2026-09-26): the name of the control that hides or shows the joke (a tap on the
+      // photograph, and a button for keyboards and screen readers). EN OK'd and AF written by Al
+      // (reveal-ruled.json: "Geen grap" for hide); zu/xh/st through the skills and lang-check
+      // (0 to triage, 25 and 26 Sept; sense evidence in review/reveal/labels.md on design/home-options).
+      jokeShow: { en: "Show the joke", af: "Wys die grap", zu: "Bonisa ihlaya", xh: "Bonisa isiqhulo", st: "Bontsha motlae" },
+      jokeHide: { en: "Hide the joke", af: "Geen grap", zu: "Fihla ihlaya", xh: "Fihla isiqhulo", st: "Pata motlae" }
     }
   };
 
@@ -835,9 +842,17 @@ document.addEventListener("DOMContentLoaded", () => {
   // silently, because anyone who already chose m/s has it in localStorage.
   const WIND_UNITS = ['kmh', 'mph'];
   let settings = { ...DEFAULT_SETTINGS };
+  // Home D, the phone Home (Al's ruling, 26 Sept 2026): the photograph fills the phone, the joke arrives
+  // on a beat after it. Started here — after `settings`, which t() reads, and before the first render, so
+  // the first joke waits too; the control's name follows the language on screen. Desktop keeps the
+  // polaroid (home-d.css is phone-only; the reveal shows the joke at once above 768 px).
+  initHomeD({ label: (key) => t('misc', key) });
 
   // ========== UTILITIES ==========
   const safeText = (el, txt) => { if (el) el.textContent = txt ?? "--"; };
+  // Home D (2026-09-26): marks whether the caption holds a joke or a status line (loading, error,
+  // no bank), so only a joke waits for its beat and a status line is never written on or hidden.
+  const markCaption = (kind) => { if (headlineEl?.dataset) headlineEl.dataset.line = kind; };
   // Hero temp render (Task 2, 2026-07-06): the brand word on its own line, then
   // the temperature pair as ONE unbreakable run. Built from element nodes (not
   // innerHTML) so the range can never be an injection vector; the literal space
@@ -2627,7 +2642,13 @@ document.addEventListener("DOMContentLoaded", () => {
       const text = t('misc', 'shareMessage').replace('{city}', cityForCopy);
       try {
         if (navigator.share) {
-          await navigator.share({ title: 'Probably Weather', text, url: shareLink });
+          // Home D (phones) shares a postcard alongside the link: the photograph clean, the joke
+          // handwritten under it (home-d.js). Without one window.__PW_SHARE_FILES returns null,
+          // `picture` stays empty and this is the link share, call for call.
+          const files = typeof window.__PW_SHARE_FILES === 'function' ? window.__PW_SHARE_FILES() : null;
+          let picture = {};
+          try { if (files && navigator.canShare?.({ title: 'Probably Weather', text, url: shareLink, files })) picture = { files }; } catch { /* link only */ }
+          await navigator.share({ title: 'Probably Weather', text, url: shareLink, ...picture });
         } else if (navigator.clipboard?.writeText) {
           await navigator.clipboard.writeText(`${text} ${shareLink}`);
           showToast(t('misc', 'shareLinkCopied'));
@@ -2686,7 +2707,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!carriedPayload) clearForecastSurfaces();
     showLoader(true);
     safeText(locationEl, nameKey ? t('misc', nameKey) : displayPlaceName(name));
-    safeText(headlineEl, t('misc', 'loading'));
+    markCaption('status'); safeText(headlineEl, t('misc', 'loading'));
     safeText(tempEl, '--°');
     safeText(descriptionEl, '—');
   }
@@ -2708,7 +2729,7 @@ document.addEventListener("DOMContentLoaded", () => {
     clearForecastSurfaces();
     // Launch run (Al's ticked list, "error-retry"): a plain sentence and a Try again button —
     // no "Error" in the caption hand on the photograph.
-    safeText(headlineEl, '');
+    markCaption('status'); safeText(headlineEl, '');
     safeText(descriptionEl, msgKey ? t('misc', msgKey) : (msg || t('misc', 'couldntFetch')));
     showRetry(true);
   }
@@ -3149,11 +3170,11 @@ document.addEventListener("DOMContentLoaded", () => {
     // English humour AND the wrong weather. So when the bank is missing, the
     // hero states the localized condition and says nothing funny at all.
     if (!isCopyBankLoaded(settings.lang)) {
-      safeText(headlineEl, '');
+      markCaption('status'); safeText(headlineEl, '');
       safeText(descriptionEl, getHeroLabel(displayConditionForCopy));
       debugLog('[Hero copy] bank unavailable for', settings.lang, '— condition label, no witty line');
     } else {
-      safeText(headlineEl, getWittyLine(displayConditionForCopy));
+      markCaption('joke'); safeText(headlineEl, getWittyLine(displayConditionForCopy));
       safeText(descriptionEl, displayConditionForCopy === 'rain-possible' && norm.showersNearby
         ? t('weather', 'showersNearby')
         : getHeadline(displayConditionForCopy));
@@ -3811,7 +3832,7 @@ document.addEventListener("DOMContentLoaded", () => {
         renderHome(norm); renderHourly(norm.hourly); renderWeek(norm.daily, norm.hourly);
         if (openDayDetailIndex !== null) renderDayDetail(norm, openDayDetailIndex);
         // renderHome overwrites the hero copy, so the loading state is restated.
-        safeText(headlineEl, t('misc', 'loading'));
+        markCaption('status'); safeText(headlineEl, t('misc', 'loading'));
       }
     }
     renderFavorites(); renderRecents();

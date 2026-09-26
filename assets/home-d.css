@@ -1,0 +1,495 @@
+/* HOME D — the phone Home (Al's ruling, 26 Sept 2026; built as option D on design/home-options, 24-25 Sept).
+   A film frame. The photograph is the frame, edge to edge and top to bottom; the temperature is the title
+   card, top left, the biggest thing on the screen, "Probably …" under it; the joke is the subtitle, big, on a
+   soft dark fade, written on a beat after the photograph lands (home-d.js); one quiet credit line of facts;
+   Share on the photograph; the next hours one swipe up. Nothing on it is under 16 px. Phones only (<=768 px):
+   the desktop keeps today's polaroid — every piece D adds is display:none above that width.
+   D sets aside the older Home layout rulings Al named for it: the smaller number, the yellow Hourly button,
+   the stats pill, the separate sources link, the photo card. Home stays ad-free. */
+
+.d-line, .d-share, .d-handle, .d-sheet, .d-scrim, .d-joke-toggle { display: none; }
+
+@media (max-width: 768px) {
+  body.home-d {
+    --d-temp-fs: clamp(4rem, min(27vw, 16vh), 8.5rem);
+    --d-cond-fs: clamp(1.1rem, min(5.4vw, 3.4vh), 1.6rem);
+    --d-cap-fs: clamp(1.25rem, min(8.4vw, 5vh), 2.6rem);
+    --d-runway: clamp(28px, 6vh, 64px);        /* the fade above the joke's first line */
+    --d-top-runway: clamp(22px, 5vh, 48px);    /* the fade below "Probably …" */
+    --d-handle-h: clamp(44px, 7.4vh, 52px);    /* 44 px on the 488 px screen: still a full tap target */
+    --d-pad: 24px;
+  }
+  /* A short screen (an iPhone SE under Chrome's bars is 488 px) with the longest isiZulu joke needed 40 px
+     more than it had: the number steps down a little and the fades are shorter (the joke may also step to
+     17 px there, home-d.js). */
+  @media (max-height: 560px) {
+    body.home-d {
+      --d-temp-fs: clamp(3.5rem, min(27vw, 13vh), 8.5rem);
+      --d-runway: clamp(16px, 4vh, 64px);
+      --d-top-runway: clamp(14px, 3vh, 48px);
+    }
+  }
+
+  /* ---------- the frame: the photograph, edge to edge, top to bottom ---------- */
+  body.home-d.home-active .hero-card {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    display: block;
+    margin: 0;
+    border-radius: 0;
+    box-shadow: none;
+    transform: none;
+    overflow: hidden;
+    background: #0d0a07;
+    cursor: pointer;                            /* a tap hides or shows the joke */
+    -webkit-tap-highlight-color: transparent;
+  }
+  body.home-d.home-active .hero-card::before,
+  body.home-d.home-active .hero-card::after { display: none; }
+  body.home-d.home-active .hero-photo {
+    position: absolute;
+    inset: 0;
+    height: auto;
+    border: 0;
+  }
+
+  /* The header stays what it is — mark, name, place, language — floated on the frame. Its own dark band
+     comes off: the title card's fade below starts at the top edge and covers it. */
+  body.home-d.home-active .header { background: none; padding-bottom: 4px; }
+  /* A wind warning pushes the page down with padding, which an absolutely placed header does not feel —
+     so on D the header steps below the warning bar itself, and the number follows it. The bar keeps its
+     own orange (app.css .cape-wind-banner): a warning still reads as a warning. */
+  /* Keyed on the offset app.js sets while the bar shows (and removes after), not on :has(), so a browser
+     without :has() (Safari < 15.4, Chrome < 105) still steps the header down (Fable, 26 Sept). */
+  body.home-d.home-active .header { top: var(--cape-wind-offset, 0px); }
+  body.home-d.home-active .brand-title,
+  body.home-d.home-active .brand-location,
+  body.home-d.home-active .language-btn { font-size: 16px; }
+
+  /* ---------- one grid over the frame ---------- */
+  body.home-d.home-active main#home-screen.main {
+    position: fixed;
+    inset: 0;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-rows: auto minmax(0, 1fr) auto auto auto;
+    margin: 0;
+    padding: 0;
+    background: none;
+    box-shadow: none;
+    border-radius: 0;
+    transform: none;
+    overflow: hidden;
+    pointer-events: none;          /* the frame is a picture; its controls opt back in */
+  }
+  body.home-d.home-active main#home-screen.main > * { display: none; }
+  /* Row 5 is the reserve: the handle and the nav sit on it, on the same dark as the credit line. */
+  body.home-d.home-active main#home-screen.main::after {
+    content: "";
+    display: block;
+    grid-column: 1 / -1;
+    grid-row: 5;
+    height: calc(var(--d-handle-h) + var(--d-nav-h, 72px));
+    background: rgba(0, 0, 0, 0.70);
+  }
+
+  /* ---------- the title card: the number, then "Probably …" ---------- */
+  body.home-d.home-active main#home-screen.main > #weatherStatus {
+    display: grid;
+    grid-column: 1 / -1;
+    grid-row: 1;
+    grid-template-columns: auto minmax(0, 1fr);
+    grid-template-areas: "now now" "prob desc";
+    align-items: baseline;
+    column-gap: 0.34em;
+    margin: 0;
+    padding: calc(var(--d-header-h, 64px) + 2px) var(--d-pad) var(--d-top-runway);
+    text-align: left;
+    /* 0.64 at the top edge: the header's place name is 16 px text on the photograph, and over a blown-white
+       sky white needs ~0.6 of darkening to clear 4.5:1 (5.1:1 at 0.60). */
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.64) 0%,
+      rgba(0, 0, 0, 0.52) calc(100% - var(--d-top-runway)),
+      rgba(0, 0, 0, 0) 100%
+    );
+  }
+  /* The frame ignores taps (pointer-events: none above); the error state's Try again opts back in (Fable,
+     26 Sept: it rendered, and every tap fell through to the photograph). */
+  body.home-d.home-active #retryWeather { grid-column: 1 / -1; justify-self: start; margin-top: 12px; pointer-events: auto; }
+  body.home-d.home-active #temp { display: contents; }
+  body.home-d.home-active #temp .hero-range,
+  body.home-d.home-active #tempHiLo { display: none; }
+  body.home-d.home-active #temp .hero-now {
+    grid-area: now;
+    font-size: var(--d-temp-fs);
+    font-weight: 300;
+    line-height: 0.92;
+    letter-spacing: -0.045em;
+    /* One number, so no column to line up: the page's tabular figures spread "11°" apart. */
+    font-variant-numeric: proportional-nums;
+    margin-left: -0.05em;          /* the 1 and the 7 carry side bearing; the title sits on the edge */
+    color: #fff;
+    text-shadow: 0 2px 28px rgba(0, 0, 0, 0.35);
+    white-space: nowrap;
+  }
+  body.home-d.home-active #temp .hero-probably {
+    grid-area: prob;
+    display: block;
+    margin: 0;
+    font-size: var(--d-cond-fs);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: 0;
+    color: var(--brand-gold, #ffd700);
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.55);
+  }
+  body.home-d.home-active #home-screen #description {
+    grid-area: desc;
+    margin: 0;
+    font-size: var(--d-cond-fs);
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--ink, #fff);       /* the warmth pass (Al, 2026-08-10): the phone's condition line is --ink */
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.55);
+  }
+
+  /* ---------- Share, on the photograph, level with the number ---------- */
+  body.home-d.home-active main#home-screen.main > #dShare {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    grid-column: 2;
+    grid-row: 1;
+    align-self: start;
+    justify-self: end;
+    position: relative;
+    z-index: 1;
+    margin: calc(var(--d-header-h, 64px) + 2px + (var(--d-temp-fs) * 0.92 - 44px) / 2) 16px 0 0;
+    min-height: 44px;
+    padding: 0 16px 0 14px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.30);
+    background: rgba(0, 0, 0, 0.34);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    color: #fff;
+    font: inherit;
+    font-size: 16px;
+    font-weight: 600;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+    pointer-events: auto;
+    cursor: pointer;
+  }
+
+  /* ---------- the subtitle: the joke, big ----------
+     Its dark is #dScrim (below), laid on the caption's own box by home-d.js, so the words and the dark
+     arrive on their own clocks; the caption's box is never touched — its room is held from the start and
+     nothing moves when the joke lands. The shipped entrance (heroFadeInMeme) is off: it fills forwards,
+     which would pin the words on, and it rises 10 px. */
+  body.home-d.home-active main#home-screen.main > #headline.hero-caption {
+    display: block;
+    grid-column: 1 / -1;
+    grid-row: 3;
+    position: static;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    margin: 0;
+    padding: var(--d-runway) var(--d-pad) 6px;
+    border-radius: 0;
+    box-shadow: none;
+    font-size: var(--d-cap-fs);
+    line-height: 1.1;
+    text-align: center;
+    text-wrap: balance;
+    color: #fff;
+    text-shadow: 0 2px 14px rgba(0, 0, 0, 0.70), 0 1px 3px rgba(0, 0, 0, 0.80);
+    background: none;
+    animation: none;
+  }
+  body.home-d.home-active main#home-screen.main > #dScrim {
+    display: block;
+    position: fixed;
+    z-index: -1;               /* main is the stacking context: behind the words, over the photograph */
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+    opacity: 0;
+    /* The fade finishes BEFORE the first line: all the text stands on 0.62 or more, the same floor the
+       shipped caption was measured to need (white on it clears 6.2:1). */
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 0.62) var(--d-runway),
+      rgba(0, 0, 0, 0.70) 100%
+    );
+  }
+  body.home-d.home-active main#home-screen.main > #dScrim.is-on { opacity: 1; }
+
+  /* ---------- the subtitle rises when the picture needs the bottom ----------
+     home-d.js sets .d-joke-high when Al's crop anchor puts the photograph's subject under the joke at the
+     foot and the top is clear. The joke moves up under "Probably …"; the title card keeps its own fade and
+     the joke's dark starts inside it (the script lifts #dScrim by the fade's height), so the two meet
+     without a seam; the credit line keeps the foot, with its own short fade. */
+  body.home-d.home-active.d-joke-high main#home-screen.main > #headline.hero-caption {
+    grid-row: 2;
+    align-self: start;
+    padding: 0 var(--d-pad) var(--d-runway);
+  }
+  body.home-d.home-active.d-joke-high main#home-screen.main > #dScrim {
+    /* 0.58 behind every line: white on it over a blown-white sky is ~5.3:1, and the joke is large text
+       (3:1 is the bar). The fade happens in the padding below the last line. */
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 0,
+      rgba(0, 0, 0, 0.58) var(--d-top-runway),
+      rgba(0, 0, 0, 0.58) calc(100% - var(--d-runway)),
+      rgba(0, 0, 0, 0) 100%
+    );
+  }
+
+  /* ---------- the credit line: Low · High · Rain · Wind · sources agree ---------- */
+  body.home-d.home-active main#home-screen.main > #dLine {
+    position: relative;
+    display: block;
+    grid-column: 1 / -1;
+    grid-row: 4;
+    margin: 0;
+    padding: 4px var(--d-pad) 8px;
+    background: rgba(0, 0, 0, 0.70);
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.4;
+    color: rgba(255, 255, 255, 0.88);
+    text-align: center;
+    text-wrap: balance;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  }
+  body.home-d.home-active main#home-screen.main > #dLine[hidden] { display: none; }
+  /* While the joke is away (the beat, or tapped off) the credit line keeps a soft top edge instead of
+     starting on a hard line; risen, it always has one. */
+  body.home-d.home-active main#home-screen.main > #dLine::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 100%;
+    height: clamp(20px, 4vh, 36px);
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.70));
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
+  }
+  body.home-d.home-active main#home-screen.main.d-joke-off > #dLine::before,
+  body.home-d.home-active.d-joke-high main#home-screen.main > #dLine::before { opacity: 1; }
+  body.home-d.home-active main#home-screen.main.d-joke-now > #dLine::before { transition: none; }
+  body.home-d #dLine .d-part { white-space: nowrap; }
+  body.home-d #dLine .d-sep { opacity: 0.55; }
+  body.home-d #dLine .d-agree-dot {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    margin-right: 6px;
+    border-radius: 50%;
+    vertical-align: 0.12em;
+    background: var(--brand-gold, #ffd700);
+  }
+  body.home-d #dLine .d-agree.is-low .d-agree-dot { background: var(--condition-amber, #f5a623); }
+
+  /* ---------- the joke control for keyboards and screen readers ----------
+     Read straight after the joke, out of sight until a keyboard lands on it, then a pill in the open
+     photograph (home-d.js measures where that is: --d-toggle-top). A thumb taps the photograph. */
+  body.home-d.home-active main#home-screen.main > #dJokeToggle {
+    display: block;
+    position: fixed;
+    left: 50%;
+    top: var(--d-toggle-top, 45%);
+    z-index: 3;
+    width: 1px;
+    height: 1px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    pointer-events: auto;
+  }
+  body.home-d.home-active main#home-screen.main > #dJokeToggle[hidden] { display: none; }
+  body.home-d.home-active main#home-screen.main > #dJokeToggle:focus-visible {
+    width: auto;
+    height: auto;
+    min-height: 44px;
+    padding: 0 18px;
+    overflow: visible;
+    clip-path: none;
+    transform: translate(-50%, -50%);
+    border: 1px solid rgba(255, 255, 255, 0.30);
+    border-radius: 999px;
+    background: rgba(0, 0, 0, 0.62);
+    color: #fff;
+    font: inherit;
+    font-size: 16px;
+    font-weight: 600;
+    outline: 3px solid var(--brand-gold, #ffd700);
+    outline-offset: 2px;
+  }
+
+  /* ---------- the handle ("Hourly"), sitting on the nav ---------- */
+  body.home-d.home-active .d-handle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: var(--d-nav-h, 72px);
+    z-index: 101;
+    width: 100%;
+    height: var(--d-handle-h);
+    margin: 0;
+    padding: 0 16px;
+    border: 0;
+    background: none;
+    color: #fff;
+    font: inherit;
+    font-size: 16px;
+    font-weight: 600;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+    touch-action: none;
+    cursor: grab;
+  }
+  body.home-d .d-grip {
+    display: block;
+    width: 40px;
+    height: 5px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.6);
+  }
+  body.home-d .d-handle-row { display: inline-flex; align-items: center; gap: 6px; }
+  body.home-d.d-sheet-open .d-handle { visibility: hidden; }
+
+  /* The nav stays — Home, Weekly, Search, Settings — on the frame's dark foot instead of a bar. Share left
+     it for the photograph. */
+  body.home-d.home-active .nav {
+    background: none;
+    background-image: none;
+    border-top-color: transparent;
+  }
+  body.home-d.home-active #navShare { display: none; }
+  /* Reading size here too. Four equal columns cut isiZulu's "Izilungiselelo" at 16 px, so the four labels
+     take their own widths instead — the longest set (isiZulu) is ~280 px, inside even a 320 px phone. */
+  body.home-d.home-active .nav {
+    display: flex;
+    justify-content: space-around;
+  }
+  body.home-d.home-active .nav button {
+    flex: 0 1 auto;
+    padding-left: 6px;
+    padding-right: 6px;
+    font-size: 16px;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+  }
+  /* The first-visit install banner, where home-d.js measured room for it. */
+  body.home-d.home-active #installBanner.on-photo { top: var(--d-banner-top, 30%) !important; }
+
+  /* ---------- the panel: the next hours, and the way to the full Hourly page ----------
+     Sized to what it holds, from the foot of the screen, never higher than just under "Probably …". */
+  body.home-d.home-active .d-sheet {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    max-height: calc(100% - var(--d-sheet-top, 30vh));
+    z-index: 150;
+    color: #fff;
+    /* Solid: at 0.94 the joke and the nav ghosted through. */
+    background: #14110d;
+    border-radius: var(--r-lg, 20px) var(--r-lg, 20px) 0 0;
+    box-shadow: 0 -12px 40px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    transform: translateY(100%);
+    visibility: hidden;
+    transition: transform 0.38s cubic-bezier(0.2, 0.8, 0.2, 1), visibility 0s linear 0.38s;
+  }
+  body.home-d.d-sheet-open .d-sheet {
+    transform: none;
+    visibility: visible;
+    transition: transform 0.38s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  body.home-d .d-sheet.is-dragging { transition: none; visibility: visible; }
+  body.home-d .d-sheet-grip {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 7px;
+    width: 100%;
+    padding: 10px 16px 10px;
+    border: 0;
+    background: none;
+    color: var(--brand-gold, #ffd700);
+    font: inherit;
+    font-size: 16px;
+    font-weight: 700;
+    touch-action: none;
+    cursor: grab;
+  }
+  body.home-d .d-sheet-body {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding: 0 0 calc(20px + env(safe-area-inset-bottom, 0px));
+  }
+  body.home-d .d-hours {
+    display: flex;
+    gap: 6px;
+    overflow-x: auto;
+    padding: 0 16px 4px;
+    scroll-padding-inline: 16px;   /* the first hour snaps to the margin, not the screen edge */
+    scroll-snap-type: x proximity;
+    scrollbar-width: none;
+  }
+  body.home-d .d-hours::-webkit-scrollbar { display: none; }
+  body.home-d .d-hour {
+    flex: 0 0 66px;
+    display: grid;
+    justify-items: center;
+    gap: 6px;
+    padding: 10px 0;
+    border-radius: var(--r-sm, 10px);
+    background: rgba(255, 255, 255, 0.06);
+    scroll-snap-align: start;
+  }
+  body.home-d .d-hour-time { font-size: 16px; color: rgba(255, 255, 255, 0.78); }
+  body.home-d .d-hour-icon { line-height: 0; color: var(--brand-gold, #ffd700); }
+  body.home-d .d-hour-icon svg { width: 24px; height: 24px; }
+  body.home-d .d-hour-temp { font-size: 18px; font-weight: 700; }
+  body.home-d .d-hour-rain { font-size: 16px; color: var(--rain-blue, #4a9eff); }
+  body.home-d .d-sheet-more { display: flex; padding: 16px 16px 0; }
+  body.home-d .d-more {
+    flex: 1 1 0;
+    min-height: 48px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: rgba(255, 255, 255, 0.06);
+    color: #fff;
+    font: inherit;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+}
+@media (max-width: 768px) and (prefers-reduced-motion: reduce) {
+  body.home-d .d-sheet,
+  body.home-d.d-sheet-open .d-sheet,
+  body.home-d main#home-screen.main > #dLine::before { transition: none; }
+}

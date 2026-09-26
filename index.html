@@ -272,6 +272,9 @@
        is no FOUC window; hideSplash fires on first real render, long after CSS
        settles on any realistic path. -->
   <link rel="stylesheet" href="assets/app.css"/>
+  <!-- Home D, the phone Home (Al's ruling, 26 Sept 2026): every rule is inside max-width 768px, so the
+       desktop polaroid is untouched. home-d.js (bundled into app.js) builds the pieces it styles. -->
+  <link rel="stylesheet" href="assets/home-d.css"/>
   <!-- Onest is the default UI type: one stylesheet with the woff2 embedded as
        data: URIs, so there are ZERO font-file requests and it rides after app.css
        (its rules win). The larger Caveat caption subset (desktop postcard only) is
