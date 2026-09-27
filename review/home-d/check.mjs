@@ -9,8 +9,10 @@
 //   screen readers     during the beat the joke is in the accessibility tree (only faded)
 //   nothing moves      the joke's box, the credit line, the title card, the handle, Share: same rects
 //   Share              a postcard: the photograph clean, the joke under it; Share leaves the joke alone
-//   the handle         says "Hourly" only; opens a panel of the next hours with a link to the full Hourly
-//                      page and no week (Weekly stays in the nav); a swipe up opens it too
+//   the handle         says "Hourly" only; opens a panel of the next hours — a list you scroll down, one
+//                      row an hour, real list semantics — with one quiet link to the full Hourly page and
+//                      no week (Weekly stays in the nav); a swipe up opens it too
+//   no side-scroll     nothing on Home scrolls sideways, panel up, at 414x715 and at 320 wide (Al, 27 Sept)
 //   the photo          a tap hides the joke, another shows it; the button's name follows
 //   keyboard           Tab reaches the button, it shows itself, Enter flips the joke
 //   five languages     the button's name in each (Afrikaans: "Wys die grap" / "Geen grap", Al's words)
@@ -28,7 +30,9 @@ import { WEEK_ANCHOR_MS, WEEK_MS, DAY_MS, getRotationDay, getRotationWeek } from
 const arg = (f, d) => { const i = process.argv.indexOf(f); return i > 0 ? process.argv[i + 1] : d; };
 const dist = path.resolve(arg('--dist', 'dist'));
 const out = path.resolve(arg('--out', 'output/home-d'));
+const listOut = path.resolve(arg('--list-out', 'output/home-d-list'));   // the pulled-up list, for Al's eyes
 mkdirSync(out, { recursive: true });
+mkdirSync(listOut, { recursive: true });
 const LIVE = JSON.parse(readFileSync('review/eval/data/live-strand.json', 'utf8'));
 const when = (() => {
   for (let k = 20; k < 60; k++) {
@@ -83,6 +87,35 @@ const state = (page) => page.evaluate(() => window.__PW_D?.reveal?.state?.());
 const marks = (page) => page.evaluate(() => (window.__PW_D?.reveal?.marks || []).map((m) => ({ what: m.what, at: m.at })));
 const label = (page) => page.evaluate(() => document.getElementById('dJokeToggle')?.textContent);
 const rects = (page) => page.evaluate(() => Object.fromEntries(['#headline', '#dLine', '#weatherStatus', '#dHandle', '#dShare'].map((s) => { const r = document.querySelector(s)?.getBoundingClientRect(); return [s, r ? [r.left, r.top, r.width, r.height].map((v) => Math.round(v * 10) / 10).join(',') : null]; })));
+// Every element on screen that CAN scroll sideways: content wider than its box and an overflow-x that
+// scrolls (auto / scroll), plus the page itself if it is wider than the viewport. Clipping (overflow
+// hidden: the photograph's layer, the visually hidden toggle and rain words) is not a scroll. Empty means
+// nothing on Home scrolls sideways.
+const sideways = (page) => page.evaluate(() => [document.documentElement, ...document.querySelectorAll('body *')]
+  .filter((e) => {
+    if (e === document.documentElement) return e.scrollWidth > e.clientWidth + 1;
+    if (!e.getClientRects().length || e.scrollWidth <= e.clientWidth + 1) return false;
+    const ox = getComputedStyle(e).overflowX;
+    return ox === 'auto' || ox === 'scroll';
+  })
+  .map((e) => `${e.tagName.toLowerCase()}${e.id ? `#${e.id}` : ''}${typeof e.className === 'string' && e.className ? `.${e.className.split(' ')[0]}` : ''} ${e.scrollWidth}>${e.clientWidth}`));
+// The sheet fully up (its rise is a 0.38 s transform; a pinned clock can hold WebKit mid-rise for a shot).
+const sheetUp = (page) => page.waitForFunction(() => { const t = getComputedStyle(document.getElementById('dSheet')).transform; return document.body.classList.contains('d-sheet-open') && (t === 'none' || t === 'matrix(1, 0, 0, 1, 0, 0)'); }, null, { timeout: 5000 });
+// The panel as a list: a UL of LI rows stacked top to bottom, scrolling inside the sheet, each row an
+// hour with the icon named for a screen reader and the rain word before the percentage.
+const panelList = (page) => page.evaluate(() => {
+  const ul = document.querySelector('#dSheet .d-hours');
+  const rows = [...document.querySelectorAll('#dSheet .d-hours > li.d-hour')];
+  const body = document.querySelector('#dSheet .d-sheet-body');
+  const rainWord = document.querySelector('#hourly-timeline .hourly-header .h-rain')?.textContent.trim();
+  return {
+    tag: ul?.tagName, rows: rows.length,
+    stacked: rows.length > 1 && rows.every((r, i) => !i || r.getBoundingClientRect().top >= rows[i - 1].getBoundingClientRect().bottom - 1),
+    scrolls: !!body && body.scrollHeight > body.clientHeight + 1 && getComputedStyle(body).overflowY === 'auto',
+    firstRow: rows[0] ? { time: rows[0].querySelector('.d-hour-time')?.textContent, icon: rows[0].querySelector('.d-hour-icon [role="img"]')?.getAttribute('aria-label') || null, temp: rows[0].querySelector('.d-hour-temp')?.textContent, rain: rows[0].querySelector('.d-hour-rain')?.textContent } : null,
+    rainWord,
+  };
+});
 
 // 1-4: weather first, screen readers, the beat, nothing moves.
 {
@@ -134,6 +167,16 @@ const rects = (page) => page.evaluate(() => Object.fromEntries(['#headline', '#d
   }));
   await page.screenshot({ path: path.join(out, 'panel.png') });
   ok('the handle says "Hourly" only; the panel has the next hours and a link to the full Hourly page, no week', handleText === hourlyWord && !/·/.test(handleText) && panel.open && panel.hours >= 12 && panel.days === 0 && panel.buttons.length === 1 && panel.buttons[0].startsWith(hourlyWord) && (await state(page)) === 'shown', { handleText, panel });
+  // 6b: the hours are a list you scroll down (Al, 27 Sept: "it is a side scroll on hourly and nobody likes
+  // that"): a UL of LI rows, stacked, scrolling inside the panel; a screen reader gets each hour as one item
+  // (the accessibility tree holds a list of listitems, the icon named); nothing on Home scrolls sideways.
+  const list = await panelList(page);
+  const listTree = await page.locator('#dSheet .d-hours').ariaSnapshot();
+  const listItems = (listTree.match(/- listitem/g) || []).length;
+  const wide = await sideways(page);
+  ok('the panel is a vertical list — one row an hour, real list semantics, scrolling inside the panel — and nothing on Home scrolls sideways at 414x715',
+    list.tag === 'UL' && list.rows === panel.hours && list.stacked && list.scrolls && /^- list/m.test(listTree) && listItems === list.rows && !!list.firstRow?.icon && list.firstRow.rain.startsWith(`${list.rainWord} `) && wide.length === 0,
+    { ...list, listItems, sideways: wide });
   await page.tap('#dSheet .d-more');
   await page.waitForTimeout(700);
   const onHourly = await page.evaluate(() => ({ home: document.body.classList.contains('home-active'), open: document.body.classList.contains('d-sheet-open'), hourlyVisible: !!document.querySelector('#hourly-screen:not(.hidden), #hourly-screen.active') }));
@@ -299,6 +342,40 @@ const rects = (page) => page.evaluate(() => Object.fromEntries(['#headline', '#d
   }));
   await page.screenshot({ path: path.join(out, 'desktop.png') });
   ok('desktop width: the polaroid — no D pieces, the caption simply there', d.state === 'shown' && d.opacity === '1' && d.text.length > 5 && d.dPieces.length === 0 && d.heroFixed !== 'fixed', d);
+  await ctx.close();
+}
+// 16: the narrowest phone, in isiZulu (the longest words): the list stands, nothing scrolls sideways, panel
+// down and up.
+{
+  const ctx = await browser.newContext({ viewport: { width: 320, height: 568 }, isMobile: true, hasTouch: true, deviceScaleFactor: 2, timezoneId: 'Africa/Johannesburg', geolocation: { latitude: -34.1163, longitude: 18.8362 }, permissions: ['geolocation'], serviceWorkers: 'block' });
+  await ctx.addInitScript(() => { try { localStorage.setItem('lang', JSON.stringify('zu')); localStorage.setItem('pw_install_dismissed_until', String(9e15)); localStorage.setItem('pw_home', JSON.stringify({ lat: -34.1163, lon: 18.8362, name: 'Strand' })); } catch {} });
+  const page = await ctx.newPage();
+  await page.clock.setFixedTime(new Date(when));
+  await page.goto(BASE, { waitUntil: 'domcontentloaded' });
+  await page.waitForFunction(() => window.__PW_D?.reveal?.marks?.some((m) => m.what === 'photo'), null, { timeout: 20000 });
+  const down = await sideways(page);
+  await page.tap('#dHandle');
+  await page.waitForTimeout(600);
+  const up = await sideways(page);
+  const list = await panelList(page);
+  await sheetUp(page).catch(() => {});
+  await page.screenshot({ path: path.join(out, 'panel-320-zu.png') });
+  ok('320 wide, isiZulu: nothing on Home scrolls sideways, panel down or up; the list stands and scrolls inside the panel', down.length === 0 && up.length === 0 && list.tag === 'UL' && list.rows >= 12 && list.stacked && list.scrolls, { down, up, rows: list.rows });
+  await ctx.close();
+}
+// 17: for Al's eyes — the pulled-up list at 414x715 in English and isiZulu, its top and, scrolled to the
+// bottom, the quiet Hourly link (output/home-d-list/).
+for (const lang of ['en', 'zu']) {
+  const { ctx, page } = await phone({ lang, pinClock: false });   // the real clock: the rise must finish for the shot
+  await page.waitForFunction(() => window.__PW_D?.reveal?.state?.() === 'shown', null, { timeout: 20000 });
+  await page.tap('#dHandle');
+  await sheetUp(page);
+  await page.waitForTimeout(200);
+  await page.screenshot({ path: path.join(listOut, `list-top-${lang}.png`) });
+  const atBottom = await page.evaluate(() => { const b = document.querySelector('#dSheet .d-sheet-body'); b.scrollTop = b.scrollHeight; return new Promise((r) => requestAnimationFrame(() => { const link = document.querySelector('#dSheet .d-more').getBoundingClientRect(); r(link.bottom <= innerHeight && link.top >= 0 && Math.abs(b.scrollTop + b.clientHeight - b.scrollHeight) < 2); })); });
+  await page.waitForTimeout(150);
+  await page.screenshot({ path: path.join(listOut, `list-bottom-${lang}.png`) });
+  ok(`${lang}: scrolled to the bottom of the list, the Hourly link is in view (screenshots in ${path.relative(process.cwd(), listOut)})`, atBottom);
   await ctx.close();
 }
 await browser.close();

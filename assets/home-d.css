@@ -449,39 +449,37 @@
     overscroll-behavior: contain;
     padding: 0 0 calc(20px + env(safe-area-inset-bottom, 0px));
   }
+  /* The hours: a list you scroll down, one row an hour (Al, 27 Sept: the sideways strip — "nobody likes
+     that"). It scrolls inside .d-sheet-body; nothing here scrolls sideways at any phone width. */
   body.home-d .d-hours {
-    display: flex;
-    gap: 6px;
-    overflow-x: auto;
-    padding: 0 16px 4px;
-    scroll-padding-inline: 16px;   /* the first hour snaps to the margin, not the screen edge */
-    scroll-snap-type: x proximity;
-    scrollbar-width: none;
+    display: block;
+    margin: 0;
+    padding: 0 16px;
+    list-style: none;
   }
-  body.home-d .d-hours::-webkit-scrollbar { display: none; }
   body.home-d .d-hour {
-    flex: 0 0 66px;
     display: grid;
-    justify-items: center;
-    gap: 6px;
-    padding: 10px 0;
-    border-radius: var(--r-sm, 10px);
-    background: rgba(255, 255, 255, 0.06);
-    scroll-snap-align: start;
+    grid-template-columns: 4.4em 32px minmax(0, 1fr) auto;   /* time | icon | temperature | rain */
+    align-items: center;
+    column-gap: 12px;
+    min-height: 48px;
+    padding: 4px 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   }
-  body.home-d .d-hour-time { font-size: 16px; color: rgba(255, 255, 255, 0.78); }
-  body.home-d .d-hour-icon { line-height: 0; color: var(--brand-gold, #ffd700); }
+  body.home-d .d-hour:last-child { border-bottom: 0; }
+  body.home-d .d-hour-time { font-size: 16px; color: rgba(255, 255, 255, 0.78); font-variant-numeric: tabular-nums; }
+  body.home-d .d-hour-icon { display: inline-flex; justify-content: center; line-height: 0; color: var(--brand-gold, #ffd700); }
   body.home-d .d-hour-icon svg { width: 24px; height: 24px; }
   body.home-d .d-hour-temp { font-size: 18px; font-weight: 700; }
-  body.home-d .d-hour-rain { font-size: 16px; color: var(--rain-blue, #4a9eff); }
-  body.home-d .d-sheet-more { display: flex; padding: 16px 16px 0; }
+  body.home-d .d-hour-rain { font-size: 16px; color: var(--rain-blue, #4a9eff); text-align: right; font-variant-numeric: tabular-nums; }
+  /* The one quiet link at the foot: the full Hourly page. */
+  body.home-d .d-sheet-more { display: flex; justify-content: center; padding: 8px 16px 0; }
   body.home-d .d-more {
-    flex: 1 1 0;
-    min-height: 48px;
-    border-radius: 999px;
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    background: rgba(255, 255, 255, 0.06);
-    color: #fff;
+    min-height: 44px;
+    padding: 0 12px;
+    border: 0;
+    background: none;
+    color: var(--brand-gold, #ffd700);
     font: inherit;
     font-size: 16px;
     font-weight: 600;

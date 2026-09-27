@@ -7,8 +7,10 @@
 // A film frame. The photograph is the frame, edge to edge and top to bottom; the temperature is the title
 // card, top left, the biggest thing on the screen, with "Probably …" under it; the joke is the subtitle,
 // big, on a soft dark fade; one quiet credit line of facts under it; Share on the photograph, sending a
-// postcard; the next hours one swipe up, on a panel with a handle ("Hourly") you can also tap, and a link
-// from it to the full Hourly page. Weekly lives in the nav bar only (Al asked why it appeared twice).
+// postcard; the next hours one swipe up, on a panel with a handle ("Hourly") you can also tap — a list you
+// scroll down, one row an hour (Al, 27 Sept, on his phone: "it is a side scroll on hourly and nobody likes
+// that") — and one quiet link from its foot to the full Hourly page. Weekly lives in the nav bar only (Al
+// asked why it appeared twice).
 //
 // D adds no words of its own but the joke control's name (Show the joke / Hide the joke, in app.js's
 // translations): every other label is read off what the app has already rendered, in its language.
@@ -70,7 +72,7 @@ export function initHomeD({ label = (k) => k } = {}) {
   sheet.innerHTML = `
     <button type="button" class="d-sheet-grip" aria-controls="dSheet" aria-expanded="true"><span class="d-grip" aria-hidden="true"></span><span class="d-sheet-title"></span></button>
     <div class="d-sheet-body">
-      <div class="d-hours" role="list"></div>
+      <ul class="d-hours" role="list"></ul>
       <div class="d-sheet-more">
         <button type="button" class="d-more" data-d="more-hourly"></button>
       </div>
@@ -177,15 +179,20 @@ export function initHomeD({ label = (k) => k } = {}) {
   };
 
   // ---------- the panel: the next hours, and the way to the full Hourly page ----------
-  // Built from the rows the Hourly screen already rendered — the same times, icons, units and words.
-  // Only rows are taken: the ad slots stay on that screen, so the panel, which is part of Home, has none.
+  // Built from the rows the Hourly screen already rendered — the same times, icons, units and words — as
+  // a list you scroll down, one row an hour: time, icon, temperature, rain chance. (It was a sideways strip;
+  // Al, 27 Sept: "nobody likes that".) Only rows are taken: the ad slots stay on that screen, so the panel,
+  // which is part of Home, has none. The list scrolls inside the panel; pulling the panel down is the grip's
+  // gesture alone, so the two never fight. A screen reader gets each hour as one item — the time, the
+  // condition (the icon carries its name, as on the Hourly page), the temperature, then the Hourly page's
+  // word for rain (out of sight) before the percentage.
   const fillPanel = () => {
     const hours = sheet.querySelector('.d-hours');
     hours.replaceChildren();
+    const rainWord = text('#hourly-timeline .hourly-header .h-rain');
     [...document.querySelectorAll('#hourly-timeline .hourly-row:not(.hourly-header)')].slice(0, D_HOURS).forEach((r) => {
-      const cell = document.createElement('div');
-      cell.className = 'd-hour';
-      cell.setAttribute('role', 'listitem');
+      const row = document.createElement('li');
+      row.className = 'd-hour';
       const time = document.createElement('span');
       time.className = 'd-hour-time';
       time.textContent = r.querySelector('.h-time')?.textContent || '';
@@ -197,9 +204,15 @@ export function initHomeD({ label = (k) => k } = {}) {
       temp.textContent = t?.textContent || '';
       const rain = document.createElement('span');
       rain.className = 'd-hour-rain';
-      rain.textContent = r.querySelector('.h-rain')?.textContent || '';
-      cell.append(time, icon, temp, rain);
-      hours.append(cell);
+      if (rainWord) {
+        const word = document.createElement('span');
+        word.className = 'sr-only';
+        word.textContent = `${rainWord} `;
+        rain.append(word);
+      }
+      rain.append(r.querySelector('.h-rain')?.textContent || '');
+      row.append(time, icon, temp, rain);
+      hours.append(row);
     });
   };
   sheet.querySelector('[data-d="more-hourly"]').addEventListener('click', () => { setOpen(false); $('#homeHourly')?.click(); });
