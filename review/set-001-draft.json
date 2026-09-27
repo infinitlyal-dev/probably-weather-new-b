@@ -3,7 +3,7 @@
  "set": "set-001",
  "exported": "2026-08-05T15:09:25.023Z",
  "complete": false,
- "filled": 301,
+ "filled": 303,
  "total": 504,
  "note": "Curation artifact only — not app-consumed. hash = sha1-12 of image bytes; image = canonical path under assets/images/bg/; paths = every duplicate file with those bytes. | 2026-09-06: 532 uncurated slots overwritten with copies of curated photographs from the same condition and time-of-day, so the app serves set-001 only. `paths` now includes those copies. set-002 replaces them with new curated photographs. | 2026-09-06: grid laid out on disk by scripts/layout-set-001-grid.mjs — week A = week_1+week_3, week B = week_2+week_4, day = slot index (Mon=1..Sun=7); an empty grid position takes the same-day photograph from the other week. `image` and `paths` name the slots holding each photograph; `previousImage` is the pre-layout canonical path. | 2026-09-06 (pm): wind pair 9bada961b0a7 -> tue and 330bfae094d5 -> wed (Al's swap ruling). | 2026-09-06: grid laid out on disk by scripts/layout-set-001-grid.mjs — week A = week_1+week_3, week B = week_2+week_4, day = slot index (Mon=1..Sun=7); an empty grid position takes the same-day photograph from the other week. `image` and `paths` name the slots holding each photograph; `previousImage` is the pre-layout canonical path. | 2026-09-16: rain/week_2/day/3.webp rerolled — 3bd49d0acf2b (Subaru badge, Australian-looking plate and streetscape) replaced by fec85aba3f48, GPT Image 2 via Higgsfield, Al chose candidate 2 of 3. Both slot copies (week_2 and week_4) rewritten; the bespoke lines were re-keyed to the new hash. | 2026-09-23: 6 photographs moved by Al's rulings (review/cold-move-ruled.json, review/bucket-check-ruled.json) — each takes weeks 2+4 of its own weekday in the new bucket, the photograph there keeps weeks 1+3; `movedFrom` names the slots it left, which are benched (review/benched-photos.json) and still hold its bytes on disk.",
  "assignments": [
@@ -21,21 +21,6 @@
     "clear/week_4/dawn/1.webp"
    ],
    "previousImage": "clear/week_2/dawn/5.webp"
-  },
-  {
-   "condition": "clear",
-   "time": "dawn",
-   "week": "A",
-   "day": "tue",
-   "hash": "73d202837435",
-   "image": "clear/week_1/dawn/2.webp",
-   "paths": [
-    "clear/week_1/dawn/2.webp",
-    "clear/week_2/dawn/2.webp",
-    "clear/week_3/dawn/2.webp",
-    "clear/week_4/dawn/2.webp"
-   ],
-   "previousImage": "clear/week_2/dawn/6.webp"
   },
   {
    "condition": "clear",
@@ -96,21 +81,6 @@
     "clear/week_4/dawn/6.webp"
    ],
    "previousImage": "clear/week_2/dawn/7.webp"
-  },
-  {
-   "condition": "clear",
-   "time": "dawn",
-   "week": "A",
-   "day": "sun",
-   "hash": "089f865e3f14",
-   "image": "clear/week_1/dawn/7.webp",
-   "paths": [
-    "clear/week_1/dawn/7.webp",
-    "clear/week_2/dawn/7.webp",
-    "clear/week_3/dawn/7.webp",
-    "clear/week_4/dawn/7.webp"
-   ],
-   "previousImage": "clear/week_2/dawn/2.webp"
   },
   {
    "condition": "clear",
@@ -960,27 +930,6 @@
     "cloudy/week_4/night/5.webp"
    ],
    "previousImage": "cloudy/week_1/night/6.webp"
-  },
-  {
-   "condition": "cold",
-   "time": "night",
-   "week": "B",
-   "day": "sat",
-   "hash": "f3255e596b2c",
-   "image": "cold/week_2/night/6.webp",
-   "paths": [
-    "cold/week_2/night/6.webp",
-    "cold/week_4/night/6.webp"
-   ],
-   "previousImage": "cloudy/week_1/night/6.webp",
-   "movedFrom": [
-    "cloudy/week_1/night/6.webp",
-    "cloudy/week_2/night/6.webp",
-    "cloudy/week_3/night/6.webp",
-    "cloudy/week_4/night/6.webp"
-   ],
-   "movedOn": "2026-09-23",
-   "movedBy": "review/bucket-check-ruled.json"
   },
   {
    "condition": "cold",
@@ -2596,9 +2545,7 @@
    "image": "heat/week_1/dusk/5.webp",
    "paths": [
     "heat/week_1/dusk/5.webp",
-    "heat/week_2/dusk/5.webp",
-    "heat/week_3/dusk/5.webp",
-    "heat/week_4/dusk/5.webp"
+    "heat/week_3/dusk/5.webp"
    ],
    "previousImage": "heat/week_2/dusk/1.webp"
   },
@@ -3308,21 +3255,6 @@
   },
   {
    "condition": "storm",
-   "time": "dawn",
-   "week": "A",
-   "day": "sun",
-   "hash": "29a289619727",
-   "image": "storm/week_1/dawn/7.webp",
-   "paths": [
-    "storm/week_1/dawn/7.webp",
-    "storm/week_2/dawn/7.webp",
-    "storm/week_3/dawn/7.webp",
-    "storm/week_4/dawn/7.webp"
-   ],
-   "previousImage": "storm/week_2/dawn/3.webp"
-  },
-  {
-   "condition": "storm",
    "time": "day",
    "week": "A",
    "day": "mon",
@@ -3947,19 +3879,6 @@
    "condition": "wind",
    "time": "day",
    "week": "B",
-   "day": "thu",
-   "hash": "55504e5b8143",
-   "image": "wind/week_2/day/4.webp",
-   "paths": [
-    "wind/week_2/day/4.webp",
-    "wind/week_4/day/4.webp"
-   ],
-   "previousImage": "wind/week_4/day/7.webp"
-  },
-  {
-   "condition": "wind",
-   "time": "day",
-   "week": "B",
    "day": "fri",
    "hash": "ab2cbee2d73d",
    "image": "wind/week_2/day/5.webp",
@@ -4085,21 +4004,6 @@
     "wind/week_4/dusk/7.webp"
    ],
    "previousImage": "wind/week_1/dusk/3.webp"
-  },
-  {
-   "condition": "wind",
-   "time": "night",
-   "week": "A",
-   "day": "mon",
-   "hash": "eb7873fd7acb",
-   "image": "wind/week_1/night/1.webp",
-   "paths": [
-    "wind/week_1/night/1.webp",
-    "wind/week_2/night/1.webp",
-    "wind/week_3/night/1.webp",
-    "wind/week_4/night/1.webp"
-   ],
-   "previousImage": "wind/week_2/night/4.webp"
   },
   {
    "condition": "wind",
@@ -4336,6 +4240,120 @@
     "cold/week_4/dusk/6.webp"
    ],
    "pair": "M04"
+  },
+  {
+   "condition": "cold",
+   "time": "night",
+   "week": "B",
+   "day": "sat",
+   "hash": "cd4bd5c64c5d",
+   "image": "cold/week_2/night/6.webp",
+   "paths": [
+    "cold/week_2/night/6.webp",
+    "cold/week_4/night/6.webp"
+   ],
+   "pair": "R01"
+  },
+  {
+   "condition": "cloudy",
+   "time": "night",
+   "week": "A",
+   "day": "sat",
+   "hash": "aa3ccab85b60",
+   "image": "cloudy/week_1/night/6.webp",
+   "paths": [
+    "cloudy/week_1/night/6.webp",
+    "cloudy/week_2/night/6.webp",
+    "cloudy/week_3/night/6.webp",
+    "cloudy/week_4/night/6.webp"
+   ],
+   "pair": "R02"
+  },
+  {
+   "condition": "clear",
+   "time": "dawn",
+   "week": "A",
+   "day": "sun",
+   "hash": "1108cfd1192f",
+   "image": "clear/week_1/dawn/7.webp",
+   "paths": [
+    "clear/week_1/dawn/7.webp",
+    "clear/week_2/dawn/7.webp",
+    "clear/week_3/dawn/7.webp",
+    "clear/week_4/dawn/7.webp"
+   ],
+   "pair": "R03"
+  },
+  {
+   "condition": "clear",
+   "time": "dawn",
+   "week": "A",
+   "day": "tue",
+   "hash": "844f8b7f5b89",
+   "image": "clear/week_1/dawn/2.webp",
+   "paths": [
+    "clear/week_1/dawn/2.webp",
+    "clear/week_2/dawn/2.webp",
+    "clear/week_3/dawn/2.webp",
+    "clear/week_4/dawn/2.webp"
+   ],
+   "pair": "R05"
+  },
+  {
+   "condition": "heat",
+   "time": "dusk",
+   "week": "B",
+   "day": "fri",
+   "hash": "15e8f0aa4baa",
+   "image": "heat/week_2/dusk/5.webp",
+   "paths": [
+    "heat/week_2/dusk/5.webp",
+    "heat/week_4/dusk/5.webp"
+   ],
+   "pair": "R10"
+  },
+  {
+   "condition": "storm",
+   "time": "dawn",
+   "week": "A",
+   "day": "sun",
+   "hash": "e400ca864a50",
+   "image": "storm/week_1/dawn/7.webp",
+   "paths": [
+    "storm/week_1/dawn/7.webp",
+    "storm/week_2/dawn/7.webp",
+    "storm/week_3/dawn/7.webp",
+    "storm/week_4/dawn/7.webp"
+   ],
+   "pair": "R18"
+  },
+  {
+   "condition": "wind",
+   "time": "night",
+   "week": "A",
+   "day": "mon",
+   "hash": "6bb604217e96",
+   "image": "wind/week_1/night/1.webp",
+   "paths": [
+    "wind/week_1/night/1.webp",
+    "wind/week_2/night/1.webp",
+    "wind/week_3/night/1.webp",
+    "wind/week_4/night/1.webp"
+   ],
+   "pair": "R24"
+  },
+  {
+   "condition": "wind",
+   "time": "day",
+   "week": "B",
+   "day": "thu",
+   "hash": "e8500f5dfaee",
+   "image": "wind/week_2/day/4.webp",
+   "paths": [
+    "wind/week_2/day/4.webp",
+    "wind/week_4/day/4.webp"
+   ],
+   "pair": "R48"
   }
  ]
 }

@@ -163,10 +163,11 @@ describe('Al\'s place ruling is what is wired', () => {
     const tagged = RULED.filter((r) => r.verdict === 'TAG');
     expect(tagged.length).toBe(56);
     // A line that left with a photograph retired on record (the pilot pairs, 2026-09-25: P43 "The
-    // Helderberg is clear…" was on the still wind yard P03 replaced) is history the same way.
+    // Helderberg is clear…" was on the still wind yard P03 replaced) is history the same way. 43 since the
+    // rolling page's ruling (2026-09-27): P19 "Nobody on this side of Gqeberha…" was on the flag and palm R48 replaced.
     const RETIRED = new Set((read('../review/set-001-lines-bespoke-final.json').pilotPairs?.retired || []).flatMap((r) => r.lines));
     const stillTagged = tagged.filter((r) => !SEASON_CUT.has(r.en) && !RETIRED.has(r.en));
-    expect(stillTagged.length).toBe(44);
+    expect(stillTagged.length).toBe(43);
     for (const r of stillTagged) {
       expect(live.has(r.en), r.key).toBe(true);
       expect(heroLines.HERO_LINE_TAGS[r.en]?.region, r.key).toEqual(r.region);

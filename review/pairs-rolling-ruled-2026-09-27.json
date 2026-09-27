@@ -1,0 +1,527 @@
+{
+ "generated": "2026-09-27T06:48:35.761Z",
+ "ruledBy": "Al, pairs waiting (review/pairs-rolling.html)",
+ "pairs": [
+  {
+   "id": "R01",
+   "batch": 2,
+   "line": "The cold knows exactly where your blanket has a gap.",
+   "use": "USE",
+   "take": "1",
+   "grade": "FINE",
+   "af": {
+    "verdict": "OK",
+    "proposal": "Die koue weet presies waar jou kombers oopstaan.",
+    "text": ""
+   }
+  },
+  {
+   "id": "R02",
+   "batch": 2,
+   "line": "The sky's keeping tonight to itself.",
+   "use": "USE",
+   "take": "1",
+   "grade": "LOVE",
+   "af": {
+    "verdict": "OK",
+    "proposal": "Vanaand hou die lug sy stories vir homself.",
+    "text": ""
+   }
+  },
+  {
+   "id": "R03",
+   "batch": 2,
+   "line": "The sun got here early. You don't have to.",
+   "use": "USE",
+   "take": "2",
+   "grade": "LOVE",
+   "af": {
+    "verdict": "OK",
+    "proposal": "Die son is vroeg op. Jy hoef nie te wees nie.",
+    "text": ""
+   }
+  },
+  {
+   "id": "R04",
+   "batch": 2,
+   "line": "The sun has cleared its schedule for you.",
+   "use": "NO",
+   "take": "NEITHER",
+   "grade": "MEH",
+   "af": {
+    "verdict": "OK",
+    "proposal": "Die son het vandag net vir jou tyd.",
+    "text": ""
+   }
+  },
+  {
+   "id": "R05",
+   "batch": 2,
+   "line": "The sun's awake. You're still negotiating.",
+   "use": "USE",
+   "take": "2",
+   "grade": "LOVE",
+   "af": {
+    "verdict": "OK",
+    "proposal": "Die son is wakker. Jy probeer nog uitstel.",
+    "text": ""
+   }
+  },
+  {
+   "id": "R06",
+   "batch": 3,
+   "line": "The sun's behaving. Don't make it self-conscious.",
+   "use": "USE",
+   "take": "NEITHER",
+   "grade": "FINE",
+   "af": {
+    "verdict": "FIX",
+    "proposal": "Die son gedra hom. Moenie hom skaam maak nie.",
+    "text": "It is a bit too vague in a way. The sun behaving is fine, its the dont make it self-conscience bit that isnt working. Id rather keep the original with the people jogging then another"
+   }
+  },
+  {
+   "id": "R07",
+   "batch": 3,
+   "line": "The sky saved its best mood for last.",
+   "use": "USE",
+   "take": "NEITHER",
+   "grade": "FINE",
+   "af": {
+    "verdict": "FIX",
+    "proposal": "Die lug het sy beste bui vir laaste gebêre.",
+    "text": "I want to keep the original image, i must have marked the page wrong. Plus this image is now the 5th image with the same theme, somebody walking outside and getting the sun in their eyes. "
+   }
+  },
+  {
+   "id": "R08",
+   "batch": 3,
+   "line": "The weather's giving you one more hour. Use it.",
+   "use": "USE",
+   "take": "1",
+   "grade": "FINE",
+   "af": {
+    "verdict": "FIX",
+    "proposal": "Die weer gee jou nog 'n uur. Benut hom.",
+    "text": "The line is fine, and i would rather keep the original image and not have this one. Again, same theme, somebody standing outside with the sun in their eyes..."
+   }
+  },
+  {
+   "id": "R09",
+   "batch": 3,
+   "line": "The sun clocked in angry.",
+   "use": "USE",
+   "take": "NEITHER",
+   "grade": "FINE",
+   "af": {
+    "verdict": "FIX",
+    "proposal": "Die son het sommer vies opgedaag.",
+    "text": "Happy with the line, image unusable since the pavement in both are cutting of the womens legs. Badly made image. "
+   }
+  },
+  {
+   "id": "R10",
+   "batch": 3,
+   "line": "The heat has no plans to go home.",
+   "use": "USE",
+   "take": "1",
+   "grade": "FINE",
+   "af": {
+    "verdict": "OK",
+    "proposal": "Die hitte dink nie eens aan huis toe gaan nie.",
+    "text": ""
+   }
+  },
+  {
+   "id": "R11",
+   "batch": 4,
+   "line": "This heat has fired the cold side of your pillow.",
+   "use": "USE",
+   "take": "NEITHER",
+   "grade": "FINE",
+   "af": {
+    "verdict": "FIX",
+    "proposal": "Dié hitte het jou kussing se koel kant laat bedank.",
+    "text": "Again, same theme, someone on their lawn in heat just like you did in clear. Read the line, you could use that as inspiration for the image rather. "
+   }
+  },
+  {
+   "id": "R12",
+   "batch": 4,
+   "line": "The sky's keeping the good light to itself.",
+   "use": "USE",
+   "take": "NEITHER",
+   "grade": "FINE",
+   "af": {
+    "verdict": "FIX",
+    "proposal": "Die lug hou vandag al die mooi lig vir homself.",
+    "text": "SAME FUCKING THEME AGAIN!!! THE LINE IS FINE."
+   }
+  },
+  {
+   "id": "R13",
+   "batch": 4,
+   "line": "The clouds have sent the daylight home early.",
+   "use": "USE",
+   "take": "NEITHER",
+   "grade": "FINE",
+   "af": {
+    "verdict": "FIX",
+    "proposal": "Die wolke het die daglig vroeg huis toe gestuur.",
+    "text": "SAME THING, LINE IS GREAT BUT THE IMAGE IS SAME THEME AGAIN."
+   }
+  },
+  {
+   "id": "R14",
+   "batch": 4,
+   "line": "The rain's making your commute work overtime.",
+   "use": "USE",
+   "take": "2",
+   "grade": "FINE",
+   "af": {
+    "verdict": "FIX",
+    "proposal": "Die reën laat jou pendel vandag oortyd werk.",
+    "text": "SAME THING, LINE IS FINE. IMAGE IS SAME SHIT AGAIN."
+   }
+  },
+  {
+   "id": "R15",
+   "batch": 4,
+   "line": "The rain's settled in. Your plans can fend for themselves.",
+   "use": "USE",
+   "take": "1",
+   "grade": "FINE",
+   "af": {
+    "verdict": "FIX",
+    "proposal": "Die reën het ingetrek. Jou planne moet nou vir hulself sorg.",
+    "text": "LINE IS FINE, IMAGE IS SAME SHIT AS THE REST"
+   }
+  },
+  {
+   "id": "R18",
+   "batch": 5,
+   "line": "The storm was up before you. Looking for trouble.",
+   "use": "USE",
+   "take": "1",
+   "grade": "FINE",
+   "af": {
+    "verdict": "OK",
+    "proposal": "Die storm was voor jou wakker. Sommer lus vir moeilikheid.",
+    "text": ""
+   }
+  },
+  {
+   "id": "R22",
+   "batch": 5,
+   "line": "The wind's arguing with everything you own.",
+   "use": "USE",
+   "take": "1",
+   "grade": "FINE",
+   "af": {
+    "verdict": "FIX",
+    "proposal": "Die wind stry met alles wat joune is.",
+    "text": "LINE IS FINE IMAGE IS SAME AS THE REST"
+   }
+  },
+  {
+   "id": "R24",
+   "batch": 5,
+   "line": "The wind knows where you live. Good luck.",
+   "use": "USE",
+   "take": "1",
+   "grade": "FINE",
+   "af": {
+    "verdict": "OK",
+    "proposal": "Die wind weet waar jy bly. Sterkte.",
+    "text": ""
+   }
+  },
+  {
+   "id": "R25",
+   "batch": 5,
+   "line": "Tonight, even your hair needs a seatbelt.",
+   "use": "USE",
+   "take": "1",
+   "grade": "FINE",
+   "af": {
+    "verdict": "FIX",
+    "proposal": "Vanaand kort selfs jou hare ’n veiligheidsgordel.",
+    "text": "LINE IS FINE, IMAGE THE SAME SHIT AS THE REST. ALL YOUR WIND IMAGES ARE BASICALLY THE SAME. "
+   }
+  },
+  {
+   "id": "R26",
+   "batch": 5,
+   "line": "This wind has taken the last of my dignity.",
+   "use": "USE",
+   "take": "1",
+   "grade": "FINE",
+   "af": {
+    "verdict": "FIX",
+    "proposal": "Dié wind het my laaste bietjie waardigheid ook gevat.",
+    "text": "LINE IS FINE, IMAGE THE SAME SHIT AS THE REST. ALL YOUR WIND IMAGES ARE BASICALLY THE SAME. "
+   }
+  },
+  {
+   "id": "R30",
+   "batch": 6,
+   "line": "The sun’s here. Your fingers remain unconvinced.",
+   "use": "USE",
+   "take": "1",
+   "grade": "FINE",
+   "af": {
+    "verdict": "FIX",
+    "proposal": "Die son is hier. Jou vingers glo hom nie.",
+    "text": "LINE IS FINE, IMAGE THE SAME SHIT AS THE REST. "
+   }
+  },
+  {
+   "id": "R31",
+   "batch": 6,
+   "line": "The cold’s clocked in early. It plans to stay late.",
+   "use": "USE",
+   "take": "1",
+   "grade": "FINE",
+   "af": {
+    "verdict": "FIX",
+    "proposal": "Die koue het vroeg begin. Hy gaan nêrens nie.",
+    "text": "LINE IS FINE, IMAGE THE SAME SHIT AS THE REST. "
+   }
+  },
+  {
+   "id": "R44",
+   "batch": 6,
+   "line": "The sky has put the whole day on mute.",
+   "use": "USE",
+   "take": "2",
+   "grade": "FINE",
+   "af": {
+    "verdict": "FIX",
+    "proposal": "Die lug het vandag se klank afgesit.",
+    "text": "LINE IS FINE, IMAGE THE SAME SHIT AS THE REST. "
+   }
+  },
+  {
+   "id": "R48",
+   "batch": 6,
+   "line": "The wind’s arguing with everyone. You’re next.",
+   "use": "USE",
+   "take": "2",
+   "grade": "LOVE",
+   "af": {
+    "verdict": "OK",
+    "proposal": "Die wind stry met almal. Jy’s volgende.",
+    "text": ""
+   }
+  },
+  {
+   "id": "R49",
+   "batch": 6,
+   "line": "The wind’s picked a fight with your commute.",
+   "use": "USE",
+   "take": "2",
+   "grade": "FINE",
+   "af": {
+    "verdict": "FIX",
+    "proposal": "Die wind soek skoor met jou pad huis toe.",
+    "text": "LINE IS FINE, IMAGE THE SAME SHIT AS THE REST. "
+   }
+  },
+  {
+   "id": "R50",
+   "batch": 7,
+   "line": "The wind has no respect for personal space.",
+   "use": "USE",
+   "take": "1",
+   "grade": "FINE",
+   "af": {
+    "verdict": "FIX",
+    "proposal": "Die wind ken vandag geen grense nie.",
+    "text": "LINE IS FINE, IMAGE THE SAME SHIT AS THE REST. "
+   }
+  },
+  {
+   "id": "R52",
+   "batch": 7,
+   "line": "The sun's clocked in before you have.",
+   "use": "USE",
+   "take": "1",
+   "grade": "FINE",
+   "af": {
+    "verdict": "FIX",
+    "proposal": "Die son is al aan diens. Jy nog nie.",
+    "text": "LINE IS FINE, IMAGE THE SAME SHIT AS THE REST. "
+   }
+  },
+  {
+   "id": "R53",
+   "batch": 7,
+   "line": "The heat was awake before you.",
+   "use": "USE",
+   "take": "1",
+   "grade": "FINE",
+   "af": {
+    "verdict": "FIX",
+    "proposal": "Die hitte was voor jou wakker.",
+    "text": "LINE IS FINE, IMAGE THE SAME SHIT AS THE REST. "
+   }
+  },
+  {
+   "id": "R54",
+   "batch": 7,
+   "line": "Even the night is refusing to cool down.",
+   "use": "USE",
+   "take": "2",
+   "grade": "FINE",
+   "af": {
+    "verdict": "FIX",
+    "proposal": "Die nag weier om af te koel.",
+    "text": "LINE IS FINE, IMAGE THE SAME SHIT AS THE REST. "
+   }
+  },
+  {
+   "id": "R55",
+   "batch": 7,
+   "line": "The rain's handling your wake-up call.",
+   "use": "USE",
+   "take": "1",
+   "grade": "FINE",
+   "af": {
+    "verdict": "FIX",
+    "proposal": "Die reën doen sommer jou wekker se werk.",
+    "text": "LINE IS FINE, IMAGE THE SAME SHIT AS THE REST. "
+   }
+  },
+  {
+   "id": "R56",
+   "batch": 8,
+   "line": "The rain arrived early. Your bed wins the argument.",
+   "use": "USE",
+   "take": "1",
+   "grade": "FINE",
+   "af": {
+    "verdict": "FIX",
+    "proposal": "Die reën het vroeg opgedaag. Jou bed wen dié argument.",
+    "text": "LINE IS FINE, IMAGE THE SAME SHIT AS THE REST. "
+   }
+  },
+  {
+   "id": "R57",
+   "batch": 8,
+   "line": "The rain has no off switch. Neither does your kettle.",
+   "use": "USE",
+   "take": "1",
+   "grade": "FINE",
+   "af": {
+    "verdict": "FIX",
+    "proposal": "Die reën het nie ’n af-knoppie nie. Jou ketel ook nie.",
+    "text": "LINE IS FINE, IMAGE THE SAME SHIT AS THE REST. "
+   }
+  },
+  {
+   "id": "R58",
+   "batch": 8,
+   "line": "The sky woke up angry. You’re awake now too.",
+   "use": "USE",
+   "take": "2",
+   "grade": "FINE",
+   "af": {
+    "verdict": "FIX",
+    "proposal": "Die hemel het met ’n humeur wakker geword. Nou is jy ook wakker.",
+    "text": "LINE IS FINE, IMAGE THE SAME SHIT AS THE REST. "
+   }
+  },
+  {
+   "id": "R59",
+   "batch": 8,
+   "line": "The sun’s behaving itself. You should probably enjoy it.",
+   "use": "USE",
+   "take": "1",
+   "grade": "FINE",
+   "af": {
+    "verdict": "FIX",
+    "proposal": "Die son gedra hom vandag. Jy kan dit maar geniet.",
+    "text": "LINE IS FINE, IMAGE THE SAME SHIT AS THE REST. "
+   }
+  },
+  {
+   "id": "R60",
+   "batch": 8,
+   "line": "In this weather, you pay rent in cups of tea.",
+   "use": "USE",
+   "take": "1",
+   "grade": "FINE",
+   "af": {
+    "verdict": "FIX",
+    "proposal": "In dié weer betaal jy huur met koppies tee.",
+    "text": "LINE IS FINE, IMAGE THE SAME SHIT AS THE REST. "
+   }
+  },
+  {
+   "id": "X01",
+   "batch": 9,
+   "line": "The fog got here first. Smug, isn't it?",
+   "use": "USE",
+   "take": "1",
+   "grade": "FINE",
+   "af": {
+    "verdict": "FIX",
+    "proposal": "Die mis het jou voorgespring. Astrant, nè?",
+    "text": "LINE IS FINE, IMAGE THE SAME SHIT AS THE REST. "
+   }
+  },
+  {
+   "id": "X02",
+   "batch": 9,
+   "line": "The fog's swallowed half the world. Apparently, that's enough.",
+   "use": "USE",
+   "take": "2",
+   "grade": "FINE",
+   "af": {
+    "verdict": "FIX",
+    "proposal": "Die mis het klaar die helfte ingesluk. Dis glo genoeg.",
+    "text": "LINE IS FINE, IMAGE THE SAME SHIT AS THE REST. "
+   }
+  },
+  {
+   "id": "X03",
+   "batch": 9,
+   "line": "The fog has cancelled the horizon. You weren't using it, were you?",
+   "use": "USE",
+   "take": "1",
+   "grade": "FINE",
+   "af": {
+    "verdict": "FIX",
+    "proposal": "Die mis het die horison afgeskaf. Jy het hom tog nie nodig gehad nie.",
+    "text": "LINE IS FINE, IMAGE THE SAME SHIT AS THE REST. "
+   }
+  },
+  {
+   "id": "X04",
+   "batch": 9,
+   "line": "The fog knows where you live. Sleep tight.",
+   "use": "USE",
+   "take": "1",
+   "grade": "FINE",
+   "af": {
+    "verdict": "FIX",
+    "proposal": "Die mis weet waar jy bly. Slaap gerus.",
+    "text": "LINE IS FINE, IMAGE THE SAME SHIT AS THE REST. "
+   }
+  },
+  {
+   "id": "X05",
+   "batch": 9,
+   "line": "The heat's already showing off. You haven't had coffee yet.",
+   "use": "NO",
+   "take": "1",
+   "grade": "FINE",
+   "af": {
+    "verdict": "FIX",
+    "proposal": "Die hitte spog al klaar. Jy het nog nie eens koffie gehad nie.",
+    "text": "LINE IS FINE, IMAGE THE SAME SHIT AS THE REST. "
+   }
+  }
+ ],
+ "other": ""
+}

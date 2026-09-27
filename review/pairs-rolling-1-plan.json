@@ -1,0 +1,421 @@
+{
+ "note": "The rolling page's first ruling (Al, 27 Sept 2026, review/pairs-rolling-ruled-2026-09-27.json; his brief the same day). These eight keep their new photo, take as Al marked, Afrikaans as proposed. Each goes in place of the photo it was made for, or beside it where Al kept that photo on the meh page (R10: weeks 2 and 4). Everywhere else the original photo stays. R04, R06 and X05 are out; every other line he rated FINE or LOVE goes into the condition bank (review/pairs-rolling-1-bank.json), less near-repeats.",
+ "ruling": "review/pairs-rolling-ruled-2026-09-27.json (Al, 27 Sept 2026)",
+ "ruledBy": "Al: USE, the rolling page (review/pairs-rolling-ruled-2026-09-27.json), 27 Sept 2026; his brief names this pair's take",
+ "afReason": "Al's ruling of 27 Sept 2026 (review/pairs-rolling-ruled-2026-09-27.json and his brief): the kept pairs' Afrikaans as proposed",
+ "pairs": [
+  {
+   "id": "R01",
+   "condition": "cold",
+   "time": "night",
+   "line": "The cold knows exactly where your blanket has a gap.",
+   "af": "Die koue weet presies waar jou kombers oopstaan.",
+   "slots": [
+    "cold/week_2/night/6.webp",
+    "cold/week_4/night/6.webp"
+   ],
+   "expect": "f3255e596b2c",
+   "why": "replaces The blankets and lantern (meh page: REPLACE)",
+   "anchorY": 15,
+   "source": "C:\\Users\\27741\\.codex\\generated_images\\01a0def3-9adb-7d50-ad05-60c29988c85c\\exec-e1097b48-30f9-4266-b443-17a30e459c59.png",
+   "take": 1,
+   "batch": 2,
+   "grade": "FINE"
+  },
+  {
+   "id": "R02",
+   "condition": "cloudy",
+   "time": "night",
+   "line": "The sky's keeping tonight to itself.",
+   "af": "Vanaand hou die lug sy stories vir homself.",
+   "slots": [
+    "cloudy/week_1/night/6.webp",
+    "cloudy/week_2/night/6.webp",
+    "cloudy/week_3/night/6.webp",
+    "cloudy/week_4/night/6.webp"
+   ],
+   "expect": "f3255e596b2c",
+   "why": "replaces The blankets and lantern (meh page: REPLACE)",
+   "anchorY": 23,
+   "source": "C:\\Users\\27741\\.codex\\generated_images\\01a0def5-682a-70a3-ae46-bffa61cee101\\exec-9a04265b-130a-4ef0-aaec-d0314be36bab.png",
+   "take": 1,
+   "batch": 2,
+   "grade": "LOVE"
+  },
+  {
+   "id": "R03",
+   "condition": "clear",
+   "time": "dawn",
+   "line": "The sun got here early. You don't have to.",
+   "af": "Die son is vroeg op. Jy hoef nie te wees nie.",
+   "slots": [
+    "clear/week_1/dawn/7.webp",
+    "clear/week_2/dawn/7.webp",
+    "clear/week_3/dawn/7.webp",
+    "clear/week_4/dawn/7.webp"
+   ],
+   "expect": "089f865e3f14",
+   "why": "replaces The man watering the lawn (meh page: REPLACE)",
+   "anchorY": 18,
+   "source": "C:\\Users\\27741\\.codex\\generated_images\\01a0def7-59b0-7853-bd93-95f1044ca338\\exec-f08343d2-68cb-4aaa-913a-e54a0cb591cf.png",
+   "take": 2,
+   "batch": 2,
+   "grade": "LOVE"
+  },
+  {
+   "id": "R05",
+   "condition": "clear",
+   "time": "dawn",
+   "line": "The sun's awake. You're still negotiating.",
+   "af": "Die son is wakker. Jy probeer nog uitstel.",
+   "slots": [
+    "clear/week_1/dawn/2.webp",
+    "clear/week_2/dawn/2.webp",
+    "clear/week_3/dawn/2.webp",
+    "clear/week_4/dawn/2.webp"
+   ],
+   "expect": "73d202837435",
+   "why": "replaces Three scholars grinning at the camera; glossy; the sun does nothing to them (meh page: REPLACE)",
+   "anchorY": 26,
+   "source": "C:\\Users\\27741\\.codex\\generated_images\\01a0defb-06c6-7e11-b637-81cc10985d11\\exec-9a93f061-4795-4d98-ba00-6532666c1c6d.png",
+   "take": 2,
+   "batch": 2,
+   "grade": "LOVE"
+  },
+  {
+   "id": "R10",
+   "condition": "heat",
+   "time": "dusk",
+   "line": "The heat has no plans to go home.",
+   "af": "Die hitte dink nie eens aan huis toe gaan nie.",
+   "slots": [
+    "heat/week_2/dusk/5.webp",
+    "heat/week_4/dusk/5.webp"
+   ],
+   "expect": "93f4a43551af",
+   "why": "beside the photo Al kept on the meh page (Three friends with ice creams on a promenade, smiling at us; lifestyle stock): the new photo takes weeks 2 and 4, the kept one stays on weeks 1 and 3",
+   "anchorY": 20,
+   "source": "C:\\Users\\27741\\.codex\\generated_images\\01a0df3d-38b9-7381-9476-92c2fbdbc559\\exec-2290816f-4691-44fb-b296-f1f5811d0171.png",
+   "take": 1,
+   "batch": 3,
+   "grade": "FINE"
+  },
+  {
+   "id": "R18",
+   "condition": "storm",
+   "time": "dawn",
+   "line": "The storm was up before you. Looking for trouble.",
+   "af": "Die storm was voor jou wakker. Sommer lus vir moeilikheid.",
+   "slots": [
+    "storm/week_1/dawn/7.webp",
+    "storm/week_2/dawn/7.webp",
+    "storm/week_3/dawn/7.webp",
+    "storm/week_4/dawn/7.webp"
+   ],
+   "expect": "29a289619727",
+   "why": "replaces Model pose in a robe with a mug (meh page: REPLACE)",
+   "anchorY": 20,
+   "source": "C:\\Users\\27741\\pw-pairs-job\\takes\\batch-5\\R18-1.png",
+   "take": 1,
+   "batch": 5,
+   "grade": "FINE"
+  },
+  {
+   "id": "R24",
+   "condition": "wind",
+   "time": "night",
+   "line": "The wind knows where you live. Good luck.",
+   "af": "Die wind weet waar jy bly. Sterkte.",
+   "slots": [
+    "wind/week_1/night/1.webp",
+    "wind/week_2/night/1.webp",
+    "wind/week_3/night/1.webp",
+    "wind/week_4/night/1.webp"
+   ],
+   "expect": "eb7873fd7acb",
+   "why": "replaces Row of palms bent over a night promenade, no one (meh page: REPLACE)",
+   "anchorY": 28,
+   "source": "C:\\Users\\27741\\pw-pairs-job\\takes\\batch-5\\R24-1.png",
+   "take": 1,
+   "batch": 5,
+   "grade": "FINE"
+  },
+  {
+   "id": "R48",
+   "condition": "wind",
+   "time": "day",
+   "line": "The wind’s arguing with everyone. You’re next.",
+   "af": "Die wind stry met almal. Jy’s volgende.",
+   "slots": [
+    "wind/week_2/day/4.webp",
+    "wind/week_4/day/4.webp"
+   ],
+   "expect": "55504e5b8143",
+   "why": "replaces SA flag and palm straining, no person (meh page: REPLACE)",
+   "anchorY": 18,
+   "source": "C:\\Users\\27741\\pw-pairs-job\\takes\\batch-6\\R48-2.png",
+   "take": 2,
+   "batch": 6,
+   "grade": "LOVE"
+  }
+ ],
+ "appliedRuns": [],
+ "applied": {
+  "on": "2026-09-27",
+  "applied": [
+   {
+    "id": "R01",
+    "hash": "cd4bd5c64c5d",
+    "canonical": "dfd3223b7fdd…",
+    "bytes": 298382,
+    "quality": 92,
+    "slots": [
+     "cold/week_2/night/6.webp",
+     "cold/week_4/night/6.webp"
+    ],
+    "replaced": "f3255e596b2c"
+   },
+   {
+    "id": "R02",
+    "hash": "aa3ccab85b60",
+    "canonical": "56b21b86357e…",
+    "bytes": 289152,
+    "quality": 92,
+    "slots": [
+     "cloudy/week_1/night/6.webp",
+     "cloudy/week_2/night/6.webp",
+     "cloudy/week_3/night/6.webp",
+     "cloudy/week_4/night/6.webp"
+    ],
+    "replaced": "f3255e596b2c"
+   },
+   {
+    "id": "R03",
+    "hash": "1108cfd1192f",
+    "canonical": "9f1b45bc7a9f…",
+    "bytes": 291622,
+    "quality": 85,
+    "slots": [
+     "clear/week_1/dawn/7.webp",
+     "clear/week_2/dawn/7.webp",
+     "clear/week_3/dawn/7.webp",
+     "clear/week_4/dawn/7.webp"
+    ],
+    "replaced": "089f865e3f14"
+   },
+   {
+    "id": "R05",
+    "hash": "844f8b7f5b89",
+    "canonical": "776628b57784…",
+    "bytes": 295038,
+    "quality": 85,
+    "slots": [
+     "clear/week_1/dawn/2.webp",
+     "clear/week_2/dawn/2.webp",
+     "clear/week_3/dawn/2.webp",
+     "clear/week_4/dawn/2.webp"
+    ],
+    "replaced": "73d202837435"
+   },
+   {
+    "id": "R10",
+    "hash": "15e8f0aa4baa",
+    "canonical": "ecd603eed462…",
+    "bytes": 304836,
+    "quality": 91,
+    "slots": [
+     "heat/week_2/dusk/5.webp",
+     "heat/week_4/dusk/5.webp"
+    ],
+    "replaced": "93f4a43551af"
+   },
+   {
+    "id": "R18",
+    "hash": "e400ca864a50",
+    "canonical": "562b8f0e420d…",
+    "bytes": 189080,
+    "quality": 92,
+    "slots": [
+     "storm/week_1/dawn/7.webp",
+     "storm/week_2/dawn/7.webp",
+     "storm/week_3/dawn/7.webp",
+     "storm/week_4/dawn/7.webp"
+    ],
+    "replaced": "29a289619727"
+   },
+   {
+    "id": "R24",
+    "hash": "6bb604217e96",
+    "canonical": "01050ef99a68…",
+    "bytes": 279768,
+    "quality": 92,
+    "slots": [
+     "wind/week_1/night/1.webp",
+     "wind/week_2/night/1.webp",
+     "wind/week_3/night/1.webp",
+     "wind/week_4/night/1.webp"
+    ],
+    "replaced": "eb7873fd7acb"
+   },
+   {
+    "id": "R48",
+    "hash": "e8500f5dfaee",
+    "canonical": "a5c402f31b7a…",
+    "bytes": 297592,
+    "quality": 92,
+    "slots": [
+     "wind/week_2/day/4.webp",
+     "wind/week_4/day/4.webp"
+    ],
+    "replaced": "55504e5b8143"
+   }
+  ],
+  "retired": [
+   {
+    "hash": "eb7873fd7acb",
+    "image": "wind/week_1/night/1.webp",
+    "paths": [
+     "wind/week_1/night/1.webp",
+     "wind/week_2/night/1.webp",
+     "wind/week_3/night/1.webp",
+     "wind/week_4/night/1.webp"
+    ],
+    "byPair": "R24",
+    "lines": [
+     "The moon is out and the palms have not stopped moving since sunset.",
+     "The moon is holding still and everything else up there is not.",
+     "Whatever is landing on that road is not rain, it is the sea arriving sideways.",
+     "The palms have been making that noise for hours and nobody is awake to mind.",
+     "The road is empty, every light is on, and the wind has the place to itself."
+    ],
+    "anchorY": 83
+   },
+   {
+    "hash": "55504e5b8143",
+    "image": "wind/week_2/day/4.webp",
+    "paths": [
+     "wind/week_2/day/4.webp",
+     "wind/week_4/day/4.webp"
+    ],
+    "byPair": "R48",
+    "lines": [
+     "The flag is doing its patriotic duty at about sixty kilometres an hour.",
+     "That shade sail is one good gust away from becoming a spinnaker.",
+     "The palm has given up on symmetry and committed to one direction.",
+     "Nobody on this side of Gqeberha is hanging washing out today.",
+     "The aloe is unbothered, which is the entire point of an aloe."
+    ],
+    "anchorY": null
+   },
+   {
+    "hash": "29a289619727",
+    "image": "storm/week_1/dawn/7.webp",
+    "paths": [
+     "storm/week_1/dawn/7.webp",
+     "storm/week_2/dawn/7.webp",
+     "storm/week_3/dawn/7.webp",
+     "storm/week_4/dawn/7.webp"
+    ],
+    "byPair": "R18",
+    "lines": [
+     "Rusks first. Panic later."
+    ],
+    "anchorY": 63
+   },
+   {
+    "hash": "f3255e596b2c",
+    "image": "cold/week_2/night/6.webp",
+    "paths": [
+     "cold/week_2/night/6.webp",
+     "cold/week_4/night/6.webp"
+    ],
+    "byPair": "R01",
+    "lines": [
+     "Cloudy night. Bravery in blanket form.",
+     "The sky closed. The evening didn’t.",
+     "The sky brought nothing tonight, so the lantern is carrying the whole evening.",
+     "Blankets outside in the dark: the evening is cold, the company is not.",
+     "Not one star made it through that lid, and nobody has noticed yet."
+    ],
+    "anchorY": 89
+   },
+   {
+    "hash": "089f865e3f14",
+    "image": "clear/week_1/dawn/7.webp",
+    "paths": [
+     "clear/week_1/dawn/7.webp",
+     "clear/week_2/dawn/7.webp",
+     "clear/week_3/dawn/7.webp",
+     "clear/week_4/dawn/7.webp"
+    ],
+    "byPair": "R03",
+    "lines": [
+     "The Weber has been watching him water that lawn for twenty minutes now.",
+     "Coffee in one hand, hose in the other, and the whole day still ahead.",
+     "This is the only twenty minutes of the day that belong to him.",
+     "Nobody inside that house is awake yet and that is entirely the plan.",
+     "This is the weather the weekend was invented for.",
+     "Weather this perfect is on loan. The southeaster keeps receipts.",
+     "That dry patch is what a week of cloudless skies does to a lawn.",
+     "A sky this clear hands you one cool hour, and this is it.",
+     "The Weber's been waiting all week for this."
+    ],
+    "anchorY": 55
+   },
+   {
+    "hash": "73d202837435",
+    "image": "clear/week_1/dawn/2.webp",
+    "paths": [
+     "clear/week_1/dawn/2.webp",
+     "clear/week_2/dawn/2.webp",
+     "clear/week_3/dawn/2.webp",
+     "clear/week_4/dawn/2.webp"
+    ],
+    "byPair": "R05",
+    "lines": [
+     "Somewhere an estate agent is saying 'lifestyle'.",
+     "This is the weather we brag about overseas.",
+     "Not a breath of haze this morning; even the mountain got up early."
+    ],
+    "anchorY": 80
+   }
+  ],
+  "benchChanges": [
+   {
+    "sha1": "f3255e596b2c",
+    "pair": "R02",
+    "slotsFilled": [
+     "cloudy/week_1/night/6.webp",
+     "cloudy/week_2/night/6.webp",
+     "cloudy/week_3/night/6.webp",
+     "cloudy/week_4/night/6.webp"
+    ],
+    "slotsLeft": []
+   },
+   {
+    "sha1": "f3255e596b2c",
+    "removed": true,
+    "reason": "every slot it benched now holds a pilot pair; the photo stays where it moved",
+    "entry": {
+     "sha1": "f3255e596b2c",
+     "sha256": "544c1615ccb0a07111eb186cd30d144ef25e9534f00d53228ad7d117d935c25e",
+     "slots": [
+      "cloudy/week_1/night/6.webp",
+      "cloudy/week_2/night/6.webp",
+      "cloudy/week_3/night/6.webp",
+      "cloudy/week_4/night/6.webp"
+     ],
+     "fallback": "cloudy/week_1/night/1.webp",
+     "movedTo": [
+      "cold/week_2/night/6.webp",
+      "cold/week_4/night/6.webp"
+     ],
+     "reason": "Friends in blankets and knitted jumpers around a lantern; one of its lines says the evening is cold.",
+     "benchedOn": "2026-09-23",
+     "ruling": "review/bucket-check-ruled.json"
+    }
+   }
+  ],
+  "curatedBodies": 303
+ }
+}

@@ -155,9 +155,12 @@ describe('HERO_LINE_TAGS carries every bank line\'s months and region', () => {
     // (review/seasonal-ruled.json, 2026-09-23): eight tagged lines were CUT, all of
     // them season rows. 69 after the pilot pairs (2026-09-25): "'Just one sundowner'
     // — famous last words…" left with the fairy-light dinner photo P10 replaced (its
-    // bank row stays). The floor guards against tags being dropped in bulk, so it
-    // tracks the real count rather than being loosened.
-    expect(checked).toBeGreaterThanOrEqual(69);
+    // bank row stays). 67 after the rolling page's ruling (2026-09-27): "Rusks first.
+    // Panic later." left with the robe photo R18 replaced, and "Weather this perfect is
+    // on loan…" with the man watering the lawn R03 replaced (both bank rows stay).
+    // The floor guards against tags being dropped in bulk, so it tracks the real
+    // count rather than being loosened.
+    expect(checked).toBeGreaterThanOrEqual(67);
   });
 
   it('every tag is keyed by a live English line and carries only months and region', () => {

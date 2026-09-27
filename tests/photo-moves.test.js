@@ -25,9 +25,15 @@ const moves = bucket.rows.filter((r) => r.verdict === 'MOVE');
 // dog, and the washing photo moved to cold-clear). Their bench entries had to leave the bench file —
 // an entry with no slots left reads as benched everywhere — and are kept whole in the pairs record.
 // The move itself is unchanged: each photo is still served where Al moved it.
-const pairsRecord = read('../review/pilot-pairs.json');
-const superseded = new Map((pairsRecord.applied?.benchChanges || []).filter((c) => c.removed).map((c) => [c.sha1, c.entry]));
-const pairHashAt = new Map((pairsRecord.applied?.applied || []).flatMap((a) => a.slots.map((s) => [s, a.hash])));
+// Every pairs record since (review/pairs-batch-1-plan.json, review/pairs-rolling-1-plan.json) is read the same way,
+// in order, so a later pair's slot wins. The rolling page's ruling (2026-09-27) went further for #69, the blankets:
+// Al marked it REPLACE on the meh page and kept R01 and R02, which took its old cloudy slots AND its cold slots, so
+// it retired on record (set-001-lines-bespoke-final.json pilotPairs.retired). A retired move is checked as retired.
+const pairRecords = (final.pilotPairs?.records || ['review/pilot-pairs.json']).map((r) => read(`../${r}`));
+const appliedRuns = pairRecords.flatMap((rec) => [...(rec.appliedRuns || []), ...(rec.applied ? [rec.applied] : [])]);
+const superseded = new Map(appliedRuns.flatMap((a) => (a.benchChanges || []).filter((c) => c.removed).map((c) => [c.sha1, c.entry])));
+const pairHashAt = new Map(appliedRuns.flatMap((a) => (a.applied || []).flatMap((x) => x.slots.map((s) => [s, x.hash]))));
+const retired = new Set((final.pilotPairs?.retired || []).map((r) => r.hash));
 const benchOf = new Map([...superseded, ...bench.map((b) => [b.sha1, b])]);
 const BG = (rel) => new URL(`../assets/images/bg/${rel}`, import.meta.url);
 const sha1Of = (rel) => createHash('sha1').update(readFileSync(BG(rel))).digest('hex').slice(0, 12);
@@ -68,8 +74,15 @@ describe('photo moves — Al\'s rulings of 2026-09-23', () => {
   });
 
   it('each placed photograph takes weeks 2 and 4 of its own weekday, same time of day, in the bucket Al named', () => {
-    const placed = moves.filter((r) => benchOf.get(r.sha1).movedTo);
-    expect(placed).toHaveLength(6);
+    const placed = moves.filter((r) => benchOf.get(r.sha1).movedTo && !retired.has(r.sha1));
+    expect(placed).toHaveLength(5);
+    // #69 was placed too, then retired: every slot it moved to now holds the pair that replaced it
+    const gone = moves.filter((r) => benchOf.get(r.sha1).movedTo && retired.has(r.sha1));
+    expect(gone.map((r) => r.n)).toEqual([69]);
+    for (const r of gone) for (const s of benchOf.get(r.sha1).movedTo) {
+      expect(pairHashAt.has(s), `#${r.n} ${s}`).toBe(true);
+      expect(sha1Of(s), `#${r.n} ${s} holds its pair`).toBe(pairHashAt.get(s));
+    }
     const taken = new Set();
     for (const r of placed) {
       const dest = benchOf.get(r.sha1).movedTo;
@@ -96,7 +109,7 @@ describe('photo moves — Al\'s rulings of 2026-09-23', () => {
   });
 
   it('crop anchors travel: phone and desktop crops at the new slots are the photograph\'s own', () => {
-    for (const r of moves.filter((x) => benchOf.get(x.sha1).movedTo)) {
+    for (const r of moves.filter((x) => benchOf.get(x.sha1).movedTo && !retired.has(x.sha1))) {
       // keyed by the photograph's own bytes at its new slot (an old slot may now hold a pilot pair)
       const own = benchOf.get(r.sha1).movedTo[0];
       expect(sha1Of(own), `${r.n} ${own}`).toBe(r.sha1);
@@ -111,7 +124,7 @@ describe('photo moves — Al\'s rulings of 2026-09-23', () => {
   it('lines travel, and the ones not true in the new bucket are held back and listed', () => {
     const held = final.heldBack || [];
     expect(held.map((h) => h.hash).sort()).toEqual(['c6d4061cbef2', 'd003110fec9f']);
-    for (const r of moves.filter((x) => benchOf.get(x.sha1).movedTo)) {
+    for (const r of moves.filter((x) => benchOf.get(x.sha1).movedTo && !retired.has(x.sha1))) {
       const entry = final.set.find((e) => e.hash === r.sha1);
       // keyed by the photograph's own bytes at its new slot (an old slot may now hold a pilot pair)
       const own = benchOf.get(r.sha1).movedTo[0];

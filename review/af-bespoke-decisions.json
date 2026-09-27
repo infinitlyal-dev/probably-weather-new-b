@@ -15453,6 +15453,86 @@
    "afrikaans": "So koud dat die verwarmer 'n waglys het.",
    "score": 5,
    "reason": "Al OK'd as proposed (review/pairs-batch-1-ruled.json, 26 Sept 2026)"
+  },
+  {
+   "id": "PR01",
+   "group": "new",
+   "verdict": "NEW",
+   "slot": "cold/night",
+   "english": "The cold knows exactly where your blanket has a gap.",
+   "afrikaans": "Die koue weet presies waar jou kombers oopstaan.",
+   "score": 5,
+   "reason": "Al's ruling of 27 Sept 2026 (review/pairs-rolling-ruled-2026-09-27.json and his brief): the kept pairs' Afrikaans as proposed"
+  },
+  {
+   "id": "PR02",
+   "group": "new",
+   "verdict": "NEW",
+   "slot": "cloudy/night",
+   "english": "The sky's keeping tonight to itself.",
+   "afrikaans": "Vanaand hou die lug sy stories vir homself.",
+   "score": 5,
+   "reason": "Al's ruling of 27 Sept 2026 (review/pairs-rolling-ruled-2026-09-27.json and his brief): the kept pairs' Afrikaans as proposed"
+  },
+  {
+   "id": "PR03",
+   "group": "new",
+   "verdict": "NEW",
+   "slot": "clear/dawn",
+   "english": "The sun got here early. You don't have to.",
+   "afrikaans": "Die son is vroeg op. Jy hoef nie te wees nie.",
+   "score": 5,
+   "reason": "Al's ruling of 27 Sept 2026 (review/pairs-rolling-ruled-2026-09-27.json and his brief): the kept pairs' Afrikaans as proposed"
+  },
+  {
+   "id": "PR05",
+   "group": "new",
+   "verdict": "NEW",
+   "slot": "clear/dawn",
+   "english": "The sun's awake. You're still negotiating.",
+   "afrikaans": "Die son is wakker. Jy probeer nog uitstel.",
+   "score": 5,
+   "reason": "Al's ruling of 27 Sept 2026 (review/pairs-rolling-ruled-2026-09-27.json and his brief): the kept pairs' Afrikaans as proposed"
+  },
+  {
+   "id": "PR10",
+   "group": "new",
+   "verdict": "NEW",
+   "slot": "heat/dusk",
+   "english": "The heat has no plans to go home.",
+   "afrikaans": "Die hitte dink nie eens aan huis toe gaan nie.",
+   "score": 5,
+   "reason": "Al's ruling of 27 Sept 2026 (review/pairs-rolling-ruled-2026-09-27.json and his brief): the kept pairs' Afrikaans as proposed"
+  },
+  {
+   "id": "PR18",
+   "group": "new",
+   "verdict": "NEW",
+   "slot": "storm/dawn",
+   "english": "The storm was up before you. Looking for trouble.",
+   "afrikaans": "Die storm was voor jou wakker. Sommer lus vir moeilikheid.",
+   "score": 5,
+   "reason": "Al's ruling of 27 Sept 2026 (review/pairs-rolling-ruled-2026-09-27.json and his brief): the kept pairs' Afrikaans as proposed"
+  },
+  {
+   "id": "PR24",
+   "group": "new",
+   "verdict": "NEW",
+   "slot": "wind/night",
+   "english": "The wind knows where you live. Good luck.",
+   "afrikaans": "Die wind weet waar jy bly. Sterkte.",
+   "score": 5,
+   "reason": "Al's ruling of 27 Sept 2026 (review/pairs-rolling-ruled-2026-09-27.json and his brief): the kept pairs' Afrikaans as proposed"
+  },
+  {
+   "id": "PR48",
+   "group": "new",
+   "verdict": "NEW",
+   "slot": "wind/day",
+   "english": "The wind’s arguing with everyone. You’re next.",
+   "afrikaans": "Die wind stry met almal. Jy’s volgende.",
+   "score": 5,
+   "reason": "Al's ruling of 27 Sept 2026 (review/pairs-rolling-ruled-2026-09-27.json and his brief): the kept pairs' Afrikaans as proposed"
   }
  ]
 }

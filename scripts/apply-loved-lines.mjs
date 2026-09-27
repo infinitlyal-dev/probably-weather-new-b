@@ -18,7 +18,7 @@ const copyFile = path.join(root, 'assets', 'weather-copy.js');
 const tagsFile = path.join(root, 'assets', 'witty-day-tags.js');
 // --file <name in review/>: another set of Al-ruled lines in the same shape (e.g. pairs-batch-1-bank.json).
 const FILE = (() => { const i = process.argv.indexOf('--file'); return i > 0 ? process.argv[i + 1] : 'loved-lines.json'; })();
-const { lines } = JSON.parse(readFileSync(path.join(root, 'review', FILE), 'utf8'));
+const { lines, tagNote = 'Al LOVE (taste page 2026-09-25)' } = JSON.parse(readFileSync(path.join(root, 'review', FILE), 'utf8'));
 const { WEATHER_COPY } = await import(`${pathToFileURL(copyFile).href}?v=${Date.now()}`);
 
 const todo = [];
@@ -62,7 +62,7 @@ const fmt = (t) => JSON.stringify(t).replace(/"(\w+)":/g, '$1: ').replace(/"/g, 
 for (const a of added.filter((x) => x.tag)) {
   const binRe = new RegExp(`^ {4}(${a.bin}|'${a.bin}'): \\{`);
   const at = tags.findIndex((s, i) => i > tWitty && i < tEnd && binRe.test(s));
-  const entry = `      ${a.index}: ${fmt(a.tag)}, // ${a.key}: Al LOVE (taste page 2026-09-25)`;
+  const entry = `      ${a.index}: ${fmt(a.tag)}, // ${a.key}: ${tagNote}`;
   if (at >= 0) tags.splice(at + 1, 0, entry);
   else tags.splice(tWitty + 1, 0, `    ${/-/.test(a.bin) ? `'${a.bin}'` : a.bin}: {`, entry, '    },');
 }

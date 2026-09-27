@@ -1,0 +1,253 @@
+{
+ "note": "The rolling page's first ruling (Al, 27 Sept 2026, review/pairs-rolling-ruled-2026-09-27.json): every line he rated FINE or LOVE goes into the condition bank (English as written, Afrikaans as proposed on the page), except the eight that keep their photo (review/pairs-rolling-1-plan.json), R04/R06/X05 (out) and near-repeats. Near-repeats (his brief: where lines share a formula, keep only the best one, by his grade first, then judgment, checked against the bank's existing lines too) are listed under `dropped`. isiZulu, isiXhosa, Sesotho: drafted by Vonk with the zu-qc/xh-qc/st-qc translating rules, SA Sesotho orthography, then lang-check triage (review/pairs-rolling-1-triage-<lang>.md). Tags: a line that names a time of day carries it (morning 05-11, evening 17-20, night 21-04). After Fable 5.1's review (27 Sept 2026) three kept lines were moved to the dropped list by the same standard (R09, R25, X03); eight lines go in. The zu/xh/st triage records cover the first eleven.",
+ "ruling": "review/pairs-rolling-ruled-2026-09-27.json (Al, 27 Sept 2026)",
+ "tagNote": "Al FINE (the rolling page, 2026-09-27)",
+ "lines": [
+  {
+   "key": "R07",
+   "bin": "clear",
+   "tag": {
+    "time": [
+     "evening"
+    ]
+   },
+   "grade": "FINE",
+   "en": "The sky saved its best mood for last.",
+   "af": "Die lug het sy beste bui vir laaste gebêre.",
+   "zu": "Isibhakabhaka sigcine isimo saso esihle kakhulu ekugcineni.",
+   "xh": "Isibhakabhaka sigcine esona simo saso sihle ekugqibeleni.",
+   "st": "Lehodimo le bolokile maikutlo a lona a matle ho fetisisa qetellong.",
+   "langCheck": "zu/xh/st pass, 0 findings"
+  },
+  {
+   "key": "R08",
+   "bin": "clear",
+   "tag": {
+    "time": [
+     "evening"
+    ]
+   },
+   "grade": "FINE",
+   "en": "The weather's giving you one more hour. Use it.",
+   "af": "Die weer gee jou nog 'n uur. Benut hom.",
+   "zu": "Isimo sezulu sikunika elinye ihora. Lisebenzise.",
+   "xh": "Imozulu ikunika enye iyure. Yisebenzise.",
+   "st": "Boemo ba lehodimo bo o nea hora e nngwe hape. E sebedise.",
+   "langCheck": "zu/xh/st pass, 0 findings"
+  },
+  {
+   "key": "R11",
+   "bin": "heat",
+   "tag": {
+    "time": [
+     "evening",
+     "night"
+    ]
+   },
+   "grade": "FINE",
+   "en": "This heat has fired the cold side of your pillow.",
+   "af": "Dié hitte het jou kussing se koel kant laat bedank.",
+   "zu": "Lokhu kushisa kuxoshe emsebenzini uhlangothi olupholile lomcamelo wakho.",
+   "xh": "Obu bushushu bugxothe emsebenzini icala elipholileyo lomqamelo wakho.",
+   "st": "Mocheso ona o lelekile mosebetsing lehlakore le phodileng la mosamo wa hao.",
+   "langCheck": "zu/xh pass; st triage (medium): mosamo (pillow) is attested only in Setswana text, but it is the dictionary word (Bukantswe/Autshumato: pillow -> mosamo, mesamo); not triage-high"
+  },
+  {
+   "key": "R13",
+   "bin": "cloudy",
+   "tag": {
+    "time": [
+     "evening"
+    ]
+   },
+   "grade": "FINE",
+   "en": "The clouds have sent the daylight home early.",
+   "af": "Die wolke het die daglig vroeg huis toe gestuur.",
+   "zu": "Amafu athumele ukukhanya kwemini ekhaya kusenesikhathi.",
+   "xh": "Amafu athumele ukukhanya kwemini ekhaya kwangethuba.",
+   "st": "Maru a rometse lesedi la motshehare hae pele ho nako.",
+   "langCheck": "zu/xh/st pass, 0 findings"
+  },
+  {
+   "key": "R15",
+   "bin": "rain",
+   "tag": null,
+   "grade": "FINE",
+   "en": "The rain's settled in. Your plans can fend for themselves.",
+   "af": "Die reën het ingetrek. Jou planne moet nou vir hulself sorg.",
+   "zu": "Imvula isizinzile. Izinhlelo zakho kumele zizinakekele.",
+   "xh": "Imvula izinzile. Izicwangciso zakho mazizijonge ngokwazo.",
+   "st": "Pula e se e dutse. Merero ya hao e tla itlhokomela.",
+   "langCheck": "zu/xh/st pass, 0 findings"
+  },
+  {
+   "key": "R50",
+   "bin": "wind",
+   "tag": null,
+   "grade": "FINE",
+   "en": "The wind has no respect for personal space.",
+   "af": "Die wind ken vandag geen grense nie.",
+   "zu": "Umoya awuhloniphi isikhala somuntu.",
+   "xh": "Umoya awuhloniphi isithuba somntu.",
+   "st": "Moya ha o hlomphe sebaka sa motho.",
+   "langCheck": "zu/xh/st pass, 0 findings"
+  },
+  {
+   "key": "R54",
+   "bin": "heat",
+   "tag": {
+    "time": [
+     "evening",
+     "night"
+    ]
+   },
+   "grade": "FINE",
+   "en": "Even the night is refusing to cool down.",
+   "af": "Die nag weier om af te koel.",
+   "zu": "Ngisho nobusuku buyenqaba ukuphola.",
+   "xh": "Kwanobusuku buyala ukuphola.",
+   "st": "Le bosiu bo hana ho phola.",
+   "langCheck": "zu/xh/st pass, 0 findings"
+  },
+  {
+   "key": "R55",
+   "bin": "rain",
+   "tag": {
+    "time": [
+     "morning"
+    ]
+   },
+   "grade": "FINE",
+   "en": "The rain's handling your wake-up call.",
+   "af": "Die reën doen sommer jou wekker se werk.",
+   "zu": "Imvula isithathe umsebenzi wokukuvusa.",
+   "xh": "Imvula yenza umsebenzi we-alarm yakho.",
+   "st": "Pula e nkile mosebetsi wa ho o tsosa.",
+   "langCheck": "zu/xh/st pass, 0 findings"
+  }
+ ],
+ "dropped": [
+  {
+   "key": "R12",
+   "en": "The sky's keeping the good light to itself.",
+   "why": "same formula as R02 \"The sky's keeping tonight to itself.\" (LOVE, keeps its photo)"
+  },
+  {
+   "key": "R14",
+   "en": "The rain's making your commute work overtime.",
+   "why": "\"overtime\" is in the bank three times (\"The sun's working overtime today, and billing your nose.\", two wind lines); the bank's rain commute line is \"The commute just became a team sport.\""
+  },
+  {
+   "key": "R22",
+   "en": "The wind's arguing with everything you own.",
+   "why": "\"arguing with\": R48 \"The wind's arguing with everyone. You're next.\" (LOVE, keeps its photo)"
+  },
+  {
+   "key": "R26",
+   "en": "This wind has taken the last of my dignity.",
+   "why": "the bank has \"Perfect conditions for losing your dignity.\" (wind)"
+  },
+  {
+   "key": "R30",
+   "en": "The sun’s here. Your fingers remain unconvinced.",
+   "why": "the bank has \"Bright sun, frozen fingers. The sun's here for decoration.\" (Al LOVE, cold-clear)"
+  },
+  {
+   "key": "R31",
+   "en": "The cold’s clocked in early. It plans to stay late.",
+   "why": "\"clocked in\": R09 kept (shortest); the bank's cold-clear has \"The frost has already started its shift.\" (Al LOVE)"
+  },
+  {
+   "key": "R44",
+   "en": "The sky has put the whole day on mute.",
+   "why": "the bank has \"The sky's on mute. Nobody's complaining.\" (cloudy)"
+  },
+  {
+   "key": "R49",
+   "en": "The wind’s picked a fight with your commute.",
+   "why": "the same fight-with-you idea as R48 (LOVE, keeps its photo)"
+  },
+  {
+   "key": "R52",
+   "en": "The sun's clocked in before you have.",
+   "why": "the bank has \"The sun clocked in before your alarm even tried.\" (clear)"
+  },
+  {
+   "key": "R53",
+   "en": "The heat was awake before you.",
+   "why": "\"before you\": R18 \"The storm was up before you. Looking for trouble.\" (keeps its photo)"
+  },
+  {
+   "key": "R56",
+   "en": "The rain arrived early. Your bed wins the argument.",
+   "why": "\"argument\": R48 \"The wind's arguing with everyone. You're next.\" (LOVE, keeps its photo) and four bank lines argue (\"The sky just said something. Nobody's arguing.\", \"Even the weather apps are arguing about this one.\", \"Too hot to argue.\", \"The fog says stay. Who are we to argue?\"); R55 kept for rain at dawn"
+  },
+  {
+   "key": "R57",
+   "en": "The rain has no off switch. Neither does your kettle.",
+   "why": "the bank has \"The South-Easter has no off switch. We've looked.\" (wind)"
+  },
+  {
+   "key": "R58",
+   "en": "The sky woke up angry. You’re awake now too.",
+   "why": "the bank has \"The sky woke up in a mood.\" (storm); \"before you\" as R18"
+  },
+  {
+   "key": "R59",
+   "en": "The sun’s behaving itself. You should probably enjoy it.",
+   "why": "the bank's clear has three behaving lines (\"Weather this well-behaved is definitely up to something.\")"
+  },
+  {
+   "key": "R60",
+   "en": "In this weather, you pay rent in cups of tea.",
+   "why": "the bank has \"Rain so heavy it should pay rent.\" (Al LOVE)"
+  },
+  {
+   "key": "X01",
+   "en": "The fog got here first. Smug, isn't it?",
+   "why": "\"before you\": R18; the bank has \"The sea mist clocked in before everyone else.\""
+  },
+  {
+   "key": "X02",
+   "en": "The fog's swallowed half the world. Apparently, that's enough.",
+   "why": "same shape as X03 (kept: it speaks to the reader); \"the world\" is in five fog bank lines"
+  },
+  {
+   "key": "X04",
+   "en": "The fog knows where you live. Sleep tight.",
+   "why": "\"knows where you live\": R24 (keeps its photo)"
+  },
+  {
+   "key": "R09",
+   "en": "The sun clocked in angry.",
+   "why": "\"clocked in\": the bank already has \"The sun clocked in before your alarm even tried.\" (clear) and \"The sea mist clocked in before everyone else.\" (fog) — the same standard as R52 (Fable 5.1's review, 27 Sept 2026)"
+  },
+  {
+   "key": "R25",
+   "en": "Tonight, even your hair needs a seatbelt.",
+   "why": "wind already has three hair jokes (\"Your hairstyle? Gone. Accept it.\", \"Not a hairstyle in sight. Just survivors.\", \"Your hairstyle took one look and went back to bed.\") — Fable 5.1's review"
+  },
+  {
+   "key": "X03",
+   "en": "The fog has cancelled the horizon. You weren't using it, were you?",
+   "why": "fog already has \"The horizon took the day off.\" — the same conceit (Fable 5.1's review)"
+  }
+ ],
+ "out": [
+  {
+   "key": "R04",
+   "en": "The sun has cleared its schedule for you.",
+   "why": "Al: MEH, pair No"
+  },
+  {
+   "key": "R06",
+   "en": "The sun's behaving. Don't make it self-conscious.",
+   "why": "Al's brief: out — \"the don't make it self-conscious half doesn't work\""
+  },
+  {
+   "key": "X05",
+   "en": "The heat's already showing off. You haven't had coffee yet.",
+   "why": "Al: pair No; his brief: out"
+  }
+ ]
+}

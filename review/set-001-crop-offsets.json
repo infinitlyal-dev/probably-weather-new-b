@@ -3,11 +3,11 @@
  "ruledBy": "Al, curation tool (meme hero) + 2026-08-18 reshoot",
  "generated": "2026-08-18",
  "counts": {
-  "offsets": 279,
+  "offsets": 281,
   "replaced": 15,
   "reAnchored": 134,
-  "wired": 279,
-  "pilotPairs": 11
+  "wired": 281,
+  "pilotPairs": 19
  },
  "offsets": {
   "dd736311b619": {
@@ -16,14 +16,6 @@
    "slot": "A/mon",
    "image": "clear/week_2/dawn/5.webp",
    "anchorY": 63
-  },
-  "73d202837435": {
-   "verdict": "FIXABLE",
-   "bucket": "clear-dawn",
-   "slot": "A/tue",
-   "image": "clear/week_2/dawn/6.webp",
-   "anchorY": 80,
-   "ink": "white"
   },
   "7a76c59603c9": {
    "verdict": "FIXABLE",
@@ -319,14 +311,6 @@
    "slot": "A/thu",
    "image": "cloudy/week_2/night/6.webp",
    "anchorY": 68
-  },
-  "f3255e596b2c": {
-   "verdict": "FIXABLE",
-   "bucket": "cloudy-night",
-   "slot": "A/sat",
-   "image": "cloudy/week_2/night/5.webp",
-   "anchorY": 89,
-   "ink": "white"
   },
   "c6d4061cbef2": {
    "verdict": "FIXABLE",
@@ -1257,14 +1241,6 @@
    "image": "storm/week_2/dawn/2.webp",
    "anchorY": 31
   },
-  "29a289619727": {
-   "verdict": "FIXABLE",
-   "bucket": "storm-dawn",
-   "slot": "A/sun",
-   "image": "storm/week_2/dawn/3.webp",
-   "anchorY": 63,
-   "ink": "white"
-  },
   "99d0821cdd98": {
    "verdict": "FIXABLE",
    "bucket": "storm-day",
@@ -1583,13 +1559,6 @@
    "image": "wind/week_1/dusk/3.webp",
    "anchorY": 52
   },
-  "eb7873fd7acb": {
-   "verdict": "FIXABLE",
-   "bucket": "wind-night",
-   "slot": "A/mon",
-   "image": "wind/week_2/night/4.webp",
-   "anchorY": 83
-  },
   "f6b55aacae0a": {
    "verdict": "FIXABLE",
    "bucket": "wind-night",
@@ -1604,13 +1573,6 @@
    "image": "wind/week_1/night/2.webp",
    "anchorY": 64,
    "ink": "white"
-  },
-  "089f865e3f14": {
-   "verdict": "REPLACED",
-   "bucket": "clear-dawn",
-   "slot": "A/sun",
-   "image": "clear/week_2/dawn/2.webp",
-   "anchorY": 55
   },
   "948736af4859": {
    "verdict": "FIXABLE",
@@ -1816,17 +1778,6 @@
    "replacedHash": "96c08c51c831",
    "place": "Johannesburg",
    "source": "/output/reshoot-2026-08-18/19.png",
-   "note": "GPT Image 2, 2026-08-18; anchor is the replacement default, not a per-image ruling"
-  },
-  "55504e5b8143": {
-   "verdict": "REPLACED",
-   "bucket": "wind-day",
-   "slot": "B/thu",
-   "image": "wind/week_4/day/7.webp",
-   "anchorY": 50,
-   "replacedHash": "87ab845e2e43",
-   "place": "Gqeberha",
-   "source": "/output/reshoot-2026-08-18/23.png",
    "note": "GPT Image 2, 2026-08-18; anchor is the replacement default, not a per-image ruling"
   },
   "5df9d64aa037": {
@@ -2117,6 +2068,70 @@
    "image": "cold/week_2/dusk/6.webp",
    "anchorY": 25,
    "pair": "M04"
+  },
+  "cd4bd5c64c5d": {
+   "verdict": "PAIR",
+   "bucket": "cold-night",
+   "slot": "B/sat",
+   "image": "cold/week_2/night/6.webp",
+   "anchorY": 15,
+   "pair": "R01"
+  },
+  "aa3ccab85b60": {
+   "verdict": "PAIR",
+   "bucket": "cloudy-night",
+   "slot": "A/sat",
+   "image": "cloudy/week_1/night/6.webp",
+   "anchorY": 23,
+   "pair": "R02"
+  },
+  "1108cfd1192f": {
+   "verdict": "PAIR",
+   "bucket": "clear-dawn",
+   "slot": "A/sun",
+   "image": "clear/week_1/dawn/7.webp",
+   "anchorY": 18,
+   "pair": "R03"
+  },
+  "844f8b7f5b89": {
+   "verdict": "PAIR",
+   "bucket": "clear-dawn",
+   "slot": "A/tue",
+   "image": "clear/week_1/dawn/2.webp",
+   "anchorY": 26,
+   "pair": "R05"
+  },
+  "15e8f0aa4baa": {
+   "verdict": "PAIR",
+   "bucket": "heat-dusk",
+   "slot": "B/fri",
+   "image": "heat/week_2/dusk/5.webp",
+   "anchorY": 20,
+   "pair": "R10"
+  },
+  "e400ca864a50": {
+   "verdict": "PAIR",
+   "bucket": "storm-dawn",
+   "slot": "A/sun",
+   "image": "storm/week_1/dawn/7.webp",
+   "anchorY": 20,
+   "pair": "R18"
+  },
+  "6bb604217e96": {
+   "verdict": "PAIR",
+   "bucket": "wind-night",
+   "slot": "A/mon",
+   "image": "wind/week_1/night/1.webp",
+   "anchorY": 28,
+   "pair": "R24"
+  },
+  "e8500f5dfaee": {
+   "verdict": "PAIR",
+   "bucket": "wind-day",
+   "slot": "B/thu",
+   "image": "wind/week_2/day/4.webp",
+   "anchorY": 18,
+   "pair": "R48"
   }
  }
 }

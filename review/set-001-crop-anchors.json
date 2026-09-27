@@ -9,13 +9,6 @@
    "bucket": "clear-dawn",
    "image": "clear/week_2/dawn/5.webp"
   },
-  "73d202837435": {
-   "verdict": "FIXABLE",
-   "anchorY": 80,
-   "ink": "white",
-   "bucket": "clear-dawn",
-   "image": "clear/week_2/dawn/6.webp"
-  },
   "b698a0ccc12d": {
    "verdict": "FIXABLE",
    "anchorY": 100,
@@ -43,13 +36,6 @@
    "ink": "white",
    "bucket": "clear-dawn",
    "image": "clear/week_2/dawn/7.webp"
-  },
-  "089f865e3f14": {
-   "verdict": "FIXABLE",
-   "anchorY": 55,
-   "ink": "white",
-   "bucket": "clear-dawn",
-   "image": "clear/week_2/dawn/2.webp"
   },
   "84beada2e358": {
    "verdict": "FIXABLE",
@@ -463,13 +449,6 @@
    "ink": "white",
    "bucket": "cloudy-night",
    "image": "cloudy/week_1/night/6.webp"
-  },
-  "f3255e596b2c": {
-   "verdict": "FIXABLE",
-   "anchorY": 89,
-   "ink": "white",
-   "bucket": "cloudy-night",
-   "image": "cloudy/week_2/night/5.webp"
   },
   "c6d4061cbef2": {
    "verdict": "FIXABLE",
@@ -1577,13 +1556,6 @@
    "bucket": "storm-dawn",
    "image": "storm/week_2/dawn/2.webp"
   },
-  "29a289619727": {
-   "verdict": "FIXABLE",
-   "anchorY": 63,
-   "ink": "white",
-   "bucket": "storm-dawn",
-   "image": "storm/week_2/dawn/3.webp"
-  },
   "99d0821cdd98": {
    "verdict": "FIXABLE",
    "anchorY": 71,
@@ -1913,13 +1885,6 @@
    "bucket": "wind-dusk",
    "image": "wind/week_1/dusk/3.webp"
   },
-  "eb7873fd7acb": {
-   "verdict": "FIXABLE",
-   "anchorY": 83,
-   "ink": "white",
-   "bucket": "wind-night",
-   "image": "wind/week_2/night/4.webp"
-  },
   "f6b55aacae0a": {
    "verdict": "FIXABLE",
    "anchorY": 56,
@@ -2020,6 +1985,70 @@
    "bucket": "cold-dusk",
    "image": "cold/week_2/dusk/6.webp",
    "pair": "M04",
+   "note": "composed for Home with the subject in the upper part; anchor set by eye on the made photo"
+  },
+  "cd4bd5c64c5d": {
+   "verdict": "PAIR",
+   "anchorY": 15,
+   "bucket": "cold-night",
+   "image": "cold/week_2/night/6.webp",
+   "pair": "R01",
+   "note": "composed for Home with the subject in the upper part; anchor set by eye on the made photo"
+  },
+  "aa3ccab85b60": {
+   "verdict": "PAIR",
+   "anchorY": 23,
+   "bucket": "cloudy-night",
+   "image": "cloudy/week_1/night/6.webp",
+   "pair": "R02",
+   "note": "composed for Home with the subject in the upper part; anchor set by eye on the made photo"
+  },
+  "1108cfd1192f": {
+   "verdict": "PAIR",
+   "anchorY": 18,
+   "bucket": "clear-dawn",
+   "image": "clear/week_1/dawn/7.webp",
+   "pair": "R03",
+   "note": "composed for Home with the subject in the upper part; anchor set by eye on the made photo"
+  },
+  "844f8b7f5b89": {
+   "verdict": "PAIR",
+   "anchorY": 26,
+   "bucket": "clear-dawn",
+   "image": "clear/week_1/dawn/2.webp",
+   "pair": "R05",
+   "note": "composed for Home with the subject in the upper part; anchor set by eye on the made photo"
+  },
+  "15e8f0aa4baa": {
+   "verdict": "PAIR",
+   "anchorY": 20,
+   "bucket": "heat-dusk",
+   "image": "heat/week_2/dusk/5.webp",
+   "pair": "R10",
+   "note": "composed for Home with the subject in the upper part; anchor set by eye on the made photo"
+  },
+  "e400ca864a50": {
+   "verdict": "PAIR",
+   "anchorY": 20,
+   "bucket": "storm-dawn",
+   "image": "storm/week_1/dawn/7.webp",
+   "pair": "R18",
+   "note": "composed for Home with the subject in the upper part; anchor set by eye on the made photo"
+  },
+  "6bb604217e96": {
+   "verdict": "PAIR",
+   "anchorY": 28,
+   "bucket": "wind-night",
+   "image": "wind/week_1/night/1.webp",
+   "pair": "R24",
+   "note": "composed for Home with the subject in the upper part; anchor set by eye on the made photo"
+  },
+  "e8500f5dfaee": {
+   "verdict": "PAIR",
+   "anchorY": 18,
+   "bucket": "wind-day",
+   "image": "wind/week_2/day/4.webp",
+   "pair": "R48",
    "note": "composed for Home with the subject in the upper part; anchor set by eye on the made photo"
   }
  },

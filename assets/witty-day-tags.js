@@ -112,6 +112,7 @@ export const WITTY_DAY_TAGS = {
     },
     // Work-week lines — Mon–Fri only. cloudy[9] names Monday, so it is 'mon'.
     cloudy: {
+      86: { time: ['evening'] }, // R13: Al FINE (the rolling page, 2026-09-27)
       37: { time: ['morning'] },
       38: { time: ['morning'] },
       39: { time: ['morning'] },
@@ -322,6 +323,8 @@ export const WITTY_DAY_TAGS = {
       26: { time: ['morning'] },
     },
     heat: {
+      92: { time: ['evening', 'night'] }, // R54: Al FINE (the rolling page, 2026-09-27)
+      91: { time: ['evening', 'night'] }, // R11: Al FINE (the rolling page, 2026-09-27)
       90: { time: ['morning', 'day', 'evening'] }, // N17: Al LOVE (taste page 2026-09-25)
       85: { time: ['morning'], region: 'lowveld', months: [10, 11, 12, 1, 2, 3] },
       86: { time: ['day'], region: 'lowveld', months: [10, 11, 12, 1, 2, 3] },
@@ -385,6 +388,7 @@ export const WITTY_DAY_TAGS = {
       33: { time: ['morning'] },
     },
     rain: {
+      82: { time: ['morning'] }, // R55: Al FINE (the rolling page, 2026-09-27)
       5: { region: 'gauteng' },
       8: { region: ['western-cape', 'karoo', 'free-state', 'gauteng'] },
       36: { time: ['morning'], region: 'western-cape', months: [5, 6, 7, 8, 9] },
@@ -439,6 +443,8 @@ export const WITTY_DAY_TAGS = {
       35: { day: 'weekday' },
     },
     clear: {
+      78: { time: ['evening'] }, // R08: Al FINE (the rolling page, 2026-09-27)
+      77: { time: ['evening'] }, // R07: Al FINE (the rolling page, 2026-09-27)
       34: { time: ['morning'] },
       35: { time: ['morning'] },
       36: { time: ['morning'] },
