@@ -459,11 +459,11 @@
   }
   body.home-d .d-hour {
     display: grid;
-    grid-template-columns: 4.4em 32px minmax(0, 1fr) auto;   /* time | icon | temperature | rain */
+    grid-template-columns: 3.6em 32px minmax(0, 1fr) auto auto;   /* time | icon | temperature | rain | wind */
     align-items: center;
-    column-gap: 12px;
+    column-gap: 10px;
     min-height: 48px;
-    padding: 4px 12px;
+    padding: 4px 8px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   }
   body.home-d .d-hour:last-child { border-bottom: 0; }
@@ -472,6 +472,8 @@
   body.home-d .d-hour-icon svg { width: 24px; height: 24px; }
   body.home-d .d-hour-temp { font-size: 18px; font-weight: 700; }
   body.home-d .d-hour-rain { font-size: 16px; color: var(--rain-blue, #4a9eff); text-align: right; font-variant-numeric: tabular-nums; }
+  /* Wind after rain (Al, 27 Sept: the two tabs were not meant to go): the number and its unit, never wrapped. */
+  body.home-d .d-hour-wind { font-size: 16px; color: rgba(255, 255, 255, 0.78); text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
   /* The one quiet link at the foot: the full Hourly page. */
   body.home-d .d-sheet-more { display: flex; justify-content: center; padding: 8px 16px 0; }
   body.home-d .d-more {

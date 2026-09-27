@@ -180,16 +180,23 @@ export function initHomeD({ label = (k) => k } = {}) {
 
   // ---------- the panel: the next hours, and the way to the full Hourly page ----------
   // Built from the rows the Hourly screen already rendered — the same times, icons, units and words — as
-  // a list you scroll down, one row an hour: time, icon, temperature, rain chance. (It was a sideways strip;
-  // Al, 27 Sept: "nobody likes that".) Only rows are taken: the ad slots stay on that screen, so the panel,
-  // which is part of Home, has none. The list scrolls inside the panel; pulling the panel down is the grip's
-  // gesture alone, so the two never fight. A screen reader gets each hour as one item — the time, the
-  // condition (the icon carries its name, as on the Hourly page), the temperature, then the Hourly page's
-  // word for rain (out of sight) before the percentage.
+  // a list you scroll down, one row an hour: time, icon, temperature, rain chance, wind. (It was a sideways
+  // strip; Al, 27 Sept: "nobody likes that". The first list dropped wind; Al, later that day: losing the Rain
+  // and Wind tabs was not on purpose — so each row carries both, and the full Hourly page keeps its tabs.)
+  // Only rows are taken: the ad slots stay on that screen, so the panel, which is part of Home, has none. The
+  // list scrolls inside the panel; pulling the panel down is the grip's gesture alone, so the two never fight.
+  // A screen reader gets each hour as one item — the time, the condition (the icon carries its name, as on
+  // the Hourly page), the temperature, then the Hourly page's words for rain and wind (out of sight) before
+  // their numbers. The wind's unit is the one the app shows under the hero (km/h, or mph from Settings).
   const fillPanel = () => {
     const hours = sheet.querySelector('.d-hours');
     hours.replaceChildren();
     const rainWord = text('#hourly-timeline .hourly-header .h-rain');
+    const windWord = text('#hourly-timeline .hourly-header .h-wind');
+    // km/h or mph in the app's own words: the stats pill under the hero, or (no current wind, so no pill)
+    // the Settings control's chosen option (Sol's review, 27 Sept: a fixed "km/h" mislabelled an mph reader).
+    const windUnit = text('#statsRow .stat-unit') || text('#unitsWind option:checked');
+    const srWord = (word) => { const w = document.createElement('span'); w.className = 'sr-only'; w.textContent = `${word} `; return w; };
     [...document.querySelectorAll('#hourly-timeline .hourly-row:not(.hourly-header)')].slice(0, D_HOURS).forEach((r) => {
       const row = document.createElement('li');
       row.className = 'd-hour';
@@ -204,14 +211,14 @@ export function initHomeD({ label = (k) => k } = {}) {
       temp.textContent = t?.textContent || '';
       const rain = document.createElement('span');
       rain.className = 'd-hour-rain';
-      if (rainWord) {
-        const word = document.createElement('span');
-        word.className = 'sr-only';
-        word.textContent = `${rainWord} `;
-        rain.append(word);
-      }
+      if (rainWord) rain.append(srWord(rainWord));
       rain.append(r.querySelector('.h-rain')?.textContent || '');
-      row.append(time, icon, temp, rain);
+      const wind = document.createElement('span');
+      wind.className = 'd-hour-wind';
+      if (windWord) wind.append(srWord(windWord));
+      const kph = (r.querySelector('.h-wind')?.textContent || '').trim();
+      wind.append(/\d/.test(kph) ? `${kph}${windUnit ? ` ${windUnit}` : ''}` : kph || '--');
+      row.append(time, icon, temp, rain, wind);
       hours.append(row);
     });
   };
@@ -568,9 +575,25 @@ export function initHomeD({ label = (k) => k } = {}) {
 // page). The joke's room is laid out from the start, so nothing moves when it lands, and the weather never
 // waits: this only ever styles the joke. A tap on the photograph hides or shows it; a button, out of sight
 // until a keyboard reaches it, does the same for keyboards and screen readers.
+//
+// THE JOKE ALWAYS COMES (27 Sept 2026). Al opened the preview on his iPhone: "didnt have the humour line".
+// The first version started the beat over every time the photograph was covered — the panel up, another
+// screen, the app in the background — and only ever counted the beat while the photograph was on screen, so
+// a swipe up in the first seconds, a look at the hours, a trip to Weekly, each pushed the joke back, and a
+// visit could end without it. Now: a photograph that has landed keeps its landing, whatever covers it; once
+// its beat is over the joke is written the moment the photograph shows again (no second beat); a joke pending
+// for PENDING_MAX_MS is written where it stands, so it is simply there when the viewer comes back; and a
+// photograph that never lands still gets the joke PHOTO_WAIT_MS after Home first showed. Only a fresh
+// photograph earns a fresh beat.
+//
+// HIDDEN (the tap) lasts for this photograph, this visit — in memory, never stored. A tap is "let me see the
+// picture", not a setting: the joke is the app's personality, so a curious tap must not switch it off for good.
+// A new photograph, a reload or the next open shows the joke again; a new line on the same photograph while it
+// is hidden stays hidden (the viewer asked for the picture).
 
 const BEAT_MS = 2000;           // Al's pick: 2 s from the photograph landing to the first ink
 const PHOTO_WAIT_MS = 6000;     // Home showing this long with no photograph landing: the joke is written anyway
+const PENDING_MAX_MS = 10000;   // a joke waiting this long, whatever covers the photograph, is written where it stands
 const WRITE_MS_PER_CHAR = 22;   // the pen's pace: a 60-character line in ~1.3 s
 const WRITE_MIN_MS = 600;
 const WRITE_MAX_MS = 1600;      // Al: never much longer than ~1.6 s, however long the line
@@ -634,6 +657,8 @@ function initReveal({ headline, main, status, phone, onHome, label }) {
   let raf = 0;
   let landed = '';        // the photograph last seen landing on screen, and when
   let landedAt = 0;
+  let pendingAt = 0;      // when the joke on screen went pending (its ceiling: PENDING_MAX_MS)
+  let shownOn = '';       // the photograph the joke was written on (or found there): a fresh one starts it over
   let handReady = Promise.resolve();   // the handwriting font, loading since the joke arrived
   const marks = [];       // for the checks: when each photograph landed, each joke began and ended
   const mark = (what) => { marks.push({ what, at: Math.round(performance.now()), joke }); if (marks.length > 200) marks.shift(); };
@@ -755,20 +780,28 @@ function initReveal({ headline, main, status, phone, onHome, label }) {
     const src = abs(bgImg.currentSrc || bgImg.src);
     return abs(heroSrc()) === src ? src : '';
   }
-  // Setup, beat: waits for the photograph, then the beat counted from its landing. Anything that takes the
-  // photograph away (another screen, the panel up, the app in the background) starts it over. A photograph
-  // that fails to load, or Home showing for 6 s with no photograph landing, never keeps the joke away: it is
-  // written then (Fable, 26 Sept). Off Home or in the background the wait polls slowly.
+  // Setup, beat: waits for the photograph, then the beat counted from its landing. A photograph that is
+  // covered (another screen, the panel up, the app in the background) keeps its landing: the beat is not
+  // started over, and once it is up the joke is written the moment the photograph shows again (27 Sept; the
+  // first version restarted it, and a swipe up in the first seconds could hold the joke back all visit). A
+  // photograph that fails to load, or Home showing for 6 s with no photograph landing, never keeps the joke
+  // away: it is written then (Fable, 26 Sept); nor does anything else past PENDING_MAX_MS — the joke is
+  // written where it stands, and is there when the viewer comes back. Off Home or in the background the
+  // wait polls slowly.
   async function arrive(my) {
     let homeSince = 0;
     for (;;) {
       const src = onScreen();
       if (!src) {
-        landed = '';
         const onHomeNow = phone() && onHome() && !document.hidden && !body.classList.contains('d-sheet-open');
-        homeSince = onHomeNow ? homeSince || performance.now() : 0;
+        if (onHomeNow) homeSince ||= performance.now();
         const failed = onHomeNow && bgImg?.complete && !bgImg.naturalWidth && !!(bgImg.currentSrc || bgImg.src);
-        if (failed || (homeSince && performance.now() - homeSince > PHOTO_WAIT_MS)) { mark(failed ? 'photo-failed' : 'photo-late'); write(my); return; }
+        // "Late" is a photograph that has not landed: none yet, or a new one the picker asked for that is not the
+        // one that landed (Sol's review, 27 Sept: a later photograph that stalls must still get the 6 s, not 10).
+        const asked = abs(bgImg?.currentSrc || bgImg?.src || '');
+        const late = (!landed || asked !== landed) && homeSince && performance.now() - homeSince > PHOTO_WAIT_MS;
+        const overdue = performance.now() - pendingAt > PENDING_MAX_MS;
+        if (failed || late || overdue) { mark(failed ? 'photo-failed' : late ? 'photo-late' : 'overdue'); write(my); return; }
         await sleep(onHomeNow ? 80 : 500);
         if (my !== token) return;
         continue;
@@ -799,6 +832,7 @@ function initReveal({ headline, main, status, phone, onHome, label }) {
   // ---------- punchline ----------
   function write(my) {
     state = 'writing';
+    shownOn = landed || abs(heroSrc()) || abs(bgImg?.currentSrc || bgImg?.src || '');
     rememberJoke(joke);
     mark('write');
     labels();
@@ -850,7 +884,8 @@ function initReveal({ headline, main, status, phone, onHome, label }) {
     if (!joke) { state = 'idle'; paint(true, 0); scrim.classList.toggle('is-on', !!headline.textContent.trim()); labels(); return; }
     // A new line on the same photograph after the joke was written (Al's own line for the photograph arriving
     // late, a refresh re-picking the joke) swaps in place: the joke is not snatched away and written again
-    // (Fable, 26 Sept). Tapped away, it stays away. Only a fresh photograph gets the beat and the pen.
+    // (Fable, 26 Sept). Tapped away, it stays away for this photograph (see HIDDEN above). Only a fresh
+    // photograph gets the beat and the pen.
     if ((before === 'writing' || before === 'shown' || before === 'hidden') && landed && phone() && onScreen() === landed) {
       rememberJoke(joke);
       state = before === 'hidden' ? 'hidden' : 'shown';
@@ -861,15 +896,21 @@ function initReveal({ headline, main, status, phone, onHome, label }) {
     }
     // Wider than a phone, the desktop keeps today's polaroid and there is no photograph for the joke to wait on.
     if (!phone()) { state = 'shown'; paint(true, 0); labels(); return; }
+    begin();
+  }
+  // A joke on a fresh photograph: simply there if this phone has shown it (or motion is reduced), else the beat.
+  function begin() {
     if (reduce.matches || seenJokes().includes(jokeHash(joke))) {
       rememberJoke(joke);
       state = 'shown';
+      shownOn = abs(heroSrc()) || onScreen();
       paint(true, 0);
       mark('there');
       labels();
       return;
     }
     state = 'pending';
+    pendingAt = performance.now();
     paint(false, 0);
     labels();
     // The handwriting starts loading now, inside the beat, not after it.
@@ -879,6 +920,20 @@ function initReveal({ headline, main, status, phone, onHome, label }) {
   }
   // Runs before the browser paints the new words, so a new joke never flashes before its beat.
   new MutationObserver(onChange).observe(headline, { childList: true, characterData: true, subtree: true, attributes: true, attributeFilter: ['data-line'] });
+  // The photograph itself (app.js writes --hero-url when one lands): a joke already written, or hidden, on one
+  // photograph starts over on the next — the beat again, and hidden ends with the photograph it was tapped on
+  // (Sol's review, 27 Sept: the caption alone cannot tell a new photograph under the same words).
+  new MutationObserver(() => {
+    if (!joke || !phone() || state === 'idle' || state === 'pending') return;
+    const src = abs(heroSrc());
+    if (!src || !shownOn || src === shownOn) return;
+    token += 1;
+    cancelAnimationFrame(raf);
+    clearMask();
+    landed = '';
+    mark('photo-changed');
+    begin();
+  }).observe(root, { attributes: true, attributeFilter: ['style'] });
 
   // ---------- the tap, and the button ----------
   function flip() {
@@ -933,7 +988,7 @@ function initReveal({ headline, main, status, phone, onHome, label }) {
   onChange();
   return {
     place,
-    api: { beatMs: BEAT_MS, marks, state: () => state, flip, writeMs },
+    api: { beatMs: BEAT_MS, pendingMaxMs: PENDING_MAX_MS, marks, state: () => state, flip, writeMs },
   };
 }
 

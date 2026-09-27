@@ -10,20 +10,24 @@
 //   nothing moves      the joke's box, the credit line, the title card, the handle, Share: same rects
 //   Share              a postcard: the photograph clean, the joke under it; Share leaves the joke alone
 //   the handle         says "Hourly" only; opens a panel of the next hours — a list you scroll down, one
-//                      row an hour, real list semantics — with one quiet link to the full Hourly page and
-//                      no week (Weekly stays in the nav); a swipe up opens it too
+//                      row an hour (time, icon, temperature, rain %, wind with its unit; Al, 27 Sept: losing
+//                      Rain and Wind was not on purpose), real list semantics — with one quiet link to the
+//                      full Hourly page and no week (Weekly stays in the nav); a swipe up opens it too
 //   no side-scroll     nothing on Home scrolls sideways, panel up, at 414x715 and at 320 wide (Al, 27 Sept)
 //   the photo          a tap hides the joke, another shows it; the button's name follows
 //   keyboard           Tab reaches the button, it shows itself, Enter flips the joke
 //   five languages     the button's name in each (Afrikaans: "Wys die grap" / "Geen grap", Al's words)
 //   reduced motion     the joke is there with the photograph: no beat, no writing
 //   seen before        reopened, the same joke is simply there
+//   never held back    the panel up during the beat, a trip to Weekly and back, the panel left up: the joke
+//                      is written without a second beat when the photograph shows again, and no later than
+//                      its ceiling whatever covers it (Al, 27 Sept: "didnt have the humour line")
 //   warnings           a Cape wind warning is on top, orange and whole, in five languages, never held back
 //   ad-free            no ad slot on Home or in its panel
 //   desktop            wider than a phone, the polaroid: none of D's pieces show, the caption is there
 import { webkit } from 'playwright';
 import { createServer } from 'node:http';
-import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 import { WEEK_ANCHOR_MS, WEEK_MS, DAY_MS, getRotationDay, getRotationWeek } from '../../assets/image-picker.js';
 
@@ -108,12 +112,16 @@ const panelList = (page) => page.evaluate(() => {
   const rows = [...document.querySelectorAll('#dSheet .d-hours > li.d-hour')];
   const body = document.querySelector('#dSheet .d-sheet-body');
   const rainWord = document.querySelector('#hourly-timeline .hourly-header .h-rain')?.textContent.trim();
+  const windWord = document.querySelector('#hourly-timeline .hourly-header .h-wind')?.textContent.trim();
+  const windUnit = document.querySelector('#statsRow .stat-unit')?.textContent.trim();
   return {
     tag: ul?.tagName, rows: rows.length,
     stacked: rows.length > 1 && rows.every((r, i) => !i || r.getBoundingClientRect().top >= rows[i - 1].getBoundingClientRect().bottom - 1),
     scrolls: !!body && body.scrollHeight > body.clientHeight + 1 && getComputedStyle(body).overflowY === 'auto',
-    firstRow: rows[0] ? { time: rows[0].querySelector('.d-hour-time')?.textContent, icon: rows[0].querySelector('.d-hour-icon [role="img"]')?.getAttribute('aria-label') || null, temp: rows[0].querySelector('.d-hour-temp')?.textContent, rain: rows[0].querySelector('.d-hour-rain')?.textContent } : null,
-    rainWord,
+    firstRow: rows[0] ? { time: rows[0].querySelector('.d-hour-time')?.textContent, icon: rows[0].querySelector('.d-hour-icon [role="img"]')?.getAttribute('aria-label') || null, temp: rows[0].querySelector('.d-hour-temp')?.textContent, rain: rows[0].querySelector('.d-hour-rain')?.textContent, wind: rows[0].querySelector('.d-hour-wind')?.textContent } : null,
+    // Every row's wind reads "<word> <number> <unit>" (the word out of sight) or "--"; the unit is the app's own.
+    windRows: rows.filter((r) => { const w = r.querySelector('.d-hour-wind')?.textContent || ''; return w === `${windWord} --` || new RegExp(`^${windWord} \\d+ ${windUnit}$`).test(w); }).length,
+    rainWord, windWord, windUnit,
   };
 });
 
@@ -174,8 +182,8 @@ const panelList = (page) => page.evaluate(() => {
   const listTree = await page.locator('#dSheet .d-hours').ariaSnapshot();
   const listItems = (listTree.match(/- listitem/g) || []).length;
   const wide = await sideways(page);
-  ok('the panel is a vertical list — one row an hour, real list semantics, scrolling inside the panel — and nothing on Home scrolls sideways at 414x715',
-    list.tag === 'UL' && list.rows === panel.hours && list.stacked && list.scrolls && /^- list/m.test(listTree) && listItems === list.rows && !!list.firstRow?.icon && list.firstRow.rain.startsWith(`${list.rainWord} `) && wide.length === 0,
+  ok('the panel is a vertical list — one row an hour: time, icon, temperature, rain, wind with its unit; real list semantics, scrolling inside the panel — and nothing on Home scrolls sideways at 414x715',
+    list.tag === 'UL' && list.rows === panel.hours && list.stacked && list.scrolls && /^- list/m.test(listTree) && listItems === list.rows && !!list.firstRow?.icon && list.firstRow.rain.startsWith(`${list.rainWord} `) && !!list.windWord && /^(km\/h|mph)$/.test(list.windUnit || '') && list.windRows === list.rows && /\d+ (km\/h|mph)$/.test(list.firstRow.wind) && wide.length === 0,
     { ...list, listItems, sideways: wide });
   await page.tap('#dSheet .d-more');
   await page.waitForTimeout(700);
@@ -239,6 +247,74 @@ const panelList = (page) => page.evaluate(() => {
   const fontWait = at('write') - at('beat');
   const writing = at('shown') - at('write');
   ok('the beat: 2 s from the photograph landing, the writing done in 1.6 s at most (real clock)', beat >= 1950 && beat <= 2250 && fontWait <= 700 && writing <= 1850, { beatMs: beat, fontWaitMs: fontWait, writingMs: writing });
+  await ctx.close();
+}
+// 9b: never held back (real clock). (a) The panel goes up during the beat and stays up past it: when it comes
+// down the joke is written at once — one landing, no second beat. (b) Weekly and back during the beat: the
+// same. (c) The panel left up: the joke is written where it stands by its ceiling, so it is there when the
+// panel comes down.
+{
+  const { ctx, page } = await phone({ pinClock: false });
+  await page.waitForFunction(() => window.__PW_D?.reveal?.marks?.some((m) => m.what === 'photo'), null, { timeout: 20000 });
+  await page.evaluate(() => window.__PW_D.open());
+  await page.waitForTimeout(3500);
+  const upStill = await state(page);
+  const closedAt = await page.evaluate(() => { window.__PW_D.close(); return performance.now(); });
+  await page.waitForFunction(() => ['writing', 'shown'].includes(window.__PW_D.reveal.state()), null, { timeout: 5000 }).catch(() => {});
+  const m = await marks(page);
+  const writeAt = m.find((x) => x.what === 'write')?.at;
+  ok('never held back (a): the panel up through the beat — one landing, and the joke is written within a second of the panel coming down', upStill === 'pending' && m.filter((x) => x.what === 'photo').length === 1 && writeAt != null && writeAt - closedAt >= 0 && writeAt - closedAt <= 1000, { upStill, marks: m.map((x) => x.what), afterCloseMs: writeAt != null ? Math.round(writeAt - closedAt) : null });
+  await ctx.close();
+}
+{
+  const { ctx, page } = await phone({ pinClock: false });
+  await page.waitForFunction(() => window.__PW_D?.reveal?.marks?.some((m) => m.what === 'photo'), null, { timeout: 20000 });
+  await page.evaluate(() => document.getElementById('navWeek').click());
+  await page.waitForTimeout(3500);
+  const away = await page.evaluate(() => ({ home: document.body.classList.contains('home-active'), state: window.__PW_D.reveal.state() }));
+  const backAt = await page.evaluate(() => { document.getElementById('navHome').click(); return performance.now(); });
+  await page.waitForFunction(() => ['writing', 'shown'].includes(window.__PW_D.reveal.state()), null, { timeout: 5000 }).catch(() => {});
+  const m = await marks(page);
+  const writeAt = m.find((x) => x.what === 'write')?.at;
+  ok('never held back (b): Weekly and back during the beat — the joke is written within a second of Home returning, no second beat', !away.home && away.state === 'pending' && m.filter((x) => x.what === 'photo').length === 1 && writeAt != null && writeAt - backAt >= 0 && writeAt - backAt <= 1000, { away, marks: m.map((x) => x.what), afterBackMs: writeAt != null ? Math.round(writeAt - backAt) : null });
+  await ctx.close();
+}
+{
+  const { ctx, page } = await phone({ pinClock: false });
+  await page.waitForFunction(() => window.__PW_D?.reveal?.state?.() === 'pending', null, { timeout: 20000 });
+  await page.evaluate(() => window.__PW_D.open());
+  const ceiling = await page.evaluate(() => window.__PW_D.reveal.pendingMaxMs);
+  await page.waitForFunction(() => window.__PW_D.reveal.state() === 'shown', null, { timeout: ceiling + 4000 }).catch(() => {});
+  const held = await page.evaluate(() => ({ open: document.body.classList.contains('d-sheet-open'), state: window.__PW_D.reveal.state(), marks: window.__PW_D.reveal.marks.map((m) => m.what) }));
+  await page.evaluate(() => window.__PW_D.close());
+  await page.waitForTimeout(500);
+  const shownOpacity = await page.evaluate(() => getComputedStyle(document.getElementById('headline')).opacity);
+  ok('never held back (c): the panel left up past the ceiling — the joke is written where it stands, and is there when the panel comes down', held.open && held.state === 'shown' && held.marks.some((w) => w === 'overdue' || w === 'photo-late') && shownOpacity === '1', { ...held, shownOpacity });
+  await ctx.close();
+}
+// 9c: hidden ends with its photograph. Tapped away on one photograph, the joke comes back on the next one, even
+// when the caption's words are the same (Sol's review, 27 Sept) — at once here, because this phone has shown it.
+{
+  const { ctx, page } = await phone({ pinClock: false });
+  await page.waitForFunction(() => window.__PW_D?.reveal?.state?.() === 'shown', null, { timeout: 30000 });
+  await page.evaluate(() => window.__PW_D.reveal.flip());
+  await page.waitForTimeout(400);
+  const hidden = await state(page);
+  // Another photograph lands (what app.js does when the picker moves on: a new src, then --hero-url on load).
+  const other = readdirSync(path.join(dist, 'assets', 'images', 'bg-canonical')).filter((f) => f.endsWith('.webp'))[3];
+  const swapped = await page.evaluate(async (f) => {
+    const img = document.getElementById('bgImg');
+    const before = img.currentSrc;
+    await new Promise((r) => { img.onload = r; img.onerror = r; img.src = `/assets/images/bg-canonical/${f}`; });
+    document.documentElement.style.setProperty('--hero-url', `url("${img.currentSrc || img.src}")`);
+    return before !== img.currentSrc;
+  }, other);
+  await page.waitForFunction(() => window.__PW_D.reveal.state() === 'shown', null, { timeout: 8000 }).catch(() => {});
+  const m = await marks(page);
+  const after = { state: await state(page), opacity: await page.evaluate(() => getComputedStyle(document.getElementById('headline')).opacity) };
+  // The joke was written on the first photograph, so this phone has shown it: on the next photograph it is simply
+  // there (the seen-before rule); a joke never shown would get its beat.
+  ok('hidden ends with its photograph: tapped away, then a new photograph — the joke comes back (there at once, seen before)', hidden === 'hidden' && swapped && m.some((x) => x.what === 'photo-changed') && m[m.length - 1].what === 'there' && after.state === 'shown' && after.opacity === '1', { hidden, swapped, marks: m.map((x) => x.what), after });
   await ctx.close();
 }
 // 10: the name in five languages — while the joke waits ("show") and once written ("hide").
@@ -360,7 +436,7 @@ const panelList = (page) => page.evaluate(() => {
   const list = await panelList(page);
   await sheetUp(page).catch(() => {});
   await page.screenshot({ path: path.join(out, 'panel-320-zu.png') });
-  ok('320 wide, isiZulu: nothing on Home scrolls sideways, panel down or up; the list stands and scrolls inside the panel', down.length === 0 && up.length === 0 && list.tag === 'UL' && list.rows >= 12 && list.stacked && list.scrolls, { down, up, rows: list.rows });
+  ok('320 wide, isiZulu: nothing on Home scrolls sideways, panel down or up; the list stands and scrolls inside the panel, wind in every row', down.length === 0 && up.length === 0 && list.tag === 'UL' && list.rows >= 12 && list.stacked && list.scrolls && list.windRows === list.rows, { down, up, rows: list.rows, windRows: list.windRows, wind: list.firstRow?.wind });
   await ctx.close();
 }
 // 17: for Al's eyes — the pulled-up list at 414x715 in English and isiZulu, its top and, scrolled to the
