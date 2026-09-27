@@ -4,7 +4,7 @@
  "note": "Every line here is Al-approved and written for its specific photograph. Keyed by image hash: one hash can occupy two rotation slots and the lines belong to the picture, not the slot. English only - AF is Al's to write, zu/xh/st go to the native-review backlog. Extended 2026-08-21: kept lines from the ruled wind, clear-v2 and heat-v2 exports wired (Al's rulings of 2026-08-19/20). | 2026-09-06: round-1 hand-matched bank lines and 156 rescued Astra lines merged in, capped at 3 per photograph from those two sources (round-1 first, rescues in export order). Pre-existing approved lines were left untouched and not counted against that cap. | 2026-09-06: Al's own lines for 14 photographs that had none, written after he rejected all 30 of Astra's candidates for them. | 2026-09-06: Al's own lines for 14 photographs that had none, written after he rejected all 30 of Astra's candidates for them. | 2026-09-06: Al's own lines for 14 photographs that had none, written after he rejected all 30 of Astra's candidates for them. | 2026-09-06 (pm): Al's rulings — no 3-line cap: the 30 rescues the cap dropped are restored; every ruled keep from clear-v3, cloudy-v3, the six Astra buckets and the test batch wired onto its own photograph by hash; the transposed wind pair swapped grid days (tue/wed) so each day-named line lands on its day. CULLED 2026-09-20 on review/provenance-cull-ruled.json: every line that reached its photograph on a bulk adoption or on no record at all is out. What remains is what Al placed or ticked himself.",
  "method": "Round 1 wrote five per image and Al kept 171 of 196 (87%) once the two transposed briefs were excluded. Round 2 rewrote the 39 gaps under the swap test (PAIRING-TASTE rule 1a) and Al kept 39 of 39. Combined 210 of 235 = 89%. Wind, the weakest bucket in every earlier pass at 48%, ran 80% in round 1 and 100% in round 2.",
  "images": 296,
- "lineCount": 1043,
+ "lineCount": 1018,
  "set": [
   {
    "image": "heat/week_1/day/6.webp",
@@ -773,31 +773,6 @@
    ]
   },
   {
-   "image": "wind/week_1/dusk/4.webp",
-   "hash": "17c00a47cba2",
-   "condition": "wind",
-   "time": "dusk",
-   "week": "A",
-   "day": "thu",
-   "paths": [
-    "wind/week_1/dusk/4.webp",
-    "wind/week_2/dusk/4.webp",
-    "wind/week_3/dusk/4.webp",
-    "wind/week_4/dusk/4.webp"
-   ],
-   "lines": [
-    "That tree has been shaped by one wind for about forty years.",
-    "The washing goes out at this hour because wind is cheaper than electricity.",
-    "The lagoon has gone flat and silver, which fools nobody who lives here.",
-    "Everything on this street leans the same way, including the people.",
-    "Thursday evening, and the only thing still moving out here is the line."
-   ],
-   "authoredFor": [
-    "wind/week_2/dusk/6.webp",
-    "wind/week_4/dusk/6.webp"
-   ]
-  },
-  {
    "image": "wind/week_1/dusk/5.webp",
    "hash": "ec12d1747d09",
    "condition": "wind",
@@ -1244,34 +1219,6 @@
    ],
    "authoredFor": [
     "wind/week_4/dawn/1.webp"
-   ]
-  },
-  {
-   "image": "clear/week_1/dawn/5.webp",
-   "hash": "66d5e6cb3570",
-   "condition": "clear",
-   "time": "dawn",
-   "week": "A",
-   "day": "fri",
-   "paths": [
-    "clear/week_1/dawn/5.webp",
-    "clear/week_2/dawn/5.webp",
-    "clear/week_3/dawn/5.webp",
-    "clear/week_4/dawn/5.webp"
-   ],
-   "lines": [
-    "Not one metre of shade on this promenade, which is why they are out at six.",
-    "The sea is that flat about nine mornings a year and this is one of them.",
-    "That mountain is that sharp because there is nothing at all in the air today.",
-    "The sky is completely empty, which means this is as cool as today gets.",
-    "Friday, and by noon that paving is going to be too hot to stand on.",
-    "Days like this should come with a soundtrack.",
-    "The type of day that makes people text 'lekker dag hey'.",
-    "Morning people might be onto something. Don't tell them."
-   ],
-   "authoredFor": [
-    "clear/week_1/dawn/3.webp",
-    "clear/week_3/dawn/3.webp"
    ]
   },
   {
@@ -1795,32 +1742,6 @@
    ]
   },
   {
-   "image": "heat/week_1/dawn/3.webp",
-   "hash": "c6d266d04418",
-   "condition": "heat",
-   "time": "dawn",
-   "week": "A",
-   "day": "wed",
-   "paths": [
-    "heat/week_1/dawn/3.webp",
-    "heat/week_2/dawn/3.webp",
-    "heat/week_3/dawn/3.webp",
-    "heat/week_4/dawn/3.webp"
-   ],
-   "lines": [
-    "They are out at half past five because there is no other window today.",
-    "That sun has been up eleven minutes and it is already doing that.",
-    "Nobody is carrying water, which is a decision they are going to revisit.",
-    "The shade on this road runs out in about two hundred metres.",
-    "Wednesday, and this is the coolest it is going to be all day.",
-    "6:30 and the tar is already considering melting."
-   ],
-   "authoredFor": [
-    "heat/week_2/dawn/7.webp",
-    "heat/week_4/dawn/7.webp"
-   ]
-  },
-  {
    "image": "heat/week_1/day/2.webp",
    "hash": "d6593f52fb76",
    "condition": "heat",
@@ -2157,28 +2078,6 @@
    ]
   },
   {
-   "image": "clear/week_2/day/3.webp",
-   "hash": "448b951052cc",
-   "condition": "clear",
-   "time": "day",
-   "week": "B",
-   "day": "wed",
-   "paths": [
-    "clear/week_2/day/3.webp",
-    "clear/week_4/day/3.webp"
-   ],
-   "lines": [
-    "Blue sky, warm breeze. The simple stuff.",
-    "The kind of sky that makes you grateful for free things.",
-    "The kind of sun that turns one tennis ball into a whole afternoon.",
-    "That farmhouse has seen a few centuries of days like this and still gets them free.",
-    "Full sun, soft lawn, and homework has officially lost its audience."
-   ],
-   "authoredFor": [
-    "clear/week_4/day/2.webp"
-   ]
-  },
-  {
    "image": "clear/week_2/day/4.webp",
    "hash": "3d001539dcb5",
    "condition": "clear",
@@ -2311,32 +2210,6 @@
    "authoredFor": [
     "clear/week_2/dusk/2.webp",
     "clear/week_4/dusk/2.webp"
-   ]
-  },
-  {
-   "image": "clear/week_1/dusk/7.webp",
-   "hash": "525b2eea2ebc",
-   "condition": "clear",
-   "time": "dusk",
-   "week": "A",
-   "day": "sun",
-   "paths": [
-    "clear/week_1/dusk/7.webp",
-    "clear/week_2/dusk/7.webp",
-    "clear/week_3/dusk/7.webp",
-    "clear/week_4/dusk/7.webp"
-   ],
-   "lines": [
-    "The weather gods are showing off.",
-    "Weekend vibes so strong they need their own playlist.",
-    "The evening showed up in its Sunday best.",
-    "Flat sea, spent sun, and air still warm enough to sit around in a wet wetsuit.",
-    "The wind that usually owns this coast has taken the evening off.",
-    "That sky is doing its whole show over a sea too flat to interrupt it."
-   ],
-   "authoredFor": [
-    "clear/week_2/dusk/1.webp",
-    "clear/week_4/dusk/1.webp"
    ]
   },
   {
@@ -6646,6 +6519,99 @@
    ],
    "pair": "R48",
    "ruledBy": "Al: USE, the rolling page (review/pairs-rolling-ruled-2026-09-27.json), 27 Sept 2026; his brief names this pair's take"
+  },
+  {
+   "image": "clear/week_1/dusk/7.webp",
+   "hash": "1cfb52ede877",
+   "condition": "clear",
+   "time": "dusk",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "clear/week_1/dusk/7.webp",
+    "clear/week_2/dusk/7.webp",
+    "clear/week_3/dusk/7.webp",
+    "clear/week_4/dusk/7.webp"
+   ],
+   "lines": [
+    "Golden hour has stolen the last word."
+   ],
+   "pair": "R08c",
+   "ruledBy": "Al: USE, the rolling page (review/pairs-rolling-ruled-2026-09-27b.json) and his brief, 27 Sept 2026; the line in his own words where he changed it"
+  },
+  {
+   "image": "wind/week_1/dusk/4.webp",
+   "hash": "6548365487d9",
+   "condition": "wind",
+   "time": "dusk",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "wind/week_1/dusk/4.webp",
+    "wind/week_2/dusk/4.webp",
+    "wind/week_3/dusk/4.webp",
+    "wind/week_4/dusk/4.webp"
+   ],
+   "lines": [
+    "The wind's doing the shopping. Nobody gave it a list."
+   ],
+   "pair": "R22b",
+   "ruledBy": "Al: USE, the rolling page (review/pairs-rolling-ruled-2026-09-27b.json) and his brief, 27 Sept 2026; the line in his own words where he changed it"
+  },
+  {
+   "image": "clear/week_1/dawn/5.webp",
+   "hash": "591939f4f57b",
+   "condition": "clear",
+   "time": "dawn",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "clear/week_1/dawn/5.webp",
+    "clear/week_2/dawn/5.webp",
+    "clear/week_3/dawn/5.webp",
+    "clear/week_4/dawn/5.webp"
+   ],
+   "lines": [
+    "The sunshine will make your commute suspiciously pleasant today."
+   ],
+   "pair": "R06c",
+   "ruledBy": "Al: USE, the rolling page (review/pairs-rolling-ruled-2026-09-27b.json) and his brief, 27 Sept 2026; the line in his own words where he changed it"
+  },
+  {
+   "image": "heat/week_1/dawn/3.webp",
+   "hash": "fc06880aeadb",
+   "condition": "heat",
+   "time": "dawn",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "heat/week_1/dawn/3.webp",
+    "heat/week_2/dawn/3.webp",
+    "heat/week_3/dawn/3.webp",
+    "heat/week_4/dawn/3.webp"
+   ],
+   "lines": [
+    "It's so hot even the ice tray looks nervous."
+   ],
+   "pair": "R09b",
+   "ruledBy": "Al: USE, the rolling page (review/pairs-rolling-ruled-2026-09-27b.json) and his brief, 27 Sept 2026; the line in his own words where he changed it"
+  },
+  {
+   "image": "clear/week_2/day/3.webp",
+   "hash": "5976dea068f8",
+   "condition": "clear",
+   "time": "day",
+   "week": "B",
+   "day": "wed",
+   "paths": [
+    "clear/week_2/day/3.webp",
+    "clear/week_4/day/3.webp"
+   ],
+   "lines": [
+    "The sun is turning your car seat into a snackwich machine."
+   ],
+   "pair": "R04c",
+   "ruledBy": "Al: USE, the rolling page (review/pairs-rolling-ruled-2026-09-27b.json) and his brief, 27 Sept 2026; the line in his own words where he changed it"
   }
  ],
  "culled": {
@@ -6980,12 +6946,78 @@
      "This is the weather we brag about overseas.",
      "Not a breath of haze this morning; even the mountain got up early."
     ]
+   },
+   {
+    "hash": "17c00a47cba2",
+    "image": "wind/week_1/dusk/4.webp",
+    "byPair": "R22b",
+    "lines": [
+     "That tree has been shaped by one wind for about forty years.",
+     "The washing goes out at this hour because wind is cheaper than electricity.",
+     "The lagoon has gone flat and silver, which fools nobody who lives here.",
+     "Everything on this street leans the same way, including the people.",
+     "Thursday evening, and the only thing still moving out here is the line."
+    ]
+   },
+   {
+    "hash": "c6d266d04418",
+    "image": "heat/week_1/dawn/3.webp",
+    "byPair": "R09b",
+    "lines": [
+     "They are out at half past five because there is no other window today.",
+     "That sun has been up eleven minutes and it is already doing that.",
+     "Nobody is carrying water, which is a decision they are going to revisit.",
+     "The shade on this road runs out in about two hundred metres.",
+     "Wednesday, and this is the coolest it is going to be all day.",
+     "6:30 and the tar is already considering melting."
+    ]
+   },
+   {
+    "hash": "525b2eea2ebc",
+    "image": "clear/week_1/dusk/7.webp",
+    "byPair": "R08c",
+    "lines": [
+     "The weather gods are showing off.",
+     "Weekend vibes so strong they need their own playlist.",
+     "The evening showed up in its Sunday best.",
+     "Flat sea, spent sun, and air still warm enough to sit around in a wet wetsuit.",
+     "The wind that usually owns this coast has taken the evening off.",
+     "That sky is doing its whole show over a sea too flat to interrupt it."
+    ]
+   },
+   {
+    "hash": "66d5e6cb3570",
+    "image": "clear/week_1/dawn/5.webp",
+    "byPair": "R06c",
+    "lines": [
+     "Not one metre of shade on this promenade, which is why they are out at six.",
+     "The sea is that flat about nine mornings a year and this is one of them.",
+     "That mountain is that sharp because there is nothing at all in the air today.",
+     "The sky is completely empty, which means this is as cool as today gets.",
+     "Friday, and by noon that paving is going to be too hot to stand on.",
+     "Days like this should come with a soundtrack.",
+     "The type of day that makes people text 'lekker dag hey'.",
+     "Morning people might be onto something. Don't tell them."
+    ]
+   },
+   {
+    "hash": "448b951052cc",
+    "image": "clear/week_2/day/3.webp",
+    "byPair": "R04c",
+    "lines": [
+     "Blue sky, warm breeze. The simple stuff.",
+     "The kind of sky that makes you grateful for free things.",
+     "The kind of sun that turns one tennis ball into a whole afternoon.",
+     "That farmhouse has seen a few centuries of days like this and still gets them free.",
+     "Full sun, soft lawn, and homework has officially lost its audience."
+    ]
    }
   ],
   "records": [
    "review/pilot-pairs.json",
    "review/pairs-batch-1-plan.json",
-   "review/pairs-rolling-1-plan.json"
+   "review/pairs-rolling-1-plan.json",
+   "review/pairs-rolling-2-plan.json"
   ]
  }
 }

@@ -56,21 +56,6 @@
    "condition": "clear",
    "time": "dawn",
    "week": "A",
-   "day": "fri",
-   "hash": "66d5e6cb3570",
-   "image": "clear/week_1/dawn/5.webp",
-   "paths": [
-    "clear/week_1/dawn/5.webp",
-    "clear/week_2/dawn/5.webp",
-    "clear/week_3/dawn/5.webp",
-    "clear/week_4/dawn/5.webp"
-   ],
-   "previousImage": "clear/week_1/dawn/3.webp"
-  },
-  {
-   "condition": "clear",
-   "time": "dawn",
-   "week": "A",
    "day": "sat",
    "hash": "d529968dcb50",
    "image": "clear/week_1/dawn/6.webp",
@@ -187,19 +172,6 @@
     "clear/week_4/day/2.webp"
    ],
    "previousImage": "clear/week_2/day/1.webp"
-  },
-  {
-   "condition": "clear",
-   "time": "day",
-   "week": "B",
-   "day": "wed",
-   "hash": "448b951052cc",
-   "image": "clear/week_2/day/3.webp",
-   "paths": [
-    "clear/week_2/day/3.webp",
-    "clear/week_4/day/3.webp"
-   ],
-   "previousImage": "clear/week_4/day/2.webp"
   },
   {
    "condition": "clear",
@@ -342,21 +314,6 @@
     "clear/week_4/dusk/6.webp"
    ],
    "previousImage": "clear/week_1/dusk/3.webp"
-  },
-  {
-   "condition": "clear",
-   "time": "dusk",
-   "week": "A",
-   "day": "sun",
-   "hash": "525b2eea2ebc",
-   "image": "clear/week_1/dusk/7.webp",
-   "paths": [
-    "clear/week_1/dusk/7.webp",
-    "clear/week_2/dusk/7.webp",
-    "clear/week_3/dusk/7.webp",
-    "clear/week_4/dusk/7.webp"
-   ],
-   "previousImage": "clear/week_2/dusk/1.webp"
   },
   {
    "condition": "clear",
@@ -2302,21 +2259,6 @@
    "condition": "heat",
    "time": "dawn",
    "week": "A",
-   "day": "wed",
-   "hash": "c6d266d04418",
-   "image": "heat/week_1/dawn/3.webp",
-   "paths": [
-    "heat/week_1/dawn/3.webp",
-    "heat/week_2/dawn/3.webp",
-    "heat/week_3/dawn/3.webp",
-    "heat/week_4/dawn/3.webp"
-   ],
-   "previousImage": "heat/week_2/dawn/7.webp"
-  },
-  {
-   "condition": "heat",
-   "time": "dawn",
-   "week": "A",
    "day": "thu",
    "hash": "726c6aee069a",
    "image": "heat/week_1/dawn/4.webp",
@@ -3949,21 +3891,6 @@
    "condition": "wind",
    "time": "dusk",
    "week": "A",
-   "day": "thu",
-   "hash": "17c00a47cba2",
-   "image": "wind/week_1/dusk/4.webp",
-   "paths": [
-    "wind/week_1/dusk/4.webp",
-    "wind/week_2/dusk/4.webp",
-    "wind/week_3/dusk/4.webp",
-    "wind/week_4/dusk/4.webp"
-   ],
-   "previousImage": "wind/week_2/dusk/6.webp"
-  },
-  {
-   "condition": "wind",
-   "time": "dusk",
-   "week": "A",
    "day": "fri",
    "hash": "ec12d1747d09",
    "image": "wind/week_1/dusk/5.webp",
@@ -4354,6 +4281,79 @@
     "wind/week_4/day/4.webp"
    ],
    "pair": "R48"
+  },
+  {
+   "condition": "clear",
+   "time": "dusk",
+   "week": "A",
+   "day": "sun",
+   "hash": "1cfb52ede877",
+   "image": "clear/week_1/dusk/7.webp",
+   "paths": [
+    "clear/week_1/dusk/7.webp",
+    "clear/week_2/dusk/7.webp",
+    "clear/week_3/dusk/7.webp",
+    "clear/week_4/dusk/7.webp"
+   ],
+   "pair": "R08c"
+  },
+  {
+   "condition": "wind",
+   "time": "dusk",
+   "week": "A",
+   "day": "thu",
+   "hash": "6548365487d9",
+   "image": "wind/week_1/dusk/4.webp",
+   "paths": [
+    "wind/week_1/dusk/4.webp",
+    "wind/week_2/dusk/4.webp",
+    "wind/week_3/dusk/4.webp",
+    "wind/week_4/dusk/4.webp"
+   ],
+   "pair": "R22b"
+  },
+  {
+   "condition": "clear",
+   "time": "dawn",
+   "week": "A",
+   "day": "fri",
+   "hash": "591939f4f57b",
+   "image": "clear/week_1/dawn/5.webp",
+   "paths": [
+    "clear/week_1/dawn/5.webp",
+    "clear/week_2/dawn/5.webp",
+    "clear/week_3/dawn/5.webp",
+    "clear/week_4/dawn/5.webp"
+   ],
+   "pair": "R06c"
+  },
+  {
+   "condition": "heat",
+   "time": "dawn",
+   "week": "A",
+   "day": "wed",
+   "hash": "fc06880aeadb",
+   "image": "heat/week_1/dawn/3.webp",
+   "paths": [
+    "heat/week_1/dawn/3.webp",
+    "heat/week_2/dawn/3.webp",
+    "heat/week_3/dawn/3.webp",
+    "heat/week_4/dawn/3.webp"
+   ],
+   "pair": "R09b"
+  },
+  {
+   "condition": "clear",
+   "time": "day",
+   "week": "B",
+   "day": "wed",
+   "hash": "5976dea068f8",
+   "image": "clear/week_2/day/3.webp",
+   "paths": [
+    "clear/week_2/day/3.webp",
+    "clear/week_4/day/3.webp"
+   ],
+   "pair": "R04c"
   }
  ]
 }

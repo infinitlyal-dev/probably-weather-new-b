@@ -158,9 +158,12 @@ describe('HERO_LINE_TAGS carries every bank line\'s months and region', () => {
     // bank row stays). 67 after the rolling page's ruling (2026-09-27): "Rusks first.
     // Panic later." left with the robe photo R18 replaced, and "Weather this perfect is
     // on loan…" with the man watering the lawn R03 replaced (both bank rows stay).
+    // 66 after the rolling page's second ruling (2026-09-27): "6:30 and the tar is
+    // already considering melting." left with the heat-dawn jog trio R09b replaced
+    // (its bank row stays).
     // The floor guards against tags being dropped in bulk, so it tracks the real
     // count rather than being loosened.
-    expect(checked).toBeGreaterThanOrEqual(67);
+    expect(checked).toBeGreaterThanOrEqual(66);
   });
 
   it('every tag is keyed by a live English line and carries only months and region', () => {

@@ -15533,6 +15533,56 @@
    "afrikaans": "Die wind stry met almal. Jy’s volgende.",
    "score": 5,
    "reason": "Al's ruling of 27 Sept 2026 (review/pairs-rolling-ruled-2026-09-27.json and his brief): the kept pairs' Afrikaans as proposed"
+  },
+  {
+   "id": "PR08c",
+   "group": "new",
+   "verdict": "NEW",
+   "slot": "clear/dusk",
+   "english": "Golden hour has stolen the last word.",
+   "afrikaans": "Die goue lig kry die laaste sê.",
+   "score": 5,
+   "reason": "Al's ruling of 27 Sept 2026: R08c in his own Afrikaans, R22b as proposed; R06c, R09b and R04c proposed by Maat (Fable 5.1) for the lines Al rewrote, lang-check pass, waiting for his OK or Fix on review/pairs-rolling.html"
+  },
+  {
+   "id": "PR22b",
+   "group": "new",
+   "verdict": "NEW",
+   "slot": "wind/dusk",
+   "english": "The wind's doing the shopping. Nobody gave it a list.",
+   "afrikaans": "Die wind doen inkopies. Sonder ’n lys, natuurlik.",
+   "score": 5,
+   "reason": "Al's ruling of 27 Sept 2026: R08c in his own Afrikaans, R22b as proposed; R06c, R09b and R04c proposed by Maat (Fable 5.1) for the lines Al rewrote, lang-check pass, waiting for his OK or Fix on review/pairs-rolling.html"
+  },
+  {
+   "id": "PR06c",
+   "group": "new",
+   "verdict": "NEW",
+   "slot": "clear/dawn",
+   "english": "The sunshine will make your commute suspiciously pleasant today.",
+   "afrikaans": "Die sonskyn gaan jou pendelrit vandag verdag lekker maak.",
+   "score": 5,
+   "reason": "Al's ruling of 27 Sept 2026: R08c in his own Afrikaans, R22b as proposed; R06c, R09b and R04c proposed by Maat (Fable 5.1) for the lines Al rewrote, lang-check pass, waiting for his OK or Fix on review/pairs-rolling.html"
+  },
+  {
+   "id": "PR09b",
+   "group": "new",
+   "verdict": "NEW",
+   "slot": "heat/dawn",
+   "english": "It's so hot even the ice tray looks nervous.",
+   "afrikaans": "Dis so warm, selfs die ysbakkie lyk benoud.",
+   "score": 5,
+   "reason": "Al's ruling of 27 Sept 2026: R08c in his own Afrikaans, R22b as proposed; R06c, R09b and R04c proposed by Maat (Fable 5.1) for the lines Al rewrote, lang-check pass, waiting for his OK or Fix on review/pairs-rolling.html"
+  },
+  {
+   "id": "PR04c",
+   "group": "new",
+   "verdict": "NEW",
+   "slot": "clear/day",
+   "english": "The sun is turning your car seat into a snackwich machine.",
+   "afrikaans": "Die son maak van jou karsitplek 'n snackwich-masjien.",
+   "score": 5,
+   "reason": "Al's ruling of 27 Sept 2026: R08c in his own Afrikaans, R22b as proposed; R06c, R09b and R04c proposed by Maat (Fable 5.1) for the lines Al rewrote, lang-check pass, waiting for his OK or Fix on review/pairs-rolling.html"
   }
  ]
 }

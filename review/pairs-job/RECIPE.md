@@ -24,6 +24,10 @@ that already describes it. A pair is judged together; neither half is the other'
    35 % MEH. But a longer line that stays on the weather can be loved (below). Cut vagueness, not the idea.
 5. **The recipe score predicts him.** Live lines by recipe score: top quarter 71 % LOVE, then 65 %, 47 %,
    bottom quarter 18 % LOVE and 55 % MEH.
+6. **The line names the weather and works on its own (Al, 27 Sept 2026).** Read it without the photo: if it
+   only makes sense with the picture, rewrite it. "Even the ice tray looks nervous." fails; "It's so hot even
+   the ice tray looks nervous." passes. The photo makes the joke funnier; it doesn't carry it. (Al on the first
+   version: "This line feels like it is going back to describing an image … then the images make sense.")
 
 **Gold — lines Al loved** (N = new, written blind to the recipe; the rest were live):
 - Weather as a character: "The weather gods are showing off." · "The sky just said something. Nobody's
@@ -127,6 +131,11 @@ the pillow line: "Read the line, you could use that as inspiration for the image
    default; not coastal or Cape Dutch by default; no romantic couples; no text, signs, logos or number
    plates; a real place drawn right or not drawn at all (no cloned skylines, no invented cities); at night
    and in frost, people small or turned away.
+8. **Bodies make sense (Al, 27 Sept 2026).** Every person in the photo: where the arms and legs are, how they
+   sit, stand or hold things, and whether the pose is one a real body can hold. The judge checks each person
+   and rejects anything unclear — a limb that goes nowhere, a hand that holds nothing the way hands do, a body
+   folded wrong, an extra or missing arm. (Al on R04b's two takes: "no fucking idea where the limbs are or
+   what they are doing".)
 
 **What his grades add** (40 app photos: 22 LOVE, 11 FINE, 7 MEH):
 - Posed people are the surest MEH: 0 of 5 posed photos loved, 3 MEH. Four of his five named photos got
@@ -154,7 +163,9 @@ the joke; the picture is the joke's situation, and never has the line's words in
 ## 5. Checks before Al sees anything
 
 - The line: about the weather now, a twist, not narrating a scene, not a label pun or slogan, no calendar,
-  no Eskom, no photo description (the rubric in `RUBRIC-lines.md`; pass = weather-now + twist).
+  no Eskom, no photo description (the rubric in `RUBRIC-lines.md`; pass = weather-now + twist) — and read
+  without its photo it still names the weather and makes sense (§2 rule 6); a line that needs its picture is
+  not made.
 - The photo: the rules above, by eye at full size; then the Home check — the joke must not sit on the
   subject (the photo check) — and the fold gate.
 - The variety check, before any photo is made: the idea against every live photo, the pairs waiting and the
@@ -169,7 +180,8 @@ the joke; the picture is the joke's situation, and never has the line's words in
   (poverty, decay, litter, graffiti, squalor), not aspirational (not a cared-for home, garden, suburb, town
   or farm), wrong for its day (work clothes or a work scene on a weekend, anything that doesn't suit the
   slot's day and time), or wrong in weather strength (clear that reads as a heat wave, heat that reads as a
-  nice day), as well as to one that is waxy or not realistic.
+  nice day), as well as to one that is waxy or not realistic — and to any photo where a person's body does not
+  make sense (§3 rule 8): it looks at every person's arms, legs, hands and pose, and anything unclear is a NO.
 - Only Al's ticks ship. Al checks English and Afrikaans; isiZulu, isiXhosa and Sesotho go through the
   language skills and lang-check.
 

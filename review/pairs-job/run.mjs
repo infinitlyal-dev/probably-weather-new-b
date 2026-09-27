@@ -64,6 +64,7 @@ state.pairs ||= {};                   // pair id -> { batch, made, ruled }
 state.lines ||= {};                   // mood-line id -> { batch, made, ruled } (lines for the bank, no photo)
 state.ingested ||= [];                // `generated` stamps of Al's exports already read
 state.requeued ||= {};                // target id -> [{ on, why }]: spots Al sent back for a new pair
+state.checks ||= {};                  // check id -> { made, ruled, card }: an Afrikaans proposal on a pair already wired (27 Sept 2026)
 const saveState = () => writeFileSync(statePath, JSON.stringify(state, null, 1));
 const targetsPath = path.join(DATA, 'targets.json');
 // A pair's id is its target's id, with a letter when the spot is made again (R04, then R04b, R04c).
@@ -199,13 +200,15 @@ ${all.map((a, k) => `- ${k + 1}: pair ${a.l.id}; slot: ${slotWords(a.target)}; i
 The photos already in the app (one line each; the key before the colon):
 ${catalogueText() || '(none given)'}
 
-Reply with JSON only: {"photos": an array of {"n", "realism": 1-5 (5 = indistinguishable from a real camera photo), "waxy": true if any skin looks smoothed, plastic or waxy, "aiTells": short list of visible AI artefacts or [], "gritty": true if it reads as poverty, decay, litter, graffiti or squalor, "aspirational": true only if the setting is cared-for (false for a shack, an informal or run-down place), "dayFit": true only if the clothes and activity suit its slot's day and time (false for work clothes or a work scene on a weekend slot), "weatherFit": true only if the weather's strength matches its slot (false when a clear slot reads as a heat wave, a heat slot reads as a nice day, or cold and frost are swapped), "posed": true if anyone is posing or smiling at the camera, "text": true if any words, letters, signs or logos are visible, "shows": true only if the intended picture's key thing is clearly visible, "banned": a list of any of these setups the photo shows, else []: ${BANNED_SETUPS.map((b) => `"${b}"`).join(', ')}, "repeatsApp": the key of the app photo it repeats (the same kind of subject doing the same thing in the same kind of place), or "", "description": one line of at most 18 words saying who or what is in it, doing what, where, how close, "fitNote": one short phrase on what is off, or "", "subjectTop": % of the image height where the main subject starts, "subjectBottom": % where it ends, "calmBottom": true if the bottom third is calm and empty}, "lookalikes": a list of groups of photo numbers from DIFFERENT pairs that read as the same idea or setup side by side (the same kind of subject doing the same kind of thing in the same kind of place), e.g. [[2, 7]], or []}. Judge only what you can see. Do not run commands or read files.`;
+Look hard at every person's body (the owner, 27 Sept 2026: "no fucking idea where the limbs are or what they are doing"): where each arm and leg is, how they sit, stand or hold things, whether the pose is physically possible. Anything unclear is a failure.
+
+Reply with JSON only: {"photos": an array of {"n", "realism": 1-5 (5 = indistinguishable from a real camera photo), "waxy": true if any skin looks smoothed, plastic or waxy, "aiTells": short list of visible AI artefacts or [], "gritty": true if it reads as poverty, decay, litter, graffiti or squalor, "aspirational": true only if the setting is cared-for (false for a shack, an informal or run-down place), "dayFit": true only if the clothes and activity suit its slot's day and time (false for work clothes or a work scene on a weekend slot), "weatherFit": true only if the weather's strength matches its slot (false when a clear slot reads as a heat wave, a heat slot reads as a nice day, or cold and frost are swapped), "posed": true if anyone is posing or smiling at the camera, "text": true if any words, letters, signs or logos are visible, "bodies": true only if every person's body makes sense — the right number of arms, legs, hands and fingers, each attached where it belongs, hands holding things the way hands do, a pose a real body can hold while sitting, standing, leaning or reaching; false when anything about a body is unclear or impossible (true when nobody is in the photo), "bodyNote": what is wrong with a body, or "", "shows": true only if the intended picture's key thing is clearly visible, "banned": a list of any of these setups the photo shows, else []: ${BANNED_SETUPS.map((b) => `"${b}"`).join(', ')}, "repeatsApp": the key of the app photo it repeats (the same kind of subject doing the same thing in the same kind of place), or "", "description": one line of at most 18 words saying who or what is in it, doing what, where, how close, "fitNote": one short phrase on what is off, or "", "subjectTop": % of the image height where the main subject starts, "subjectBottom": % where it ends, "calmBottom": true if the bottom third is calm and empty}, "lookalikes": a list of groups of photo numbers from DIFFERENT pairs that read as the same idea or setup side by side (the same kind of subject doing the same kind of thing in the same kind of place), e.g. [[2, 7]], or []}. Judge only what you can see. Do not run commands or read files.`;
 }
 // The pick: realism first (no waxy skin), then Al's rules (no grit, aspirational, fits its day, weather at the
 // folder's strength, a candid moment, no words, shows its picture, no banned setup, no repeat of an app photo),
 // then the composition; then, pair by pair, never a take that looks like a pick already made for another pair.
 // Home D is Home (26 Sept 2026): its joke sits 55-75 % down the screen, so a subject past 60 % is pre-marked NO.
-const fitFails = (m) => [m.gritty && 'gritty', m.aspirational === false && 'not aspirational', m.dayFit === false && 'wrong for its day', m.weatherFit === false && 'wrong weather strength', m.posed && 'posed', m.text && 'words in the picture', m.shows === false && 'does not show its picture', m.banned?.length && `a banned setup (${m.banned.join('; ')})`, m.repeatsApp && 'repeats a photo in the app', m.subjectBottom > 60 && 'subject in the joke band'].filter(Boolean);
+const fitFails = (m) => [m.gritty && 'gritty', m.aspirational === false && 'not aspirational', m.dayFit === false && 'wrong for its day', m.weatherFit === false && 'wrong weather strength', m.posed && 'posed', m.text && 'words in the picture', m.bodies === false && `a body that does not make sense${m.bodyNote ? ` (${m.bodyNote})` : ''}`, m.shows === false && 'does not show its picture', m.banned?.length && `a banned setup (${m.banned.join('; ')})`, m.repeatsApp && 'repeats a photo in the app', m.subjectBottom > 60 && 'subject in the joke band'].filter(Boolean);
 function judgeAndChoose(pairs, cwd, outName, targetOf) {
   const all = pairs.flatMap((l) => (l.takes || []).map((t, i) => ({ l, t, i, target: targetOf(l.id) })));
   let looks = [];
@@ -236,7 +239,7 @@ function judgeAndChoose(pairs, cwd, outName, targetOf) {
     l.coversFlag = best?.m && best.m.subjectBottom > 60 ? `On Home the joke would sit on the subject: it reaches ${best.m.subjectBottom} % down the frame.` : null;
     l.gritFlag = best?.m?.gritty ? 'The judge reads grit or poverty in it (house rule: positive, no decay or litter).' : null;
     const off = best?.m ? fitFails(best.m).filter((x) => x !== 'gritty' && x !== 'subject in the joke band' && x !== 'repeats a photo in the app') : [];
-    l.fitFlag = off.length ? `The judge says: ${off.join(', ')}${best.m.fitNote ? ` (${best.m.fitNote})` : ''}. Al's rules: aspirational settings, clothes that fit the day, weather at the folder's strength, a candid moment, the picture the joke needs, no repeat setups.` : null;
+    l.fitFlag = off.length ? `The judge says: ${off.join(', ')}${best.m.fitNote ? ` (${best.m.fitNote})` : ''}. Al's rules: aspirational settings, clothes that fit the day, weather at the folder's strength, a candid moment, the picture the joke needs, no repeat setups, bodies that make sense.` : null;
     l.realOk = !!(best?.m && !best.m.waxy && best.m.realism >= 4 && !fitFails(best.m).length && !twin);
     l.anchorY = best?.m ? Math.max(15, Math.min(60, Math.round((best.m.subjectTop + best.m.subjectBottom) / 2) - 10)) : 40;
   }
@@ -262,7 +265,7 @@ ${SETTING} If a person or an animal is in it, they are caught mid-moment, candid
 
 ${REALISM}
 
-Nothing written anywhere: no text, letters, signs, logos, labels or number plates.`;
+Every person's body makes sense: the right number of arms, legs, hands and fingers, each attached where it belongs; hands hold things the way hands do; a pose a real body can hold while sitting, standing, leaning or reaching. Nothing written anywhere: no text, letters, signs, logos, labels or number plates.`;
 }
 // Two takes of one pair (capped at two); returns the PNG paths.
 function makeTakes(l, t, cwd) {
@@ -287,7 +290,8 @@ function waiting(kind) {
 async function rebuildPage() {
   const pairs = waiting('pairs');
   const lines = waiting('lines');
-  const page = await buildPage({ kept: pairs, lines, targets: J(targetsPath).targets, sharp, repo: REPO, maxWaiting: MAX_WAITING });
+  const checks = Object.entries(state.checks).filter(([, c]) => !c.ruled).map(([id, c]) => ({ id, ...c.card }));
+  const page = await buildPage({ kept: pairs, lines, checks, targets: J(targetsPath).targets, sharp, repo: REPO, maxWaiting: MAX_WAITING });
   if (!DRY) writeFileSync(path.join(REPO, 'review', PAGE_NAME), page);
   return pairs.length;
 }
@@ -388,10 +392,12 @@ if (rollingExports.length) {
   for (const id of ids) state.pairs[id].ruled = ex.generated;
   const lineIds = (ex.lines || []).map((l) => l.id).filter((id) => state.lines[id] && !state.lines[id].ruled);
   for (const id of lineIds) state.lines[id].ruled = ex.generated;
+  const checkIds = (ex.afChecks || []).map((c) => c.id).filter((id) => state.checks[id] && !state.checks[id].ruled);
+  for (const id of checkIds) state.checks[id].ruled = ex.generated;
   const back = (ex.pairs || []).filter((p) => ids.includes(p.id) && (p.use === 'NO' || p.take === 'NEITHER') && requeue(tid(p.id), `Al: ${p.use === 'NO' ? 'No' : 'neither take'} on ${p.id} (${ex.generated})`)).map((p) => tid(p.id));
   state.ingested.push(ex.generated, ...older.map((o) => o.ex.generated));
   saveState();
-  log(`Al ruled ${ids.length} pairs and ${lineIds.length} lines on the rolling page (${f}); copied to rolling-ruled/ for the wiring session${back.length ? `; back on the queue: ${back.join(', ')}` : ''}${older.length ? `; older exports not read (superseded): ${older.map((o) => o.n).join(', ')}` : ''}`);
+  log(`Al ruled ${ids.length} pairs, ${lineIds.length} lines and ${checkIds.length} Afrikaans checks on the rolling page (${f}); copied to rolling-ruled/ for the wiring session${back.length ? `; back on the queue: ${back.join(', ')}` : ''}${older.length ? `; older exports not read (superseded): ${older.map((o) => o.n).join(', ')}` : ''}`);
 }
 // The meh-photo page: REPLACE queues a pair for the photo's spots; KEEP drops it if not yet made.
 ingestMeh();
@@ -486,6 +492,8 @@ ${recipe}
 
 THE TASK: for each target below, write THREE different candidate lines for its weather, each to the recipe (about the weather now, one twist, straight to the reader, short), each with its Afrikaans (natural, conceived in Afrikaans, not word for word), and — written together with the line — its PICTURE.
 
+THE LINE STANDS ON ITS OWN (the owner, 27 Sept 2026). Every line names the weather and works without its photo. Before you answer, read each line with no picture in mind: if it only makes sense with the picture, rewrite it. "Even the ice tray looks nervous." fails; "It's so hot even the ice tray looks nervous." passes. "The sun has reserved the passenger seat." fails (too vague on its own); "The sun is turning your car seat into a snackwich machine." passes. The photo makes the joke funnier; it never carries it.
+
 The picture is the joke's own situation, caught by a real camera: the thing the line talks about, happening. The owner's pairs that worked: "The wind took the washing. It's keeping the pegs." (a washing line with every peg still clipped on and nothing left on it, one shirt sailing off out of reach); "Rain this hard, even the taxis start indicating." (a minibus taxi in a downpour, its indicator blinking); "This heat has fired the cold side of your pillow." (a pillow flipped over on a rumpled bed on a hot night, a fan aimed at it). Some lines are pure mood with nothing to show ("The sky's keeping tonight to itself."): they are fine lines — give them "picture": null. They go to the owner as lines for the bank, with no photo made.
 
 VARIETY — why the job was rewritten. The owner rejected a whole run: "We basically got the same theme and setup across almost all of them." Nearly every photo was one person outside a house reacting to the weather. So:
@@ -576,6 +584,8 @@ PHOTOS. A setup is the same when it is the same kind of subject doing the same k
 
 LINES. A line repeats another when it uses the same formula or makes the same joke, even in other words or about other weather: "The sun clocked in angry." and "The cold's clocked in early." share a formula; "Daylight beat your alarm again." repeats "The sun clocked in before your alarm even tried."; "The wind's arguing with everything you own." repeats "The wind's arguing with everyone. You're next." Formulas already used up: ${USED_FORMULAS.join('; ')}.
 
+THE LINE ON ITS OWN. Read each new line WITHOUT its picture. It passes only if it names the weather (or what the weather is doing) and makes sense by itself; it fails if it only works once you have seen the photo. "Even the ice tray looks nervous." fails; "It's so hot even the ice tray looks nervous." passes. "The sun has reserved the passenger seat." fails (vague on its own); "The sun is turning your car seat into a snackwich machine." passes.
+
 LIVE PHOTOS (key: line):
 ${catalogueText()}
 
@@ -588,7 +598,7 @@ ${seenLines.map((s) => `${s.key}: ${s.line}`).join('\n')}
 NEW IDEAS (key: line | picture | subject | setting | shot):
 ${checked.map((c) => `${c.id}/${c.cand}: ${c.line} | ${c.picture || '(no picture: a line for the bank)'} | ${c.subject || ''} | ${c.setting || ''} | ${c.shot || ''}`).join('\n')}
 
-For every new idea reply with JSON only, an array of {"key": "<id>/<cand>", "verdict": "ok" | "repeat" | "banned" (for the photo idea; "ok" when there is no picture), "same_as": the key of the live photo or waiting pair it repeats, or "", "like": the keys of other NEW ideas (for other targets) whose photo idea is the same setup as this one, or [], "line_same_as": the key of a line already written, or of another NEW idea, whose formula or joke this line repeats, or "", "why": a short phrase}. Do not run commands or read files.`;
+For every new idea reply with JSON only, an array of {"key": "<id>/<cand>", "verdict": "ok" | "repeat" | "banned" (for the photo idea; "ok" when there is no picture), "same_as": the key of the live photo or waiting pair it repeats, or "", "like": the keys of other NEW ideas (for other targets) whose photo idea is the same setup as this one, or [], "line_same_as": the key of a line already written, or of another NEW idea, whose formula or joke this line repeats, or "", "line_alone": true if the line names the weather and makes sense without its picture, false if it needs the photo, "alone_why": a short phrase when false, else "", "why": a short phrase}. Do not run commands or read files.`;
   try {
     const vr = codex(vprompt, { out: path.join(dir, 'variety.txt'), cwd: dir });
     try { verdicts = firstJson(vr.text); } catch (e) { log(`variety check did not parse: ${e.message} — nothing made this run (the check comes first)`); await rebuildPage(); process.exit(1); }
@@ -602,6 +612,8 @@ for (const c of checked) {
   const sameAs = String(v?.line_same_as || '');
   const other = checked.find((x) => `${x.id}/${x.cand}` === sameAs);
   c.lineRepeat = sameAs && !(other && (other.id > c.id || (other.id === c.id && other.cand > c.cand))) ? sameAs : null;
+  // The line on its own (Al, 27 Sept 2026): a line that needs its picture is not made, photo or not.
+  c.needsPhoto = v && v.line_alone === false ? (v.alone_why || 'the line only works with its picture') : null;
 }
 // (c) one idea per target, in queue order: a picture, through the filter, no banned setup, no repeat, not like an
 // idea already picked, and the batch keeps its mix (at most 2 of any subject, 2 in one setting, 1 in a garden or
@@ -614,7 +626,7 @@ const MIX = 5;
 const prior = waiting('pairs').slice(-Math.max(0, MIX - room));
 const inMix = () => [...prior, ...chosen];
 const reached = [];
-const passes = (c) => c.picture && !c.dropWhy && !c.banned.length && !c.lineRepeat && (DRY || c.variety?.verdict === 'ok');
+const passes = (c) => c.picture && !c.dropWhy && !c.banned.length && !c.lineRepeat && !c.needsPhoto && (DRY || c.variety?.verdict === 'ok');
 for (const t of targets) {
   if (chosen.length >= room) break;                     // the spares are used only while there is room
   reached.push(t.id);
@@ -630,6 +642,7 @@ for (const t of targets) {
 for (const c of cands.filter((x) => x.picture && !chosen.includes(x))) {
   const lineRepeat = c.lineRepeat ? `the line repeats ${c.lineRepeat}${seenLines.find((s) => s.key === c.lineRepeat) ? ` ("${seenLines.find((s) => s.key === c.lineRepeat).line}")` : ''}` : null;
   const why = c.dropWhy ? `filter: ${c.dropWhy}` : c.banned.length ? `banned: ${c.banned.join('; ')}` : lineRepeat ? lineRepeat
+    : c.needsPhoto ? `the line does not stand on its own (${c.needsPhoto})`
     : c.variety?.verdict !== 'ok' ? `${c.variety?.verdict || 'unchecked'}${c.variety?.same_as ? ` of ${c.variety.same_as}` : ''} (${c.variety?.why || ''})`
     : !reached.includes(c.id) ? 'a spare target, not needed this run' : chosen.some((x) => x.id === c.id) ? 'another idea for its target was picked' : 'it would break the batch mix';
   log(`${c.id}/${c.cand}: not made — ${why}: ${c.picture}`);
@@ -637,7 +650,7 @@ for (const c of cands.filter((x) => x.picture && !chosen.includes(x))) {
 const skipped = reached.filter((id) => !chosen.some((c) => c.id === id));
 if (skipped.length) log(`no idea passed the variety check for ${skipped.join(', ')} — they wait for the next run`);
 // Mood lines: the lines with no picture, offered to Al for the bank (no photo made).
-const moodLines = cands.filter((c) => !c.picture && !c.dropWhy && !c.lineRepeat && (DRY || c.variety)).slice(0, MAX_MOOD_LINES).map((c, k) => ({ id: `B${n}-${k + 1}`, target: c.id, bin: targets.find((t) => t.id === c.id)?.bin, time: targets.find((t) => t.id === c.id)?.time, line: c.line, af: c.af, twist: c.twist }));
+const moodLines = cands.filter((c) => !c.picture && !c.dropWhy && !c.lineRepeat && !c.needsPhoto && (DRY || c.variety)).slice(0, MAX_MOOD_LINES).map((c, k) => ({ id: `B${n}-${k + 1}`, target: c.id, bin: targets.find((t) => t.id === c.id)?.bin, time: targets.find((t) => t.id === c.id)?.time, line: c.line, af: c.af, twist: c.twist }));
 for (const c of chosen) { c.target = c.id; c.id = pairIdFor(targets.find((t) => t.id === c.target)); }
 
 // ---- 8: photos, two takes each (a rate limit keeps what is made and backs off) ------------------------
@@ -666,7 +679,7 @@ const saveBatch = () => {
   writeFileSync(path.join(dir, 'batch.json'), JSON.stringify({ n, made: new Date().toISOString(), writer: WRITER,
     pairs: made.map((l) => ({ id: l.id, target: l.target, line: l.line, af: l.af, twist: l.twist, picture: l.picture, subject: l.subject, setting: l.setting, shot: l.shot, cast: l.cast, castTag: castTagOf(l), composition: l.composition, takes: l.takes, pick: l.pick, judge: l.judge, description: l.description, lookFlag: l.lookFlag, repeatFlag: l.repeatFlag, coversFlag: l.coversFlag, gritFlag: l.gritFlag, fitFlag: l.fitFlag, realOk: l.realOk, anchorY: l.anchorY })),
     lines: DRY ? [] : moodLines,
-    considered: cands.map((c) => ({ key: `${c.target || c.id}/${c.cand}`, line: c.line, picture: c.picture, subject: c.subject, setting: c.setting, shot: c.shot, castTag: castTagOf(c), dropWhy: c.dropWhy, banned: c.banned, variety: c.variety, lineRepeat: c.lineRepeat, chosen: chosen.includes(c) })) }, null, 1));
+    considered: cands.map((c) => ({ key: `${c.target || c.id}/${c.cand}`, line: c.line, picture: c.picture, subject: c.subject, setting: c.setting, shot: c.shot, castTag: castTagOf(c), dropWhy: c.dropWhy, banned: c.banned, variety: c.variety, lineRepeat: c.lineRepeat, needsPhoto: c.needsPhoto, chosen: chosen.includes(c) })) }, null, 1));
   writeFileSync(path.join(dir, 'key.json'), JSON.stringify({ note: 'Who wrote each line. Not on the page.', key: Object.fromEntries([...made, ...moodLines].map((l) => [l.id, WRITER])) }, null, 1));
 };
 if (!DRY) {

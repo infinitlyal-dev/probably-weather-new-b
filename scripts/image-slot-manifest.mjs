@@ -19,7 +19,7 @@ function filesystemPath(value) {
   return value instanceof URL ? fileURLToPath(value) : path.resolve(value);
 }
 
-/** 303 curated photographs since 2026-09-27 (the pairs, review/pairs-rolling-1-plan.json; see verifyBackgroundImageArtifact). */
+/** 303 curated photographs since 2026-09-27 (the pairs, review/pairs-rolling-2-plan.json; see verifyBackgroundImageArtifact). */
 export const CURATED_BODIES = 303;
 
 /**

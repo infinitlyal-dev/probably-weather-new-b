@@ -1,0 +1,73 @@
+{
+ "generated": "2026-09-27T08:57:50.642Z",
+ "ruledBy": "Al, pairs waiting (review/pairs-rolling.html)",
+ "pairs": [
+  {
+   "id": "R04b",
+   "batch": 10,
+   "line": "The sun has reserved the passenger seat.",
+   "use": "USE",
+   "take": "1",
+   "grade": "FINE",
+   "af": {
+    "verdict": "FIX",
+    "proposal": "Die son het klaar die passasiersitplek bespreek.",
+    "text": "this line is to vague again. say something like the sun is turning your seat into a snakwich machine. or something like that and then have an image of someone dredding climbing in and sitting down. or who just sat down and is struggling a bit, and these two images are completely non senscical, doesnt make sense at all, no fucking idea where the limbs are or what theya re doing... "
+   }
+  },
+  {
+   "id": "R09b",
+   "batch": 10,
+   "line": "Even the ice tray looks nervous.",
+   "use": "USE",
+   "take": "2",
+   "grade": "FINE",
+   "af": {
+    "verdict": "FIX",
+    "proposal": "Selfs die ysbakkie begin benoud lyk.",
+    "text": "This line feels like it is going back to describing an image, It needs something like its so hot even the icetray looks nervous. then the images make sense. but its also not the most fun image.."
+   }
+  },
+  {
+   "id": "R06c",
+   "batch": 11,
+   "line": "The sunshine has made your commute suspiciously pleasant.",
+   "use": "USE",
+   "take": "2",
+   "grade": "FINE",
+   "af": {
+    "verdict": "FIX",
+    "proposal": "Die sonskyn maak jou pendelrit verdag lekker.",
+    "text": "again, line feels like it was written to descrive an image, and yes we want to find a place where the two do compliment each other, for something like this it would be the sunshine will make your cummute suspiciously pleasant today. Or make your commute pleasent, wouldnt that be nice for a change. something like that. "
+   }
+  },
+  {
+   "id": "R08c",
+   "batch": 11,
+   "line": "Golden hour has stolen the last word.",
+   "use": "USE",
+   "take": "1",
+   "grade": "LOVE",
+   "af": {
+    "verdict": "FIX",
+    "proposal": "Goue lig het die laaste sê gesteel.",
+    "text": "For the afrikaans perhaps Die gou lig kry die laaste se. the english is fine."
+   }
+  },
+  {
+   "id": "R22b",
+   "batch": 12,
+   "line": "The wind's doing the shopping. Nobody gave it a list.",
+   "use": "USE",
+   "take": "1",
+   "grade": "LOVE",
+   "af": {
+    "verdict": "OK",
+    "proposal": "Die wind doen inkopies. Sonder ’n lys, natuurlik.",
+    "text": ""
+   }
+  }
+ ],
+ "lines": [],
+ "other": ""
+}

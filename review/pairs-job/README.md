@@ -26,7 +26,9 @@ Now the picture comes from the joke, and variety is checked before anything is m
    marked REPLACE on `review\meh-photos-for-al.html`, most-shown first (tier 2), then extra photos for the
    thinnest weathers — fog, heat, cold-clear (tier 3). Tier 9 is parked (older targets that order leaves out).
 5. Sol (Codex, `gpt-5.6-sol`, on the ChatGPT plan) writes THREE candidate lines per target, each with its
-   Afrikaans and — written with the line — its picture: the joke's own situation (the pegs still on the line,
+   Afrikaans and — written with the line — its picture. **The line names the weather and works on its own** (Al,
+   27 Sept 2026): read without the photo it still makes sense ("Even the ice tray looks nervous." fails; "It's so hot
+   even the ice tray looks nervous." passes); the photo makes the joke funnier, it never carries it. The picture: the joke's own situation (the pegs still on the line,
    the taxi indicating), or none for a mood line. It is shown the catalogue of the app's photos, the pairs
    waiting, the banned setups and the set's counts (subjects, settings, shots, recent casts), and told to cast
    from what the set has least of. No template: the subject, place and camera come from the idea.
@@ -35,7 +37,7 @@ Now the picture comes from the joke, and variety is checked before anything is m
 7. **The variety check, before any photo is made:** the banned setups (read off the picture, and by Sol), and Sol
    reads every idea against the catalogue (`live-photos.json`), the pairs waiting and the other ideas, and every
    line against the bank's lines for its weather, the job's own earlier lines and the formulas used up (no
-   near-repeats). One idea per target, in queue order, that is not a repeat and keeps the mix over any five pairs
+   near-repeats), and reads every line on its own — a line that needs its picture is not made. One idea per target, in queue order, that is not a repeat and keeps the mix over any five pairs
    side by side (at most two of any subject, setting or cast, one garden, one gate, never the same subject in the
    same setting twice); a target with none waits (three tries), and two spare targets are written so the batch
    still fills. Mood lines (no picture) go onto the page as lines for the bank, five a run at most, no photo.
@@ -45,12 +47,14 @@ Now the picture comes from the joke, and variety is checked before anything is m
    after 40 minutes, so the judge and the save always land inside the task's 90-minute limit.
 9. Sol judges all the takes side by side, blind to the lines but told each photo's slot and intended picture:
    each photo alone (realism, waxy skin, AI tells, grit, aspirational, day fit, weather strength, posing, words,
-   shows its picture, a banned setup, a repeat of an app photo, where the subject sits), then lookalikes across
+   shows its picture, a banned setup, a repeat of an app photo, where the subject sits, and **every person's body**
+   — where the arms and legs are, how they sit, stand or hold things, whether the pose is possible; anything
+   unclear is a NO — Al, 27 Sept 2026), then lookalikes across
    the batch — a pair's take that looks like another pair's pick is passed over, or the pair is pre-marked NO.
    A pair is pre-marked USE only when its pick is realistic (4+) and passes every rule; a subject reaching past
    60 % of the frame (where Home D writes the joke) is pre-marked NO.
-10. Rebuilds `review\pairs-rolling.html` (every waiting pair, then the lines for the bank); Al exports
-   `pairs-rolling-ruled.json`.
+10. Rebuilds `review\pairs-rolling.html` (every waiting pair, then the lines for the bank, then any Afrikaans to
+   check — a proposal on a pair already wired, added by a session); Al exports `pairs-rolling-ruled.json`.
 
 `catalogue.mjs --repo <tree>` writes `live-photos.json`: one line per photo in the app, written once and kept
 (new photos described by Sol, retired ones dropped). Run it after a wiring session, then reinstall.

@@ -7,7 +7,7 @@
   "replaced": 15,
   "reAnchored": 134,
   "wired": 281,
-  "pilotPairs": 19
+  "pilotPairs": 24
  },
  "offsets": {
   "dd736311b619": {
@@ -23,14 +23,6 @@
    "slot": "A/thu",
    "image": "clear/week_1/dawn/5.webp",
    "anchorY": 74,
-   "ink": "white"
-  },
-  "66d5e6cb3570": {
-   "verdict": "FIXABLE",
-   "bucket": "clear-dawn",
-   "slot": "A/fri",
-   "image": "clear/week_1/dawn/3.webp",
-   "anchorY": 91,
    "ink": "white"
   },
   "d529968dcb50": {
@@ -86,14 +78,6 @@
    "image": "clear/week_2/day/1.webp",
    "anchorY": 60
   },
-  "448b951052cc": {
-   "verdict": "FIXABLE",
-   "bucket": "clear-day",
-   "slot": "B/wed",
-   "image": "clear/week_4/day/2.webp",
-   "anchorY": 51,
-   "ink": "white"
-  },
   "6e598ae56c12": {
    "verdict": "FIXABLE",
    "bucket": "clear-day",
@@ -138,13 +122,6 @@
    "image": "clear/week_1/dusk/3.webp",
    "anchorY": 87,
    "ink": "white"
-  },
-  "525b2eea2ebc": {
-   "verdict": "FIXABLE",
-   "bucket": "clear-dusk",
-   "slot": "A/sun",
-   "image": "clear/week_2/dusk/1.webp",
-   "anchorY": 61
   },
   "970707aba87c": {
    "verdict": "FIXABLE",
@@ -889,13 +866,6 @@
    "image": "heat/week_1/dawn/4.webp",
    "anchorY": 69,
    "ink": "white"
-  },
-  "c6d266d04418": {
-   "verdict": "FIXABLE",
-   "bucket": "heat-dawn",
-   "slot": "A/wed",
-   "image": "heat/week_2/dawn/7.webp",
-   "anchorY": 69
   },
   "726c6aee069a": {
    "verdict": "FIXABLE",
@@ -1802,17 +1772,6 @@
    "source": "/output/reshoot-2026-08-18/27.png",
    "note": "GPT Image 2, 2026-08-18; anchor is the replacement default, not a per-image ruling"
   },
-  "17c00a47cba2": {
-   "verdict": "REPLACED",
-   "bucket": "wind-dusk",
-   "slot": "A/thu",
-   "image": "wind/week_2/dusk/6.webp",
-   "anchorY": 50,
-   "replacedHash": "da1a09d9496c",
-   "place": "Langebaan",
-   "source": "/output/reshoot-2026-08-18/29.png",
-   "note": "GPT Image 2, 2026-08-18; anchor is the replacement default, not a per-image ruling"
-  },
   "b698a0ccc12d": {
    "verdict": "FIXABLE",
    "bucket": "clear-dawn",
@@ -2132,6 +2091,46 @@
    "image": "wind/week_2/day/4.webp",
    "anchorY": 18,
    "pair": "R48"
+  },
+  "1cfb52ede877": {
+   "verdict": "PAIR",
+   "bucket": "clear-dusk",
+   "slot": "A/sun",
+   "image": "clear/week_1/dusk/7.webp",
+   "anchorY": 26,
+   "pair": "R08c"
+  },
+  "6548365487d9": {
+   "verdict": "PAIR",
+   "bucket": "wind-dusk",
+   "slot": "A/thu",
+   "image": "wind/week_1/dusk/4.webp",
+   "anchorY": 27,
+   "pair": "R22b"
+  },
+  "591939f4f57b": {
+   "verdict": "PAIR",
+   "bucket": "clear-dawn",
+   "slot": "A/fri",
+   "image": "clear/week_1/dawn/5.webp",
+   "anchorY": 27,
+   "pair": "R06c"
+  },
+  "fc06880aeadb": {
+   "verdict": "PAIR",
+   "bucket": "heat-dawn",
+   "slot": "A/wed",
+   "image": "heat/week_1/dawn/3.webp",
+   "anchorY": 19,
+   "pair": "R09b"
+  },
+  "5976dea068f8": {
+   "verdict": "PAIR",
+   "bucket": "clear-day",
+   "slot": "B/wed",
+   "image": "clear/week_2/day/3.webp",
+   "anchorY": 20,
+   "pair": "R04c"
   }
  }
 }

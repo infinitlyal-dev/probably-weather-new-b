@@ -1,0 +1,301 @@
+{
+ "note": "The rolling page's second ruling (Al, 27 Sept 2026, review/pairs-rolling-ruled-2026-09-27b.json = his Downloads export pairs-rolling-ruled(3).json, agreed in chat the same day). Five pairs USE: R08c take 1 with his own Afrikaans (spelling restored); R22b take 1, Afrikaans as proposed; R06c take 2 and R09b take 2 with the English changed to his wording, new Afrikaans proposed by Maat (Fable 5.1; lang-check pass; on the rolling page for his OK or Fix); R04's spot remade from his idea (R04c: both R04b photos out — \"no fucking idea where the limbs are\"), his line, new Afrikaans proposed. Each goes in place of the photo it was made for; everywhere else the original photo stays.",
+ "ruling": "review/pairs-rolling-ruled-2026-09-27b.json (Al, 27 Sept 2026) and his brief the same day",
+ "ruledBy": "Al: USE, the rolling page (review/pairs-rolling-ruled-2026-09-27b.json) and his brief, 27 Sept 2026; the line in his own words where he changed it",
+ "afReason": "Al's ruling of 27 Sept 2026: R08c in his own Afrikaans, R22b as proposed; R06c, R09b and R04c proposed by Maat (Fable 5.1) for the lines Al rewrote, lang-check pass, waiting for his OK or Fix on review/pairs-rolling.html",
+ "pairs": [
+  {
+   "id": "R08c",
+   "condition": "clear",
+   "time": "dusk",
+   "line": "Golden hour has stolen the last word.",
+   "af": "Die goue lig kry die laaste sê.",
+   "slots": [
+    "clear/week_1/dusk/7.webp",
+    "clear/week_2/dusk/7.webp",
+    "clear/week_3/dusk/7.webp",
+    "clear/week_4/dusk/7.webp"
+   ],
+   "expect": "525b2eea2ebc",
+   "why": "replaces Two women wrapped in a blanket at a tidal pool, reads as a couple (meh page: REPLACE)",
+   "anchorY": 26,
+   "source": "C:\\Users\\27741\\pw-pairs-job\\takes\\batch-11\\R08c-1.png",
+   "take": 1,
+   "batch": 11,
+   "grade": "LOVE",
+   "afBy": "Al (his note on the rolling page: \"Die gou lig kry die laaste se\", spelling restored)"
+  },
+  {
+   "id": "R22b",
+   "condition": "wind",
+   "time": "dusk",
+   "line": "The wind's doing the shopping. Nobody gave it a list.",
+   "af": "Die wind doen inkopies. Sonder ’n lys, natuurlik.",
+   "slots": [
+    "wind/week_1/dusk/4.webp",
+    "wind/week_2/dusk/4.webp",
+    "wind/week_3/dusk/4.webp",
+    "wind/week_4/dusk/4.webp"
+   ],
+   "expect": "17c00a47cba2",
+   "why": "replaces Wind-bent tree in a fishing village, no one (meh page: REPLACE)",
+   "anchorY": 27,
+   "source": "C:\\Users\\27741\\pw-pairs-job\\takes\\batch-12\\R22b-1.png",
+   "take": 1,
+   "batch": 12,
+   "grade": "LOVE",
+   "afBy": "the job's proposal, Al: OK"
+  },
+  {
+   "id": "R06c",
+   "condition": "clear",
+   "time": "dawn",
+   "line": "The sunshine will make your commute suspiciously pleasant today.",
+   "af": "Die sonskyn gaan jou pendelrit vandag verdag lekker maak.",
+   "slots": [
+    "clear/week_1/dawn/5.webp",
+    "clear/week_2/dawn/5.webp",
+    "clear/week_3/dawn/5.webp",
+    "clear/week_4/dawn/5.webp"
+   ],
+   "expect": "66d5e6cb3570",
+   "why": "replaces Fitness-ad jog trio smiling at the lens (meh page: REPLACE)",
+   "anchorY": 27,
+   "source": "C:\\Users\\27741\\pw-pairs-job\\takes\\batch-11\\R06c-2.png",
+   "take": 2,
+   "batch": 11,
+   "grade": "FINE",
+   "lineBy": "Al (was \"The sunshine has made your commute suspiciously pleasant.\": \"line feels like it was written to describe an image\")",
+   "afBy": "Maat (Fable 5.1), lang-check pass; on the rolling page for Al's OK or Fix"
+  },
+  {
+   "id": "R09b",
+   "condition": "heat",
+   "time": "dawn",
+   "line": "It's so hot even the ice tray looks nervous.",
+   "af": "Dis so warm, selfs die ysbakkie lyk benoud.",
+   "slots": [
+    "heat/week_1/dawn/3.webp",
+    "heat/week_2/dawn/3.webp",
+    "heat/week_3/dawn/3.webp",
+    "heat/week_4/dawn/3.webp"
+   ],
+   "expect": "c6d266d04418",
+   "why": "replaces Fitness-ad jog trio at sunrise; reads as a nice morning, not heat (meh page: REPLACE)",
+   "anchorY": 19,
+   "source": "C:\\Users\\27741\\pw-pairs-job\\takes\\batch-10\\R09b-2.png",
+   "take": 2,
+   "batch": 10,
+   "grade": "FINE",
+   "lineBy": "Al (was \"Even the ice tray looks nervous.\": \"it needs something like its so hot even the icetray looks nervous\")",
+   "afBy": "Maat (Fable 5.1), lang-check pass; on the rolling page for Al's OK or Fix"
+  },
+  {
+   "id": "R04c",
+   "condition": "clear",
+   "time": "day",
+   "line": "The sun is turning your car seat into a snackwich machine.",
+   "af": "Die son maak van jou karsitplek 'n snackwich-masjien.",
+   "slots": [
+    "clear/week_2/day/3.webp",
+    "clear/week_4/day/3.webp"
+   ],
+   "expect": "448b951052cc",
+   "why": "replaces The kids with the tennis ball (meh page: REPLACE); R04 and R04b both out",
+   "anchorY": 20,
+   "source": "C:\\Users\\27741\\pw-pairs-job\\takes\\remake-2026-09-27-r04-b\\R04c-1.png",
+   "take": 1,
+   "batch": "remake 2026-09-27-r04-b",
+   "grade": "FINE",
+   "lineBy": "Al (his idea in his note on R04b: \"the sun is turning your seat into a snakwich machine\")",
+   "afBy": "Maat (Fable 5.1), lang-check pass; on the rolling page for Al's OK or Fix",
+   "photoBy": "Sol, second remake (review/pairs-job/remakes/2026-09-27-r04-b/batch.json): the first pair of takes reached 73-74 % down the frame and lost a foot in the footwell; take 1 of the second, both feet on the tarmac, the man in the top half (judge: bodies make sense, 11-48 %); the judge's \"words in the picture\" flag is wrong — there are none"
+  }
+ ],
+ "appliedRuns": [
+  {
+   "on": "2026-09-27",
+   "applied": [
+    {
+     "id": "R08c",
+     "hash": "1cfb52ede877",
+     "canonical": "63c24bf40e92…",
+     "bytes": 245548,
+     "quality": 92,
+     "slots": [
+      "clear/week_1/dusk/7.webp",
+      "clear/week_2/dusk/7.webp",
+      "clear/week_3/dusk/7.webp",
+      "clear/week_4/dusk/7.webp"
+     ],
+     "replaced": "525b2eea2ebc"
+    },
+    {
+     "id": "R22b",
+     "hash": "6548365487d9",
+     "canonical": "44c9610a3ce1…",
+     "bytes": 198386,
+     "quality": 92,
+     "slots": [
+      "wind/week_1/dusk/4.webp",
+      "wind/week_2/dusk/4.webp",
+      "wind/week_3/dusk/4.webp",
+      "wind/week_4/dusk/4.webp"
+     ],
+     "replaced": "17c00a47cba2"
+    },
+    {
+     "id": "R06c",
+     "hash": "591939f4f57b",
+     "canonical": "21113fe73c43…",
+     "bytes": 155602,
+     "quality": 92,
+     "slots": [
+      "clear/week_1/dawn/5.webp",
+      "clear/week_2/dawn/5.webp",
+      "clear/week_3/dawn/5.webp",
+      "clear/week_4/dawn/5.webp"
+     ],
+     "replaced": "66d5e6cb3570"
+    },
+    {
+     "id": "R09b",
+     "hash": "fc06880aeadb",
+     "canonical": "a2d6741fc4b1…",
+     "bytes": 139498,
+     "quality": 92,
+     "slots": [
+      "heat/week_1/dawn/3.webp",
+      "heat/week_2/dawn/3.webp",
+      "heat/week_3/dawn/3.webp",
+      "heat/week_4/dawn/3.webp"
+     ],
+     "replaced": "c6d266d04418"
+    }
+   ],
+   "retired": [
+    {
+     "hash": "17c00a47cba2",
+     "image": "wind/week_1/dusk/4.webp",
+     "paths": [
+      "wind/week_1/dusk/4.webp",
+      "wind/week_2/dusk/4.webp",
+      "wind/week_3/dusk/4.webp",
+      "wind/week_4/dusk/4.webp"
+     ],
+     "byPair": "R22b",
+     "lines": [
+      "That tree has been shaped by one wind for about forty years.",
+      "The washing goes out at this hour because wind is cheaper than electricity.",
+      "The lagoon has gone flat and silver, which fools nobody who lives here.",
+      "Everything on this street leans the same way, including the people.",
+      "Thursday evening, and the only thing still moving out here is the line."
+     ],
+     "anchorY": null
+    },
+    {
+     "hash": "c6d266d04418",
+     "image": "heat/week_1/dawn/3.webp",
+     "paths": [
+      "heat/week_1/dawn/3.webp",
+      "heat/week_2/dawn/3.webp",
+      "heat/week_3/dawn/3.webp",
+      "heat/week_4/dawn/3.webp"
+     ],
+     "byPair": "R09b",
+     "lines": [
+      "They are out at half past five because there is no other window today.",
+      "That sun has been up eleven minutes and it is already doing that.",
+      "Nobody is carrying water, which is a decision they are going to revisit.",
+      "The shade on this road runs out in about two hundred metres.",
+      "Wednesday, and this is the coolest it is going to be all day.",
+      "6:30 and the tar is already considering melting."
+     ],
+     "anchorY": 69
+    },
+    {
+     "hash": "525b2eea2ebc",
+     "image": "clear/week_1/dusk/7.webp",
+     "paths": [
+      "clear/week_1/dusk/7.webp",
+      "clear/week_2/dusk/7.webp",
+      "clear/week_3/dusk/7.webp",
+      "clear/week_4/dusk/7.webp"
+     ],
+     "byPair": "R08c",
+     "lines": [
+      "The weather gods are showing off.",
+      "Weekend vibes so strong they need their own playlist.",
+      "The evening showed up in its Sunday best.",
+      "Flat sea, spent sun, and air still warm enough to sit around in a wet wetsuit.",
+      "The wind that usually owns this coast has taken the evening off.",
+      "That sky is doing its whole show over a sea too flat to interrupt it."
+     ],
+     "anchorY": 61
+    },
+    {
+     "hash": "66d5e6cb3570",
+     "image": "clear/week_1/dawn/5.webp",
+     "paths": [
+      "clear/week_1/dawn/5.webp",
+      "clear/week_2/dawn/5.webp",
+      "clear/week_3/dawn/5.webp",
+      "clear/week_4/dawn/5.webp"
+     ],
+     "byPair": "R06c",
+     "lines": [
+      "Not one metre of shade on this promenade, which is why they are out at six.",
+      "The sea is that flat about nine mornings a year and this is one of them.",
+      "That mountain is that sharp because there is nothing at all in the air today.",
+      "The sky is completely empty, which means this is as cool as today gets.",
+      "Friday, and by noon that paving is going to be too hot to stand on.",
+      "Days like this should come with a soundtrack.",
+      "The type of day that makes people text 'lekker dag hey'.",
+      "Morning people might be onto something. Don't tell them."
+     ],
+     "anchorY": 91
+    }
+   ],
+   "benchChanges": [],
+   "curatedBodies": 303
+  }
+ ],
+ "applied": {
+  "on": "2026-09-27",
+  "applied": [
+   {
+    "id": "R04c",
+    "hash": "5976dea068f8",
+    "canonical": "cbba6e6834f9…",
+    "bytes": 297186,
+    "quality": 88,
+    "slots": [
+     "clear/week_2/day/3.webp",
+     "clear/week_4/day/3.webp"
+    ],
+    "replaced": "448b951052cc"
+   }
+  ],
+  "retired": [
+   {
+    "hash": "448b951052cc",
+    "image": "clear/week_2/day/3.webp",
+    "paths": [
+     "clear/week_2/day/3.webp",
+     "clear/week_4/day/3.webp"
+    ],
+    "byPair": "R04c",
+    "lines": [
+     "Blue sky, warm breeze. The simple stuff.",
+     "The kind of sky that makes you grateful for free things.",
+     "The kind of sun that turns one tennis ball into a whole afternoon.",
+     "That farmhouse has seen a few centuries of days like this and still gets them free.",
+     "Full sun, soft lawn, and homework has officially lost its audience."
+    ],
+    "anchorY": 51
+   }
+  ],
+  "benchChanges": [],
+  "curatedBodies": 303
+ }
+}
