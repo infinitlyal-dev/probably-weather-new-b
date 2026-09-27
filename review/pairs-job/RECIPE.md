@@ -74,9 +74,33 @@ photo; no slang as decoration; no "vibes". Braai plans on weekends only.
 
 ## 3. The photo
 
-**The rule (Al's):**
-1. **The weather is doing something to someone:** one clear subject reacting to it — squinting, sweating,
-   hair blown upright, soaked, shivering, bracing. Not people posing in nice weather.
+**The picture comes from the joke (Al, 27 Sept 2026).** His verdict on the job's batches 2–9: "the images
+were a massive dissapointment. a Complete and utter fail in creativity. We basically got the same theme and
+setup across almost all of them." Every brief had come off one template — a city, a time, a day, one person
+in plain clothes reacting in front of a cared-for home — so the joke never shaped the picture. His note on
+the pillow line: "Read the line, you could use that as inspiration for the image rather."
+- **Only a line with a picture in it gets a photo.** The writer writes the picture WITH the line: the joke's
+  own situation, caught by a camera — the washing gone and the pegs still on the line; a minibus taxi in a
+  downpour with its indicator on; a pillow flipped to its cold side on a hot night. A mood line with nothing
+  to show ("The sky's keeping tonight to itself.") is a good line, but it goes to Al as a line for the bank,
+  and no photo is made for it.
+- **No template.** No fixed "[city], [time], [day], one [person]". The subject, the place and the camera come
+  from the idea. Casting varies across the whole set, and the job keeps the count, instead of every brief
+  stamping in one person.
+- **Variety, checked before anything is made.** Every idea is compared with every photo already in the app
+  (one line per live photo, written once and kept: `review/pairs-job/live-photos.json`), with the pairs
+  waiting for Al, and with the rest of its batch; a repeat setup — the same kind of subject doing the same
+  kind of thing in the same kind of place — is rejected. **Banned for now:** a person outside squinting into
+  the sun; hair or clothes blown about in front of a house; a person standing on a lawn in heat; a person at
+  their gate or front door. **Mix the subjects:** objects, animals, cars, kitchens and indoors, groups,
+  close-ups, wide shots — a single person too, but not by default.
+- **The judge sees the whole batch side by side** and rejects lookalikes, as well as checking each photo alone.
+
+**The rules that stay (Al's):**
+1. **The weather is doing something, caught candidly:** to someone (squinting is banned for now; sweating,
+   soaked, shivering, bracing, burrowed in) or to something (the washing, the braai, the car, the dog's bowl).
+   Not people posing in nice weather. An empty scenic frame is not enough for wind or clear (a palm and a
+   flag straining got MEH): the weather must visibly be doing the joke to someone or something specific.
 2. **Aspirational settings — Al's ruling (26 Sept 2026), never propose dropping it.** Cared-for homes,
    gardens, suburbs, towns and farms, in real South Africa. No shacks, no poverty or decay, no grit. **The
    stock look is fixed by a candid reaction to the weather, never by a grittier place.** Not posed people
@@ -116,18 +140,16 @@ photo; no slang as decoration; no "vibes". Braai plans on weekends only.
 - From his written kills on older batches: looks AI-made, a real place drawn wrong, doesn't make sense, not
   South African-looking, too ideal or too perfect, posed or stock.
 
-## 4. The photo brief (the shape every brief takes)
+## 4. The photo brief (what every brief carries — not a template)
 
-> Real camera photograph, vertical 9:16. [Place in South Africa, time of day, the slot's weekday, the
-> weather in plain physical terms at the folder's strength.] [One subject, cast specifically: age, who
-> they are, what they wear for that day and time — plain, no logos.] [What the weather is doing to them,
-> caught mid-moment: a candid reaction.] [The cared-for home, garden, suburb, town or farm, named.]
-> Composition: the subject in the upper half; the bottom third calm and empty — [what it is].
-> Natural skin with pores and flaws, candid and unposed, available light, slight grain, true colour. No
-> retouched skin, no glossy sheen, no plastic faces, not stock. No text, signs, logos or numbers anywhere.
-
-Written after the line, from the line's idea. The brief carries the line so the maker knows the joke it
-sets up; the photo never illustrates the line's words.
+The writer's own picture for the line, in its own words — whatever the joke needs in the frame, and what the
+weather is doing to it — then who or what is in it (cast specifically when there are people; "nobody" is
+fine), the camera (close-up, medium or wide), and the composition (the subject in the upper half, calm space
+below for the joke). Around it the job adds only the rules: the slot's weather at its folder's strength, its
+day and time of day, an aspirational setting, candid never posed, real-camera realism (natural skin with
+pores and flaws, available light, slight grain, true colour; no retouched skin, no glossy sheen, no plastic
+faces), and no text, signs, logos or number plates anywhere. The brief carries the line so the maker knows
+the joke; the picture is the joke's situation, and never has the line's words in it.
 
 ## 5. Checks before Al sees anything
 
@@ -135,7 +157,15 @@ sets up; the photo never illustrates the line's words.
   no Eskom, no photo description (the rubric in `RUBRIC-lines.md`; pass = weather-now + twist).
 - The photo: the rules above, by eye at full size; then the Home check — the joke must not sit on the
   subject (the photo check) — and the fold gate.
-- The pairs job's judge (blind to the line, told each photo's slot) says NO to a photo that is gritty
+- The variety check, before any photo is made: the idea against every live photo, the pairs waiting and the
+  batch; the banned setups; the batch's mix — at most two of any subject, setting or cast (who is in it), one
+  garden, one gate — counted over any five pairs side by side. And the line against every line in the bank for
+  its weather and every line the job has written: no near-repeats (Al, 27 Sept 2026: "Where lines share a
+  formula ('clocked in', 'arguing with', 'before you', 'knows where you live'), keep only the best one"). The
+  job keeps a list of formulas already used up.
+- The pairs job's judge sees the whole batch side by side (blind to the lines, told each photo's slot and the
+  picture it was meant to show): it says NO to a take that looks like another pair's pick, repeats a photo
+  already in the app, shows a banned setup, or does not show its picture — and to a photo that is gritty
   (poverty, decay, litter, graffiti, squalor), not aspirational (not a cared-for home, garden, suburb, town
   or farm), wrong for its day (work clothes or a work scene on a weekend, anything that doesn't suit the
   slot's day and time), or wrong in weather strength (clear that reads as a heat wave, heat that reads as a

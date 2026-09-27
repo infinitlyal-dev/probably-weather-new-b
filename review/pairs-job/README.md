@@ -8,31 +8,52 @@ Hourly since 26 Sept 2026 (Al: image making "about 10 an hour, so the fixes fini
 second ad, and the soft launch can start").
 
 ## What one run does
-1. Stops if `review\pairs-job\PAUSE` exists.
+Rewritten 27 Sept 2026 after Al's verdict on batches 2–9 ("a Complete and utter fail in creativity. We
+basically got the same theme and setup across almost all of them"): every brief had come off one template.
+Now the picture comes from the joke, and variety is checked before anything is made (`RECIPE.md` §3).
+
+1. Stops if `review\pairs-job\PAUSE` exists (`--manual` runs once by hand and leaves the file in place).
 2. Stops while backing off after a rate limit (1 h, 2 h, 4 h, 8 h, then a day), and for the week once Codex's
    weekly usage has passed 90 % (until the week's reset; Sol's code reviews share that allowance). The usage is
    read from Codex's own session records — the main `codex` limit's weekly window, never another model's.
-3. Reads Al's exports from Downloads: `pairs-rolling-ruled*.json` (every pair on the page when he pressed Export
-   is ruled and leaves the page; copies go to `rolling-ruled\`) and `meh-photos-ruled.json` (every photo he
-   left on REPLACE is queued; a queued photo he kept is dropped, unless its pair is already made).
-4. Makes nothing while 40 pairs wait on the page. Otherwise takes the next targets (5 at most) from
-   `review\pairs-job\targets.json` in Al's order: his three named photos (tier 1), then the photos marked
-   REPLACE on `review\meh-photos-for-al.html`, most-shown first (tier 2), then extra photos for the thinnest
-   weathers — fog, heat, cold-clear (tier 3). Tier 9 is parked (older targets that order leaves out).
-5. Sol (Codex, `gpt-5.6-sol`, on the ChatGPT plan) writes each line and its Afrikaans, joke first, then a photo
-   brief that sets the joke up. A replacement pair is told what was wrong with the photo it replaces.
-6. The recipe filter drops lines that name the calendar, Eskom, a person in a photo, "vibes", or run long
-   (a dropped target is written again next run, three tries at most).
-7. Two takes per pair, each made for its slot: the weather at its folder's strength, the slot's weekday and time
-   of day (weekends are leisure), an aspirational setting, someone reacting to the weather, the subject in the
-   top half — Al's photo rules (`RECIPE.md` §3). At most 10 images a run; no new pair's photos after 40 minutes
-   (the rest wait for the next run), so the judge and the save always land inside the task's 90-minute limit.
-8. Sol judges the takes blind to the line but told each photo's slot: realism, waxy skin, AI tells, grit, an
-   aspirational setting, day fit, weather-strength fit, posing, words in the picture, where the subject sits.
-   A pair is pre-marked USE only when its pick is realistic (4+) and passes every rule; Home D is Home now, so a
-   subject reaching past 60 % of the frame (where the joke is written) is pre-marked NO.
-9. Rebuilds `review\pairs-rolling.html` (every waiting pair); Al exports `pairs-rolling-ruled.json`.
+3. Reads Al's exports from Downloads: the newest `pairs-rolling-ruled*.json` (every pair and line on the page
+   when he pressed Export is ruled and leaves the page; a copy goes to `rolling-ruled\`; an older export not yet
+   read is superseded; a pair he ruled No or Neither puts its spot back on the queue, twice at most) and
+   `meh-photos-ruled.json` (every photo he left on REPLACE is queued; a queued photo he kept is dropped, unless
+   its pair is already made).
+4. Makes nothing while 40 pairs wait on the page, or without the catalogue. Otherwise takes the next targets (5
+   at most) from `review\pairs-job\targets.json` in Al's order: his three named photos (tier 1), then the photos
+   marked REPLACE on `review\meh-photos-for-al.html`, most-shown first (tier 2), then extra photos for the
+   thinnest weathers — fog, heat, cold-clear (tier 3). Tier 9 is parked (older targets that order leaves out).
+5. Sol (Codex, `gpt-5.6-sol`, on the ChatGPT plan) writes THREE candidate lines per target, each with its
+   Afrikaans and — written with the line — its picture: the joke's own situation (the pegs still on the line,
+   the taxi indicating), or none for a mood line. It is shown the catalogue of the app's photos, the pairs
+   waiting, the banned setups and the set's counts (subjects, settings, shots, recent casts), and told to cast
+   from what the set has least of. No template: the subject, place and camera come from the idea.
+6. The recipe filter drops lines that name the calendar, Eskom, a person in a photo, "vibes", run long, or were
+   written before.
+7. **The variety check, before any photo is made:** the banned setups (read off the picture, and by Sol), and Sol
+   reads every idea against the catalogue (`live-photos.json`), the pairs waiting and the other ideas, and every
+   line against the bank's lines for its weather, the job's own earlier lines and the formulas used up (no
+   near-repeats). One idea per target, in queue order, that is not a repeat and keeps the mix over any five pairs
+   side by side (at most two of any subject, setting or cast, one garden, one gate, never the same subject in the
+   same setting twice); a target with none waits (three tries), and two spare targets are written so the batch
+   still fills. Mood lines (no picture) go onto the page as lines for the bank, five a run at most, no photo.
+8. Two takes per chosen idea, each made for its slot: the writer's picture, cast and camera, the weather at its
+   folder's strength, the slot's weekday and time of day (weekends are leisure), an aspirational setting, candid
+   never posed, the subject in the top half, real-camera realism. At most 10 images a run; no new pair's photos
+   after 40 minutes, so the judge and the save always land inside the task's 90-minute limit.
+9. Sol judges all the takes side by side, blind to the lines but told each photo's slot and intended picture:
+   each photo alone (realism, waxy skin, AI tells, grit, aspirational, day fit, weather strength, posing, words,
+   shows its picture, a banned setup, a repeat of an app photo, where the subject sits), then lookalikes across
+   the batch — a pair's take that looks like another pair's pick is passed over, or the pair is pre-marked NO.
+   A pair is pre-marked USE only when its pick is realistic (4+) and passes every rule; a subject reaching past
+   60 % of the frame (where Home D writes the joke) is pre-marked NO.
+10. Rebuilds `review\pairs-rolling.html` (every waiting pair, then the lines for the bank); Al exports
+   `pairs-rolling-ruled.json`.
 
+`catalogue.mjs --repo <tree>` writes `live-photos.json`: one line per photo in the app, written once and kept
+(new photos described by Sol, retired ones dropped). Run it after a wiring session, then reinstall.
 `queue-meh.mjs --data <folder>` rebuilds the queue in Al's order from `review\meh-photos\flags.json`.
 `--remake <plan.json>` makes new photos for lines Al has already ruled (their photos were out), with the same
 brief and judge, into `review\pairs-job\remakes\<name>\` — no page; the wiring session builds one.

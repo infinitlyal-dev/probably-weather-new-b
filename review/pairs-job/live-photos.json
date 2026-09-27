@@ -1,0 +1,4682 @@
+{
+ "note": "One line per live photograph (keyed by the hash in review/set-001-draft.json), written once and kept; the pairs job compares every new idea with these. Rebuild after wiring: node review/pairs-job/catalogue.mjs --repo <tree>.",
+ "generated": "2026-09-27T07:34:29.068Z",
+ "photos": {
+  "dd736311b619": {
+   "folder": "clear",
+   "time": "dawn",
+   "slots": [
+    "clear/week_1/dawn/1.webp",
+    "clear/week_2/dawn/1.webp",
+    "clear/week_3/dawn/1.webp",
+    "clear/week_4/dawn/1.webp"
+   ],
+   "pair": null,
+   "line": "Hadeda ibis perches on a corrugated farm roof at sunrise; wide shot",
+   "subject": "animal",
+   "setting": "farm or veld",
+   "shot": "wide",
+   "banned": []
+  },
+  "b698a0ccc12d": {
+   "folder": "clear",
+   "time": "dawn",
+   "slots": [
+    "clear/week_1/dawn/3.webp",
+    "clear/week_2/dawn/3.webp",
+    "clear/week_3/dawn/3.webp",
+    "clear/week_4/dawn/3.webp"
+   ],
+   "pair": null,
+   "line": "Dog sleeps in warm sunlight on a leafy home patio; wide shot",
+   "subject": "animal",
+   "setting": "stoep or patio",
+   "shot": "wide",
+   "banned": []
+  },
+  "7a76c59603c9": {
+   "folder": "clear",
+   "time": "dawn",
+   "slots": [
+    "clear/week_1/dawn/4.webp",
+    "clear/week_2/dawn/4.webp",
+    "clear/week_3/dawn/4.webp",
+    "clear/week_4/dawn/4.webp"
+   ],
+   "pair": null,
+   "line": "Woman waters balcony plants among colourful hillside houses beneath Table Mountain; wide shot",
+   "subject": "one person",
+   "setting": "street or town",
+   "shot": "wide",
+   "banned": []
+  },
+  "66d5e6cb3570": {
+   "folder": "clear",
+   "time": "dawn",
+   "slots": [
+    "clear/week_1/dawn/5.webp",
+    "clear/week_2/dawn/5.webp",
+    "clear/week_3/dawn/5.webp",
+    "clear/week_4/dawn/5.webp"
+   ],
+   "pair": null,
+   "line": "Three friends jog together along a coastal promenade at sunset; wide shot",
+   "subject": "two or three people",
+   "setting": "beach or coast",
+   "shot": "wide",
+   "banned": []
+  },
+  "d529968dcb50": {
+   "folder": "clear",
+   "time": "dawn",
+   "slots": [
+    "clear/week_1/dawn/6.webp",
+    "clear/week_2/dawn/6.webp",
+    "clear/week_3/dawn/6.webp",
+    "clear/week_4/dawn/6.webp"
+   ],
+   "pair": null,
+   "line": "Lone person walks across reflective beach shallows beneath glowing clouds; wide shot",
+   "subject": "one person",
+   "setting": "beach or coast",
+   "shot": "wide",
+   "banned": []
+  },
+  "84beada2e358": {
+   "folder": "clear",
+   "time": "day",
+   "slots": [
+    "clear/week_1/day/1.webp",
+    "clear/week_3/day/1.webp"
+   ],
+   "pair": null,
+   "line": "Man carrying a shoulder bag enters a modern glass building; wide shot",
+   "subject": "one person",
+   "setting": "gate, door or driveway",
+   "shot": "wide",
+   "banned": [
+    "at a gate or front door"
+   ]
+  },
+  "5799efcdfd70": {
+   "folder": "clear",
+   "time": "day",
+   "slots": [
+    "clear/week_1/day/2.webp",
+    "clear/week_3/day/2.webp",
+    "clear/week_1/day/7.webp",
+    "clear/week_3/day/7.webp"
+   ],
+   "pair": null,
+   "line": "Hadeda ibis stands on a sunlit suburban lawn beside a sprinkler; medium shot",
+   "subject": "animal",
+   "setting": "garden or lawn",
+   "shot": "medium",
+   "banned": []
+  },
+  "77cfc93827e3": {
+   "folder": "clear",
+   "time": "day",
+   "slots": [
+    "clear/week_1/day/3.webp",
+    "clear/week_3/day/3.webp"
+   ],
+   "pair": null,
+   "line": "Two women work on a laptop beneath an umbrella on a city rooftop; wide shot",
+   "subject": "two or three people",
+   "setting": "other",
+   "shot": "wide",
+   "banned": []
+  },
+  "f673af851f9c": {
+   "folder": "clear",
+   "time": "day",
+   "slots": [
+    "clear/week_1/day/4.webp",
+    "clear/week_3/day/4.webp"
+   ],
+   "pair": null,
+   "line": "Youth sports team sits roadside eating snacks after a match; wide shot",
+   "subject": "group",
+   "setting": "street or town",
+   "shot": "wide",
+   "banned": []
+  },
+  "ca6d821f7c9b": {
+   "folder": "clear",
+   "time": "day",
+   "slots": [
+    "clear/week_1/day/5.webp",
+    "clear/week_3/day/5.webp"
+   ],
+   "pair": null,
+   "line": "Office workers enter a glass building through a revolving door; wide shot",
+   "subject": "group",
+   "setting": "gate, door or driveway",
+   "shot": "wide",
+   "banned": [
+    "at a gate or front door"
+   ]
+  },
+  "e9616cb7c61c": {
+   "folder": "clear",
+   "time": "day",
+   "slots": [
+    "clear/week_1/day/6.webp",
+    "clear/week_3/day/6.webp"
+   ],
+   "pair": null,
+   "line": "Man relaxes with beer while a boy mows their dry suburban lawn; wide shot",
+   "subject": "two or three people",
+   "setting": "garden or lawn",
+   "shot": "wide",
+   "banned": [
+    "lawn in heat"
+   ]
+  },
+  "0009c55ad6a5": {
+   "folder": "clear",
+   "time": "day",
+   "slots": [
+    "clear/week_2/day/1.webp",
+    "clear/week_4/day/1.webp"
+   ],
+   "pair": null,
+   "line": "Hadeda ibis probes garden soil beneath purple flowers; close-up",
+   "subject": "animal",
+   "setting": "garden or lawn",
+   "shot": "close-up",
+   "banned": []
+  },
+  "9ab8b9f07431": {
+   "folder": "clear",
+   "time": "day",
+   "slots": [
+    "clear/week_2/day/2.webp",
+    "clear/week_4/day/2.webp"
+   ],
+   "pair": null,
+   "line": "Friends socialise with drinks and coffee on a Johannesburg rooftop; wide shot",
+   "subject": "group",
+   "setting": "other",
+   "shot": "wide",
+   "banned": []
+  },
+  "448b951052cc": {
+   "folder": "clear",
+   "time": "day",
+   "slots": [
+    "clear/week_2/day/3.webp",
+    "clear/week_4/day/3.webp"
+   ],
+   "pair": null,
+   "line": "Two children leap and throw a ball on a sunny lawn; wide shot",
+   "subject": "two or three people",
+   "setting": "garden or lawn",
+   "shot": "wide",
+   "banned": []
+  },
+  "3d001539dcb5": {
+   "folder": "clear",
+   "time": "day",
+   "slots": [
+    "clear/week_2/day/4.webp",
+    "clear/week_4/day/4.webp"
+   ],
+   "pair": null,
+   "line": "Golden retriever sleeps on a sunny wooden deck beside an outdoor braai; wide shot",
+   "subject": "animal",
+   "setting": "stoep or patio",
+   "shot": "wide",
+   "banned": []
+  },
+  "ed953578deec": {
+   "folder": "clear",
+   "time": "day",
+   "slots": [
+    "clear/week_2/day/5.webp",
+    "clear/week_4/day/5.webp"
+   ],
+   "pair": null,
+   "line": "Iced drink, sunglasses and hat rest beside a bright swimming pool; close-up",
+   "subject": "object",
+   "setting": "garden or lawn",
+   "shot": "close-up",
+   "banned": []
+  },
+  "6e598ae56c12": {
+   "folder": "clear",
+   "time": "day",
+   "slots": [
+    "clear/week_2/day/6.webp",
+    "clear/week_4/day/6.webp"
+   ],
+   "pair": null,
+   "line": "Friends cook sausages and prepare salad around a garden braai; medium shot",
+   "subject": "group",
+   "setting": "garden or lawn",
+   "shot": "medium",
+   "banned": []
+  },
+  "03a31c2b8e88": {
+   "folder": "clear",
+   "time": "day",
+   "slots": [
+    "clear/week_2/day/7.webp",
+    "clear/week_4/day/7.webp"
+   ],
+   "pair": null,
+   "line": "Two empty chairs sit beneath a striped umbrella on a quiet beach; wide shot",
+   "subject": "object",
+   "setting": "beach or coast",
+   "shot": "wide",
+   "banned": []
+  },
+  "9059d175f28c": {
+   "folder": "clear",
+   "time": "dusk",
+   "slots": [
+    "clear/week_1/dusk/1.webp",
+    "clear/week_2/dusk/1.webp",
+    "clear/week_3/dusk/1.webp",
+    "clear/week_4/dusk/1.webp"
+   ],
+   "pair": null,
+   "line": "Two birds perch on a wire above a veld road at sunset; wide shot",
+   "subject": "animal",
+   "setting": "farm or veld",
+   "shot": "wide",
+   "banned": []
+  },
+  "1bd6b90924a1": {
+   "folder": "clear",
+   "time": "dusk",
+   "slots": [
+    "clear/week_1/dusk/2.webp",
+    "clear/week_2/dusk/2.webp",
+    "clear/week_3/dusk/2.webp",
+    "clear/week_4/dusk/2.webp"
+   ],
+   "pair": null,
+   "line": "Three friends walk arm-in-arm down a suburban street at dusk; wide shot",
+   "subject": "two or three people",
+   "setting": "street or town",
+   "shot": "wide",
+   "banned": []
+  },
+  "7d50ec606bfc": {
+   "folder": "clear",
+   "time": "dusk",
+   "slots": [
+    "clear/week_1/dusk/3.webp",
+    "clear/week_2/dusk/3.webp",
+    "clear/week_3/dusk/3.webp",
+    "clear/week_4/dusk/3.webp"
+   ],
+   "pair": null,
+   "line": "Mountain biker corners fast on a dusty hillside trail at sunset; medium shot",
+   "subject": "one person",
+   "setting": "mountain or view",
+   "shot": "medium",
+   "banned": []
+  },
+  "cc951efb5d19": {
+   "folder": "clear",
+   "time": "dusk",
+   "slots": [
+    "clear/week_1/dusk/4.webp",
+    "clear/week_2/dusk/4.webp",
+    "clear/week_3/dusk/4.webp",
+    "clear/week_4/dusk/4.webp"
+   ],
+   "pair": null,
+   "line": "Man pushes a mower across a sunlit lawn beside a modern house; wide shot",
+   "subject": "one person",
+   "setting": "garden or lawn",
+   "shot": "wide",
+   "banned": [
+    "lawn in heat"
+   ]
+  },
+  "90a621539543": {
+   "folder": "clear",
+   "time": "dusk",
+   "slots": [
+    "clear/week_1/dusk/5.webp",
+    "clear/week_2/dusk/5.webp",
+    "clear/week_3/dusk/5.webp",
+    "clear/week_4/dusk/5.webp"
+   ],
+   "pair": null,
+   "line": "Children play street cricket while neighbours watch from verandas at dusk; wide shot",
+   "subject": "group",
+   "setting": "street or town",
+   "shot": "wide",
+   "banned": []
+  },
+  "d097525bf5cf": {
+   "folder": "clear",
+   "time": "dusk",
+   "slots": [
+    "clear/week_1/dusk/6.webp",
+    "clear/week_2/dusk/6.webp",
+    "clear/week_3/dusk/6.webp",
+    "clear/week_4/dusk/6.webp"
+   ],
+   "pair": null,
+   "line": "Family gathers around an outdoor fire while children play football at dusk; wide shot",
+   "subject": "group",
+   "setting": "garden or lawn",
+   "shot": "wide",
+   "banned": []
+  },
+  "525b2eea2ebc": {
+   "folder": "clear",
+   "time": "dusk",
+   "slots": [
+    "clear/week_1/dusk/7.webp",
+    "clear/week_2/dusk/7.webp",
+    "clear/week_3/dusk/7.webp",
+    "clear/week_4/dusk/7.webp"
+   ],
+   "pair": null,
+   "line": "Two women sit talking on a tidal-pool wall during sunset; wide shot",
+   "subject": "two or three people",
+   "setting": "beach or coast",
+   "shot": "wide",
+   "banned": []
+  },
+  "970707aba87c": {
+   "folder": "clear",
+   "time": "night",
+   "slots": [
+    "clear/week_1/night/1.webp",
+    "clear/week_2/night/1.webp",
+    "clear/week_3/night/1.webp",
+    "clear/week_4/night/1.webp"
+   ],
+   "pair": null,
+   "line": "Moth hovers beside a glowing wall lantern in a night garden; close-up",
+   "subject": "animal",
+   "setting": "garden or lawn",
+   "shot": "close-up",
+   "banned": []
+  },
+  "14f98c4f78fa": {
+   "folder": "clear",
+   "time": "night",
+   "slots": [
+    "clear/week_1/night/2.webp",
+    "clear/week_2/night/2.webp",
+    "clear/week_3/night/2.webp",
+    "clear/week_4/night/2.webp"
+   ],
+   "pair": null,
+   "line": "White laundry hangs on washing lines beneath the moon in a garden; wide shot",
+   "subject": "object",
+   "setting": "garden or lawn",
+   "shot": "wide",
+   "banned": []
+  },
+  "de9514caac5f": {
+   "folder": "clear",
+   "time": "night",
+   "slots": [
+    "clear/week_1/night/3.webp",
+    "clear/week_2/night/3.webp",
+    "clear/week_3/night/3.webp",
+    "clear/week_4/night/3.webp"
+   ],
+   "pair": null,
+   "line": "Illuminated city spreads beneath a starry, partly cloudy night sky; wide shot",
+   "subject": "place",
+   "setting": "mountain or view",
+   "shot": "wide",
+   "banned": []
+  },
+  "05cd0ad39fd6": {
+   "folder": "clear",
+   "time": "night",
+   "slots": [
+    "clear/week_1/night/4.webp",
+    "clear/week_2/night/4.webp",
+    "clear/week_3/night/4.webp",
+    "clear/week_4/night/4.webp"
+   ],
+   "pair": null,
+   "line": "Woman and child watch a cat outside their open garden doorway at night; wide shot",
+   "subject": "two or three people",
+   "setting": "gate, door or driveway",
+   "shot": "wide",
+   "banned": []
+  },
+  "127edee25245": {
+   "folder": "clear",
+   "time": "night",
+   "slots": [
+    "clear/week_1/night/6.webp",
+    "clear/week_2/night/6.webp",
+    "clear/week_3/night/6.webp",
+    "clear/week_4/night/6.webp"
+   ],
+   "pair": null,
+   "line": "Group lies in a pickup bed watching the Milky Way on a farm; wide shot",
+   "subject": "group",
+   "setting": "farm or veld",
+   "shot": "wide",
+   "banned": []
+  },
+  "998833419718": {
+   "folder": "clear",
+   "time": "night",
+   "slots": [
+    "clear/week_1/night/7.webp",
+    "clear/week_2/night/7.webp",
+    "clear/week_3/night/7.webp",
+    "clear/week_4/night/7.webp"
+   ],
+   "pair": null,
+   "line": "Milky Way rises above a silhouetted mountain before dawn; wide shot",
+   "subject": "place",
+   "setting": "mountain or view",
+   "shot": "wide",
+   "banned": []
+  },
+  "08134a1e356e": {
+   "folder": "cloudy",
+   "time": "dawn",
+   "slots": [
+    "cloudy/week_1/dawn/1.webp",
+    "cloudy/week_2/dawn/1.webp",
+    "cloudy/week_3/dawn/1.webp",
+    "cloudy/week_4/dawn/1.webp"
+   ],
+   "pair": null,
+   "line": "Two fishermen push a boat up a wet coastal slipway in cold weather; wide shot",
+   "subject": "two or three people",
+   "setting": "beach or coast",
+   "shot": "wide",
+   "banned": []
+  },
+  "de1df07bf268": {
+   "folder": "cloudy",
+   "time": "dawn",
+   "slots": [
+    "cloudy/week_1/dawn/2.webp",
+    "cloudy/week_2/dawn/2.webp",
+    "cloudy/week_3/dawn/2.webp",
+    "cloudy/week_4/dawn/2.webp"
+   ],
+   "pair": null,
+   "line": "Painter works from a ladder on a turquoise house beside a colourful street; medium shot",
+   "subject": "one person",
+   "setting": "street or town",
+   "shot": "medium",
+   "banned": []
+  },
+  "03ff71985022": {
+   "folder": "cloudy",
+   "time": "dawn",
+   "slots": [
+    "cloudy/week_1/dawn/3.webp",
+    "cloudy/week_2/dawn/3.webp",
+    "cloudy/week_3/dawn/3.webp",
+    "cloudy/week_4/dawn/3.webp"
+   ],
+   "pair": null,
+   "line": "Woman runs along a rocky coastal path beneath storm clouds; wide shot",
+   "subject": "one person",
+   "setting": "beach or coast",
+   "shot": "wide",
+   "banned": []
+  },
+  "4845b881f911": {
+   "folder": "cloudy",
+   "time": "dawn",
+   "slots": [
+    "cloudy/week_1/dawn/4.webp",
+    "cloudy/week_2/dawn/4.webp",
+    "cloudy/week_3/dawn/4.webp",
+    "cloudy/week_4/dawn/4.webp"
+   ],
+   "pair": null,
+   "line": "Empty coastal road curves downhill beneath heavy clouds at dawn; wide shot",
+   "subject": "place",
+   "setting": "road or car",
+   "shot": "wide",
+   "banned": []
+  },
+  "3bfd9b9470d6": {
+   "folder": "cold",
+   "time": "dawn",
+   "slots": [
+    "cold/week_2/dawn/5.webp",
+    "cold/week_4/dawn/5.webp"
+   ],
+   "pair": null,
+   "line": "Newspaper vendor approaches a driver between cars at a misty city intersection; medium shot",
+   "subject": "one person",
+   "setting": "road or car",
+   "shot": "medium",
+   "banned": []
+  },
+  "b5793c36b69d": {
+   "folder": "cloudy",
+   "time": "dawn",
+   "slots": [
+    "cloudy/week_1/dawn/6.webp",
+    "cloudy/week_2/dawn/6.webp",
+    "cloudy/week_3/dawn/6.webp",
+    "cloudy/week_4/dawn/6.webp"
+   ],
+   "pair": null,
+   "line": "Woman stretches one leg against a colourful house wall on a cobbled street; wide shot",
+   "subject": "one person",
+   "setting": "street or town",
+   "shot": "wide",
+   "banned": []
+  },
+  "e0e2d1182253": {
+   "folder": "cloudy",
+   "time": "dawn",
+   "slots": [
+    "cloudy/week_1/dawn/7.webp",
+    "cloudy/week_2/dawn/7.webp",
+    "cloudy/week_3/dawn/7.webp",
+    "cloudy/week_4/dawn/7.webp"
+   ],
+   "pair": null,
+   "line": "Toddler presses against a tall window while watching rainy weather from indoors; medium shot",
+   "subject": "one person",
+   "setting": "indoors",
+   "shot": "medium",
+   "banned": []
+  },
+  "d16ca804a592": {
+   "folder": "cloudy",
+   "time": "day",
+   "slots": [
+    "cloudy/week_1/day/1.webp",
+    "cloudy/week_3/day/1.webp"
+   ],
+   "pair": null,
+   "line": "Sharp boundary divides blue sky and an advancing storm over open veld; wide shot",
+   "subject": "place",
+   "setting": "farm or veld",
+   "shot": "wide",
+   "banned": []
+  },
+  "4727610ce8f9": {
+   "folder": "cloudy",
+   "time": "day",
+   "slots": [
+    "cloudy/week_1/day/2.webp",
+    "cloudy/week_3/day/2.webp"
+   ],
+   "pair": null,
+   "line": "Wet dog lies on a concrete patio beneath storm clouds; medium shot",
+   "subject": "animal",
+   "setting": "stoep or patio",
+   "shot": "medium",
+   "banned": []
+  },
+  "5aea3d2e9887": {
+   "folder": "cloudy",
+   "time": "day",
+   "slots": [
+    "cloudy/week_1/day/3.webp",
+    "cloudy/week_3/day/3.webp"
+   ],
+   "pair": null,
+   "line": "Empty rugby field and goalposts sit beneath an overcast sky; wide shot",
+   "subject": "place",
+   "setting": "park or field",
+   "shot": "wide",
+   "banned": []
+  },
+  "5a72972b399b": {
+   "folder": "cloudy",
+   "time": "day",
+   "slots": [
+    "cloudy/week_1/day/4.webp",
+    "cloudy/week_3/day/4.webp"
+   ],
+   "pair": null,
+   "line": "Man holding a closed umbrella watches storm clouds from a wet residential driveway; wide shot",
+   "subject": "one person",
+   "setting": "gate, door or driveway",
+   "shot": "wide",
+   "banned": []
+  },
+  "dc71e7a692da": {
+   "folder": "cloudy",
+   "time": "day",
+   "slots": [
+    "cloudy/week_1/day/5.webp",
+    "cloudy/week_3/day/5.webp"
+   ],
+   "pair": null,
+   "line": "Chameleon rests on a tree branch beneath storm clouds in a suburban garden; close-up",
+   "subject": "animal",
+   "setting": "garden or lawn",
+   "shot": "close-up",
+   "banned": []
+  },
+  "c16f8303d56e": {
+   "folder": "cloudy",
+   "time": "day",
+   "slots": [
+    "cloudy/week_1/day/6.webp",
+    "cloudy/week_3/day/6.webp"
+   ],
+   "pair": null,
+   "line": "Man pauses behind a lawnmower and looks at clouds in his garden; medium shot",
+   "subject": "one person",
+   "setting": "garden or lawn",
+   "shot": "medium",
+   "banned": []
+  },
+  "094ec6ba034c": {
+   "folder": "cloudy",
+   "time": "day",
+   "slots": [
+    "cloudy/week_1/day/7.webp",
+    "cloudy/week_3/day/7.webp"
+   ],
+   "pair": null,
+   "line": "Hand lights kindling beside meat cooking on a brick braai during rain; close-up",
+   "subject": "object",
+   "setting": "stoep or patio",
+   "shot": "close-up",
+   "banned": []
+  },
+  "313ca13b51a5": {
+   "folder": "cloudy",
+   "time": "day",
+   "slots": [
+    "cloudy/week_2/day/1.webp",
+    "cloudy/week_4/day/1.webp"
+   ],
+   "pair": null,
+   "line": "Sunlit suburban street sits beneath a sharply divided blue and stormy sky; wide shot",
+   "subject": "place",
+   "setting": "street or town",
+   "shot": "wide",
+   "banned": []
+  },
+  "47550fce6c98": {
+   "folder": "cloudy",
+   "time": "day",
+   "slots": [
+    "cloudy/week_2/day/2.webp",
+    "cloudy/week_4/day/2.webp"
+   ],
+   "pair": null,
+   "line": "Man stands among rooftop solar panels studying the overcast sky; medium shot",
+   "subject": "one person",
+   "setting": "other",
+   "shot": "medium",
+   "banned": []
+  },
+  "119e4a52f8a4": {
+   "folder": "cloudy",
+   "time": "day",
+   "slots": [
+    "cloudy/week_2/day/3.webp",
+    "cloudy/week_4/day/3.webp"
+   ],
+   "pair": null,
+   "line": "Flock of sheep huddles beneath a sunbeam on dry open veld; wide shot",
+   "subject": "group",
+   "setting": "farm or veld",
+   "shot": "wide",
+   "banned": []
+  },
+  "31b58730d005": {
+   "folder": "cloudy",
+   "time": "day",
+   "slots": [
+    "cloudy/week_2/day/4.webp",
+    "cloudy/week_4/day/4.webp"
+   ],
+   "pair": null,
+   "line": "White laundry hangs on a rotary line beneath turbulent clouds in a garden; wide shot",
+   "subject": "object",
+   "setting": "garden or lawn",
+   "shot": "wide",
+   "banned": []
+  },
+  "5668c9f2edcb": {
+   "folder": "cloudy",
+   "time": "day",
+   "slots": [
+    "cloudy/week_2/day/5.webp",
+    "cloudy/week_4/day/5.webp"
+   ],
+   "pair": null,
+   "line": "Two dachshunds watch rain through a sliding glass door from indoors; medium shot",
+   "subject": "animal",
+   "setting": "indoors",
+   "shot": "medium",
+   "banned": []
+  },
+  "e9f6b3850ce2": {
+   "folder": "cloudy",
+   "time": "day",
+   "slots": [
+    "cloudy/week_2/day/6.webp",
+    "cloudy/week_4/day/6.webp"
+   ],
+   "pair": null,
+   "line": "Woman holding sunscreen shields her eyes while reclining on a suburban lawn; medium shot",
+   "subject": "one person",
+   "setting": "garden or lawn",
+   "shot": "medium",
+   "banned": [
+    "squinting into the sun"
+   ]
+  },
+  "04bdf14c306b": {
+   "folder": "cloudy",
+   "time": "day",
+   "slots": [
+    "cloudy/week_2/day/7.webp",
+    "cloudy/week_4/day/7.webp"
+   ],
+   "pair": null,
+   "line": "Woman jogs along a coastal promenade beside the sea; wide shot",
+   "subject": "one person",
+   "setting": "beach or coast",
+   "shot": "wide",
+   "banned": []
+  },
+  "20e80f881707": {
+   "folder": "cloudy",
+   "time": "dusk",
+   "slots": [
+    "cloudy/week_1/dusk/1.webp",
+    "cloudy/week_2/dusk/1.webp",
+    "cloudy/week_3/dusk/1.webp",
+    "cloudy/week_4/dusk/1.webp"
+   ],
+   "pair": null,
+   "line": "Cyclist pauses with his bicycle on a winding mountain road at sunset; wide shot",
+   "subject": "one person",
+   "setting": "mountain or view",
+   "shot": "wide",
+   "banned": []
+  },
+  "018a0573e433": {
+   "folder": "cold",
+   "time": "dusk",
+   "slots": [
+    "cold/week_2/dusk/2.webp",
+    "cold/week_4/dusk/2.webp"
+   ],
+   "pair": null,
+   "line": "Dog wearing a sweater curls on an outdoor cushion beneath storm clouds; medium shot",
+   "subject": "animal",
+   "setting": "stoep or patio",
+   "shot": "medium",
+   "banned": []
+  },
+  "444490756b06": {
+   "folder": "cloudy",
+   "time": "dusk",
+   "slots": [
+    "cloudy/week_1/dusk/3.webp",
+    "cloudy/week_2/dusk/3.webp",
+    "cloudy/week_3/dusk/3.webp",
+    "cloudy/week_4/dusk/3.webp"
+   ],
+   "pair": null,
+   "line": "Dark storm clouds and orange sunset loom above a misty suburb; wide shot",
+   "subject": "place",
+   "setting": "street or town",
+   "shot": "wide",
+   "banned": []
+  },
+  "0ebee4d85540": {
+   "folder": "cloudy",
+   "time": "dusk",
+   "slots": [
+    "cloudy/week_1/dusk/4.webp",
+    "cloudy/week_2/dusk/4.webp",
+    "cloudy/week_3/dusk/4.webp",
+    "cloudy/week_4/dusk/4.webp"
+   ],
+   "pair": null,
+   "line": "Brooding pink-grey clouds hang over suburban rooftops and television aerials; wide shot",
+   "subject": "place",
+   "setting": "street or town",
+   "shot": "wide",
+   "banned": []
+  },
+  "211c0291a514": {
+   "folder": "cloudy",
+   "time": "dusk",
+   "slots": [
+    "cloudy/week_1/dusk/5.webp",
+    "cloudy/week_2/dusk/5.webp",
+    "cloudy/week_3/dusk/5.webp",
+    "cloudy/week_4/dusk/5.webp"
+   ],
+   "pair": null,
+   "line": "Picnic table and braai stand beneath turbulent clouds in a dry field; wide shot",
+   "subject": "place",
+   "setting": "park or field",
+   "shot": "wide",
+   "banned": []
+  },
+  "3ba329d5cea3": {
+   "folder": "cloudy",
+   "time": "dusk",
+   "slots": [
+    "cloudy/week_1/dusk/6.webp",
+    "cloudy/week_2/dusk/6.webp",
+    "cloudy/week_3/dusk/6.webp",
+    "cloudy/week_4/dusk/6.webp"
+   ],
+   "pair": null,
+   "line": "Wedding couple and photographer pose while a woman studies the vineyard sky; wide shot",
+   "subject": "group",
+   "setting": "farm or veld",
+   "shot": "wide",
+   "banned": []
+  },
+  "6b5271665e34": {
+   "folder": "cloudy",
+   "time": "dusk",
+   "slots": [
+    "cloudy/week_1/dusk/7.webp",
+    "cloudy/week_2/dusk/7.webp",
+    "cloudy/week_3/dusk/7.webp",
+    "cloudy/week_4/dusk/7.webp"
+   ],
+   "pair": null,
+   "line": "Lone walker crosses dunes beneath a fiery Table Mountain sunset; wide shot",
+   "subject": "one person",
+   "setting": "beach or coast",
+   "shot": "wide",
+   "banned": []
+  },
+  "7b4c0256fd8d": {
+   "folder": "cloudy",
+   "time": "night",
+   "slots": [
+    "cloudy/week_1/night/1.webp",
+    "cloudy/week_2/night/1.webp",
+    "cloudy/week_3/night/1.webp",
+    "cloudy/week_4/night/1.webp"
+   ],
+   "pair": null,
+   "line": "Moon glows through dense black clouds above a dark open landscape; wide shot",
+   "subject": "place",
+   "setting": "farm or veld",
+   "shot": "wide",
+   "banned": []
+  },
+  "68317318c85d": {
+   "folder": "cloudy",
+   "time": "night",
+   "slots": [
+    "cloudy/week_1/night/2.webp",
+    "cloudy/week_2/night/2.webp",
+    "cloudy/week_3/night/2.webp",
+    "cloudy/week_4/night/2.webp"
+   ],
+   "pair": null,
+   "line": "Man shines a torch while approaching a windpump beneath moonlit clouds; wide shot",
+   "subject": "one person",
+   "setting": "farm or veld",
+   "shot": "wide",
+   "banned": []
+  },
+  "76070c299a0b": {
+   "folder": "cold",
+   "time": "night",
+   "slots": [
+    "cold/week_2/night/3.webp",
+    "cold/week_4/night/3.webp"
+   ],
+   "pair": null,
+   "line": "Sweater-clad cat sleeps curled on a sofa beside a glowing lamp; close-up",
+   "subject": "animal",
+   "setting": "indoors",
+   "shot": "close-up",
+   "banned": []
+  },
+  "bdc2741f86fb": {
+   "folder": "cloudy",
+   "time": "night",
+   "slots": [
+    "cloudy/week_1/night/4.webp",
+    "cloudy/week_2/night/4.webp",
+    "cloudy/week_3/night/4.webp",
+    "cloudy/week_4/night/4.webp"
+   ],
+   "pair": null,
+   "line": "Man walks a small dog along a wet seaside promenade at night; wide shot",
+   "subject": "one person",
+   "setting": "beach or coast",
+   "shot": "wide",
+   "banned": []
+  },
+  "e991afd863ba": {
+   "folder": "cloudy",
+   "time": "night",
+   "slots": [
+    "cloudy/week_1/night/5.webp",
+    "cloudy/week_2/night/5.webp",
+    "cloudy/week_3/night/5.webp",
+    "cloudy/week_4/night/5.webp"
+   ],
+   "pair": null,
+   "line": "Car faces the camera with headlights shining on a deserted rural road; wide shot",
+   "subject": "vehicle",
+   "setting": "road or car",
+   "shot": "wide",
+   "banned": []
+  },
+  "c6d4061cbef2": {
+   "folder": "cold",
+   "time": "night",
+   "slots": [
+    "cold/week_2/night/7.webp",
+    "cold/week_4/night/7.webp"
+   ],
+   "pair": null,
+   "line": "Man reclines on a rooftop terrace overlooking illuminated apartment buildings; wide shot",
+   "subject": "one person",
+   "setting": "stoep or patio",
+   "shot": "wide",
+   "banned": []
+  },
+  "ea6e65a6bc63": {
+   "folder": "cold",
+   "time": "dawn",
+   "slots": [
+    "cold/week_1/dawn/1.webp",
+    "cold/week_2/dawn/1.webp",
+    "cold/week_3/dawn/1.webp",
+    "cold/week_4/dawn/1.webp"
+   ],
+   "pair": null,
+   "line": "Small dog wearing a knitted sweater stands on a damp garden lawn; medium shot",
+   "subject": "animal",
+   "setting": "garden or lawn",
+   "shot": "medium",
+   "banned": []
+  },
+  "91301942dc29": {
+   "folder": "cold",
+   "time": "dawn",
+   "slots": [
+    "cold/week_1/dawn/2.webp",
+    "cold/week_2/dawn/2.webp",
+    "cold/week_3/dawn/2.webp",
+    "cold/week_4/dawn/2.webp"
+   ],
+   "pair": null,
+   "line": "Frost-covered sedan sits in a suburban driveway before sunrise; wide shot",
+   "subject": "vehicle",
+   "setting": "gate, door or driveway",
+   "shot": "wide",
+   "banned": []
+  },
+  "1c5f757ee79a": {
+   "folder": "cold",
+   "time": "dawn",
+   "slots": [
+    "cold/week_1/dawn/3.webp",
+    "cold/week_2/dawn/3.webp",
+    "cold/week_3/dawn/3.webp",
+    "cold/week_4/dawn/3.webp"
+   ],
+   "pair": null,
+   "line": "Mother fastens her schoolboy's jacket beside their open front door; medium shot",
+   "subject": "two or three people",
+   "setting": "gate, door or driveway",
+   "shot": "medium",
+   "banned": [
+    "at a gate or front door"
+   ]
+  },
+  "41c9f776e0fb": {
+   "folder": "cold",
+   "time": "dawn",
+   "slots": [
+    "cold/week_1/dawn/4.webp",
+    "cold/week_2/dawn/4.webp",
+    "cold/week_3/dawn/4.webp",
+    "cold/week_4/dawn/4.webp"
+   ],
+   "pair": null,
+   "line": "Bundled farmer stands among sheep breathing mist in a cold farmyard; medium shot",
+   "subject": "one person",
+   "setting": "farm or veld",
+   "shot": "medium",
+   "banned": []
+  },
+  "484f2079f5aa": {
+   "folder": "cold",
+   "time": "dawn",
+   "slots": [
+    "cold/week_1/dawn/5.webp",
+    "cold/week_3/dawn/5.webp"
+   ],
+   "pair": null,
+   "line": "Rumpled duvet lies open on an unmade bed beside a rainy window; medium shot",
+   "subject": "object",
+   "setting": "indoors",
+   "shot": "medium",
+   "banned": []
+  },
+  "ba36a2982ee0": {
+   "folder": "cold",
+   "time": "dawn",
+   "slots": [
+    "cold/week_1/dawn/6.webp",
+    "cold/week_2/dawn/6.webp",
+    "cold/week_3/dawn/6.webp",
+    "cold/week_4/dawn/6.webp"
+   ],
+   "pair": null,
+   "line": "Two steaming mugs sit outside a frost-covered farmhouse at sunrise; wide shot",
+   "subject": "object",
+   "setting": "stoep or patio",
+   "shot": "wide",
+   "banned": []
+  },
+  "4210c1f4a1ad": {
+   "folder": "cold",
+   "time": "dawn",
+   "slots": [
+    "cold/week_1/dawn/7.webp",
+    "cold/week_2/dawn/7.webp",
+    "cold/week_3/dawn/7.webp",
+    "cold/week_4/dawn/7.webp"
+   ],
+   "pair": null,
+   "line": "Frosted SUV stands in a driveway before a modern suburban house; wide shot",
+   "subject": "vehicle",
+   "setting": "gate, door or driveway",
+   "shot": "wide",
+   "banned": []
+  },
+  "4b92e51e69f8": {
+   "folder": "cold",
+   "time": "day",
+   "slots": [
+    "cold/week_1/day/1.webp",
+    "cold/week_3/day/1.webp"
+   ],
+   "pair": null,
+   "line": "Frost-coated outdoor tap holds a single thawing droplet in a garden; close-up",
+   "subject": "object",
+   "setting": "garden or lawn",
+   "shot": "close-up",
+   "banned": []
+  },
+  "77dad643efa6": {
+   "folder": "cold",
+   "time": "day",
+   "slots": [
+    "cold/week_1/day/2.webp",
+    "cold/week_3/day/2.webp"
+   ],
+   "pair": null,
+   "line": "Two women laugh beneath a yellow umbrella on a flooded suburban pavement; medium shot",
+   "subject": "two or three people",
+   "setting": "street or town",
+   "shot": "medium",
+   "banned": []
+  },
+  "084405b1c79a": {
+   "folder": "cold",
+   "time": "day",
+   "slots": [
+    "cold/week_1/day/3.webp",
+    "cold/week_3/day/3.webp"
+   ],
+   "pair": null,
+   "line": "Man pours steaming water over a car windscreen in a driveway; medium shot",
+   "subject": "one person",
+   "setting": "gate, door or driveway",
+   "shot": "medium",
+   "banned": []
+  },
+  "e8b7a7602012": {
+   "folder": "cold",
+   "time": "day",
+   "slots": [
+    "cold/week_1/day/4.webp",
+    "cold/week_3/day/4.webp"
+   ],
+   "pair": null,
+   "line": "Small dog rests under a blanket on a living-room sofa; medium shot",
+   "subject": "animal",
+   "setting": "indoors",
+   "shot": "medium",
+   "banned": []
+  },
+  "e938ce2769cd": {
+   "folder": "cold",
+   "time": "day",
+   "slots": [
+    "cold/week_1/day/5.webp",
+    "cold/week_3/day/5.webp"
+   ],
+   "pair": null,
+   "line": "Child hides beneath a duvet on a living-room floor; medium shot",
+   "subject": "one person",
+   "setting": "indoors",
+   "shot": "medium",
+   "banned": []
+  },
+  "bf942a9f6d66": {
+   "folder": "cold",
+   "time": "day",
+   "slots": [
+    "cold/week_1/day/6.webp",
+    "cold/week_3/day/6.webp"
+   ],
+   "pair": null,
+   "line": "Frost-covered sunglasses lie on an outdoor table overlooking misty countryside; close-up",
+   "subject": "object",
+   "setting": "stoep or patio",
+   "shot": "close-up",
+   "banned": []
+  },
+  "36ffe52cf7ec": {
+   "folder": "cold",
+   "time": "day",
+   "slots": [
+    "cold/week_1/day/7.webp",
+    "cold/week_3/day/7.webp"
+   ],
+   "pair": null,
+   "line": "Family huddles beneath a blanket on a sofa while their dog sleeps nearby; wide shot",
+   "subject": "group",
+   "setting": "indoors",
+   "shot": "wide",
+   "banned": []
+  },
+  "999e68c47bfc": {
+   "folder": "cold",
+   "time": "day",
+   "slots": [
+    "cold/week_2/day/1.webp",
+    "cold/week_4/day/1.webp"
+   ],
+   "pair": null,
+   "line": "Man walks a small jacketed dog along a rainy suburban street; wide shot",
+   "subject": "one person",
+   "setting": "street or town",
+   "shot": "wide",
+   "banned": []
+  },
+  "d970e657c4d2": {
+   "folder": "cold",
+   "time": "day",
+   "slots": [
+    "cold/week_2/day/2.webp",
+    "cold/week_4/day/2.webp"
+   ],
+   "pair": null,
+   "line": "Large dog sits outside an open sliding door during rain; medium shot",
+   "subject": "animal",
+   "setting": "gate, door or driveway",
+   "shot": "medium",
+   "banned": []
+  },
+  "a37a31d9aa79": {
+   "folder": "cold",
+   "time": "day",
+   "slots": [
+    "cold/week_2/day/3.webp",
+    "cold/week_4/day/3.webp"
+   ],
+   "pair": null,
+   "line": "Woollen socks hang drying beside a glowing indoor heater; close-up",
+   "subject": "object",
+   "setting": "indoors",
+   "shot": "close-up",
+   "banned": []
+  },
+  "59f61259d350": {
+   "folder": "cold",
+   "time": "day",
+   "slots": [
+    "cold/week_2/day/4.webp",
+    "cold/week_4/day/4.webp"
+   ],
+   "pair": null,
+   "line": "Bundled woman drinks from a takeaway cup on a wet park bench; medium shot",
+   "subject": "one person",
+   "setting": "park or field",
+   "shot": "medium",
+   "banned": []
+  },
+  "a373f1d83e2f": {
+   "folder": "cold",
+   "time": "day",
+   "slots": [
+    "cold/week_2/day/5.webp",
+    "cold/week_4/day/5.webp"
+   ],
+   "pair": null,
+   "line": "Man pulls his turtleneck over his face on a rainy suburban pavement; medium shot",
+   "subject": "one person",
+   "setting": "street or town",
+   "shot": "medium",
+   "banned": []
+  },
+  "d003110fec9f": {
+   "folder": "cold-clear",
+   "time": "day",
+   "slots": [
+    "cold-clear/week_2/day/6.webp",
+    "cold-clear/week_4/day/6.webp"
+   ],
+   "pair": null,
+   "line": "Laundry dries on a garden clothesline beneath clear skies and snowy mountains; wide shot",
+   "subject": "place",
+   "setting": "garden or lawn",
+   "shot": "wide",
+   "banned": []
+  },
+  "3fd7aa0aae2e": {
+   "folder": "cold",
+   "time": "day",
+   "slots": [
+    "cold/week_2/day/7.webp",
+    "cold/week_4/day/7.webp"
+   ],
+   "pair": null,
+   "line": "Elderly man warms himself beside a heater in his living room; medium shot",
+   "subject": "one person",
+   "setting": "indoors",
+   "shot": "medium",
+   "banned": []
+  },
+  "420d1bd07555": {
+   "folder": "cold",
+   "time": "dusk",
+   "slots": [
+    "cold/week_1/dusk/1.webp",
+    "cold/week_2/dusk/1.webp",
+    "cold/week_3/dusk/1.webp",
+    "cold/week_4/dusk/1.webp"
+   ],
+   "pair": null,
+   "line": "Cat sleeps sprawled across the top of a glowing gas heater; medium shot",
+   "subject": "animal",
+   "setting": "indoors",
+   "shot": "medium",
+   "banned": []
+  },
+  "55da2af2c2bd": {
+   "folder": "cold",
+   "time": "dusk",
+   "slots": [
+    "cold/week_1/dusk/2.webp",
+    "cold/week_3/dusk/2.webp"
+   ],
+   "pair": null,
+   "line": "Winding mountain road crosses dark slopes beneath a vivid sunset; wide shot",
+   "subject": "place",
+   "setting": "mountain or view",
+   "shot": "wide",
+   "banned": []
+  },
+  "50eb6a4aa792": {
+   "folder": "cold",
+   "time": "dusk",
+   "slots": [
+    "cold/week_1/dusk/3.webp",
+    "cold/week_2/dusk/3.webp",
+    "cold/week_3/dusk/3.webp",
+    "cold/week_4/dusk/3.webp"
+   ],
+   "pair": null,
+   "line": "Empty beach stretches toward a mountain obscured by low cloud; wide shot",
+   "subject": "place",
+   "setting": "beach or coast",
+   "shot": "wide",
+   "banned": []
+  },
+  "163ee2f2d1fe": {
+   "folder": "cold",
+   "time": "dusk",
+   "slots": [
+    "cold/week_1/dusk/4.webp",
+    "cold/week_2/dusk/4.webp",
+    "cold/week_3/dusk/4.webp",
+    "cold/week_4/dusk/4.webp"
+   ],
+   "pair": null,
+   "line": "Blanketed chair and steaming mug sit on a wet covered stoep; wide shot",
+   "subject": "place",
+   "setting": "stoep or patio",
+   "shot": "wide",
+   "banned": []
+  },
+  "917c4c0a6fac": {
+   "folder": "cold",
+   "time": "dusk",
+   "slots": [
+    "cold/week_1/dusk/5.webp",
+    "cold/week_2/dusk/5.webp",
+    "cold/week_3/dusk/5.webp",
+    "cold/week_4/dusk/5.webp"
+   ],
+   "pair": null,
+   "line": "Gloved hand holds hot chocolate over a balcony view of Cape Town; medium shot",
+   "subject": "object",
+   "setting": "mountain or view",
+   "shot": "medium",
+   "banned": []
+  },
+  "39e28d40ecf1": {
+   "folder": "cold",
+   "time": "dusk",
+   "slots": [
+    "cold/week_1/dusk/6.webp",
+    "cold/week_3/dusk/6.webp"
+   ],
+   "pair": null,
+   "line": "People and a dog walk along a wet seaside promenade at sunset; wide shot",
+   "subject": "group",
+   "setting": "beach or coast",
+   "shot": "wide",
+   "banned": []
+  },
+  "6ab73d31bad6": {
+   "folder": "cold",
+   "time": "dusk",
+   "slots": [
+    "cold/week_1/dusk/7.webp",
+    "cold/week_2/dusk/7.webp",
+    "cold/week_3/dusk/7.webp",
+    "cold/week_4/dusk/7.webp"
+   ],
+   "pair": null,
+   "line": "Farm track leads past silhouetted trees beneath an orange dawn sky; wide shot",
+   "subject": "place",
+   "setting": "farm or veld",
+   "shot": "wide",
+   "banned": []
+  },
+  "a77b4dca45ae": {
+   "folder": "cold",
+   "time": "night",
+   "slots": [
+    "cold/week_1/night/1.webp",
+    "cold/week_2/night/1.webp",
+    "cold/week_3/night/1.webp",
+    "cold/week_4/night/1.webp"
+   ],
+   "pair": null,
+   "line": "Empty rain-slicked town street passes warmly lit historic buildings at night; wide shot",
+   "subject": "place",
+   "setting": "street or town",
+   "shot": "wide",
+   "banned": []
+  },
+  "6baabb00f226": {
+   "folder": "cold",
+   "time": "night",
+   "slots": [
+    "cold/week_1/night/2.webp",
+    "cold/week_2/night/2.webp",
+    "cold/week_3/night/2.webp",
+    "cold/week_4/night/2.webp"
+   ],
+   "pair": null,
+   "line": "Dog sleeps on an armchair beside a blazing stone fireplace; medium shot",
+   "subject": "animal",
+   "setting": "indoors",
+   "shot": "medium",
+   "banned": []
+  },
+  "cb132360385f": {
+   "folder": "cold",
+   "time": "night",
+   "slots": [
+    "cold/week_1/night/3.webp",
+    "cold/week_3/night/3.webp"
+   ],
+   "pair": null,
+   "line": "Man stands outside an open garden door gazing at a starry sky; wide shot",
+   "subject": "one person",
+   "setting": "garden or lawn",
+   "shot": "wide",
+   "banned": []
+  },
+  "54f02eb5aac1": {
+   "folder": "cold",
+   "time": "night",
+   "slots": [
+    "cold/week_1/night/4.webp",
+    "cold/week_2/night/4.webp",
+    "cold/week_3/night/4.webp",
+    "cold/week_4/night/4.webp"
+   ],
+   "pair": null,
+   "line": "Woman works at a computer wrapped in a blanket late at night; medium shot",
+   "subject": "one person",
+   "setting": "indoors",
+   "shot": "medium",
+   "banned": []
+  },
+  "fbf101482bbd": {
+   "folder": "cold",
+   "time": "night",
+   "slots": [
+    "cold/week_1/night/5.webp",
+    "cold/week_2/night/5.webp",
+    "cold/week_3/night/5.webp",
+    "cold/week_4/night/5.webp"
+   ],
+   "pair": null,
+   "line": "Couple shares a blanket beside their campsite beneath the Milky Way; wide shot",
+   "subject": "two or three people",
+   "setting": "farm or veld",
+   "shot": "wide",
+   "banned": []
+  },
+  "13efc9191981": {
+   "folder": "cold",
+   "time": "night",
+   "slots": [
+    "cold/week_1/night/6.webp",
+    "cold/week_3/night/6.webp"
+   ],
+   "pair": null,
+   "line": "Two men warm themselves around a garden brazier outside a farmhouse; wide shot",
+   "subject": "two or three people",
+   "setting": "garden or lawn",
+   "shot": "wide",
+   "banned": []
+  },
+  "b850a52403e3": {
+   "folder": "cold",
+   "time": "night",
+   "slots": [
+    "cold/week_1/night/7.webp",
+    "cold/week_3/night/7.webp"
+   ],
+   "pair": null,
+   "line": "Bundled child reads by torchlight inside a wooden playhouse; medium shot",
+   "subject": "one person",
+   "setting": "indoors",
+   "shot": "medium",
+   "banned": []
+  },
+  "3e60dabd7ef7": {
+   "folder": "cold-clear",
+   "time": "dawn",
+   "slots": [
+    "cold-clear/week_1/dawn/1.webp",
+    "cold-clear/week_2/dawn/1.webp",
+    "cold-clear/week_3/dawn/1.webp",
+    "cold-clear/week_4/dawn/1.webp"
+   ],
+   "pair": null,
+   "line": "Wheelie bins line a frosty suburban pavement at sunrise; wide shot",
+   "subject": "object",
+   "setting": "street or town",
+   "shot": "wide",
+   "banned": []
+  },
+  "898c05f233a6": {
+   "folder": "cold-clear",
+   "time": "dawn",
+   "slots": [
+    "cold-clear/week_1/dawn/2.webp",
+    "cold-clear/week_2/dawn/2.webp",
+    "cold-clear/week_3/dawn/2.webp",
+    "cold-clear/week_4/dawn/2.webp"
+   ],
+   "pair": null,
+   "line": "Hadeda ibis lands on a frosty lawn outside a brick house; medium shot",
+   "subject": "animal",
+   "setting": "garden or lawn",
+   "shot": "medium",
+   "banned": []
+  },
+  "5a6dd26eb7db": {
+   "folder": "cold-clear",
+   "time": "dawn",
+   "slots": [
+    "cold-clear/week_1/dawn/3.webp",
+    "cold-clear/week_2/dawn/3.webp",
+    "cold-clear/week_3/dawn/3.webp",
+    "cold-clear/week_4/dawn/3.webp"
+   ],
+   "pair": null,
+   "line": "Mother and two children scrape frost from a car in their driveway; medium shot",
+   "subject": "two or three people",
+   "setting": "road or car",
+   "shot": "medium",
+   "banned": []
+  },
+  "caaa1c42d70a": {
+   "folder": "cold-clear",
+   "time": "dawn",
+   "slots": [
+    "cold-clear/week_1/dawn/4.webp",
+    "cold-clear/week_2/dawn/4.webp",
+    "cold-clear/week_3/dawn/4.webp",
+    "cold-clear/week_4/dawn/4.webp"
+   ],
+   "pair": null,
+   "line": "Cyclist rides along a tree-lined suburban street in low morning light; wide shot",
+   "subject": "one person",
+   "setting": "street or town",
+   "shot": "wide",
+   "banned": []
+  },
+  "4040cfcfc732": {
+   "folder": "cold-clear",
+   "time": "dawn",
+   "slots": [
+    "cold-clear/week_1/dawn/5.webp",
+    "cold-clear/week_2/dawn/5.webp",
+    "cold-clear/week_3/dawn/5.webp",
+    "cold-clear/week_4/dawn/5.webp"
+   ],
+   "pair": null,
+   "line": "Five guinea fowl cross a frosty residential street at dawn; wide shot",
+   "subject": "animal",
+   "setting": "street or town",
+   "shot": "wide",
+   "banned": []
+  },
+  "28129477b706": {
+   "folder": "cold-clear",
+   "time": "dawn",
+   "slots": [
+    "cold-clear/week_1/dawn/6.webp",
+    "cold-clear/week_3/dawn/6.webp"
+   ],
+   "pair": null,
+   "line": "Windmill stands beside a fence across frost-covered Karoo veld; wide shot",
+   "subject": "object",
+   "setting": "farm or veld",
+   "shot": "wide",
+   "banned": []
+  },
+  "6ca4d027da38": {
+   "folder": "cold-clear",
+   "time": "dawn",
+   "slots": [
+    "cold-clear/week_1/dawn/7.webp",
+    "cold-clear/week_2/dawn/7.webp",
+    "cold-clear/week_3/dawn/7.webp",
+    "cold-clear/week_4/dawn/7.webp"
+   ],
+   "pair": null,
+   "line": "Runner pauses overlooking Johannesburg’s skyline from a ridge at sunrise; wide shot",
+   "subject": "one person",
+   "setting": "mountain or view",
+   "shot": "wide",
+   "banned": []
+  },
+  "45b1ac83db20": {
+   "folder": "cold-clear",
+   "time": "day",
+   "slots": [
+    "cold-clear/week_1/day/1.webp",
+    "cold-clear/week_2/day/1.webp",
+    "cold-clear/week_3/day/1.webp",
+    "cold-clear/week_4/day/1.webp"
+   ],
+   "pair": null,
+   "line": "Large dog rests beside a water bowl in a sunny yard; medium shot",
+   "subject": "animal",
+   "setting": "garden or lawn",
+   "shot": "medium",
+   "banned": []
+  },
+  "21c809043132": {
+   "folder": "cold-clear",
+   "time": "day",
+   "slots": [
+    "cold-clear/week_1/day/2.webp",
+    "cold-clear/week_2/day/2.webp",
+    "cold-clear/week_3/day/2.webp",
+    "cold-clear/week_4/day/2.webp"
+   ],
+   "pair": null,
+   "line": "Farmer leans on a white wall overlooking dry open veld; medium shot",
+   "subject": "one person",
+   "setting": "farm or veld",
+   "shot": "medium",
+   "banned": []
+  },
+  "042ba0a95388": {
+   "folder": "cold-clear",
+   "time": "day",
+   "slots": [
+    "cold-clear/week_1/day/3.webp",
+    "cold-clear/week_2/day/3.webp",
+    "cold-clear/week_3/day/3.webp",
+    "cold-clear/week_4/day/3.webp"
+   ],
+   "pair": null,
+   "line": "Man helps a schoolboy from a bakkie in a frosty driveway; medium shot",
+   "subject": "two or three people",
+   "setting": "road or car",
+   "shot": "medium",
+   "banned": []
+  },
+  "bbb3d8348b00": {
+   "folder": "cold-clear",
+   "time": "day",
+   "slots": [
+    "cold-clear/week_1/day/4.webp",
+    "cold-clear/week_2/day/4.webp",
+    "cold-clear/week_3/day/4.webp",
+    "cold-clear/week_4/day/4.webp"
+   ],
+   "pair": null,
+   "line": "Mother helps bundled toddler eat breakfast beside a sunny kitchen window; medium shot",
+   "subject": "two or three people",
+   "setting": "kitchen",
+   "shot": "medium",
+   "banned": []
+  },
+  "decff597fe6c": {
+   "folder": "cold-clear",
+   "time": "day",
+   "slots": [
+    "cold-clear/week_1/day/5.webp",
+    "cold-clear/week_2/day/5.webp",
+    "cold-clear/week_3/day/5.webp",
+    "cold-clear/week_4/day/5.webp"
+   ],
+   "pair": null,
+   "line": "Two colleagues chat over takeaway coffee between city office towers; wide shot",
+   "subject": "two or three people",
+   "setting": "street or town",
+   "shot": "wide",
+   "banned": []
+  },
+  "bbad2500c852": {
+   "folder": "cold-clear",
+   "time": "day",
+   "slots": [
+    "cold-clear/week_1/day/6.webp",
+    "cold-clear/week_3/day/6.webp"
+   ],
+   "pair": null,
+   "line": "Empty rugby posts stand on a sunlit, frost-covered field; wide shot",
+   "subject": "place",
+   "setting": "park or field",
+   "shot": "wide",
+   "banned": []
+  },
+  "32dec9fbdcaa": {
+   "folder": "cold-clear",
+   "time": "day",
+   "slots": [
+    "cold-clear/week_1/day/7.webp",
+    "cold-clear/week_2/day/7.webp",
+    "cold-clear/week_3/day/7.webp",
+    "cold-clear/week_4/day/7.webp"
+   ],
+   "pair": null,
+   "line": "Bundled runners begin a community race across a frosty field; wide shot",
+   "subject": "group",
+   "setting": "park or field",
+   "shot": "wide",
+   "banned": []
+  },
+  "fbdf528f41c8": {
+   "folder": "cold-clear",
+   "time": "dusk",
+   "slots": [
+    "cold-clear/week_1/dusk/1.webp",
+    "cold-clear/week_2/dusk/1.webp",
+    "cold-clear/week_3/dusk/1.webp",
+    "cold-clear/week_4/dusk/1.webp"
+   ],
+   "pair": null,
+   "line": "Frozen towels hang stiffly from a backyard washing line at sunrise; medium shot",
+   "subject": "object",
+   "setting": "garden or lawn",
+   "shot": "medium",
+   "banned": []
+  },
+  "510b7a0d60c0": {
+   "folder": "cold-clear",
+   "time": "dusk",
+   "slots": [
+    "cold-clear/week_1/dusk/2.webp",
+    "cold-clear/week_2/dusk/2.webp",
+    "cold-clear/week_3/dusk/2.webp",
+    "cold-clear/week_4/dusk/2.webp"
+   ],
+   "pair": null,
+   "line": "Dog sits outside a closed garden gate watching a warmly lit house; medium shot",
+   "subject": "animal",
+   "setting": "gate, door or driveway",
+   "shot": "medium",
+   "banned": []
+  },
+  "0b4330abc214": {
+   "folder": "cold-clear",
+   "time": "dusk",
+   "slots": [
+    "cold-clear/week_1/dusk/3.webp",
+    "cold-clear/week_2/dusk/3.webp",
+    "cold-clear/week_3/dusk/3.webp",
+    "cold-clear/week_4/dusk/3.webp"
+   ],
+   "pair": null,
+   "line": "Two horses stand steaming in a frost-covered paddock at sunrise; medium shot",
+   "subject": "animal",
+   "setting": "farm or veld",
+   "shot": "medium",
+   "banned": []
+  },
+  "ff19d8654ec3": {
+   "folder": "cold-clear",
+   "time": "dusk",
+   "slots": [
+    "cold-clear/week_1/dusk/4.webp",
+    "cold-clear/week_2/dusk/4.webp",
+    "cold-clear/week_3/dusk/4.webp",
+    "cold-clear/week_4/dusk/4.webp"
+   ],
+   "pair": null,
+   "line": "Young woman shoots a basketball on a frosty outdoor court at dawn; wide shot",
+   "subject": "one person",
+   "setting": "park or field",
+   "shot": "wide",
+   "banned": []
+  },
+  "827554552d76": {
+   "folder": "cold-clear",
+   "time": "dusk",
+   "slots": [
+    "cold-clear/week_1/dusk/5.webp",
+    "cold-clear/week_2/dusk/5.webp",
+    "cold-clear/week_3/dusk/5.webp",
+    "cold-clear/week_4/dusk/5.webp"
+   ],
+   "pair": null,
+   "line": "Five friends warm themselves around a garden firepit outside a house; medium shot",
+   "subject": "group",
+   "setting": "stoep or patio",
+   "shot": "medium",
+   "banned": []
+  },
+  "948736af4859": {
+   "folder": "cold-clear",
+   "time": "dusk",
+   "slots": [
+    "cold-clear/week_1/dusk/6.webp",
+    "cold-clear/week_2/dusk/6.webp",
+    "cold-clear/week_3/dusk/6.webp",
+    "cold-clear/week_4/dusk/6.webp"
+   ],
+   "pair": null,
+   "line": "Frosted sports field sits empty beside a clubhouse under floodlights; wide shot",
+   "subject": "place",
+   "setting": "park or field",
+   "shot": "wide",
+   "banned": []
+  },
+  "1f74ef9146fb": {
+   "folder": "cold-clear",
+   "time": "dusk",
+   "slots": [
+    "cold-clear/week_1/dusk/7.webp",
+    "cold-clear/week_2/dusk/7.webp",
+    "cold-clear/week_3/dusk/7.webp",
+    "cold-clear/week_4/dusk/7.webp"
+   ],
+   "pair": null,
+   "line": "Cat watches a vivid pink winter sunset through an indoor window; medium shot",
+   "subject": "animal",
+   "setting": "indoors",
+   "shot": "medium",
+   "banned": []
+  },
+  "112364f9e477": {
+   "folder": "cold-clear",
+   "time": "night",
+   "slots": [
+    "cold-clear/week_1/night/1.webp",
+    "cold-clear/week_2/night/1.webp",
+    "cold-clear/week_3/night/1.webp",
+    "cold-clear/week_4/night/1.webp"
+   ],
+   "pair": null,
+   "line": "Frosted cars sit beneath stars and streetlamps on a quiet residential street; wide shot",
+   "subject": "vehicle",
+   "setting": "street or town",
+   "shot": "wide",
+   "banned": []
+  },
+  "da90853b2ccb": {
+   "folder": "cold-clear",
+   "time": "night",
+   "slots": [
+    "cold-clear/week_1/night/2.webp",
+    "cold-clear/week_2/night/2.webp",
+    "cold-clear/week_3/night/2.webp",
+    "cold-clear/week_4/night/2.webp"
+   ],
+   "pair": null,
+   "line": "Man wheels a refuse bin along a frosty driveway beneath stars; wide shot",
+   "subject": "one person",
+   "setting": "gate, door or driveway",
+   "shot": "wide",
+   "banned": []
+  },
+  "d298c8c1f224": {
+   "folder": "cold-clear",
+   "time": "night",
+   "slots": [
+    "cold-clear/week_1/night/3.webp",
+    "cold-clear/week_2/night/3.webp",
+    "cold-clear/week_3/night/3.webp",
+    "cold-clear/week_4/night/3.webp"
+   ],
+   "pair": null,
+   "line": "Father and two children watch television under blankets in a dark lounge; medium shot",
+   "subject": "two or three people",
+   "setting": "indoors",
+   "shot": "medium",
+   "banned": []
+  },
+  "05aeb3b79581": {
+   "folder": "cold-clear",
+   "time": "night",
+   "slots": [
+    "cold-clear/week_1/night/4.webp",
+    "cold-clear/week_2/night/4.webp",
+    "cold-clear/week_3/night/4.webp",
+    "cold-clear/week_4/night/4.webp"
+   ],
+   "pair": null,
+   "line": "Orion hangs above a frost-covered suburban house and bare tree; wide shot",
+   "subject": "place",
+   "setting": "other",
+   "shot": "wide",
+   "banned": []
+  },
+  "f453a678f470": {
+   "folder": "cold-clear",
+   "time": "night",
+   "slots": [
+    "cold-clear/week_1/night/5.webp",
+    "cold-clear/week_2/night/5.webp",
+    "cold-clear/week_3/night/5.webp",
+    "cold-clear/week_4/night/5.webp"
+   ],
+   "pair": null,
+   "line": "Two people stargaze from a pickup bed in the veld; wide shot",
+   "subject": "two or three people",
+   "setting": "farm or veld",
+   "shot": "wide",
+   "banned": []
+  },
+  "8fd1944f303b": {
+   "folder": "cold-clear",
+   "time": "night",
+   "slots": [
+    "cold-clear/week_1/night/6.webp",
+    "cold-clear/week_2/night/6.webp",
+    "cold-clear/week_3/night/6.webp",
+    "cold-clear/week_4/night/6.webp"
+   ],
+   "pair": null,
+   "line": "Three people warm themselves around a patio fire at night; wide shot",
+   "subject": "two or three people",
+   "setting": "stoep or patio",
+   "shot": "wide",
+   "banned": []
+  },
+  "da60a92cafd2": {
+   "folder": "cold-clear",
+   "time": "night",
+   "slots": [
+    "cold-clear/week_1/night/7.webp",
+    "cold-clear/week_2/night/7.webp",
+    "cold-clear/week_3/night/7.webp",
+    "cold-clear/week_4/night/7.webp"
+   ],
+   "pair": null,
+   "line": "Blanketed man drinks beneath the stars on a farmhouse patio; wide shot",
+   "subject": "one person",
+   "setting": "stoep or patio",
+   "shot": "wide",
+   "banned": []
+  },
+  "23b1b4b2af6d": {
+   "folder": "fog",
+   "time": "dawn",
+   "slots": [
+    "fog/week_1/dawn/1.webp",
+    "fog/week_2/dawn/1.webp",
+    "fog/week_3/dawn/1.webp",
+    "fog/week_4/dawn/1.webp"
+   ],
+   "pair": null,
+   "line": "Schoolboy waits beside a foggy suburban street; medium shot",
+   "subject": "one person",
+   "setting": "street or town",
+   "shot": "medium",
+   "banned": []
+  },
+  "591629dceb51": {
+   "folder": "fog",
+   "time": "dawn",
+   "slots": [
+    "fog/week_1/dawn/2.webp",
+    "fog/week_2/dawn/2.webp",
+    "fog/week_3/dawn/2.webp",
+    "fog/week_4/dawn/2.webp"
+   ],
+   "pair": null,
+   "line": "Cow faces the camera among grazing cattle in a misty pasture; wide shot",
+   "subject": "animal",
+   "setting": "farm or veld",
+   "shot": "wide",
+   "banned": []
+  },
+  "deaadb7968fe": {
+   "folder": "fog",
+   "time": "dawn",
+   "slots": [
+    "fog/week_1/dawn/3.webp",
+    "fog/week_3/dawn/3.webp"
+   ],
+   "pair": null,
+   "line": "Warm window light cuts through fog outside a dark house; wide shot",
+   "subject": "place",
+   "setting": "other",
+   "shot": "wide",
+   "banned": []
+  },
+  "13fa1ba0ce60": {
+   "folder": "fog",
+   "time": "dawn",
+   "slots": [
+    "fog/week_1/dawn/4.webp",
+    "fog/week_2/dawn/4.webp",
+    "fog/week_3/dawn/4.webp",
+    "fog/week_4/dawn/4.webp"
+   ],
+   "pair": null,
+   "line": "Tree-lined dirt road disappears into sunrise mist across farmland; wide shot",
+   "subject": "place",
+   "setting": "farm or veld",
+   "shot": "wide",
+   "banned": []
+  },
+  "d903941f0dd8": {
+   "folder": "fog",
+   "time": "dawn",
+   "slots": [
+    "fog/week_1/dawn/5.webp",
+    "fog/week_2/dawn/5.webp",
+    "fog/week_3/dawn/5.webp",
+    "fog/week_4/dawn/5.webp"
+   ],
+   "pair": null,
+   "line": "Empty suburban street recedes beneath glowing lamps in blue fog; wide shot",
+   "subject": "place",
+   "setting": "street or town",
+   "shot": "wide",
+   "banned": []
+  },
+  "48e51baff8be": {
+   "folder": "fog",
+   "time": "dawn",
+   "slots": [
+    "fog/week_1/dawn/6.webp",
+    "fog/week_2/dawn/6.webp",
+    "fog/week_3/dawn/6.webp",
+    "fog/week_4/dawn/6.webp"
+   ],
+   "pair": null,
+   "line": "Woman runs away along a wet forest road in heavy mist; wide shot",
+   "subject": "one person",
+   "setting": "road or car",
+   "shot": "wide",
+   "banned": []
+  },
+  "8ea1dc6bec6a": {
+   "folder": "fog",
+   "time": "dawn",
+   "slots": [
+    "fog/week_1/dawn/7.webp",
+    "fog/week_2/dawn/7.webp",
+    "fog/week_3/dawn/7.webp",
+    "fog/week_4/dawn/7.webp"
+   ],
+   "pair": null,
+   "line": "Three cattle stand in sunlit mist beside a farm fence; wide shot",
+   "subject": "animal",
+   "setting": "farm or veld",
+   "shot": "wide",
+   "banned": []
+  },
+  "2d71f451d0df": {
+   "folder": "fog",
+   "time": "day",
+   "slots": [
+    "fog/week_1/day/1.webp",
+    "fog/week_2/day/1.webp",
+    "fog/week_3/day/1.webp",
+    "fog/week_4/day/1.webp"
+   ],
+   "pair": null,
+   "line": "Tabby cat sits on a garden wall while figures cross the fog; medium shot",
+   "subject": "animal",
+   "setting": "garden or lawn",
+   "shot": "medium",
+   "banned": []
+  },
+  "84811d2b9372": {
+   "folder": "fog",
+   "time": "day",
+   "slots": [
+    "fog/week_1/day/2.webp",
+    "fog/week_2/day/2.webp",
+    "fog/week_3/day/2.webp",
+    "fog/week_4/day/2.webp"
+   ],
+   "pair": null,
+   "line": "Woman walks a barely visible dog through a foggy suburban street; medium shot",
+   "subject": "one person",
+   "setting": "street or town",
+   "shot": "medium",
+   "banned": []
+  },
+  "541778f8c617": {
+   "folder": "fog",
+   "time": "day",
+   "slots": [
+    "fog/week_1/day/3.webp",
+    "fog/week_2/day/3.webp",
+    "fog/week_3/day/3.webp",
+    "fog/week_4/day/3.webp"
+   ],
+   "pair": null,
+   "line": "Morning fog and golden light drift among suburban rooftops; wide shot",
+   "subject": "place",
+   "setting": "street or town",
+   "shot": "wide",
+   "banned": []
+  },
+  "62480343c313": {
+   "folder": "fog",
+   "time": "day",
+   "slots": [
+    "fog/week_1/day/4.webp",
+    "fog/week_2/day/4.webp",
+    "fog/week_3/day/4.webp",
+    "fog/week_4/day/4.webp"
+   ],
+   "pair": null,
+   "line": "Man studies foggy visibility from inside a parked car; medium shot",
+   "subject": "one person",
+   "setting": "road or car",
+   "shot": "medium",
+   "banned": []
+  },
+  "dd6b06e34d3e": {
+   "folder": "fog",
+   "time": "day",
+   "slots": [
+    "fog/week_1/day/5.webp",
+    "fog/week_2/day/5.webp",
+    "fog/week_3/day/5.webp",
+    "fog/week_4/day/5.webp"
+   ],
+   "pair": null,
+   "line": "Robed man wheels a rubbish bin down his foggy driveway; wide shot",
+   "subject": "one person",
+   "setting": "gate, door or driveway",
+   "shot": "wide",
+   "banned": [
+    "at a gate or front door"
+   ]
+  },
+  "36972a49b9e6": {
+   "folder": "fog",
+   "time": "day",
+   "slots": [
+    "fog/week_1/day/6.webp",
+    "fog/week_2/day/6.webp",
+    "fog/week_3/day/6.webp",
+    "fog/week_4/day/6.webp"
+   ],
+   "pair": null,
+   "line": "Empty rugby posts rise from a mist-covered playing field; wide shot",
+   "subject": "place",
+   "setting": "park or field",
+   "shot": "wide",
+   "banned": []
+  },
+  "f1d8b3873dff": {
+   "folder": "fog",
+   "time": "day",
+   "slots": [
+    "fog/week_1/day/7.webp",
+    "fog/week_2/day/7.webp",
+    "fog/week_3/day/7.webp",
+    "fog/week_4/day/7.webp"
+   ],
+   "pair": null,
+   "line": "Golf ball rests in wet grass as a golfer approaches through fog; close-up",
+   "subject": "object",
+   "setting": "park or field",
+   "shot": "close-up",
+   "banned": []
+  },
+  "4003b55c6c42": {
+   "folder": "fog",
+   "time": "dusk",
+   "slots": [
+    "fog/week_1/dusk/1.webp",
+    "fog/week_2/dusk/1.webp",
+    "fog/week_3/dusk/1.webp",
+    "fog/week_4/dusk/1.webp"
+   ],
+   "pair": null,
+   "line": "Headlit safari vehicle approaches along a wet misty rural road; wide shot",
+   "subject": "vehicle",
+   "setting": "road or car",
+   "shot": "wide",
+   "banned": []
+  },
+  "2ac9aa1f42fc": {
+   "folder": "fog",
+   "time": "dusk",
+   "slots": [
+    "fog/week_1/dusk/2.webp",
+    "fog/week_2/dusk/2.webp",
+    "fog/week_3/dusk/2.webp",
+    "fog/week_4/dusk/2.webp"
+   ],
+   "pair": null,
+   "line": "Woman walks her dog beneath streetlights on a foggy promenade; wide shot",
+   "subject": "one person",
+   "setting": "street or town",
+   "shot": "wide",
+   "banned": []
+  },
+  "5cd228859e14": {
+   "folder": "fog",
+   "time": "dusk",
+   "slots": [
+    "fog/week_1/dusk/3.webp",
+    "fog/week_2/dusk/3.webp",
+    "fog/week_3/dusk/3.webp",
+    "fog/week_4/dusk/3.webp"
+   ],
+   "pair": null,
+   "line": "Two people walk bicycles along a wet, lamp-lit town street; wide shot",
+   "subject": "two or three people",
+   "setting": "street or town",
+   "shot": "wide",
+   "banned": []
+  },
+  "a0b24a9ae618": {
+   "folder": "fog",
+   "time": "dusk",
+   "slots": [
+    "fog/week_1/dusk/4.webp",
+    "fog/week_2/dusk/4.webp",
+    "fog/week_3/dusk/4.webp",
+    "fog/week_4/dusk/4.webp"
+   ],
+   "pair": null,
+   "line": "Car taillights fade into dense fog on a dark suburban street; wide shot",
+   "subject": "vehicle",
+   "setting": "street or town",
+   "shot": "wide",
+   "banned": []
+  },
+  "b5837596744c": {
+   "folder": "fog",
+   "time": "dusk",
+   "slots": [
+    "fog/week_1/dusk/5.webp",
+    "fog/week_2/dusk/5.webp",
+    "fog/week_3/dusk/5.webp",
+    "fog/week_4/dusk/5.webp"
+   ],
+   "pair": null,
+   "line": "Man stands on colourful house steps above a wet foggy street; wide shot",
+   "subject": "one person",
+   "setting": "gate, door or driveway",
+   "shot": "wide",
+   "banned": [
+    "at a gate or front door"
+   ]
+  },
+  "838bd4824615": {
+   "folder": "fog",
+   "time": "dusk",
+   "slots": [
+    "fog/week_1/dusk/6.webp",
+    "fog/week_2/dusk/6.webp",
+    "fog/week_3/dusk/6.webp",
+    "fog/week_4/dusk/6.webp"
+   ],
+   "pair": null,
+   "line": "Wooden jetty leads toward sailboats hidden in harbour fog; wide shot",
+   "subject": "place",
+   "setting": "beach or coast",
+   "shot": "wide",
+   "banned": []
+  },
+  "b64f87c2b2bc": {
+   "folder": "fog",
+   "time": "dusk",
+   "slots": [
+    "fog/week_1/dusk/7.webp",
+    "fog/week_2/dusk/7.webp",
+    "fog/week_3/dusk/7.webp",
+    "fog/week_4/dusk/7.webp"
+   ],
+   "pair": null,
+   "line": "Two women take a roadside selfie beside a sign in thick fog; wide shot",
+   "subject": "two or three people",
+   "setting": "road or car",
+   "shot": "wide",
+   "banned": []
+  },
+  "b7cdf515c96b": {
+   "folder": "fog",
+   "time": "night",
+   "slots": [
+    "fog/week_1/night/1.webp",
+    "fog/week_2/night/1.webp",
+    "fog/week_3/night/1.webp",
+    "fog/week_4/night/1.webp"
+   ],
+   "pair": null,
+   "line": "White minibus taxis wait outside a foggy, floodlit depot; wide shot",
+   "subject": "vehicle",
+   "setting": "other",
+   "shot": "wide",
+   "banned": []
+  },
+  "05b3727f7c16": {
+   "folder": "fog",
+   "time": "night",
+   "slots": [
+    "fog/week_1/night/2.webp",
+    "fog/week_2/night/2.webp",
+    "fog/week_3/night/2.webp",
+    "fog/week_4/night/2.webp"
+   ],
+   "pair": null,
+   "line": "Foggy traffic lights glow above a wet empty street at night; wide shot",
+   "subject": "place",
+   "setting": "street or town",
+   "shot": "wide",
+   "banned": []
+  },
+  "5a72ad3aac4b": {
+   "folder": "fog",
+   "time": "night",
+   "slots": [
+    "fog/week_1/night/3.webp",
+    "fog/week_2/night/3.webp",
+    "fog/week_3/night/3.webp",
+    "fog/week_4/night/3.webp"
+   ],
+   "pair": null,
+   "line": "City lights shine through low fog beneath dark mountains at night; wide aerial view",
+   "subject": "place",
+   "setting": "mountain or view",
+   "shot": "wide",
+   "banned": []
+  },
+  "c2a03f49e81e": {
+   "folder": "fog",
+   "time": "night",
+   "slots": [
+    "fog/week_1/night/4.webp",
+    "fog/week_2/night/4.webp",
+    "fog/week_3/night/4.webp",
+    "fog/week_4/night/4.webp"
+   ],
+   "pair": null,
+   "line": "Man walks alone beneath a streetlight on a foggy residential road; wide shot",
+   "subject": "one person",
+   "setting": "street or town",
+   "shot": "wide",
+   "banned": []
+  },
+  "7acec82c9b6f": {
+   "folder": "fog",
+   "time": "night",
+   "slots": [
+    "fog/week_1/night/5.webp",
+    "fog/week_2/night/5.webp",
+    "fog/week_3/night/5.webp",
+    "fog/week_4/night/5.webp"
+   ],
+   "pair": null,
+   "line": "Couple walk their dog past apartment buildings on a foggy street; wide shot",
+   "subject": "two or three people",
+   "setting": "street or town",
+   "shot": "wide",
+   "banned": []
+  },
+  "39c515606f74": {
+   "folder": "fog",
+   "time": "night",
+   "slots": [
+    "fog/week_1/night/6.webp",
+    "fog/week_2/night/6.webp",
+    "fog/week_3/night/6.webp",
+    "fog/week_4/night/6.webp"
+   ],
+   "pair": null,
+   "line": "Man stands in window light beside a house during heavy fog; wide shot",
+   "subject": "one person",
+   "setting": "garden or lawn",
+   "shot": "wide",
+   "banned": []
+  },
+  "0467a4574c0b": {
+   "folder": "fog",
+   "time": "night",
+   "slots": [
+    "fog/week_1/night/7.webp",
+    "fog/week_2/night/7.webp",
+    "fog/week_3/night/7.webp",
+    "fog/week_4/night/7.webp"
+   ],
+   "pair": null,
+   "line": "Woman holds a mug while leaning over a balcony in fog; medium shot",
+   "subject": "one person",
+   "setting": "stoep or patio",
+   "shot": "medium",
+   "banned": []
+  },
+  "4d63213b19b9": {
+   "folder": "heat",
+   "time": "dawn",
+   "slots": [
+    "heat/week_1/dawn/1.webp",
+    "heat/week_2/dawn/1.webp",
+    "heat/week_3/dawn/1.webp",
+    "heat/week_4/dawn/1.webp"
+   ],
+   "pair": null,
+   "line": "Fried egg cooks on a rusty car bonnet in a rural settlement; close-up",
+   "subject": "object",
+   "setting": "road or car",
+   "shot": "close-up",
+   "banned": []
+  },
+  "0828ca00553f": {
+   "folder": "heat",
+   "time": "dawn",
+   "slots": [
+    "heat/week_1/dawn/2.webp",
+    "heat/week_2/dawn/2.webp",
+    "heat/week_3/dawn/2.webp",
+    "heat/week_4/dawn/2.webp"
+   ],
+   "pair": null,
+   "line": "Small dog sits in a paddling pool on a suburban deck; wide shot",
+   "subject": "animal",
+   "setting": "stoep or patio",
+   "shot": "wide",
+   "banned": []
+  },
+  "c6d266d04418": {
+   "folder": "heat",
+   "time": "dawn",
+   "slots": [
+    "heat/week_1/dawn/3.webp",
+    "heat/week_2/dawn/3.webp",
+    "heat/week_3/dawn/3.webp",
+    "heat/week_4/dawn/3.webp"
+   ],
+   "pair": null,
+   "line": "Three friends jog together along a sunlit suburban street; wide shot",
+   "subject": "two or three people",
+   "setting": "street or town",
+   "shot": "wide",
+   "banned": []
+  },
+  "726c6aee069a": {
+   "folder": "heat",
+   "time": "dawn",
+   "slots": [
+    "heat/week_1/dawn/4.webp",
+    "heat/week_2/dawn/4.webp",
+    "heat/week_3/dawn/4.webp",
+    "heat/week_4/dawn/4.webp"
+   ],
+   "pair": null,
+   "line": "Dog rests on dry ground beside a farmhouse and windpump at sunset; wide shot",
+   "subject": "animal",
+   "setting": "farm or veld",
+   "shot": "wide",
+   "banned": []
+  },
+  "818c078a2bda": {
+   "folder": "heat",
+   "time": "dawn",
+   "slots": [
+    "heat/week_1/dawn/5.webp",
+    "heat/week_2/dawn/5.webp",
+    "heat/week_3/dawn/5.webp",
+    "heat/week_4/dawn/5.webp"
+   ],
+   "pair": null,
+   "line": "Garden sprinkler waters a country lawn beside a stone house at sunrise; wide shot",
+   "subject": "place",
+   "setting": "garden or lawn",
+   "shot": "wide",
+   "banned": []
+  },
+  "b81a91a1f851": {
+   "folder": "heat",
+   "time": "dawn",
+   "slots": [
+    "heat/week_1/dawn/6.webp",
+    "heat/week_2/dawn/6.webp",
+    "heat/week_3/dawn/6.webp",
+    "heat/week_4/dawn/6.webp"
+   ],
+   "pair": null,
+   "line": "Young man sits with his feet in a swimming pool at sunset; wide shot",
+   "subject": "one person",
+   "setting": "stoep or patio",
+   "shot": "wide",
+   "banned": []
+  },
+  "437fd1add3cd": {
+   "folder": "heat",
+   "time": "dawn",
+   "slots": [
+    "heat/week_1/dawn/7.webp",
+    "heat/week_2/dawn/7.webp",
+    "heat/week_3/dawn/7.webp",
+    "heat/week_4/dawn/7.webp"
+   ],
+   "pair": null,
+   "line": "Cat stretches across a tiled windowsill in afternoon sunlight; medium shot",
+   "subject": "animal",
+   "setting": "indoors",
+   "shot": "medium",
+   "banned": []
+  },
+  "98d89edda1cd": {
+   "folder": "heat",
+   "time": "day",
+   "slots": [
+    "heat/week_1/day/1.webp",
+    "heat/week_2/day/1.webp",
+    "heat/week_3/day/1.webp",
+    "heat/week_4/day/1.webp"
+   ],
+   "pair": null,
+   "line": "Man fries food on a car bonnet as children watch in a driveway; wide shot",
+   "subject": "group",
+   "setting": "gate, door or driveway",
+   "shot": "wide",
+   "banned": []
+  },
+  "d6593f52fb76": {
+   "folder": "heat",
+   "time": "day",
+   "slots": [
+    "heat/week_1/day/2.webp",
+    "heat/week_3/day/2.webp"
+   ],
+   "pair": null,
+   "line": "Two women work beside computer screens in a bright office cubicle; wide shot",
+   "subject": "two or three people",
+   "setting": "indoors",
+   "shot": "wide",
+   "banned": []
+  },
+  "6591bd91d1fc": {
+   "folder": "heat",
+   "time": "day",
+   "slots": [
+    "heat/week_1/day/3.webp",
+    "heat/week_2/day/3.webp",
+    "heat/week_3/day/3.webp",
+    "heat/week_4/day/3.webp"
+   ],
+   "pair": null,
+   "line": "Two children watch a dog cooling in a paddling pool on grass; wide shot",
+   "subject": "two or three people",
+   "setting": "garden or lawn",
+   "shot": "wide",
+   "banned": []
+  },
+  "afd3c9db83bd": {
+   "folder": "heat",
+   "time": "day",
+   "slots": [
+    "heat/week_1/day/4.webp",
+    "heat/week_2/day/4.webp",
+    "heat/week_3/day/4.webp",
+    "heat/week_4/day/4.webp"
+   ],
+   "pair": null,
+   "line": "Chocolate bar melts on a car dashboard beneath harsh midday sun; close-up",
+   "subject": "object",
+   "setting": "road or car",
+   "shot": "close-up",
+   "banned": []
+  },
+  "6ce02da2ab7a": {
+   "folder": "heat",
+   "time": "day",
+   "slots": [
+    "heat/week_1/day/5.webp",
+    "heat/week_2/day/5.webp",
+    "heat/week_3/day/5.webp",
+    "heat/week_4/day/5.webp"
+   ],
+   "pair": null,
+   "line": "Parrot perches on a cage beside an electric fan on a farm stoep; medium shot",
+   "subject": "animal",
+   "setting": "stoep or patio",
+   "shot": "medium",
+   "banned": []
+  },
+  "36881ce76889": {
+   "folder": "heat",
+   "time": "day",
+   "slots": [
+    "heat/week_1/day/6.webp",
+    "heat/week_2/day/6.webp",
+    "heat/week_3/day/6.webp",
+    "heat/week_4/day/6.webp"
+   ],
+   "pair": null,
+   "line": "Car dashboard displays thirty-eight degrees while travelling along an empty rural road; medium shot",
+   "subject": "vehicle",
+   "setting": "road or car",
+   "shot": "medium",
+   "banned": []
+  },
+  "0cc1648cbc13": {
+   "folder": "heat",
+   "time": "day",
+   "slots": [
+    "heat/week_1/day/7.webp",
+    "heat/week_2/day/7.webp",
+    "heat/week_3/day/7.webp",
+    "heat/week_4/day/7.webp"
+   ],
+   "pair": null,
+   "line": "Children run through a garden sprinkler while adults watch from the patio; wide shot",
+   "subject": "group",
+   "setting": "garden or lawn",
+   "shot": "wide",
+   "banned": []
+  },
+  "5ed7621f5dd9": {
+   "folder": "heat",
+   "time": "dusk",
+   "slots": [
+    "heat/week_1/dusk/1.webp",
+    "heat/week_2/dusk/1.webp",
+    "heat/week_3/dusk/1.webp",
+    "heat/week_4/dusk/1.webp"
+   ],
+   "pair": null,
+   "line": "Potted sunflower stands on a farmhouse deck facing the setting sun; wide shot",
+   "subject": "object",
+   "setting": "farm or veld",
+   "shot": "wide",
+   "banned": []
+  },
+  "68661ff2b0dc": {
+   "folder": "heat",
+   "time": "dusk",
+   "slots": [
+    "heat/week_1/dusk/2.webp",
+    "heat/week_2/dusk/2.webp",
+    "heat/week_3/dusk/2.webp",
+    "heat/week_4/dusk/2.webp"
+   ],
+   "pair": null,
+   "line": "Small dog stands in a paddling pool beneath garden lights at sunset; wide shot",
+   "subject": "animal",
+   "setting": "garden or lawn",
+   "shot": "wide",
+   "banned": []
+  },
+  "248b04dcf98d": {
+   "folder": "heat",
+   "time": "dusk",
+   "slots": [
+    "heat/week_1/dusk/3.webp",
+    "heat/week_2/dusk/3.webp",
+    "heat/week_3/dusk/3.webp",
+    "heat/week_4/dusk/3.webp"
+   ],
+   "pair": null,
+   "line": "Woman sits beside a tabletop fan and water jug on a veranda; medium shot",
+   "subject": "one person",
+   "setting": "stoep or patio",
+   "shot": "medium",
+   "banned": []
+  },
+  "3e88aef1fb06": {
+   "folder": "heat",
+   "time": "dusk",
+   "slots": [
+    "heat/week_1/dusk/4.webp",
+    "heat/week_2/dusk/4.webp",
+    "heat/week_3/dusk/4.webp",
+    "heat/week_4/dusk/4.webp"
+   ],
+   "pair": null,
+   "line": "Father and child play together in a garden sprinkler at sunset; wide shot",
+   "subject": "two or three people",
+   "setting": "garden or lawn",
+   "shot": "wide",
+   "banned": []
+  },
+  "93f4a43551af": {
+   "folder": "heat",
+   "time": "dusk",
+   "slots": [
+    "heat/week_1/dusk/5.webp",
+    "heat/week_3/dusk/5.webp"
+   ],
+   "pair": null,
+   "line": "Three friends eat ice creams while strolling along a busy seaside promenade; wide shot",
+   "subject": "two or three people",
+   "setting": "beach or coast",
+   "shot": "wide",
+   "banned": []
+  },
+  "555f76c5594f": {
+   "folder": "heat",
+   "time": "dusk",
+   "slots": [
+    "heat/week_1/dusk/6.webp",
+    "heat/week_2/dusk/6.webp",
+    "heat/week_3/dusk/6.webp",
+    "heat/week_4/dusk/6.webp"
+   ],
+   "pair": null,
+   "line": "Woman carries a watermelon from a roadside farm stall to her car; wide shot",
+   "subject": "one person",
+   "setting": "road or car",
+   "shot": "wide",
+   "banned": []
+  },
+  "9728bed72ec6": {
+   "folder": "heat",
+   "time": "dusk",
+   "slots": [
+    "heat/week_1/dusk/7.webp",
+    "heat/week_2/dusk/7.webp",
+    "heat/week_3/dusk/7.webp",
+    "heat/week_4/dusk/7.webp"
+   ],
+   "pair": null,
+   "line": "Woman sits with a drink on lodge steps overlooking the sunset veld; wide shot",
+   "subject": "one person",
+   "setting": "stoep or patio",
+   "shot": "wide",
+   "banned": []
+  },
+  "f2e76528eca3": {
+   "folder": "heat",
+   "time": "night",
+   "slots": [
+    "heat/week_1/night/1.webp",
+    "heat/week_2/night/1.webp",
+    "heat/week_3/night/1.webp",
+    "heat/week_4/night/1.webp"
+   ],
+   "pair": null,
+   "line": "Standing fan cools a dark bedroom beside an open sunset-lit window; medium shot",
+   "subject": "object",
+   "setting": "indoors",
+   "shot": "medium",
+   "banned": []
+  },
+  "2a3a60226c30": {
+   "folder": "heat",
+   "time": "night",
+   "slots": [
+    "heat/week_1/night/2.webp",
+    "heat/week_2/night/2.webp",
+    "heat/week_3/night/2.webp",
+    "heat/week_4/night/2.webp"
+   ],
+   "pair": null,
+   "line": "Woman searches an open refrigerator during the night in a dark kitchen; medium shot",
+   "subject": "one person",
+   "setting": "kitchen",
+   "shot": "medium",
+   "banned": []
+  },
+  "e62c00a72fb4": {
+   "folder": "heat",
+   "time": "night",
+   "slots": [
+    "heat/week_1/night/3.webp",
+    "heat/week_2/night/3.webp",
+    "heat/week_3/night/3.webp",
+    "heat/week_4/night/3.webp"
+   ],
+   "pair": null,
+   "line": "Dog lies cooling on bathroom tiles in a doorway's warm light; medium shot",
+   "subject": "animal",
+   "setting": "indoors",
+   "shot": "medium",
+   "banned": []
+  },
+  "706cd1220e10": {
+   "folder": "heat",
+   "time": "night",
+   "slots": [
+    "heat/week_1/night/4.webp",
+    "heat/week_2/night/4.webp",
+    "heat/week_3/night/4.webp",
+    "heat/week_4/night/4.webp"
+   ],
+   "pair": null,
+   "line": "Water jug and glasses stand on a rainy balcony as curtains billow; medium shot",
+   "subject": "object",
+   "setting": "stoep or patio",
+   "shot": "medium",
+   "banned": []
+  },
+  "73f8b2781c4c": {
+   "folder": "heat",
+   "time": "night",
+   "slots": [
+    "heat/week_1/night/5.webp",
+    "heat/week_2/night/5.webp",
+    "heat/week_3/night/5.webp",
+    "heat/week_4/night/5.webp"
+   ],
+   "pair": null,
+   "line": "Family sleeps on mattresses outside a farmhouse beneath the Milky Way; wide shot",
+   "subject": "group",
+   "setting": "farm or veld",
+   "shot": "wide",
+   "banned": []
+  },
+  "87546db18e01": {
+   "folder": "heat",
+   "time": "night",
+   "slots": [
+    "heat/week_1/night/6.webp",
+    "heat/week_2/night/6.webp",
+    "heat/week_3/night/6.webp",
+    "heat/week_4/night/6.webp"
+   ],
+   "pair": null,
+   "line": "Friends socialise in a lit backyard swimming pool at night; wide shot",
+   "subject": "group",
+   "setting": "stoep or patio",
+   "shot": "wide",
+   "banned": []
+  },
+  "ea333aeefd0d": {
+   "folder": "heat",
+   "time": "night",
+   "slots": [
+    "heat/week_1/night/7.webp",
+    "heat/week_2/night/7.webp",
+    "heat/week_3/night/7.webp",
+    "heat/week_4/night/7.webp"
+   ],
+   "pair": null,
+   "line": "Cold drink sits beside bicycles on a misty seaside promenade at night; medium shot",
+   "subject": "object",
+   "setting": "beach or coast",
+   "shot": "medium",
+   "banned": []
+  },
+  "e5b2e8ac2654": {
+   "folder": "rain",
+   "time": "dawn",
+   "slots": [
+    "rain/week_1/dawn/1.webp",
+    "rain/week_2/dawn/1.webp",
+    "rain/week_3/dawn/1.webp",
+    "rain/week_4/dawn/1.webp"
+   ],
+   "pair": null,
+   "line": "Two schoolchildren share an umbrella while waiting at a rainy bus stop; wide shot",
+   "subject": "two or three people",
+   "setting": "street or town",
+   "shot": "wide",
+   "banned": []
+  },
+  "9e75b001c7c5": {
+   "folder": "rain",
+   "time": "dawn",
+   "slots": [
+    "rain/week_1/dawn/2.webp",
+    "rain/week_2/dawn/2.webp",
+    "rain/week_3/dawn/2.webp",
+    "rain/week_4/dawn/2.webp"
+   ],
+   "pair": null,
+   "line": "Rainy city traffic and mountains appear through a car windscreen and moving wiper; wide shot",
+   "subject": "place",
+   "setting": "road or car",
+   "shot": "wide",
+   "banned": []
+  },
+  "80770bf13004": {
+   "folder": "rain",
+   "time": "dawn",
+   "slots": [
+    "rain/week_1/dawn/3.webp",
+    "rain/week_2/dawn/3.webp",
+    "rain/week_3/dawn/3.webp",
+    "rain/week_4/dawn/3.webp"
+   ],
+   "pair": null,
+   "line": "Mother shelters a schoolgirl beside their car outside a gated home; medium shot",
+   "subject": "two or three people",
+   "setting": "gate, door or driveway",
+   "shot": "medium",
+   "banned": [
+    "at a gate or front door"
+   ]
+  },
+  "5526989179bd": {
+   "folder": "rain",
+   "time": "dawn",
+   "slots": [
+    "rain/week_1/dawn/4.webp",
+    "rain/week_2/dawn/4.webp",
+    "rain/week_3/dawn/4.webp",
+    "rain/week_4/dawn/4.webp"
+   ],
+   "pair": null,
+   "line": "Flooded farm entrance reflects a windmill and farmhouse beneath clearing clouds; wide shot",
+   "subject": "place",
+   "setting": "farm or veld",
+   "shot": "wide",
+   "banned": []
+  },
+  "7bd5758fb7b5": {
+   "folder": "rain",
+   "time": "dawn",
+   "slots": [
+    "rain/week_1/dawn/5.webp",
+    "rain/week_2/dawn/5.webp",
+    "rain/week_3/dawn/5.webp",
+    "rain/week_4/dawn/5.webp"
+   ],
+   "pair": null,
+   "line": "Sunlight breaks beneath storm clouds over a wet farmhouse and windmill; wide shot",
+   "subject": "place",
+   "setting": "farm or veld",
+   "shot": "wide",
+   "banned": []
+  },
+  "73567b0c612e": {
+   "folder": "rain",
+   "time": "dawn",
+   "slots": [
+    "rain/week_1/dawn/6.webp",
+    "rain/week_2/dawn/6.webp",
+    "rain/week_3/dawn/6.webp",
+    "rain/week_4/dawn/6.webp"
+   ],
+   "pair": null,
+   "line": "Lone runner crosses a rain-wet suburban street lined with flowering jacarandas; wide shot",
+   "subject": "one person",
+   "setting": "street or town",
+   "shot": "wide",
+   "banned": []
+  },
+  "206f0a768ec9": {
+   "folder": "rain",
+   "time": "dawn",
+   "slots": [
+    "rain/week_1/dawn/7.webp",
+    "rain/week_2/dawn/7.webp",
+    "rain/week_3/dawn/7.webp",
+    "rain/week_4/dawn/7.webp"
+   ],
+   "pair": null,
+   "line": "Coffee mug rests beside a rain-covered picture window overlooking a garden; medium shot",
+   "subject": "object",
+   "setting": "indoors",
+   "shot": "medium",
+   "banned": []
+  },
+  "2b750515575e": {
+   "folder": "rain",
+   "time": "day",
+   "slots": [
+    "rain/week_1/day/1.webp",
+    "rain/week_3/day/1.webp"
+   ],
+   "pair": null,
+   "line": "Man waterskis along a flooded residential street while neighbours watch; wide shot",
+   "subject": "group",
+   "setting": "street or town",
+   "shot": "wide",
+   "banned": []
+  },
+  "00a672556998": {
+   "folder": "rain",
+   "time": "day",
+   "slots": [
+    "rain/week_1/day/2.webp",
+    "rain/week_3/day/2.webp"
+   ],
+   "pair": null,
+   "line": "Six children in bright raincoats jump together in a suburban puddle; wide shot",
+   "subject": "group",
+   "setting": "street or town",
+   "shot": "wide",
+   "banned": []
+  },
+  "8ce35385e048": {
+   "folder": "rain",
+   "time": "day",
+   "slots": [
+    "rain/week_1/day/3.webp",
+    "rain/week_3/day/3.webp"
+   ],
+   "pair": null,
+   "line": "Woman grips the steering wheel while driving through heavy rain; medium shot",
+   "subject": "one person",
+   "setting": "road or car",
+   "shot": "medium",
+   "banned": []
+  },
+  "e7547cfdee94": {
+   "folder": "rain",
+   "time": "day",
+   "slots": [
+    "rain/week_1/day/4.webp",
+    "rain/week_3/day/4.webp"
+   ],
+   "pair": null,
+   "line": "Wet ginger cat sits beneath a metal chair on a flooded patio; medium shot",
+   "subject": "animal",
+   "setting": "stoep or patio",
+   "shot": "medium",
+   "banned": []
+  },
+  "e54bbf2b56b2": {
+   "folder": "rain",
+   "time": "day",
+   "slots": [
+    "rain/week_1/day/5.webp",
+    "rain/week_3/day/5.webp"
+   ],
+   "pair": null,
+   "line": "Businesswoman runs across a rainy city street holding newspaper overhead; wide shot",
+   "subject": "one person",
+   "setting": "street or town",
+   "shot": "wide",
+   "banned": []
+  },
+  "057e8c9e5039": {
+   "folder": "rain",
+   "time": "day",
+   "slots": [
+    "rain/week_1/day/6.webp",
+    "rain/week_3/day/6.webp"
+   ],
+   "pair": null,
+   "line": "Muddy boots and discarded clothing lie outside an open patio door; close-up",
+   "subject": "object",
+   "setting": "gate, door or driveway",
+   "shot": "close-up",
+   "banned": []
+  },
+  "d8d16083a690": {
+   "folder": "rain",
+   "time": "day",
+   "slots": [
+    "rain/week_1/day/7.webp",
+    "rain/week_3/day/7.webp"
+   ],
+   "pair": null,
+   "line": "Two people in raincoats face a crashing wave on a harbour wall; wide shot",
+   "subject": "two or three people",
+   "setting": "beach or coast",
+   "shot": "wide",
+   "banned": []
+  },
+  "fe838c8901f7": {
+   "folder": "rain",
+   "time": "day",
+   "slots": [
+    "rain/week_2/day/1.webp",
+    "rain/week_4/day/1.webp"
+   ],
+   "pair": null,
+   "line": "Construction worker leans on his shovel at a rain-soaked building site; medium shot",
+   "subject": "one person",
+   "setting": "other",
+   "shot": "medium",
+   "banned": []
+  },
+  "d878b96a3f71": {
+   "folder": "rain",
+   "time": "day",
+   "slots": [
+    "rain/week_2/day/2.webp",
+    "rain/week_4/day/2.webp"
+   ],
+   "pair": null,
+   "line": "Mother battles a broken umbrella while three schoolchildren splash behind her; wide shot",
+   "subject": "group",
+   "setting": "street or town",
+   "shot": "wide",
+   "banned": []
+  },
+  "fec85aba3f48": {
+   "folder": "rain",
+   "time": "day",
+   "slots": [
+    "rain/week_2/day/3.webp",
+    "rain/week_4/day/3.webp"
+   ],
+   "pair": null,
+   "line": "Cars crawl through heavy rain, viewed through a wet windscreen and sweeping wiper; medium shot",
+   "subject": "vehicle",
+   "setting": "road or car",
+   "shot": "medium",
+   "banned": []
+  },
+  "d86d4f5699c2": {
+   "folder": "rain",
+   "time": "day",
+   "slots": [
+    "rain/week_2/day/4.webp",
+    "rain/week_4/day/4.webp"
+   ],
+   "pair": null,
+   "line": "Schoolchildren and crossing guard inspect a flooded pavement outside their school; wide shot",
+   "subject": "group",
+   "setting": "street or town",
+   "shot": "wide",
+   "banned": []
+  },
+  "c9c6fd784b69": {
+   "folder": "rain",
+   "time": "day",
+   "slots": [
+    "rain/week_2/day/6.webp",
+    "rain/week_4/day/6.webp"
+   ],
+   "pair": null,
+   "line": "Gumboots stand beside an open farmhouse door on a rain-soaked stoep; wide shot",
+   "subject": "object",
+   "setting": "stoep or patio",
+   "shot": "wide",
+   "banned": []
+  },
+  "c9050c0a05e5": {
+   "folder": "rain",
+   "time": "day",
+   "slots": [
+    "rain/week_2/day/7.webp",
+    "rain/week_4/day/7.webp"
+   ],
+   "pair": null,
+   "line": "Rain floods a covered courtyard around a large potted fern; wide shot",
+   "subject": "place",
+   "setting": "stoep or patio",
+   "shot": "wide",
+   "banned": []
+  },
+  "71fdebcd3deb": {
+   "folder": "rain",
+   "time": "dusk",
+   "slots": [
+    "rain/week_1/dusk/1.webp",
+    "rain/week_2/dusk/1.webp",
+    "rain/week_3/dusk/1.webp",
+    "rain/week_4/dusk/1.webp"
+   ],
+   "pair": null,
+   "line": "Soaked cyclist grimaces beside a laughing woman in traffic during rain; medium shot",
+   "subject": "two or three people",
+   "setting": "road or car",
+   "shot": "medium",
+   "banned": []
+  },
+  "09641df1432a": {
+   "folder": "rain",
+   "time": "dusk",
+   "slots": [
+    "rain/week_1/dusk/2.webp",
+    "rain/week_2/dusk/2.webp",
+    "rain/week_3/dusk/2.webp",
+    "rain/week_4/dusk/2.webp"
+   ],
+   "pair": null,
+   "line": "Dense evening traffic fills a rain-slick city road beneath dark clouds; wide shot",
+   "subject": "place",
+   "setting": "road or car",
+   "shot": "wide",
+   "banned": []
+  },
+  "e95e8a2f22f0": {
+   "folder": "rain",
+   "time": "dusk",
+   "slots": [
+    "rain/week_1/dusk/3.webp",
+    "rain/week_2/dusk/3.webp",
+    "rain/week_3/dusk/3.webp",
+    "rain/week_4/dusk/3.webp"
+   ],
+   "pair": null,
+   "line": "Rain falls beyond apartment doors onto a balcony overlooking Johannesburg; wide shot",
+   "subject": "place",
+   "setting": "mountain or view",
+   "shot": "wide",
+   "banned": []
+  },
+  "abf80e59bae9": {
+   "folder": "rain",
+   "time": "dusk",
+   "slots": [
+    "rain/week_1/dusk/4.webp",
+    "rain/week_2/dusk/4.webp",
+    "rain/week_3/dusk/4.webp",
+    "rain/week_4/dusk/4.webp"
+   ],
+   "pair": null,
+   "line": "Woman waits pensively behind the wheel of a rain-covered parked car; medium shot",
+   "subject": "one person",
+   "setting": "road or car",
+   "shot": "medium",
+   "banned": []
+  },
+  "b4ee9d16720e": {
+   "folder": "rain",
+   "time": "dusk",
+   "slots": [
+    "rain/week_1/dusk/5.webp",
+    "rain/week_2/dusk/5.webp",
+    "rain/week_3/dusk/5.webp",
+    "rain/week_4/dusk/5.webp"
+   ],
+   "pair": null,
+   "line": "Man removes his wet coat after entering through an open front door; medium shot",
+   "subject": "one person",
+   "setting": "gate, door or driveway",
+   "shot": "medium",
+   "banned": [
+    "at a gate or front door"
+   ]
+  },
+  "f7f51acb22c9": {
+   "folder": "rain",
+   "time": "dusk",
+   "slots": [
+    "rain/week_1/dusk/6.webp",
+    "rain/week_2/dusk/6.webp",
+    "rain/week_3/dusk/6.webp",
+    "rain/week_4/dusk/6.webp"
+   ],
+   "pair": null,
+   "line": "Man holding an umbrella watches rain from his sheltered front entrance; wide shot",
+   "subject": "one person",
+   "setting": "gate, door or driveway",
+   "shot": "wide",
+   "banned": [
+    "at a gate or front door"
+   ]
+  },
+  "5f935cb18f17": {
+   "folder": "rain",
+   "time": "dusk",
+   "slots": [
+    "rain/week_1/dusk/7.webp",
+    "rain/week_2/dusk/7.webp",
+    "rain/week_3/dusk/7.webp",
+    "rain/week_4/dusk/7.webp"
+   ],
+   "pair": null,
+   "line": "Man walks under an umbrella along a colourful Bo-Kaap street in rain; wide shot",
+   "subject": "one person",
+   "setting": "street or town",
+   "shot": "wide",
+   "banned": []
+  },
+  "86be0fc65b9e": {
+   "folder": "rain",
+   "time": "night",
+   "slots": [
+    "rain/week_1/night/1.webp",
+    "rain/week_2/night/1.webp",
+    "rain/week_3/night/1.webp",
+    "rain/week_4/night/1.webp"
+   ],
+   "pair": null,
+   "line": "Rain falls around a flowering tree and lit barred window at night; wide shot",
+   "subject": "place",
+   "setting": "street or town",
+   "shot": "wide",
+   "banned": []
+  },
+  "504e55301184": {
+   "folder": "rain",
+   "time": "night",
+   "slots": [
+    "rain/week_1/night/2.webp",
+    "rain/week_2/night/2.webp",
+    "rain/week_3/night/2.webp",
+    "rain/week_4/night/2.webp"
+   ],
+   "pair": null,
+   "line": "Rain dimples a glowing turquoise swimming pool beneath stormy evening skies; wide shot",
+   "subject": "place",
+   "setting": "garden or lawn",
+   "shot": "wide",
+   "banned": []
+  },
+  "f8781ec0eb86": {
+   "folder": "rain",
+   "time": "night",
+   "slots": [
+    "rain/week_1/night/3.webp",
+    "rain/week_2/night/3.webp",
+    "rain/week_3/night/3.webp",
+    "rain/week_4/night/3.webp"
+   ],
+   "pair": null,
+   "line": "Stormwater streams along a lamp-lit residential street during heavy night rain; wide shot",
+   "subject": "place",
+   "setting": "street or town",
+   "shot": "wide",
+   "banned": []
+  },
+  "c8df884e9ec0": {
+   "folder": "rain",
+   "time": "night",
+   "slots": [
+    "rain/week_1/night/4.webp",
+    "rain/week_2/night/4.webp",
+    "rain/week_3/night/4.webp",
+    "rain/week_4/night/4.webp"
+   ],
+   "pair": null,
+   "line": "Man grips the wheel while driving through heavy rain at night; medium shot",
+   "subject": "one person",
+   "setting": "road or car",
+   "shot": "medium",
+   "banned": []
+  },
+  "19ddc2f8afd3": {
+   "folder": "rain",
+   "time": "night",
+   "slots": [
+    "rain/week_1/night/5.webp",
+    "rain/week_2/night/5.webp",
+    "rain/week_3/night/5.webp",
+    "rain/week_4/night/5.webp"
+   ],
+   "pair": null,
+   "line": "Broken umbrella lies in a flooded gutter outside a large white house; wide shot",
+   "subject": "object",
+   "setting": "street or town",
+   "shot": "wide",
+   "banned": []
+  },
+  "a1e2fed78146": {
+   "folder": "rain",
+   "time": "night",
+   "slots": [
+    "rain/week_1/night/6.webp",
+    "rain/week_2/night/6.webp",
+    "rain/week_3/night/6.webp",
+    "rain/week_4/night/6.webp"
+   ],
+   "pair": null,
+   "line": "Waves crash beyond an empty rain-soaked seaside parking area at night; wide shot",
+   "subject": "place",
+   "setting": "beach or coast",
+   "shot": "wide",
+   "banned": []
+  },
+  "d28204abf829": {
+   "folder": "rain",
+   "time": "night",
+   "slots": [
+    "rain/week_1/night/7.webp",
+    "rain/week_2/night/7.webp",
+    "rain/week_3/night/7.webp",
+    "rain/week_4/night/7.webp"
+   ],
+   "pair": null,
+   "line": "Rain drenches an empty neon-lit Cape Town street beneath Table Mountain; wide shot",
+   "subject": "place",
+   "setting": "street or town",
+   "shot": "wide",
+   "banned": []
+  },
+  "91f980f76f82": {
+   "folder": "storm",
+   "time": "dawn",
+   "slots": [
+    "storm/week_1/dawn/1.webp",
+    "storm/week_2/dawn/1.webp",
+    "storm/week_3/dawn/1.webp",
+    "storm/week_4/dawn/1.webp"
+   ],
+   "pair": null,
+   "line": "Lightning forks over Johannesburg while traffic crowds a wet motorway; wide shot",
+   "subject": "place",
+   "setting": "road or car",
+   "shot": "wide",
+   "banned": []
+  },
+  "55fac1141abf": {
+   "folder": "storm",
+   "time": "dawn",
+   "slots": [
+    "storm/week_1/dawn/2.webp",
+    "storm/week_2/dawn/2.webp",
+    "storm/week_3/dawn/2.webp",
+    "storm/week_4/dawn/2.webp"
+   ],
+   "pair": null,
+   "line": "Huge lightning bolts illuminate a rain-soaked suburban housing estate; wide shot",
+   "subject": "place",
+   "setting": "street or town",
+   "shot": "wide",
+   "banned": []
+  },
+  "f0b49be17750": {
+   "folder": "storm",
+   "time": "dawn",
+   "slots": [
+    "storm/week_1/dawn/3.webp",
+    "storm/week_2/dawn/3.webp",
+    "storm/week_3/dawn/3.webp",
+    "storm/week_4/dawn/3.webp"
+   ],
+   "pair": null,
+   "line": "Windmill rises above a crop field beneath dramatic sunset storm clouds; wide shot",
+   "subject": "place",
+   "setting": "farm or veld",
+   "shot": "wide",
+   "banned": []
+  },
+  "a785060d7357": {
+   "folder": "storm",
+   "time": "dawn",
+   "slots": [
+    "storm/week_1/dawn/4.webp",
+    "storm/week_2/dawn/4.webp",
+    "storm/week_3/dawn/4.webp",
+    "storm/week_4/dawn/4.webp"
+   ],
+   "pair": null,
+   "line": "Couple kneel beside a bed, coaxing a frightened dog from underneath; medium shot",
+   "subject": "two or three people",
+   "setting": "indoors",
+   "shot": "medium",
+   "banned": []
+  },
+  "20ed2fe6b144": {
+   "folder": "storm",
+   "time": "dawn",
+   "slots": [
+    "storm/week_1/dawn/5.webp",
+    "storm/week_2/dawn/5.webp",
+    "storm/week_3/dawn/5.webp",
+    "storm/week_4/dawn/5.webp"
+   ],
+   "pair": null,
+   "line": "Bakkie drives away along a dusty farm track between crop fields; wide shot",
+   "subject": "vehicle",
+   "setting": "farm or veld",
+   "shot": "wide",
+   "banned": []
+  },
+  "56af96f529d2": {
+   "folder": "storm",
+   "time": "dawn",
+   "slots": [
+    "storm/week_1/dawn/6.webp",
+    "storm/week_2/dawn/6.webp",
+    "storm/week_3/dawn/6.webp",
+    "storm/week_4/dawn/6.webp"
+   ],
+   "pair": null,
+   "line": "Runner pauses with hands on hips beneath threatening clouds near a house; medium shot",
+   "subject": "one person",
+   "setting": "street or town",
+   "shot": "medium",
+   "banned": []
+  },
+  "99d0821cdd98": {
+   "folder": "storm",
+   "time": "day",
+   "slots": [
+    "storm/week_1/day/1.webp",
+    "storm/week_3/day/1.webp"
+   ],
+   "pair": null,
+   "line": "Man struggles with an inverted umbrella on a storm-damaged suburban street; medium shot",
+   "subject": "one person",
+   "setting": "street or town",
+   "shot": "medium",
+   "banned": [
+    "blown in front of a house"
+   ]
+  },
+  "41e6c19016c1": {
+   "folder": "storm",
+   "time": "day",
+   "slots": [
+    "storm/week_1/day/2.webp",
+    "storm/week_3/day/2.webp"
+   ],
+   "pair": null,
+   "line": "Five shoppers watch lightning from beneath a supermarket awning; wide shot",
+   "subject": "group",
+   "setting": "street or town",
+   "shot": "wide",
+   "banned": []
+  },
+  "c152b51ebfa5": {
+   "folder": "storm",
+   "time": "day",
+   "slots": [
+    "storm/week_1/day/3.webp",
+    "storm/week_3/day/3.webp"
+   ],
+   "pair": null,
+   "line": "Two golfers stand with their bags watching lightning across a golf course; wide shot",
+   "subject": "two or three people",
+   "setting": "park or field",
+   "shot": "wide",
+   "banned": []
+  },
+  "b08495c9d832": {
+   "folder": "storm",
+   "time": "day",
+   "slots": [
+    "storm/week_1/day/4.webp",
+    "storm/week_3/day/4.webp"
+   ],
+   "pair": null,
+   "line": "Covered cricket pitch lies beneath approaching storm clouds at a sports ground; wide shot",
+   "subject": "place",
+   "setting": "park or field",
+   "shot": "wide",
+   "banned": []
+  },
+  "20f3d07d3c47": {
+   "folder": "storm",
+   "time": "day",
+   "slots": [
+    "storm/week_1/day/5.webp",
+    "storm/week_3/day/5.webp"
+   ],
+   "pair": null,
+   "line": "Dog lies indoors while lightning flashes beyond glass patio doors; medium shot",
+   "subject": "animal",
+   "setting": "indoors",
+   "shot": "medium",
+   "banned": []
+  },
+  "a02b40a1cdb7": {
+   "folder": "storm",
+   "time": "day",
+   "slots": [
+    "storm/week_1/day/6.webp",
+    "storm/week_3/day/6.webp"
+   ],
+   "pair": null,
+   "line": "Empty rugby stadium sits beneath lightning and turbulent storm clouds; wide shot",
+   "subject": "place",
+   "setting": "park or field",
+   "shot": "wide",
+   "banned": []
+  },
+  "f6562060468c": {
+   "folder": "storm",
+   "time": "day",
+   "slots": [
+    "storm/week_1/day/7.webp",
+    "storm/week_3/day/7.webp"
+   ],
+   "pair": null,
+   "line": "Passenger films a lightning strike through a rain-covered car window; medium shot",
+   "subject": "one person",
+   "setting": "road or car",
+   "shot": "medium",
+   "banned": []
+  },
+  "30a82fcff9d4": {
+   "folder": "storm",
+   "time": "day",
+   "slots": [
+    "storm/week_2/day/1.webp",
+    "storm/week_4/day/1.webp"
+   ],
+   "pair": null,
+   "line": "Empty residential street and white house sit beneath heavy storm clouds; wide shot",
+   "subject": "place",
+   "setting": "street or town",
+   "shot": "wide",
+   "banned": []
+  },
+  "c2c016aabf8f": {
+   "folder": "storm",
+   "time": "day",
+   "slots": [
+    "storm/week_2/day/2.webp",
+    "storm/week_4/day/2.webp"
+   ],
+   "pair": null,
+   "line": "Overturned patio furniture and scattered branches cover a storm-damaged garden; wide shot",
+   "subject": "place",
+   "setting": "garden or lawn",
+   "shot": "wide",
+   "banned": []
+  },
+  "ea95b93c8930": {
+   "folder": "storm",
+   "time": "day",
+   "slots": [
+    "storm/week_2/day/3.webp",
+    "storm/week_4/day/3.webp"
+   ],
+   "pair": null,
+   "line": "Plastic chair lies in a flooded roadside puddle beneath distant rain shafts; wide shot",
+   "subject": "object",
+   "setting": "road or car",
+   "shot": "wide",
+   "banned": []
+  },
+  "8c5812bded23": {
+   "folder": "storm",
+   "time": "day",
+   "slots": [
+    "storm/week_2/day/4.webp",
+    "storm/week_4/day/4.webp"
+   ],
+   "pair": null,
+   "line": "Man wrestles a patio umbrella beside a house as storm clouds gather; wide shot",
+   "subject": "one person",
+   "setting": "stoep or patio",
+   "shot": "wide",
+   "banned": []
+  },
+  "10cac134f9d9": {
+   "folder": "storm",
+   "time": "day",
+   "slots": [
+    "storm/week_2/day/5.webp",
+    "storm/week_4/day/5.webp"
+   ],
+   "pair": null,
+   "line": "Farmer secures a tarpaulin over hay on a pickup during hail; medium shot",
+   "subject": "one person",
+   "setting": "farm or veld",
+   "shot": "medium",
+   "banned": []
+  },
+  "676b8843cb92": {
+   "folder": "storm",
+   "time": "day",
+   "slots": [
+    "storm/week_2/day/6.webp",
+    "storm/week_4/day/6.webp"
+   ],
+   "pair": null,
+   "line": "Surfer carrying a board walks toward a stormy sea; wide shot",
+   "subject": "one person",
+   "setting": "beach or coast",
+   "shot": "wide",
+   "banned": []
+  },
+  "777b9b465dbe": {
+   "folder": "storm",
+   "time": "day",
+   "slots": [
+    "storm/week_2/day/7.webp",
+    "storm/week_4/day/7.webp"
+   ],
+   "pair": null,
+   "line": "Farmer watches lightning and dust from a corrugated shed doorway; wide shot",
+   "subject": "one person",
+   "setting": "farm or veld",
+   "shot": "wide",
+   "banned": []
+  },
+  "742e1675a5a4": {
+   "folder": "storm",
+   "time": "dusk",
+   "slots": [
+    "storm/week_1/dusk/1.webp",
+    "storm/week_2/dusk/1.webp",
+    "storm/week_3/dusk/1.webp",
+    "storm/week_4/dusk/1.webp"
+   ],
+   "pair": null,
+   "line": "Woman watches lightning over a rain-wet city from a balcony; medium shot",
+   "subject": "one person",
+   "setting": "mountain or view",
+   "shot": "medium",
+   "banned": []
+  },
+  "adc69e7b4a17": {
+   "folder": "storm",
+   "time": "dusk",
+   "slots": [
+    "storm/week_1/dusk/2.webp",
+    "storm/week_2/dusk/2.webp",
+    "storm/week_3/dusk/2.webp",
+    "storm/week_4/dusk/2.webp"
+   ],
+   "pair": null,
+   "line": "Man photographs branching lightning over a city from an apartment balcony; medium shot",
+   "subject": "one person",
+   "setting": "mountain or view",
+   "shot": "medium",
+   "banned": []
+  },
+  "53d4228e24c8": {
+   "folder": "storm",
+   "time": "dusk",
+   "slots": [
+    "storm/week_1/dusk/3.webp",
+    "storm/week_2/dusk/3.webp",
+    "storm/week_3/dusk/3.webp",
+    "storm/week_4/dusk/3.webp"
+   ],
+   "pair": null,
+   "line": "Rain-darkened suburban street lies beneath lightning and wind-bent trees; wide shot",
+   "subject": "place",
+   "setting": "street or town",
+   "shot": "wide",
+   "banned": []
+  },
+  "a61146a38b06": {
+   "folder": "storm",
+   "time": "dusk",
+   "slots": [
+    "storm/week_1/dusk/4.webp",
+    "storm/week_2/dusk/4.webp",
+    "storm/week_3/dusk/4.webp",
+    "storm/week_4/dusk/4.webp"
+   ],
+   "pair": null,
+   "line": "Two farm workers load hay onto a pickup beneath split stormy skies; wide shot",
+   "subject": "two or three people",
+   "setting": "farm or veld",
+   "shot": "wide",
+   "banned": []
+  },
+  "e0089512238b": {
+   "folder": "storm",
+   "time": "dusk",
+   "slots": [
+    "storm/week_1/dusk/5.webp",
+    "storm/week_2/dusk/5.webp",
+    "storm/week_3/dusk/5.webp",
+    "storm/week_4/dusk/5.webp"
+   ],
+   "pair": null,
+   "line": "Bucket and folded towel sit on a wet hallway floor beneath a roof drip; medium shot",
+   "subject": "object",
+   "setting": "indoors",
+   "shot": "medium",
+   "banned": []
+  },
+  "f6818069c8bd": {
+   "folder": "storm",
+   "time": "dusk",
+   "slots": [
+    "storm/week_1/dusk/6.webp",
+    "storm/week_2/dusk/6.webp",
+    "storm/week_3/dusk/6.webp",
+    "storm/week_4/dusk/6.webp"
+   ],
+   "pair": null,
+   "line": "Emergency vehicle approaches fallen branches blocking a flooded suburban street; wide shot",
+   "subject": "vehicle",
+   "setting": "street or town",
+   "shot": "wide",
+   "banned": []
+  },
+  "e5b510c8a1e4": {
+   "folder": "storm",
+   "time": "dusk",
+   "slots": [
+    "storm/week_1/dusk/7.webp",
+    "storm/week_2/dusk/7.webp",
+    "storm/week_3/dusk/7.webp",
+    "storm/week_4/dusk/7.webp"
+   ],
+   "pair": null,
+   "line": "Lightning strikes offshore beyond waves and black coastal rocks at dusk; wide shot",
+   "subject": "place",
+   "setting": "beach or coast",
+   "shot": "wide",
+   "banned": []
+  },
+  "9851963ee129": {
+   "folder": "storm",
+   "time": "night",
+   "slots": [
+    "storm/week_1/night/1.webp",
+    "storm/week_2/night/1.webp",
+    "storm/week_3/night/1.webp",
+    "storm/week_4/night/1.webp"
+   ],
+   "pair": null,
+   "line": "Hail-covered driveway and closed garages glow beneath distant lightning; wide shot",
+   "subject": "place",
+   "setting": "gate, door or driveway",
+   "shot": "wide",
+   "banned": []
+  },
+  "2fede244e0d0": {
+   "folder": "storm",
+   "time": "night",
+   "slots": [
+    "storm/week_1/night/2.webp",
+    "storm/week_2/night/2.webp",
+    "storm/week_3/night/2.webp",
+    "storm/week_4/night/2.webp"
+   ],
+   "pair": null,
+   "line": "Streetlamp illuminates heavy rain beside a large tree and walled property; wide shot",
+   "subject": "place",
+   "setting": "street or town",
+   "shot": "wide",
+   "banned": []
+  },
+  "faaf0b2003be": {
+   "folder": "storm",
+   "time": "night",
+   "slots": [
+    "storm/week_1/night/3.webp",
+    "storm/week_2/night/3.webp",
+    "storm/week_3/night/3.webp",
+    "storm/week_4/night/3.webp"
+   ],
+   "pair": null,
+   "line": "Blanket-wrapped boy watches lightning through an upstairs window; medium shot",
+   "subject": "one person",
+   "setting": "indoors",
+   "shot": "medium",
+   "banned": []
+  },
+  "ae79261d2852": {
+   "folder": "storm",
+   "time": "night",
+   "slots": [
+    "storm/week_1/night/4.webp",
+    "storm/week_2/night/4.webp",
+    "storm/week_3/night/4.webp",
+    "storm/week_4/night/4.webp"
+   ],
+   "pair": null,
+   "line": "Lightning flashes behind low houses across a wet residential street; wide shot",
+   "subject": "place",
+   "setting": "street or town",
+   "shot": "wide",
+   "banned": []
+  },
+  "cd855e5f60e9": {
+   "folder": "storm",
+   "time": "night",
+   "slots": [
+    "storm/week_1/night/5.webp",
+    "storm/week_3/night/5.webp"
+   ],
+   "pair": null,
+   "line": "Heavy rain pours beside a covered residential stoep lit by a bare bulb; wide shot",
+   "subject": "place",
+   "setting": "stoep or patio",
+   "shot": "wide",
+   "banned": []
+  },
+  "2d2e6dd5d7fd": {
+   "folder": "storm",
+   "time": "night",
+   "slots": [
+    "storm/week_1/night/6.webp",
+    "storm/week_3/night/6.webp"
+   ],
+   "pair": null,
+   "line": "Couple catch rainwater in a bucket beside their bedroom window; wide shot",
+   "subject": "two or three people",
+   "setting": "indoors",
+   "shot": "wide",
+   "banned": []
+  },
+  "14c56f85c353": {
+   "folder": "storm",
+   "time": "night",
+   "slots": [
+    "storm/week_1/night/7.webp",
+    "storm/week_2/night/7.webp",
+    "storm/week_3/night/7.webp",
+    "storm/week_4/night/7.webp"
+   ],
+   "pair": null,
+   "line": "Man films lightning through a bedroom window at night; medium shot",
+   "subject": "one person",
+   "setting": "indoors",
+   "shot": "medium",
+   "banned": []
+  },
+  "c121631aca0a": {
+   "folder": "wind",
+   "time": "dawn",
+   "slots": [
+    "wind/week_1/dawn/1.webp",
+    "wind/week_2/dawn/1.webp",
+    "wind/week_3/dawn/1.webp",
+    "wind/week_4/dawn/1.webp"
+   ],
+   "pair": null,
+   "line": "Palm tree bends in strong wind beneath storm clouds near homes; wide shot",
+   "subject": "place",
+   "setting": "street or town",
+   "shot": "wide",
+   "banned": []
+  },
+  "3556004712b7": {
+   "folder": "wind",
+   "time": "dawn",
+   "slots": [
+    "wind/week_1/dawn/2.webp",
+    "wind/week_2/dawn/2.webp",
+    "wind/week_3/dawn/2.webp",
+    "wind/week_4/dawn/2.webp"
+   ],
+   "pair": null,
+   "line": "Seagulls walk single file along a windswept beach; wide shot",
+   "subject": "animal",
+   "setting": "beach or coast",
+   "shot": "wide",
+   "banned": []
+  },
+  "c66c7fd4f50e": {
+   "folder": "wind",
+   "time": "dawn",
+   "slots": [
+    "wind/week_1/dawn/3.webp",
+    "wind/week_2/dawn/3.webp",
+    "wind/week_3/dawn/3.webp",
+    "wind/week_4/dawn/3.webp"
+   ],
+   "pair": null,
+   "line": "Man chases a windblown barbecue cover across a garden; wide shot",
+   "subject": "one person",
+   "setting": "garden or lawn",
+   "shot": "wide",
+   "banned": [
+    "blown in front of a house"
+   ]
+  },
+  "45b7693ad9e4": {
+   "folder": "wind",
+   "time": "dawn",
+   "slots": [
+    "wind/week_1/dawn/4.webp",
+    "wind/week_2/dawn/4.webp",
+    "wind/week_3/dawn/4.webp",
+    "wind/week_4/dawn/4.webp"
+   ],
+   "pair": null,
+   "line": "Woman leans into strong wind while running along a park path; medium shot",
+   "subject": "one person",
+   "setting": "park or field",
+   "shot": "medium",
+   "banned": []
+  },
+  "f1a06c34c049": {
+   "folder": "wind",
+   "time": "dawn",
+   "slots": [
+    "wind/week_1/dawn/5.webp",
+    "wind/week_2/dawn/5.webp",
+    "wind/week_3/dawn/5.webp",
+    "wind/week_4/dawn/5.webp"
+   ],
+   "pair": null,
+   "line": "Woman wrestles billowing laundry on a coastal washing line; wide shot",
+   "subject": "one person",
+   "setting": "stoep or patio",
+   "shot": "wide",
+   "banned": [
+    "blown in front of a house"
+   ]
+  },
+  "d0a60d414066": {
+   "folder": "wind",
+   "time": "dawn",
+   "slots": [
+    "wind/week_1/dawn/6.webp",
+    "wind/week_2/dawn/6.webp",
+    "wind/week_3/dawn/6.webp",
+    "wind/week_4/dawn/6.webp"
+   ],
+   "pair": null,
+   "line": "Two runners pass crashing waves on an urban seaside promenade; wide shot",
+   "subject": "two or three people",
+   "setting": "beach or coast",
+   "shot": "wide",
+   "banned": []
+  },
+  "337d1a2fe2c2": {
+   "folder": "wind",
+   "time": "dawn",
+   "slots": [
+    "wind/week_1/dawn/7.webp",
+    "wind/week_2/dawn/7.webp",
+    "wind/week_3/dawn/7.webp",
+    "wind/week_4/dawn/7.webp"
+   ],
+   "pair": null,
+   "line": "Woman jogs past windblown palms and breaking waves on a promenade; wide shot",
+   "subject": "one person",
+   "setting": "beach or coast",
+   "shot": "wide",
+   "banned": []
+  },
+  "232bde6ed095": {
+   "folder": "wind",
+   "time": "day",
+   "slots": [
+    "wind/week_1/day/1.webp",
+    "wind/week_3/day/1.webp"
+   ],
+   "pair": null,
+   "line": "Mother shelters two schoolchildren from swirling leaves on a pavement; wide shot",
+   "subject": "two or three people",
+   "setting": "street or town",
+   "shot": "wide",
+   "banned": []
+  },
+  "4d3a786acf48": {
+   "folder": "wind",
+   "time": "day",
+   "slots": [
+    "wind/week_1/day/2.webp",
+    "wind/week_3/day/2.webp"
+   ],
+   "pair": null,
+   "line": "Woman braces against wind whipping her hair and skirt in a street; medium shot",
+   "subject": "one person",
+   "setting": "street or town",
+   "shot": "medium",
+   "banned": []
+  },
+  "eb217457f58d": {
+   "folder": "wind",
+   "time": "day",
+   "slots": [
+    "wind/week_1/day/3.webp",
+    "wind/week_3/day/3.webp"
+   ],
+   "pair": null,
+   "line": "Father helps a child from a car during gusty weather; wide shot",
+   "subject": "two or three people",
+   "setting": "road or car",
+   "shot": "wide",
+   "banned": []
+  },
+  "e3f0d69977ca": {
+   "folder": "wind",
+   "time": "day",
+   "slots": [
+    "wind/week_1/day/4.webp",
+    "wind/week_3/day/4.webp"
+   ],
+   "pair": null,
+   "line": "Woman takes a windswept selfie beside a stormy seaside promenade; medium shot",
+   "subject": "one person",
+   "setting": "beach or coast",
+   "shot": "medium",
+   "banned": []
+  },
+  "19801ea908d0": {
+   "folder": "wind",
+   "time": "day",
+   "slots": [
+    "wind/week_1/day/5.webp",
+    "wind/week_3/day/5.webp"
+   ],
+   "pair": null,
+   "line": "Cat sits on a garden wall beneath windblown trees; medium shot",
+   "subject": "animal",
+   "setting": "garden or lawn",
+   "shot": "medium",
+   "banned": []
+  },
+  "f32e33e76e01": {
+   "folder": "wind",
+   "time": "day",
+   "slots": [
+    "wind/week_1/day/6.webp",
+    "wind/week_3/day/6.webp"
+   ],
+   "pair": null,
+   "line": "Woman holds a laundry basket as clothes whip behind her; wide shot",
+   "subject": "one person",
+   "setting": "garden or lawn",
+   "shot": "wide",
+   "banned": [
+    "blown in front of a house"
+   ]
+  },
+  "92ef82c2d34a": {
+   "folder": "wind",
+   "time": "day",
+   "slots": [
+    "wind/week_1/day/7.webp",
+    "wind/week_3/day/7.webp"
+   ],
+   "pair": null,
+   "line": "Small dog strains against its leash on a windy beach; close-up",
+   "subject": "animal",
+   "setting": "beach or coast",
+   "shot": "close-up",
+   "banned": []
+  },
+  "05cea2b8788d": {
+   "folder": "wind",
+   "time": "day",
+   "slots": [
+    "wind/week_2/day/1.webp",
+    "wind/week_4/day/1.webp"
+   ],
+   "pair": null,
+   "line": "Trampoline is lodged upright against a garden wall after strong wind; wide shot",
+   "subject": "object",
+   "setting": "garden or lawn",
+   "shot": "wide",
+   "banned": []
+  },
+  "330bfae094d5": {
+   "folder": "wind",
+   "time": "day",
+   "slots": [
+    "wind/week_2/day/3.webp",
+    "wind/week_4/day/3.webp"
+   ],
+   "pair": null,
+   "line": "Businessman shields his eyes while leaning into dusty wind on a road; medium shot",
+   "subject": "one person",
+   "setting": "road or car",
+   "shot": "medium",
+   "banned": []
+  },
+  "9bada961b0a7": {
+   "folder": "wind",
+   "time": "day",
+   "slots": [
+    "wind/week_2/day/2.webp",
+    "wind/week_4/day/2.webp"
+   ],
+   "pair": null,
+   "line": "Residents inspect storm debris and an overturned bin on a suburban pavement; wide shot",
+   "subject": "group",
+   "setting": "street or town",
+   "shot": "wide",
+   "banned": []
+  },
+  "ab2cbee2d73d": {
+   "folder": "wind",
+   "time": "day",
+   "slots": [
+    "wind/week_2/day/5.webp",
+    "wind/week_4/day/5.webp"
+   ],
+   "pair": null,
+   "line": "Palm trees and shade cloth bend in wind along a residential street; wide shot",
+   "subject": "place",
+   "setting": "street or town",
+   "shot": "wide",
+   "banned": []
+  },
+  "5df9d64aa037": {
+   "folder": "wind",
+   "time": "day",
+   "slots": [
+    "wind/week_2/day/6.webp",
+    "wind/week_4/day/6.webp"
+   ],
+   "pair": null,
+   "line": "Jacaranda and palm trees bend beneath dark storm clouds beside a road; wide shot",
+   "subject": "place",
+   "setting": "street or town",
+   "shot": "wide",
+   "banned": []
+  },
+  "002f0c1d5187": {
+   "folder": "wind",
+   "time": "dusk",
+   "slots": [
+    "wind/week_1/dusk/1.webp",
+    "wind/week_2/dusk/1.webp",
+    "wind/week_3/dusk/1.webp",
+    "wind/week_4/dusk/1.webp"
+   ],
+   "pair": null,
+   "line": "Two women laugh together beside rough seas on a windy promenade; medium shot",
+   "subject": "two or three people",
+   "setting": "beach or coast",
+   "shot": "medium",
+   "banned": []
+  },
+  "bdc6900c5689": {
+   "folder": "wind",
+   "time": "dusk",
+   "slots": [
+    "wind/week_1/dusk/2.webp",
+    "wind/week_2/dusk/2.webp",
+    "wind/week_3/dusk/2.webp",
+    "wind/week_4/dusk/2.webp"
+   ],
+   "pair": null,
+   "line": "Cyclist rides through blowing leaves beneath jacarandas at sunset; wide shot",
+   "subject": "one person",
+   "setting": "road or car",
+   "shot": "wide",
+   "banned": []
+  },
+  "12cd74b592e8": {
+   "folder": "wind",
+   "time": "dusk",
+   "slots": [
+    "wind/week_1/dusk/3.webp",
+    "wind/week_2/dusk/3.webp",
+    "wind/week_3/dusk/3.webp",
+    "wind/week_4/dusk/3.webp"
+   ],
+   "pair": null,
+   "line": "Two women pass windblown laundry over a garden wall; wide shot",
+   "subject": "two or three people",
+   "setting": "garden or lawn",
+   "shot": "wide",
+   "banned": [
+    "blown in front of a house"
+   ]
+  },
+  "17c00a47cba2": {
+   "folder": "wind",
+   "time": "dusk",
+   "slots": [
+    "wind/week_1/dusk/4.webp",
+    "wind/week_2/dusk/4.webp",
+    "wind/week_3/dusk/4.webp",
+    "wind/week_4/dusk/4.webp"
+   ],
+   "pair": null,
+   "line": "Wind-bent tree overlooks laundry and white coastal houses at sunset; wide shot",
+   "subject": "place",
+   "setting": "street or town",
+   "shot": "wide",
+   "banned": []
+  },
+  "ec12d1747d09": {
+   "folder": "wind",
+   "time": "dusk",
+   "slots": [
+    "wind/week_1/dusk/5.webp",
+    "wind/week_2/dusk/5.webp",
+    "wind/week_3/dusk/5.webp",
+    "wind/week_4/dusk/5.webp"
+   ],
+   "pair": null,
+   "line": "Colourful hillside houses line a steep neighbourhood street at dusk; wide shot",
+   "subject": "place",
+   "setting": "street or town",
+   "shot": "wide",
+   "banned": []
+  },
+  "b78d6f432fb7": {
+   "folder": "wind",
+   "time": "dusk",
+   "slots": [
+    "wind/week_1/dusk/6.webp",
+    "wind/week_2/dusk/6.webp",
+    "wind/week_3/dusk/6.webp",
+    "wind/week_4/dusk/6.webp"
+   ],
+   "pair": null,
+   "line": "Woman approaches a car as wind whips her hair outside a suburban house; medium shot",
+   "subject": "one person",
+   "setting": "road or car",
+   "shot": "medium",
+   "banned": [
+    "blown in front of a house"
+   ]
+  },
+  "38635f77f610": {
+   "folder": "wind",
+   "time": "dusk",
+   "slots": [
+    "wind/week_1/dusk/7.webp",
+    "wind/week_2/dusk/7.webp",
+    "wind/week_3/dusk/7.webp",
+    "wind/week_4/dusk/7.webp"
+   ],
+   "pair": null,
+   "line": "Couple brace together against beach wind beneath Table Mountain; wide shot",
+   "subject": "two or three people",
+   "setting": "beach or coast",
+   "shot": "wide",
+   "banned": []
+  },
+  "f6b55aacae0a": {
+   "folder": "wind",
+   "time": "night",
+   "slots": [
+    "wind/week_1/night/2.webp",
+    "wind/week_2/night/2.webp",
+    "wind/week_3/night/2.webp",
+    "wind/week_4/night/2.webp"
+   ],
+   "pair": null,
+   "line": "Fluffy cat watches windblown leaves through an open sliding door; medium shot",
+   "subject": "animal",
+   "setting": "indoors",
+   "shot": "medium",
+   "banned": []
+  },
+  "0e5c84f6ab31": {
+   "folder": "wind",
+   "time": "night",
+   "slots": [
+    "wind/week_1/night/3.webp",
+    "wind/week_2/night/3.webp",
+    "wind/week_3/night/3.webp",
+    "wind/week_4/night/3.webp"
+   ],
+   "pair": null,
+   "line": "Palm bends beneath storm clouds on a residential street at night; wide shot",
+   "subject": "place",
+   "setting": "street or town",
+   "shot": "wide",
+   "banned": []
+  },
+  "bfc08af75267": {
+   "folder": "wind",
+   "time": "night",
+   "slots": [
+    "wind/week_1/night/4.webp",
+    "wind/week_2/night/4.webp",
+    "wind/week_3/night/4.webp",
+    "wind/week_4/night/4.webp"
+   ],
+   "pair": null,
+   "line": "Small tree bends violently beside a lit brick outbuilding at night; wide shot",
+   "subject": "place",
+   "setting": "garden or lawn",
+   "shot": "wide",
+   "banned": []
+  },
+  "9ae18d55d0c1": {
+   "folder": "wind",
+   "time": "night",
+   "slots": [
+    "wind/week_1/night/5.webp",
+    "wind/week_2/night/5.webp",
+    "wind/week_3/night/5.webp",
+    "wind/week_4/night/5.webp"
+   ],
+   "pair": null,
+   "line": "Palm trees bend through rain along Durban's illuminated beachfront road; wide shot",
+   "subject": "place",
+   "setting": "beach or coast",
+   "shot": "wide",
+   "banned": []
+  },
+  "be8276f7384b": {
+   "folder": "wind",
+   "time": "night",
+   "slots": [
+    "wind/week_1/night/6.webp",
+    "wind/week_2/night/6.webp",
+    "wind/week_3/night/6.webp",
+    "wind/week_4/night/6.webp"
+   ],
+   "pair": null,
+   "line": "Two men laugh while tending a smoking braai outdoors at dusk; medium shot",
+   "subject": "two or three people",
+   "setting": "garden or lawn",
+   "shot": "medium",
+   "banned": []
+  },
+  "6fa740fc3795": {
+   "folder": "wind",
+   "time": "night",
+   "slots": [
+    "wind/week_1/night/7.webp",
+    "wind/week_2/night/7.webp",
+    "wind/week_3/night/7.webp",
+    "wind/week_4/night/7.webp"
+   ],
+   "pair": null,
+   "line": "Laundry thrashes on a backyard washing line during a night storm; wide shot",
+   "subject": "object",
+   "setting": "garden or lawn",
+   "shot": "wide",
+   "banned": []
+  },
+  "4e7c3b6e7580": {
+   "folder": "heat",
+   "time": "day",
+   "slots": [
+    "heat/week_2/day/2.webp",
+    "heat/week_4/day/2.webp"
+   ],
+   "pair": "P02",
+   "line": "Older man cools himself while sitting with feet in a basin beside a rural road; wide shot",
+   "subject": "one person",
+   "setting": "farm or veld",
+   "shot": "wide",
+   "banned": []
+  },
+  "24dc52fb32b8": {
+   "folder": "wind",
+   "time": "day",
+   "slots": [
+    "wind/week_2/day/7.webp",
+    "wind/week_4/day/7.webp"
+   ],
+   "pair": "P03",
+   "line": "Boy jumps for a sheet torn from a garden washing line; wide shot",
+   "subject": "one person",
+   "setting": "garden or lawn",
+   "shot": "wide",
+   "banned": []
+  },
+  "2c5a9b3813f4": {
+   "folder": "rain",
+   "time": "day",
+   "slots": [
+    "rain/week_2/day/5.webp",
+    "rain/week_4/day/5.webp"
+   ],
+   "pair": "P04",
+   "line": "Woman runs through heavy rain on a city pavement, holding a bag overhead; medium shot",
+   "subject": "one person",
+   "setting": "street or town",
+   "shot": "medium",
+   "banned": []
+  },
+  "87955eb3b925": {
+   "folder": "cloudy",
+   "time": "dusk",
+   "slots": [
+    "cloudy/week_1/dusk/2.webp",
+    "cloudy/week_2/dusk/2.webp",
+    "cloudy/week_3/dusk/2.webp",
+    "cloudy/week_4/dusk/2.webp"
+   ],
+   "pair": "P05",
+   "line": "Older man hurries from a stoep carrying laundry beneath looming storm clouds; wide shot",
+   "subject": "one person",
+   "setting": "stoep or patio",
+   "shot": "wide",
+   "banned": []
+  },
+  "6338918029d3": {
+   "folder": "storm",
+   "time": "night",
+   "slots": [
+    "storm/week_2/night/6.webp",
+    "storm/week_4/night/6.webp"
+   ],
+   "pair": "P06",
+   "line": "Child and dog watch lightning through a large living-room window; wide shot",
+   "subject": "one person",
+   "setting": "indoors",
+   "shot": "wide",
+   "banned": []
+  },
+  "614ba5459c4a": {
+   "folder": "fog",
+   "time": "dawn",
+   "slots": [
+    "fog/week_2/dawn/3.webp",
+    "fog/week_4/dawn/3.webp"
+   ],
+   "pair": "P07",
+   "line": "Farmer leans on a wooden gate overlooking a foggy pasture; wide shot",
+   "subject": "one person",
+   "setting": "farm or veld",
+   "shot": "wide",
+   "banned": []
+  },
+  "b0c6ecc4866f": {
+   "folder": "cold",
+   "time": "day",
+   "slots": [
+    "cold/week_2/day/6.webp",
+    "cold/week_4/day/6.webp"
+   ],
+   "pair": "P08",
+   "line": "Woman wrapped in a duvet drinks from a mug beside a rainy kitchen window; medium shot",
+   "subject": "one person",
+   "setting": "kitchen",
+   "shot": "medium",
+   "banned": []
+  },
+  "34890f7d9e5c": {
+   "folder": "cold-clear",
+   "time": "dawn",
+   "slots": [
+    "cold-clear/week_2/dawn/6.webp",
+    "cold-clear/week_4/dawn/6.webp"
+   ],
+   "pair": "P09",
+   "line": "Man scrapes frost from a parked car outside a rural stone house; wide shot",
+   "subject": "one person",
+   "setting": "road or car",
+   "shot": "wide",
+   "banned": []
+  },
+  "2b3ce7ca33eb": {
+   "folder": "clear",
+   "time": "night",
+   "slots": [
+    "clear/week_1/night/5.webp",
+    "clear/week_2/night/5.webp",
+    "clear/week_3/night/5.webp",
+    "clear/week_4/night/5.webp"
+   ],
+   "pair": "P10",
+   "line": "Milky Way arches above a windmill and parked bakkie in open veld; wide shot",
+   "subject": "place",
+   "setting": "farm or veld",
+   "shot": "wide",
+   "banned": []
+  },
+  "ae7c34aa9e5d": {
+   "folder": "storm",
+   "time": "night",
+   "slots": [
+    "storm/week_2/night/5.webp",
+    "storm/week_4/night/5.webp"
+   ],
+   "pair": "M02",
+   "line": "Family watches lightning from a sofa through a broad living-room window; wide shot",
+   "subject": "group",
+   "setting": "indoors",
+   "shot": "wide",
+   "banned": []
+  },
+  "e499768237ef": {
+   "folder": "cold",
+   "time": "dusk",
+   "slots": [
+    "cold/week_2/dusk/6.webp",
+    "cold/week_4/dusk/6.webp"
+   ],
+   "pair": "M04",
+   "line": "Family and dog huddle around a portable heater in a cold living room; wide shot",
+   "subject": "group",
+   "setting": "indoors",
+   "shot": "wide",
+   "banned": []
+  },
+  "cd4bd5c64c5d": {
+   "folder": "cold",
+   "time": "night",
+   "slots": [
+    "cold/week_2/night/6.webp",
+    "cold/week_4/night/6.webp"
+   ],
+   "pair": "R01",
+   "line": "Woman steps cautiously onto a rain-soaked patio outside her home; wide shot",
+   "subject": "one person",
+   "setting": "stoep or patio",
+   "shot": "wide",
+   "banned": []
+  },
+  "aa3ccab85b60": {
+   "folder": "cloudy",
+   "time": "night",
+   "slots": [
+    "cloudy/week_1/night/6.webp",
+    "cloudy/week_2/night/6.webp",
+    "cloudy/week_3/night/6.webp",
+    "cloudy/week_4/night/6.webp"
+   ],
+   "pair": "R02",
+   "line": "Woman peers through a telescope on a dark suburban lawn; wide shot",
+   "subject": "one person",
+   "setting": "garden or lawn",
+   "shot": "wide",
+   "banned": []
+  },
+  "1108cfd1192f": {
+   "folder": "clear",
+   "time": "dawn",
+   "slots": [
+    "clear/week_1/dawn/7.webp",
+    "clear/week_2/dawn/7.webp",
+    "clear/week_3/dawn/7.webp",
+    "clear/week_4/dawn/7.webp"
+   ],
+   "pair": "R03",
+   "line": "Woman shields her eyes from low sun while holding a mug on her lawn; wide shot",
+   "subject": "one person",
+   "setting": "garden or lawn",
+   "shot": "wide",
+   "banned": [
+    "squinting into the sun"
+   ]
+  },
+  "844f8b7f5b89": {
+   "folder": "clear",
+   "time": "dawn",
+   "slots": [
+    "clear/week_1/dawn/2.webp",
+    "clear/week_2/dawn/2.webp",
+    "clear/week_3/dawn/2.webp",
+    "clear/week_4/dawn/2.webp"
+   ],
+   "pair": "R05",
+   "line": "Woman checks the weather while standing at her open garden gate; wide shot",
+   "subject": "one person",
+   "setting": "gate, door or driveway",
+   "shot": "wide",
+   "banned": [
+    "at a gate or front door"
+   ]
+  },
+  "15e8f0aa4baa": {
+   "folder": "heat",
+   "time": "dusk",
+   "slots": [
+    "heat/week_2/dusk/5.webp",
+    "heat/week_4/dusk/5.webp"
+   ],
+   "pair": "R10",
+   "line": "Sweating man stands beside a sprinkler on a sunlit suburban lawn; wide shot",
+   "subject": "one person",
+   "setting": "garden or lawn",
+   "shot": "wide",
+   "banned": [
+    "lawn in heat"
+   ]
+  },
+  "e400ca864a50": {
+   "folder": "storm",
+   "time": "dawn",
+   "slots": [
+    "storm/week_1/dawn/7.webp",
+    "storm/week_2/dawn/7.webp",
+    "storm/week_3/dawn/7.webp",
+    "storm/week_4/dawn/7.webp"
+   ],
+   "pair": "R18",
+   "line": "Woman grabs a cushion on a rain-soaked patio during lightning; wide shot",
+   "subject": "one person",
+   "setting": "stoep or patio",
+   "shot": "wide",
+   "banned": []
+  },
+  "6bb604217e96": {
+   "folder": "wind",
+   "time": "night",
+   "slots": [
+    "wind/week_1/night/1.webp",
+    "wind/week_2/night/1.webp",
+    "wind/week_3/night/1.webp",
+    "wind/week_4/night/1.webp"
+   ],
+   "pair": "R24",
+   "line": "Woman struggles through a garden gate in strong wind at night; wide shot",
+   "subject": "one person",
+   "setting": "gate, door or driveway",
+   "shot": "wide",
+   "banned": [
+    "at a gate or front door"
+   ]
+  },
+  "e8500f5dfaee": {
+   "folder": "wind",
+   "time": "day",
+   "slots": [
+    "wind/week_2/day/4.webp",
+    "wind/week_4/day/4.webp"
+   ],
+   "pair": "R48",
+   "line": "Woman walks along a suburban pavement as wind whips her hair and coat; wide shot",
+   "subject": "one person",
+   "setting": "street or town",
+   "shot": "wide",
+   "banned": [
+    "blown in front of a house"
+   ]
+  }
+ }
+}
