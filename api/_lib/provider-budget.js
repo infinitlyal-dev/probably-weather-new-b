@@ -87,6 +87,24 @@ export const PROVIDER_BUDGETS = {
   'locationiq': { perSecond: 2, perMin: 60, perDay: 5000 },
 };
 
+// --- Our own traffic (own=1: the accuracy recorder and the live checks) -------
+// Al, 27 Sept 2026: in one day the live app answered 276 weather requests, almost
+// all of them our own recorder and checks, and Tomorrow.io was skipped on 91.
+// Our own reads get a cap OF THEIR OWN on Tomorrow.io, spent BEFORE the global
+// budget: a read the own cap refuses never touches the global count, so real
+// users keep the rest. (LocationIQ needs no cap: own traffic never calls it.)
+// Sized from the recorder's data (review/accuracy/live, 24–27 Sept: 8 reads an
+// hour; a radar-alone "Rain's here" on ~9% of the reads that had Tomorrow.io):
+// 4 an hour keeps the radar sample growing at the pace it had (~8 readings a day
+// in a showery week), and is 16% of the 25/hour and 19% of the 500/day.
+export const OWN_TRAFFIC_BUDGETS = {
+  'tomorrow': { perHour: 4, perDay: 96 },
+};
+const ownFallbackLimits = (cfg) => [
+  ...(Number.isFinite(cfg.perHour) ? [{ max: cfg.perHour, windowMs: 3600000 }] : []),
+  ...(Number.isFinite(cfg.perDay) ? [{ max: cfg.perDay, windowMs: 86400000 }] : []),
+];
+
 // Conservative per-INSTANCE ceilings, used ONLY when Redis is unreachable.
 // Tomorrow.io uses an hourly fallback so an outage cannot turn its real 25/hr
 // limit back into a nominal per-minute limit.
@@ -121,8 +139,7 @@ const dayBucket = (nowMs) => Math.floor(nowMs / 86400000);
 
 // One current counter per provider; changing windows replace the old entry.
 const _mem = new Map();
-function instanceFallbackAllows(provider, nowMs) {
-  const limits = instanceFallbackLimits(provider);
+function instanceFallbackAllows(provider, nowMs, limits = instanceFallbackLimits(provider)) {
   for (const limit of limits) {
     const bucket = Math.floor(nowMs / limit.windowMs);
     const key = `${provider}:${limit.windowMs}`;
@@ -328,6 +345,9 @@ export function recordOpenMeteoCallDeferred(redis = _UNSET, nowMs = Date.now(), 
 // Lua stops at the first rejection, so a short burst never drains longer-lived
 // quota. The final daily increment is reverted when the day is already full,
 // preserving the existing "rejected attempts spend no daily slot" contract.
+// A rejection returns MINUS the index of the window that refused (27 Sept 2026:
+// the log used to say only "over ceiling", and a day of 3-a-second refusals was
+// read as a spent daily allowance). 0 from an older script still means refused.
 const CONSUME_WINDOWS_SCRIPT = `
   for i, key in ipairs(KEYS) do
     local base = (i - 1) * 3
@@ -338,7 +358,7 @@ const CONSUME_WINDOWS_SCRIPT = `
     if count == 1 then redis.call('expire', key, ttl) end
     if count > ceiling then
       if revert == 1 then redis.call('decr', key) end
-      return 0
+      return -i
     end
   end
   return 1
@@ -346,11 +366,54 @@ const CONSUME_WINDOWS_SCRIPT = `
 
 function providerWindows(provider, cfg, nowMs) {
   const windows = [];
-  if (Number.isFinite(cfg.perSecond)) windows.push([`pw-budget:${provider}:s:${secondBucket(nowMs)}`, cfg.perSecond, 10, 0]);
-  if (Number.isFinite(cfg.perMin)) windows.push([`pw-budget:${provider}:m:${minBucket(nowMs)}`, cfg.perMin, 90, 0]);
-  if (Number.isFinite(cfg.perHour)) windows.push([`pw-budget:${provider}:h:${hourBucket(nowMs)}`, cfg.perHour, 3900, 0]);
-  if (Number.isFinite(cfg.perDay)) windows.push([`pw-budget:${provider}:d:${dayBucket(nowMs)}`, cfg.perDay, 90000, 1]);
+  if (Number.isFinite(cfg.perSecond)) windows.push([`pw-budget:${provider}:s:${secondBucket(nowMs)}`, cfg.perSecond, 10, 0, 'perSecond']);
+  if (Number.isFinite(cfg.perMin)) windows.push([`pw-budget:${provider}:m:${minBucket(nowMs)}`, cfg.perMin, 90, 0, 'perMin']);
+  if (Number.isFinite(cfg.perHour)) windows.push([`pw-budget:${provider}:h:${hourBucket(nowMs)}`, cfg.perHour, 3900, 0, 'perHour']);
+  if (Number.isFinite(cfg.perDay)) windows.push([`pw-budget:${provider}:d:${dayBucket(nowMs)}`, cfg.perDay, 90000, 1, 'perDay']);
   return windows;
+}
+
+// Run the consume script for one set of windows. Returns { allowed, window } —
+// `window` names the refusing window when the script says which.
+async function consumeWindows(redis, windows, timeoutMs) {
+  const keys = windows.map(([key]) => key);
+  const args = windows.flatMap(([, ceiling, ttl, revert]) => [String(ceiling), String(ttl), String(revert)]);
+  const reply = await withTimeout(redis.eval(CONSUME_WINDOWS_SCRIPT, keys, args), timeoutMs);
+  const allowed = reply === 1 || reply === '1' || reply === true;
+  const idx = -Number(reply) - 1;
+  return { allowed, window: !allowed && idx >= 0 && windows[idx] ? windows[idx][4] : undefined };
+}
+
+/**
+ * Our OWN traffic's cap (own=1), for each provider in `providers` that has one in
+ * OWN_TRAFFIC_BUDGETS; providers without an own cap are not in the result. The
+ * same atomic script as the global budget, under its own keys
+ * (pw-budget:own:<provider>:…), so a refusal here spends nothing global — and
+ * the caller must then leave that provider OUT of consumeProviderBudgets.
+ * Fail-open on availability like the global budget; the per-instance fallback
+ * is the own cap itself (there is no looser number to fall back to).
+ */
+export async function consumeOwnTrafficBudgets(providers, redis = _UNSET, nowMs = Date.now(), { timeoutMs = 0 } = {}) {
+  const result = {};
+  const capped = providers.filter((p) => OWN_TRAFFIC_BUDGETS[p]);
+  if (!capped.length) return result;
+  if (redis === _UNSET) {
+    if (typeof process !== 'undefined' && process.env?.VITEST && !process.env.PW_TEST_REAL_BUDGET) {
+      for (const p of capped) result[p] = true;
+      return result;
+    }
+    redis = getRedis();
+  }
+  await Promise.all(capped.map(async (p) => {
+    const cfg = OWN_TRAFFIC_BUDGETS[p];
+    if (!redis) { result[p] = instanceFallbackAllows(`own:${p}`, nowMs, ownFallbackLimits(cfg)); return; }
+    try {
+      result[p] = (await consumeWindows(redis, providerWindows(`own:${p}`, cfg, nowMs), timeoutMs)).allowed;
+    } catch {
+      result[p] = instanceFallbackAllows(`own:${p}`, nowMs, ownFallbackLimits(cfg));
+    }
+  }));
+  return result;
 }
 
 /**
@@ -367,6 +430,9 @@ function providerWindows(provider, cfg, nowMs) {
  */
 export async function consumeProviderBudgets(providers, redis = _UNSET, nowMs = Date.now(), { timeoutMs = 0 } = {}) {
   const result = {};
+  // Which window refused each refused provider (perSecond / perMin / perHour /
+  // perDay), for the log line — out of sight of the { provider: boolean } map.
+  Object.defineProperty(result, 'refusedWindow', { value: {}, enumerable: false });
   if (redis === _UNSET) {
     // Default (handler) path. Under vitest the upstream calls are mocked, so
     // the budget is meaningless and would otherwise trip the conservative
@@ -392,14 +458,13 @@ export async function consumeProviderBudgets(providers, redis = _UNSET, nowMs = 
       // No configured window (commercial Open-Meteo) — nothing to consume, and
       // no reason to spend a Redis round-trip proving it.
       if (windows.length === 0) { result[p] = true; return; }
-      const keys = windows.map(([key]) => key);
-      const args = windows.flatMap(([, ceiling, ttl, revert]) => [String(ceiling), String(ttl), String(revert)]);
       // Item 7 round 3: bounded PER PROVIDER (timeoutMs > 0). A check that
       // completes keeps its decision — an explicit denial stays a denial —
       // and only a check that runs out of time takes the conservative
       // per-instance fallback, the same path as a Redis error.
-      const allowed = await withTimeout(redis.eval(CONSUME_WINDOWS_SCRIPT, keys, args), timeoutMs);
-      result[p] = allowed === 1 || allowed === '1' || allowed === true;
+      const { allowed, window } = await consumeWindows(redis, windows, timeoutMs);
+      result[p] = allowed;
+      if (window) result.refusedWindow[p] = window;
     } catch {
       // Redis hiccup for this provider — conservative per-instance fallback.
       result[p] = instanceFallbackAllows(p, nowMs);

@@ -40,7 +40,7 @@ import {
   cacheableLocationName,
   responseLocationName,
 } from './_lib/weather-cache.js';
-import { consumeProviderBudgets, recordOpenMeteoCallDeferred, OPEN_METEO_PRECISION_UNIT_TENTHS } from './_lib/provider-budget.js';
+import { consumeProviderBudgets, consumeOwnTrafficBudgets, recordOpenMeteoCallDeferred, OPEN_METEO_PRECISION_UNIT_TENTHS, OWN_TRAFFIC_BUDGETS } from './_lib/provider-budget.js';
 import { inSouthAfrica, inLowveld, precisionUrl, precisionConsensus, precisionMix, PRECISION_DAYS, PRECISION_MODELS } from './_lib/precision.js';
 import { frostNightLow, FROST_NOT_HERE } from './_lib/frost.js';
 import { shapeWind, windLine } from './_lib/wind.js';
@@ -206,6 +206,15 @@ export default async function handler(req, res) {
     // string values means an array name collapses to '' rather than slipping
     // past the length cap below — do not weaken this to a bare String(...).
     const rawNameInput = typeof req.query.name === 'string' ? req.query.name.trim() : '';
+    // OUR OWN TRAFFIC says so with own=1 (the accuracy recorder and the live checks,
+    // review/accuracy/live/README.md; Al, 27 Sept 2026: a day of 276 requests, almost
+    // all ours, left Tomorrow.io and the name lookup short for real users). The flag
+    // can only REDUCE what a request gets: no LocationIQ lookup of any kind,
+    // Tomorrow.io under a cap of its own (OWN_TRAFFIC_BUDGETS), and an answer that
+    // is never cached — not in the cell's server cache, not at the edge — and never
+    // handed to a waiting real user. It bypasses no rate limit and no budget, so a
+    // spoofed own=1 only shortens the spoofer's own answer.
+    const ownTraffic = req.query.own === '1';
 
     // Coordinate validation — REJECT (don't clamp) out-of-range coords. This
     // single guard sits above every downstream branch (forward forecast, the
@@ -491,6 +500,11 @@ export default async function handler(req, res) {
       if (!LOCATIONIQ_TOKEN) {
         return res.status(200).json({ ok: false, city: null, admin1: null, countryCode: null, nearCity: null });
       }
+      // Our own traffic never calls LocationIQ (the allowance above was still spent: the flag bypasses no limit).
+      if (ownTraffic) {
+        console.log('[pw-budget] own traffic (own=1): reverse lookup skipped — LocationIQ is for real users');
+        return res.status(200).json({ ok: false, city: null, admin1: null, countryCode: null, nearCity: null });
+      }
       try {
         // One slot of the global LocationIQ budget (2/s, 60/min, 5,000/day),
         // shared with /api/geocode: a refused slot answers "no name" here
@@ -720,8 +734,16 @@ export default async function handler(req, res) {
     //      state that other cells are spending while we wait.
     //   5. claim leadership, with a synchronous get/set pair so two requests in
     //      one warm instance can never both believe they lead.
+    // Our own traffic never leads a cell and never takes its lock (below): a real user arriving in the
+    // same cell fetches for themselves at once instead of waiting on a reading that is never cached. It
+    // still peeks the allowance here and is charged at the fan-out like anyone else.
+    if (ownTraffic) {
+      if (timeLeft() === 0) return respondBudgetSpent('local-wait');
+      if (!(await peekAllowance(WEATHER_BUCKETS))) return await refuseOverAllowance();
+      console.log('[pw-budget] own traffic (own=1): fetching without leading the cell — no lock, no waiters, nothing cached');
+    }
     let firstPass = true;
-    while (!finishLocalMiss) {
+    while (!ownTraffic && !finishLocalMiss) {
       // 1. Cache, re-read every pass after the first (the first pass's read is
       //    the one above, which also owns the plain 'hit' response).
       if (!firstPass) {
@@ -791,8 +813,8 @@ export default async function handler(req, res) {
     // period and then proceeds itself, so a dead lock holder can never hang it.
     // A slow Redis (op cap hit) yields no lock information: proceed as the
     // leader without a token, exactly as when Redis is absent (fail-open).
-    distributedMissLock = await redisOp(weatherCacheAcquireLock(serverCacheKey), { acquired: true, release: async () => {} });
-    if (!distributedMissLock.acquired) {
+    distributedMissLock = ownTraffic ? null : await redisOp(weatherCacheAcquireLock(serverCacheKey), { acquired: true, release: async () => {} });
+    if (distributedMissLock && !distributedMissLock.acquired) {
       const stalePayload = await redisOp(weatherCacheGetStale(serverCacheKey), null);
       // Publish to local waiters only AFTER acceptance: a refused entry handed
       // to them would make each of them poll Redis for itself.
@@ -856,7 +878,9 @@ export default async function handler(req, res) {
     // with the provider fan-out below (started here, awaited right after
     // Promise.allSettled) under its own 3 s cap — it used to run first and
     // serially, adding up to a full provider timeout to the response time.
-    const nameResolution = (!resolvedName && LOCATIONIQ_TOKEN) ? (async () => {
+    // Our own traffic never calls LocationIQ: the recorder scores weather, not town names.
+    if (ownTraffic && !resolvedName && LOCATIONIQ_TOKEN) console.log('[pw-budget] own traffic (own=1): name lookup skipped — LocationIQ is for real users');
+    const nameResolution = (!resolvedName && LOCATIONIQ_TOKEN && !ownTraffic) ? (async () => {
       try {
         // Same global LocationIQ budget as /api/geocode; a refused slot keeps
         // the fallback name, exactly like a failed lookup.
@@ -1095,7 +1119,20 @@ export default async function handler(req, res) {
     // whose check completed keeps its decision (an explicit denial stays a
     // denial) and only a timed-out check falls back to the conservative
     // per-instance ceiling — never a blanket "everything allowed".
-    const budget = await consumeProviderBudgets(enabledProviders, undefined, Date.now(), { timeoutMs: Math.min(REDIS_OP_TIMEOUT_MS, timeLeft()) });
+    // Our own traffic spends its OWN cap first (OWN_TRAFFIC_BUDGETS: Tomorrow.io 4/hour, 96/day). A
+    // provider the own cap refuses is left out of the global consume below, so the global allowance
+    // stays whole for real users.
+    const ownRefused = new Set();
+    if (ownTraffic) {
+      const own = await consumeOwnTrafficBudgets(enabledProviders, undefined, Date.now(), { timeoutMs: Math.min(REDIS_OP_TIMEOUT_MS, timeLeft()) });
+      for (const p of Object.keys(own)) {
+        if (own[p] !== false) continue;
+        ownRefused.add(p);
+        console.warn(`[pw-budget] own traffic: ${p} over its own ceiling (${OWN_TRAFFIC_BUDGETS[p].perHour}/hour, ${OWN_TRAFFIC_BUDGETS[p].perDay}/day) — skipped; the global allowance is left for real users`);
+      }
+      if (timeLeft() === 0) return respondBudgetSpent('post-own-budget-check');
+    }
+    const budget = await consumeProviderBudgets(enabledProviders.filter((p) => !ownRefused.has(p)), undefined, Date.now(), { timeoutMs: Math.min(REDIS_OP_TIMEOUT_MS, timeLeft()) });
     // Item 7 round 4 (Astra): the check itself can spend the last of the
     // budget. Providers started with nothing left only fail; the last good
     // value (or a bounded 503) is the better answer.
@@ -1105,9 +1142,13 @@ export default async function handler(req, res) {
     heldCharge = null;
     // A switched-off source never got a budget slot, so its budget entry is
     // undefined — it must be refused here, not read as "allowed".
-    const budgetAllows = (p) => !sourcesOff.has(p) && budget[p] !== false; // undefined ⇒ allowed (safety)
+    const budgetAllows = (p) => !sourcesOff.has(p) && !ownRefused.has(p) && budget[p] !== false; // undefined ⇒ allowed (safety)
     for (const p of enabledProviders) {
-      if (!budgetAllows(p)) console.warn(`[pw-budget] ${p} over ceiling — skipped this request`);
+      if (ownRefused.has(p) || budgetAllows(p)) continue;
+      // Which window refused (perSecond / perMin / perHour / perDay) — 27 Sept 2026: a day of 3-a-second
+      // refusals had read as a spent daily allowance.
+      const which = budget.refusedWindow?.[p];
+      console.warn(`[pw-budget] ${p} over ceiling${which ? ` (${which})` : ''} — skipped this request`);
     }
 
     // Open-Meteo endpoint selection. With the commercial key we must use the
@@ -2760,7 +2801,8 @@ export default async function handler(req, res) {
       radarNextHourBump,
     };
 
-    res.setHeader('Cache-Control', edgeCacheControl(utcOffsetSeconds));
+    // Our own reading is never edge-cached either (its URL is its own, but a degraded copy sits nowhere).
+    res.setHeader('Cache-Control', ownTraffic ? 'no-store' : edgeCacheControl(utcOffsetSeconds));
     const responsePayload = {
       ok: true,
       location: { name: resolvedName || name || 'Unknown', lat, lon },
@@ -2980,7 +3022,10 @@ export default async function handler(req, res) {
       ...responsePayload,
       location: { ...responsePayload.location, name: cacheableLocationName(serverResolvedName) },
     };
-    weatherCacheSetDeferred(serverCacheKey, cacheablePayload);
+    // Our own reading — made without a name and maybe without Tomorrow.io — is never the cell's cached
+    // answer: the next real user in the cell fetches whole. (It led nothing, so there are no waiters.)
+    if (ownTraffic) console.log('[pw-budget] own traffic (own=1): answer not cached for the cell');
+    else weatherCacheSetDeferred(serverCacheKey, cacheablePayload);
     completeLocalMiss(cacheablePayload);
 
     return res.status(200).json(responsePayload);
