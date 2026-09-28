@@ -28,7 +28,8 @@ const GOLDEN = new URL('./fixtures/temp-freeze-golden.json', import.meta.url);
 const { cases } = JSON.parse(readFileSync(FIXTURE, 'utf8'));
 const WRITE = process.env.TEMP_FREEZE_WRITE === '1';
 
-const ok = (body) => ({ ok: true, status: 200, json: async () => structuredClone(body) });
+// A null response is that provider down (HTTP 503) — the 'tomorrow-down' variant.
+const ok = (body) => (body === null ? { ok: false, status: 503, json: async () => ({ error: 'down' }) } : { ok: true, status: 200, json: async () => structuredClone(body) });
 function stubFor(c) {
   vi.stubGlobal('fetch', vi.fn(async (url) => {
     const href = String(url);
@@ -75,18 +76,26 @@ afterEach(() => {
 });
 
 describe('temperatures do not move', () => {
-  it('every case answers from all five sources and the precision request', async () => {
+  it('every case answers from all five sources (bar the one taken down) and the precision request (in SA)', async () => {
     for (const c of cases) {
       const b = await run(c);
+      const all = ['MET Norway', 'Open-Meteo', 'Pirate Weather', 'Tomorrow.io', 'WeatherAPI'];
       expect(b.ok, c.place).toBe(true);
-      expect(b.meta.sources.filter((s) => s.ok).map((s) => s.name).sort(), c.place).toEqual(['MET Norway', 'Open-Meteo', 'Pirate Weather', 'Tomorrow.io', 'WeatherAPI']);
-      expect(b.meta.precision.status, c.place).toBe('applied');
+      expect(b.meta.sources.filter((s) => s.ok).map((s) => s.name).sort(), c.place).toEqual(c.variant === 'tomorrow-down' ? all.filter((n) => n !== 'Tomorrow.io') : all);
+      expect(b.meta.precision.status, c.place).toBe(c.variant === 'outside-sa' ? 'outside-sa' : 'applied');
     }
+  });
+
+  it('the variants walk the shared-weight branches they are named for (Fable, plan review 8)', async () => {
+    const w = async (v) => (await run(cases.find((c) => c.variant === v))).meta.sourceWeights;
+    const base = async (place) => (await run(cases.find((c) => c.place === place && !c.variant))).meta.sourceWeights;
+    expect((await w('wa-dedup')).WeatherAPI).toBeLessThan((await base('Cape Town city')).WeatherAPI);
+    expect((await w('met-boost'))['MET Norway']).toBeGreaterThan((await base('Durban airport'))['MET Norway']);
   });
 
   it('now, feels-like, every hour and every day equal the golden numbers exactly', async () => {
     const got = {};
-    for (const c of cases) got[`${c.place}|${c.nowUtc}`] = temps(await run(c));
+    for (const c of cases) got[`${c.place}|${c.nowUtc}${c.variant ? `|${c.variant}` : ''}`] = temps(await run(c));
     if (WRITE) { writeFileSync(GOLDEN, JSON.stringify(got, null, 1)); return; }
     expect(existsSync(GOLDEN), 'golden missing — it is written once, before a change').toBe(true);
     expect(got).toEqual(JSON.parse(readFileSync(GOLDEN, 'utf8')));
