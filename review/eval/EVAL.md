@@ -1019,3 +1019,111 @@ fixture fix (`3a51b40`): the fold payload said `cloudy` over 46 km/h, which the 
 the phone now showing the server's key, the gate measured the cloudy display for the first time and **isiXhosa's longest
 line ran 2 px under the panel handle at 320×488** — a Home D squeeze on a cloudy, gusty day, found and not fixed. `pw-home-d`'s
 own checkout was left as it was (clean, at `085c1a6`): pull before its next push.
+
+## 13. Wind gets its own weights, Strand against its station, temperatures frozen, the daily scorecard (Vonk / Opus 5.5 building, Fable 5.1 reviewing — 28 Sept 2026)
+
+Al, 28 Sept: *"Why does it suddenly feel that the whole app is wrong..."* At 12:10 SAST the recorder read Strand's
+sources at OM 12.8, WA 9.7, Pirate 25.9, MET 34.2, TI 26.3 km/h → the app 20.1: wind was blended with the weights every
+other number uses. The brief: wind (and gusts) gets its own say-per-source per region and time of day, learned from the
+recorder's real sources and the archive; tune on one period, prove on another; ship per region only where clearly
+better; the Western Cape tested at Cape Town airport and at Strand's station 68911 separately; a test that proves the
+temperatures do not move; a daily scorecard. Plan `review/accuracy/v6/PLAN.md`, committed as the pre-registration
+(`71c87c4`) with Fable's ten changes (§4a) adopted before anything was scored; `score6.mjs` committed, then run once
+(`results-score6.txt`, `v2/results/v6-score.json`).
+
+**How thin the live data is, said first.** The recorder had each source's own wind for 2.7 days (25 Sept 16:10 → 28
+Sept 11:10 UTC): 60–65 matched hours per airport, one airport per live region, split in time — ~30 hours to learn on,
+~31 to prove on. Bloemfontein's reports carried no wind at all (140 of 140), so the Free State has no live test. Per
+time of day could not be learned live (~8 hours a cell); the live weights are per region, all hours. The live test is
+also contaminated: v5's print this morning had already shown Pirate best overall; the rule is mechanical (1 / squared
+error, clamped 0.05–0.50) and its weights were predictable. Fable's per-region bar is a minimum-evidence rule, not an
+interval: point gain ≥ 1 km/h, better in ≥ 4 of 6 six-hour blocks, ≥ 24 proof hours with all five sources, and the
+pooled interval below zero.
+
+### 13.1 Wind — the live weights (ships in the Eastern Cape only)
+
+Off by (km/h), proof half, today's shipped rule (v5: blend × table) → the region's own source weights:
+
+| region (airport) | today | own weights | gain | 6-h blocks better | verdict |
+|---|---|---|---|---|---|
+| **pooled, six airports** | 5.43 | 4.61 | −0.82 [−1.35, −0.33] | | passes |
+| **Eastern Cape (Gqeberha)** | **6.65** | **4.41** | −2.24 | 5 of 6 | **ships** |
+| Highveld (OR Tambo) | 4.37 | 3.03 | −1.34 | 6 of 6 | not shipped: 23 full-five hours of the 24 required |
+| Garden Route (George) | 4.69 | 4.06 | −0.63 | 3 of 6 | not shipped (under 1 km/h) |
+| Western Cape (Cape Town airport) | 5.39 | 5.28 | −0.10 | 5 of 6 | **blocked**: false Windy on calm hours 2 → 5 of 5 |
+| KZN coast (King Shaka) | 6.12 | 6.21 | +0.09 | 3 of 6 | not shipped |
+| Free State (Bloemfontein) | — | — | — | — | no wind in its reports |
+
+- **The Eastern Cape's weights** (learned at Gqeberha): Pirate .38, OM .17, MET .16, WA .15, Tomorrow.io .13 (today's:
+  OM .30, WA .22, MET .20, TI .15, Pirate .13); × k 1.054. Bias +5.8 → +1.7 km/h. The hours (OM, WA, MET, TI) take the
+  same weights renormalised × k4 1.117 — scored by proxy (four-source now value, Fable 4): pooled −0.74 [−1.38, −0.06],
+  not worse, so days 0–1 follow. Windy there: 10 of 10 windy hours caught by today's rule, 9 of 10 by the new one;
+  false Windy on calm hours 5 → 1.
+- **Missing sources** (30 proof hours with fewer than five): 4.95 → 3.67 — no fallback needed. Those hours were nearly
+  all four-source; an hour with one or two sources answering is served by the same weights and is **unscored** (Fable,
+  diff review 2 — no guard added, it would be unscored behaviour too).
+- **The one Windy hour missed:** in the Eastern Cape the new number caught 9 of the 10 windy proof hours where today's
+  rule caught 10; it raised 1 false Windy on calm hours where today's raised 5 (Fable, diff review 3).
+- **Every other region keeps the v5 rule unchanged**, Strand keeps today's blend. `api/_lib/wind-weights.js`, generated
+  by `v6/make-wind-weights.mjs` (`--check` guards drift); `meta.wind.rule` `LW` and `meta.wind.weights` record it.
+- Per source, where the weights come from (proof half, bias km/h): Cape Town airport — OM −16.5, TI −21.2, WA −7.7,
+  MET −2.3, Pirate −1.0 (all read low; Pirate closest); Gqeberha — TI −9.6, OM −4.4, WA +4.7, MET +6.9, Pirate +0.8.
+
+### 13.2 The archive weights — nothing ships
+
+Per region × time of day, the three source guesses' weights averaged, with their own ratio table (2025 → 2026): the
+gain is 0.00–0.14 km/h everywhere, under the 0.5 floor Fable set (it is clearly worse under one guess in the Eastern
+Cape, Highveld and Northern Cape). At 68911 it is clearly worse than today's blend (+2.1 to +3.9). The five regions
+with no live airport keep the v5 table. Gust weights (report only): 10.1–10.3 → 9.4–9.8 km/h on gust-report hours,
+not clear under one guess; gusts stay the largest of three. Live gusts: 1 gust-report hour to learn on — too few.
+
+### 13.3 Strand's station — what it says
+
+- **68911 is in the recorder** (runtime copy reads it at 01/07/13/19 UTC; first scheduled read §13.6). History: Ogimet
+  has nothing before March 2026 (re-checked: January 2025 returns no rows, February 2026 is all NIL) — 2025 does not
+  exist for this station.
+- **The live test at Strand** (10 reports, 25 Sept 18 UTC → 28 Sept 00 UTC; this morning's 06 UTC pair excluded as
+  seen): today's blend off by 5.8 (bias **+5.5, too high**); the Western Cape's own weights would read **16.5 off
+  (+16.5)**, worse on 10 of 10 → the Strand zone keeps today's blend. Each source against the station: OM 3.0 off
+  (−0.8), Tomorrow.io 3.1 (+1.6), WA 5.9 (+1.4), **Pirate 11.2 (+11.2), MET Norway 13.4 (+13.4)**. On the six
+  south-easter reports: station 15 km/h average, the app 20, MET 30, Pirate 26.
+- **The gusts are the miss.** On 27 Sept's south-easter the station's average wind was 18–24 km/h while its gusts were
+  35, 54 and 67; the app's largest gust was 44, 49 and 43. At 00 UTC today the station gusted 50 and the app showed no
+  gust. What Al feels at Strand is the gust.
+- **South-easter correction: no new test** (the same reports twice is not new evidence). The archive's 2026 south-easter
+  reports (209 on 103 days): station 14.9 km/h against today's blend 10.5–13.4 (stand-in models) — they read low on
+  south-easter hours in the archive, while the real sources since 25 Sept read high. No correction ships.
+
+### 13.4 Temperatures must not move
+
+`tests/temp-freeze.test.js`: ten cases — Strand (day and night), Cape Town city, Johannesburg, Durban, Gqeberha, plus
+the shared-weight branches (WA de-duplication, the MET boost at 06:20, Tomorrow.io down, London outside SA). Open-Meteo
+(both requests) and MET Norway recorded verbatim from the free endpoints; WA, Pirate and Tomorrow.io built from the
+recorder's own readings of those sources (no keys on this machine). The golden numbers — now, feels-like, 48 hourly
+temperatures and feels-likes, 7 highs and lows per case — were written by the code **before** the wind change
+(`339896f`, `57565c0`, Gqeberha in `d27067e`; the earlier nine unchanged). Every number is compared exactly. Negative
+controls: a +0.1 °C shift in the now temperature fails it; so does tripling one low weight. After the change it passes
+with Gqeberha's wind moving 22.0 → 19.2 km/h (hours 23.6 → 20.1) and its temperature 17.3 both ways.
+
+### 13.5 The daily scorecard
+
+`review/scorecard.html` in the OneDrive copy, rebuilt at 06:20 SAST by the scheduled task **"ProbablyWeather
+scorecard"** (`review/accuracy/scorecard/install-scorecard.ps1`, runtime copy in `%USERPROFILE%\pw-scorecard\`), from
+the recorder's files only — no network call. One line per spot (Strand vs 68911; Cape Town city vs Cape Town airport,
+said on the line; the six airports): yesterday's high and low, average and strongest wind, the rain word against rain
+at the station, the sky in daytime hours; then the last seven days ("highs within 2° on 3 of 3 days"). Fable's
+wording fixes applied: gusts compared only when the station sent one; the sky from the served condition against the
+most-covered layer; rain = at least two wet reports; the wind rule named per day. First build 28 Sept 13:30 (task
+result 0); Strand's line fills from 29 Sept (the recorder started reading its station today).
+
+### 13.6 Fable, gates, shipped
+
+| Fable call | tokens (harness count) | verdict |
+|---|---:|---|
+| the plan | 105,412 | PROCEED WITH CHANGES — ten, adopted in full before scoring (§4a of the plan) |
+| the diff | 121,930 | SHIP — five non-blocking notes: (1) `make-wind-weights --check` is in the gate chain, not `npm test` (the values are pinned by `wind-v6.test.js`); (2), (3) said in §13.1; (4) no change; (5) applied — the freeze test now names the LW rule |
+| **total** | **227,342** | **cap 200,000 — over by 27,342** (Fable counted ~52k and ~38k; the harness counts its whole context). No further Fable call. |
+
+Gates on the finished tree (`cec40fe`): serial **151 files / 21,325 tests**, image budget, build, bespoke 9, rotation,
+drift guard, seasonal PASS, precision table `--check`, wind table `--check`, wind weights `--check`, fold **80/80**,
+desktop, gate shots 24 — every step exit 0.

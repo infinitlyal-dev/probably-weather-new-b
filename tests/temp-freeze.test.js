@@ -106,5 +106,6 @@ describe('temperatures do not move', () => {
     for (const c of cases) { const b = await run(c); winds.push(b.now.windKph); rules.add(b.meta.wind?.rule); }
     expect(new Set(winds).size).toBeGreaterThan(2);
     expect(rules.size).toBeGreaterThan(1);
+    expect([...rules]).toContain('LW');   // Gqeberha: the v6 own-weights rule (Fable, diff review 5)
   });
 });
