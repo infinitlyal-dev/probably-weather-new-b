@@ -59,6 +59,13 @@ describe('where the rule applies', () => {
     expect([partOf(0), partOf(6), partOf(12), partOf(18), partOf(23)]).toEqual(['night', 'morning', 'afternoon', 'evening', 'evening']);
     expect(median([3, 1, 2])).toBe(2); expect(median([4, 1, 3, 2])).toBe(2.5); expect(median([null, 5])).toBe(5); expect(median([])).toBe(null);
   });
+  it('every region the table covers has a finite ratio for every month and hour (a key mismatch would silently read 1) — Fable, diff review 5', () => {
+    for (const [reg, seasons] of Object.entries(WIND_TABLE.ratios)) for (let m = 1; m <= 12; m++) for (let h = 0; h < 24; h++) {
+      const r = seasons[seasonOf(m)]?.[partOf(h)];
+      expect(Number.isFinite(r), `${reg} month ${m} hour ${h}`).toBe(true);
+    }
+    expect(Object.keys(WIND_TABLE.ratios).sort()).toEqual([...WIND_TABLE.regions].sort());
+  });
   it('a missing raw blend never becomes a number', () => {
     expect(shapeWind({ raw: null, values: [], lat: CT_CITY.lat, lon: CT_CITY.lon, month: 9, hour: 9 }).kph).toBe(null);
   });

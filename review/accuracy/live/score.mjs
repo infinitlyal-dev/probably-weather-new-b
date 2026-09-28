@@ -159,10 +159,13 @@ const synop68911 = new Map();   // 'YYYY-MM-DDTHH' UTC → { kph, gustKph, dir }
 for (const r of spots) for (const line of r.synop?.reports || []) {
   const c = line.split(','); if (c.length < 7 || /NIL/.test(line)) continue;
   const g = c.slice(6).join(',').replace(/=\s*$/, '').trim().split(/\s+/), iw = Number(g[1]?.slice(4, 5)), w = g[4];
-  if (!/^[\d/]\d{4}$/.test(w ?? '') || !(iw === 3 || iw === 4)) continue;
+  // iw 3/4: knots; 0/1: m/s (Fable, diff review 3); anything else is not a usable wind
+  const unit = iw === 3 || iw === 4 ? 1.852 : iw === 0 || iw === 1 ? 3.6 : null;
+  if (!/^[\d/]\d{4}$/.test(w ?? '') || !unit) continue;
   const ff = Number(w.slice(3, 5)); if (!Number.isFinite(ff) || ff === 99) continue;
+  // 910ff only (the gust in the 10 minutes before the report); 911ff (the period's highest) is another quantity, never mixed in
   const s3 = g.indexOf('333'), s5 = g.indexOf('555'), gg = (s3 >= 0 ? g.slice(s3 + 1, s5 > s3 ? s5 : undefined) : []).find((x) => /^910\d\d$/.test(x));
-  synop68911.set(`${c[1]}-${c[2]}-${c[3]}T${c[4]}`, { kph: ff * 1.852, gustKph: gg ? Number(gg.slice(3)) * 1.852 : null, dir: Number(w.slice(1, 3)) * 10 });
+  synop68911.set(`${c[1]}-${c[2]}-${c[3]}T${c[4]}`, { kph: ff * unit, gustKph: gg ? Number(gg.slice(3)) * unit : null, dir: Number(w.slice(1, 3)) * 10 });
 }
 for (const [key, ob] of synop68911) {
   const t = Date.parse(`${key}:00:00Z`);

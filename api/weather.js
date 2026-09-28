@@ -3750,8 +3750,8 @@ function applyVoteConsensus({ key, reason, activeNorms, sourceVotes, windSourceF
 
   const consensusPredicates = {
     storm: (n) => categorizeDesc(n.desc) === 'storm',
-    // 2026-09-22: a source supports 'wind' at 80% of either trigger (20 km/h mean
-    // or 44 km/h gust) — the same under-the-trigger margin B-2 always used.
+    // 2026-09-22: a source supports 'wind' at 80% of either trigger (then 20 km/h mean on
+    // the raw blend, or 44 km/h gust) — the same under-the-trigger margin B-2 always used.
     // 2026-09-28 (review/accuracy/v5): where the corrected wind decides, each source's own wind takes the same
     // correction and the line is 80% of the corrected trigger (27.5 → 22 km/h); elsewhere factor 1, line 25.
     wind:  (n) => (isNum(n.windKph) && n.windKph * windSourceFactor >= windThresholdKph * 0.8) || (isNum(n.gustKph) && n.gustKph >= WIND_NOW_GUST_KPH * 0.8),
