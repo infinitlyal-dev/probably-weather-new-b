@@ -1236,7 +1236,7 @@ big-gust proof hours — under all three guesses. **Most inland stations read th
 |---|---|---|---|
 | **68817 Cape Town harbour (Portnet)** | yes (47 big-gust hours; F1 0.42–0.51 → 0.53–0.59, catch 40–57 → 45–60 %) | city centre (2 km), Foreshore, Roggebaai, De Waterkant, Green Point, Mouille Point, Woodstock, Salt River, Paarden Eiland (1–1.5 km each) — the low city side facing Table Bay; not the slopes, the Atlantic seaboard, the southern suburbs or Milnerton | south-easter ×1.105, south ×0.87, else ×0.85 |
 | **68176 Mara** (Limpopo) | yes (18) | Mara village only | ×0.8 all round |
-| **68911 Strand** | **yes, second push** (§14.6) — big-gust catch 27 → 37–38 %, F1 0.33 → 0.44–0.46 under all three guesses, 63 big-gust hours on 34 days; the off-by only −0.8 to −1.0 km/h (interval crossing zero, reported) | Strand (2.5 km), Gordon's Bay (2), Somerset West's lower town (2), Lwandle, Nomzamo (1 each) — the False Bay flat; not Sir Lowry's Pass, the Helderberg slopes or Stellenbosch | north ×0.8, **east ×1.8 (on the clamp, 32 learning hours)**, all others ×1.14 (the south-easter had 28 learning hours, under 30, so it took the all-direction ratio) |
+| ~~68911 Strand~~ | **shipped in the second push, WITHDRAWN eight minutes later** (§14.7) — big-gust catch 27 → 37–38 %, F1 0.33 → 0.44–0.46 under all three guesses, 63 big-gust hours on 34 days; the off-by only −0.8 to −1.0 km/h (interval crossing zero, reported) | Strand (2.5 km), Gordon's Bay (2), Somerset West's lower town (2), Lwandle, Nomzamo (1 each) — the False Bay flat; not Sir Lowry's Pass, the Helderberg slopes or Stellenbosch | north ×0.8, **east ×1.8 (on the clamp, 32 learning hours)**, all others ×1.14 (the south-easter had 28 learning hours, under 30, so it took the all-direction ratio) |
 | **68668 Mthatha** | yes, second push, by the same bar (16 big-gust hours) | Mthatha (4 km) | 0.86–1.07 — changes almost nothing |
 
 **A discrepancy, said:** PLAN §8.7 (Fable's change 7) made the off-by a reported number, not a bar; the committed
@@ -1297,3 +1297,24 @@ Windy; its nearest station Molteno Reservoir 11 km/h gusting 41 (§14.1's findin
 Gates on `944960b`: serial **153 files / 21,340 tests**, image budget, build, bespoke, rotation, drift guard, seasonal,
 precision, wind table, wind weights and gust table `--check`, fold **80/80**, desktop, gate shots — every step exit 0.
 The scorecard's runtime copy (`%USERPROFILE%\pw-scorecard\`) now carries the day's strongest gust (built by hand: 6 lines).
+
+### 14.7 Strand's correction withdrawn — what went wrong, live
+
+At 15:05 UTC, four minutes after `1b25019` went live, the live check showed **Gordon's Bay with a gust of 108 km/h**
+(68911 had read 59 at 12 UTC). Open-Meteo's bearing there sat in the **east sector, whose ratio 1.8 sat on the clamp
+on 32 learning hours** (Fable had flagged it), and it multiplied **Gordon's Bay's own model gust of 60** — the ratio
+was learned on 68911's grid point, where the models' gusts run far lower (Strand's 37 at the same moment). A station
+ratio carries to a town only if the town's model gust behaves like the station's; the coverage rule checked distance,
+height and exposure, not that. Withdrawn in `01cf992` (pushed 15:08, live 15:08; `towns.json` keeps it under
+`_withdrawn` with the reason); Gordon's Bay's cached answer cleared at 15:15 (60 km/h, raw). **Strand's zone keeps its
+headline rule** (two sources at 25+, §14.2) — that came in the first push and is not affected. Live: Strand showed gusts 67
+(station 59) from ~15:01 to ~15:09, Gordon's Bay 108 from ~15:01 to 15:15 UTC.
+
+What the others carry: the harbour's largest ratio is ×1.105 (south-easter; every other sector ×0.85–0.87) and
+Mthatha's ×0.86–1.07, so the same flaw can move a gust there by ~10 % at most. **What a Strand correction would need:**
+the ratio applied to the station's own grid-point gust (or only where a town's model gust tracks the station's within
+a tolerance), and ≥ 30 learning hours per sector before a clamp value is trusted — the south-easter season (October →
+March) supplies both; re-test when 68911 has four more weeks.
+
+Gates on `01cf992`: serial **153 files / 21,340 tests**, image budget, build, bespoke, rotation, drift guard, seasonal,
+precision, wind table, wind weights and gust table `--check`, fold **80/80**, desktop, gate shots — every step exit 0.
