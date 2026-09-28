@@ -123,9 +123,13 @@ function payload() {
     ok: true,
     // A long place name: the header is part of the budget too.
     location: { name: 'Somerset West, Western Cape', lat: -34.08, lon: 18.85 },
+    // 2026-09-28 (review/accuracy/v5): 46 km/h is `wind` on the server. The phone used to re-derive Windy from the
+    // number over this payload's old `cloudy` key; it now shows the server's key, so the key says what the gate
+    // always measured. (With `cloudy` here, isiXhosa's longest line ran 2 px under the panel handle at 320x488 —
+    // a Home D squeeze for a cloudy, gusty day, recorded in EVAL 12, not fixed here.)
     now: {
       tempC: -1, feelsLikeC: -4, uv: 7, isDay: true, windKph: 46, rainChance: 48,
-      cloudPct: 60, conditionKey: 'cloudy', conditionLabel: 'Cloudy',
+      cloudPct: 60, conditionKey: 'wind', conditionLabel: 'Windy',
       sunrise: `${DATE}T06:20`, sunset: `${DATE}T19:40`,
     },
     hourly, daily,
