@@ -1127,3 +1127,13 @@ result 0); Strand's line fills from 29 Sept (the recorder started reading its st
 Gates on the finished tree (`cec40fe`): serial **151 files / 21,325 tests**, image budget, build, bespoke 9, rotation,
 drift guard, seasonal PASS, precision table `--check`, wind table `--check`, wind weights `--check`, fold **80/80**,
 desktop, gate shots 24 — every step exit 0.
+
+**Shipped:** `git push origin main` `acd15b2` → **`b9349db`** (28 Sept, 11:46 UTC); `/api/version` → `b9349db…` at 11:47.
+Live answers (fresh): Gqeberha `LW` 16.8 → 18.8 km/h, East London `LW` 22.8 → 25.1; Cape Town city `BC` 19.4 → 31.0
+(Windy); Johannesburg `BC` 18.7 → 26.2; Strand `today` 17.7. Live smoke (`scripts/live-smoke.mjs`, phone and desktop,
+five languages): **10/10 legs, 0 console errors, 0 bad responses**.
+
+**Home D:** `home-d` reset to `origin/home-d` (`3a51b40`, as §12.7 said), rebased onto `b9349db` with no conflict, and
+pushed with a lease: `3a51b40` → **`50a2758`**. On the rebased branch: serial **152 files / 21,413**, image budget, build,
+wind table and wind weights `--check`, fold **140/140**, desktop, Home D check 26/26. The preview answers `50a2758` and
+serves Gqeberha `LW` 17.3 → 19.1.
