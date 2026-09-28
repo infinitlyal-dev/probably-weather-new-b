@@ -115,3 +115,37 @@ Full gates (serial suite, image budget, build, bespoke, rotation, drift, seasona
 live smoke; then live now for Strand, Gordon's Bay, Cape Town city and Gqeberha against the nearest station's latest
 report; `home-d` rebased and pushed. Nothing that fails its bar ships; where nothing passes, EVAL says why and what it
 would need.
+
+## 8. Fable's plan review — nine changes, adopted in full before scoring (Fable 5.1, 28 Sept, PROCEED WITH CHANGES)
+
+1. **Tuning budget tighter than proof:** in March–June a setting may add at most **1.0** false per 100 calm hours over
+   R0 (proof keeps + 1.5, upper end ≤ 3) — so the tuning winner does not sit on the proof bar by construction.
+2. **Per-station rows** under every region; a region's pass must **survive leave-one-station-out** (drop the station
+   with the most pumping proof hours, rerun bars 1–3). Exposed sites (lighthouses, headlands, Cape Point/Agulhas class)
+   are named in the station table.
+3. **Corrections (§4) are learned only at 910ff SYNOP stations** — never at a METAR-only site (a missing G is unknown
+   there, so "hours with both" are the gusty hours). A station is a gust station if ≥ 80 % of its reports carry 910ff.
+   METAR sites score the headline rules only (their calm test stands: mean < 20 with no G bounds the gust under ~38).
+4. **Replay fidelity first:** on the recorder's hours since 25 Sept (Strand, the six airports), the archive's R0 at
+   those places against the served decision (Windy agreement) and the served gust (`now.conditionSignals.numeric.
+   gustKph`) against the archive's largest-of-three. If the served gust reads more than 10 % under the archive's, the
+   gap is said and R1's G is tuned on archive gusts scaled by it.
+5. **South-easter caveat, said now:** March–June and July–September both sit mostly outside the south-easter season
+   (October–March). 68911's SE-sector counts are reported first; a sector under 30 learning hours or under 15 pumping
+   proof hours reads **"no evidence"**, not "fails". For §4's ratios only, **alternate weeks** (learn on odd ISO weeks,
+   prove on even, March → today) replace the time split — it doubles SE coverage on both sides. §3 keeps the time
+   split; R2 in §3 is scored on the proof months' even weeks only (out of sample for the ratios).
+6. **Coverage:** overlapping stations → nearest passing station; at runtime a correction applies to the **listed towns**
+   (each within 5 km of its own centre), not the whole circle. EVAL says that a 68911 ratio is likely a floor at
+   Gordon's Bay (the south-easter funnels harder there) and a ceiling at Somerset West.
+7. **§4 bar gains a catch guard:** the share of station ≥ 50 hours with an app gust ≥ 50 must not fall by more than 2
+   points under any guess (alongside F1) — a ratio below 1 must not buy F1 with lost catch. The MAE is reported, not a
+   bar.
+8. **The price in hours:** per region, extra pumping hours caught per extra false call, and the share of each rule's
+   Windy calls that land in the unscored in-between band.
+9. **Multiple testing, said:** ~13 proof tests (12 regions + Strand's zone), one candidate each; at α 0.05 about 0.6
+   false passes are expected — the +5-point floor is the guard. Reported (not a bar): the sign in July–August and in
+   September separately.
+- Minor, applied: a fixture test that 68911's 12 UTC report lands on the 14:00 SAST model hour.
+- Cut, as Fable advised: the Home rule (a gust ≥ 40 always shown) is a product call with existing strings, not tied to
+  a bar. The scorecard gust (already built, `0d999bf`) stays.
