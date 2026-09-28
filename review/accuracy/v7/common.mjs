@@ -18,7 +18,7 @@ export function loadIsd() {
     const id = c[0].slice(0, 5), lat = Number(c[6]), lon = Number(c[7]), end = c[10];
     if (!Number.isFinite(lat) || !Number.isFinite(lon) || (lat === 0 && lon === 0)) continue;
     const prev = out.get(id);
-    if (!prev || end > prev.end) out.set(id, { id, name: c[2], ctry: c[3], lat, lon, elev: Number(c[9]), end });
+    if (!prev || end > prev.end) out.set(id, { id, name: c[2], ctry: c[3], lat, lon, elev: Number(c[8]), end });
   }
   return out;
 }
