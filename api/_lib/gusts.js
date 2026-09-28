@@ -12,7 +12,8 @@ const round1 = (x) => Math.round(x * 10) / 10;
 
 /** Today's gust line for the hero's Windy rung (km/h) — api/weather.js WIND_NOW_GUST_KPH. */
 export const GUST_LINE_TODAY = 55;
-/** A place takes a station's correction only within this distance of one of the towns listed for it. */
+/** A place takes a station's correction only within this distance of one of the towns listed for it (a town may
+ *  carry its own, smaller radius — `km` — where a larger circle would cross a ridge or reach another coast). */
 export const TOWN_KM = 5;
 
 const STRAND_68911 = { lat: -34.1408, lon: 18.8483, km: 15 };
@@ -47,7 +48,7 @@ export function gustStationAt(lat, lon) {
   for (const s of GUST_TABLE.stations) {
     for (const t of s.towns) {
       const d = km(lat, lon, t.lat, t.lon);
-      if (d <= TOWN_KM && (!best || d < best.d)) best = { d, station: s, town: t.name };
+      if (d <= (t.km ?? TOWN_KM) && (!best || d < best.d)) best = { d, station: s, town: t.name };
     }
   }
   return best;
