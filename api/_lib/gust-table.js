@@ -88,7 +88,7 @@ export const GUST_TABLE = {
           "name": "Cape Town (city centre)",
           "lat": -33.92584,
           "lon": 18.42322,
-          "km": 2
+          "km": 1.2
         },
         {
           "name": "Foreshore",

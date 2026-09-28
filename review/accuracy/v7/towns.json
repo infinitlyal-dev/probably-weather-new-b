@@ -3,7 +3,7 @@
   "68817": {
     "why": "Cape Town harbour (Portnet, 2 m): the low-lying city side of Table Mountain and Signal Hill, facing Table Bay. Not the mountain slopes (Tamboerskloof, Oranjezicht, Higgovale: 90-165 m, where the south-easter comes down harder), not the Atlantic seaboard behind Signal Hill (Sea Point, Clifton, Camps Bay), not the southern suburbs in the mountain's lee, not the open coast north (Milnerton, Table View).",
     "towns": [
-      { "name": "Cape Town (city centre)", "lat": -33.92584, "lon": 18.42322, "km": 2 },
+      { "name": "Cape Town (city centre)", "lat": -33.92584, "lon": 18.42322, "km": 1.2 },
       { "name": "Foreshore", "lat": -33.92278, "lon": 18.4409, "km": 1.5 },
       { "name": "Roggebaai", "lat": -33.91667, "lon": 18.43333, "km": 1 },
       { "name": "De Waterkant", "lat": -33.91528, "lon": 18.41667, "km": 1 },
