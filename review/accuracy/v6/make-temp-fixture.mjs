@@ -77,9 +77,13 @@ function tomorrowFrom(om, src, at) {
 }
 
 // ---------- record ----------
+// `--append FAPE` records one more place (Gqeberha — the region the v6 wind change reaches) and appends it, before
+// that change is made, so the freeze test covers a place whose wind moves.
+const APPEND = { FAPE: { name: 'Gqeberha airport', lat: -33.9849, lon: 25.6173, rec: 'FAPE' } };
+const appendArg = process.argv.includes('--append') ? APPEND[process.argv[process.argv.indexOf('--append') + 1]] : null;
 const { precisionUrl } = await import('../../../api/_lib/precision.js');
 const cases = [];
-for (const p of PLACES) {
+for (const p of appendArg ? [appendArg] : PLACES) {
   const rec = latest(p.rec);
   if (!rec) throw new Error(`no recorder reading with sourceNow for ${p.rec}`);
   const sn = Object.fromEntries(rec.api.payload.meta.sourceNow.map((s) => [s.name, s]));
@@ -105,5 +109,6 @@ for (const p of PLACES) {
   await new Promise((r) => setTimeout(r, 1500));
 }
 mkdirSync(path.dirname(OUT), { recursive: true });
+if (appendArg) { const fx = JSON.parse(readFileSync(OUT, 'utf8')); fx.cases.push(...cases); writeFileSync(OUT, JSON.stringify(fx)); console.log(`appended ${appendArg.name} → ${fx.cases.length} cases`); process.exit(0); }
 writeFileSync(OUT, JSON.stringify({ recordedAtUtc: new Date().toISOString(), note: 'review/accuracy/v6/make-temp-fixture.mjs — see its header', cases }));
 console.log(`${cases.length} cases → ${OUT} (${Math.round(readFileSync(OUT).length / 1024)} KB)`);

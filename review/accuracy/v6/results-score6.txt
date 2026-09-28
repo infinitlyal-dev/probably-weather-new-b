@@ -1,0 +1,89 @@
+LIVE window { from: '2026-09-25T16:10:06.605Z', to: '2026-09-28T11:10:01.850Z' } readings {"FACT":{"all":65,"tune":32,"prove":33,"split":"2026-09-27T03:10:01.819Z"},"FAOR":{"all":61,"tune":30,"prove":31,"split":"2026-09-27T04:10:02.205Z"},"FALE":{"all":63,"tune":31,"prove":32,"split":"2026-09-27T04:10:01.397Z"},"FAPE":{"all":60,"tune":30,"prove":30,"split":"2026-09-27T04:10:02.006Z"},"FABL":{"all":0,"tune":0,"prove":0,"split":null},"FAGG":{"all":65,"tune":32,"prove":33,"split":"2026-09-27T03:10:02.223Z"}}
+  LW Western Cape: weights Open-Meteo 0.0855 · WeatherAPI 0.0968 · Pirate 0.4945 · MET 0.2668 · Tomorrow.io 0.0565 | k 1.276 (n 15) k4 1.426
+  LW Highveld: weights Open-Meteo 0.1235 · WeatherAPI 0.1796 · Pirate 0.3301 · MET 0.2076 · Tomorrow.io 0.1593 | k 1.078 (n 12) k4 1.254
+  LW KZN coast: weights Open-Meteo 0.2786 · WeatherAPI 0.1145 · Pirate 0.2073 · MET 0.0999 · Tomorrow.io 0.2997 | k 1.107 (n 12) k4 0.997
+  LW Eastern Cape: weights Open-Meteo 0.1728 · WeatherAPI 0.1496 · Pirate 0.3835 · MET 0.1617 · Tomorrow.io 0.1325 | k 1.054 (n 14) k4 1.117
+  LW Free State: weights Open-Meteo 0 · WeatherAPI 0 · Pirate 0 · MET 0 · Tomorrow.io 0 | k 1 (n 0) k4 1
+  LW Garden Route: weights Open-Meteo 0.2346 · WeatherAPI 0.1887 · Pirate 0.2164 · MET 0.1574 · Tomorrow.io 0.203 | k 1 (n 12) k4 1
+POOLED prove: LW 4.611 vs BC 5.428 -0.82 [-1.35, -0.33] | LW4 4.714 vs BC4 5.457 -0.74 [-1.38, -0.06]
+  Western Cape (FACT, n 33): BC 5.387 (bias 3.38) → LW 5.282 (bias 3.64) | {"diff":-0.105,"blocks":6,"better":5,"worse":1,"full5":29,"ships":false,"blocked":false} | windy {"windyHours":25,"calmHours":5,"nearLine":3,"caughtBC":25,"caughtLW":25,"falseBC":2,"falseLW":5,"blocksLW":true}
+  Highveld (FAOR, n 31): BC 4.365 (bias 2.5) → LW 3.03 (bias -0.77) | {"diff":-1.335,"blocks":6,"better":6,"worse":0,"full5":23,"ships":false,"blocked":false} | windy {"windyHours":0,"calmHours":19,"nearLine":12,"caughtBC":0,"caughtLW":0,"falseBC":1,"falseLW":0,"blocksLW":false}
+  KZN coast (FALE, n 32): BC 6.115 (bias 6.05) → LW 6.207 (bias 6.06) | {"diff":0.091,"blocks":6,"better":3,"worse":3,"full5":27,"ships":false,"blocked":false} | windy {"windyHours":4,"calmHours":21,"nearLine":7,"caughtBC":4,"caughtLW":4,"falseBC":1,"falseLW":1,"blocksLW":false}
+  Eastern Cape (FAPE, n 30): BC 6.649 (bias 5.82) → LW 4.414 (bias 1.65) | {"diff":-2.235,"blocks":6,"better":5,"worse":1,"full5":26,"ships":true,"blocked":false} | windy {"windyHours":10,"calmHours":12,"nearLine":8,"caughtBC":10,"caughtLW":9,"falseBC":5,"falseLW":1,"blocksLW":false}
+  Free State (FABL, n 0): BC null (bias null) → LW null (bias null) | {"diff":0,"blocks":0,"better":0,"worse":0,"full5":0,"ships":false,"blocked":false} | windy {"windyHours":0,"calmHours":0,"nearLine":0,"caughtBC":0,"caughtLW":0,"falseBC":0,"falseLW":0,"blocksLW":false}
+  Garden Route (FAGG, n 33): BC 4.689 (bias 2.81) → LW 4.055 (bias -0.19) | {"diff":-0.634,"blocks":6,"better":3,"worse":3,"full5":24,"ships":false,"blocked":false} | windy {"windyHours":0,"calmHours":27,"nearLine":6,"caughtBC":0,"caughtLW":0,"falseBC":0,"falseLW":0,"blocksLW":false}
+MISSING {"hours":30,"maeLW":3.67,"maeBC":4.952,"fallback":false} GUST {"tuneHours":1,"proveHours":13,"enough":false}
+STRAND live {"reports":10,"from":"2026-09-25T18:00:00.000Z","to":"2026-09-28T00:00:00.000Z","maeToday":5.77,"maeLW":16.47,"biasToday":5.45,"biasLW":16.47,"better":0,"worse":10,"diff":10.7,"passes":false,"blocks":true} 
+  per source [{"source":"Open-Meteo","mae":2.98,"bias":-0.8},{"source":"WeatherAPI","mae":5.89,"bias":1.38},{"source":"Pirate Weather","mae":11.2,"bias":11.2},{"source":"MET Norway","mae":13.43,"bias":13.43},{"source":"Tomorrow.io","mae":3.11,"bias":1.62}] 
+  own weights (report) {"learnedOn":5,"scoredOn":5,"weights":[0,0,0,0,0],"k":1,"mae":null,"maeToday":7.37} 
+  SE live {"reports":6,"stationMean":15.1,"todayMean":20.2,"perSource":[{"source":"Open-Meteo","mean":14.6},{"source":"WeatherAPI","mean":15.8},{"source":"Pirate Weather","mean":25.6},{"source":"MET Norway","mean":30},{"source":"Tomorrow.io","mean":16.3}]} 
+  SE archive {"reports":209,"days":103,"stationMean":14.9,"todayMean":{"old harness":10.5,"ECMWF-heavy":11.1,"mixed":13.4}}
+ARCHIVE AW
+  Western Cape: 3.783→3.753 -0.03 [-0.08, 0.02] | 4.248→4.14 -0.11 [-0.14, -0.07] | 4.001→3.862 -0.14 [-0.19, -0.08] passes false worse false t1bad false
+  West Coast: 3.208→3.2 -0.01 [-0.03, 0.01] | 3.278→3.264 -0.01 [-0.03, -0.00] | 3.163→3.148 -0.01 [-0.03, 0.00] passes false worse false t1bad false
+  Garden Route: 3.253→3.234 -0.02 [-0.04, -0.00] | 3.519→3.444 -0.07 [-0.09, -0.06] | 3.254→3.202 -0.05 [-0.07, -0.03] passes false worse false t1bad false
+  Eastern Cape: 3.791→3.805 0.01 [0.00, 0.02] | 3.952→3.921 -0.03 [-0.04, -0.02] | 3.823→3.805 -0.02 [-0.03, -0.01] passes false worse true t1bad false
+  KZN coast: 3.014→3.02 0.01 [-0.01, 0.02] | 3.057→3.054 -0.00 [-0.01, 0.01] | 2.944→2.932 -0.01 [-0.02, -0.00] passes false worse false t1bad false
+  Highveld: 4.076→4.122 0.05 [0.03, 0.06] | 4.101→4.067 -0.03 [-0.05, -0.02] | 4.129→4.191 0.06 [0.04, 0.08] passes false worse true t1bad false
+  Free State: 3.049→3.037 -0.01 [-0.02, -0.00] | 3.234→3.221 -0.01 [-0.02, -0.00] | 3.064→3.041 -0.02 [-0.03, -0.01] passes false worse false t1bad false
+  Northern Cape: 3.569→3.554 -0.02 [-0.02, -0.01] | 3.719→3.731 0.01 [0.00, 0.02] | 3.598→3.568 -0.03 [-0.05, -0.02] passes false worse true t1bad false
+  North West: 2.883→2.865 -0.02 [-0.03, -0.00] | 3.094→3.046 -0.05 [-0.06, -0.04] | 2.988→2.957 -0.03 [-0.05, -0.01] passes false worse false t1bad false
+  Lowveld: 3.802→3.721 -0.08 [-0.12, -0.05] | 4.315→4.207 -0.11 [-0.13, -0.09] | 3.978→3.856 -0.12 [-0.15, -0.09] passes false worse false t1bad true
+  Limpopo: 3.153→3.113 -0.04 [-0.05, -0.03] | 3.405→3.364 -0.04 [-0.05, -0.03] | 3.26→3.213 -0.05 [-0.06, -0.04] passes false worse false t1bad true
+  AW at 68911 {"old harness":"5.789→8.228 2.44 [1.67, 3.26]","ECMWF-heavy":"5.804→7.908 2.10 [1.30, 2.98]","mixed":"5.625→9.56 3.93 [2.99, 4.93]"}
+  AG (report) {"old harness":"10.24→9.38 -0.86 [-1.63, -0.02]","ECMWF-heavy":"10.13→9.77 -0.36 [-0.58, -0.10]","mixed":"10.32→9.81 -0.51 [-1.16, 0.19]"}
+
+DECISIONS {
+ "pooledLW": true,
+ "pooledLW4ok": true,
+ "regions": {
+  "Western Cape": {
+   "rule": "BC",
+   "why": "false Windy doubled"
+  },
+  "West Coast": {
+   "rule": "BC",
+   "why": "AW not clearly better by ≥ 0.5"
+  },
+  "Garden Route": {
+   "rule": "BC",
+   "why": "LW not clearly better here"
+  },
+  "Eastern Cape": {
+   "rule": "LW",
+   "why": "live minimum-evidence rule met"
+  },
+  "KZN coast": {
+   "rule": "BC",
+   "why": "LW not clearly better here"
+  },
+  "Highveld": {
+   "rule": "BC",
+   "why": "LW not clearly better here"
+  },
+  "Free State": {
+   "rule": "BC",
+   "why": "LW not clearly better here"
+  },
+  "Northern Cape": {
+   "rule": "BC",
+   "why": "AW worse in the archive"
+  },
+  "North West": {
+   "rule": "BC",
+   "why": "AW not clearly better by ≥ 0.5"
+  },
+  "Lowveld": {
+   "rule": "BC",
+   "why": "AW not clearly better by ≥ 0.5"
+  },
+  "Limpopo": {
+   "rule": "BC",
+   "why": "AW not clearly better by ≥ 0.5"
+  }
+ },
+ "hourlyFollowsLW": true,
+ "strandZone": "today",
+ "missingFallback": false,
+ "gusts": "unchanged (largest of three)"
+}
