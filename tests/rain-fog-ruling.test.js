@@ -156,7 +156,10 @@ describe('the hero in five languages', () => {
 
   it('the switch only rewords might-rain: a showers-nearby payload the app shows as wind keeps the wind headline', () => {
     const norm = normalizePayload({ ...payload('showers-nearby', 'rain-possible', 75), now: { ...payload('showers-nearby', 'rain-possible', 75).now, windKph: 32 } });
-    expect(computeHomeDisplayCondition(norm)).toBe('wind');
+    // 2026-09-28 (review/accuracy/v5, Fable plan item 7): with a server key the phone no longer re-derives Windy from
+    // the number — the server's wind rung, which outranks showers-nearby, already decided — so this payload shows
+    // might-rain. Shown as wind (the server's key), the headline is still the wind headline.
+    expect(computeHomeDisplayCondition(norm)).toBe('rain-possible');
     for (const l of LANGS) expect(describeHero(l, 'wind', norm), l).toBe(WEATHER_COPY.headlines.wind[l]);
   });
 });

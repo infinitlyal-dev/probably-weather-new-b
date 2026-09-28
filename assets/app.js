@@ -1791,7 +1791,10 @@ document.addEventListener("DOMContentLoaded", () => {
     if (isDay && apiCondition === 'uv' && !(isTrulyOvercast || isMostlyCloudy || isSignificantCloud) && !uvBlockedByCold) return 'uv';
     if (isNum(dailyRain) && dailyRain >= 30) return 'rain';
     if (apiCondition === 'wind') return 'wind';
-    if (isNum(effectiveWind) && effectiveWind >= 30) return 'wind';
+    // 2026-09-28 (review/accuracy/v5, Fable plan item 7): with a server key the phone never re-derives wind from the
+    // number — the server decided with the corrected wind, its own line and the two-source check. These numeric rungs
+    // serve only a payload with no key.
+    if (!apiCondition && isNum(effectiveWind) && effectiveWind >= 30) return 'wind';
     if (apiCondition === 'fog') return 'fog';
     if (apiCondition === 'cloudy') return 'cloudy';
     const low = norm.todayLow, uv = norm.uvDaily, feels = norm.feelsLike;
@@ -1799,7 +1802,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (isNum(low) && low <= 0) return 'cold';
     if (isNum(hi) && hi >= THRESH.HOT_C) return 'heat';
     if (isDay && isNum(uv) && uv >= 8 && !(isTrulyOvercast || isMostlyCloudy || isSignificantCloud) && !uvBlockedByCold) return 'uv';
-    if (isNum(effectiveWind) && effectiveWind >= 25) return 'wind';
+    if (!apiCondition && isNum(effectiveWind) && effectiveWind >= 25) return 'wind';
     if (isNum(hi) && hi <= 10) return 'cold';
     // FIX-003: positive cloud-cover override — don't show 'clear' if the sky is actually 55%+ cloudy
     if (isMostlyCloudy) return 'cloudy';
@@ -1859,7 +1862,8 @@ document.addEventListener("DOMContentLoaded", () => {
     // wind key is gust-aware; the numeric rung is the fallback for a payload
     // without one.
     if (apiCondition === 'wind') return 'wind';
-    if (isNum(effectiveWind) && effectiveWind >= 30) return 'wind';
+    // 2026-09-28 (review/accuracy/v5, Fable plan item 7): with a server key, no numeric wind rung — see computeTodaysHero.
+    if (!apiCondition && isNum(effectiveWind) && effectiveWind >= 30) return 'wind';
     // FIX-001: rain-possible requires either strong rain signal (≥30%) OR majority source agreement
     if (isNum(imminentRain) && imminentRain >= 30) {
       if (hasMajorityRain || hasMajorityCloudy || !votes.length) return 'rain-possible';
@@ -1877,7 +1881,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (hasMajorityCloudy || !votes.length || isTrulyOvercast || isMostlyCloudy) return 'cloudy';
       debugLog(`[FIX-001] Skipping cloudy: only ${cloudyVotes} source(s) vote cloudy, cloud=${cloud}%`);
     }
-    if (isNum(effectiveWind) && effectiveWind >= 25) return 'wind';
+    if (!apiCondition && isNum(effectiveWind) && effectiveWind >= 25) return 'wind';
     const sky = computeSkyCondition(norm);
     if (sky !== 'clear') return sky;
     // FIX-003: positive cloud-cover override — don't show 'clear' if the sky is actually 55%+ cloudy
@@ -2510,6 +2514,9 @@ document.addEventListener("DOMContentLoaded", () => {
       localHour: meta.localHour ?? null, // correct local hour from API (uses real UTC offset)
       utcOffsetSeconds: meta.utcOffsetSeconds ?? null, // UTC offset for location day-of-week calc
       windKph: isNum(payload.wind_kph) ? payload.wind_kph : (isNum(now.windKph) ? now.windKph : 0), 
+      // 2026-09-28 (review/accuracy/v5): the raw five-source blend beside the corrected number, for the Cape wind
+      // warning, whose 50 km/h line was set on the raw blend and was not part of the test.
+      rawWindKph: isNum(meta.wind?.rawKph) ? meta.wind.rawKph : null,
       maxWindKph: isNum(payload.maxWindKph) ? payload.maxWindKph : null,
       gustKph: isNum(payload.gustKph) ? payload.gustKph : null,
       cloudPct: isNum(now.cloudPct) ? now.cloudPct : (Array.isArray(payload.hourly) && payload.hourly[0] ? payload.hourly[0].cloudPct ?? null : null),
@@ -2564,7 +2571,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let capeWindLine = null, capeWindLineKey = null;
   function renderCapeWind(norm) {
     if (!capeWindBanner) return;
-    const wind = norm.windKph;
+    const wind = isNum(norm.rawWindKph) ? norm.rawWindKph : norm.windKph;
     if (!isCapeWindDismissed() && isWesternCape(activePlace) && isNum(wind) && wind >= 50) {
       const lines = T.capeDr.lines[settings.lang] || T.capeDr.lines.en;
       const label = T.capeDr.warningLabel?.[settings.lang] || T.capeDr.warningLabel?.en || 'WIND WARNING';

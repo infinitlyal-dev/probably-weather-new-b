@@ -43,6 +43,8 @@ import {
 import { consumeProviderBudgets, recordOpenMeteoCallDeferred, OPEN_METEO_PRECISION_UNIT_TENTHS } from './_lib/provider-budget.js';
 import { inSouthAfrica, inLowveld, precisionUrl, precisionConsensus, precisionMix, PRECISION_DAYS, PRECISION_MODELS } from './_lib/precision.js';
 import { frostNightLow, FROST_NOT_HERE } from './_lib/frost.js';
+import { shapeWind, windLine } from './_lib/wind.js';
+import { WIND_TABLE } from './_lib/wind-table.js';
 import { PRECISION_TABLE, PRECISION_TABLE_INLAND } from './_lib/precision-table.js';
 import { regionOf, stationCellOf } from './_lib/regions.js';
 // Launch run (2026-09-25): counters for /api/health, written only on failure.
@@ -1529,6 +1531,8 @@ export default async function handler(req, res) {
           humidity:  curHumPct,
           // 2026-09-26 (review/accuracy/v4): km under si units; recorded for the next fog run, read by nothing else.
           visKm:     isNum(cur.visibility) ? cur.visibility : null,
+          // 2026-09-28 (review/accuracy/v5): its current cloud (0–1 → %), recorded in meta.sourceNow only.
+          cloudPct:  inBounds(cur.cloudCover, [0, 1]) ? toPct(cur.cloudCover) : null,
           sunrise:   solarPair(unixToLocalIso(dly[0]?.sunriseTime, utcOffsetSeconds), unixToLocalIso(dly[0]?.sunsetTime, utcOffsetSeconds), utcOffsetSeconds).sunrise,
           sunset:    solarPair(unixToLocalIso(dly[0]?.sunriseTime, utcOffsetSeconds), unixToLocalIso(dly[0]?.sunsetTime, utcOffsetSeconds), utcOffsetSeconds).sunset,
         };
@@ -2069,6 +2073,9 @@ export default async function handler(req, res) {
     const HOURLY_DESC_WEIGHTS = [1, 0.1, 1, 1]; // [OM, WA, MET, Tomorrow.io] — WA suppressed; TI full weight (radar truth)
 
     // Hourly aggregation (Open-Meteo + WeatherAPI + MET Norway — aligned on local midnight)
+    // 2026-09-28 (review/accuracy/v5): the local month of day 0 and day 1, for the wind table's season.
+    const localMonthOf = (dayOffset) => new Date(Date.now() + utcOffsetSeconds * 1000 + dayOffset * 86400e3).getUTCMonth() + 1;
+    const hourMonths = [localMonthOf(0), localMonthOf(1)];
     const aggregatedHourly = Array.from({ length: 48 }, (_, i) => {
       const hourWindVals = hourlies.map(h => h ? h.winds[i] : null).filter(isNum);
       const hourGustVals = hourlies.map(h => h ? (h.gusts?.[i] ?? null) : null).filter(isNum);
@@ -2077,7 +2084,9 @@ export default async function handler(req, res) {
 
       // Use weighted average of mean wind speeds across sources.
       // Gusts are tracked separately and shown as "(gusts X km/h)" in the UI.
-      const effectiveHourlyWind = avgWind;
+      // 2026-09-28 (review/accuracy/v5, EVAL §12): corrected by the wind table where it was proven (the hour's own
+      // day-part and season); today's blend elsewhere. Days 0–1's day cards read these hours (Fable, plan item 6).
+      const effectiveHourlyWind = shapeWind({ raw: avgWind, values: hourWindVals, lat, lon, month: hourMonths[i < 24 ? 0 : 1], hour: i % 24 }).kph;
 
       // UV: blended across the hourly sources that publish it (Open-Meteo
       // uv_index, WeatherAPI hour.uv; MET compact and Tomorrow.io carry none).
@@ -2385,10 +2394,6 @@ export default async function handler(req, res) {
     const medHumidity  = wAvg(norms, normW, n => n.humidity);
     const medUv        = wAvg(norms, normW, n => n.todayUv);
 
-    // Display the weighted mean wind speed. Gusts (maxWindKph) are passed through
-    // separately for UI display as "(gusts X km/h)" — not inflated into the main number.
-    const effectiveDisplayWind = medWindKph ?? 0;
-
     // When Open-Meteo, Pirate AND WeatherAPI all failed to supply an offset the
     // coordinate estimate seeded above is what every provider block aligned
     // against (item 6). Before 2026-06 the default here was 0 (UTC), which for
@@ -2404,6 +2409,16 @@ export default async function handler(req, res) {
     // e.g. South Africa (UTC+2): 21:31 SAST = 19:31 UTC. Without this fix,
     // we'd read cloudPct for 19:00 instead of 21:00.
     const localHour = Math.floor(((Date.now() / 1000) + utcOffsetSeconds) / 3600) % 24;
+
+    // The wind the app shows (review/accuracy/v5, EVAL §12, 28 Sept 2026): today's weighted blend of the five,
+    // times the wind table's ratio for this region, season and day-part where that rule was proven (Cape Town
+    // airport: off by 7.8 → 3.8 km/h on 2026); today's blend where it was not, or was blocked (near Strand's own
+    // station it read too high). Gusts (maxWindKph) stay separate for the "(gusts X km/h)" line.
+    const windNow = shapeWind({ raw: medWindKph, values: activeNorms.map(n => n.windKph), lat, lon, month: hourMonths[0], hour: localHour });
+    // What the hero's Windy rung reads: the corrected number at its own line where the headline gate passed.
+    const windDecision = windLine(windNow);
+    const effectiveDisplayWind = windNow.kph ?? 0;
+    debugLog(`[Wind] raw blend ${medWindKph} km/h → ${windNow.kph} (${windNow.rule}, ×${windNow.ratio}, ${windNow.region ?? 'no region'}) · Windy line ${windDecision.thresholdKph} on ${windDecision.kph}`);
 
     const currentCloudPct = aggregatedHourly[localHour]?.cloudPct ?? null;
 
@@ -2492,7 +2507,10 @@ export default async function handler(req, res) {
       rainChance: currentHourRainChance,
       tempC:      medNowTemp,
       feelsLikeC: finalFeelsLike,
-      windKph:    medWindKph,
+      // 2026-09-28 (review/accuracy/v5): the corrected wind at 27.5 where the headline gate passed; the raw blend at
+      // today's 25 elsewhere (api/_lib/wind.js windLine). Kept in the inputs so a cache hit re-derives the same way.
+      windKph:    windDecision.kph,
+      windThresholdKph: windDecision.thresholdKph,
       uvIndex:    uvForCondition,
       cloudPct:   currentCloudPct,
       maxWindKph,
@@ -2515,7 +2533,8 @@ export default async function handler(req, res) {
     // (applyVoteConsensus, below deriveCondition) so the accuracy harness in
     // review/accuracy/ replays exactly the code production runs.
     {
-      const consensus = applyVoteConsensus({ key: nowConditionKey, reason: nowConditionReason, activeNorms, sourceVotes: sourceConditionVotes });
+      const consensus = applyVoteConsensus({ key: nowConditionKey, reason: nowConditionReason, activeNorms, sourceVotes: sourceConditionVotes,
+        windSourceFactor: windDecision.sourceFactor, windThresholdKph: windDecision.thresholdKph });
       nowConditionKey = consensus.key;
       nowConditionReason = consensus.reason;
       nowOverrides.push(...consensus.overrides);
@@ -2691,7 +2710,9 @@ export default async function handler(req, res) {
         rainChance: currentHourRainChance,
         tempC: medNowTemp,
         feelsLikeC: finalFeelsLike,
-        windKph: medWindKph,
+        windKph: windDecision.kph,
+        rawWindKph: medWindKph,
+        windThresholdKph: windDecision.thresholdKph,
         uvIndex: uvForCondition,
         cloudPct: currentCloudPct,
         dailyHighC: aggregatedDaily?.[0]?.highC ?? null,
@@ -2762,6 +2783,18 @@ export default async function handler(req, res) {
         // strict today-range goes null at late local hours — keeps the
         // Sources page populated for all four sources without polluting the
         // consensus aggregator that still uses todayHigh / todayLow strictly.
+        // Wind (review/accuracy/v5, EVAL §12): the raw blend beside the number shown, the rule and ratio that made
+        // it, and the Windy line the hero read — the recorder scores both layers against the airports and Strand.
+        wind: {
+          table: WIND_TABLE.id,
+          rule: windNow.rule,
+          region: windNow.region,
+          ratio: windNow.ratio,
+          rawKph: windNow.rawKph,
+          kph: windNow.kph,
+          heroKph: windDecision.kph,
+          heroThresholdKph: windDecision.thresholdKph,
+        },
         // Precision (api/_lib/precision.js): what happened, and the consensus beside the blend for each
         // day it touched, so the recorder can score both (Fable, plan review: shadow mode).
         precision: {
@@ -2808,6 +2841,9 @@ export default async function handler(req, res) {
             // 2026-09-26 (review/accuracy/v4 §1): each source's own visibility now, so the recorder builds the
             // history the next fog run needs (WeatherAPI, Pirate and MET Norway keep none). MET: none offered.
             visKm: sourceVisKm(n, h, localHour),
+            // 2026-09-28 (review/accuracy/v5 §5): each source's own cloud for this hour (Pirate: its current cloud),
+            // recording only — the sky test had no live per-source cloud to check against.
+            cloudPct: isNum(h?.clouds?.[localHour]) ? h.clouds[localHour] : (isNum(n.cloudPct) ? n.cloudPct : null),
           };
         }),
         sourceToday: activeNorms.map((n) => ({
@@ -3447,11 +3483,14 @@ function calcFeelsLike(tempC, windKph, humidity) {
  * @param {number}  [params.gustKph]    - now: largest current gust any source reports
  * @returns {string} condition key
  */
-function deriveCondition({ desc, rainChance, tempC, feelsLikeC, windKph, uvIndex, cloudPct, maxWindKph, isDay = true, dailyHighC, dailyLowC, sourceDescs, now = false, precipMm, rainVotes, gustKph }) {
+function deriveCondition({ desc, rainChance, tempC, feelsLikeC, windKph, uvIndex, cloudPct, maxWindKph, isDay = true, dailyHighC, dailyLowC, sourceDescs, now = false, precipMm, rainVotes, gustKph, windThresholdKph }) {
   const d = String(desc || '').toLowerCase();
 
   // Use mean wind speed for condition thresholds. Gusts are displayed separately in the UI.
   const effectiveWind = windKph;
+  // now: the Windy line for the number given (review/accuracy/v5, 28 Sept 2026: 27.5 on the corrected wind where
+  // that rule applies — api/_lib/wind.js windLine; today's 25 on the raw blend everywhere else).
+  const windNowLine = isNum(windThresholdKph) ? windThresholdKph : WIND_NOW_MEAN_KPH;
 
   // Cloud cover classification
   const isTrulyOvercast    = isNum(cloudPct) && cloudPct >= 80;
@@ -3588,7 +3627,7 @@ function deriveCondition({ desc, rainChance, tempC, feelsLikeC, windKph, uvIndex
     // 6n. Wind — above UV, might-rain and cloud: a fresh breeze IS the weather.
     //     Gusts count (Al, 2026-09-22): the models' mean wind reads ~40% under the
     //     anemometer at Cape Town and Johannesburg; the gust does not.
-    if (isNum(effectiveWind) && effectiveWind >= WIND_NOW_MEAN_KPH) return { key: 'wind', reason: 'sustained-wind' };
+    if (isNum(effectiveWind) && effectiveWind >= windNowLine)       return { key: 'wind', reason: 'sustained-wind' };
     if (isNum(gustKph) && gustKph >= WIND_NOW_GUST_KPH)             return { key: 'wind', reason: 'gust-wind' };
     // 7n. High UV — daytime only, not overcast, not significantly cloudy, not a cold day
     if (highUv) return { key: 'uv', reason: 'high-uv-with-temp-gate' };
@@ -3676,7 +3715,7 @@ function deriveCondition({ desc, rainChance, tempC, feelsLikeC, windKph, uvIndex
  * the audit-trail entries; the caller appends them to nowOverrides. Exported so
  * review/accuracy/lib/replay.mjs runs this exact function.
  */
-function applyVoteConsensus({ key, reason, activeNorms, sourceVotes }) {
+function applyVoteConsensus({ key, reason, activeNorms, sourceVotes, windSourceFactor = 1, windThresholdKph = WIND_NOW_MEAN_KPH }) {
   const overrides = [];
   // 2026-09-22: a might-rain from the hour's blended probability (rain-possible-prob,
   // ≥ 30% across the sources) is already a multi-source verdict, not one source's
@@ -3713,7 +3752,9 @@ function applyVoteConsensus({ key, reason, activeNorms, sourceVotes }) {
     storm: (n) => categorizeDesc(n.desc) === 'storm',
     // 2026-09-22: a source supports 'wind' at 80% of either trigger (20 km/h mean
     // or 44 km/h gust) — the same under-the-trigger margin B-2 always used.
-    wind:  (n) => (isNum(n.windKph) && n.windKph >= WIND_NOW_MEAN_KPH * 0.8) || (isNum(n.gustKph) && n.gustKph >= WIND_NOW_GUST_KPH * 0.8),
+    // 2026-09-28 (review/accuracy/v5): where the corrected wind decides, each source's own wind takes the same
+    // correction and the line is 80% of the corrected trigger (27.5 → 22 km/h); elsewhere factor 1, line 25.
+    wind:  (n) => (isNum(n.windKph) && n.windKph * windSourceFactor >= windThresholdKph * 0.8) || (isNum(n.gustKph) && n.gustKph >= WIND_NOW_GUST_KPH * 0.8),
     heat:  (n) => (isNum(n.nowTemp) && n.nowTemp >= HEAT_WARM_C) || (isNum(n.feelsLike) && n.feelsLike >= HEAT_EXTREME_C),
     cold:  (n) => (isNum(n.nowTemp) && n.nowTemp <= 10) || (isNum(n.feelsLike) && n.feelsLike <= -5),
   };
