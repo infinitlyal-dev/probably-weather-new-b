@@ -1318,3 +1318,12 @@ March) supplies both; re-test when 68911 has four more weeks.
 
 Gates on `01cf992`: serial **153 files / 21,340 tests**, image budget, build, bespoke, rotation, drift guard, seasonal,
 precision, wind table, wind weights and gust table `--check`, fold **80/80**, desktop, gate shots — every step exit 0.
+
+**Home D:** `home-d` rebased onto `f8caf7d` with no conflict and pushed with a lease: `50a2758` → **`daa5872`**; the
+preview answers `daa5872` (15:48 UTC). On the rebased branch: serial 153 of 154 files (one load test, the 5,000-install
+burst in `shared-ip-daily-limit.test.js`, timed out at 120 s under load and passed alone, 47/47), image budget, build,
+wind table, wind weights and gust table `--check`, fold **140/140** (five languages), desktop, Home D check **26/26**.
+
+**Live at 15:47 UTC** (68911's latest report is 12 UTC; the next is 18 UTC): Strand 26.3 km/h, **Windy**, gust 37 (not
+shown: under 40) against the station's 28 gusting 59; Gordon's Bay 29.4, **Windy**, gusts 60 shown; Cape Town city
+31.8, Windy, gusts 62 (×1.105 harbour); Gqeberha 13, clear (Ngqura 11, gust 15).
