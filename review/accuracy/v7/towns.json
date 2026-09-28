@@ -70,41 +70,6 @@
       }
     ]
   },
-  "68911": {
-    "why": "Strand (68911, 7 m, on the False Bay shore): the flat False Bay side below the Helderberg and Hottentots-Holland — Strand, Gordon's Bay, the lower town of Somerset West, Lwandle and Nomzamo. Not Sir Lowry's Pass village (on the pass, 93 m), not the Helderberg slopes, not Stellenbosch or Grabouw (over the mountains). Fable: the station's ratio is likely a floor at Gordon's Bay (the south-easter funnels harder there) and a ceiling in Somerset West.",
-    "towns": [
-      {
-        "name": "Strand",
-        "lat": -34.10687,
-        "lon": 18.82751,
-        "km": 2.5
-      },
-      {
-        "name": "Gordon's Bay",
-        "lat": -34.1575,
-        "lon": 18.866,
-        "km": 2
-      },
-      {
-        "name": "Somerset West (lower town)",
-        "lat": -34.08401,
-        "lon": 18.82113,
-        "km": 2
-      },
-      {
-        "name": "Lwandle",
-        "lat": -34.1208,
-        "lon": 18.86415,
-        "km": 1
-      },
-      {
-        "name": "Nomzamo",
-        "lat": -34.11395,
-        "lon": 18.85202,
-        "km": 1
-      }
-    ]
-  },
   "68668": {
     "why": "Mthatha airport (68668, 731 m) on the plateau: Mthatha itself, 11 km east and 37 m lower, the same open inland plateau with no ridge between. The villages around the airport are left out (not checked one by one).",
     "towns": [
@@ -115,5 +80,46 @@
         "km": 4
       }
     ]
+  },
+  "_withdrawn": {
+    "68911": {
+      "when": "28 Sept 2026 15:05 UTC, eight minutes after 1b25019 went live",
+      "why": "Live, Gordon's Bay showed a gust of 108 km/h: Open-Meteo's bearing sat in the east sector, whose ratio 1.8 (on the clamp, 32 learning hours) multiplied Gordon's Bay's own model gust of 60 (68911 read 59 at 12 UTC). The ratio was learned on 68911's own grid point, whose model gusts run far lower (Strand 37 at the same moment), so it does not carry to a neighbouring grid point. Withdrawn; Strand's headline rule (two sources at 25+) stays.",
+      "was": {
+        "why": "Strand (68911, 7 m, on the False Bay shore): the flat False Bay side below the Helderberg and Hottentots-Holland — Strand, Gordon's Bay, the lower town of Somerset West, Lwandle and Nomzamo. Not Sir Lowry's Pass village (on the pass, 93 m), not the Helderberg slopes, not Stellenbosch or Grabouw (over the mountains). Fable: the station's ratio is likely a floor at Gordon's Bay (the south-easter funnels harder there) and a ceiling in Somerset West.",
+        "towns": [
+          {
+            "name": "Strand",
+            "lat": -34.10687,
+            "lon": 18.82751,
+            "km": 2.5
+          },
+          {
+            "name": "Gordon's Bay",
+            "lat": -34.1575,
+            "lon": 18.866,
+            "km": 2
+          },
+          {
+            "name": "Somerset West (lower town)",
+            "lat": -34.08401,
+            "lon": 18.82113,
+            "km": 2
+          },
+          {
+            "name": "Lwandle",
+            "lat": -34.1208,
+            "lon": 18.86415,
+            "km": 1
+          },
+          {
+            "name": "Nomzamo",
+            "lat": -34.11395,
+            "lon": 18.85202,
+            "km": 1
+          }
+        ]
+      }
+    }
   }
 }

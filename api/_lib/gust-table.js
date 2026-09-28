@@ -164,55 +164,6 @@ export const GUST_TABLE = {
           "km": 1.5
         }
       ]
-    },
-    {
-      "id": "68911",
-      "name": "STRAND",
-      "lat": -34.15,
-      "lon": 18.85,
-      "sectors": [
-        0.8,
-        1.14,
-        1.8,
-        1.14,
-        1.14,
-        1.14,
-        1.14,
-        1.14
-      ],
-      "headline": true,
-      "towns": [
-        {
-          "name": "Strand",
-          "lat": -34.10687,
-          "lon": 18.82751,
-          "km": 2.5
-        },
-        {
-          "name": "Gordon's Bay",
-          "lat": -34.1575,
-          "lon": 18.866,
-          "km": 2
-        },
-        {
-          "name": "Somerset West (lower town)",
-          "lat": -34.08401,
-          "lon": 18.82113,
-          "km": 2
-        },
-        {
-          "name": "Lwandle",
-          "lat": -34.1208,
-          "lon": 18.86415,
-          "km": 1
-        },
-        {
-          "name": "Nomzamo",
-          "lat": -34.11395,
-          "lon": 18.85202,
-          "km": 1
-        }
-      ]
     }
   ]
 };
