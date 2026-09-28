@@ -1,0 +1,178 @@
+rows 206607 · train 112477 · test 94130
+
+== WIND (MAE km/h, 2026, t0 now value / t1 hourly)
+-- old harness
+  B0   t0 4.078 bias -1.057 windy 1324/2887 false 1477 | t1h 4.352
+  M    t0 4.151 bias -1.137 windy 1294/2887 false 1498 | t1h 4.395 | vs B0 t0 0.07 [0.06, 0.08] t1 0.04 [0.01, 0.06]
+  BC   t0 3.529 bias 0.121 windy 2339/2887 false 3142 | t1h 3.813 | vs B0 t0 -0.55 [-0.61, -0.49] t1 -0.54 [-0.59, -0.48]
+  MC   t0 3.6 bias 0.01 windy 2267/2887 false 3090 | t1h 3.848 | vs B0 t0 -0.48 [-0.53, -0.42] t1 -0.50 [-0.56, -0.44]
+  SW   t0 3.975 bias -1.073 windy 1390/2887 false 1403
+  SWC  t0 3.487 bias 0.048 windy 2360/2887 false 3076
+-- ECMWF-heavy
+  B0   t0 4.341 bias -1.284 windy 1258/2887 false 1603 | t1h 4.769
+  M    t0 4.523 bias -1.132 windy 1338/2887 false 1959 | t1h 4.852 | vs B0 t0 0.18 [0.17, 0.20] t1 0.08 [0.05, 0.13]
+  BC   t0 3.738 bias -0.173 windy 2279/2887 false 3005 | t1h 4.252 | vs B0 t0 -0.60 [-0.66, -0.55] t1 -0.52 [-0.57, -0.46]
+  MC   t0 3.962 bias -0.045 windy 2251/2887 false 3390 | t1h 4.364 | vs B0 t0 -0.38 [-0.44, -0.32] t1 -0.40 [-0.48, -0.33]
+  SW   t0 4.254 bias -1.371 windy 1256/2887 false 1497
+  SWC  t0 3.659 bias 0.016 windy 2384/2887 false 3461
+-- mixed
+  B0   t0 4.167 bias -1.268 windy 1242/2887 false 1450 | t1h 4.576
+  M    t0 4.256 bias -1.258 windy 1334/2887 false 1556 | t1h 4.778 | vs B0 t0 0.09 [0.08, 0.10] t1 0.20 [0.16, 0.25]
+  BC   t0 3.588 bias -0.12 windy 2309/2887 false 2969 | t1h 4.053 | vs B0 t0 -0.58 [-0.64, -0.52] t1 -0.52 [-0.58, -0.47]
+  MC   t0 3.692 bias -0.141 windy 2280/2887 false 3029 | t1h 4.287 | vs B0 t0 -0.48 [-0.53, -0.42] t1 -0.29 [-0.35, -0.22]
+  SW   t0 4.031 bias -1.238 windy 1388/2887 false 1383
+  SWC  t0 3.539 bias 0.066 windy 2405/2887 false 3296
+live (real sources): {"B0":"5.821 —","M":"5.107 -0.71 [-1.26, -0.08]","BC":"4.739 -1.08 [-1.51, 0.00]","MC":"4.869 -0.95 [-1.38, -0.31]"} n 299
+
+== HEADLINE {"M":{"T":35,"old harness":"0.536→0.556 0.02 [0.01, 0.03] P 0.471→0.556 R 0.621→0.555","ECMWF-heavy":"0.543→0.57 0.03 [0.01, 0.04] P 0.487→0.588 R 0.613→0.554","mixed":"0.491→0.511 0.02 [0.00, 0.03] P 0.452→0.549 R 0.538→0.478"},"BC":{"T":27.5,"old harness":"0.536→0.591 0.06 [0.04, 0.07] P 0.471→0.49 R 0.621→0.745","ECMWF-heavy":"0.543→0.595 0.05 [0.04, 0.07] P 0.487→0.51 R 0.613→0.714","mixed":"0.491→0.586 0.09 [0.07, 0.12] P 0.452→0.5 R 0.538→0.707"},"MC":{"T":30,"old harness":"0.536→0.593 0.06 [0.04, 0.07] P 0.471→0.535 R 0.621→0.664","ECMWF-heavy":"0.543→0.586 0.04 [0.03, 0.06] P 0.487→0.538 R 0.613→0.643","mixed":"0.491→0.569 0.08 [0.06, 0.10] P 0.452→0.533 R 0.538→0.612"}}
+
+== GUSTS
+  old harness: G0 10.238 F1 0.281 · GM 9.707 -0.53 [-1.30, 0.29] F1 0.376 · G0C 9.994 -0.24 [-0.68, 0.25] F1 0.266 · GMC 10.151 -0.09 [-0.64, 0.48] F1 0.294
+  ECMWF-heavy: G0 10.13 F1 0.306 · GM 9.885 -0.25 [-0.51, 0.05] F1 0.338 · G0C 9.82 -0.31 [-0.71, 0.08] F1 0.305 · GMC 10.735 0.60 [-0.03, 1.26] F1 0.258
+  mixed: G0 10.316 F1 0.296 · GM 10.59 0.27 [-0.23, 0.77] F1 0.326 · G0C 9.974 -0.34 [-0.75, 0.10] F1 0.284 · GMC 11.39 1.07 [0.69, 1.46] F1 0.247
+  live: {"G0":"11.255 n14 —","GM":"12.923 n14 1.67 [0.50, 1.96]","G0C":"10.677 n14 -0.58 [-0.91, 3.39]","GMC":"11.281 n14 0.03 [-3.38, 2.21]"}
+
+== SKY (share right)
+  old harness: S0 0.6479 S4 0.6451 S5 0.6521 | S5−S0 0.00 [0.00, 0.01] S4−S0 -0.00 [-0.01, -0.00] | false cloudy 0.1427→0.1439 missed 0.0241→0.0231
+  ECMWF-heavy: S0 0.6428 S4 0.6428 S5 0.6428 | S5−S0 0.00 [0.00, 0.00] S4−S0 0.00 [0.00, 0.00] | false cloudy 0.1428→0.1428 missed 0.0318→0.0318
+  mixed: S0 0.6425 S4 0.6377 S5 0.6434 | S5−S0 0.00 [-0.00, 0.01] S4−S0 -0.00 [-0.01, -0.00] | false cloudy 0.1428→0.1484 missed 0.0317→0.025
+
+== STRAND 68911 reports 711 {"2026-03":76,"2026-04":107,"2026-05":102,"2026-06":90,"2026-07":118,"2026-08":124,"2026-09":80}
+  old harness: B0 5.789 bias -2.035 · M 6.055 bias -2.095 0.27 [0.15, 0.38] · BC 7.709 bias 4.428 1.92 [1.14, 2.77] · MC 8.14 bias 4.333 2.35 [1.57, 3.20] (n 697)
+  ECMWF-heavy: B0 5.804 bias -1.483 · M 5.801 bias -0.95 -0.00 [-0.16, 0.13] · BC 8.052 bias 5.311 2.25 [1.41, 3.15] · MC 8.551 bias 6.165 2.75 [1.82, 3.71] (n 697)
+  mixed: B0 5.625 bias 0.12 · M 5.592 bias -0.338 -0.03 [-0.18, 0.10] · BC 9.171 bias 7.877 3.55 [2.65, 4.46] · MC 8.771 bias 7.144 3.15 [2.28, 4.01] (n 697)
+  south-easter {"reports":209,"daysFirstHalf":55,"daysSecondHalf":49,"enough":true,"byGuess":{"old harness|B0":{"ratio":1.423,"boot":{"diff":-0.45836154853647193,"lo":-1.3241051439654044,"hi":0.39313999910740055,"days":12,"n":105},"mae":6.883,"maeBefore":7.341},"old harness|M":{"ratio":1.458,"boot":{"diff":-0.4151381724739276,"lo":-1.2969277354357023,"hi":0.5158261704954671,"days":12,"n":105},"mae":7.314,"maeBefore":7.73},"old harness|BC":{"ratio":0.89,"boot":{"diff":-0.3282714468778329,"lo":-0.7305846748944775,"hi":0.05605015123864335,"days":12,"n":105},"mae":6.883,"maeBefore":7.211},"old harness|MC":{"rati
+
+== DECISIONS {
+ "wind": {
+  "M": {
+   "passes": false,
+   "t0ok": false,
+   "t1bad": true,
+   "liveBad": false,
+   "meanMae": 4.31,
+   "blocked": [
+    "Western Cape",
+    "West Coast",
+    "Garden Route",
+    "Eastern Cape",
+    "KZN coast",
+    "Highveld",
+    "Free State",
+    "Northern Cape",
+    "North West",
+    "Lowveld",
+    "Limpopo"
+   ]
+  },
+  "BC": {
+   "passes": true,
+   "t0ok": true,
+   "t1bad": false,
+   "liveBad": false,
+   "meanMae": 3.618,
+   "blocked": [],
+   "liveSignBlocked": []
+  },
+  "MC": {
+   "passes": true,
+   "t0ok": true,
+   "t1bad": false,
+   "liveBad": false,
+   "meanMae": 3.751,
+   "blocked": [
+    "North West",
+    "Lowveld",
+    "Limpopo"
+   ],
+   "liveSignBlocked": []
+  },
+  "ship": "BC",
+  "strandBlocked": true,
+  "westernCapeUnclamped": false
+ },
+ "headline": {
+  "rule": "BC",
+  "T": 27.5,
+  "recallOk": true,
+  "f1Bad": false,
+  "ships": true
+ },
+ "gust": {
+  "GM": {
+   "passes": false,
+   "maeOk": false,
+   "f1ok": true,
+   "f1bad": false,
+   "fewerFalse": true,
+   "liveBad": true,
+   "meanMae": 10.061,
+   "meanF1": 0.347,
+   "blocked": [
+    "Eastern Cape",
+    "Highveld",
+    "North West"
+   ]
+  },
+  "G0C": {
+   "passes": false,
+   "maeOk": false,
+   "f1ok": false,
+   "f1bad": true,
+   "fewerFalse": false,
+   "liveBad": false,
+   "meanMae": 9.929,
+   "meanF1": 0.285,
+   "blocked": [
+    "Western Cape",
+    "Highveld",
+    "Free State",
+    "Northern Cape",
+    "Limpopo"
+   ]
+  },
+  "GMC": {
+   "passes": false,
+   "maeOk": false,
+   "f1ok": false,
+   "f1bad": true,
+   "fewerFalse": false,
+   "liveBad": false,
+   "meanMae": 10.759,
+   "meanF1": 0.266,
+   "blocked": [
+    "Western Cape",
+    "Eastern Cape",
+    "Highveld",
+    "Free State",
+    "Northern Cape",
+    "Limpopo"
+   ]
+  },
+  "ship": null
+ },
+ "sky": {
+  "S5": {
+   "passes": false,
+   "blocked": []
+  },
+  "S4": {
+   "passes": false,
+   "blocked": [
+    "Highveld",
+    "Free State",
+    "Northern Cape"
+   ]
+  }
+ },
+ "strandSouthEaster": {
+  "base": "B0",
+  "ships": false,
+  "ratios": {
+   "old harness": 1.423,
+   "ECMWF-heavy": 1.352,
+   "mixed": 1.115
+  }
+ }
+}
+EXIT 0

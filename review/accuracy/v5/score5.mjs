@@ -228,7 +228,7 @@ if (existsSync(LIVE_DIR)) {
     if (!rep || !isNum(rep.wspd)) continue;
     const sast = new Date(at + 2 * 3600e3), day = sast.toISOString().slice(0, 10), h = sast.getUTCHours();
     const src = Object.fromEntries(p.meta.sourceNow.map((s) => [s.name, s]));
-    live.push({ key: `${x.icao}|${new Date(at).toISOString()}`, block: String(Math.floor(at / 86400e3)),   // 24-h blocks (Fable 1) region: REGION_OF[x.icao], season: SEASON(day), part: PART(h), obsWind: rep.wspd * 1.852, obsGust: isNum(rep.wgst) ? rep.wgst * 1.852 : null,
+    live.push({ key: `${x.icao}|${new Date(at).toISOString()}`, block: String(Math.floor(at / 86400e3)), /* 24-h blocks (Fable 1) */ region: REGION_OF[x.icao], season: SEASON(day), part: PART(h), obsWind: rep.wspd * 1.852, obsGust: isNum(rep.wgst) ? rep.wgst * 1.852 : null,
       served: p.now.windKph, med: median(['Open-Meteo', 'WeatherAPI', 'Pirate Weather', 'MET Norway', 'Tomorrow.io'].map((n) => src[n]?.windKph)),
       g0: (() => { const v = ['Open-Meteo', 'WeatherAPI', 'Pirate Weather'].map((n) => src[n]?.gustKph).filter(isNum); return v.length ? Math.max(...v) : null; })(),
       gm: median(['Open-Meteo', 'WeatherAPI', 'Pirate Weather'].map((n) => src[n]?.gustKph)) });
@@ -285,7 +285,7 @@ if (syn.size && existsSync(path.join(DATA, 'runs-68911-best_match.json'))) {
   const half = Math.floor(se.length / 2), A = se.slice(0, half), Bh = se.slice(half);
   const dA = new Set(A.map((r) => r.day)).size, dB = new Set(Bh.map((r) => r.day)).size;
   out.strand.southEaster = { reports: se.length, daysFirstHalf: dA, daysSecondHalf: dB, enough: dA >= 14 && dB >= 14, byGuess: {} };
-  if (dA >= 14 && dB >= 14) for (const g of G) for (const n of ['M', 'BC', 'MC']) {
+  if (dA >= 14 && dB >= 14) for (const g of G) for (const n of ['B0', 'M', 'BC', 'MC']) {   // B0: the base where the rule is blocked at Strand
     const fa = (r) => cand[n].now(r, g); const o = mean(A.map((r) => r.obsWind)), fcm = mean(A.map(fa)); const k = isNum(fcm) && fcm > 0 ? clamp(o / fcm, 0.4, 2.5) : 1;
     out.strand.southEaster.byGuess[`${g}|${n}`] = { ratio: round(k, 3), boot: pairBoot(Bh, (r) => (isNum(fa(r)) ? fa(r) * k : null), fa), mae: round(mean(Bh.map((r) => Math.abs(fa(r) * k - r.obsWind))), 3), maeBefore: round(mean(Bh.map((r) => Math.abs(fa(r) - r.obsWind))), 3) };
   }
@@ -305,6 +305,8 @@ if (dec.wind.ship) { const n = dec.wind.ship;
   dec.headline = { rule: n, T: Tpick[n], recallOk, f1Bad, ships: recallOk && !f1Bad };
   if (out.strand.transfer) dec.wind.strandBlocked = G.some((g) => clear95(out.strand.transfer[g][n].boot, +1));
   if (out.strand.capLift?.[n]) dec.wind.westernCapeUnclamped = G.every((g) => clear95(out.strand.capLift[n][g].boot, -1)); }
+// PLAN §6: the south-easter ratio at Strand, on the base that applies there (today's blend where the rule is blocked)
+if (out.strand.southEaster?.enough) { const base = dec.wind.ship && !dec.wind.strandBlocked ? dec.wind.ship : 'B0'; dec.strandSouthEaster = { base, ships: G.every((g) => clear95(out.strand.southEaster.byGuess[`${g}|${base}`]?.boot, -1)), ratios: Object.fromEntries(G.map((g) => [g, out.strand.southEaster.byGuess[`${g}|${base}`]?.ratio])) }; }
 for (const n of ['GM', 'G0C', 'GMC']) {
   const maeOk = G.every((g) => clear95(out.gust[g].boot[n], -1)), f1bad = G.some((g) => clear95(out.gust[g].bigF1[n].boot, -1)), liveBad = clear95(out.live.gust[n]?.boot, +1);
   // Fable 4: the ratio rules are gated on the all-hours big-gust F1 (clearly better) and false big gusts on no-gust-group hours (not more than G0's)

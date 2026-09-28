@@ -1,0 +1,10059 @@
+{
+ "plan": "review/accuracy/v5/PLAN.md",
+ "train": {
+  "from": "2025-01-01",
+  "to": "2025-12-31"
+ },
+ "test": {
+  "from": "2026-01-01",
+  "to": "2026-09-24"
+ },
+ "tables": {
+  "B": {
+   "Western Cape": {
+    "DJF": {
+     "night": 1.6,
+     "morning": 1.6,
+     "afternoon": 1.6,
+     "evening": 1.6
+    },
+    "MAM": {
+     "night": 1.6,
+     "morning": 1.6,
+     "afternoon": 1.6,
+     "evening": 1.6
+    },
+    "JJA": {
+     "night": 1.6,
+     "morning": 1.6,
+     "afternoon": 1.6,
+     "evening": 1.6
+    },
+    "SON": {
+     "night": 1.6,
+     "morning": 1.6,
+     "afternoon": 1.6,
+     "evening": 1.6
+    }
+   },
+   "West Coast": {
+    "DJF": {
+     "night": 0.79,
+     "morning": 1.029,
+     "afternoon": 1.091,
+     "evening": 0.964
+    },
+    "MAM": {
+     "night": 0.744,
+     "morning": 0.804,
+     "afternoon": 1.119,
+     "evening": 0.855
+    },
+    "JJA": {
+     "night": 0.7,
+     "morning": 0.763,
+     "afternoon": 1.005,
+     "evening": 0.731
+    },
+    "SON": {
+     "night": 0.713,
+     "morning": 0.873,
+     "afternoon": 1.094,
+     "evening": 0.837
+    }
+   },
+   "Garden Route": {
+    "DJF": {
+     "night": 1.087,
+     "morning": 1.154,
+     "afternoon": 1.139,
+     "evening": 1.092
+    },
+    "MAM": {
+     "night": 1.265,
+     "morning": 1.237,
+     "afternoon": 1.304,
+     "evening": 1.361
+    },
+    "JJA": {
+     "night": 1.12,
+     "morning": 1.184,
+     "afternoon": 1.249,
+     "evening": 1.188
+    },
+    "SON": {
+     "night": 1.13,
+     "morning": 1.244,
+     "afternoon": 1.242,
+     "evening": 1.161
+    }
+   },
+   "Eastern Cape": {
+    "DJF": {
+     "night": 1.231,
+     "morning": 1.272,
+     "afternoon": 1.314,
+     "evening": 1.266
+    },
+    "MAM": {
+     "night": 1.051,
+     "morning": 1.167,
+     "afternoon": 1.287,
+     "evening": 1.167
+    },
+    "JJA": {
+     "night": 0.956,
+     "morning": 1.104,
+     "afternoon": 1.3,
+     "evening": 1.115
+    },
+    "SON": {
+     "night": 1.144,
+     "morning": 1.238,
+     "afternoon": 1.328,
+     "evening": 1.213
+    }
+   },
+   "KZN coast": {
+    "DJF": {
+     "night": 0.923,
+     "morning": 0.99,
+     "afternoon": 1.004,
+     "evening": 0.977
+    },
+    "MAM": {
+     "night": 0.759,
+     "morning": 0.944,
+     "afternoon": 1.028,
+     "evening": 0.846
+    },
+    "JJA": {
+     "night": 0.738,
+     "morning": 0.928,
+     "afternoon": 1.049,
+     "evening": 0.854
+    },
+    "SON": {
+     "night": 0.867,
+     "morning": 1.041,
+     "afternoon": 0.989,
+     "evening": 0.929
+    }
+   },
+   "Highveld": {
+    "DJF": {
+     "night": 1.404,
+     "morning": 1.495,
+     "afternoon": 1.517,
+     "evening": 1.519
+    },
+    "MAM": {
+     "night": 1.266,
+     "morning": 1.427,
+     "afternoon": 1.546,
+     "evening": 1.387
+    },
+    "JJA": {
+     "night": 1.297,
+     "morning": 1.494,
+     "afternoon": 1.409,
+     "evening": 1.276
+    },
+    "SON": {
+     "night": 1.328,
+     "morning": 1.427,
+     "afternoon": 1.401,
+     "evening": 1.43
+    }
+   },
+   "Free State": {
+    "DJF": {
+     "night": 0.951,
+     "morning": 1.187,
+     "afternoon": 1.254,
+     "evening": 1.072
+    },
+    "MAM": {
+     "night": 0.7,
+     "morning": 0.891,
+     "afternoon": 1.08,
+     "evening": 0.7
+    },
+    "JJA": {
+     "night": 0.7,
+     "morning": 0.887,
+     "afternoon": 1.189,
+     "evening": 0.841
+    },
+    "SON": {
+     "night": 0.905,
+     "morning": 1.048,
+     "afternoon": 1.143,
+     "evening": 1.121
+    }
+   },
+   "Northern Cape": {
+    "DJF": {
+     "night": 0.925,
+     "morning": 1.002,
+     "afternoon": 1.022,
+     "evening": 1.047
+    },
+    "MAM": {
+     "night": 0.812,
+     "morning": 0.911,
+     "afternoon": 0.966,
+     "evening": 0.953
+    },
+    "JJA": {
+     "night": 0.852,
+     "morning": 0.896,
+     "afternoon": 0.929,
+     "evening": 0.817
+    },
+    "SON": {
+     "night": 0.832,
+     "morning": 0.941,
+     "afternoon": 0.985,
+     "evening": 0.896
+    }
+   },
+   "North West": {
+    "DJF": {
+     "night": 1.041,
+     "morning": 1.114,
+     "afternoon": 1.052,
+     "evening": 1.136
+    },
+    "MAM": {
+     "night": 1.065,
+     "morning": 1.096,
+     "afternoon": 1.107,
+     "evening": 1.171
+    },
+    "JJA": {
+     "night": 1.075,
+     "morning": 1.165,
+     "afternoon": 1.072,
+     "evening": 1.056
+    },
+    "SON": {
+     "night": 1.174,
+     "morning": 1.159,
+     "afternoon": 1.047,
+     "evening": 1.072
+    }
+   },
+   "Lowveld": {
+    "DJF": {
+     "night": 0.865,
+     "morning": 0.864,
+     "afternoon": 1.003,
+     "evening": 1.166
+    },
+    "MAM": {
+     "night": 0.785,
+     "morning": 0.895,
+     "afternoon": 1,
+     "evening": 1.06
+    },
+    "JJA": {
+     "night": 0.854,
+     "morning": 0.838,
+     "afternoon": 0.949,
+     "evening": 1.126
+    },
+    "SON": {
+     "night": 1.08,
+     "morning": 0.958,
+     "afternoon": 1.053,
+     "evening": 1.294
+    }
+   },
+   "Limpopo": {
+    "DJF": {
+     "night": 0.857,
+     "morning": 0.932,
+     "afternoon": 1.121,
+     "evening": 0.928
+    },
+    "MAM": {
+     "night": 0.908,
+     "morning": 0.898,
+     "afternoon": 1.087,
+     "evening": 0.843
+    },
+    "JJA": {
+     "night": 0.986,
+     "morning": 0.958,
+     "afternoon": 1.108,
+     "evening": 0.871
+    },
+    "SON": {
+     "night": 0.921,
+     "morning": 1.027,
+     "afternoon": 1.196,
+     "evening": 0.965
+    }
+   }
+  },
+  "M": {
+   "Western Cape": {
+    "DJF": {
+     "night": 1.6,
+     "morning": 1.6,
+     "afternoon": 1.6,
+     "evening": 1.6
+    },
+    "MAM": {
+     "night": 1.6,
+     "morning": 1.6,
+     "afternoon": 1.6,
+     "evening": 1.6
+    },
+    "JJA": {
+     "night": 1.6,
+     "morning": 1.6,
+     "afternoon": 1.6,
+     "evening": 1.6
+    },
+    "SON": {
+     "night": 1.6,
+     "morning": 1.6,
+     "afternoon": 1.6,
+     "evening": 1.6
+    }
+   },
+   "West Coast": {
+    "DJF": {
+     "night": 0.783,
+     "morning": 1.031,
+     "afternoon": 1.093,
+     "evening": 0.949
+    },
+    "MAM": {
+     "night": 0.733,
+     "morning": 0.795,
+     "afternoon": 1.116,
+     "evening": 0.844
+    },
+    "JJA": {
+     "night": 0.7,
+     "morning": 0.76,
+     "afternoon": 1.009,
+     "evening": 0.726
+    },
+    "SON": {
+     "night": 0.717,
+     "morning": 0.878,
+     "afternoon": 1.109,
+     "evening": 0.834
+    }
+   },
+   "Garden Route": {
+    "DJF": {
+     "night": 1.085,
+     "morning": 1.153,
+     "afternoon": 1.145,
+     "evening": 1.077
+    },
+    "MAM": {
+     "night": 1.275,
+     "morning": 1.234,
+     "afternoon": 1.309,
+     "evening": 1.351
+    },
+    "JJA": {
+     "night": 1.122,
+     "morning": 1.163,
+     "afternoon": 1.253,
+     "evening": 1.189
+    },
+    "SON": {
+     "night": 1.128,
+     "morning": 1.243,
+     "afternoon": 1.254,
+     "evening": 1.146
+    }
+   },
+   "Eastern Cape": {
+    "DJF": {
+     "night": 1.21,
+     "morning": 1.258,
+     "afternoon": 1.301,
+     "evening": 1.253
+    },
+    "MAM": {
+     "night": 1.031,
+     "morning": 1.153,
+     "afternoon": 1.274,
+     "evening": 1.154
+    },
+    "JJA": {
+     "night": 0.948,
+     "morning": 1.097,
+     "afternoon": 1.303,
+     "evening": 1.102
+    },
+    "SON": {
+     "night": 1.125,
+     "morning": 1.228,
+     "afternoon": 1.318,
+     "evening": 1.198
+    }
+   },
+   "KZN coast": {
+    "DJF": {
+     "night": 0.913,
+     "morning": 0.969,
+     "afternoon": 0.989,
+     "evening": 0.961
+    },
+    "MAM": {
+     "night": 0.772,
+     "morning": 0.953,
+     "afternoon": 1.032,
+     "evening": 0.85
+    },
+    "JJA": {
+     "night": 0.734,
+     "morning": 0.916,
+     "afternoon": 1.028,
+     "evening": 0.831
+    },
+    "SON": {
+     "night": 0.841,
+     "morning": 1.005,
+     "afternoon": 0.965,
+     "evening": 0.897
+    }
+   },
+   "Highveld": {
+    "DJF": {
+     "night": 1.403,
+     "morning": 1.503,
+     "afternoon": 1.546,
+     "evening": 1.548
+    },
+    "MAM": {
+     "night": 1.249,
+     "morning": 1.431,
+     "afternoon": 1.57,
+     "evening": 1.385
+    },
+    "JJA": {
+     "night": 1.285,
+     "morning": 1.495,
+     "afternoon": 1.424,
+     "evening": 1.275
+    },
+    "SON": {
+     "night": 1.346,
+     "morning": 1.446,
+     "afternoon": 1.423,
+     "evening": 1.467
+    }
+   },
+   "Free State": {
+    "DJF": {
+     "night": 0.948,
+     "morning": 1.198,
+     "afternoon": 1.273,
+     "evening": 1.085
+    },
+    "MAM": {
+     "night": 0.7,
+     "morning": 0.907,
+     "afternoon": 1.1,
+     "evening": 0.7
+    },
+    "JJA": {
+     "night": 0.7,
+     "morning": 0.902,
+     "afternoon": 1.21,
+     "evening": 0.831
+    },
+    "SON": {
+     "night": 0.913,
+     "morning": 1.066,
+     "afternoon": 1.161,
+     "evening": 1.12
+    }
+   },
+   "Northern Cape": {
+    "DJF": {
+     "night": 0.907,
+     "morning": 1.004,
+     "afternoon": 1.029,
+     "evening": 1.042
+    },
+    "MAM": {
+     "night": 0.783,
+     "morning": 0.906,
+     "afternoon": 0.974,
+     "evening": 0.941
+    },
+    "JJA": {
+     "night": 0.824,
+     "morning": 0.892,
+     "afternoon": 0.939,
+     "evening": 0.796
+    },
+    "SON": {
+     "night": 0.813,
+     "morning": 0.942,
+     "afternoon": 0.985,
+     "evening": 0.886
+    }
+   },
+   "North West": {
+    "DJF": {
+     "night": 1.058,
+     "morning": 1.127,
+     "afternoon": 1.066,
+     "evening": 1.164
+    },
+    "MAM": {
+     "night": 1.086,
+     "morning": 1.114,
+     "afternoon": 1.12,
+     "evening": 1.194
+    },
+    "JJA": {
+     "night": 1.089,
+     "morning": 1.168,
+     "afternoon": 1.076,
+     "evening": 1.061
+    },
+    "SON": {
+     "night": 1.184,
+     "morning": 1.166,
+     "afternoon": 1.053,
+     "evening": 1.091
+    }
+   },
+   "Lowveld": {
+    "DJF": {
+     "night": 0.875,
+     "morning": 0.875,
+     "afternoon": 1.006,
+     "evening": 1.177
+    },
+    "MAM": {
+     "night": 0.78,
+     "morning": 0.902,
+     "afternoon": 0.992,
+     "evening": 1.066
+    },
+    "JJA": {
+     "night": 0.84,
+     "morning": 0.837,
+     "afternoon": 0.943,
+     "evening": 1.126
+    },
+    "SON": {
+     "night": 1.096,
+     "morning": 0.976,
+     "afternoon": 1.049,
+     "evening": 1.313
+    }
+   },
+   "Limpopo": {
+    "DJF": {
+     "night": 0.849,
+     "morning": 0.94,
+     "afternoon": 1.148,
+     "evening": 0.927
+    },
+    "MAM": {
+     "night": 0.897,
+     "morning": 0.903,
+     "afternoon": 1.109,
+     "evening": 0.84
+    },
+    "JJA": {
+     "night": 0.951,
+     "morning": 0.95,
+     "afternoon": 1.129,
+     "evening": 0.847
+    },
+    "SON": {
+     "night": 0.907,
+     "morning": 1.039,
+     "afternoon": 1.229,
+     "evening": 0.974
+    }
+   }
+  },
+  "perGuessB": [
+   {
+    "Western Cape": {
+     "DJF": {
+      "night": 1.8308,
+      "morning": 1.7804,
+      "afternoon": 1.6435,
+      "evening": 1.6768
+     },
+     "MAM": {
+      "night": 1.8171,
+      "morning": 1.759,
+      "afternoon": 1.7027,
+      "evening": 1.7282
+     },
+     "JJA": {
+      "night": 1.6861,
+      "morning": 1.6922,
+      "afternoon": 1.6748,
+      "evening": 1.6879
+     },
+     "SON": {
+      "night": 1.8621,
+      "morning": 1.8417,
+      "afternoon": 1.6953,
+      "evening": 1.7346
+     }
+    },
+    "West Coast": {
+     "DJF": {
+      "night": 0.8068,
+      "morning": 1.0309,
+      "afternoon": 1.0744,
+      "evening": 0.9785
+     },
+     "MAM": {
+      "night": 0.7359,
+      "morning": 0.7951,
+      "afternoon": 1.1111,
+      "evening": 0.8548
+     },
+     "JJA": {
+      "night": 0.6657,
+      "morning": 0.7597,
+      "afternoon": 1.0053,
+      "evening": 0.728
+     },
+     "SON": {
+      "night": 0.7198,
+      "morning": 0.8678,
+      "afternoon": 1.0812,
+      "evening": 0.8455
+     }
+    },
+    "Garden Route": {
+     "DJF": {
+      "night": 1.0387,
+      "morning": 1.1237,
+      "afternoon": 1.0783,
+      "evening": 1.0535
+     },
+     "MAM": {
+      "night": 1.2262,
+      "morning": 1.2123,
+      "afternoon": 1.2334,
+      "evening": 1.2909
+     },
+     "JJA": {
+      "night": 1.0664,
+      "morning": 1.1602,
+      "afternoon": 1.2086,
+      "evening": 1.127
+     },
+     "SON": {
+      "night": 1.0815,
+      "morning": 1.2128,
+      "afternoon": 1.1837,
+      "evening": 1.1152
+     }
+    },
+    "Eastern Cape": {
+     "DJF": {
+      "night": 1.269,
+      "morning": 1.2654,
+      "afternoon": 1.2822,
+      "evening": 1.2653
+     },
+     "MAM": {
+      "night": 1.0801,
+      "morning": 1.1559,
+      "afternoon": 1.2611,
+      "evening": 1.1653
+     },
+     "JJA": {
+      "night": 0.9559,
+      "morning": 1.0786,
+      "afternoon": 1.2691,
+      "evening": 1.1002
+     },
+     "SON": {
+      "night": 1.1668,
+      "morning": 1.224,
+      "afternoon": 1.2938,
+      "evening": 1.2078
+     }
+    },
+    "KZN coast": {
+     "DJF": {
+      "night": 0.8972,
+      "morning": 0.9665,
+      "afternoon": 0.9693,
+      "evening": 0.9503
+     },
+     "MAM": {
+      "night": 0.7295,
+      "morning": 0.909,
+      "afternoon": 0.985,
+      "evening": 0.8184
+     },
+     "JJA": {
+      "night": 0.7068,
+      "morning": 0.8937,
+      "afternoon": 1.0226,
+      "evening": 0.8245
+     },
+     "SON": {
+      "night": 0.8255,
+      "morning": 1.01,
+      "afternoon": 0.9582,
+      "evening": 0.8917
+     }
+    },
+    "Highveld": {
+     "DJF": {
+      "night": 1.3751,
+      "morning": 1.4699,
+      "afternoon": 1.4716,
+      "evening": 1.4223
+     },
+     "MAM": {
+      "night": 1.2499,
+      "morning": 1.4042,
+      "afternoon": 1.5023,
+      "evening": 1.3349
+     },
+     "JJA": {
+      "night": 1.2636,
+      "morning": 1.4558,
+      "afternoon": 1.3935,
+      "evening": 1.2222
+     },
+     "SON": {
+      "night": 1.2928,
+      "morning": 1.3982,
+      "afternoon": 1.3769,
+      "evening": 1.3613
+     }
+    },
+    "Free State": {
+     "DJF": {
+      "night": 0.9555,
+      "morning": 1.1736,
+      "afternoon": 1.2311,
+      "evening": 1.068
+     },
+     "MAM": {
+      "night": 0.4,
+      "morning": 0.8663,
+      "afternoon": 1.0527,
+      "evening": 0.5865
+     },
+     "JJA": {
+      "night": 0.6386,
+      "morning": 0.8619,
+      "afternoon": 1.1527,
+      "evening": 0.8066
+     },
+     "SON": {
+      "night": 0.889,
+      "morning": 1.0318,
+      "afternoon": 1.1181,
+      "evening": 1.0993
+     }
+    },
+    "Northern Cape": {
+     "DJF": {
+      "night": 0.9398,
+      "morning": 1.0028,
+      "afternoon": 1.021,
+      "evening": 1.0476
+     },
+     "MAM": {
+      "night": 0.8065,
+      "morning": 0.9009,
+      "afternoon": 0.9619,
+      "evening": 0.9217
+     },
+     "JJA": {
+      "night": 0.8459,
+      "morning": 0.8796,
+      "afternoon": 0.9219,
+      "evening": 0.81
+     },
+     "SON": {
+      "night": 0.8348,
+      "morning": 0.9372,
+      "afternoon": 0.9839,
+      "evening": 0.8923
+     }
+    },
+    "North West": {
+     "DJF": {
+      "night": 0.9914,
+      "morning": 1.0902,
+      "afternoon": 1.0422,
+      "evening": 1.0794
+     },
+     "MAM": {
+      "night": 0.9998,
+      "morning": 1.0575,
+      "afternoon": 1.0879,
+      "evening": 1.1232
+     },
+     "JJA": {
+      "night": 1.0141,
+      "morning": 1.1067,
+      "afternoon": 1.0674,
+      "evening": 1.0173
+     },
+     "SON": {
+      "night": 1.1419,
+      "morning": 1.1385,
+      "afternoon": 1.0499,
+      "evening": 1.0567
+     }
+    },
+    "Lowveld": {
+     "DJF": {
+      "night": 0.8885,
+      "morning": 0.8849,
+      "afternoon": 1.0024,
+      "evening": 1.1837
+     },
+     "MAM": {
+      "night": 0.7952,
+      "morning": 0.91,
+      "afternoon": 1.0025,
+      "evening": 1.0725
+     },
+     "JJA": {
+      "night": 0.859,
+      "morning": 0.8536,
+      "afternoon": 0.9609,
+      "evening": 1.1309
+     },
+     "SON": {
+      "night": 1.1068,
+      "morning": 0.9781,
+      "afternoon": 1.0444,
+      "evening": 1.3093
+     }
+    },
+    "Limpopo": {
+     "DJF": {
+      "night": 0.8743,
+      "morning": 0.9217,
+      "afternoon": 1.0965,
+      "evening": 0.9327
+     },
+     "MAM": {
+      "night": 0.9334,
+      "morning": 0.9003,
+      "afternoon": 1.066,
+      "evening": 0.8492
+     },
+     "JJA": {
+      "night": 1.0003,
+      "morning": 0.9453,
+      "afternoon": 1.0873,
+      "evening": 0.8785
+     },
+     "SON": {
+      "night": 0.9319,
+      "morning": 1.0174,
+      "afternoon": 1.1761,
+      "evening": 0.9529
+     }
+    }
+   },
+   {
+    "Western Cape": {
+     "DJF": {
+      "night": 1.8653,
+      "morning": 1.8601,
+      "afternoon": 1.8303,
+      "evening": 1.7994
+     },
+     "MAM": {
+      "night": 1.8221,
+      "morning": 1.7674,
+      "afternoon": 1.8454,
+      "evening": 1.8702
+     },
+     "JJA": {
+      "night": 1.6508,
+      "morning": 1.6451,
+      "afternoon": 1.7522,
+      "evening": 1.7462
+     },
+     "SON": {
+      "night": 1.894,
+      "morning": 1.8979,
+      "afternoon": 1.838,
+      "evening": 1.8563
+     }
+    },
+    "West Coast": {
+     "DJF": {
+      "night": 0.7784,
+      "morning": 1.0304,
+      "afternoon": 1.1063,
+      "evening": 0.9566
+     },
+     "MAM": {
+      "night": 0.7348,
+      "morning": 0.7977,
+      "afternoon": 1.1252,
+      "evening": 0.8483
+     },
+     "JJA": {
+      "night": 0.6727,
+      "morning": 0.7603,
+      "afternoon": 1.0095,
+      "evening": 0.7352
+     },
+     "SON": {
+      "night": 0.7089,
+      "morning": 0.879,
+      "afternoon": 1.1125,
+      "evening": 0.8336
+     }
+    },
+    "Garden Route": {
+     "DJF": {
+      "night": 1.0867,
+      "morning": 1.1615,
+      "afternoon": 1.1759,
+      "evening": 1.083
+     },
+     "MAM": {
+      "night": 1.2932,
+      "morning": 1.2368,
+      "afternoon": 1.3608,
+      "evening": 1.3687
+     },
+     "JJA": {
+      "night": 1.1602,
+      "morning": 1.179,
+      "afternoon": 1.2686,
+      "evening": 1.2061
+     },
+     "SON": {
+      "night": 1.138,
+      "morning": 1.2461,
+      "afternoon": 1.2814,
+      "evening": 1.1482
+     }
+    },
+    "Eastern Cape": {
+     "DJF": {
+      "night": 1.1849,
+      "morning": 1.2434,
+      "afternoon": 1.3122,
+      "evening": 1.2469
+     },
+     "MAM": {
+      "night": 1.0106,
+      "morning": 1.1411,
+      "afternoon": 1.2837,
+      "evening": 1.1425
+     },
+     "JJA": {
+      "night": 0.9412,
+      "morning": 1.0896,
+      "afternoon": 1.3097,
+      "evening": 1.1147
+     },
+     "SON": {
+      "night": 1.115,
+      "morning": 1.2162,
+      "afternoon": 1.3367,
+      "evening": 1.2033
+     }
+    },
+    "KZN coast": {
+     "DJF": {
+      "night": 0.8907,
+      "morning": 0.9589,
+      "afternoon": 0.9956,
+      "evening": 0.9533
+     },
+     "MAM": {
+      "night": 0.7568,
+      "morning": 0.9308,
+      "afternoon": 1.0335,
+      "evening": 0.8299
+     },
+     "JJA": {
+      "night": 0.7426,
+      "morning": 0.926,
+      "afternoon": 1.0395,
+      "evening": 0.8433
+     },
+     "SON": {
+      "night": 0.8466,
+      "morning": 1.0178,
+      "afternoon": 0.9906,
+      "evening": 0.9113
+     }
+    },
+    "Highveld": {
+     "DJF": {
+      "night": 1.4441,
+      "morning": 1.5508,
+      "afternoon": 1.619,
+      "evening": 1.6365
+     },
+     "MAM": {
+      "night": 1.2666,
+      "morning": 1.4419,
+      "afternoon": 1.6378,
+      "evening": 1.4493
+     },
+     "JJA": {
+      "night": 1.3206,
+      "morning": 1.5175,
+      "afternoon": 1.4669,
+      "evening": 1.3462
+     },
+     "SON": {
+      "night": 1.4018,
+      "morning": 1.4934,
+      "afternoon": 1.4858,
+      "evening": 1.5595
+     }
+    },
+    "Free State": {
+     "DJF": {
+      "night": 0.9803,
+      "morning": 1.2281,
+      "afternoon": 1.3055,
+      "evening": 1.1247
+     },
+     "MAM": {
+      "night": 0.4,
+      "morning": 0.9245,
+      "afternoon": 1.1307,
+      "evening": 0.654
+     },
+     "JJA": {
+      "night": 0.6788,
+      "morning": 0.9281,
+      "afternoon": 1.2503,
+      "evening": 0.8747
+     },
+     "SON": {
+      "night": 0.9511,
+      "morning": 1.0999,
+      "afternoon": 1.2006,
+      "evening": 1.1892
+     }
+    },
+    "Northern Cape": {
+     "DJF": {
+      "night": 0.9278,
+      "morning": 1.0213,
+      "afternoon": 1.0442,
+      "evening": 1.0814
+     },
+     "MAM": {
+      "night": 0.8169,
+      "morning": 0.929,
+      "afternoon": 0.9929,
+      "evening": 0.9987
+     },
+     "JJA": {
+      "night": 0.8559,
+      "morning": 0.9175,
+      "afternoon": 0.9507,
+      "evening": 0.8276
+     },
+     "SON": {
+      "night": 0.8425,
+      "morning": 0.9637,
+      "afternoon": 1.0055,
+      "evening": 0.9225
+     }
+    },
+    "North West": {
+     "DJF": {
+      "night": 1.1057,
+      "morning": 1.1529,
+      "afternoon": 1.0923,
+      "evening": 1.2311
+     },
+     "MAM": {
+      "night": 1.1143,
+      "morning": 1.1316,
+      "afternoon": 1.1417,
+      "evening": 1.2467
+     },
+     "JJA": {
+      "night": 1.136,
+      "morning": 1.2181,
+      "afternoon": 1.1034,
+      "evening": 1.1033
+     },
+     "SON": {
+      "night": 1.2277,
+      "morning": 1.202,
+      "afternoon": 1.0787,
+      "evening": 1.1327
+     }
+    },
+    "Lowveld": {
+     "DJF": {
+      "night": 0.8043,
+      "morning": 0.7963,
+      "afternoon": 0.9613,
+      "evening": 1.1054
+     },
+     "MAM": {
+      "night": 0.7395,
+      "morning": 0.8304,
+      "afternoon": 0.9629,
+      "evening": 1.0115
+     },
+     "JJA": {
+      "night": 0.809,
+      "morning": 0.7776,
+      "afternoon": 0.9036,
+      "evening": 1.074
+     },
+     "SON": {
+      "night": 1.018,
+      "morning": 0.8905,
+      "afternoon": 1.0139,
+      "evening": 1.2245
+     }
+    },
+    "Limpopo": {
+     "DJF": {
+      "night": 0.8443,
+      "morning": 0.9121,
+      "afternoon": 1.1393,
+      "evening": 0.9217
+     },
+     "MAM": {
+      "night": 0.8719,
+      "morning": 0.8681,
+      "afternoon": 1.0892,
+      "evening": 0.842
+     },
+     "JJA": {
+      "night": 0.9538,
+      "morning": 0.9314,
+      "afternoon": 1.1187,
+      "evening": 0.8649
+     },
+     "SON": {
+      "night": 0.9189,
+      "morning": 1.0171,
+      "afternoon": 1.2344,
+      "evening": 0.9998
+     }
+    }
+   },
+   {
+    "Western Cape": {
+     "DJF": {
+      "night": 1.8159,
+      "morning": 1.8127,
+      "afternoon": 1.7386,
+      "evening": 1.735
+     },
+     "MAM": {
+      "night": 1.7908,
+      "morning": 1.739,
+      "afternoon": 1.7672,
+      "evening": 1.7992
+     },
+     "JJA": {
+      "night": 1.6235,
+      "morning": 1.6363,
+      "afternoon": 1.7169,
+      "evening": 1.6978
+     },
+     "SON": {
+      "night": 1.8399,
+      "morning": 1.848,
+      "afternoon": 1.7643,
+      "evening": 1.7863
+     }
+    },
+    "West Coast": {
+     "DJF": {
+      "night": 0.7839,
+      "morning": 1.0248,
+      "afternoon": 1.0924,
+      "evening": 0.9582
+     },
+     "MAM": {
+      "night": 0.7618,
+      "morning": 0.819,
+      "afternoon": 1.1209,
+      "evening": 0.8621
+     },
+     "JJA": {
+      "night": 0.6771,
+      "morning": 0.7699,
+      "afternoon": 0.9994,
+      "evening": 0.7301
+     },
+     "SON": {
+      "night": 0.711,
+      "morning": 0.8716,
+      "afternoon": 1.0881,
+      "evening": 0.8314
+     }
+    },
+    "Garden Route": {
+     "DJF": {
+      "night": 1.1343,
+      "morning": 1.1782,
+      "afternoon": 1.1634,
+      "evening": 1.139
+     },
+     "MAM": {
+      "night": 1.2744,
+      "morning": 1.2627,
+      "afternoon": 1.3168,
+      "evening": 1.4235
+     },
+     "JJA": {
+      "night": 1.1344,
+      "morning": 1.2125,
+      "afternoon": 1.2689,
+      "evening": 1.2294
+     },
+     "SON": {
+      "night": 1.1695,
+      "morning": 1.2726,
+      "afternoon": 1.2604,
+      "evening": 1.2209
+     }
+    },
+    "Eastern Cape": {
+     "DJF": {
+      "night": 1.2384,
+      "morning": 1.3066,
+      "afternoon": 1.3464,
+      "evening": 1.2865
+     },
+     "MAM": {
+      "night": 1.0608,
+      "morning": 1.2049,
+      "afternoon": 1.3151,
+      "evening": 1.1943
+     },
+     "JJA": {
+      "night": 0.9694,
+      "morning": 1.143,
+      "afternoon": 1.3218,
+      "evening": 1.1296
+     },
+     "SON": {
+      "night": 1.1491,
+      "morning": 1.2744,
+      "afternoon": 1.3541,
+      "evening": 1.2277
+     }
+    },
+    "KZN coast": {
+     "DJF": {
+      "night": 0.9804,
+      "morning": 1.0434,
+      "afternoon": 1.0477,
+      "evening": 1.0286
+     },
+     "MAM": {
+      "night": 0.7909,
+      "morning": 0.9916,
+      "afternoon": 1.0663,
+      "evening": 0.8891
+     },
+     "JJA": {
+      "night": 0.7637,
+      "morning": 0.9652,
+      "afternoon": 1.0848,
+      "evening": 0.8929
+     },
+     "SON": {
+      "night": 0.9281,
+      "morning": 1.0948,
+      "afternoon": 1.0188,
+      "evening": 0.9827
+     }
+    },
+    "Highveld": {
+     "DJF": {
+      "night": 1.3915,
+      "morning": 1.4635,
+      "afternoon": 1.4599,
+      "evening": 1.4989
+     },
+     "MAM": {
+      "night": 1.28,
+      "morning": 1.4364,
+      "afternoon": 1.499,
+      "evening": 1.3774
+     },
+     "JJA": {
+      "night": 1.3057,
+      "morning": 1.509,
+      "afternoon": 1.3658,
+      "evening": 1.2607
+     },
+     "SON": {
+      "night": 1.2908,
+      "morning": 1.3885,
+      "afternoon": 1.3388,
+      "evening": 1.37
+     }
+    },
+    "Free State": {
+     "DJF": {
+      "night": 0.9176,
+      "morning": 1.1582,
+      "afternoon": 1.2266,
+      "evening": 1.023
+     },
+     "MAM": {
+      "night": 0.4,
+      "morning": 0.8833,
+      "afternoon": 1.0566,
+      "evening": 0.599
+     },
+     "JJA": {
+      "night": 0.6524,
+      "morning": 0.8706,
+      "afternoon": 1.164,
+      "evening": 0.8403
+     },
+     "SON": {
+      "night": 0.8754,
+      "morning": 1.013,
+      "afternoon": 1.1108,
+      "evening": 1.0756
+     }
+    },
+    "Northern Cape": {
+     "DJF": {
+      "night": 0.9085,
+      "morning": 0.9825,
+      "afternoon": 1.001,
+      "evening": 1.0118
+     },
+     "MAM": {
+      "night": 0.8119,
+      "morning": 0.9043,
+      "afternoon": 0.943,
+      "evening": 0.9382
+     },
+     "JJA": {
+      "night": 0.8554,
+      "morning": 0.8914,
+      "afternoon": 0.9146,
+      "evening": 0.8147
+     },
+     "SON": {
+      "night": 0.8174,
+      "morning": 0.9208,
+      "afternoon": 0.9654,
+      "evening": 0.8726
+     }
+    },
+    "North West": {
+     "DJF": {
+      "night": 1.0256,
+      "morning": 1.0988,
+      "afternoon": 1.0202,
+      "evening": 1.0966
+     },
+     "MAM": {
+      "night": 1.0814,
+      "morning": 1.0988,
+      "afternoon": 1.0921,
+      "evening": 1.1423
+     },
+     "JJA": {
+      "night": 1.076,
+      "morning": 1.1687,
+      "afternoon": 1.0449,
+      "evening": 1.0477
+     },
+     "SON": {
+      "night": 1.1531,
+      "morning": 1.135,
+      "afternoon": 1.0121,
+      "evening": 1.026
+     }
+    },
+    "Lowveld": {
+     "DJF": {
+      "night": 0.9028,
+      "morning": 0.9098,
+      "afternoon": 1.0458,
+      "evening": 1.2094
+     },
+     "MAM": {
+      "night": 0.8207,
+      "morning": 0.9451,
+      "afternoon": 1.0336,
+      "evening": 1.0948
+     },
+     "JJA": {
+      "night": 0.8949,
+      "morning": 0.8839,
+      "afternoon": 0.9828,
+      "evening": 1.1729
+     },
+     "SON": {
+      "night": 1.116,
+      "morning": 1.0057,
+      "afternoon": 1.0997,
+      "evening": 1.3481
+     }
+    },
+    "Limpopo": {
+     "DJF": {
+      "night": 0.8537,
+      "morning": 0.9637,
+      "afternoon": 1.126,
+      "evening": 0.9301
+     },
+     "MAM": {
+      "night": 0.9174,
+      "morning": 0.9264,
+      "afternoon": 1.1046,
+      "evening": 0.8366
+     },
+     "JJA": {
+      "night": 1.0048,
+      "morning": 0.9964,
+      "afternoon": 1.1166,
+      "evening": 0.8689
+     },
+     "SON": {
+      "night": 0.9118,
+      "morning": 1.0461,
+      "afternoon": 1.1764,
+      "evening": 0.943
+     }
+    }
+   }
+  ],
+  "perGuessM": [
+   {
+    "Western Cape": {
+     "DJF": {
+      "night": 1.8982,
+      "morning": 1.8067,
+      "afternoon": 1.6505,
+      "evening": 1.6903
+     },
+     "MAM": {
+      "night": 1.8552,
+      "morning": 1.7906,
+      "afternoon": 1.7029,
+      "evening": 1.7409
+     },
+     "JJA": {
+      "night": 1.7278,
+      "morning": 1.7413,
+      "afternoon": 1.6819,
+      "evening": 1.7083
+     },
+     "SON": {
+      "night": 1.9349,
+      "morning": 1.8693,
+      "afternoon": 1.7115,
+      "evening": 1.7544
+     }
+    },
+    "West Coast": {
+     "DJF": {
+      "night": 0.7969,
+      "morning": 1.0292,
+      "afternoon": 1.0788,
+      "evening": 0.9658
+     },
+     "MAM": {
+      "night": 0.7269,
+      "morning": 0.7836,
+      "afternoon": 1.1157,
+      "evening": 0.8452
+     },
+     "JJA": {
+      "night": 0.6486,
+      "morning": 0.7438,
+      "afternoon": 0.9987,
+      "evening": 0.7103
+     },
+     "SON": {
+      "night": 0.7182,
+      "morning": 0.8603,
+      "afternoon": 1.0969,
+      "evening": 0.8344
+     }
+    },
+    "Garden Route": {
+     "DJF": {
+      "night": 1.0191,
+      "morning": 1.1306,
+      "afternoon": 1.0957,
+      "evening": 1.0652
+     },
+     "MAM": {
+      "night": 1.2372,
+      "morning": 1.2117,
+      "afternoon": 1.2487,
+      "evening": 1.3045
+     },
+     "JJA": {
+      "night": 1.0602,
+      "morning": 1.1483,
+      "afternoon": 1.2138,
+      "evening": 1.1079
+     },
+     "SON": {
+      "night": 1.0846,
+      "morning": 1.2201,
+      "afternoon": 1.1936,
+      "evening": 1.1164
+     }
+    },
+    "Eastern Cape": {
+     "DJF": {
+      "night": 1.29,
+      "morning": 1.2877,
+      "afternoon": 1.2963,
+      "evening": 1.2947
+     },
+     "MAM": {
+      "night": 1.0947,
+      "morning": 1.1653,
+      "afternoon": 1.2704,
+      "evening": 1.185
+     },
+     "JJA": {
+      "night": 0.9587,
+      "morning": 1.0799,
+      "afternoon": 1.2855,
+      "evening": 1.1026
+     },
+     "SON": {
+      "night": 1.1701,
+      "morning": 1.2379,
+      "afternoon": 1.3037,
+      "evening": 1.2233
+     }
+    },
+    "KZN coast": {
+     "DJF": {
+      "night": 0.9003,
+      "morning": 0.9552,
+      "afternoon": 0.9553,
+      "evening": 0.9454
+     },
+     "MAM": {
+      "night": 0.7429,
+      "morning": 0.9142,
+      "afternoon": 0.9822,
+      "evening": 0.8263
+     },
+     "JJA": {
+      "night": 0.695,
+      "morning": 0.8817,
+      "afternoon": 1.0116,
+      "evening": 0.8034
+     },
+     "SON": {
+      "night": 0.796,
+      "morning": 0.9866,
+      "afternoon": 0.9378,
+      "evening": 0.8637
+     }
+    },
+    "Highveld": {
+     "DJF": {
+      "night": 1.3889,
+      "morning": 1.4756,
+      "afternoon": 1.4977,
+      "evening": 1.4715
+     },
+     "MAM": {
+      "night": 1.2579,
+      "morning": 1.4109,
+      "afternoon": 1.5166,
+      "evening": 1.37
+     },
+     "JJA": {
+      "night": 1.2661,
+      "morning": 1.4545,
+      "afternoon": 1.3965,
+      "evening": 1.2279
+     },
+     "SON": {
+      "night": 1.3341,
+      "morning": 1.4234,
+      "afternoon": 1.3964,
+      "evening": 1.4079
+     }
+    },
+    "Free State": {
+     "DJF": {
+      "night": 0.9679,
+      "morning": 1.1848,
+      "afternoon": 1.241,
+      "evening": 1.1079
+     },
+     "MAM": {
+      "night": 0.4,
+      "morning": 0.8823,
+      "afternoon": 1.0569,
+      "evening": 0.614
+     },
+     "JJA": {
+      "night": 0.6393,
+      "morning": 0.8651,
+      "afternoon": 1.154,
+      "evening": 0.806
+     },
+     "SON": {
+      "night": 0.9243,
+      "morning": 1.0495,
+      "afternoon": 1.1359,
+      "evening": 1.115
+     }
+    },
+    "Northern Cape": {
+     "DJF": {
+      "night": 0.9482,
+      "morning": 1.0179,
+      "afternoon": 1.0288,
+      "evening": 1.0643
+     },
+     "MAM": {
+      "night": 0.8177,
+      "morning": 0.9149,
+      "afternoon": 0.9783,
+      "evening": 0.9443
+     },
+     "JJA": {
+      "night": 0.847,
+      "morning": 0.8961,
+      "afternoon": 0.936,
+      "evening": 0.8078
+     },
+     "SON": {
+      "night": 0.8407,
+      "morning": 0.9535,
+      "afternoon": 0.9854,
+      "evening": 0.8976
+     }
+    },
+    "North West": {
+     "DJF": {
+      "night": 1.0069,
+      "morning": 1.0872,
+      "afternoon": 1.042,
+      "evening": 1.0975
+     },
+     "MAM": {
+      "night": 1.0277,
+      "morning": 1.0532,
+      "afternoon": 1.0887,
+      "evening": 1.1337
+     },
+     "JJA": {
+      "night": 1.0391,
+      "morning": 1.0957,
+      "afternoon": 1.0654,
+      "evening": 1.0259
+     },
+     "SON": {
+      "night": 1.1494,
+      "morning": 1.1374,
+      "afternoon": 1.04,
+      "evening": 1.064
+     }
+    },
+    "Lowveld": {
+     "DJF": {
+      "night": 0.9252,
+      "morning": 0.9256,
+      "afternoon": 1.0253,
+      "evening": 1.2181
+     },
+     "MAM": {
+      "night": 0.8311,
+      "morning": 0.9568,
+      "afternoon": 1.0157,
+      "evening": 1.1106
+     },
+     "JJA": {
+      "night": 0.8851,
+      "morning": 0.886,
+      "afternoon": 0.9707,
+      "evening": 1.1582
+     },
+     "SON": {
+      "night": 1.1697,
+      "morning": 1.03,
+      "afternoon": 1.053,
+      "evening": 1.3647
+     }
+    },
+    "Limpopo": {
+     "DJF": {
+      "night": 0.8802,
+      "morning": 0.9268,
+      "afternoon": 1.1003,
+      "evening": 0.9317
+     },
+     "MAM": {
+      "night": 0.9484,
+      "morning": 0.904,
+      "afternoon": 1.0619,
+      "evening": 0.8514
+     },
+     "JJA": {
+      "night": 1.009,
+      "morning": 0.9463,
+      "afternoon": 1.0983,
+      "evening": 0.8752
+     },
+     "SON": {
+      "night": 0.9308,
+      "morning": 1.0321,
+      "afternoon": 1.1877,
+      "evening": 0.9564
+     }
+    }
+   },
+   {
+    "Western Cape": {
+     "DJF": {
+      "night": 1.9105,
+      "morning": 1.9448,
+      "afternoon": 1.8795,
+      "evening": 1.8157
+     },
+     "MAM": {
+      "night": 1.8125,
+      "morning": 1.776,
+      "afternoon": 1.8869,
+      "evening": 1.8705
+     },
+     "JJA": {
+      "night": 1.5625,
+      "morning": 1.5737,
+      "afternoon": 1.7638,
+      "evening": 1.693
+     },
+     "SON": {
+      "night": 2.0088,
+      "morning": 2.0051,
+      "afternoon": 1.8908,
+      "evening": 1.9099
+     }
+    },
+    "West Coast": {
+     "DJF": {
+      "night": 0.7704,
+      "morning": 1.0348,
+      "afternoon": 1.1036,
+      "evening": 0.938
+     },
+     "MAM": {
+      "night": 0.7211,
+      "morning": 0.7875,
+      "afternoon": 1.1126,
+      "evening": 0.831
+     },
+     "JJA": {
+      "night": 0.6775,
+      "morning": 0.7697,
+      "afternoon": 1.0247,
+      "evening": 0.7422
+     },
+     "SON": {
+      "night": 0.7194,
+      "morning": 0.8992,
+      "afternoon": 1.1243,
+      "evening": 0.837
+     }
+    },
+    "Garden Route": {
+     "DJF": {
+      "night": 1.1357,
+      "morning": 1.1694,
+      "afternoon": 1.1825,
+      "evening": 1.0781
+     },
+     "MAM": {
+      "night": 1.3155,
+      "morning": 1.2419,
+      "afternoon": 1.3698,
+      "evening": 1.3873
+     },
+     "JJA": {
+      "night": 1.1763,
+      "morning": 1.1618,
+      "afternoon": 1.2858,
+      "evening": 1.2461
+     },
+     "SON": {
+      "night": 1.1587,
+      "morning": 1.2572,
+      "afternoon": 1.3045,
+      "evening": 1.159
+     }
+    },
+    "Eastern Cape": {
+     "DJF": {
+      "night": 1.1283,
+      "morning": 1.2052,
+      "afternoon": 1.2807,
+      "evening": 1.1954
+     },
+     "MAM": {
+      "night": 0.9602,
+      "morning": 1.1132,
+      "afternoon": 1.2565,
+      "evening": 1.094
+     },
+     "JJA": {
+      "night": 0.9359,
+      "morning": 1.0844,
+      "afternoon": 1.3084,
+      "evening": 1.0919
+     },
+     "SON": {
+      "night": 1.084,
+      "morning": 1.1909,
+      "afternoon": 1.3171,
+      "evening": 1.1732
+     }
+    },
+    "KZN coast": {
+     "DJF": {
+      "night": 0.8829,
+      "morning": 0.9493,
+      "afternoon": 0.9997,
+      "evening": 0.9505
+     },
+     "MAM": {
+      "night": 0.7713,
+      "morning": 0.9503,
+      "afternoon": 1.0604,
+      "evening": 0.84
+     },
+     "JJA": {
+      "night": 0.756,
+      "morning": 0.9289,
+      "afternoon": 1.0294,
+      "evening": 0.8343
+     },
+     "SON": {
+      "night": 0.8449,
+      "morning": 0.9954,
+      "afternoon": 0.9802,
+      "evening": 0.9025
+     }
+    },
+    "Highveld": {
+     "DJF": {
+      "night": 1.4114,
+      "morning": 1.5596,
+      "afternoon": 1.6553,
+      "evening": 1.6147
+     },
+     "MAM": {
+      "night": 1.206,
+      "morning": 1.4321,
+      "afternoon": 1.6717,
+      "evening": 1.3789
+     },
+     "JJA": {
+      "night": 1.2715,
+      "morning": 1.5013,
+      "afternoon": 1.4826,
+      "evening": 1.2966
+     },
+     "SON": {
+      "night": 1.3776,
+      "morning": 1.4918,
+      "afternoon": 1.4986,
+      "evening": 1.5442
+     }
+    },
+    "Free State": {
+     "DJF": {
+      "night": 0.9373,
+      "morning": 1.2277,
+      "afternoon": 1.3138,
+      "evening": 1.0689
+     },
+     "MAM": {
+      "night": 0.4,
+      "morning": 0.9281,
+      "afternoon": 1.1456,
+      "evening": 0.6271
+     },
+     "JJA": {
+      "night": 0.6646,
+      "morning": 0.9565,
+      "afternoon": 1.2889,
+      "evening": 0.8448
+     },
+     "SON": {
+      "night": 0.9133,
+      "morning": 1.1038,
+      "afternoon": 1.2086,
+      "evening": 1.1359
+     }
+    },
+    "Northern Cape": {
+     "DJF": {
+      "night": 0.8804,
+      "morning": 1.0077,
+      "afternoon": 1.0408,
+      "evening": 1.0356
+     },
+     "MAM": {
+      "night": 0.7558,
+      "morning": 0.9047,
+      "afternoon": 0.9825,
+      "evening": 0.9441
+     },
+     "JJA": {
+      "night": 0.8077,
+      "morning": 0.8951,
+      "afternoon": 0.948,
+      "evening": 0.7855
+     },
+     "SON": {
+      "night": 0.7986,
+      "morning": 0.9485,
+      "afternoon": 0.9973,
+      "evening": 0.8825
+     }
+    },
+    "North West": {
+     "DJF": {
+      "night": 1.1192,
+      "morning": 1.182,
+      "afternoon": 1.1276,
+      "evening": 1.2656
+     },
+     "MAM": {
+      "night": 1.1385,
+      "morning": 1.1891,
+      "afternoon": 1.1809,
+      "evening": 1.282
+     },
+     "JJA": {
+      "night": 1.1398,
+      "morning": 1.2595,
+      "afternoon": 1.1326,
+      "evening": 1.0913
+     },
+     "SON": {
+      "night": 1.2291,
+      "morning": 1.2425,
+      "afternoon": 1.1138,
+      "evening": 1.1447
+     }
+    },
+    "Lowveld": {
+     "DJF": {
+      "night": 0.7631,
+      "morning": 0.7567,
+      "afternoon": 0.9382,
+      "evening": 1.0598
+     },
+     "MAM": {
+      "night": 0.695,
+      "morning": 0.7909,
+      "afternoon": 0.9392,
+      "evening": 0.9622
+     },
+     "JJA": {
+      "night": 0.753,
+      "morning": 0.725,
+      "afternoon": 0.8796,
+      "evening": 1.0248
+     },
+     "SON": {
+      "night": 0.9622,
+      "morning": 0.8443,
+      "afternoon": 1.0019,
+      "evening": 1.1718
+     }
+    },
+    "Limpopo": {
+     "DJF": {
+      "night": 0.8135,
+      "morning": 0.9378,
+      "afternoon": 1.2008,
+      "evening": 0.9192
+     },
+     "MAM": {
+      "night": 0.8272,
+      "morning": 0.8829,
+      "afternoon": 1.1515,
+      "evening": 0.8231
+     },
+     "JJA": {
+      "night": 0.8859,
+      "morning": 0.9251,
+      "afternoon": 1.1529,
+      "evening": 0.8182
+     },
+     "SON": {
+      "night": 0.8856,
+      "morning": 1.0418,
+      "afternoon": 1.2776,
+      "evening": 0.993
+     }
+    }
+   },
+   {
+    "Western Cape": {
+     "DJF": {
+      "night": 1.8957,
+      "morning": 1.8465,
+      "afternoon": 1.8118,
+      "evening": 1.7643
+     },
+     "MAM": {
+      "night": 1.8261,
+      "morning": 1.7492,
+      "afternoon": 1.7947,
+      "evening": 1.8144
+     },
+     "JJA": {
+      "night": 1.6122,
+      "morning": 1.6349,
+      "afternoon": 1.7339,
+      "evening": 1.6859
+     },
+     "SON": {
+      "night": 1.9207,
+      "morning": 1.8814,
+      "afternoon": 1.7968,
+      "evening": 1.825
+     }
+    },
+    "West Coast": {
+     "DJF": {
+      "night": 0.7813,
+      "morning": 1.0289,
+      "afternoon": 1.0972,
+      "evening": 0.9421
+     },
+     "MAM": {
+      "night": 0.7514,
+      "morning": 0.815,
+      "afternoon": 1.1192,
+      "evening": 0.8546
+     },
+     "JJA": {
+      "night": 0.6693,
+      "morning": 0.7661,
+      "afternoon": 1.0045,
+      "evening": 0.7246
+     },
+     "SON": {
+      "night": 0.7136,
+      "morning": 0.8733,
+      "afternoon": 1.1051,
+      "evening": 0.8295
+     }
+    },
+    "Garden Route": {
+     "DJF": {
+      "night": 1.0996,
+      "morning": 1.158,
+      "afternoon": 1.1582,
+      "evening": 1.0869
+     },
+     "MAM": {
+      "night": 1.2713,
+      "morning": 1.247,
+      "afternoon": 1.307,
+      "evening": 1.3602
+     },
+     "JJA": {
+      "night": 1.1308,
+      "morning": 1.1797,
+      "afternoon": 1.2582,
+      "evening": 1.2131
+     },
+     "SON": {
+      "night": 1.1396,
+      "morning": 1.2524,
+      "afternoon": 1.2642,
+      "evening": 1.1621
+     }
+    },
+    "Eastern Cape": {
+     "DJF": {
+      "night": 1.2123,
+      "morning": 1.2824,
+      "afternoon": 1.3246,
+      "evening": 1.2689
+     },
+     "MAM": {
+      "night": 1.0392,
+      "morning": 1.1818,
+      "afternoon": 1.2953,
+      "evening": 1.182
+     },
+     "JJA": {
+      "night": 0.9488,
+      "morning": 1.128,
+      "afternoon": 1.3148,
+      "evening": 1.1109
+     },
+     "SON": {
+      "night": 1.1212,
+      "morning": 1.2557,
+      "afternoon": 1.334,
+      "evening": 1.1981
+     }
+    },
+    "KZN coast": {
+     "DJF": {
+      "night": 0.9568,
+      "morning": 1.0036,
+      "afternoon": 1.012,
+      "evening": 0.988
+     },
+     "MAM": {
+      "night": 0.8014,
+      "morning": 0.9936,
+      "afternoon": 1.0547,
+      "evening": 0.8825
+     },
+     "JJA": {
+      "night": 0.7521,
+      "morning": 0.9374,
+      "afternoon": 1.0419,
+      "evening": 0.856
+     },
+     "SON": {
+      "night": 0.8823,
+      "morning": 1.0328,
+      "afternoon": 0.9782,
+      "evening": 0.9252
+     }
+    },
+    "Highveld": {
+     "DJF": {
+      "night": 1.4074,
+      "morning": 1.4746,
+      "afternoon": 1.4852,
+      "evening": 1.5587
+     },
+     "MAM": {
+      "night": 1.283,
+      "morning": 1.4495,
+      "afternoon": 1.5231,
+      "evening": 1.4064
+     },
+     "JJA": {
+      "night": 1.3171,
+      "morning": 1.529,
+      "afternoon": 1.3925,
+      "evening": 1.2994
+     },
+     "SON": {
+      "night": 1.3256,
+      "morning": 1.4229,
+      "afternoon": 1.3741,
+      "evening": 1.4497
+     }
+    },
+    "Free State": {
+     "DJF": {
+      "night": 0.9373,
+      "morning": 1.1826,
+      "afternoon": 1.2634,
+      "evening": 1.0789
+     },
+     "MAM": {
+      "night": 0.4,
+      "morning": 0.9102,
+      "afternoon": 1.0978,
+      "evening": 0.62
+     },
+     "JJA": {
+      "night": 0.6423,
+      "morning": 0.8837,
+      "afternoon": 1.1877,
+      "evening": 0.8413
+     },
+     "SON": {
+      "night": 0.9006,
+      "morning": 1.0436,
+      "afternoon": 1.1399,
+      "evening": 1.1094
+     }
+    },
+    "Northern Cape": {
+     "DJF": {
+      "night": 0.8916,
+      "morning": 0.9854,
+      "afternoon": 1.0179,
+      "evening": 1.0248
+     },
+     "MAM": {
+      "night": 0.7751,
+      "morning": 0.8998,
+      "afternoon": 0.9617,
+      "evening": 0.9357
+     },
+     "JJA": {
+      "night": 0.8187,
+      "morning": 0.8838,
+      "afternoon": 0.9333,
+      "evening": 0.7945
+     },
+     "SON": {
+      "night": 0.8,
+      "morning": 0.9252,
+      "afternoon": 0.973,
+      "evening": 0.8785
+     }
+    },
+    "North West": {
+     "DJF": {
+      "night": 1.0479,
+      "morning": 1.1124,
+      "afternoon": 1.0281,
+      "evening": 1.1296
+     },
+     "MAM": {
+      "night": 1.0919,
+      "morning": 1.0994,
+      "afternoon": 1.0905,
+      "evening": 1.1665
+     },
+     "JJA": {
+      "night": 1.089,
+      "morning": 1.1483,
+      "afternoon": 1.0291,
+      "evening": 1.0661
+     },
+     "SON": {
+      "night": 1.1735,
+      "morning": 1.1193,
+      "afternoon": 1.004,
+      "evening": 1.0652
+     }
+    },
+    "Lowveld": {
+     "DJF": {
+      "night": 0.9365,
+      "morning": 0.9425,
+      "afternoon": 1.054,
+      "evening": 1.2546
+     },
+     "MAM": {
+      "night": 0.8141,
+      "morning": 0.9576,
+      "afternoon": 1.0209,
+      "evening": 1.1237
+     },
+     "JJA": {
+      "night": 0.8829,
+      "morning": 0.8999,
+      "afternoon": 0.978,
+      "evening": 1.1964
+     },
+     "SON": {
+      "night": 1.1552,
+      "morning": 1.0551,
+      "afternoon": 1.0921,
+      "evening": 1.4012
+     }
+    },
+    "Limpopo": {
+     "DJF": {
+      "night": 0.854,
+      "morning": 0.9568,
+      "afternoon": 1.142,
+      "evening": 0.9311
+     },
+     "MAM": {
+      "night": 0.9162,
+      "morning": 0.9211,
+      "afternoon": 1.1139,
+      "evening": 0.8464
+     },
+     "JJA": {
+      "night": 0.9571,
+      "morning": 0.9794,
+      "afternoon": 1.1366,
+      "evening": 0.8476
+     },
+     "SON": {
+      "night": 0.9045,
+      "morning": 1.0439,
+      "afternoon": 1.2226,
+      "evening": 0.9715
+     }
+    }
+   }
+  ]
+ },
+ "wind": {
+  "old harness": {
+   "t0": {
+    "B0": {
+     "n": 91986,
+     "mae": 4.078,
+     "bias": -1.057,
+     "windyHours": 2887,
+     "caught25": 1324,
+     "false25": 1477
+    },
+    "M": {
+     "n": 91986,
+     "mae": 4.151,
+     "bias": -1.137,
+     "windyHours": 2887,
+     "caught25": 1294,
+     "false25": 1498
+    },
+    "BC": {
+     "n": 91986,
+     "mae": 3.529,
+     "bias": 0.121,
+     "windyHours": 2887,
+     "caught25": 2339,
+     "false25": 3142
+    },
+    "MC": {
+     "n": 91986,
+     "mae": 3.6,
+     "bias": 0.01,
+     "windyHours": 2887,
+     "caught25": 2267,
+     "false25": 3090
+    },
+    "SW": {
+     "n": 91986,
+     "mae": 3.975,
+     "bias": -1.073,
+     "windyHours": 2887,
+     "caught25": 1390,
+     "false25": 1403
+    },
+    "SWC": {
+     "n": 91986,
+     "mae": 3.487,
+     "bias": 0.048,
+     "windyHours": 2887,
+     "caught25": 2360,
+     "false25": 3076
+    }
+   },
+   "t0hourly": {
+    "B0": {
+     "n": 91986,
+     "mae": 4.133,
+     "bias": -1.376,
+     "windyHours": 2887,
+     "caught25": 1207,
+     "false25": 1252
+    },
+    "M": {
+     "n": 91986,
+     "mae": 4.189,
+     "bias": -1.425,
+     "windyHours": 2887,
+     "caught25": 1179,
+     "false25": 1300
+    },
+    "BC": {
+     "n": 91986,
+     "mae": 3.535,
+     "bias": -0.23,
+     "windyHours": 2887,
+     "caught25": 2256,
+     "false25": 2686
+    },
+    "MC": {
+     "n": 91986,
+     "mae": 3.588,
+     "bias": -0.307,
+     "windyHours": 2887,
+     "caught25": 2227,
+     "false25": 2641
+    }
+   },
+   "t1hourly": {
+    "B0": {
+     "n": 91986,
+     "mae": 4.352,
+     "bias": -1.397,
+     "windyHours": 2887,
+     "caught25": 1147,
+     "false25": 1296
+    },
+    "M": {
+     "n": 91986,
+     "mae": 4.395,
+     "bias": -1.451,
+     "windyHours": 2887,
+     "caught25": 1121,
+     "false25": 1337
+    },
+    "BC": {
+     "n": 91986,
+     "mae": 3.813,
+     "bias": -0.252,
+     "windyHours": 2887,
+     "caught25": 2125,
+     "false25": 2859
+    },
+    "MC": {
+     "n": 91986,
+     "mae": 3.848,
+     "bias": -0.332,
+     "windyHours": 2887,
+     "caught25": 2117,
+     "false25": 2858
+    }
+   },
+   "boot": {
+    "M": {
+     "t0": {
+      "diff": 0.0731,
+      "lo": 0.0626,
+      "hi": 0.0841,
+      "days": 39,
+      "n": 91986
+     },
+     "t1": {
+      "diff": 0.0431,
+      "lo": 0.0131,
+      "hi": 0.0626,
+      "days": 39,
+      "n": 91986
+     }
+    },
+    "BC": {
+     "t0": {
+      "diff": -0.5495,
+      "lo": -0.6069,
+      "hi": -0.4923,
+      "days": 39,
+      "n": 91986
+     },
+     "t1": {
+      "diff": -0.5388,
+      "lo": -0.5927,
+      "hi": -0.4841,
+      "days": 39,
+      "n": 91986
+     }
+    },
+    "MC": {
+     "t0": {
+      "diff": -0.4782,
+      "lo": -0.5343,
+      "hi": -0.4226,
+      "days": 39,
+      "n": 91986
+     },
+     "t1": {
+      "diff": -0.5039,
+      "lo": -0.5614,
+      "hi": -0.4411,
+      "days": 39,
+      "n": 91986
+     }
+    }
+   },
+   "byRegion": {
+    "Western Cape": {
+     "stations": [
+      "FACT"
+     ],
+     "n": 6369,
+     "M": {
+      "mae": 7.894,
+      "b0": 7.775,
+      "boot": {
+       "diff": 0.1188,
+       "lo": 0.0846,
+       "hi": 0.1552,
+       "days": 39,
+       "n": 6369
+      }
+     },
+     "BC": {
+      "mae": 3.783,
+      "b0": 7.775,
+      "boot": {
+       "diff": -3.9918,
+       "lo": -4.5181,
+       "hi": -3.4716,
+       "days": 39,
+       "n": 6369
+      }
+     },
+     "MC": {
+      "mae": 3.946,
+      "b0": 7.775,
+      "boot": {
+       "diff": -3.8285,
+       "lo": -4.3242,
+       "hi": -3.3256,
+       "days": 39,
+       "n": 6369
+      }
+     }
+    },
+    "West Coast": {
+     "stations": [
+      "FALW"
+     ],
+     "n": 4387,
+     "M": {
+      "mae": 3.646,
+      "b0": 3.563,
+      "boot": {
+       "diff": 0.083,
+       "lo": 0.043,
+       "hi": 0.1246,
+       "days": 34,
+       "n": 4387
+      }
+     },
+     "BC": {
+      "mae": 3.208,
+      "b0": 3.563,
+      "boot": {
+       "diff": -0.3553,
+       "lo": -0.4843,
+       "hi": -0.234,
+       "days": 34,
+       "n": 4387
+      }
+     },
+     "MC": {
+      "mae": 3.251,
+      "b0": 3.563,
+      "boot": {
+       "diff": -0.3123,
+       "lo": -0.4419,
+       "hi": -0.194,
+       "days": 34,
+       "n": 4387
+      }
+     }
+    },
+    "Garden Route": {
+     "stations": [
+      "FAGG"
+     ],
+     "n": 6317,
+     "M": {
+      "mae": 3.326,
+      "b0": 3.234,
+      "boot": {
+       "diff": 0.0917,
+       "lo": 0.0668,
+       "hi": 0.1193,
+       "days": 39,
+       "n": 6317
+      }
+     },
+     "BC": {
+      "mae": 3.253,
+      "b0": 3.234,
+      "boot": {
+       "diff": 0.0187,
+       "lo": -0.1119,
+       "hi": 0.1492,
+       "days": 39,
+       "n": 6317
+      }
+     },
+     "MC": {
+      "mae": 3.338,
+      "b0": 3.234,
+      "boot": {
+       "diff": 0.1043,
+       "lo": -0.042,
+       "hi": 0.2514,
+       "days": 39,
+       "n": 6317
+      }
+     }
+    },
+    "Eastern Cape": {
+     "stations": [
+      "FAPE",
+      "FAEL",
+      "FAUT"
+     ],
+     "n": 16575,
+     "M": {
+      "mae": 4.503,
+      "b0": 4.392,
+      "boot": {
+       "diff": 0.1113,
+       "lo": 0.0871,
+       "hi": 0.1353,
+       "days": 39,
+       "n": 16575
+      }
+     },
+     "BC": {
+      "mae": 3.791,
+      "b0": 4.392,
+      "boot": {
+       "diff": -0.6009,
+       "lo": -0.7482,
+       "hi": -0.4498,
+       "days": 39,
+       "n": 16575
+      }
+     },
+     "MC": {
+      "mae": 3.922,
+      "b0": 4.392,
+      "boot": {
+       "diff": -0.47,
+       "lo": -0.6108,
+       "hi": -0.3245,
+       "days": 39,
+       "n": 16575
+      }
+     }
+    },
+    "KZN coast": {
+     "stations": [
+      "FALE"
+     ],
+     "n": 6365,
+     "M": {
+      "mae": 3.538,
+      "b0": 3.365,
+      "boot": {
+       "diff": 0.1735,
+       "lo": 0.122,
+       "hi": 0.2252,
+       "days": 39,
+       "n": 6365
+      }
+     },
+     "BC": {
+      "mae": 3.014,
+      "b0": 3.365,
+      "boot": {
+       "diff": -0.3506,
+       "lo": -0.4372,
+       "hi": -0.272,
+       "days": 39,
+       "n": 6365
+      }
+     },
+     "MC": {
+      "mae": 3.121,
+      "b0": 3.365,
+      "boot": {
+       "diff": -0.2434,
+       "lo": -0.3503,
+       "hi": -0.1461,
+       "days": 39,
+       "n": 6365
+      }
+     }
+    },
+    "Highveld": {
+     "stations": [
+      "FAOR",
+      "FAWB"
+     ],
+     "n": 11472,
+     "M": {
+      "mae": 4.675,
+      "b0": 4.642,
+      "boot": {
+       "diff": 0.0333,
+       "lo": 0.012,
+       "hi": 0.057,
+       "days": 39,
+       "n": 11472
+      }
+     },
+     "BC": {
+      "mae": 4.076,
+      "b0": 4.642,
+      "boot": {
+       "diff": -0.5653,
+       "lo": -0.7231,
+       "hi": -0.4049,
+       "days": 39,
+       "n": 11472
+      }
+     },
+     "MC": {
+      "mae": 4.056,
+      "b0": 4.642,
+      "boot": {
+       "diff": -0.5857,
+       "lo": -0.7539,
+       "hi": -0.4095,
+       "days": 39,
+       "n": 11472
+      }
+     }
+    },
+    "Free State": {
+     "stations": [
+      "FABL"
+     ],
+     "n": 5986,
+     "M": {
+      "mae": 3.313,
+      "b0": 3.248,
+      "boot": {
+       "diff": 0.065,
+       "lo": 0.0437,
+       "hi": 0.0872,
+       "days": 38,
+       "n": 5986
+      }
+     },
+     "BC": {
+      "mae": 3.049,
+      "b0": 3.248,
+      "boot": {
+       "diff": -0.1987,
+       "lo": -0.2792,
+       "hi": -0.1152,
+       "days": 38,
+       "n": 5986
+      }
+     },
+     "MC": {
+      "mae": 3.117,
+      "b0": 3.248,
+      "boot": {
+       "diff": -0.1308,
+       "lo": -0.2167,
+       "hi": -0.0409,
+       "days": 38,
+       "n": 5986
+      }
+     }
+    },
+    "Northern Cape": {
+     "stations": [
+      "FAUP",
+      "FAKM"
+     ],
+     "n": 11742,
+     "M": {
+      "mae": 3.902,
+      "b0": 3.795,
+      "boot": {
+       "diff": 0.1065,
+       "lo": 0.0787,
+       "hi": 0.1369,
+       "days": 39,
+       "n": 11742
+      }
+     },
+     "BC": {
+      "mae": 3.569,
+      "b0": 3.795,
+      "boot": {
+       "diff": -0.2259,
+       "lo": -0.2885,
+       "hi": -0.1725,
+       "days": 39,
+       "n": 11742
+      }
+     },
+     "MC": {
+      "mae": 3.66,
+      "b0": 3.795,
+      "boot": {
+       "diff": -0.1354,
+       "lo": -0.2041,
+       "hi": -0.0752,
+       "days": 39,
+       "n": 11742
+      }
+     }
+    },
+    "North West": {
+     "stations": [
+      "FAMM"
+     ],
+     "n": 6151,
+     "M": {
+      "mae": 2.919,
+      "b0": 2.852,
+      "boot": {
+       "diff": 0.0668,
+       "lo": 0.0416,
+       "hi": 0.0914,
+       "days": 39,
+       "n": 6151
+      }
+     },
+     "BC": {
+      "mae": 2.883,
+      "b0": 2.852,
+      "boot": {
+       "diff": 0.031,
+       "lo": -0.0214,
+       "hi": 0.0863,
+       "days": 39,
+       "n": 6151
+      }
+     },
+     "MC": {
+      "mae": 2.977,
+      "b0": 2.852,
+      "boot": {
+       "diff": 0.1248,
+       "lo": 0.0685,
+       "hi": 0.1895,
+       "days": 39,
+       "n": 6151
+      }
+     }
+    },
+    "Lowveld": {
+     "stations": [
+      "FAKN",
+      "FAHS"
+     ],
+     "n": 10454,
+     "M": {
+      "mae": 3.786,
+      "b0": 3.868,
+      "boot": {
+       "diff": -0.082,
+       "lo": -0.1456,
+       "hi": -0.0294,
+       "days": 39,
+       "n": 10454
+      }
+     },
+     "BC": {
+      "mae": 3.802,
+      "b0": 3.868,
+      "boot": {
+       "diff": -0.0651,
+       "lo": -0.1327,
+       "hi": 0.0176,
+       "days": 39,
+       "n": 10454
+      }
+     },
+     "MC": {
+      "mae": 3.754,
+      "b0": 3.868,
+      "boot": {
+       "diff": -0.1133,
+       "lo": -0.1873,
+       "hi": -0.0434,
+       "days": 39,
+       "n": 10454
+      }
+     }
+    },
+    "Limpopo": {
+     "stations": [
+      "FAPP"
+     ],
+     "n": 6168,
+     "M": {
+      "mae": 3.342,
+      "b0": 3.262,
+      "boot": {
+       "diff": 0.0808,
+       "lo": 0.0526,
+       "hi": 0.1088,
+       "days": 39,
+       "n": 6168
+      }
+     },
+     "BC": {
+      "mae": 3.153,
+      "b0": 3.262,
+      "boot": {
+       "diff": -0.1086,
+       "lo": -0.1507,
+       "hi": -0.0661,
+       "days": 39,
+       "n": 6168
+      }
+     },
+     "MC": {
+      "mae": 3.255,
+      "b0": 3.262,
+      "boot": {
+       "diff": -0.007,
+       "lo": -0.0586,
+       "hi": 0.0444,
+       "days": 39,
+       "n": 6168
+      }
+     }
+    }
+   }
+  },
+  "ECMWF-heavy": {
+   "t0": {
+    "B0": {
+     "n": 91986,
+     "mae": 4.341,
+     "bias": -1.284,
+     "windyHours": 2887,
+     "caught25": 1258,
+     "false25": 1603
+    },
+    "M": {
+     "n": 91986,
+     "mae": 4.523,
+     "bias": -1.132,
+     "windyHours": 2887,
+     "caught25": 1338,
+     "false25": 1959
+    },
+    "BC": {
+     "n": 91986,
+     "mae": 3.738,
+     "bias": -0.173,
+     "windyHours": 2887,
+     "caught25": 2279,
+     "false25": 3005
+    },
+    "MC": {
+     "n": 91986,
+     "mae": 3.962,
+     "bias": -0.045,
+     "windyHours": 2887,
+     "caught25": 2251,
+     "false25": 3390
+    },
+    "SW": {
+     "n": 91986,
+     "mae": 4.254,
+     "bias": -1.371,
+     "windyHours": 2887,
+     "caught25": 1256,
+     "false25": 1497
+    },
+    "SWC": {
+     "n": 91986,
+     "mae": 3.659,
+     "bias": 0.016,
+     "windyHours": 2887,
+     "caught25": 2384,
+     "false25": 3461
+    }
+   },
+   "t0hourly": {
+    "B0": {
+     "n": 91986,
+     "mae": 4.475,
+     "bias": -1.07,
+     "windyHours": 2887,
+     "caught25": 1330,
+     "false25": 1962
+    },
+    "M": {
+     "n": 91986,
+     "mae": 4.523,
+     "bias": -1.132,
+     "windyHours": 2887,
+     "caught25": 1338,
+     "false25": 1959
+    },
+    "BC": {
+     "n": 91986,
+     "mae": 3.885,
+     "bias": 0.04,
+     "windyHours": 2887,
+     "caught25": 2297,
+     "false25": 3387
+    },
+    "MC": {
+     "n": 91986,
+     "mae": 3.962,
+     "bias": -0.045,
+     "windyHours": 2887,
+     "caught25": 2251,
+     "false25": 3390
+    }
+   },
+   "t1hourly": {
+    "B0": {
+     "n": 91986,
+     "mae": 4.769,
+     "bias": -1.257,
+     "windyHours": 2887,
+     "caught25": 1210,
+     "false25": 1980
+    },
+    "M": {
+     "n": 91986,
+     "mae": 4.852,
+     "bias": -1.341,
+     "windyHours": 2887,
+     "caught25": 1206,
+     "false25": 2008
+    },
+    "BC": {
+     "n": 91986,
+     "mae": 4.252,
+     "bias": -0.16,
+     "windyHours": 2887,
+     "caught25": 2117,
+     "false25": 3523
+    },
+    "MC": {
+     "n": 91986,
+     "mae": 4.364,
+     "bias": -0.268,
+     "windyHours": 2887,
+     "caught25": 2052,
+     "false25": 3517
+    }
+   },
+   "boot": {
+    "M": {
+     "t0": {
+      "diff": 0.1819,
+      "lo": 0.1662,
+      "hi": 0.1999,
+      "days": 39,
+      "n": 91986
+     },
+     "t1": {
+      "diff": 0.0826,
+      "lo": 0.0487,
+      "hi": 0.1286,
+      "days": 39,
+      "n": 91986
+     }
+    },
+    "BC": {
+     "t0": {
+      "diff": -0.6034,
+      "lo": -0.6611,
+      "hi": -0.5465,
+      "days": 39,
+      "n": 91986
+     },
+     "t1": {
+      "diff": -0.517,
+      "lo": -0.5698,
+      "hi": -0.4625,
+      "days": 39,
+      "n": 91986
+     }
+    },
+    "MC": {
+     "t0": {
+      "diff": -0.3793,
+      "lo": -0.4367,
+      "hi": -0.3217,
+      "days": 39,
+      "n": 91986
+     },
+     "t1": {
+      "diff": -0.4049,
+      "lo": -0.4789,
+      "hi": -0.3292,
+      "days": 39,
+      "n": 91986
+     }
+    }
+   },
+   "byRegion": {
+    "Western Cape": {
+     "stations": [
+      "FACT"
+     ],
+     "n": 6369,
+     "M": {
+      "mae": 8.44,
+      "b0": 8.281,
+      "boot": {
+       "diff": 0.1586,
+       "lo": 0.0884,
+       "hi": 0.237,
+       "days": 39,
+       "n": 6369
+      }
+     },
+     "BC": {
+      "mae": 4.248,
+      "b0": 8.281,
+      "boot": {
+       "diff": -4.0329,
+       "lo": -4.5436,
+       "hi": -3.52,
+       "days": 39,
+       "n": 6369
+      }
+     },
+     "MC": {
+      "mae": 4.698,
+      "b0": 8.281,
+      "boot": {
+       "diff": -3.5833,
+       "lo": -4.0945,
+       "hi": -3.098,
+       "days": 39,
+       "n": 6369
+      }
+     }
+    },
+    "West Coast": {
+     "stations": [
+      "FALW"
+     ],
+     "n": 4387,
+     "M": {
+      "mae": 3.866,
+      "b0": 3.72,
+      "boot": {
+       "diff": 0.1463,
+       "lo": 0.1049,
+       "hi": 0.1921,
+       "days": 34,
+       "n": 4387
+      }
+     },
+     "BC": {
+      "mae": 3.278,
+      "b0": 3.72,
+      "boot": {
+       "diff": -0.4419,
+       "lo": -0.5849,
+       "hi": -0.313,
+       "days": 34,
+       "n": 4387
+      }
+     },
+     "MC": {
+      "mae": 3.382,
+      "b0": 3.72,
+      "boot": {
+       "diff": -0.338,
+       "lo": -0.4791,
+       "hi": -0.2035,
+       "days": 34,
+       "n": 4387
+      }
+     }
+    },
+    "Garden Route": {
+     "stations": [
+      "FAGG"
+     ],
+     "n": 6317,
+     "M": {
+      "mae": 3.915,
+      "b0": 3.714,
+      "boot": {
+       "diff": 0.2009,
+       "lo": 0.1725,
+       "hi": 0.2292,
+       "days": 39,
+       "n": 6317
+      }
+     },
+     "BC": {
+      "mae": 3.519,
+      "b0": 3.714,
+      "boot": {
+       "diff": -0.1951,
+       "lo": -0.3178,
+       "hi": -0.0821,
+       "days": 39,
+       "n": 6317
+      }
+     },
+     "MC": {
+      "mae": 3.759,
+      "b0": 3.714,
+      "boot": {
+       "diff": 0.0452,
+       "lo": -0.0719,
+       "hi": 0.1636,
+       "days": 39,
+       "n": 6317
+      }
+     }
+    },
+    "Eastern Cape": {
+     "stations": [
+      "FAPE",
+      "FAEL",
+      "FAUT"
+     ],
+     "n": 16575,
+     "M": {
+      "mae": 4.457,
+      "b0": 4.438,
+      "boot": {
+       "diff": 0.019,
+       "lo": -0.0175,
+       "hi": 0.0577,
+       "days": 39,
+       "n": 16575
+      }
+     },
+     "BC": {
+      "mae": 3.952,
+      "b0": 4.438,
+      "boot": {
+       "diff": -0.4866,
+       "lo": -0.6328,
+       "hi": -0.3358,
+       "days": 39,
+       "n": 16575
+      }
+     },
+     "MC": {
+      "mae": 4.179,
+      "b0": 4.438,
+      "boot": {
+       "diff": -0.2589,
+       "lo": -0.4172,
+       "hi": -0.0959,
+       "days": 39,
+       "n": 16575
+      }
+     }
+    },
+    "KZN coast": {
+     "stations": [
+      "FALE"
+     ],
+     "n": 6365,
+     "M": {
+      "mae": 3.474,
+      "b0": 3.368,
+      "boot": {
+       "diff": 0.1059,
+       "lo": 0.0578,
+       "hi": 0.1501,
+       "days": 39,
+       "n": 6365
+      }
+     },
+     "BC": {
+      "mae": 3.057,
+      "b0": 3.368,
+      "boot": {
+       "diff": -0.3108,
+       "lo": -0.3861,
+       "hi": -0.2418,
+       "days": 39,
+       "n": 6365
+      }
+     },
+     "MC": {
+      "mae": 3.152,
+      "b0": 3.368,
+      "boot": {
+       "diff": -0.2163,
+       "lo": -0.3088,
+       "hi": -0.1329,
+       "days": 39,
+       "n": 6365
+      }
+     }
+    },
+    "Highveld": {
+     "stations": [
+      "FAOR",
+      "FAWB"
+     ],
+     "n": 11472,
+     "M": {
+      "mae": 4.964,
+      "b0": 4.935,
+      "boot": {
+       "diff": 0.0282,
+       "lo": 0.0085,
+       "hi": 0.0465,
+       "days": 39,
+       "n": 11472
+      }
+     },
+     "BC": {
+      "mae": 4.101,
+      "b0": 4.935,
+      "boot": {
+       "diff": -0.8345,
+       "lo": -0.9994,
+       "hi": -0.6654,
+       "days": 39,
+       "n": 11472
+      }
+     },
+     "MC": {
+      "mae": 4.249,
+      "b0": 4.935,
+      "boot": {
+       "diff": -0.6865,
+       "lo": -0.8598,
+       "hi": -0.5119,
+       "days": 39,
+       "n": 11472
+      }
+     }
+    },
+    "Free State": {
+     "stations": [
+      "FABL"
+     ],
+     "n": 5986,
+     "M": {
+      "mae": 3.649,
+      "b0": 3.444,
+      "boot": {
+       "diff": 0.2056,
+       "lo": 0.18,
+       "hi": 0.2319,
+       "days": 38,
+       "n": 5986
+      }
+     },
+     "BC": {
+      "mae": 3.234,
+      "b0": 3.444,
+      "boot": {
+       "diff": -0.21,
+       "lo": -0.2909,
+       "hi": -0.1265,
+       "days": 38,
+       "n": 5986
+      }
+     },
+     "MC": {
+      "mae": 3.39,
+      "b0": 3.444,
+      "boot": {
+       "diff": -0.0535,
+       "lo": -0.1337,
+       "hi": 0.0246,
+       "days": 38,
+       "n": 5986
+      }
+     }
+    },
+    "Northern Cape": {
+     "stations": [
+      "FAUP",
+      "FAKM"
+     ],
+     "n": 11742,
+     "M": {
+      "mae": 4.286,
+      "b0": 3.946,
+      "boot": {
+       "diff": 0.3396,
+       "lo": 0.3103,
+       "hi": 0.371,
+       "days": 39,
+       "n": 11742
+      }
+     },
+     "BC": {
+      "mae": 3.719,
+      "b0": 3.946,
+      "boot": {
+       "diff": -0.227,
+       "lo": -0.2879,
+       "hi": -0.1742,
+       "days": 39,
+       "n": 11742
+      }
+     },
+     "MC": {
+      "mae": 3.923,
+      "b0": 3.946,
+      "boot": {
+       "diff": -0.0227,
+       "lo": -0.0818,
+       "hi": 0.0327,
+       "days": 39,
+       "n": 11742
+      }
+     }
+    },
+    "North West": {
+     "stations": [
+      "FAMM"
+     ],
+     "n": 6151,
+     "M": {
+      "mae": 3.394,
+      "b0": 3.173,
+      "boot": {
+       "diff": 0.2213,
+       "lo": 0.1947,
+       "hi": 0.2485,
+       "days": 39,
+       "n": 6151
+      }
+     },
+     "BC": {
+      "mae": 3.094,
+      "b0": 3.173,
+      "boot": {
+       "diff": -0.0791,
+       "lo": -0.1384,
+       "hi": -0.0222,
+       "days": 39,
+       "n": 6151
+      }
+     },
+     "MC": {
+      "mae": 3.326,
+      "b0": 3.173,
+      "boot": {
+       "diff": 0.1528,
+       "lo": 0.097,
+       "hi": 0.2083,
+       "days": 39,
+       "n": 6151
+      }
+     }
+    },
+    "Lowveld": {
+     "stations": [
+      "FAKN",
+      "FAHS"
+     ],
+     "n": 10454,
+     "M": {
+      "mae": 4.845,
+      "b0": 4.462,
+      "boot": {
+       "diff": 0.3827,
+       "lo": 0.3307,
+       "hi": 0.4407,
+       "days": 39,
+       "n": 10454
+      }
+     },
+     "BC": {
+      "mae": 4.315,
+      "b0": 4.462,
+      "boot": {
+       "diff": -0.1471,
+       "lo": -0.222,
+       "hi": -0.0503,
+       "days": 39,
+       "n": 10454
+      }
+     },
+     "MC": {
+      "mae": 4.653,
+      "b0": 4.462,
+      "boot": {
+       "diff": 0.1907,
+       "lo": 0.0877,
+       "hi": 0.3259,
+       "days": 39,
+       "n": 10454
+      }
+     }
+    },
+    "Limpopo": {
+     "stations": [
+      "FAPP"
+     ],
+     "n": 6168,
+     "M": {
+      "mae": 3.892,
+      "b0": 3.581,
+      "boot": {
+       "diff": 0.3106,
+       "lo": 0.2831,
+       "hi": 0.3385,
+       "days": 39,
+       "n": 6168
+      }
+     },
+     "BC": {
+      "mae": 3.405,
+      "b0": 3.581,
+      "boot": {
+       "diff": -0.1762,
+       "lo": -0.2189,
+       "hi": -0.1341,
+       "days": 39,
+       "n": 6168
+      }
+     },
+     "MC": {
+      "mae": 3.634,
+      "b0": 3.581,
+      "boot": {
+       "diff": 0.0534,
+       "lo": 0.0119,
+       "hi": 0.0939,
+       "days": 39,
+       "n": 6168
+      }
+     }
+    }
+   }
+  },
+  "mixed": {
+   "t0": {
+    "B0": {
+     "n": 91986,
+     "mae": 4.167,
+     "bias": -1.268,
+     "windyHours": 2887,
+     "caught25": 1242,
+     "false25": 1450
+    },
+    "M": {
+     "n": 91986,
+     "mae": 4.256,
+     "bias": -1.258,
+     "windyHours": 2887,
+     "caught25": 1334,
+     "false25": 1556
+    },
+    "BC": {
+     "n": 91986,
+     "mae": 3.588,
+     "bias": -0.12,
+     "windyHours": 2887,
+     "caught25": 2309,
+     "false25": 2969
+    },
+    "MC": {
+     "n": 91986,
+     "mae": 3.692,
+     "bias": -0.141,
+     "windyHours": 2887,
+     "caught25": 2280,
+     "false25": 3029
+    },
+    "SW": {
+     "n": 91986,
+     "mae": 4.031,
+     "bias": -1.238,
+     "windyHours": 2887,
+     "caught25": 1388,
+     "false25": 1383
+    },
+    "SWC": {
+     "n": 91986,
+     "mae": 3.539,
+     "bias": 0.066,
+     "windyHours": 2887,
+     "caught25": 2405,
+     "false25": 3296
+    }
+   },
+   "t0hourly": {
+    "B0": {
+     "n": 91986,
+     "mae": 4.25,
+     "bias": -1.607,
+     "windyHours": 2887,
+     "caught25": 1136,
+     "false25": 1221
+    },
+    "M": {
+     "n": 91986,
+     "mae": 4.269,
+     "bias": -1.55,
+     "windyHours": 2887,
+     "caught25": 1263,
+     "false25": 1414
+    },
+    "BC": {
+     "n": 91986,
+     "mae": 3.631,
+     "bias": -0.494,
+     "windyHours": 2887,
+     "caught25": 2214,
+     "false25": 2530
+    },
+    "MC": {
+     "n": 91986,
+     "mae": 3.673,
+     "bias": -0.457,
+     "windyHours": 2887,
+     "caught25": 2237,
+     "false25": 2725
+    }
+   },
+   "t1hourly": {
+    "B0": {
+     "n": 91986,
+     "mae": 4.576,
+     "bias": -1.614,
+     "windyHours": 2887,
+     "caught25": 1137,
+     "false25": 1383
+    },
+    "M": {
+     "n": 91986,
+     "mae": 4.778,
+     "bias": -1.416,
+     "windyHours": 2887,
+     "caught25": 1205,
+     "false25": 1837
+    },
+    "BC": {
+     "n": 91986,
+     "mae": 4.053,
+     "bias": -0.51,
+     "windyHours": 2887,
+     "caught25": 2056,
+     "false25": 2913
+    },
+    "MC": {
+     "n": 91986,
+     "mae": 4.287,
+     "bias": -0.341,
+     "windyHours": 2887,
+     "caught25": 2058,
+     "false25": 3379
+    }
+   },
+   "boot": {
+    "M": {
+     "t0": {
+      "diff": 0.089,
+      "lo": 0.0752,
+      "hi": 0.1019,
+      "days": 39,
+      "n": 91986
+     },
+     "t1": {
+      "diff": 0.2024,
+      "lo": 0.1634,
+      "hi": 0.2499,
+      "days": 39,
+      "n": 91986
+     }
+    },
+    "BC": {
+     "t0": {
+      "diff": -0.5791,
+      "lo": -0.6399,
+      "hi": -0.5216,
+      "days": 39,
+      "n": 91986
+     },
+     "t1": {
+      "diff": -0.5232,
+      "lo": -0.5777,
+      "hi": -0.4683,
+      "days": 39,
+      "n": 91986
+     }
+    },
+    "MC": {
+     "t0": {
+      "diff": -0.4753,
+      "lo": -0.5343,
+      "hi": -0.4172,
+      "days": 39,
+      "n": 91986
+     },
+     "t1": {
+      "diff": -0.2895,
+      "lo": -0.3547,
+      "hi": -0.225,
+      "days": 39,
+      "n": 91986
+     }
+    }
+   },
+   "byRegion": {
+    "Western Cape": {
+     "stations": [
+      "FACT"
+     ],
+     "n": 6369,
+     "M": {
+      "mae": 8.149,
+      "b0": 7.995,
+      "boot": {
+       "diff": 0.154,
+       "lo": 0.1151,
+       "hi": 0.195,
+       "days": 39,
+       "n": 6369
+      }
+     },
+     "BC": {
+      "mae": 4.001,
+      "b0": 7.995,
+      "boot": {
+       "diff": -3.9938,
+       "lo": -4.5206,
+       "hi": -3.4802,
+       "days": 39,
+       "n": 6369
+      }
+     },
+     "MC": {
+      "mae": 4.27,
+      "b0": 7.995,
+      "boot": {
+       "diff": -3.7255,
+       "lo": -4.2292,
+       "hi": -3.2429,
+       "days": 39,
+       "n": 6369
+      }
+     }
+    },
+    "West Coast": {
+     "stations": [
+      "FALW"
+     ],
+     "n": 4387,
+     "M": {
+      "mae": 3.672,
+      "b0": 3.548,
+      "boot": {
+       "diff": 0.1235,
+       "lo": 0.0786,
+       "hi": 0.1777,
+       "days": 34,
+       "n": 4387
+      }
+     },
+     "BC": {
+      "mae": 3.163,
+      "b0": 3.548,
+      "boot": {
+       "diff": -0.3853,
+       "lo": -0.5157,
+       "hi": -0.267,
+       "days": 34,
+       "n": 4387
+      }
+     },
+     "MC": {
+      "mae": 3.257,
+      "b0": 3.548,
+      "boot": {
+       "diff": -0.2907,
+       "lo": -0.4158,
+       "hi": -0.1637,
+       "days": 34,
+       "n": 4387
+      }
+     }
+    },
+    "Garden Route": {
+     "stations": [
+      "FAGG"
+     ],
+     "n": 6317,
+     "M": {
+      "mae": 3.629,
+      "b0": 3.565,
+      "boot": {
+       "diff": 0.0635,
+       "lo": 0.0183,
+       "hi": 0.1059,
+       "days": 39,
+       "n": 6317
+      }
+     },
+     "BC": {
+      "mae": 3.254,
+      "b0": 3.565,
+      "boot": {
+       "diff": -0.3116,
+       "lo": -0.4374,
+       "hi": -0.192,
+       "days": 39,
+       "n": 6317
+      }
+     },
+     "MC": {
+      "mae": 3.414,
+      "b0": 3.565,
+      "boot": {
+       "diff": -0.1512,
+       "lo": -0.2882,
+       "hi": -0.0266,
+       "days": 39,
+       "n": 6317
+      }
+     }
+    },
+    "Eastern Cape": {
+     "stations": [
+      "FAPE",
+      "FAEL",
+      "FAUT"
+     ],
+     "n": 16575,
+     "M": {
+      "mae": 4.482,
+      "b0": 4.492,
+      "boot": {
+       "diff": -0.0104,
+       "lo": -0.0472,
+       "hi": 0.0285,
+       "days": 39,
+       "n": 16575
+      }
+     },
+     "BC": {
+      "mae": 3.823,
+      "b0": 4.492,
+      "boot": {
+       "diff": -0.6696,
+       "lo": -0.8178,
+       "hi": -0.5185,
+       "days": 39,
+       "n": 16575
+      }
+     },
+     "MC": {
+      "mae": 3.929,
+      "b0": 4.492,
+      "boot": {
+       "diff": -0.5633,
+       "lo": -0.7245,
+       "hi": -0.3961,
+       "days": 39,
+       "n": 16575
+      }
+     }
+    },
+    "KZN coast": {
+     "stations": [
+      "FALE"
+     ],
+     "n": 6365,
+     "M": {
+      "mae": 3.258,
+      "b0": 3.133,
+      "boot": {
+       "diff": 0.1257,
+       "lo": 0.0749,
+       "hi": 0.1753,
+       "days": 39,
+       "n": 6365
+      }
+     },
+     "BC": {
+      "mae": 2.944,
+      "b0": 3.133,
+      "boot": {
+       "diff": -0.1886,
+       "lo": -0.2646,
+       "hi": -0.1171,
+       "days": 39,
+       "n": 6365
+      }
+     },
+     "MC": {
+      "mae": 3.017,
+      "b0": 3.133,
+      "boot": {
+       "diff": -0.1156,
+       "lo": -0.1936,
+       "hi": -0.0397,
+       "days": 39,
+       "n": 6365
+      }
+     }
+    },
+    "Highveld": {
+     "stations": [
+      "FAOR",
+      "FAWB"
+     ],
+     "n": 11472,
+     "M": {
+      "mae": 4.793,
+      "b0": 4.677,
+      "boot": {
+       "diff": 0.1161,
+       "lo": 0.0855,
+       "hi": 0.1491,
+       "days": 39,
+       "n": 11472
+      }
+     },
+     "BC": {
+      "mae": 4.129,
+      "b0": 4.677,
+      "boot": {
+       "diff": -0.5474,
+       "lo": -0.7065,
+       "hi": -0.3925,
+       "days": 39,
+       "n": 11472
+      }
+     },
+     "MC": {
+      "mae": 4.186,
+      "b0": 4.677,
+      "boot": {
+       "diff": -0.4908,
+       "lo": -0.6491,
+       "hi": -0.3339,
+       "days": 39,
+       "n": 11472
+      }
+     }
+    },
+    "Free State": {
+     "stations": [
+      "FABL"
+     ],
+     "n": 5986,
+     "M": {
+      "mae": 3.394,
+      "b0": 3.251,
+      "boot": {
+       "diff": 0.1428,
+       "lo": 0.1082,
+       "hi": 0.1794,
+       "days": 38,
+       "n": 5986
+      }
+     },
+     "BC": {
+      "mae": 3.064,
+      "b0": 3.251,
+      "boot": {
+       "diff": -0.1869,
+       "lo": -0.2613,
+       "hi": -0.1132,
+       "days": 38,
+       "n": 5986
+      }
+     },
+     "MC": {
+      "mae": 3.172,
+      "b0": 3.251,
+      "boot": {
+       "diff": -0.0786,
+       "lo": -0.155,
+       "hi": 0,
+       "days": 38,
+       "n": 5986
+      }
+     }
+    },
+    "Northern Cape": {
+     "stations": [
+      "FAUP",
+      "FAKM"
+     ],
+     "n": 11742,
+     "M": {
+      "mae": 4.091,
+      "b0": 3.88,
+      "boot": {
+       "diff": 0.2108,
+       "lo": 0.1689,
+       "hi": 0.2602,
+       "days": 39,
+       "n": 11742
+      }
+     },
+     "BC": {
+      "mae": 3.598,
+      "b0": 3.88,
+      "boot": {
+       "diff": -0.2815,
+       "lo": -0.35,
+       "hi": -0.2195,
+       "days": 39,
+       "n": 11742
+      }
+     },
+     "MC": {
+      "mae": 3.749,
+      "b0": 3.88,
+      "boot": {
+       "diff": -0.1313,
+       "lo": -0.1963,
+       "hi": -0.0657,
+       "days": 39,
+       "n": 11742
+      }
+     }
+    },
+    "North West": {
+     "stations": [
+      "FAMM"
+     ],
+     "n": 6151,
+     "M": {
+      "mae": 3.031,
+      "b0": 2.951,
+      "boot": {
+       "diff": 0.0795,
+       "lo": 0.0433,
+       "hi": 0.1153,
+       "days": 39,
+       "n": 6151
+      }
+     },
+     "BC": {
+      "mae": 2.988,
+      "b0": 2.951,
+      "boot": {
+       "diff": 0.0369,
+       "lo": -0.0238,
+       "hi": 0.0966,
+       "days": 39,
+       "n": 6151
+      }
+     },
+     "MC": {
+      "mae": 3.11,
+      "b0": 2.951,
+      "boot": {
+       "diff": 0.1589,
+       "lo": 0.0842,
+       "hi": 0.2281,
+       "days": 39,
+       "n": 6151
+      }
+     }
+    },
+    "Lowveld": {
+     "stations": [
+      "FAKN",
+      "FAHS"
+     ],
+     "n": 10454,
+     "M": {
+      "mae": 3.988,
+      "b0": 4.028,
+      "boot": {
+       "diff": -0.0403,
+       "lo": -0.1044,
+       "hi": 0.0169,
+       "days": 39,
+       "n": 10454
+      }
+     },
+     "BC": {
+      "mae": 3.978,
+      "b0": 4.028,
+      "boot": {
+       "diff": -0.0499,
+       "lo": -0.1129,
+       "hi": 0.0237,
+       "days": 39,
+       "n": 10454
+      }
+     },
+     "MC": {
+      "mae": 3.943,
+      "b0": 4.028,
+      "boot": {
+       "diff": -0.0847,
+       "lo": -0.1456,
+       "hi": -0.0294,
+       "days": 39,
+       "n": 10454
+      }
+     }
+    },
+    "Limpopo": {
+     "stations": [
+      "FAPP"
+     ],
+     "n": 6168,
+     "M": {
+      "mae": 3.549,
+      "b0": 3.401,
+      "boot": {
+       "diff": 0.1476,
+       "lo": 0.1127,
+       "hi": 0.1858,
+       "days": 39,
+       "n": 6168
+      }
+     },
+     "BC": {
+      "mae": 3.26,
+      "b0": 3.401,
+      "boot": {
+       "diff": -0.1413,
+       "lo": -0.1801,
+       "hi": -0.1013,
+       "days": 39,
+       "n": 6168
+      }
+     },
+     "MC": {
+      "mae": 3.379,
+      "b0": 3.401,
+      "boot": {
+       "diff": -0.0223,
+       "lo": -0.0636,
+       "hi": 0.0145,
+       "days": 39,
+       "n": 6168
+      }
+     }
+    }
+   }
+  }
+ },
+ "headline": {
+  "M": {
+   "T": 35,
+   "train": [
+    {
+     "T": 25,
+     "f1": 0.5429
+    },
+    {
+     "T": 27.5,
+     "f1": 0.5589
+    },
+    {
+     "T": 30,
+     "f1": 0.5609
+    },
+    {
+     "T": 32.5,
+     "f1": 0.5629
+    },
+    {
+     "T": 35,
+     "f1": 0.5632
+    }
+   ],
+   "old harness": {
+    "f1New": 0.556,
+    "f1Old": 0.536,
+    "boot": {
+     "diff": 0.0201,
+     "lo": 0.0073,
+     "hi": 0.0309,
+     "weeks": 39
+    },
+    "recallBoot": {
+     "diff": -0.0659,
+     "lo": -0.0768,
+     "hi": -0.0546,
+     "weeks": 39
+    },
+    "newPR": {
+     "precision": 0.556,
+     "recall": 0.555,
+     "said": 2968,
+     "falsePer100Calm": 1.48
+    },
+    "oldPR": {
+     "precision": 0.471,
+     "recall": 0.621,
+     "said": 3923,
+     "falsePer100Calm": 2.33
+    },
+    "windyHours": 2974,
+    "flipsToWind": 0,
+    "flipsFromWind": 955,
+    "byRegion": {
+     "Western Cape": {
+      "stations": [
+       "FACT"
+      ],
+      "n": 6369,
+      "windyHours": 835,
+      "f1New": 0.615,
+      "f1Old": 0.633,
+      "newPR": {
+       "precision": 0.852,
+       "recall": 0.481,
+       "said": 472,
+       "falsePer100Calm": 1.26
+      },
+      "oldPR": {
+       "precision": 0.832,
+       "recall": 0.51,
+       "said": 512,
+       "falsePer100Calm": 1.55
+      },
+      "flipsToWind": 0,
+      "boot": {
+       "diff": -0.0174,
+       "lo": -0.0289,
+       "hi": -0.008,
+       "weeks": 39
+      }
+     },
+     "West Coast": {
+      "stations": [
+       "FALW"
+      ],
+      "n": 4387,
+      "windyHours": 171,
+      "f1New": 0.61,
+      "f1Old": 0.612,
+      "newPR": {
+       "precision": 0.667,
+       "recall": 0.561,
+       "said": 144,
+       "falsePer100Calm": 1.14
+      },
+      "oldPR": {
+       "precision": 0.5,
+       "recall": 0.789,
+       "said": 270,
+       "falsePer100Calm": 3.2
+      },
+      "flipsToWind": 0,
+      "boot": {
+       "diff": -0.0027,
+       "lo": -0.099,
+       "hi": 0.0578,
+       "weeks": 34
+      }
+     },
+     "Garden Route": {
+      "stations": [
+       "FAGG"
+      ],
+      "n": 6317,
+      "windyHours": 127,
+      "f1New": 0.532,
+      "f1Old": 0.583,
+      "newPR": {
+       "precision": 0.545,
+       "recall": 0.52,
+       "said": 121,
+       "falsePer100Calm": 0.89
+      },
+      "oldPR": {
+       "precision": 0.484,
+       "recall": 0.732,
+       "said": 192,
+       "falsePer100Calm": 1.6
+      },
+      "flipsToWind": 0,
+      "boot": {
+       "diff": -0.0508,
+       "lo": -0.1301,
+       "hi": 0.0051,
+       "weeks": 39
+      }
+     },
+     "Eastern Cape": {
+      "stations": [
+       "FAPE",
+       "FAEL",
+       "FAUT"
+      ],
+      "n": 16575,
+      "windyHours": 1064,
+      "f1New": 0.655,
+      "f1Old": 0.656,
+      "newPR": {
+       "precision": 0.665,
+       "recall": 0.645,
+       "said": 1032,
+       "falsePer100Calm": 2.23
+      },
+      "oldPR": {
+       "precision": 0.64,
+       "recall": 0.674,
+       "said": 1121,
+       "falsePer100Calm": 2.6
+      },
+      "flipsToWind": 0,
+      "boot": {
+       "diff": -0.0017,
+       "lo": -0.0146,
+       "hi": 0.0107,
+       "weeks": 39
+      }
+     },
+     "KZN coast": {
+      "stations": [
+       "FALE"
+      ],
+      "n": 6365,
+      "windyHours": 127,
+      "f1New": 0.464,
+      "f1Old": 0.384,
+      "newPR": {
+       "precision": 0.33,
+       "recall": 0.78,
+       "said": 300,
+       "falsePer100Calm": 3.22
+      },
+      "oldPR": {
+       "precision": 0.245,
+       "recall": 0.89,
+       "said": 461,
+       "falsePer100Calm": 5.58
+      },
+      "flipsToWind": 0,
+      "boot": {
+       "diff": 0.0793,
+       "lo": 0.0476,
+       "hi": 0.1069,
+       "weeks": 39
+      }
+     },
+     "Highveld": {
+      "stations": [
+       "FAOR",
+       "FAWB"
+      ],
+      "n": 11472,
+      "windyHours": 181,
+      "f1New": 0.332,
+      "f1Old": 0.343,
+      "newPR": {
+       "precision": 0.621,
+       "recall": 0.227,
+       "said": 66,
+       "falsePer100Calm": 0.22
+      },
+      "oldPR": {
+       "precision": 0.614,
+       "recall": 0.238,
+       "said": 70,
+       "falsePer100Calm": 0.24
+      },
+      "flipsToWind": 0,
+      "boot": {
+       "diff": -0.0106,
+       "lo": -0.0287,
+       "hi": 0.0063,
+       "weeks": 39
+      }
+     },
+     "Free State": {
+      "stations": [
+       "FABL"
+      ],
+      "n": 5986,
+      "windyHours": 61,
+      "f1New": 0.46,
+      "f1Old": 0.435,
+      "newPR": {
+       "precision": 0.41,
+       "recall": 0.525,
+       "said": 78,
+       "falsePer100Calm": 0.78
+      },
+      "oldPR": {
+       "precision": 0.339,
+       "recall": 0.607,
+       "said": 109,
+       "falsePer100Calm": 1.22
+      },
+      "flipsToWind": 0,
+      "boot": {
+       "diff": 0.0251,
+       "lo": -0.0133,
+       "hi": 0.0659,
+       "weeks": 38
+      }
+     },
+     "Northern Cape": {
+      "stations": [
+       "FAUP",
+       "FAKM"
+      ],
+      "n": 11742,
+      "windyHours": 189,
+      "f1New": 0.395,
+      "f1Old": 0.35,
+      "newPR": {
+       "precision": 0.309,
+       "recall": 0.55,
+       "said": 337,
+       "falsePer100Calm": 2.02
+      },
+      "oldPR": {
+       "precision": 0.232,
+       "recall": 0.709,
+       "said": 577,
+       "falsePer100Calm": 3.83
+      },
+      "flipsToWind": 0,
+      "boot": {
+       "diff": 0.0456,
+       "lo": 0.0026,
+       "hi": 0.0749,
+       "weeks": 39
+      }
+     },
+     "North West": {
+      "stations": [
+       "FAMM"
+      ],
+      "n": 6151,
+      "windyHours": 112,
+      "f1New": 0.573,
+      "f1Old": 0.566,
+      "newPR": {
+       "precision": 0.628,
+       "recall": 0.527,
+       "said": 94,
+       "falsePer100Calm": 0.58
+      },
+      "oldPR": {
+       "precision": 0.466,
+       "recall": 0.723,
+       "said": 174,
+       "falsePer100Calm": 1.54
+      },
+      "flipsToWind": 0,
+      "boot": {
+       "diff": 0.0064,
+       "lo": -0.1497,
+       "hi": 0.0487,
+       "weeks": 39
+      }
+     },
+     "Lowveld": {
+      "stations": [
+       "FAKN",
+       "FAHS"
+      ],
+      "n": 10454,
+      "windyHours": 82,
+      "f1New": 0.311,
+      "f1Old": 0.241,
+      "newPR": {
+       "precision": 0.207,
+       "recall": 0.622,
+       "said": 246,
+       "falsePer100Calm": 1.88
+      },
+      "oldPR": {
+       "precision": 0.149,
+       "recall": 0.634,
+       "said": 350,
+       "falsePer100Calm": 2.87
+      },
+      "flipsToWind": 0,
+      "boot": {
+       "diff": 0.0702,
+       "lo": 0.0105,
+       "hi": 0.1473,
+       "weeks": 39
+      }
+     },
+     "Limpopo": {
+      "stations": [
+       "FAPP"
+      ],
+      "n": 6168,
+      "windyHours": 25,
+      "f1New": 0.291,
+      "f1Old": 0.286,
+      "newPR": {
+       "precision": 0.192,
+       "recall": 0.6,
+       "said": 78,
+       "falsePer100Calm": 1.03
+      },
+      "oldPR": {
+       "precision": 0.184,
+       "recall": 0.64,
+       "said": 87,
+       "falsePer100Calm": 1.16
+      },
+      "flipsToWind": 0,
+      "boot": {
+       "diff": 0.0055,
+       "lo": -0.019,
+       "hi": 0.033,
+       "weeks": 39
+      }
+     }
+    }
+   },
+   "ECMWF-heavy": {
+    "f1New": 0.57,
+    "f1Old": 0.543,
+    "boot": {
+     "diff": 0.0274,
+     "lo": 0.0138,
+     "hi": 0.0406,
+     "weeks": 39
+    },
+    "recallBoot": {
+     "diff": -0.0595,
+     "lo": -0.0739,
+     "hi": -0.046,
+     "weeks": 39
+    },
+    "newPR": {
+     "precision": 0.588,
+     "recall": 0.554,
+     "said": 2803,
+     "falsePer100Calm": 1.3
+    },
+    "oldPR": {
+     "precision": 0.487,
+     "recall": 0.613,
+     "said": 3747,
+     "falsePer100Calm": 2.16
+    },
+    "windyHours": 2974,
+    "flipsToWind": 0,
+    "flipsFromWind": 944,
+    "byRegion": {
+     "Western Cape": {
+      "stations": [
+       "FACT"
+      ],
+      "n": 6369,
+      "windyHours": 835,
+      "f1New": 0.669,
+      "f1Old": 0.669,
+      "newPR": {
+       "precision": 0.787,
+       "recall": 0.581,
+       "said": 616,
+       "falsePer100Calm": 2.37
+      },
+      "oldPR": {
+       "precision": 0.787,
+       "recall": 0.581,
+       "said": 616,
+       "falsePer100Calm": 2.37
+      },
+      "flipsToWind": 0,
+      "boot": {
+       "diff": 0,
+       "lo": 0,
+       "hi": 0,
+       "weeks": 39
+      }
+     },
+     "West Coast": {
+      "stations": [
+       "FALW"
+      ],
+      "n": 4387,
+      "windyHours": 171,
+      "f1New": 0.603,
+      "f1Old": 0.6,
+      "newPR": {
+       "precision": 0.695,
+       "recall": 0.532,
+       "said": 131,
+       "falsePer100Calm": 0.95
+      },
+      "oldPR": {
+       "precision": 0.491,
+       "recall": 0.772,
+       "said": 269,
+       "falsePer100Calm": 3.25
+      },
+      "flipsToWind": 0,
+      "boot": {
+       "diff": 0.0026,
+       "lo": -0.1025,
+       "hi": 0.0746,
+       "weeks": 34
+      }
+     },
+     "Garden Route": {
+      "stations": [
+       "FAGG"
+      ],
+      "n": 6317,
+      "windyHours": 127,
+      "f1New": 0.521,
+      "f1Old": 0.536,
+      "newPR": {
+       "precision": 0.559,
+       "recall": 0.488,
+       "said": 111,
+       "falsePer100Calm": 0.79
+      },
+      "oldPR": {
+       "precision": 0.497,
+       "recall": 0.583,
+       "said": 149,
+       "falsePer100Calm": 1.21
+      },
+      "flipsToWind": 0,
+      "boot": {
+       "diff": -0.0152,
+       "lo": -0.0676,
+       "hi": 0.0249,
+       "weeks": 39
+      }
+     },
+     "Eastern Cape": {
+      "stations": [
+       "FAPE",
+       "FAEL",
+       "FAUT"
+      ],
+      "n": 16575,
+      "windyHours": 1064,
+      "f1New": 0.652,
+      "f1Old": 0.651,
+      "newPR": {
+       "precision": 0.689,
+       "recall": 0.619,
+       "said": 956,
+       "falsePer100Calm": 1.91
+      },
+      "oldPR": {
+       "precision": 0.654,
+       "recall": 0.648,
+       "said": 1055,
+       "falsePer100Calm": 2.35
+      },
+      "flipsToWind": 0,
+      "boot": {
+       "diff": 0.0012,
+       "lo": -0.007,
+       "hi": 0.0088,
+       "weeks": 39
+      }
+     },
+     "KZN coast": {
+      "stations": [
+       "FALE"
+      ],
+      "n": 6365,
+      "windyHours": 127,
+      "f1New": 0.485,
+      "f1Old": 0.434,
+      "newPR": {
+       "precision": 0.367,
+       "recall": 0.717,
+       "said": 248,
+       "falsePer100Calm": 2.52
+      },
+      "oldPR": {
+       "precision": 0.289,
+       "recall": 0.866,
+       "said": 380,
+       "falsePer100Calm": 4.33
+      },
+      "flipsToWind": 0,
+      "boot": {
+       "diff": 0.0514,
+       "lo": 0.0054,
+       "hi": 0.0976,
+       "weeks": 39
+      }
+     },
+     "Highveld": {
+      "stations": [
+       "FAOR",
+       "FAWB"
+      ],
+      "n": 11472,
+      "windyHours": 181,
+      "f1New": 0.272,
+      "f1Old": 0.272,
+      "newPR": {
+       "precision": 0.593,
+       "recall": 0.177,
+       "said": 54,
+       "falsePer100Calm": 0.19
+      },
+      "oldPR": {
+       "precision": 0.593,
+       "recall": 0.177,
+       "said": 54,
+       "falsePer100Calm": 0.19
+      },
+      "flipsToWind": 0,
+      "boot": {
+       "diff": 0,
+       "lo": 0,
+       "hi": 0,
+       "weeks": 39
+      }
+     },
+     "Free State": {
+      "stations": [
+       "FABL"
+      ],
+      "n": 5986,
+      "windyHours": 61,
+      "f1New": 0.508,
+      "f1Old": 0.515,
+      "newPR": {
+       "precision": 0.526,
+       "recall": 0.492,
+       "said": 57,
+       "falsePer100Calm": 0.46
+      },
+      "oldPR": {
+       "precision": 0.479,
+       "recall": 0.557,
+       "said": 71,
+       "falsePer100Calm": 0.62
+      },
+      "flipsToWind": 0,
+      "boot": {
+       "diff": -0.0067,
+       "lo": -0.0492,
+       "hi": 0.0388,
+       "weeks": 38
+      }
+     },
+     "Northern Cape": {
+      "stations": [
+       "FAUP",
+       "FAKM"
+      ],
+      "n": 11742,
+      "windyHours": 189,
+      "f1New": 0.394,
+      "f1Old": 0.374,
+      "newPR": {
+       "precision": 0.35,
+       "recall": 0.45,
+       "said": 243,
+       "falsePer100Calm": 1.37
+      },
+      "oldPR": {
+       "precision": 0.263,
+       "recall": 0.651,
+       "said": 468,
+       "falsePer100Calm": 2.99
+      },
+      "flipsToWind": 0,
+      "boot": {
+       "diff": 0.0191,
+       "lo": -0.0306,
+       "hi": 0.0558,
+       "weeks": 39
+      }
+     },
+     "North West": {
+      "stations": [
+       "FAMM"
+      ],
+      "n": 6151,
+      "windyHours": 112,
+      "f1New": 0.533,
+      "f1Old": 0.639,
+      "newPR": {
+       "precision": 0.706,
+       "recall": 0.429,
+       "said": 68,
+       "falsePer100Calm": 0.33
+      },
+      "oldPR": {
+       "precision": 0.591,
+       "recall": 0.696,
+       "said": 132,
+       "falsePer100Calm": 0.89
+      },
+      "flipsToWind": 0,
+      "boot": {
+       "diff": -0.106,
+       "lo": -0.2978,
+       "hi": -0.0403,
+       "weeks": 39
+      }
+     },
+     "Lowveld": {
+      "stations": [
+       "FAKN",
+       "FAHS"
+      ],
+      "n": 10454,
+      "windyHours": 82,
+      "f1New": 0.307,
+      "f1Old": 0.185,
+      "newPR": {
+       "precision": 0.204,
+       "recall": 0.622,
+       "said": 250,
+       "falsePer100Calm": 1.92
+      },
+      "oldPR": {
+       "precision": 0.109,
+       "recall": 0.634,
+       "said": 479,
+       "falsePer100Calm": 4.12
+      },
+      "flipsToWind": 0,
+      "boot": {
+       "diff": 0.1218,
+       "lo": 0.0289,
+       "hi": 0.2285,
+       "weeks": 39
+      }
+     },
+     "Limpopo": {
+      "stations": [
+       "FAPP"
+      ],
+      "n": 6168,
+      "windyHours": 25,
+      "f1New": 0.277,
+      "f1Old": 0.283,
+      "newPR": {
+       "precision": 0.188,
+       "recall": 0.52,
+       "said": 69,
+       "falsePer100Calm": 0.91
+      },
+      "oldPR": {
+       "precision": 0.189,
+       "recall": 0.56,
+       "said": 74,
+       "falsePer100Calm": 0.98
+      },
+      "flipsToWind": 0,
+      "boot": {
+       "diff": -0.0062,
+       "lo": -0.0393,
+       "hi": 0.0168,
+       "weeks": 39
+      }
+     }
+    }
+   },
+   "mixed": {
+    "f1New": 0.511,
+    "f1Old": 0.491,
+    "boot": {
+     "diff": 0.02,
+     "lo": 0.0049,
+     "hi": 0.0325,
+     "weeks": 39
+    },
+    "recallBoot": {
+     "diff": -0.0602,
+     "lo": -0.0737,
+     "hi": -0.048,
+     "weeks": 39
+    },
+    "newPR": {
+     "precision": 0.549,
+     "recall": 0.478,
+     "said": 2587,
+     "falsePer100Calm": 1.31
+    },
+    "oldPR": {
+     "precision": 0.452,
+     "recall": 0.538,
+     "said": 3543,
+     "falsePer100Calm": 2.18
+    },
+    "windyHours": 2974,
+    "flipsToWind": 0,
+    "flipsFromWind": 956,
+    "byRegion": {
+     "Western Cape": {
+      "stations": [
+       "FACT"
+      ],
+      "n": 6369,
+      "windyHours": 835,
+      "f1New": 0.387,
+      "f1Old": 0.396,
+      "newPR": {
+       "precision": 0.932,
+       "recall": 0.244,
+       "said": 219,
+       "falsePer100Calm": 0.27
+      },
+      "oldPR": {
+       "precision": 0.929,
+       "recall": 0.251,
+       "said": 226,
+       "falsePer100Calm": 0.29
+      },
+      "flipsToWind": 0,
+      "boot": {
+       "diff": -0.0088,
+       "lo": -0.0228,
+       "hi": 0.0004,
+       "weeks": 39
+      }
+     },
+     "West Coast": {
+      "stations": [
+       "FALW"
+      ],
+      "n": 4387,
+      "windyHours": 171,
+      "f1New": 0.621,
+      "f1Old": 0.62,
+      "newPR": {
+       "precision": 0.696,
+       "recall": 0.561,
+       "said": 138,
+       "falsePer100Calm": 1
+      },
+      "oldPR": {
+       "precision": 0.496,
+       "recall": 0.825,
+       "said": 284,
+       "falsePer100Calm": 3.39
+      },
+      "flipsToWind": 0,
+      "boot": {
+       "diff": 0.0016,
+       "lo": -0.1142,
+       "hi": 0.0654,
+       "weeks": 34
+      }
+     },
+     "Garden Route": {
+      "stations": [
+       "FAGG"
+      ],
+      "n": 6317,
+      "windyHours": 127,
+      "f1New": 0.468,
+      "f1Old": 0.522,
+      "newPR": {
+       "precision": 0.547,
+       "recall": 0.409,
+       "said": 95,
+       "falsePer100Calm": 0.69
+      },
+      "oldPR": {
+       "precision": 0.542,
+       "recall": 0.504,
+       "said": 118,
+       "falsePer100Calm": 0.87
+      },
+      "flipsToWind": 0,
+      "boot": {
+       "diff": -0.054,
+       "lo": -0.1412,
+       "hi": -0.0012,
+       "weeks": 39
+      }
+     },
+     "Eastern Cape": {
+      "stations": [
+       "FAPE",
+       "FAEL",
+       "FAUT"
+      ],
+      "n": 16575,
+      "windyHours": 1064,
+      "f1New": 0.657,
+      "f1Old": 0.655,
+      "newPR": {
+       "precision": 0.676,
+       "recall": 0.638,
+       "said": 1004,
+       "falsePer100Calm": 2.1
+      },
+      "oldPR": {
+       "precision": 0.643,
+       "recall": 0.667,
+       "said": 1105,
+       "falsePer100Calm": 2.55
+      },
+      "flipsToWind": 0,
+      "boot": {
+       "diff": 0.002,
+       "lo": -0.0102,
+       "hi": 0.0141,
+       "weeks": 39
+      }
+     },
+     "KZN coast": {
+      "stations": [
+       "FALE"
+      ],
+      "n": 6365,
+      "windyHours": 127,
+      "f1New": 0.503,
+      "f1Old": 0.461,
+      "newPR": {
+       "precision": 0.369,
+       "recall": 0.787,
+       "said": 271,
+       "falsePer100Calm": 2.74
+      },
+      "oldPR": {
+       "precision": 0.313,
+       "recall": 0.874,
+       "said": 355,
+       "falsePer100Calm": 3.91
+      },
+      "flipsToWind": 0,
+      "boot": {
+       "diff": 0.0419,
+       "lo": 0.0079,
+       "hi": 0.0695,
+       "weeks": 39
+      }
+     },
+     "Highveld": {
+      "stations": [
+       "FAOR",
+       "FAWB"
+      ],
+      "n": 11472,
+      "windyHours": 181,
+      "f1New": 0.303,
+      "f1Old": 0.313,
+      "newPR": {
+       "precision": 0.632,
+       "recall": 0.199,
+       "said": 57,
+       "falsePer100Calm": 0.19
+      },
+      "oldPR": {
+       "precision": 0.613,
+       "recall": 0.21,
+       "said": 62,
+       "falsePer100Calm": 0.21
+      },
+      "flipsToWind": 0,
+      "boot": {
+       "diff": -0.0102,
+       "lo": -0.0281,
+       "hi": 0.0063,
+       "weeks": 39
+      }
+     },
+     "Free State": {
+      "stations": [
+       "FABL"
+      ],
+      "n": 5986,
+      "windyHours": 61,
+      "f1New": 0.46,
+      "f1Old": 0.411,
+      "newPR": {
+       "precision": 0.41,
+       "recall": 0.525,
+       "said": 78,
+       "falsePer100Calm": 0.78
+      },
+      "oldPR": {
+       "precision": 0.311,
+       "recall": 0.607,
+       "said": 119,
+       "falsePer100Calm": 1.38
+      },
+      "flipsToWind": 0,
+      "boot": {
+       "diff": 0.0493,
+       "lo": -0.002,
+       "hi": 0.1079,
+       "weeks": 38
+      }
+     },
+     "Northern Cape": {
+      "stations": [
+       "FAUP",
+       "FAKM"
+      ],
+      "n": 11742,
+      "windyHours": 189,
+      "f1New": 0.395,
+      "f1Old": 0.336,
+      "newPR": {
+       "precision": 0.314,
+       "recall": 0.534,
+       "said": 322,
+       "falsePer100Calm": 1.91
+      },
+      "oldPR": {
+       "precision": 0.219,
+       "recall": 0.72,
+       "said": 620,
+       "falsePer100Calm": 4.19
+      },
+      "flipsToWind": 0,
+      "boot": {
+       "diff": 0.0591,
+       "lo": 0.0076,
+       "hi": 0.098,
+       "weeks": 39
+      }
+     },
+     "North West": {
+      "stations": [
+       "FAMM"
+      ],
+      "n": 6151,
+      "windyHours": 112,
+      "f1New": 0.534,
+      "f1Old": 0.538,
+      "newPR": {
+       "precision": 0.585,
+       "recall": 0.491,
+       "said": 94,
+       "falsePer100Calm": 0.65
+      },
+      "oldPR": {
+       "precision": 0.413,
+       "recall": 0.768,
+       "said": 208,
+       "falsePer100Calm": 2.02
+      },
+      "flipsToWind": 0,
+      "boot": {
+       "diff": -0.0035,
+       "lo": -0.1515,
+       "hi": 0.0428,
+       "weeks": 39
+      }
+     },
+     "Lowveld": {
+      "stations": [
+       "FAKN",
+       "FAHS"
+      ],
+      "n": 10454,
+      "windyHours": 82,
+      "f1New": 0.327,
+      "f1Old": 0.234,
+      "newPR": {
+       "precision": 0.222,
+       "recall": 0.622,
+       "said": 230,
+       "falsePer100Calm": 1.73
+      },
+      "oldPR": {
+       "precision": 0.144,
+       "recall": 0.634,
+       "said": 362,
+       "falsePer100Calm": 2.99
+      },
+      "flipsToWind": 0,
+      "boot": {
+       "diff": 0.0927,
+       "lo": 0.0173,
+       "hi": 0.2053,
+       "weeks": 39
+      }
+     },
+     "Limpopo": {
+      "stations": [
+       "FAPP"
+      ],
+      "n": 6168,
+      "windyHours": 25,
+      "f1New": 0.288,
+      "f1Old": 0.275,
+      "newPR": {
+       "precision": 0.19,
+       "recall": 0.6,
+       "said": 79,
+       "falsePer100Calm": 1.04
+      },
+      "oldPR": {
+       "precision": 0.179,
+       "recall": 0.6,
+       "said": 84,
+       "falsePer100Calm": 1.12
+      },
+      "flipsToWind": 0,
+      "boot": {
+       "diff": 0.0132,
+       "lo": 0,
+       "hi": 0.0348,
+       "weeks": 39
+      }
+     }
+    }
+   }
+  },
+  "BC": {
+   "T": 27.5,
+   "train": [
+    {
+     "T": 25,
+     "f1": 0.5756
+    },
+    {
+     "T": 27.5,
+     "f1": 0.6261
+    },
+    {
+     "T": 30,
+     "f1": 0.6212
+    },
+    {
+     "T": 32.5,
+     "f1": 0.5955
+    },
+    {
+     "T": 35,
+     "f1": 0.5783
+    }
+   ],
+   "old harness": {
+    "f1New": 0.591,
+    "f1Old": 0.536,
+    "boot": {
+     "diff": 0.0558,
+     "lo": 0.0395,
+     "hi": 0.0738,
+     "weeks": 39
+    },
+    "recallBoot": {
+     "diff": 0.1241,
+     "lo": 0.0963,
+     "hi": 0.1505,
+     "weeks": 39
+    },
+    "newPR": {
+     "precision": 0.49,
+     "recall": 0.745,
+     "said": 4520,
+     "falsePer100Calm": 2.59
+    },
+    "oldPR": {
+     "precision": 0.471,
+     "recall": 0.621,
+     "said": 3923,
+     "falsePer100Calm": 2.33
+    },
+    "windyHours": 2974,
+    "flipsToWind": 1093,
+    "flipsFromWind": 496,
+    "byRegion": {
+     "Western Cape": {
+      "stations": [
+       "FACT"
+      ],
+      "n": 6369,
+      "windyHours": 835,
+      "f1New": 0.757,
+      "f1Old": 0.633,
+      "newPR": {
+       "precision": 0.686,
+       "recall": 0.844,
+       "said": 1028,
+       "falsePer100Calm": 5.84
+      },
+      "oldPR": {
+       "precision": 0.832,
+       "recall": 0.51,
+       "said": 512,
+       "falsePer100Calm": 1.55
+      },
+      "flipsToWind": 516,
+      "boot": {
+       "diff": 0.1243,
+       "lo": 0.0711,
+       "hi": 0.1794,
+       "weeks": 39
+      }
+     },
+     "West Coast": {
+      "stations": [
+       "FALW"
+      ],
+      "n": 4387,
+      "windyHours": 171,
+      "f1New": 0.634,
+      "f1Old": 0.612,
+      "newPR": {
+       "precision": 0.587,
+       "recall": 0.69,
+       "said": 201,
+       "falsePer100Calm": 1.97
+      },
+      "oldPR": {
+       "precision": 0.5,
+       "recall": 0.789,
+       "said": 270,
+       "falsePer100Calm": 3.2
+      },
+      "flipsToWind": 2,
+      "boot": {
+       "diff": 0.0222,
+       "lo": -0.0242,
+       "hi": 0.0591,
+       "weeks": 34
+      }
+     },
+     "Garden Route": {
+      "stations": [
+       "FAGG"
+      ],
+      "n": 6317,
+      "windyHours": 127,
+      "f1New": 0.512,
+      "f1Old": 0.583,
+      "newPR": {
+       "precision": 0.373,
+       "recall": 0.819,
+       "said": 279,
+       "falsePer100Calm": 2.83
+      },
+      "oldPR": {
+       "precision": 0.484,
+       "recall": 0.732,
+       "said": 192,
+       "falsePer100Calm": 1.6
+      },
+      "flipsToWind": 89,
+      "boot": {
+       "diff": -0.0708,
+       "lo": -0.1463,
+       "hi": -0.0095,
+       "weeks": 39
+      }
+     },
+     "Eastern Cape": {
+      "stations": [
+       "FAPE",
+       "FAEL",
+       "FAUT"
+      ],
+      "n": 16575,
+      "windyHours": 1064,
+      "f1New": 0.649,
+      "f1Old": 0.656,
+      "newPR": {
+       "precision": 0.568,
+       "recall": 0.758,
+       "said": 1422,
+       "falsePer100Calm": 3.96
+      },
+      "oldPR": {
+       "precision": 0.64,
+       "recall": 0.674,
+       "said": 1121,
+       "falsePer100Calm": 2.6
+      },
+      "flipsToWind": 302,
+      "boot": {
+       "diff": -0.0071,
+       "lo": -0.0256,
+       "hi": 0.0127,
+       "weeks": 39
+      }
+     },
+     "KZN coast": {
+      "stations": [
+       "FALE"
+      ],
+      "n": 6365,
+      "windyHours": 127,
+      "f1New": 0.455,
+      "f1Old": 0.384,
+      "newPR": {
+       "precision": 0.312,
+       "recall": 0.843,
+       "said": 343,
+       "falsePer100Calm": 3.78
+      },
+      "oldPR": {
+       "precision": 0.245,
+       "recall": 0.89,
+       "said": 461,
+       "falsePer100Calm": 5.58
+      },
+      "flipsToWind": 0,
+      "boot": {
+       "diff": 0.071,
+       "lo": 0.0501,
+       "hi": 0.0913,
+       "weeks": 39
+      }
+     },
+     "Highveld": {
+      "stations": [
+       "FAOR",
+       "FAWB"
+      ],
+      "n": 11472,
+      "windyHours": 181,
+      "f1New": 0.443,
+      "f1Old": 0.343,
+      "newPR": {
+       "precision": 0.41,
+       "recall": 0.481,
+       "said": 212,
+       "falsePer100Calm": 1.11
+      },
+      "oldPR": {
+       "precision": 0.614,
+       "recall": 0.238,
+       "said": 70,
+       "falsePer100Calm": 0.24
+      },
+      "flipsToWind": 142,
+      "boot": {
+       "diff": 0.1001,
+       "lo": -0.0171,
+       "hi": 0.1836,
+       "weeks": 39
+      }
+     },
+     "Free State": {
+      "stations": [
+       "FABL"
+      ],
+      "n": 5986,
+      "windyHours": 61,
+      "f1New": 0.417,
+      "f1Old": 0.435,
+      "newPR": {
+       "precision": 0.333,
+       "recall": 0.557,
+       "said": 102,
+       "falsePer100Calm": 1.15
+      },
+      "oldPR": {
+       "precision": 0.339,
+       "recall": 0.607,
+       "said": 109,
+       "falsePer100Calm": 1.22
+      },
+      "flipsToWind": 10,
+      "boot": {
+       "diff": -0.0181,
+       "lo": -0.0567,
+       "hi": 0.0267,
+       "weeks": 38
+      }
+     },
+     "Northern Cape": {
+      "stations": [
+       "FAUP",
+       "FAKM"
+      ],
+      "n": 11742,
+      "windyHours": 189,
+      "f1New": 0.382,
+      "f1Old": 0.35,
+      "newPR": {
+       "precision": 0.287,
+       "recall": 0.571,
+       "said": 376,
+       "falsePer100Calm": 2.32
+      },
+      "oldPR": {
+       "precision": 0.232,
+       "recall": 0.709,
+       "said": 577,
+       "falsePer100Calm": 3.83
+      },
+      "flipsToWind": 0,
+      "boot": {
+       "diff": 0.0324,
+       "lo": -0.0032,
+       "hi": 0.0601,
+       "weeks": 39
+      }
+     },
+     "North West": {
+      "stations": [
+       "FAMM"
+      ],
+      "n": 6151,
+      "windyHours": 112,
+      "f1New": 0.534,
+      "f1Old": 0.566,
+      "newPR": {
+       "precision": 0.429,
+       "recall": 0.705,
+       "said": 184,
+       "falsePer100Calm": 1.74
+      },
+      "oldPR": {
+       "precision": 0.466,
+       "recall": 0.723,
+       "said": 174,
+       "falsePer100Calm": 1.54
+      },
+      "flipsToWind": 17,
+      "boot": {
+       "diff": -0.0326,
+       "lo": -0.0622,
+       "hi": 0.0096,
+       "weeks": 39
+      }
+     },
+     "Lowveld": {
+      "stations": [
+       "FAKN",
+       "FAHS"
+      ],
+      "n": 10454,
+      "windyHours": 82,
+      "f1New": 0.279,
+      "f1Old": 0.241,
+      "newPR": {
+       "precision": 0.18,
+       "recall": 0.622,
+       "said": 284,
+       "falsePer100Calm": 2.25
+      },
+      "oldPR": {
+       "precision": 0.149,
+       "recall": 0.634,
+       "said": 350,
+       "falsePer100Calm": 2.87
+      },
+      "flipsToWind": 9,
+      "boot": {
+       "diff": 0.0379,
+       "lo": 0.0011,
+       "hi": 0.0961,
+       "weeks": 39
+      }
+     },
+     "Limpopo": {
+      "stations": [
+       "FAPP"
+      ],
+      "n": 6168,
+      "windyHours": 25,
+      "f1New": 0.281,
+      "f1Old": 0.286,
+      "newPR": {
+       "precision": 0.18,
+       "recall": 0.64,
+       "said": 89,
+       "falsePer100Calm": 1.19
+      },
+      "oldPR": {
+       "precision": 0.184,
+       "recall": 0.64,
+       "said": 87,
+       "falsePer100Calm": 1.16
+      },
+      "flipsToWind": 6,
+      "boot": {
+       "diff": -0.005,
+       "lo": -0.0282,
+       "hi": 0.0095,
+       "weeks": 39
+      }
+     }
+    }
+   },
+   "ECMWF-heavy": {
+    "f1New": 0.595,
+    "f1Old": 0.543,
+    "boot": {
+     "diff": 0.0523,
+     "lo": 0.0362,
+     "hi": 0.0705,
+     "weeks": 39
+    },
+    "recallBoot": {
+     "diff": 0.1009,
+     "lo": 0.0784,
+     "hi": 0.1248,
+     "weeks": 39
+    },
+    "newPR": {
+     "precision": 0.51,
+     "recall": 0.714,
+     "said": 4165,
+     "falsePer100Calm": 2.29
+    },
+    "oldPR": {
+     "precision": 0.487,
+     "recall": 0.613,
+     "said": 3747,
+     "falsePer100Calm": 2.16
+    },
+    "windyHours": 2974,
+    "flipsToWind": 951,
+    "flipsFromWind": 533,
+    "byRegion": {
+     "Western Cape": {
+      "stations": [
+       "FACT"
+      ],
+      "n": 6369,
+      "windyHours": 835,
+      "f1New": 0.745,
+      "f1Old": 0.669,
+      "newPR": {
+       "precision": 0.712,
+       "recall": 0.782,
+       "said": 917,
+       "falsePer100Calm": 4.77
+      },
+      "oldPR": {
+       "precision": 0.787,
+       "recall": 0.581,
+       "said": 616,
+       "falsePer100Calm": 2.37
+      },
+      "flipsToWind": 301,
+      "boot": {
+       "diff": 0.0769,
+       "lo": 0.0365,
+       "hi": 0.1251,
+       "weeks": 39
+      }
+     },
+     "West Coast": {
+      "stations": [
+       "FALW"
+      ],
+      "n": 4387,
+      "windyHours": 171,
+      "f1New": 0.625,
+      "f1Old": 0.6,
+      "newPR": {
+       "precision": 0.603,
+       "recall": 0.649,
+       "said": 184,
+       "falsePer100Calm": 1.73
+      },
+      "oldPR": {
+       "precision": 0.491,
+       "recall": 0.772,
+       "said": 269,
+       "falsePer100Calm": 3.25
+      },
+      "flipsToWind": 1,
+      "boot": {
+       "diff": 0.0254,
+       "lo": -0.0327,
+       "hi": 0.0777,
+       "weeks": 34
+      }
+     },
+     "Garden Route": {
+      "stations": [
+       "FAGG"
+      ],
+      "n": 6317,
+      "windyHours": 127,
+      "f1New": 0.54,
+      "f1Old": 0.536,
+      "newPR": {
+       "precision": 0.409,
+       "recall": 0.795,
+       "said": 247,
+       "falsePer100Calm": 2.36
+      },
+      "oldPR": {
+       "precision": 0.497,
+       "recall": 0.583,
+       "said": 149,
+       "falsePer100Calm": 1.21
+      },
+      "flipsToWind": 98,
+      "boot": {
+       "diff": 0.0039,
+       "lo": -0.0567,
+       "hi": 0.0751,
+       "weeks": 39
+      }
+     },
+     "Eastern Cape": {
+      "stations": [
+       "FAPE",
+       "FAEL",
+       "FAUT"
+      ],
+      "n": 16575,
+      "windyHours": 1064,
+      "f1New": 0.645,
+      "f1Old": 0.651,
+      "newPR": {
+       "precision": 0.559,
+       "recall": 0.761,
+       "said": 1448,
+       "falsePer100Calm": 4.11
+      },
+      "oldPR": {
+       "precision": 0.654,
+       "recall": 0.648,
+       "said": 1055,
+       "falsePer100Calm": 2.35
+      },
+      "flipsToWind": 402,
+      "boot": {
+       "diff": -0.0063,
+       "lo": -0.0287,
+       "hi": 0.0165,
+       "weeks": 39
+      }
+     },
+     "KZN coast": {
+      "stations": [
+       "FALE"
+      ],
+      "n": 6365,
+      "windyHours": 127,
+      "f1New": 0.484,
+      "f1Old": 0.434,
+      "newPR": {
+       "precision": 0.354,
+       "recall": 0.764,
+       "said": 274,
+       "falsePer100Calm": 2.84
+      },
+      "oldPR": {
+       "precision": 0.289,
+       "recall": 0.866,
+       "said": 380,
+       "falsePer100Calm": 4.33
+      },
+      "flipsToWind": 0,
+      "boot": {
+       "diff": 0.0499,
+       "lo": 0.009,
+       "hi": 0.0839,
+       "weeks": 39
+      }
+     },
+     "Highveld": {
+      "stations": [
+       "FAOR",
+       "FAWB"
+      ],
+      "n": 11472,
+      "windyHours": 181,
+      "f1New": 0.475,
+      "f1Old": 0.272,
+      "newPR": {
+       "precision": 0.486,
+       "recall": 0.464,
+       "said": 173,
+       "falsePer100Calm": 0.79
+      },
+      "oldPR": {
+       "precision": 0.593,
+       "recall": 0.177,
+       "said": 54,
+       "falsePer100Calm": 0.19
+      },
+      "flipsToWind": 119,
+      "boot": {
+       "diff": 0.2022,
+       "lo": 0.0671,
+       "hi": 0.2995,
+       "weeks": 39
+      }
+     },
+     "Free State": {
+      "stations": [
+       "FABL"
+      ],
+      "n": 5986,
+      "windyHours": 61,
+      "f1New": 0.473,
+      "f1Old": 0.515,
+      "newPR": {
+       "precision": 0.443,
+       "recall": 0.508,
+       "said": 70,
+       "falsePer100Calm": 0.66
+      },
+      "oldPR": {
+       "precision": 0.479,
+       "recall": 0.557,
+       "said": 71,
+       "falsePer100Calm": 0.62
+      },
+      "flipsToWind": 5,
+      "boot": {
+       "diff": -0.0419,
+       "lo": -0.0804,
+       "hi": 0.003,
+       "weeks": 38
+      }
+     },
+     "Northern Cape": {
+      "stations": [
+       "FAUP",
+       "FAKM"
+      ],
+      "n": 11742,
+      "windyHours": 189,
+      "f1New": 0.396,
+      "f1Old": 0.374,
+      "newPR": {
+       "precision": 0.336,
+       "recall": 0.481,
+       "said": 271,
+       "falsePer100Calm": 1.56
+      },
+      "oldPR": {
+       "precision": 0.263,
+       "recall": 0.651,
+       "said": 468,
+       "falsePer100Calm": 2.99
+      },
+      "flipsToWind": 0,
+      "boot": {
+       "diff": 0.0212,
+       "lo": -0.0188,
+       "hi": 0.0546,
+       "weeks": 39
+      }
+     },
+     "North West": {
+      "stations": [
+       "FAMM"
+      ],
+      "n": 6151,
+      "windyHours": 112,
+      "f1New": 0.64,
+      "f1Old": 0.639,
+      "newPR": {
+       "precision": 0.58,
+       "recall": 0.714,
+       "said": 138,
+       "falsePer100Calm": 0.96
+      },
+      "oldPR": {
+       "precision": 0.591,
+       "recall": 0.696,
+       "said": 132,
+       "falsePer100Calm": 0.89
+      },
+      "flipsToWind": 14,
+      "boot": {
+       "diff": 0.0007,
+       "lo": -0.0294,
+       "hi": 0.0635,
+       "weeks": 39
+      }
+     },
+     "Lowveld": {
+      "stations": [
+       "FAKN",
+       "FAHS"
+      ],
+      "n": 10454,
+      "windyHours": 82,
+      "f1New": 0.232,
+      "f1Old": 0.185,
+      "newPR": {
+       "precision": 0.142,
+       "recall": 0.634,
+       "said": 366,
+       "falsePer100Calm": 3.03
+      },
+      "oldPR": {
+       "precision": 0.109,
+       "recall": 0.634,
+       "said": 479,
+       "falsePer100Calm": 4.12
+      },
+      "flipsToWind": 7,
+      "boot": {
+       "diff": 0.0468,
+       "lo": 0.014,
+       "hi": 0.0922,
+       "weeks": 39
+      }
+     },
+     "Limpopo": {
+      "stations": [
+       "FAPP"
+      ],
+      "n": 6168,
+      "windyHours": 25,
+      "f1New": 0.275,
+      "f1Old": 0.283,
+      "newPR": {
+       "precision": 0.182,
+       "recall": 0.56,
+       "said": 77,
+       "falsePer100Calm": 1.03
+      },
+      "oldPR": {
+       "precision": 0.189,
+       "recall": 0.56,
+       "said": 74,
+       "falsePer100Calm": 0.98
+      },
+      "flipsToWind": 4,
+      "boot": {
+       "diff": -0.0083,
+       "lo": -0.0683,
+       "hi": 0.0413,
+       "weeks": 39
+      }
+     }
+    }
+   },
+   "mixed": {
+    "f1New": 0.586,
+    "f1Old": 0.491,
+    "boot": {
+     "diff": 0.0948,
+     "lo": 0.0683,
+     "hi": 0.1217,
+     "weeks": 39
+    },
+    "recallBoot": {
+     "diff": 0.1688,
+     "lo": 0.1314,
+     "hi": 0.205,
+     "weeks": 39
+    },
+    "newPR": {
+     "precision": 0.5,
+     "recall": 0.707,
+     "said": 4202,
+     "falsePer100Calm": 2.36
+    },
+    "oldPR": {
+     "precision": 0.452,
+     "recall": 0.538,
+     "said": 3543,
+     "falsePer100Calm": 2.18
+    },
+    "windyHours": 2974,
+    "flipsToWind": 1193,
+    "flipsFromWind": 534,
+    "byRegion": {
+     "Western Cape": {
+      "stations": [
+       "FACT"
+      ],
+      "n": 6369,
+      "windyHours": 835,
+      "f1New": 0.723,
+      "f1Old": 0.396,
+      "newPR": {
+       "precision": 0.719,
+       "recall": 0.728,
+       "said": 846,
+       "falsePer100Calm": 4.3
+      },
+      "oldPR": {
+       "precision": 0.929,
+       "recall": 0.251,
+       "said": 226,
+       "falsePer100Calm": 0.29
+      },
+      "flipsToWind": 620,
+      "boot": {
+       "diff": 0.3275,
+       "lo": 0.2462,
+       "hi": 0.4166,
+       "weeks": 39
+      }
+     },
+     "West Coast": {
+      "stations": [
+       "FALW"
+      ],
+      "n": 4387,
+      "windyHours": 171,
+      "f1New": 0.661,
+      "f1Old": 0.62,
+      "newPR": {
+       "precision": 0.616,
+       "recall": 0.713,
+       "said": 198,
+       "falsePer100Calm": 1.8
+      },
+      "oldPR": {
+       "precision": 0.496,
+       "recall": 0.825,
+       "said": 284,
+       "falsePer100Calm": 3.39
+      },
+      "flipsToWind": 1,
+      "boot": {
+       "diff": 0.0415,
+       "lo": -0.0112,
+       "hi": 0.0887,
+       "weeks": 34
+      }
+     },
+     "Garden Route": {
+      "stations": [
+       "FAGG"
+      ],
+      "n": 6317,
+      "windyHours": 127,
+      "f1New": 0.521,
+      "f1Old": 0.522,
+      "newPR": {
+       "precision": 0.427,
+       "recall": 0.669,
+       "said": 199,
+       "falsePer100Calm": 1.84
+      },
+      "oldPR": {
+       "precision": 0.542,
+       "recall": 0.504,
+       "said": 118,
+       "falsePer100Calm": 0.87
+      },
+      "flipsToWind": 81,
+      "boot": {
+       "diff": -0.001,
+       "lo": -0.0714,
+       "hi": 0.088,
+       "weeks": 39
+      }
+     },
+     "Eastern Cape": {
+      "stations": [
+       "FAPE",
+       "FAEL",
+       "FAUT"
+      ],
+      "n": 16575,
+      "windyHours": 1064,
+      "f1New": 0.651,
+      "f1Old": 0.655,
+      "newPR": {
+       "precision": 0.581,
+       "recall": 0.741,
+       "said": 1357,
+       "falsePer100Calm": 3.67
+      },
+      "oldPR": {
+       "precision": 0.643,
+       "recall": 0.667,
+       "said": 1105,
+       "falsePer100Calm": 2.55
+      },
+      "flipsToWind": 261,
+      "boot": {
+       "diff": -0.0037,
+       "lo": -0.0224,
+       "hi": 0.0141,
+       "weeks": 39
+      }
+     },
+     "KZN coast": {
+      "stations": [
+       "FALE"
+      ],
+      "n": 6365,
+      "windyHours": 127,
+      "f1New": 0.5,
+      "f1Old": 0.461,
+      "newPR": {
+       "precision": 0.361,
+       "recall": 0.811,
+       "said": 285,
+       "falsePer100Calm": 2.92
+      },
+      "oldPR": {
+       "precision": 0.313,
+       "recall": 0.874,
+       "said": 355,
+       "falsePer100Calm": 3.91
+      },
+      "flipsToWind": 0,
+      "boot": {
+       "diff": 0.0394,
+       "lo": 0.0079,
+       "hi": 0.066,
+       "weeks": 39
+      }
+     },
+     "Highveld": {
+      "stations": [
+       "FAOR",
+       "FAWB"
+      ],
+      "n": 11472,
+      "windyHours": 181,
+      "f1New": 0.487,
+      "f1Old": 0.313,
+      "newPR": {
+       "precision": 0.429,
+       "recall": 0.564,
+       "said": 238,
+       "falsePer100Calm": 1.2
+      },
+      "oldPR": {
+       "precision": 0.613,
+       "recall": 0.21,
+       "said": 62,
+       "falsePer100Calm": 0.21
+      },
+      "flipsToWind": 176,
+      "boot": {
+       "diff": 0.1741,
+       "lo": 0.0272,
+       "hi": 0.2781,
+       "weeks": 39
+      }
+     },
+     "Free State": {
+      "stations": [
+       "FABL"
+      ],
+      "n": 5986,
+      "windyHours": 61,
+      "f1New": 0.416,
+      "f1Old": 0.411,
+      "newPR": {
+       "precision": 0.321,
+       "recall": 0.59,
+       "said": 112,
+       "falsePer100Calm": 1.28
+      },
+      "oldPR": {
+       "precision": 0.311,
+       "recall": 0.607,
+       "said": 119,
+       "falsePer100Calm": 1.38
+      },
+      "flipsToWind": 11,
+      "boot": {
+       "diff": 0.0051,
+       "lo": -0.0456,
+       "hi": 0.0665,
+       "weeks": 38
+      }
+     },
+     "Northern Cape": {
+      "stations": [
+       "FAUP",
+       "FAKM"
+      ],
+      "n": 11742,
+      "windyHours": 189,
+      "f1New": 0.37,
+      "f1Old": 0.336,
+      "newPR": {
+       "precision": 0.279,
+       "recall": 0.55,
+       "said": 373,
+       "falsePer100Calm": 2.33
+      },
+      "oldPR": {
+       "precision": 0.219,
+       "recall": 0.72,
+       "said": 620,
+       "falsePer100Calm": 4.19
+      },
+      "flipsToWind": 0,
+      "boot": {
+       "diff": 0.0339,
+       "lo": -0.0117,
+       "hi": 0.0684,
+       "weeks": 39
+      }
+     },
+     "North West": {
+      "stations": [
+       "FAMM"
+      ],
+      "n": 6151,
+      "windyHours": 112,
+      "f1New": 0.526,
+      "f1Old": 0.538,
+      "newPR": {
+       "precision": 0.397,
+       "recall": 0.777,
+       "said": 219,
+       "falsePer100Calm": 2.19
+      },
+      "oldPR": {
+       "precision": 0.413,
+       "recall": 0.768,
+       "said": 208,
+       "falsePer100Calm": 2.02
+      },
+      "flipsToWind": 22,
+      "boot": {
+       "diff": -0.0118,
+       "lo": -0.0439,
+       "hi": 0.0133,
+       "weeks": 39
+      }
+     },
+     "Lowveld": {
+      "stations": [
+       "FAKN",
+       "FAHS"
+      ],
+      "n": 10454,
+      "windyHours": 82,
+      "f1New": 0.277,
+      "f1Old": 0.234,
+      "newPR": {
+       "precision": 0.178,
+       "recall": 0.622,
+       "said": 286,
+       "falsePer100Calm": 2.27
+      },
+      "oldPR": {
+       "precision": 0.144,
+       "recall": 0.634,
+       "said": 362,
+       "falsePer100Calm": 2.99
+      },
+      "flipsToWind": 15,
+      "boot": {
+       "diff": 0.0429,
+       "lo": 0.0043,
+       "hi": 0.102,
+       "weeks": 39
+      }
+     },
+     "Limpopo": {
+      "stations": [
+       "FAPP"
+      ],
+      "n": 6168,
+      "windyHours": 25,
+      "f1New": 0.281,
+      "f1Old": 0.275,
+      "newPR": {
+       "precision": 0.18,
+       "recall": 0.64,
+       "said": 89,
+       "falsePer100Calm": 1.19
+      },
+      "oldPR": {
+       "precision": 0.179,
+       "recall": 0.6,
+       "said": 84,
+       "falsePer100Calm": 1.12
+      },
+      "flipsToWind": 6,
+      "boot": {
+       "diff": 0.0055,
+       "lo": -0.0251,
+       "hi": 0.041,
+       "weeks": 39
+      }
+     }
+    }
+   }
+  },
+  "MC": {
+   "T": 30,
+   "train": [
+    {
+     "T": 25,
+     "f1": 0.5637
+    },
+    {
+     "T": 27.5,
+     "f1": 0.6144
+    },
+    {
+     "T": 30,
+     "f1": 0.6156
+    },
+    {
+     "T": 32.5,
+     "f1": 0.593
+    },
+    {
+     "T": 35,
+     "f1": 0.5752
+    }
+   ],
+   "old harness": {
+    "f1New": 0.593,
+    "f1Old": 0.536,
+    "boot": {
+     "diff": 0.057,
+     "lo": 0.0432,
+     "hi": 0.0712,
+     "weeks": 39
+    },
+    "recallBoot": {
+     "diff": 0.0427,
+     "lo": 0.0219,
+     "hi": 0.0628,
+     "weeks": 39
+    },
+    "newPR": {
+     "precision": 0.535,
+     "recall": 0.664,
+     "said": 3688,
+     "falsePer100Calm": 1.93
+    },
+    "oldPR": {
+     "precision": 0.471,
+     "recall": 0.621,
+     "said": 3923,
+     "falsePer100Calm": 2.33
+    },
+    "windyHours": 2974,
+    "flipsToWind": 444,
+    "flipsFromWind": 679,
+    "byRegion": {
+     "Western Cape": {
+      "stations": [
+       "FACT"
+      ],
+      "n": 6369,
+      "windyHours": 835,
+      "f1New": 0.741,
+      "f1Old": 0.633,
+      "newPR": {
+       "precision": 0.761,
+       "recall": 0.722,
+       "said": 792,
+       "falsePer100Calm": 3.42
+      },
+      "oldPR": {
+       "precision": 0.832,
+       "recall": 0.51,
+       "said": 512,
+       "falsePer100Calm": 1.55
+      },
+      "flipsToWind": 280,
+      "boot": {
+       "diff": 0.1087,
+       "lo": 0.0614,
+       "hi": 0.1599,
+       "weeks": 39
+      }
+     },
+     "West Coast": {
+      "stations": [
+       "FALW"
+      ],
+      "n": 4387,
+      "windyHours": 171,
+      "f1New": 0.62,
+      "f1Old": 0.612,
+      "newPR": {
+       "precision": 0.646,
+       "recall": 0.596,
+       "said": 158,
+       "falsePer100Calm": 1.33
+      },
+      "oldPR": {
+       "precision": 0.5,
+       "recall": 0.789,
+       "said": 270,
+       "falsePer100Calm": 3.2
+      },
+      "flipsToWind": 0,
+      "boot": {
+       "diff": 0.0078,
+       "lo": -0.072,
+       "hi": 0.0571,
+       "weeks": 34
+      }
+     },
+     "Garden Route": {
+      "stations": [
+       "FAGG"
+      ],
+      "n": 6317,
+      "windyHours": 127,
+      "f1New": 0.524,
+      "f1Old": 0.583,
+      "newPR": {
+       "precision": 0.428,
+       "recall": 0.677,
+       "said": 201,
+       "falsePer100Calm": 1.86
+      },
+      "oldPR": {
+       "precision": 0.484,
+       "recall": 0.732,
+       "said": 192,
+       "falsePer100Calm": 1.6
+      },
+      "flipsToWind": 30,
+      "boot": {
+       "diff": -0.0587,
+       "lo": -0.1332,
+       "hi": -0.0002,
+       "weeks": 39
+      }
+     },
+     "Eastern Cape": {
+      "stations": [
+       "FAPE",
+       "FAEL",
+       "FAUT"
+      ],
+      "n": 16575,
+      "windyHours": 1064,
+      "f1New": 0.658,
+      "f1Old": 0.656,
+      "newPR": {
+       "precision": 0.624,
+       "recall": 0.697,
+       "said": 1190,
+       "falsePer100Calm": 2.89
+      },
+      "oldPR": {
+       "precision": 0.64,
+       "recall": 0.674,
+       "said": 1121,
+       "falsePer100Calm": 2.6
+      },
+      "flipsToWind": 81,
+      "boot": {
+       "diff": 0.0021,
+       "lo": -0.0058,
+       "hi": 0.0098,
+       "weeks": 39
+      }
+     },
+     "KZN coast": {
+      "stations": [
+       "FALE"
+      ],
+      "n": 6365,
+      "windyHours": 127,
+      "f1New": 0.462,
+      "f1Old": 0.384,
+      "newPR": {
+       "precision": 0.326,
+       "recall": 0.795,
+       "said": 310,
+       "falsePer100Calm": 3.35
+      },
+      "oldPR": {
+       "precision": 0.245,
+       "recall": 0.89,
+       "said": 461,
+       "falsePer100Calm": 5.58
+      },
+      "flipsToWind": 0,
+      "boot": {
+       "diff": 0.0779,
+       "lo": 0.0446,
+       "hi": 0.1056,
+       "weeks": 39
+      }
+     },
+     "Highveld": {
+      "stations": [
+       "FAOR",
+       "FAWB"
+      ],
+      "n": 11472,
+      "windyHours": 181,
+      "f1New": 0.447,
+      "f1Old": 0.343,
+      "newPR": {
+       "precision": 0.563,
+       "recall": 0.37,
+       "said": 119,
+       "falsePer100Calm": 0.46
+      },
+      "oldPR": {
+       "precision": 0.614,
+       "recall": 0.238,
+       "said": 70,
+       "falsePer100Calm": 0.24
+      },
+      "flipsToWind": 49,
+      "boot": {
+       "diff": 0.104,
+       "lo": 0.0179,
+       "hi": 0.1613,
+       "weeks": 39
+      }
+     },
+     "Free State": {
+      "stations": [
+       "FABL"
+      ],
+      "n": 5986,
+      "windyHours": 61,
+      "f1New": 0.444,
+      "f1Old": 0.435,
+      "newPR": {
+       "precision": 0.37,
+       "recall": 0.557,
+       "said": 92,
+       "falsePer100Calm": 0.98
+      },
+      "oldPR": {
+       "precision": 0.339,
+       "recall": 0.607,
+       "said": 109,
+       "falsePer100Calm": 1.22
+      },
+      "flipsToWind": 1,
+      "boot": {
+       "diff": 0.0092,
+       "lo": -0.0217,
+       "hi": 0.0545,
+       "weeks": 38
+      }
+     },
+     "Northern Cape": {
+      "stations": [
+       "FAUP",
+       "FAKM"
+      ],
+      "n": 11742,
+      "windyHours": 189,
+      "f1New": 0.388,
+      "f1Old": 0.35,
+      "newPR": {
+       "precision": 0.3,
+       "recall": 0.55,
+       "said": 347,
+       "falsePer100Calm": 2.1
+      },
+      "oldPR": {
+       "precision": 0.232,
+       "recall": 0.709,
+       "said": 577,
+       "falsePer100Calm": 3.83
+      },
+      "flipsToWind": 0,
+      "boot": {
+       "diff": 0.0382,
+       "lo": -0.0052,
+       "hi": 0.068,
+       "weeks": 39
+      }
+     },
+     "North West": {
+      "stations": [
+       "FAMM"
+      ],
+      "n": 6151,
+      "windyHours": 112,
+      "f1New": 0.535,
+      "f1Old": 0.566,
+      "newPR": {
+       "precision": 0.479,
+       "recall": 0.607,
+       "said": 142,
+       "falsePer100Calm": 1.23
+      },
+      "oldPR": {
+       "precision": 0.466,
+       "recall": 0.723,
+       "said": 174,
+       "falsePer100Calm": 1.54
+      },
+      "flipsToWind": 2,
+      "boot": {
+       "diff": -0.031,
+       "lo": -0.09,
+       "hi": -0.0013,
+       "weeks": 39
+      }
+     },
+     "Lowveld": {
+      "stations": [
+       "FAKN",
+       "FAHS"
+      ],
+      "n": 10454,
+      "windyHours": 82,
+      "f1New": 0.303,
+      "f1Old": 0.241,
+      "newPR": {
+       "precision": 0.2,
+       "recall": 0.622,
+       "said": 255,
+       "falsePer100Calm": 1.97
+      },
+      "oldPR": {
+       "precision": 0.149,
+       "recall": 0.634,
+       "said": 350,
+       "falsePer100Calm": 2.87
+      },
+      "flipsToWind": 0,
+      "boot": {
+       "diff": 0.0619,
+       "lo": 0.0089,
+       "hi": 0.1342,
+       "weeks": 39
+      }
+     },
+     "Limpopo": {
+      "stations": [
+       "FAPP"
+      ],
+      "n": 6168,
+      "windyHours": 25,
+      "f1New": 0.299,
+      "f1Old": 0.286,
+      "newPR": {
+       "precision": 0.195,
+       "recall": 0.64,
+       "said": 82,
+       "falsePer100Calm": 1.07
+      },
+      "oldPR": {
+       "precision": 0.184,
+       "recall": 0.64,
+       "said": 87,
+       "falsePer100Calm": 1.16
+      },
+      "flipsToWind": 1,
+      "boot": {
+       "diff": 0.0134,
+       "lo": 0,
+       "hi": 0.0255,
+       "weeks": 39
+      }
+     }
+    }
+   },
+   "ECMWF-heavy": {
+    "f1New": 0.586,
+    "f1Old": 0.543,
+    "boot": {
+     "diff": 0.0433,
+     "lo": 0.0312,
+     "hi": 0.0566,
+     "weeks": 39
+    },
+    "recallBoot": {
+     "diff": 0.0299,
+     "lo": 0.0131,
+     "hi": 0.0461,
+     "weeks": 39
+    },
+    "newPR": {
+     "precision": 0.538,
+     "recall": 0.643,
+     "said": 3554,
+     "falsePer100Calm": 1.84
+    },
+    "oldPR": {
+     "precision": 0.487,
+     "recall": 0.613,
+     "said": 3747,
+     "falsePer100Calm": 2.16
+    },
+    "windyHours": 2974,
+    "flipsToWind": 484,
+    "flipsFromWind": 677,
+    "byRegion": {
+     "Western Cape": {
+      "stations": [
+       "FACT"
+      ],
+      "n": 6369,
+      "windyHours": 835,
+      "f1New": 0.724,
+      "f1Old": 0.669,
+      "newPR": {
+       "precision": 0.764,
+       "recall": 0.689,
+       "said": 753,
+       "falsePer100Calm": 3.22
+      },
+      "oldPR": {
+       "precision": 0.787,
+       "recall": 0.581,
+       "said": 616,
+       "falsePer100Calm": 2.37
+      },
+      "flipsToWind": 137,
+      "boot": {
+       "diff": 0.0557,
+       "lo": 0.0276,
+       "hi": 0.0883,
+       "weeks": 39
+      }
+     },
+     "West Coast": {
+      "stations": [
+       "FALW"
+      ],
+      "n": 4387,
+      "windyHours": 171,
+      "f1New": 0.603,
+      "f1Old": 0.6,
+      "newPR": {
+       "precision": 0.66,
+       "recall": 0.556,
+       "said": 144,
+       "falsePer100Calm": 1.16
+      },
+      "oldPR": {
+       "precision": 0.491,
+       "recall": 0.772,
+       "said": 269,
+       "falsePer100Calm": 3.25
+      },
+      "flipsToWind": 1,
+      "boot": {
+       "diff": 0.0032,
+       "lo": -0.0894,
+       "hi": 0.0702,
+       "weeks": 34
+      }
+     },
+     "Garden Route": {
+      "stations": [
+       "FAGG"
+      ],
+      "n": 6317,
+      "windyHours": 127,
+      "f1New": 0.535,
+      "f1Old": 0.536,
+      "newPR": {
+       "precision": 0.454,
+       "recall": 0.654,
+       "said": 183,
+       "falsePer100Calm": 1.62
+      },
+      "oldPR": {
+       "precision": 0.497,
+       "recall": 0.583,
+       "said": 149,
+       "falsePer100Calm": 1.21
+      },
+      "flipsToWind": 41,
+      "boot": {
+       "diff": -0.0007,
+       "lo": -0.052,
+       "hi": 0.0414,
+       "weeks": 39
+      }
+     },
+     "Eastern Cape": {
+      "stations": [
+       "FAPE",
+       "FAEL",
+       "FAUT"
+      ],
+      "n": 16575,
+      "windyHours": 1064,
+      "f1New": 0.65,
+      "f1Old": 0.651,
+      "newPR": {
+       "precision": 0.597,
+       "recall": 0.711,
+       "said": 1267,
+       "falsePer100Calm": 3.29
+      },
+      "oldPR": {
+       "precision": 0.654,
+       "recall": 0.648,
+       "said": 1055,
+       "falsePer100Calm": 2.35
+      },
+      "flipsToWind": 229,
+      "boot": {
+       "diff": -0.0017,
+       "lo": -0.0196,
+       "hi": 0.0155,
+       "weeks": 39
+      }
+     },
+     "KZN coast": {
+      "stations": [
+       "FALE"
+      ],
+      "n": 6365,
+      "windyHours": 127,
+      "f1New": 0.491,
+      "f1Old": 0.434,
+      "newPR": {
+       "precision": 0.369,
+       "recall": 0.732,
+       "said": 252,
+       "falsePer100Calm": 2.55
+      },
+      "oldPR": {
+       "precision": 0.289,
+       "recall": 0.866,
+       "said": 380,
+       "falsePer100Calm": 4.33
+      },
+      "flipsToWind": 0,
+      "boot": {
+       "diff": 0.0568,
+       "lo": 0.01,
+       "hi": 0.1008,
+       "weeks": 39
+      }
+     },
+     "Highveld": {
+      "stations": [
+       "FAOR",
+       "FAWB"
+      ],
+      "n": 11472,
+      "windyHours": 181,
+      "f1New": 0.429,
+      "f1Old": 0.272,
+      "newPR": {
+       "precision": 0.533,
+       "recall": 0.359,
+       "said": 122,
+       "falsePer100Calm": 0.5
+      },
+      "oldPR": {
+       "precision": 0.593,
+       "recall": 0.177,
+       "said": 54,
+       "falsePer100Calm": 0.19
+      },
+      "flipsToWind": 68,
+      "boot": {
+       "diff": 0.1567,
+       "lo": 0.0491,
+       "hi": 0.2462,
+       "weeks": 39
+      }
+     },
+     "Free State": {
+      "stations": [
+       "FABL"
+      ],
+      "n": 5986,
+      "windyHours": 61,
+      "f1New": 0.5,
+      "f1Old": 0.515,
+      "newPR": {
+       "precision": 0.492,
+       "recall": 0.508,
+       "said": 63,
+       "falsePer100Calm": 0.54
+      },
+      "oldPR": {
+       "precision": 0.479,
+       "recall": 0.557,
+       "said": 71,
+       "falsePer100Calm": 0.62
+      },
+      "flipsToWind": 0,
+      "boot": {
+       "diff": -0.0152,
+       "lo": -0.0495,
+       "hi": 0.0288,
+       "weeks": 38
+      }
+     },
+     "Northern Cape": {
+      "stations": [
+       "FAUP",
+       "FAKM"
+      ],
+      "n": 11742,
+      "windyHours": 189,
+      "f1New": 0.39,
+      "f1Old": 0.374,
+      "newPR": {
+       "precision": 0.341,
+       "recall": 0.455,
+       "said": 252,
+       "falsePer100Calm": 1.44
+      },
+      "oldPR": {
+       "precision": 0.263,
+       "recall": 0.651,
+       "said": 468,
+       "falsePer100Calm": 2.99
+      },
+      "flipsToWind": 0,
+      "boot": {
+       "diff": 0.0156,
+       "lo": -0.029,
+       "hi": 0.0501,
+       "weeks": 39
+      }
+     },
+     "North West": {
+      "stations": [
+       "FAMM"
+      ],
+      "n": 6151,
+      "windyHours": 112,
+      "f1New": 0.609,
+      "f1Old": 0.639,
+      "newPR": {
+       "precision": 0.663,
+       "recall": 0.563,
+       "said": 95,
+       "falsePer100Calm": 0.53
+      },
+      "oldPR": {
+       "precision": 0.591,
+       "recall": 0.696,
+       "said": 132,
+       "falsePer100Calm": 0.89
+      },
+      "flipsToWind": 0,
+      "boot": {
+       "diff": -0.0306,
+       "lo": -0.1675,
+       "hi": 0.0105,
+       "weeks": 39
+      }
+     },
+     "Lowveld": {
+      "stations": [
+       "FAKN",
+       "FAHS"
+      ],
+      "n": 10454,
+      "windyHours": 82,
+      "f1New": 0.24,
+      "f1Old": 0.185,
+      "newPR": {
+       "precision": 0.148,
+       "recall": 0.634,
+       "said": 351,
+       "falsePer100Calm": 2.88
+      },
+      "oldPR": {
+       "precision": 0.109,
+       "recall": 0.634,
+       "said": 479,
+       "falsePer100Calm": 4.12
+      },
+      "flipsToWind": 7,
+      "boot": {
+       "diff": 0.0548,
+       "lo": 0.0186,
+       "hi": 0.102,
+       "weeks": 39
+      }
+     },
+     "Limpopo": {
+      "stations": [
+       "FAPP"
+      ],
+      "n": 6168,
+      "windyHours": 25,
+      "f1New": 0.268,
+      "f1Old": 0.283,
+      "newPR": {
+       "precision": 0.181,
+       "recall": 0.52,
+       "said": 72,
+       "falsePer100Calm": 0.96
+      },
+      "oldPR": {
+       "precision": 0.189,
+       "recall": 0.56,
+       "said": 74,
+       "falsePer100Calm": 0.98
+      },
+      "flipsToWind": 1,
+      "boot": {
+       "diff": -0.0148,
+       "lo": -0.0517,
+       "hi": 0.0107,
+       "weeks": 39
+      }
+     }
+    }
+   },
+   "mixed": {
+    "f1New": 0.569,
+    "f1Old": 0.491,
+    "boot": {
+     "diff": 0.0784,
+     "lo": 0.0594,
+     "hi": 0.0992,
+     "weeks": 39
+    },
+    "recallBoot": {
+     "diff": 0.0736,
+     "lo": 0.049,
+     "hi": 0.0993,
+     "weeks": 39
+    },
+    "newPR": {
+     "precision": 0.533,
+     "recall": 0.612,
+     "said": 3415,
+     "falsePer100Calm": 1.79
+    },
+    "oldPR": {
+     "precision": 0.452,
+     "recall": 0.538,
+     "said": 3543,
+     "falsePer100Calm": 2.18
+    },
+    "windyHours": 2974,
+    "flipsToWind": 601,
+    "flipsFromWind": 729,
+    "byRegion": {
+     "Western Cape": {
+      "stations": [
+       "FACT"
+      ],
+      "n": 6369,
+      "windyHours": 835,
+      "f1New": 0.645,
+      "f1Old": 0.396,
+      "newPR": {
+       "precision": 0.797,
+       "recall": 0.541,
+       "said": 567,
+       "falsePer100Calm": 2.08
+      },
+      "oldPR": {
+       "precision": 0.929,
+       "recall": 0.251,
+       "said": 226,
+       "falsePer100Calm": 0.29
+      },
+      "flipsToWind": 341,
+      "boot": {
+       "diff": 0.2489,
+       "lo": 0.1815,
+       "hi": 0.3195,
+       "weeks": 39
+      }
+     },
+     "West Coast": {
+      "stations": [
+       "FALW"
+      ],
+      "n": 4387,
+      "windyHours": 171,
+      "f1New": 0.623,
+      "f1Old": 0.62,
+      "newPR": {
+       "precision": 0.66,
+       "recall": 0.591,
+       "said": 153,
+       "falsePer100Calm": 1.23
+      },
+      "oldPR": {
+       "precision": 0.496,
+       "recall": 0.825,
+       "said": 284,
+       "falsePer100Calm": 3.39
+      },
+      "flipsToWind": 0,
+      "boot": {
+       "diff": 0.0037,
+       "lo": -0.1127,
+       "hi": 0.0647,
+       "weeks": 34
+      }
+     },
+     "Garden Route": {
+      "stations": [
+       "FAGG"
+      ],
+      "n": 6317,
+      "windyHours": 127,
+      "f1New": 0.536,
+      "f1Old": 0.522,
+      "newPR": {
+       "precision": 0.476,
+       "recall": 0.614,
+       "said": 164,
+       "falsePer100Calm": 1.39
+      },
+      "oldPR": {
+       "precision": 0.542,
+       "recall": 0.504,
+       "said": 118,
+       "falsePer100Calm": 0.87
+      },
+      "flipsToWind": 49,
+      "boot": {
+       "diff": 0.0136,
+       "lo": -0.0413,
+       "hi": 0.0801,
+       "weeks": 39
+      }
+     },
+     "Eastern Cape": {
+      "stations": [
+       "FAPE",
+       "FAEL",
+       "FAUT"
+      ],
+      "n": 16575,
+      "windyHours": 1064,
+      "f1New": 0.659,
+      "f1Old": 0.655,
+      "newPR": {
+       "precision": 0.62,
+       "recall": 0.704,
+       "said": 1209,
+       "falsePer100Calm": 2.97
+      },
+      "oldPR": {
+       "precision": 0.643,
+       "recall": 0.667,
+       "said": 1105,
+       "falsePer100Calm": 2.55
+      },
+      "flipsToWind": 130,
+      "boot": {
+       "diff": 0.0044,
+       "lo": -0.0064,
+       "hi": 0.0151,
+       "weeks": 39
+      }
+     },
+     "KZN coast": {
+      "stations": [
+       "FALE"
+      ],
+      "n": 6365,
+      "windyHours": 127,
+      "f1New": 0.503,
+      "f1Old": 0.461,
+      "newPR": {
+       "precision": 0.369,
+       "recall": 0.787,
+       "said": 271,
+       "falsePer100Calm": 2.74
+      },
+      "oldPR": {
+       "precision": 0.313,
+       "recall": 0.874,
+       "said": 355,
+       "falsePer100Calm": 3.91
+      },
+      "flipsToWind": 0,
+      "boot": {
+       "diff": 0.0419,
+       "lo": 0.0079,
+       "hi": 0.0695,
+       "weeks": 39
+      }
+     },
+     "Highveld": {
+      "stations": [
+       "FAOR",
+       "FAWB"
+      ],
+      "n": 11472,
+      "windyHours": 181,
+      "f1New": 0.403,
+      "f1Old": 0.313,
+      "newPR": {
+       "precision": 0.488,
+       "recall": 0.343,
+       "said": 127,
+       "falsePer100Calm": 0.58
+      },
+      "oldPR": {
+       "precision": 0.613,
+       "recall": 0.21,
+       "said": 62,
+       "falsePer100Calm": 0.21
+      },
+      "flipsToWind": 65,
+      "boot": {
+       "diff": 0.0898,
+       "lo": 0.0191,
+       "hi": 0.1356,
+       "weeks": 39
+      }
+     },
+     "Free State": {
+      "stations": [
+       "FABL"
+      ],
+      "n": 5986,
+      "windyHours": 61,
+      "f1New": 0.447,
+      "f1Old": 0.411,
+      "newPR": {
+       "precision": 0.374,
+       "recall": 0.557,
+       "said": 91,
+       "falsePer100Calm": 0.96
+      },
+      "oldPR": {
+       "precision": 0.311,
+       "recall": 0.607,
+       "said": 119,
+       "falsePer100Calm": 1.38
+      },
+      "flipsToWind": 1,
+      "boot": {
+       "diff": 0.0363,
+       "lo": -0.0161,
+       "hi": 0.1115,
+       "weeks": 38
+      }
+     },
+     "Northern Cape": {
+      "stations": [
+       "FAUP",
+       "FAKM"
+      ],
+      "n": 11742,
+      "windyHours": 189,
+      "f1New": 0.388,
+      "f1Old": 0.336,
+      "newPR": {
+       "precision": 0.304,
+       "recall": 0.534,
+       "said": 332,
+       "falsePer100Calm": 2
+      },
+      "oldPR": {
+       "precision": 0.219,
+       "recall": 0.72,
+       "said": 620,
+       "falsePer100Calm": 4.19
+      },
+      "flipsToWind": 0,
+      "boot": {
+       "diff": 0.0515,
+       "lo": -0.0001,
+       "hi": 0.0873,
+       "weeks": 39
+      }
+     },
+     "North West": {
+      "stations": [
+       "FAMM"
+      ],
+      "n": 6151,
+      "windyHours": 112,
+      "f1New": 0.53,
+      "f1Old": 0.538,
+      "newPR": {
+       "precision": 0.434,
+       "recall": 0.679,
+       "said": 175,
+       "falsePer100Calm": 1.64
+      },
+      "oldPR": {
+       "precision": 0.413,
+       "recall": 0.768,
+       "said": 208,
+       "falsePer100Calm": 2.02
+      },
+      "flipsToWind": 11,
+      "boot": {
+       "diff": -0.0079,
+       "lo": -0.0665,
+       "hi": 0.0317,
+       "weeks": 39
+      }
+     },
+     "Lowveld": {
+      "stations": [
+       "FAKN",
+       "FAHS"
+      ],
+      "n": 10454,
+      "windyHours": 82,
+      "f1New": 0.313,
+      "f1Old": 0.234,
+      "newPR": {
+       "precision": 0.209,
+       "recall": 0.622,
+       "said": 244,
+       "falsePer100Calm": 1.86
+      },
+      "oldPR": {
+       "precision": 0.144,
+       "recall": 0.634,
+       "said": 362,
+       "falsePer100Calm": 2.99
+      },
+      "flipsToWind": 3,
+      "boot": {
+       "diff": 0.0786,
+       "lo": 0.0129,
+       "hi": 0.1749,
+       "weeks": 39
+      }
+     },
+     "Limpopo": {
+      "stations": [
+       "FAPP"
+      ],
+      "n": 6168,
+      "windyHours": 25,
+      "f1New": 0.28,
+      "f1Old": 0.275,
+      "newPR": {
+       "precision": 0.183,
+       "recall": 0.6,
+       "said": 82,
+       "falsePer100Calm": 1.09
+      },
+      "oldPR": {
+       "precision": 0.179,
+       "recall": 0.6,
+       "said": 84,
+       "falsePer100Calm": 1.12
+      },
+      "flipsToWind": 1,
+      "boot": {
+       "diff": 0.0051,
+       "lo": 0,
+       "hi": 0.0181,
+       "weeks": 39
+      }
+     }
+    }
+   }
+  }
+ },
+ "gust": {
+  "tables": {
+   "G0C": {
+    "Western Cape": 1.02,
+    "West Coast": 0.97,
+    "Garden Route": 0.967,
+    "Eastern Cape": 0.971,
+    "KZN coast": 0.879,
+    "Highveld": 1.153,
+    "Free State": 1.017,
+    "Northern Cape": 1.048,
+    "North West": 1.133,
+    "Lowveld": 0.925,
+    "Limpopo": 1.142
+   },
+   "GMC": {
+    "Western Cape": 1.108,
+    "West Coast": 1.013,
+    "Garden Route": 1.021,
+    "Eastern Cape": 1.045,
+    "KZN coast": 0.95,
+    "Highveld": 1.258,
+    "Free State": 1.105,
+    "Northern Cape": 1.125,
+    "North West": 1.224,
+    "Lowveld": 0.983,
+    "Limpopo": 1.318
+   }
+  },
+  "old harness": {
+   "boot": {
+    "GM": {
+     "diff": -0.5311,
+     "lo": -1.3037,
+     "hi": 0.2928,
+     "days": 39,
+     "n": 2428
+    },
+    "G0C": {
+     "diff": -0.244,
+     "lo": -0.685,
+     "hi": 0.2529,
+     "days": 39,
+     "n": 2428
+    },
+    "GMC": {
+     "diff": -0.0866,
+     "lo": -0.6415,
+     "hi": 0.4766,
+     "days": 39,
+     "n": 2428
+    }
+   },
+   "bigF1": {
+    "G0": {
+     "f1": 0.281,
+     "boot": null,
+     "falseBigNoGroup": 2424
+    },
+    "GM": {
+     "f1": 0.376,
+     "boot": {
+      "diff": 0.0953,
+      "lo": 0.0672,
+      "hi": 0.1142,
+      "weeks": 39
+     },
+     "falseBigNoGroup": 982
+    },
+    "G0C": {
+     "f1": 0.266,
+     "boot": {
+      "diff": -0.015,
+      "lo": -0.024,
+      "hi": -0.0058,
+      "weeks": 39
+     },
+     "falseBigNoGroup": 2673
+    },
+    "GMC": {
+     "f1": 0.294,
+     "boot": {
+      "diff": 0.0133,
+      "lo": -0.0026,
+      "hi": 0.0295,
+      "weeks": 39
+     },
+     "falseBigNoGroup": 1960
+    }
+   },
+   "byRegion": {
+    "GM": {
+     "Western Cape": {
+      "diff": -0.2709,
+      "lo": -3.6968,
+      "hi": 4.1545,
+      "days": 23,
+      "n": 117
+     },
+     "West Coast": {
+      "diff": -0.5223,
+      "lo": -1.1721,
+      "hi": 0.0614,
+      "days": 29,
+      "n": 488
+     },
+     "Garden Route": {
+      "diff": -2.646,
+      "lo": -4.3295,
+      "hi": 1.2857,
+      "days": 13,
+      "n": 50
+     },
+     "Eastern Cape": {
+      "diff": -0.4343,
+      "lo": -1.4783,
+      "hi": 0.7844,
+      "days": 37,
+      "n": 702
+     },
+     "KZN coast": {
+      "diff": -2.374,
+      "lo": -3.6178,
+      "hi": -0.6792,
+      "days": 26,
+      "n": 96
+     },
+     "Highveld": {
+      "diff": 1.2557,
+      "lo": 0.4422,
+      "hi": 1.9898,
+      "days": 37,
+      "n": 359
+     },
+     "Free State": {
+      "diff": -0.6861,
+      "lo": -3.8552,
+      "hi": 2.2517,
+      "days": 17,
+      "n": 36
+     },
+     "Northern Cape": {
+      "diff": -1.0337,
+      "lo": -2.3063,
+      "hi": 0.4211,
+      "days": 36,
+      "n": 202
+     },
+     "North West": {
+      "diff": -0.2718,
+      "lo": -2.2649,
+      "hi": 2.8122,
+      "days": 20,
+      "n": 71
+     },
+     "Lowveld": {
+      "diff": -2.1528,
+      "lo": -3.2223,
+      "hi": -0.5027,
+      "days": 26,
+      "n": 254
+     },
+     "Limpopo": {
+      "diff": 0.2094,
+      "lo": -2.0826,
+      "hi": 4.4184,
+      "days": 17,
+      "n": 53
+     }
+    },
+    "G0C": {
+     "Western Cape": {
+      "diff": 0.9364,
+      "lo": 0.5828,
+      "hi": 1.2044,
+      "days": 23,
+      "n": 117
+     },
+     "West Coast": {
+      "diff": -0.4704,
+      "lo": -0.7143,
+      "hi": -0.2493,
+      "days": 29,
+      "n": 488
+     },
+     "Garden Route": {
+      "diff": -0.8019,
+      "lo": -1.2773,
+      "hi": 0.4228,
+      "days": 13,
+      "n": 50
+     },
+     "Eastern Cape": {
+      "diff": -0.6418,
+      "lo": -0.8902,
+      "hi": -0.3319,
+      "days": 37,
+      "n": 702
+     },
+     "KZN coast": {
+      "diff": -4.7624,
+      "lo": -5.9805,
+      "hi": -3.4112,
+      "days": 26,
+      "n": 96
+     },
+     "Highveld": {
+      "diff": 1.6276,
+      "lo": 0.593,
+      "hi": 2.5667,
+      "days": 37,
+      "n": 359
+     },
+     "Free State": {
+      "diff": 0.4091,
+      "lo": 0.0367,
+      "hi": 0.7151,
+      "days": 17,
+      "n": 36
+     },
+     "Northern Cape": {
+      "diff": 1.3442,
+      "lo": 0.6323,
+      "hi": 2.0197,
+      "days": 36,
+      "n": 202
+     },
+     "North West": {
+      "diff": 2.6465,
+      "lo": -0.4378,
+      "hi": 4.7585,
+      "days": 20,
+      "n": 71
+     },
+     "Lowveld": {
+      "diff": -3.1605,
+      "lo": -4.0508,
+      "hi": -1.7486,
+      "days": 26,
+      "n": 254
+     },
+     "Limpopo": {
+      "diff": 4.1469,
+      "lo": 0.0675,
+      "hi": 6.1245,
+      "days": 17,
+      "n": 53
+     }
+    },
+    "GMC": {
+     "Western Cape": {
+      "diff": -0.7012,
+      "lo": -2.8393,
+      "hi": 1.5939,
+      "days": 23,
+      "n": 117
+     },
+     "West Coast": {
+      "diff": -0.4688,
+      "lo": -1.0598,
+      "hi": 0.0326,
+      "days": 29,
+      "n": 488
+     },
+     "Garden Route": {
+      "diff": -2.4082,
+      "lo": -3.996,
+      "hi": 1.0796,
+      "days": 13,
+      "n": 50
+     },
+     "Eastern Cape": {
+      "diff": -0.3025,
+      "lo": -1.1562,
+      "hi": 0.6546,
+      "days": 37,
+      "n": 702
+     },
+     "KZN coast": {
+      "diff": -4.103,
+      "lo": -5.6483,
+      "hi": -1.9003,
+      "days": 26,
+      "n": 96
+     },
+     "Highveld": {
+      "diff": 2.5824,
+      "lo": 1.8382,
+      "hi": 3.1939,
+      "days": 37,
+      "n": 359
+     },
+     "Free State": {
+      "diff": 0.2629,
+      "lo": -1.3075,
+      "hi": 1.8718,
+      "days": 17,
+      "n": 36
+     },
+     "Northern Cape": {
+      "diff": 1.2397,
+      "lo": 0.5357,
+      "hi": 1.8032,
+      "days": 36,
+      "n": 202
+     },
+     "North West": {
+      "diff": 1.2883,
+      "lo": -0.3928,
+      "hi": 2.3678,
+      "days": 20,
+      "n": 71
+     },
+     "Lowveld": {
+      "diff": -2.7548,
+      "lo": -4.0206,
+      "hi": -0.7486,
+      "days": 26,
+      "n": 254
+     },
+     "Limpopo": {
+      "diff": 4.6871,
+      "lo": 1.565,
+      "hi": 6.7025,
+      "days": 17,
+      "n": 53
+     }
+    }
+   },
+   "G0": {
+    "n": 2428,
+    "mae": 10.238,
+    "bias": 2.374
+   },
+   "GM": {
+    "n": 2428,
+    "mae": 9.707,
+    "bias": -2.924
+   },
+   "G0C": {
+    "n": 2428,
+    "mae": 9.994,
+    "bias": 2.277
+   },
+   "GMC": {
+    "n": 2428,
+    "mae": 10.151,
+    "bias": 0.157
+   }
+  },
+  "ECMWF-heavy": {
+   "boot": {
+    "GM": {
+     "diff": -0.2454,
+     "lo": -0.5084,
+     "hi": 0.0527,
+     "days": 39,
+     "n": 2428
+    },
+    "G0C": {
+     "diff": -0.3106,
+     "lo": -0.7071,
+     "hi": 0.0833,
+     "days": 39,
+     "n": 2428
+    },
+    "GMC": {
+     "diff": 0.6047,
+     "lo": -0.0343,
+     "hi": 1.2608,
+     "days": 39,
+     "n": 2428
+    }
+   },
+   "bigF1": {
+    "G0": {
+     "f1": 0.306,
+     "boot": null,
+     "falseBigNoGroup": 1941
+    },
+    "GM": {
+     "f1": 0.338,
+     "boot": {
+      "diff": 0.0315,
+      "lo": 0.013,
+      "hi": 0.044,
+      "weeks": 39
+     },
+     "falseBigNoGroup": 1384
+    },
+    "G0C": {
+     "f1": 0.305,
+     "boot": {
+      "diff": -0.0019,
+      "lo": -0.0134,
+      "hi": 0.01,
+      "weeks": 39
+     },
+     "falseBigNoGroup": 2011
+    },
+    "GMC": {
+     "f1": 0.258,
+     "boot": {
+      "diff": -0.0489,
+      "lo": -0.0632,
+      "hi": -0.0355,
+      "weeks": 39
+     },
+     "falseBigNoGroup": 2507
+    }
+   },
+   "byRegion": {
+    "GM": {
+     "Western Cape": {
+      "diff": 0.0299,
+      "lo": -0.0403,
+      "hi": 0.142,
+      "days": 23,
+      "n": 117
+     },
+     "West Coast": {
+      "diff": -0.0318,
+      "lo": -0.2455,
+      "hi": 0.1904,
+      "days": 29,
+      "n": 488
+     },
+     "Garden Route": {
+      "diff": -0.156,
+      "lo": -2.1732,
+      "hi": 2.4655,
+      "days": 13,
+      "n": 50
+     },
+     "Eastern Cape": {
+      "diff": -0.542,
+      "lo": -1.048,
+      "hi": 0.0609,
+      "days": 37,
+      "n": 702
+     },
+     "KZN coast": {
+      "diff": -0.5917,
+      "lo": -1.9652,
+      "hi": 1.1019,
+      "days": 26,
+      "n": 96
+     },
+     "Highveld": {
+      "diff": 0.7404,
+      "lo": 0.3077,
+      "hi": 1.1334,
+      "days": 37,
+      "n": 359
+     },
+     "Free State": {
+      "diff": -0.1972,
+      "lo": -2.3525,
+      "hi": 2,
+      "days": 17,
+      "n": 36
+     },
+     "Northern Cape": {
+      "diff": 0.2851,
+      "lo": -0.1141,
+      "hi": 0.7099,
+      "days": 36,
+      "n": 202
+     },
+     "North West": {
+      "diff": 0.8746,
+      "lo": 0.4245,
+      "hi": 1.313,
+      "days": 20,
+      "n": 71
+     },
+     "Lowveld": {
+      "diff": -2.1575,
+      "lo": -3.0447,
+      "hi": -0.7318,
+      "days": 26,
+      "n": 254
+     },
+     "Limpopo": {
+      "diff": 0.5811,
+      "lo": -0.8381,
+      "hi": 3.5969,
+      "days": 17,
+      "n": 53
+     }
+    },
+    "G0C": {
+     "Western Cape": {
+      "diff": 0.9345,
+      "lo": 0.5828,
+      "hi": 1.2014,
+      "days": 23,
+      "n": 117
+     },
+     "West Coast": {
+      "diff": -0.2773,
+      "lo": -0.4361,
+      "hi": -0.1076,
+      "days": 29,
+      "n": 488
+     },
+     "Garden Route": {
+      "diff": -0.7483,
+      "lo": -1.1868,
+      "hi": 0.4034,
+      "days": 13,
+      "n": 50
+     },
+     "Eastern Cape": {
+      "diff": -0.453,
+      "lo": -0.6132,
+      "hi": -0.2859,
+      "days": 37,
+      "n": 702
+     },
+     "KZN coast": {
+      "diff": -4.3515,
+      "lo": -5.6603,
+      "hi": -2.9295,
+      "days": 26,
+      "n": 96
+     },
+     "Highveld": {
+      "diff": 1.0874,
+      "lo": 0.1855,
+      "hi": 1.9156,
+      "days": 37,
+      "n": 359
+     },
+     "Free State": {
+      "diff": 0.3427,
+      "lo": 0.0451,
+      "hi": 0.5982,
+      "days": 17,
+      "n": 36
+     },
+     "Northern Cape": {
+      "diff": 0.9258,
+      "lo": 0.2902,
+      "hi": 1.5011,
+      "days": 36,
+      "n": 202
+     },
+     "North West": {
+      "diff": 1.3803,
+      "lo": -1.4355,
+      "hi": 3.1176,
+      "days": 20,
+      "n": 71
+     },
+     "Lowveld": {
+      "diff": -3.132,
+      "lo": -4.0324,
+      "hi": -1.7311,
+      "days": 26,
+      "n": 254
+     },
+     "Limpopo": {
+      "diff": 2.8815,
+      "lo": -0.7681,
+      "hi": 4.5224,
+      "days": 17,
+      "n": 53
+     }
+    },
+    "GMC": {
+     "Western Cape": {
+      "diff": 5.9598,
+      "lo": 4.364,
+      "hi": 7.0693,
+      "days": 23,
+      "n": 117
+     },
+     "West Coast": {
+      "diff": 0.038,
+      "lo": -0.1429,
+      "hi": 0.2078,
+      "days": 29,
+      "n": 488
+     },
+     "Garden Route": {
+      "diff": 0.106,
+      "lo": -1.6168,
+      "hi": 2.273,
+      "days": 13,
+      "n": 50
+     },
+     "Eastern Cape": {
+      "diff": -0.4498,
+      "lo": -0.8901,
+      "hi": -0.0456,
+      "days": 37,
+      "n": 702
+     },
+     "KZN coast": {
+      "diff": -2.3315,
+      "lo": -3.9619,
+      "hi": -0.2004,
+      "days": 26,
+      "n": 96
+     },
+     "Highveld": {
+      "diff": 2.5457,
+      "lo": 1.4989,
+      "hi": 3.4543,
+      "days": 37,
+      "n": 359
+     },
+     "Free State": {
+      "diff": 0.2969,
+      "lo": -0.8692,
+      "hi": 1.446,
+      "days": 17,
+      "n": 36
+     },
+     "Northern Cape": {
+      "diff": 2.6974,
+      "lo": 1.3696,
+      "hi": 4.2451,
+      "days": 36,
+      "n": 202
+     },
+     "North West": {
+      "diff": 3.0921,
+      "lo": -1.4936,
+      "hi": 5.8328,
+      "days": 20,
+      "n": 71
+     },
+     "Lowveld": {
+      "diff": -2.7618,
+      "lo": -3.8479,
+      "hi": -1.0978,
+      "days": 26,
+      "n": 254
+     },
+     "Limpopo": {
+      "diff": 5.6436,
+      "lo": 1.2377,
+      "hi": 8.1828,
+      "days": 17,
+      "n": 53
+     }
+    }
+   },
+   "G0": {
+    "n": 2428,
+    "mae": 10.13,
+    "bias": 0.674
+   },
+   "GM": {
+    "n": 2428,
+    "mae": 9.885,
+    "bias": -2.15
+   },
+   "G0C": {
+    "n": 2428,
+    "mae": 9.82,
+    "bias": 0.548
+   },
+   "GMC": {
+    "n": 2428,
+    "mae": 10.735,
+    "bias": 1.014
+   }
+  },
+  "mixed": {
+   "boot": {
+    "GM": {
+     "diff": 0.2743,
+     "lo": -0.2319,
+     "hi": 0.7733,
+     "days": 39,
+     "n": 2428
+    },
+    "G0C": {
+     "diff": -0.3418,
+     "lo": -0.7499,
+     "hi": 0.0953,
+     "days": 39,
+     "n": 2428
+    },
+    "GMC": {
+     "diff": 1.0738,
+     "lo": 0.6873,
+     "hi": 1.4648,
+     "days": 39,
+     "n": 2428
+    }
+   },
+   "bigF1": {
+    "G0": {
+     "f1": 0.296,
+     "boot": null,
+     "falseBigNoGroup": 1972
+    },
+    "GM": {
+     "f1": 0.326,
+     "boot": {
+      "diff": 0.0294,
+      "lo": 0.0171,
+      "hi": 0.0424,
+      "weeks": 39
+     },
+     "falseBigNoGroup": 1428
+    },
+    "G0C": {
+     "f1": 0.284,
+     "boot": {
+      "diff": -0.0128,
+      "lo": -0.0245,
+      "hi": -0.0006,
+      "weeks": 39
+     },
+     "falseBigNoGroup": 2172
+    },
+    "GMC": {
+     "f1": 0.247,
+     "boot": {
+      "diff": -0.0498,
+      "lo": -0.0638,
+      "hi": -0.0344,
+      "weeks": 39
+     },
+     "falseBigNoGroup": 2644
+    }
+   },
+   "byRegion": {
+    "GM": {
+     "Western Cape": {
+      "diff": 1.8316,
+      "lo": -0.5381,
+      "hi": 5.408,
+      "days": 23,
+      "n": 117
+     },
+     "West Coast": {
+      "diff": -0.3262,
+      "lo": -1.0543,
+      "hi": 0.222,
+      "days": 29,
+      "n": 488
+     },
+     "Garden Route": {
+      "diff": -0.79,
+      "lo": -1.9254,
+      "hi": 1.0357,
+      "days": 13,
+      "n": 50
+     },
+     "Eastern Cape": {
+      "diff": 0.6584,
+      "lo": 0.0994,
+      "hi": 1.3483,
+      "days": 37,
+      "n": 702
+     },
+     "KZN coast": {
+      "diff": -0.2063,
+      "lo": -0.8806,
+      "hi": 0.6741,
+      "days": 26,
+      "n": 96
+     },
+     "Highveld": {
+      "diff": 0.9889,
+      "lo": 0.4329,
+      "hi": 1.5426,
+      "days": 37,
+      "n": 359
+     },
+     "Free State": {
+      "diff": -0.8639,
+      "lo": -3.1811,
+      "hi": 1.1379,
+      "days": 17,
+      "n": 36
+     },
+     "Northern Cape": {
+      "diff": -0.5441,
+      "lo": -1.4311,
+      "hi": 0.4662,
+      "days": 36,
+      "n": 202
+     },
+     "North West": {
+      "diff": -0.8775,
+      "lo": -3.0034,
+      "hi": 2.4929,
+      "days": 20,
+      "n": 71
+     },
+     "Lowveld": {
+      "diff": 0.1724,
+      "lo": -0.0611,
+      "hi": 0.4251,
+      "days": 26,
+      "n": 254
+     },
+     "Limpopo": {
+      "diff": 0.2358,
+      "lo": -1.4754,
+      "hi": 3.545,
+      "days": 17,
+      "n": 53
+     }
+    },
+    "G0C": {
+     "Western Cape": {
+      "diff": -0.2796,
+      "lo": -0.7956,
+      "hi": 0.2692,
+      "days": 23,
+      "n": 117
+     },
+     "West Coast": {
+      "diff": -0.381,
+      "lo": -0.6419,
+      "hi": -0.1485,
+      "days": 29,
+      "n": 488
+     },
+     "Garden Route": {
+      "diff": -0.6397,
+      "lo": -1.1779,
+      "hi": 0.6604,
+      "days": 13,
+      "n": 50
+     },
+     "Eastern Cape": {
+      "diff": -0.5964,
+      "lo": -0.8288,
+      "hi": -0.3047,
+      "days": 37,
+      "n": 702
+     },
+     "KZN coast": {
+      "diff": -4.3987,
+      "lo": -5.5767,
+      "hi": -3.1258,
+      "days": 26,
+      "n": 96
+     },
+     "Highveld": {
+      "diff": 1.2069,
+      "lo": 0.2779,
+      "hi": 2.0821,
+      "days": 37,
+      "n": 359
+     },
+     "Free State": {
+      "diff": 0.4104,
+      "lo": 0.0417,
+      "hi": 0.714,
+      "days": 17,
+      "n": 36
+     },
+     "Northern Cape": {
+      "diff": 1.2025,
+      "lo": 0.4421,
+      "hi": 1.8889,
+      "days": 36,
+      "n": 202
+     },
+     "North West": {
+      "diff": 2.1466,
+      "lo": -0.6779,
+      "hi": 4.0986,
+      "days": 20,
+      "n": 71
+     },
+     "Lowveld": {
+      "diff": -3.0524,
+      "lo": -3.9496,
+      "hi": -1.6548,
+      "days": 26,
+      "n": 254
+     },
+     "Limpopo": {
+      "diff": 3.6523,
+      "lo": -0.0628,
+      "hi": 5.7729,
+      "days": 17,
+      "n": 53
+     }
+    },
+    "GMC": {
+     "Western Cape": {
+      "diff": 0.3377,
+      "lo": -2.2899,
+      "hi": 2.6234,
+      "days": 23,
+      "n": 117
+     },
+     "West Coast": {
+      "diff": -0.1682,
+      "lo": -0.84,
+      "hi": 0.3472,
+      "days": 29,
+      "n": 488
+     },
+     "Garden Route": {
+      "diff": -0.3451,
+      "lo": -1.2949,
+      "hi": 1.1221,
+      "days": 13,
+      "n": 50
+     },
+     "Eastern Cape": {
+      "diff": 1.5069,
+      "lo": 0.8192,
+      "hi": 2.2084,
+      "days": 37,
+      "n": 702
+     },
+     "KZN coast": {
+      "diff": -1.9529,
+      "lo": -2.856,
+      "hi": -0.7763,
+      "days": 26,
+      "n": 96
+     },
+     "Highveld": {
+      "diff": 2.7775,
+      "lo": 1.7269,
+      "hi": 3.6997,
+      "days": 37,
+      "n": 359
+     },
+     "Free State": {
+      "diff": 2.0072,
+      "lo": 0.5093,
+      "hi": 3.5466,
+      "days": 17,
+      "n": 36
+     },
+     "Northern Cape": {
+      "diff": 1.8637,
+      "lo": 0.6131,
+      "hi": 2.8432,
+      "days": 36,
+      "n": 202
+     },
+     "North West": {
+      "diff": 1.139,
+      "lo": -0.405,
+      "hi": 2.1583,
+      "days": 20,
+      "n": 71
+     },
+     "Lowveld": {
+      "diff": -0.5527,
+      "lo": -0.9449,
+      "hi": -0.0411,
+      "days": 26,
+      "n": 254
+     },
+     "Limpopo": {
+      "diff": 7.742,
+      "lo": 3.4,
+      "hi": 10.0745,
+      "days": 17,
+      "n": 53
+     }
+    }
+   },
+   "G0": {
+    "n": 2428,
+    "mae": 10.316,
+    "bias": 1.014
+   },
+   "GM": {
+    "n": 2428,
+    "mae": 10.59,
+    "bias": -1.43
+   },
+   "G0C": {
+    "n": 2428,
+    "mae": 9.974,
+    "bias": 0.898
+   },
+   "GMC": {
+    "n": 2428,
+    "mae": 11.39,
+    "bias": 1.721
+   }
+  }
+ },
+ "sky": {
+  "old harness": {
+   "byRegion": {
+    "Western Cape": {
+     "stations": [
+      "FACT"
+     ],
+     "n": 3196,
+     "S5": {
+      "diff": 0.0038,
+      "lo": -0.0061,
+      "hi": 0.0137,
+      "days": 39,
+      "n": 3196
+     },
+     "S4": {
+      "diff": -0.0034,
+      "lo": -0.0123,
+      "hi": 0.005,
+      "days": 39,
+      "n": 3196
+     },
+     "right": {
+      "S0": 0.6683,
+      "S5": 0.6721,
+      "S4": 0.6649
+     }
+    },
+    "West Coast": {
+     "stations": [
+      "FALW"
+     ],
+     "n": 0,
+     "S5": null,
+     "S4": null,
+     "right": {
+      "S0": null,
+      "S5": null,
+      "S4": null
+     }
+    },
+    "Garden Route": {
+     "stations": [
+      "FAGG"
+     ],
+     "n": 3195,
+     "S5": {
+      "diff": 0.011,
+      "lo": 0.0024,
+      "hi": 0.0187,
+      "days": 39,
+      "n": 3195
+     },
+     "S4": {
+      "diff": 0.0006,
+      "lo": -0.0067,
+      "hi": 0.0082,
+      "days": 39,
+      "n": 3195
+     },
+     "right": {
+      "S0": 0.6053,
+      "S5": 0.6163,
+      "S4": 0.6059
+     }
+    },
+    "Eastern Cape": {
+     "stations": [
+      "FAPE",
+      "FAEL",
+      "FAUT"
+     ],
+     "n": 7353,
+     "S5": {
+      "diff": 0.0031,
+      "lo": -0.0021,
+      "hi": 0.0082,
+      "days": 39,
+      "n": 7353
+     },
+     "S4": {
+      "diff": -0.0052,
+      "lo": -0.0106,
+      "hi": 0.0003,
+      "days": 39,
+      "n": 7353
+     },
+     "right": {
+      "S0": 0.5993,
+      "S5": 0.6025,
+      "S4": 0.5942
+     }
+    },
+    "KZN coast": {
+     "stations": [
+      "FALE"
+     ],
+     "n": 3189,
+     "S5": {
+      "diff": 0.0047,
+      "lo": -0.0076,
+      "hi": 0.0169,
+      "days": 39,
+      "n": 3189
+     },
+     "S4": {
+      "diff": 0,
+      "lo": -0.0096,
+      "hi": 0.0097,
+      "days": 39,
+      "n": 3189
+     },
+     "right": {
+      "S0": 0.6112,
+      "S5": 0.6159,
+      "S4": 0.6112
+     }
+    },
+    "Highveld": {
+     "stations": [
+      "FAOR",
+      "FAWB"
+     ],
+     "n": 3373,
+     "S5": {
+      "diff": -0.0003,
+      "lo": -0.0097,
+      "hi": 0.0095,
+      "days": 39,
+      "n": 3373
+     },
+     "S4": {
+      "diff": -0.0047,
+      "lo": -0.0125,
+      "hi": 0.0035,
+      "days": 39,
+      "n": 3373
+     },
+     "right": {
+      "S0": 0.6419,
+      "S5": 0.6416,
+      "S4": 0.6371
+     }
+    },
+    "Free State": {
+     "stations": [
+      "FABL"
+     ],
+     "n": 3063,
+     "S5": {
+      "diff": 0.0052,
+      "lo": -0.0049,
+      "hi": 0.0164,
+      "days": 39,
+      "n": 3063
+     },
+     "S4": {
+      "diff": -0.0069,
+      "lo": -0.0184,
+      "hi": 0.0055,
+      "days": 39,
+      "n": 3063
+     },
+     "right": {
+      "S0": 0.6383,
+      "S5": 0.6435,
+      "S4": 0.6314
+     }
+    },
+    "Northern Cape": {
+     "stations": [
+      "FAUP",
+      "FAKM"
+     ],
+     "n": 6173,
+     "S5": {
+      "diff": 0.0013,
+      "lo": -0.0048,
+      "hi": 0.0071,
+      "days": 39,
+      "n": 6173
+     },
+     "S4": {
+      "diff": -0.0083,
+      "lo": -0.0146,
+      "hi": -0.0018,
+      "days": 39,
+      "n": 6173
+     },
+     "right": {
+      "S0": 0.6865,
+      "S5": 0.6878,
+      "S4": 0.6783
+     }
+    },
+    "North West": {
+     "stations": [
+      "FAMM"
+     ],
+     "n": 2897,
+     "S5": {
+      "diff": 0.0062,
+      "lo": -0.0044,
+      "hi": 0.0165,
+      "days": 39,
+      "n": 2897
+     },
+     "S4": {
+      "diff": 0.0086,
+      "lo": 0.0003,
+      "hi": 0.0174,
+      "days": 39,
+      "n": 2897
+     },
+     "right": {
+      "S0": 0.6807,
+      "S5": 0.6869,
+      "S4": 0.6893
+     }
+    },
+    "Lowveld": {
+     "stations": [
+      "FAKN",
+      "FAHS"
+     ],
+     "n": 2667,
+     "S5": {
+      "diff": 0.0082,
+      "lo": -0.0015,
+      "hi": 0.02,
+      "days": 39,
+      "n": 2667
+     },
+     "S4": {
+      "diff": 0.0045,
+      "lo": -0.0045,
+      "hi": 0.0149,
+      "days": 39,
+      "n": 2667
+     },
+     "right": {
+      "S0": 0.6918,
+      "S5": 0.7,
+      "S4": 0.6963
+     }
+    },
+    "Limpopo": {
+     "stations": [
+      "FAPP"
+     ],
+     "n": 2838,
+     "S5": {
+      "diff": 0.0042,
+      "lo": -0.0069,
+      "hi": 0.0153,
+      "days": 39,
+      "n": 2838
+     },
+     "S4": {
+      "diff": -0.0028,
+      "lo": -0.0147,
+      "hi": 0.0083,
+      "days": 39,
+      "n": 2838
+     },
+     "right": {
+      "S0": 0.6987,
+      "S5": 0.703,
+      "S4": 0.6959
+     }
+    }
+   },
+   "S0": {
+    "n": 37944,
+    "right": 0.6479,
+    "falseCloudy": 0.1427,
+    "missedCloud": 0.0241,
+    "saidCloudy": 13471
+   },
+   "S0all": {
+    "n": 61418,
+    "right": 0.6493,
+    "falseCloudy": 0.1545,
+    "missedCloud": 0.0276,
+    "saidCloudy": 22325
+   },
+   "S0twoWay": 0.7577,
+   "S4": {
+    "n": 37944,
+    "right": 0.6451,
+    "falseCloudy": 0.1413,
+    "missedCloud": 0.0183,
+    "saidCloudy": 13583
+   },
+   "S4all": {
+    "n": 61418,
+    "right": 0.6425,
+    "falseCloudy": 0.1522,
+    "missedCloud": 0.0208,
+    "saidCloudy": 22419
+   },
+   "S4twoWay": 0.7625,
+   "S5": {
+    "n": 37944,
+    "right": 0.6521,
+    "falseCloudy": 0.1439,
+    "missedCloud": 0.0231,
+    "saidCloudy": 13675
+   },
+   "S5all": {
+    "n": 61418,
+    "right": 0.6507,
+    "falseCloudy": 0.1566,
+    "missedCloud": 0.0256,
+    "saidCloudy": 22758
+   },
+   "S5twoWay": 0.7589,
+   "boot": {
+    "S5": {
+     "diff": 0.0042,
+     "lo": 0.0018,
+     "hi": 0.0067,
+     "days": 39,
+     "n": 37944
+    },
+    "S4": {
+     "diff": -0.0028,
+     "lo": -0.0057,
+     "hi": -0.0001,
+     "days": 39,
+     "n": 37944
+    },
+    "S5all": {
+     "diff": 0.0013,
+     "lo": -0.0011,
+     "hi": 0.0035,
+     "days": 39,
+     "n": 61418
+    },
+    "S4all": {
+     "diff": -0.0069,
+     "lo": -0.0096,
+     "hi": -0.0044,
+     "days": 39,
+     "n": 61418
+    }
+   }
+  },
+  "ECMWF-heavy": {
+   "byRegion": {
+    "Western Cape": {
+     "stations": [
+      "FACT"
+     ],
+     "n": 3196,
+     "S5": {
+      "diff": 0,
+      "lo": 0,
+      "hi": 0,
+      "days": 39,
+      "n": 3196
+     },
+     "S4": {
+      "diff": 0,
+      "lo": 0,
+      "hi": 0,
+      "days": 39,
+      "n": 3196
+     },
+     "right": {
+      "S0": 0.6527,
+      "S5": 0.6527,
+      "S4": 0.6527
+     }
+    },
+    "West Coast": {
+     "stations": [
+      "FALW"
+     ],
+     "n": 0,
+     "S5": null,
+     "S4": null,
+     "right": {
+      "S0": null,
+      "S5": null,
+      "S4": null
+     }
+    },
+    "Garden Route": {
+     "stations": [
+      "FAGG"
+     ],
+     "n": 3195,
+     "S5": {
+      "diff": 0,
+      "lo": 0,
+      "hi": 0,
+      "days": 39,
+      "n": 3195
+     },
+     "S4": {
+      "diff": 0,
+      "lo": 0,
+      "hi": 0,
+      "days": 39,
+      "n": 3195
+     },
+     "right": {
+      "S0": 0.5978,
+      "S5": 0.5978,
+      "S4": 0.5978
+     }
+    },
+    "Eastern Cape": {
+     "stations": [
+      "FAPE",
+      "FAEL",
+      "FAUT"
+     ],
+     "n": 7353,
+     "S5": {
+      "diff": 0,
+      "lo": 0,
+      "hi": 0,
+      "days": 39,
+      "n": 7353
+     },
+     "S4": {
+      "diff": 0,
+      "lo": 0,
+      "hi": 0,
+      "days": 39,
+      "n": 7353
+     },
+     "right": {
+      "S0": 0.5955,
+      "S5": 0.5955,
+      "S4": 0.5955
+     }
+    },
+    "KZN coast": {
+     "stations": [
+      "FALE"
+     ],
+     "n": 3189,
+     "S5": {
+      "diff": 0,
+      "lo": 0,
+      "hi": 0,
+      "days": 39,
+      "n": 3189
+     },
+     "S4": {
+      "diff": 0,
+      "lo": 0,
+      "hi": 0,
+      "days": 39,
+      "n": 3189
+     },
+     "right": {
+      "S0": 0.604,
+      "S5": 0.604,
+      "S4": 0.604
+     }
+    },
+    "Highveld": {
+     "stations": [
+      "FAOR",
+      "FAWB"
+     ],
+     "n": 3373,
+     "S5": {
+      "diff": 0,
+      "lo": 0,
+      "hi": 0,
+      "days": 39,
+      "n": 3373
+     },
+     "S4": {
+      "diff": 0,
+      "lo": 0,
+      "hi": 0,
+      "days": 39,
+      "n": 3373
+     },
+     "right": {
+      "S0": 0.6478,
+      "S5": 0.6478,
+      "S4": 0.6478
+     }
+    },
+    "Free State": {
+     "stations": [
+      "FABL"
+     ],
+     "n": 3063,
+     "S5": {
+      "diff": 0,
+      "lo": 0,
+      "hi": 0,
+      "days": 39,
+      "n": 3063
+     },
+     "S4": {
+      "diff": 0,
+      "lo": 0,
+      "hi": 0,
+      "days": 39,
+      "n": 3063
+     },
+     "right": {
+      "S0": 0.6317,
+      "S5": 0.6317,
+      "S4": 0.6317
+     }
+    },
+    "Northern Cape": {
+     "stations": [
+      "FAUP",
+      "FAKM"
+     ],
+     "n": 6173,
+     "S5": {
+      "diff": 0,
+      "lo": 0,
+      "hi": 0,
+      "days": 39,
+      "n": 6173
+     },
+     "S4": {
+      "diff": 0,
+      "lo": 0,
+      "hi": 0,
+      "days": 39,
+      "n": 6173
+     },
+     "right": {
+      "S0": 0.6857,
+      "S5": 0.6857,
+      "S4": 0.6857
+     }
+    },
+    "North West": {
+     "stations": [
+      "FAMM"
+     ],
+     "n": 2897,
+     "S5": {
+      "diff": 0,
+      "lo": 0,
+      "hi": 0,
+      "days": 39,
+      "n": 2897
+     },
+     "S4": {
+      "diff": 0,
+      "lo": 0,
+      "hi": 0,
+      "days": 39,
+      "n": 2897
+     },
+     "right": {
+      "S0": 0.6748,
+      "S5": 0.6748,
+      "S4": 0.6748
+     }
+    },
+    "Lowveld": {
+     "stations": [
+      "FAKN",
+      "FAHS"
+     ],
+     "n": 2667,
+     "S5": {
+      "diff": 0,
+      "lo": 0,
+      "hi": 0,
+      "days": 39,
+      "n": 2667
+     },
+     "S4": {
+      "diff": 0,
+      "lo": 0,
+      "hi": 0,
+      "days": 39,
+      "n": 2667
+     },
+     "right": {
+      "S0": 0.6787,
+      "S5": 0.6787,
+      "S4": 0.6787
+     }
+    },
+    "Limpopo": {
+     "stations": [
+      "FAPP"
+     ],
+     "n": 2838,
+     "S5": {
+      "diff": 0,
+      "lo": 0,
+      "hi": 0,
+      "days": 39,
+      "n": 2838
+     },
+     "S4": {
+      "diff": 0,
+      "lo": 0,
+      "hi": 0,
+      "days": 39,
+      "n": 2838
+     },
+     "right": {
+      "S0": 0.6949,
+      "S5": 0.6949,
+      "S4": 0.6949
+     }
+    }
+   },
+   "S0": {
+    "n": 37944,
+    "right": 0.6428,
+    "falseCloudy": 0.1428,
+    "missedCloud": 0.0318,
+    "saidCloudy": 13110
+   },
+   "S0all": {
+    "n": 61418,
+    "right": 0.6432,
+    "falseCloudy": 0.1555,
+    "missedCloud": 0.0352,
+    "saidCloudy": 21801
+   },
+   "S0twoWay": 0.7542,
+   "S4": {
+    "n": 37944,
+    "right": 0.6428,
+    "falseCloudy": 0.1428,
+    "missedCloud": 0.0318,
+    "saidCloudy": 13110
+   },
+   "S4all": {
+    "n": 61418,
+    "right": 0.6432,
+    "falseCloudy": 0.1555,
+    "missedCloud": 0.0352,
+    "saidCloudy": 21801
+   },
+   "S4twoWay": 0.7542,
+   "S5": {
+    "n": 37944,
+    "right": 0.6428,
+    "falseCloudy": 0.1428,
+    "missedCloud": 0.0318,
+    "saidCloudy": 13110
+   },
+   "S5all": {
+    "n": 61418,
+    "right": 0.6432,
+    "falseCloudy": 0.1555,
+    "missedCloud": 0.0352,
+    "saidCloudy": 21801
+   },
+   "S5twoWay": 0.7542,
+   "boot": {
+    "S5": {
+     "diff": 0,
+     "lo": 0,
+     "hi": 0,
+     "days": 39,
+     "n": 37944
+    },
+    "S4": {
+     "diff": 0,
+     "lo": 0,
+     "hi": 0,
+     "days": 39,
+     "n": 37944
+    },
+    "S5all": {
+     "diff": 0,
+     "lo": 0,
+     "hi": 0,
+     "days": 39,
+     "n": 61418
+    },
+    "S4all": {
+     "diff": 0,
+     "lo": 0,
+     "hi": 0,
+     "days": 39,
+     "n": 61418
+    }
+   }
+  },
+  "mixed": {
+   "byRegion": {
+    "Western Cape": {
+     "stations": [
+      "FACT"
+     ],
+     "n": 3196,
+     "S5": {
+      "diff": 0.0097,
+      "lo": -0.0022,
+      "hi": 0.023,
+      "days": 39,
+      "n": 3196
+     },
+     "S4": {
+      "diff": 0.0025,
+      "lo": -0.0059,
+      "hi": 0.0113,
+      "days": 39,
+      "n": 3196
+     },
+     "right": {
+      "S0": 0.653,
+      "S5": 0.6627,
+      "S4": 0.6555
+     }
+    },
+    "West Coast": {
+     "stations": [
+      "FALW"
+     ],
+     "n": 0,
+     "S5": null,
+     "S4": null,
+     "right": {
+      "S0": null,
+      "S5": null,
+      "S4": null
+     }
+    },
+    "Garden Route": {
+     "stations": [
+      "FAGG"
+     ],
+     "n": 3195,
+     "S5": {
+      "diff": 0.0156,
+      "lo": 0.0038,
+      "hi": 0.0271,
+      "days": 39,
+      "n": 3195
+     },
+     "S4": {
+      "diff": -0.0025,
+      "lo": -0.0122,
+      "hi": 0.0069,
+      "days": 39,
+      "n": 3195
+     },
+     "right": {
+      "S0": 0.5972,
+      "S5": 0.6128,
+      "S4": 0.5947
+     }
+    },
+    "Eastern Cape": {
+     "stations": [
+      "FAPE",
+      "FAEL",
+      "FAUT"
+     ],
+     "n": 7353,
+     "S5": {
+      "diff": 0.0003,
+      "lo": -0.0083,
+      "hi": 0.008,
+      "days": 39,
+      "n": 7353
+     },
+     "S4": {
+      "diff": -0.0068,
+      "lo": -0.0149,
+      "hi": 0.0007,
+      "days": 39,
+      "n": 7353
+     },
+     "right": {
+      "S0": 0.595,
+      "S5": 0.5953,
+      "S4": 0.5882
+     }
+    },
+    "KZN coast": {
+     "stations": [
+      "FALE"
+     ],
+     "n": 3189,
+     "S5": {
+      "diff": 0.0022,
+      "lo": -0.0113,
+      "hi": 0.0157,
+      "days": 39,
+      "n": 3189
+     },
+     "S4": {
+      "diff": -0.0053,
+      "lo": -0.0166,
+      "hi": 0.0054,
+      "days": 39,
+      "n": 3189
+     },
+     "right": {
+      "S0": 0.603,
+      "S5": 0.6052,
+      "S4": 0.5977
+     }
+    },
+    "Highveld": {
+     "stations": [
+      "FAOR",
+      "FAWB"
+     ],
+     "n": 3373,
+     "S5": {
+      "diff": -0.0068,
+      "lo": -0.0155,
+      "hi": 0.0029,
+      "days": 39,
+      "n": 3373
+     },
+     "S4": {
+      "diff": -0.0116,
+      "lo": -0.0212,
+      "hi": -0.0018,
+      "days": 39,
+      "n": 3373
+     },
+     "right": {
+      "S0": 0.6481,
+      "S5": 0.6413,
+      "S4": 0.6365
+     }
+    },
+    "Free State": {
+     "stations": [
+      "FABL"
+     ],
+     "n": 3063,
+     "S5": {
+      "diff": -0.0033,
+      "lo": -0.0145,
+      "hi": 0.0077,
+      "days": 39,
+      "n": 3063
+     },
+     "S4": {
+      "diff": -0.0111,
+      "lo": -0.0185,
+      "hi": -0.0042,
+      "days": 39,
+      "n": 3063
+     },
+     "right": {
+      "S0": 0.6314,
+      "S5": 0.6281,
+      "S4": 0.6203
+     }
+    },
+    "Northern Cape": {
+     "stations": [
+      "FAUP",
+      "FAKM"
+     ],
+     "n": 6173,
+     "S5": {
+      "diff": -0.0078,
+      "lo": -0.0163,
+      "hi": 0.0005,
+      "days": 39,
+      "n": 6173
+     },
+     "S4": {
+      "diff": -0.0109,
+      "lo": -0.0207,
+      "hi": -0.0023,
+      "days": 39,
+      "n": 6173
+     },
+     "right": {
+      "S0": 0.6856,
+      "S5": 0.6778,
+      "S4": 0.6747
+     }
+    },
+    "North West": {
+     "stations": [
+      "FAMM"
+     ],
+     "n": 2897,
+     "S5": {
+      "diff": -0.0031,
+      "lo": -0.0125,
+      "hi": 0.0051,
+      "days": 39,
+      "n": 2897
+     },
+     "S4": {
+      "diff": 0.0007,
+      "lo": -0.0075,
+      "hi": 0.009,
+      "days": 39,
+      "n": 2897
+     },
+     "right": {
+      "S0": 0.6741,
+      "S5": 0.671,
+      "S4": 0.6748
+     }
+    },
+    "Lowveld": {
+     "stations": [
+      "FAKN",
+      "FAHS"
+     ],
+     "n": 2667,
+     "S5": {
+      "diff": 0.0082,
+      "lo": -0.0029,
+      "hi": 0.0195,
+      "days": 39,
+      "n": 2667
+     },
+     "S4": {
+      "diff": 0,
+      "lo": -0.0087,
+      "hi": 0.01,
+      "days": 39,
+      "n": 2667
+     },
+     "right": {
+      "S0": 0.6779,
+      "S5": 0.6862,
+      "S4": 0.6779
+     }
+    },
+    "Limpopo": {
+     "stations": [
+      "FAPP"
+     ],
+     "n": 2838,
+     "S5": {
+      "diff": 0.0053,
+      "lo": -0.0058,
+      "hi": 0.0171,
+      "days": 39,
+      "n": 2838
+     },
+     "S4": {
+      "diff": 0.0081,
+      "lo": -0.0004,
+      "hi": 0.0171,
+      "days": 39,
+      "n": 2838
+     },
+     "right": {
+      "S0": 0.6949,
+      "S5": 0.7001,
+      "S4": 0.703
+     }
+    }
+   },
+   "S0": {
+    "n": 37944,
+    "right": 0.6425,
+    "falseCloudy": 0.1428,
+    "missedCloud": 0.0317,
+    "saidCloudy": 13110
+   },
+   "S0all": {
+    "n": 61418,
+    "right": 0.6427,
+    "falseCloudy": 0.1555,
+    "missedCloud": 0.035,
+    "saidCloudy": 21801
+   },
+   "S0twoWay": 0.7542,
+   "S4": {
+    "n": 37944,
+    "right": 0.6377,
+    "falseCloudy": 0.1463,
+    "missedCloud": 0.0223,
+    "saidCloudy": 13652
+   },
+   "S4all": {
+    "n": 61418,
+    "right": 0.6342,
+    "falseCloudy": 0.1597,
+    "missedCloud": 0.0239,
+    "saidCloudy": 22771
+   },
+   "S4twoWay": 0.7567,
+   "S5": {
+    "n": 37944,
+    "right": 0.6434,
+    "falseCloudy": 0.1484,
+    "missedCloud": 0.025,
+    "saidCloudy": 13706
+   },
+   "S5all": {
+    "n": 61418,
+    "right": 0.6406,
+    "falseCloudy": 0.1633,
+    "missedCloud": 0.0275,
+    "saidCloudy": 23055
+   },
+   "S5twoWay": 0.7538,
+   "boot": {
+    "S5": {
+     "diff": 0.001,
+     "lo": -0.0034,
+     "hi": 0.005,
+     "days": 39,
+     "n": 37944
+    },
+    "S4": {
+     "diff": -0.0048,
+     "lo": -0.0087,
+     "hi": -0.0012,
+     "days": 39,
+     "n": 37944
+    },
+    "S5all": {
+     "diff": -0.0021,
+     "lo": -0.0056,
+     "hi": 0.0011,
+     "days": 39,
+     "n": 61418
+    },
+    "S4all": {
+     "diff": -0.0085,
+     "lo": -0.0123,
+     "hi": -0.0053,
+     "days": 39,
+     "n": 61418
+    }
+   }
+  }
+ },
+ "live": {
+  "n": 299,
+  "wind": {
+   "B0": {
+    "n": 299,
+    "mae": 5.821,
+    "bias": -2.178,
+    "boot": null
+   },
+   "M": {
+    "n": 299,
+    "mae": 5.107,
+    "bias": -2.487,
+    "boot": {
+     "diff": -0.7149,
+     "lo": -1.2611,
+     "hi": -0.0834,
+     "days": 4,
+     "n": 299
+    }
+   },
+   "BC": {
+    "n": 299,
+    "mae": 4.739,
+    "bias": 2.404,
+    "boot": {
+     "diff": -1.0826,
+     "lo": -1.5068,
+     "hi": 0.0033,
+     "days": 4,
+     "n": 299
+    }
+   },
+   "MC": {
+    "n": 299,
+    "mae": 4.869,
+    "bias": 2.242,
+    "boot": {
+     "diff": -0.9524,
+     "lo": -1.3827,
+     "hi": -0.3133,
+     "days": 4,
+     "n": 299
+    }
+   }
+  },
+  "sign": {
+   "BC": {
+    "Western Cape": {
+     "n": 62,
+     "liveBias": -9.62,
+     "meanRatio": 1.6,
+     "blocked": false
+    },
+    "Highveld": {
+     "n": 58,
+     "liveBias": -4.01,
+     "meanRatio": 1.399,
+     "blocked": false
+    },
+    "KZN coast": {
+     "n": 60,
+     "liveBias": 3.83,
+     "meanRatio": 0.955,
+     "blocked": false
+    },
+    "Eastern Cape": {
+     "n": 57,
+     "liveBias": -0.79,
+     "meanRatio": 1.227,
+     "blocked": false
+    },
+    "Garden Route": {
+     "n": 62,
+     "liveBias": -0.12,
+     "meanRatio": 1.191,
+     "blocked": false
+    }
+   },
+   "MC": {
+    "Western Cape": {
+     "n": 62,
+     "liveBias": -7.81,
+     "meanRatio": 1.6,
+     "blocked": false
+    },
+    "Highveld": {
+     "n": 58,
+     "liveBias": -4.12,
+     "meanRatio": 1.423,
+     "blocked": false
+    },
+    "KZN coast": {
+     "n": 60,
+     "liveBias": 0.82,
+     "meanRatio": 0.925,
+     "blocked": false
+    },
+    "Eastern Cape": {
+     "n": 57,
+     "liveBias": -0.27,
+     "meanRatio": 1.213,
+     "blocked": false
+    },
+    "Garden Route": {
+     "n": 62,
+     "liveBias": -0.87,
+     "meanRatio": 1.189,
+     "blocked": false
+    }
+   }
+  },
+  "gust": {
+   "G0": {
+    "n": 14,
+    "mae": 11.255,
+    "boot": null
+   },
+   "GM": {
+    "n": 14,
+    "mae": 12.923,
+    "boot": {
+     "diff": 1.6684,
+     "lo": 0.5,
+     "hi": 1.9553,
+     "days": 3,
+     "n": 14
+    }
+   },
+   "G0C": {
+    "n": 14,
+    "mae": 10.677,
+    "boot": {
+     "diff": -0.5773,
+     "lo": -0.9102,
+     "hi": 3.388,
+     "days": 3,
+     "n": 14
+    }
+   },
+   "GMC": {
+    "n": 14,
+    "mae": 11.281,
+    "boot": {
+     "diff": 0.0263,
+     "lo": -3.3826,
+     "hi": 2.2075,
+     "days": 3,
+     "n": 14
+    }
+   }
+  }
+ },
+ "strand": {
+  "reports": 711,
+  "byMonth": {
+   "2026-03": 76,
+   "2026-04": 107,
+   "2026-05": 102,
+   "2026-06": 90,
+   "2026-07": 118,
+   "2026-08": 124,
+   "2026-09": 80
+  },
+  "transfer": {
+   "old harness": {
+    "B0": {
+     "n": 697,
+     "mae": 5.789,
+     "bias": -2.035,
+     "windyHours": 32,
+     "caught25": 6,
+     "false25": 24,
+     "boot": null
+    },
+    "M": {
+     "n": 697,
+     "mae": 6.055,
+     "bias": -2.095,
+     "windyHours": 32,
+     "caught25": 6,
+     "false25": 23,
+     "boot": {
+      "diff": 0.2661,
+      "lo": 0.1461,
+      "hi": 0.3799,
+      "days": 29,
+      "n": 697
+     }
+    },
+    "BC": {
+     "n": 697,
+     "mae": 7.709,
+     "bias": 4.428,
+     "windyHours": 32,
+     "caught25": 20,
+     "false25": 109,
+     "boot": {
+      "diff": 1.9199,
+      "lo": 1.1355,
+      "hi": 2.7734,
+      "days": 29,
+      "n": 697
+     }
+    },
+    "MC": {
+     "n": 697,
+     "mae": 8.14,
+     "bias": 4.333,
+     "windyHours": 32,
+     "caught25": 13,
+     "false25": 120,
+     "boot": {
+      "diff": 2.3509,
+      "lo": 1.5746,
+      "hi": 3.1964,
+      "days": 29,
+      "n": 697
+     }
+    }
+   },
+   "ECMWF-heavy": {
+    "B0": {
+     "n": 697,
+     "mae": 5.804,
+     "bias": -1.483,
+     "windyHours": 32,
+     "caught25": 9,
+     "false25": 32,
+     "boot": null
+    },
+    "M": {
+     "n": 697,
+     "mae": 5.801,
+     "bias": -0.95,
+     "windyHours": 32,
+     "caught25": 14,
+     "false25": 37,
+     "boot": {
+      "diff": -0.0022,
+      "lo": -0.1557,
+      "hi": 0.1316,
+      "days": 29,
+      "n": 697
+     }
+    },
+    "BC": {
+     "n": 697,
+     "mae": 8.052,
+     "bias": 5.311,
+     "windyHours": 32,
+     "caught25": 26,
+     "false25": 142,
+     "boot": {
+      "diff": 2.2483,
+      "lo": 1.4107,
+      "hi": 3.1493,
+      "days": 29,
+      "n": 697
+     }
+    },
+    "MC": {
+     "n": 697,
+     "mae": 8.551,
+     "bias": 6.165,
+     "windyHours": 32,
+     "caught25": 28,
+     "false25": 161,
+     "boot": {
+      "diff": 2.7477,
+      "lo": 1.8151,
+      "hi": 3.7064,
+      "days": 29,
+      "n": 697
+     }
+    }
+   },
+   "mixed": {
+    "B0": {
+     "n": 697,
+     "mae": 5.625,
+     "bias": 0.12,
+     "windyHours": 32,
+     "caught25": 12,
+     "false25": 51,
+     "boot": null
+    },
+    "M": {
+     "n": 697,
+     "mae": 5.592,
+     "bias": -0.338,
+     "windyHours": 32,
+     "caught25": 15,
+     "false25": 47,
+     "boot": {
+      "diff": -0.0332,
+      "lo": -0.1767,
+      "hi": 0.0972,
+      "days": 29,
+      "n": 697
+     }
+    },
+    "BC": {
+     "n": 697,
+     "mae": 9.171,
+     "bias": 7.877,
+     "windyHours": 32,
+     "caught25": 30,
+     "false25": 190,
+     "boot": {
+      "diff": 3.5458,
+      "lo": 2.6513,
+      "hi": 4.4646,
+      "days": 29,
+      "n": 697
+     }
+    },
+    "MC": {
+     "n": 697,
+     "mae": 8.771,
+     "bias": 7.144,
+     "windyHours": 32,
+     "caught25": 30,
+     "false25": 163,
+     "boot": {
+      "diff": 3.1462,
+      "lo": 2.2811,
+      "hi": 4.0125,
+      "days": 29,
+      "n": 697
+     }
+    }
+   }
+  },
+  "capLift": {
+   "BC": {
+    "old harness": {
+     "unclamped": 8.568,
+     "clamped": 7.709,
+     "boot": {
+      "diff": 0.8595,
+      "lo": 0.6274,
+      "hi": 1.1447,
+      "days": 29,
+      "n": 697
+     }
+    },
+    "ECMWF-heavy": {
+     "unclamped": 9.096,
+     "clamped": 8.052,
+     "boot": {
+      "diff": 1.0438,
+      "lo": 0.778,
+      "hi": 1.3745,
+      "days": 29,
+      "n": 697
+     }
+    },
+    "mixed": {
+     "unclamped": 10.691,
+     "clamped": 9.171,
+     "boot": {
+      "diff": 1.52,
+      "lo": 1.1662,
+      "hi": 1.9086,
+      "days": 29,
+      "n": 697
+     }
+    }
+   },
+   "MC": {
+    "old harness": {
+     "unclamped": 9.094,
+     "clamped": 8.14,
+     "boot": {
+      "diff": 0.9537,
+      "lo": 0.6712,
+      "hi": 1.3015,
+      "days": 29,
+      "n": 697
+     }
+    },
+    "ECMWF-heavy": {
+     "unclamped": 9.934,
+     "clamped": 8.551,
+     "boot": {
+      "diff": 1.3824,
+      "lo": 1.0124,
+      "hi": 1.8175,
+      "days": 29,
+      "n": 697
+     }
+    },
+    "mixed": {
+     "unclamped": 10.278,
+     "clamped": 8.771,
+     "boot": {
+      "diff": 1.5074,
+      "lo": 1.0939,
+      "hi": 1.9751,
+      "days": 29,
+      "n": 697
+     }
+    }
+   }
+  },
+  "southEaster": {
+   "reports": 209,
+   "daysFirstHalf": 55,
+   "daysSecondHalf": 49,
+   "enough": true,
+   "byGuess": {
+    "old harness|B0": {
+     "ratio": 1.423,
+     "boot": {
+      "diff": -0.4584,
+      "lo": -1.3241,
+      "hi": 0.3931,
+      "days": 12,
+      "n": 105
+     },
+     "mae": 6.883,
+     "maeBefore": 7.341
+    },
+    "old harness|M": {
+     "ratio": 1.458,
+     "boot": {
+      "diff": -0.4151,
+      "lo": -1.2969,
+      "hi": 0.5158,
+      "days": 12,
+      "n": 105
+     },
+     "mae": 7.314,
+     "maeBefore": 7.73
+    },
+    "old harness|BC": {
+     "ratio": 0.89,
+     "boot": {
+      "diff": -0.3283,
+      "lo": -0.7306,
+      "hi": 0.0561,
+      "days": 12,
+      "n": 105
+     },
+     "mae": 6.883,
+     "maeBefore": 7.211
+    },
+    "old harness|MC": {
+     "ratio": 0.912,
+     "boot": {
+      "diff": -0.3465,
+      "lo": -0.6365,
+      "hi": -0.0229,
+      "days": 12,
+      "n": 105
+     },
+     "mae": 7.314,
+     "maeBefore": 7.661
+    },
+    "ECMWF-heavy|B0": {
+     "ratio": 1.352,
+     "boot": {
+      "diff": -0.4212,
+      "lo": -1.338,
+      "hi": 0.4739,
+      "days": 12,
+      "n": 105
+     },
+     "mae": 6.599,
+     "maeBefore": 7.02
+    },
+    "ECMWF-heavy|M": {
+     "ratio": 1.304,
+     "boot": {
+      "diff": -0.3732,
+      "lo": -1.2749,
+      "hi": 0.4672,
+      "days": 12,
+      "n": 105
+     },
+     "mae": 6.476,
+     "maeBefore": 6.849
+    },
+    "ECMWF-heavy|BC": {
+     "ratio": 0.845,
+     "boot": {
+      "diff": -0.4266,
+      "lo": -1.0157,
+      "hi": 0.154,
+      "days": 12,
+      "n": 105
+     },
+     "mae": 6.599,
+     "maeBefore": 7.025
+    },
+    "ECMWF-heavy|MC": {
+     "ratio": 0.815,
+     "boot": {
+      "diff": -1.0251,
+      "lo": -1.7543,
+      "hi": -0.278,
+      "days": 12,
+      "n": 105
+     },
+     "mae": 6.476,
+     "maeBefore": 7.501
+    },
+    "mixed|B0": {
+     "ratio": 1.115,
+     "boot": {
+      "diff": -0.1116,
+      "lo": -0.4028,
+      "hi": 0.1949,
+      "days": 12,
+      "n": 105
+     },
+     "mae": 5.785,
+     "maeBefore": 5.896
+    },
+    "mixed|M": {
+     "ratio": 1.185,
+     "boot": {
+      "diff": -0.2917,
+      "lo": -0.7337,
+      "hi": 0.1707,
+      "days": 12,
+      "n": 105
+     },
+     "mae": 5.992,
+     "maeBefore": 6.284
+    },
+    "mixed|BC": {
+     "ratio": 0.697,
+     "boot": {
+      "diff": -2.4348,
+      "lo": -3.4911,
+      "hi": -1.5108,
+      "days": 12,
+      "n": 105
+     },
+     "mae": 5.785,
+     "maeBefore": 8.22
+    },
+    "mixed|MC": {
+     "ratio": 0.74,
+     "boot": {
+      "diff": -1.2869,
+      "lo": -2.2805,
+      "hi": -0.3399,
+      "days": 12,
+      "n": 105
+     },
+     "mae": 5.992,
+     "maeBefore": 7.279
+    }
+   }
+  }
+ },
+ "decisions": {
+  "wind": {
+   "M": {
+    "passes": false,
+    "t0ok": false,
+    "t1bad": true,
+    "liveBad": false,
+    "meanMae": 4.31,
+    "blocked": [
+     "Western Cape",
+     "West Coast",
+     "Garden Route",
+     "Eastern Cape",
+     "KZN coast",
+     "Highveld",
+     "Free State",
+     "Northern Cape",
+     "North West",
+     "Lowveld",
+     "Limpopo"
+    ]
+   },
+   "BC": {
+    "passes": true,
+    "t0ok": true,
+    "t1bad": false,
+    "liveBad": false,
+    "meanMae": 3.618,
+    "blocked": [],
+    "liveSignBlocked": []
+   },
+   "MC": {
+    "passes": true,
+    "t0ok": true,
+    "t1bad": false,
+    "liveBad": false,
+    "meanMae": 3.751,
+    "blocked": [
+     "North West",
+     "Lowveld",
+     "Limpopo"
+    ],
+    "liveSignBlocked": []
+   },
+   "ship": "BC",
+   "strandBlocked": true,
+   "westernCapeUnclamped": false
+  },
+  "headline": {
+   "rule": "BC",
+   "T": 27.5,
+   "recallOk": true,
+   "f1Bad": false,
+   "ships": true
+  },
+  "gust": {
+   "GM": {
+    "passes": false,
+    "maeOk": false,
+    "f1ok": true,
+    "f1bad": false,
+    "fewerFalse": true,
+    "liveBad": true,
+    "meanMae": 10.061,
+    "meanF1": 0.347,
+    "blocked": [
+     "Eastern Cape",
+     "Highveld",
+     "North West"
+    ]
+   },
+   "G0C": {
+    "passes": false,
+    "maeOk": false,
+    "f1ok": false,
+    "f1bad": true,
+    "fewerFalse": false,
+    "liveBad": false,
+    "meanMae": 9.929,
+    "meanF1": 0.285,
+    "blocked": [
+     "Western Cape",
+     "Highveld",
+     "Free State",
+     "Northern Cape",
+     "Limpopo"
+    ]
+   },
+   "GMC": {
+    "passes": false,
+    "maeOk": false,
+    "f1ok": false,
+    "f1bad": true,
+    "fewerFalse": false,
+    "liveBad": false,
+    "meanMae": 10.759,
+    "meanF1": 0.266,
+    "blocked": [
+     "Western Cape",
+     "Eastern Cape",
+     "Highveld",
+     "Free State",
+     "Northern Cape",
+     "Limpopo"
+    ]
+   },
+   "ship": null
+  },
+  "sky": {
+   "S5": {
+    "passes": false,
+    "blocked": []
+   },
+   "S4": {
+    "passes": false,
+    "blocked": [
+     "Highveld",
+     "Free State",
+     "Northern Cape"
+    ]
+   }
+  },
+  "strandSouthEaster": {
+   "base": "B0",
+   "ships": false,
+   "ratios": {
+    "old harness": 1.423,
+    "ECMWF-heavy": 1.352,
+    "mixed": 1.115
+   }
+  }
+ }
+}
