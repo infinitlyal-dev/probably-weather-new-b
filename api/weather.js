@@ -110,6 +110,8 @@ export const RAIN_POSSIBLE_NOW_MIN_PROB = 30; // % — the same line the stats r
 //   hours, versus 63% / 39% for the mean-only rule it replaces.
 export const WIND_NOW_MEAN_KPH = 25;
 export const WIND_NOW_GUST_KPH = 55;
+/** A gust this strong is always shown on Home (review/accuracy/v7/PLAN.md §5). */
+export const GUST_SHOW_KPH = 40;
 // Launch run (2026-09-25): the last local hour at which Tomorrow.io's
 // now → midnight "today high" still votes on daily[0].highC. Picked by a rule
 // stated before the sweep (review/accuracy/forecast-candidates.mjs): the
@@ -2742,7 +2744,8 @@ export default async function handler(req, res) {
       location: { name: resolvedName || name || 'Unknown', lat, lon },
       wind_kph:   effectiveDisplayWind,
       maxWindKph: maxWindKph > 0 ? maxWindKph : null,
-      gustKph:    isNum(maxGust) && maxGust > effectiveDisplayWind * 1.5 ? maxGust : null,
+      // v7 §5 (28 Sept 2026): a strong gust (≥ 40 km/h) is always sent; below that, only one well above the wind.
+      gustKph:    isNum(maxGust) && (maxGust >= GUST_SHOW_KPH || maxGust > effectiveDisplayWind * 1.5) ? maxGust : null,
       // Open-Meteo's bearing, unaggregated — see the windDir note in norms[0].
       // Null whenever OM is the source that failed; the UI simply omits it.
       windDir:    isNum(norms[0]?.windDir) ? norms[0].windDir : null,

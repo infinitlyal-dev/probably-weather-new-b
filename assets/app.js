@@ -3011,7 +3011,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const wind = norm.windKph, gust = norm.gustKph, rain = norm.rainPct, uv = norm.uv;
     const cells = [];
     if (isNum(wind)) {
-      const showGust = isNum(gust) && gust > wind * 1.3;
+      // 2026-09-28 (review/accuracy/v7 §5): a strong gust is always named — 40 km/h or more — as well as one well
+      // above the wind (Al, Strand: "those gusts dont stop"; the 1.3x rule alone hid a 50 beside a mean of 40).
+      const showGust = isNum(gust) && (gust >= 40 || gust > wind * 1.3);
       // Letters only. They are the FROM bearing, which is how a South African
       // names a wind ("suidwester" = from the south-west) and matches every
       // forecast they have ever read.
@@ -3155,7 +3157,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const bylineEl = $('#weatherByline');
     if (bylineEl) {
       const gust = norm.gustKph;
-      const showGust = isNum(gust) && isNum(wind) && gust > wind * 1.3;
+      const showGust = isNum(gust) && isNum(wind) && (gust >= 40 || gust > wind * 1.3);   // as the stats row (v7 §5)
       const ws = isNum(wind) ? (showGust ? `${formatWind(wind)} (${t('weather','gusts')||'gusts'} ${formatWind(gust)})` : formatWind(wind)) : null;
       const rainLabel = t('weather', 'rain'), windLabel = t('weather', 'wind'), uvLabel = t('weather', 'uv');
       // Same word as the stats pill — one ladder (rainStatWord), two surfaces.

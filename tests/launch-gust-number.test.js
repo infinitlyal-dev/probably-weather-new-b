@@ -40,4 +40,11 @@ describe('the gust number is never cut', () => {
   it('no gust worth naming: the one plain line as before', () => {
     expect(render('af', 22)).toContain('<div class="stat-sub">NE</div>');
   });
+  // v7 §5 (28 Sept 2026): a strong gust is named even when the wind is strong too (40 beside a mean of 20 here;
+  // the render's wind is 20, so 39 still shows by the 1.3x rule and 25 does not).
+  it('a gust of 40 km/h or more is always named', () => {
+    expect(render('en', 40)).toContain('<span class="stat-sub-keep"> 40</span>');
+    expect(render('en', 25)).toContain('<div class="stat-sub">NE</div>');
+    expect(js).toMatch(/const showGust = isNum\(gust\) && \(gust >= 40 \|\| gust > wind \* 1\.3\);/);
+  });
 });
