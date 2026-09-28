@@ -90,9 +90,14 @@ function score(spot, day) {
   out.appHigh = d0.highC; out.appLow = d0.lowC; out.appRainPct = d0.rainChance; out.morningHour = hourOf(morning.at);
   out.rules = [...new Set(R.map((r) => windRuleOf(r.p)))];
   const shown = (r) => { const w = r.p.now.windKph, gst = r.p.gustKph; return isNum(gst) && gst > w ? gst : w; };
+  // v7 §5 (28 Sept 2026): the day's strongest gust on every line — the app's largest gust across every reading that
+  // day (the ladder's input, whether or not Home showed it), and the station's strongest reported gust that day.
+  const dayGusts = R.map((r) => r.p.now?.conditionSignals?.numeric?.gustKph ?? r.p.gustKph).filter(isNum);
+  out.appDayGust = dayGusts.length ? Math.max(...dayGusts) : null;
   if (spot.kind === 'metar') {
     const M = [...(metars[spot.icao]?.values() || [])].filter((m) => dayOf(m.obsTime * 1000) === day).sort((a, b) => a.obsTime - b.obsTime);
     out.stationReports = M.length;
+    const mg = M.map((m) => m.wgst).filter(isNum); out.obsDayGust = mg.length ? Math.max(...mg) * 1.852 : null;
     const temps = M.map((m) => m.temp).filter(isNum);
     if (temps.length >= 12) { out.obsHigh = Math.max(...temps); out.obsLow = Math.min(...temps); }
     const pairs = R.map((r) => { const at = Date.parse(r.p.meta?.updatedAtLabel || '') || r.at; const m = M.map((mm) => ({ mm, d: Math.abs(mm.obsTime * 1000 - at) })).filter((y) => y.d <= 40 * 60e3).sort((a, b) => a.d - b.d)[0]?.mm; return m ? { r, m } : null; }).filter(Boolean);
@@ -113,6 +118,7 @@ function score(spot, day) {
     const S = [...synops.values()].filter((s) => dayOf(s.utc) === day || (s.utc === Date.parse(`${day}T18:00:00Z`)));
     const s18 = synops.get(Date.parse(`${day}T18:00:00Z`)), s06 = synops.get(Date.parse(`${day}T06:00:00Z`));
     out.stationReports = S.length;
+    const sg = S.filter((s) => dayOf(s.utc) === day).map((s) => s.gustKph).filter(isNum); out.obsDayGust = sg.length ? Math.max(...sg) : null;
     out.obsHigh = s18?.maxC ?? null; out.obsLow = s06?.minC ?? null;
     const pairs = [0, 6, 12, 18].map((h) => synops.get(Date.parse(`${day}T${String(h).padStart(2, '0')}:00:00Z`))).filter(Boolean)
       .map((s) => { const r = (readings.Strand || []).find((x) => x.at - s.utc >= 0 && x.at - s.utc <= 70 * 60e3); return r && isNum(s.windKph) ? { r, s } : null; }).filter(Boolean);
@@ -145,7 +151,10 @@ function windWords(s) {
   const d = Math.round(s.appWind - s.obsWind);
   const avg = `average ${r0(s.appWind)} km/h (station ${r0(s.obsWind)}${Math.abs(d) <= 2 ? ', about right' : d > 0 ? `, ${d} too high` : `, ${-d} too low`})`;
   const strong = isNum(s.obsGust) ? `strongest gust: app ${r0(s.appStrong)}, station ${r0(s.obsGust)}` : `station gusts not reported · strongest average: app ${r0(s.appStrongMean)}, station ${r0(s.obsStrongMean)}`;
-  return `${avg}; ${strong}`;
+  const day = isNum(s.appDayGust) || isNum(s.obsDayGust)
+    ? `strongest gust of the day: app ${isNum(s.appDayGust) ? r0(s.appDayGust) : 'none'}, station ${isNum(s.obsDayGust) ? r0(s.obsDayGust) : 'none reported'}`
+    : null;
+  return [avg, strong, day].filter(Boolean).join('; ');
 }
 function rainWords(s) {
   const said = s.rainWord ? `said rain was <b>${s.rainWord}</b> (${r0(s.appRainPct)}%)` : 'no rain chance on record';
