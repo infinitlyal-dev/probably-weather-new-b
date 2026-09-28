@@ -5,7 +5,7 @@
 //   node review/accuracy/live/record.mjs [--out <dir>]
 //
 // Per run: 1 GET /api/version + 6 GET /api/weather (one per airport) + 2 for Al's spots (below) + 1 METAR call for all six
-// stations (aviationweather.gov, last 3 h), all at once. One retry on a network error or a 5xx,
+// stations (aviationweather.gov, last 3 h), and at 01/07/13/19 UTC one Ogimet call for Strand's SYNOP station, all at once. One retry on a network error or a 5xx,
 // none after a timeout, so a run ends inside ~50 s even when production is slow. Appends one JSON
 // line per airport to <out>/<SAST date>.jsonl and one status line to <out>/recorder.log. Six cities
 // an hour is the cost Al ruled fine.
@@ -38,6 +38,11 @@ const SPOTS = {
   Strand:           { lat: -34.1163, lon: 18.8362 },
   'Cape Town city': { lat: -33.9249, lon: 18.4241 },
 };
+// Strand's own station (28 Sept 2026, review/accuracy/v5/PLAN.md §6): WMO 68911 STRAND, SA Weather Service, SYNOP at
+// 00/06/12/18 UTC, read through Ogimet (WMO Resolution 40 data; internal verification, never redistributed). Asked for
+// once, about an hour after each synoptic time, the last 12 h — Ogimet asks not to be hammered. Its lines ride on the
+// Strand spot line as `synop`.
+const STRAND_SYNOP = { id: '68911', hoursUtc: [1, 7, 13, 19] };
 const HOURLY_KEEP = 48;   // the next two days of hours — the forecast lead times the scorer reads
 const TIMEOUT_MS = 20000;
 
@@ -114,9 +119,23 @@ const metarUrl = `${AWC}?ids=${Object.keys(CITIES).join(',')}&format=json&hours=
 // cost the other seven their lines.
 const settle = (p) => p.catch((e) => ({ atUtc: new Date().toISOString(), attempts: 0, error: String(e?.message || e) }));
 const places = [...Object.values(CITIES), ...Object.values(SPOTS)];
-const [version, m, ...reads] = await Promise.all([
+const ogimetStamp = (ms) => new Date(ms).toISOString().slice(0, 16).replace(/[-T:]/g, '');
+const synopUrl = STRAND_SYNOP.hoursUtc.includes(new Date(runAtUtc).getUTCHours())
+  ? `https://www.ogimet.com/cgi-bin/getsynop?block=${STRAND_SYNOP.id}&begin=${ogimetStamp(Date.parse(runAtUtc) - 12 * 3600e3)}&end=${ogimetStamp(Date.parse(runAtUtc))}`
+  : null;
+// Plain text (CSV lines), no retry: a miss is picked up by the next synoptic read's 12-hour window.
+const getSynop = async (url) => {
+  const atUtc = new Date().toISOString();
+  try {
+    const r = await fetch(url, { headers: { 'User-Agent': UA }, signal: AbortSignal.timeout(TIMEOUT_MS) });
+    const text = await r.text();
+    return { atUtc, status: r.status, reports: text.split('\n').map((l) => l.trim()).filter((l) => l.startsWith(`${STRAND_SYNOP.id},`)) };
+  } catch (e) { return { atUtc, error: isTimeout(e) ? `timeout after ${TIMEOUT_MS} ms` : String(e?.message || e) }; }
+};
+const [version, m, synop, ...reads] = await Promise.all([
   settle(getWithOneRetry(`${SITE}/api/version`)),
   settle(getWithOneRetry(metarUrl)),
+  synopUrl ? getSynop(synopUrl) : Promise.resolve(null),
   ...places.map((c) => settle(getWithOneRetry(`${SITE}/api/weather?lat=${c.lat}&lon=${c.lon}`))),
 ]);
 const cityReads = reads.slice(0, Object.keys(CITIES).length);
@@ -152,10 +171,11 @@ Object.entries(SPOTS).forEach(([spot, c], k) => {
       headers: r.headers ?? null, payload,
     },
     metar: null,
+    ...(spot === 'Strand' && synop ? { synop: { station: STRAND_SYNOP.id, url: synopUrl, ...synop } } : {}),
   };
   wroteTo.add(appendSafely(file, JSON.stringify(line) + '\n'));
 });
 
 appendSafely(path.join(OUT, 'recorder.log'),
-  `${runAtUtc} version=${servedVersion ?? '?'} api_ok=${okCount}/${places.length} metar=${m.status ?? m.error} reports=${reports.length} -> ${[...wroteTo].map((f) => path.basename(f)).join(', ')}\n`);
+  `${runAtUtc} version=${servedVersion ?? '?'} api_ok=${okCount}/${places.length} metar=${m.status ?? m.error} reports=${reports.length}${synop ? ` synop68911=${synop.reports?.length ?? synop.error}` : ''} -> ${[...wroteTo].map((f) => path.basename(f)).join(', ')}\n`);
 process.stdout.write(`recorded ${okCount}/${places.length} API reads, ${reports.length} METAR reports -> ${[...wroteTo].join(', ')}\n`);

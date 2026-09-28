@@ -141,6 +141,40 @@ for (const r of spots) {
   if (p.now.conditionReason === 'showers-nearby') s.nearby++;
 }
 
+// ---- Wind, per release (28 Sept 2026, review/accuracy/v5): the served now-wind vs the airport's 10-minute mean
+// (METAR within 40 min), and Strand's served wind vs its own SYNOP station 68911 (00/06/12/18 UTC, the Strand line's
+// `synop`, within 40 min). meta.wind (from the v5 release) carries the raw blend, so both layers are scored.
+const windByVersion = {};
+const wv = (v) => (windByVersion[v] ??= { airport: { n: 0, abs: 0, bias: 0, rawAbs: 0, rawN: 0 }, strand: { n: 0, abs: 0, bias: 0, gustN: 0, gustAbs: 0, list: [] } });
+for (const r of recs) {
+  const p = r.api?.payload; if (!p?.now || !isNum(p.now.windKph)) continue;
+  const at = Date.parse(p.meta?.updatedAtLabel || r.runAtUtc);
+  const rep = (r.metar?.reports || []).map((m) => ({ m, d: Math.abs((m.obsTime ?? 0) * 1000 - at) })).filter((y) => y.d <= 40 * 60e3).sort((a, b) => a.d - b.d)[0]?.m;
+  if (!rep || !isNum(rep.wspd)) continue;
+  const o = rep.wspd * 1.852, a = wv(String(r.servedVersion || '?').slice(0, 7)).airport;
+  a.n++; a.abs += Math.abs(p.now.windKph - o); a.bias += p.now.windKph - o;
+  if (isNum(p.meta?.wind?.rawKph)) { a.rawN++; a.rawAbs += Math.abs(p.meta.wind.rawKph - o); }
+}
+const synop68911 = new Map();   // 'YYYY-MM-DDTHH' UTC → { kph, gustKph, dir }
+for (const r of spots) for (const line of r.synop?.reports || []) {
+  const c = line.split(','); if (c.length < 7 || /NIL/.test(line)) continue;
+  const g = c.slice(6).join(',').replace(/=\s*$/, '').trim().split(/\s+/), iw = Number(g[1]?.slice(4, 5)), w = g[4];
+  if (!/^[\d/]\d{4}$/.test(w ?? '') || !(iw === 3 || iw === 4)) continue;
+  const ff = Number(w.slice(3, 5)); if (!Number.isFinite(ff) || ff === 99) continue;
+  const s3 = g.indexOf('333'), s5 = g.indexOf('555'), gg = (s3 >= 0 ? g.slice(s3 + 1, s5 > s3 ? s5 : undefined) : []).find((x) => /^910\d\d$/.test(x));
+  synop68911.set(`${c[1]}-${c[2]}-${c[3]}T${c[4]}`, { kph: ff * 1.852, gustKph: gg ? Number(gg.slice(3)) * 1.852 : null, dir: Number(w.slice(1, 3)) * 10 });
+}
+for (const [key, ob] of synop68911) {
+  const t = Date.parse(`${key}:00:00Z`);
+  const best = spots.filter((r) => r.spot === 'Strand' && r.api?.payload?.now).map((r) => ({ r, d: Math.abs(Date.parse(r.api.payload.meta?.updatedAtLabel || r.runAtUtc) - t) })).filter((y) => y.d <= 40 * 60e3).sort((a, b) => a.d - b.d)[0]?.r;
+  if (!best || !isNum(best.api.payload.now.windKph)) continue;
+  const p = best.api.payload, s = wv(String(best.servedVersion || '?').slice(0, 7)).strand, gust = p.now.conditionSignals?.numeric?.gustKph;
+  s.n++; s.abs += Math.abs(p.now.windKph - ob.kph); s.bias += p.now.windKph - ob.kph;
+  if (isNum(gust) && isNum(ob.gustKph)) { s.gustN++; s.gustAbs += Math.abs(gust - ob.gustKph); }
+  s.list.push(`${key}Z 68911 ${Math.round(ob.kph)} km/h${isNum(ob.gustKph) ? ` (gust ${Math.round(ob.gustKph)})` : ''} from ${ob.dir}° · app ${p.now.windKph} km/h, ${p.now.conditionKey}`);
+}
+out.wind = windByVersion;
+
 mkdirSync(OUT, { recursive: true });
 out.alNote = { quote: AL_NOTE, byVersion: alNote };
 writeFileSync(path.join(OUT, 'live-score.json'), JSON.stringify(out, null, 1));
@@ -152,6 +186,9 @@ const md = [`# Live score — production vs the airports (${out.generatedAt.slic
   `## Al's note (25 Sept 2026), per release`, '', `> "${AL_NOTE}"`, '',
   ...Object.entries(alNote).map(([v, n]) => `- **${v}** (${n.hours} airport-hours the airport could judge): fog shown ${n.fog}, fog or mist at the airport ${n.fogSeen} · "Rain's here" ${n.rainHere}, rain that hour or the next ${n.rainHereWet} · "Showers nearby." ${n.nearby}, rain that hour or the next ${n.nearbyWet}`
     + (Object.keys(n.spots).length ? ` · ${Object.entries(n.spots).map(([k, s]) => `${k}: fog ${s.fog}, "Rain's here" ${s.rainHere}, "Showers nearby." ${s.nearby} of ${s.hours} h`).join('; ')}` : '')), '',
+  `## Wind, per release (served now-wind vs the airport; Strand vs its station 68911)`, '',
+  ...Object.entries(windByVersion).map(([v, w]) => `- **${v}**: airports ${w.airport.n} h, off by ${w.airport.n ? (w.airport.abs / w.airport.n).toFixed(1) : '—'} km/h (bias ${w.airport.n ? (w.airport.bias / w.airport.n).toFixed(1) : '—'})${w.airport.rawN ? `, raw blend ${(w.airport.rawAbs / w.airport.rawN).toFixed(1)}` : ''} · Strand ${w.strand.n} reports, off by ${w.strand.n ? (w.strand.abs / w.strand.n).toFixed(1) : '—'} km/h (bias ${w.strand.n ? (w.strand.bias / w.strand.n).toFixed(1) : '—'})${w.strand.gustN ? `, gust off by ${(w.strand.gustAbs / w.strand.gustN).toFixed(1)}` : ''}`),
+  ...Object.values(windByVersion).flatMap((w) => w.strand.list.map((x) => `  - ${x}`)), '',
   'Mismatches:', '', ...(out.mismatches.length ? out.mismatches.map((x) => `- ${x}`) : ['- none'])];
 writeFileSync(path.join(OUT, 'live-score.md'), md.join('\n') + '\n');
 console.log(md.join('\n'));
