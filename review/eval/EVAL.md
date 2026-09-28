@@ -988,3 +988,34 @@ overrode it from the 77 % number. That rung is today's behaviour, measured nowhe
 There: Strand 68911 28 km/h gusting 50 (06 UTC), Yr 36 km/h, Al "pumping"; Cape Town airport 11 and 9 km/h, CAVOK.
 **The shipped rules do not fix Strand's morning.** Strand's own station says Cape Town's correction reads too high there
 on most days, and the south-easter correction that would have fixed this morning is not yet proven.
+
+### 12.7 Fable, gates, shipped
+
+| Fable call | tokens (harness count) | verdict |
+|---|---:|---|
+| the plan | 102,724 | PROCEED WITH CHANGES — nine, adopted in full before scoring (`cf307a0`) |
+| the diff | 114,653 | SHIP WITH FIXES — five: (1) a gust shown under the corrected mean — already guarded (server sends a gust only above 1.5× the shown wind, the phone shows it only above 1.3×); (2) the day-1/day-2 seam — said here: days 0–1 corrected, days 2–6 raw; (3) Strand's SYNOP in m/s and 910ff only — applied; (4) cache hits re-running the consensus — not the case (only `deriveCondition`); (5) a test walking every region × month × hour — applied (`0b02b95`) |
+| **total** | **217,377** | **cap 200,000 — over by 17,377** (Fable counted ~40k and ~19k; the harness counts its whole context). The fixes were not re-reviewed. |
+
+The station search ran as a separate research agent (132,158 tokens). Gates on the finished tree (`0b02b95`): serial
+**149 files / 21,312 tests**, image budget, build, bespoke 9, rotation PASS (it printed PASS and then hung on exit inside
+the chain for 11 minutes, was stopped, and passed alone with exit 0), drift guard, seasonal PASS + control failing as it
+must (12,296), precision table `--check`, wind table `--check`, fold **80/80**, desktop, gate shots 24.
+
+**Shipped:** `git push origin main` `e688913` → **`acd15b2`** (28 Sept, 09:33 UTC); `/api/version` → `acd15b2…` at 09:34.
+Live answers (fresh): Strand 20.8 km/h, rule `today` (blocked), cloudy; Cape Town city 18.2 → 29.1 km/h (×1.6), Windy;
+Cape Town airport 15.4 → 24.6; Johannesburg airport 18.2 → 26.0 (×1.43); Durban 21.2 → 22.1 (×1.04); London 6.1, rule
+`today`. Live smoke (`scripts/live-smoke.mjs`, phone 375×812 and desktop 1440×900, five languages): **10/10 legs, 0 console
+errors, 0 bad responses**; Strand's phone Home: 21 km/h, "Cloudy vibes." The recorder's 10:10 UTC reading: `version=acd15b2`,
+8/8 reads, every record `meta.wind` (six airports and Cape Town city `BC`, Strand `today`) and `sourceNow[].cloudPct`. The
+recorder's runtime copy is `home-d`'s (staggered `own=1` reads) with the 68911 read merged in; the Ogimet read was tried by
+hand (00 and 06 UTC reports back); its first scheduled read is 13:10 UTC. No rollback needed.
+
+**Home D:** `home-d` rebased onto `acd15b2` in a separate worktree (one conflict, `record.mjs`, both changes kept) and
+pushed with a lease: `085c1a6` → **`3a51b40`**; the preview answers `3a51b40` and serves the corrected wind (Cape Town city
+18.6 → 29.8, Windy). On the rebased branch: serial **150 files / 21,401**, image budget, build, wind table `--check`, desktop,
+Home D check 26/26 (a first run timed out at 20 s right after the fold gate; alone it passed), fold **140/140** after one
+fixture fix (`3a51b40`): the fold payload said `cloudy` over 46 km/h, which the phone used to overrule from the number; with
+the phone now showing the server's key, the gate measured the cloudy display for the first time and **isiXhosa's longest
+line ran 2 px under the panel handle at 320×488** — a Home D squeeze on a cloudy, gusty day, found and not fixed. `pw-home-d`'s
+own checkout was left as it was (clean, at `085c1a6`): pull before its next push.
