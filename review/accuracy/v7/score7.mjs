@@ -167,7 +167,9 @@ for (const s of all.filter((x) => x.gustStation)) {
     const f1 = (fx) => { let tp = 0, fp = 0, fn = 0; for (const r of pr) { const a = fx(r) >= 50, o = r.o.gust >= 50; if (a && o) tp++; else if (a) fp++; else if (o) fn++; } return { f1: tp + fp + fn ? (2 * tp) / (2 * tp + fp + fn) : null, catch: tp + fn ? (100 * tp) / (tp + fn) : null }; };
     const before = f1(app), after = f1((r) => app(r) * corr(r));
     const mae = bootDiff(pr.map((r) => ({ day: r.week, a: Math.abs(app(r) * corr(r) - r.o.gust), b: Math.abs(app(r) - r.o.gust) })), 1000, 7);
-    const ok = mae && mae.hi < 0 && isNum(after.f1) && isNum(before.f1) && after.f1 >= before.f1 && after.catch >= before.catch - 2;
+    // PLAN §8.7 (Fable's change 7, adopted before scoring): the off-by (MAE) is reported, not a bar. The first run
+    // still required its interval below zero — a transcription error Fable's diff review ruled on (EVAL §14.3).
+    const ok = isNum(after.f1) && isNum(before.f1) && after.f1 >= before.f1 && after.catch >= before.catch - 2;
     if (!ok) pass = false;
     res.byGuess.push({ guess: g.name, maeBefore: round(mean(pr.map((r) => Math.abs(app(r) - r.o.gust))), 2), maeAfter: round(mean(pr.map((r) => Math.abs(app(r) * corr(r) - r.o.gust))), 2), maeDiff: mae && [round(mae.diff, 2), round(mae.lo, 2), round(mae.hi, 2)], f1Before: round(before.f1, 3), f1After: round(after.f1, 3), catchBefore: round(before.catch, 1), catchAfter: round(after.catch, 1), ok });
   });

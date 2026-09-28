@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-09-28T14:22:03.882Z",
+ "generatedAt": "2026-09-28T14:39:09.871Z",
  "plan": "review/accuracy/v7/PLAN.md",
  "definitions": {
   "pumping": "gust ≥ 50 or mean ≥ 30",
@@ -11030,7 +11030,7 @@
      "f1After": 0,
      "catchBefore": 0,
      "catchAfter": 0,
-     "ok": false
+     "ok": true
     }
    ],
    "proveBig": 3,
@@ -12110,12 +12110,12 @@
      "f1After": 0.278,
      "catchBefore": 31.3,
      "catchAfter": 31.3,
-     "ok": false
+     "ok": true
     }
    ],
    "proveBig": 16,
    "proveBigDays": 10,
-   "ships": false
+   "ships": true
   },
   "68674": {
    "name": "PORT ST JOHNS",
@@ -15140,7 +15140,7 @@
      "f1After": 0.457,
      "catchBefore": 27,
      "catchAfter": 38.1,
-     "ok": false
+     "ok": true
     },
     {
      "guess": "ECMWF-heavy",
@@ -15155,7 +15155,7 @@
      "f1After": 0.442,
      "catchBefore": 27,
      "catchAfter": 36.5,
-     "ok": false
+     "ok": true
     },
     {
      "guess": "mixed",
@@ -15170,12 +15170,12 @@
      "f1After": 0.457,
      "catchBefore": 27,
      "catchAfter": 38.1,
-     "ok": false
+     "ok": true
     }
    ],
    "proveBig": 63,
    "proveBigDays": 34,
-   "ships": false
+   "ships": true
   },
   "68912": {
    "name": "SLANGKOP",
@@ -16553,6 +16553,109 @@
     ]
    },
    "verdict": "ships",
+   "R2": {
+    "stations": [
+     "68668"
+    ],
+    "G": 50,
+    "K": 0,
+    "perGuess": [
+     {
+      "guess": "old harness",
+      "before": {
+       "pumping": 6,
+       "caught": 0,
+       "calm": 623,
+       "falseCalls": 0,
+       "windyCalls": 0,
+       "band": 0,
+       "caughtPct": 0,
+       "falsePer100": 0,
+       "bandShare": null
+      },
+      "after": {
+       "pumping": 6,
+       "caught": 0,
+       "calm": 623,
+       "falseCalls": 0,
+       "windyCalls": 0,
+       "band": 0,
+       "caughtPct": 0,
+       "falsePer100": 0,
+       "bandShare": null
+      },
+      "falseDiff": [
+       0,
+       0,
+       0
+      ],
+      "bar2": true
+     },
+     {
+      "guess": "ECMWF-heavy",
+      "before": {
+       "pumping": 6,
+       "caught": 0,
+       "calm": 623,
+       "falseCalls": 0,
+       "windyCalls": 0,
+       "band": 0,
+       "caughtPct": 0,
+       "falsePer100": 0,
+       "bandShare": null
+      },
+      "after": {
+       "pumping": 6,
+       "caught": 0,
+       "calm": 623,
+       "falseCalls": 0,
+       "windyCalls": 0,
+       "band": 0,
+       "caughtPct": 0,
+       "falsePer100": 0,
+       "bandShare": null
+      },
+      "falseDiff": [
+       0,
+       0,
+       0
+      ],
+      "bar2": true
+     },
+     {
+      "guess": "mixed",
+      "before": {
+       "pumping": 6,
+       "caught": 0,
+       "calm": 623,
+       "falseCalls": 0,
+       "windyCalls": 0,
+       "band": 0,
+       "caughtPct": 0,
+       "falsePer100": 0,
+       "bandShare": null
+      },
+      "after": {
+       "pumping": 6,
+       "caught": 0,
+       "calm": 623,
+       "falseCalls": 0,
+       "windyCalls": 0,
+       "band": 0,
+       "caughtPct": 0,
+       "falsePer100": 0,
+       "bandShare": null
+      },
+      "falseDiff": [
+       0,
+       0,
+       0
+      ],
+      "bar2": true
+     }
+    ],
+    "ships": true
+   },
    "perStation": [
     {
      "id": "68558",
@@ -21765,7 +21868,8 @@
    "verdict": "not clearly better",
    "R2": {
     "stations": [
-     "68817"
+     "68817",
+     "68911"
     ],
     "G": 55,
     "K": 0,
@@ -21773,26 +21877,26 @@
      {
       "guess": "old harness",
       "before": {
-       "pumping": 29,
-       "caught": 17,
-       "calm": 124,
+       "pumping": 62,
+       "caught": 23,
+       "calm": 215,
        "falseCalls": 7,
-       "windyCalls": 27,
-       "band": 3,
-       "caughtPct": 58.6,
-       "falsePer100": 5.65,
-       "bandShare": 11.1
+       "windyCalls": 38,
+       "band": 8,
+       "caughtPct": 37.1,
+       "falsePer100": 3.26,
+       "bandShare": 21.1
       },
       "after": {
-       "pumping": 29,
-       "caught": 17,
-       "calm": 124,
+       "pumping": 62,
+       "caught": 27,
+       "calm": 215,
        "falseCalls": 7,
-       "windyCalls": 28,
-       "band": 4,
-       "caughtPct": 58.6,
-       "falsePer100": 5.65,
-       "bandShare": 14.3
+       "windyCalls": 44,
+       "band": 10,
+       "caughtPct": 43.5,
+       "falsePer100": 3.26,
+       "bandShare": 22.7
       },
       "falseDiff": [
        0,
@@ -21804,26 +21908,26 @@
      {
       "guess": "ECMWF-heavy",
       "before": {
-       "pumping": 29,
-       "caught": 17,
-       "calm": 124,
+       "pumping": 62,
+       "caught": 24,
+       "calm": 215,
        "falseCalls": 8,
-       "windyCalls": 28,
-       "band": 3,
-       "caughtPct": 58.6,
-       "falsePer100": 6.45,
-       "bandShare": 10.7
+       "windyCalls": 43,
+       "band": 11,
+       "caughtPct": 38.7,
+       "falsePer100": 3.72,
+       "bandShare": 25.6
       },
       "after": {
-       "pumping": 29,
-       "caught": 17,
-       "calm": 124,
+       "pumping": 62,
+       "caught": 29,
+       "calm": 215,
        "falseCalls": 8,
-       "windyCalls": 29,
-       "band": 4,
-       "caughtPct": 58.6,
-       "falsePer100": 6.45,
-       "bandShare": 13.8
+       "windyCalls": 50,
+       "band": 13,
+       "caughtPct": 46.8,
+       "falsePer100": 3.72,
+       "bandShare": 26
       },
       "falseDiff": [
        0,
@@ -21835,26 +21939,26 @@
      {
       "guess": "mixed",
       "before": {
-       "pumping": 29,
-       "caught": 15,
-       "calm": 124,
+       "pumping": 62,
+       "caught": 27,
+       "calm": 215,
        "falseCalls": 8,
-       "windyCalls": 26,
-       "band": 3,
-       "caughtPct": 51.7,
-       "falsePer100": 6.45,
-       "bandShare": 11.5
+       "windyCalls": 47,
+       "band": 12,
+       "caughtPct": 43.5,
+       "falsePer100": 3.72,
+       "bandShare": 25.5
       },
       "after": {
-       "pumping": 29,
-       "caught": 15,
-       "calm": 124,
+       "pumping": 62,
+       "caught": 31,
+       "calm": 215,
        "falseCalls": 8,
-       "windyCalls": 26,
-       "band": 3,
-       "caughtPct": 51.7,
-       "falsePer100": 6.45,
-       "bandShare": 11.5
+       "windyCalls": 51,
+       "band": 12,
+       "caughtPct": 50,
+       "falsePer100": 3.72,
+       "bandShare": 23.5
       },
       "falseDiff": [
        0,
@@ -22285,6 +22389,109 @@
     ]
    },
    "verdict": "ships",
+   "R2": {
+    "stations": [
+     "68911"
+    ],
+    "G": 55,
+    "K": 2,
+    "perGuess": [
+     {
+      "guess": "old harness",
+      "before": {
+       "pumping": 33,
+       "caught": 8,
+       "calm": 91,
+       "falseCalls": 0,
+       "windyCalls": 15,
+       "band": 7,
+       "caughtPct": 24.2,
+       "falsePer100": 0,
+       "bandShare": 46.7
+      },
+      "after": {
+       "pumping": 33,
+       "caught": 12,
+       "calm": 91,
+       "falseCalls": 0,
+       "windyCalls": 20,
+       "band": 8,
+       "caughtPct": 36.4,
+       "falsePer100": 0,
+       "bandShare": 40
+      },
+      "falseDiff": [
+       0,
+       0,
+       0
+      ],
+      "bar2": true
+     },
+     {
+      "guess": "ECMWF-heavy",
+      "before": {
+       "pumping": 33,
+       "caught": 9,
+       "calm": 91,
+       "falseCalls": 1,
+       "windyCalls": 18,
+       "band": 8,
+       "caughtPct": 27.3,
+       "falsePer100": 1.1,
+       "bandShare": 44.4
+      },
+      "after": {
+       "pumping": 33,
+       "caught": 13,
+       "calm": 91,
+       "falseCalls": 1,
+       "windyCalls": 23,
+       "band": 9,
+       "caughtPct": 39.4,
+       "falsePer100": 1.1,
+       "bandShare": 39.1
+      },
+      "falseDiff": [
+       0,
+       0,
+       0
+      ],
+      "bar2": true
+     },
+     {
+      "guess": "mixed",
+      "before": {
+       "pumping": 33,
+       "caught": 14,
+       "calm": 91,
+       "falseCalls": 1,
+       "windyCalls": 27,
+       "band": 12,
+       "caughtPct": 42.4,
+       "falsePer100": 1.1,
+       "bandShare": 44.4
+      },
+      "after": {
+       "pumping": 33,
+       "caught": 17,
+       "calm": 91,
+       "falseCalls": 1,
+       "windyCalls": 30,
+       "band": 12,
+       "caughtPct": 51.5,
+       "falsePer100": 1.1,
+       "bandShare": 40
+      },
+      "falseDiff": [
+       0,
+       0,
+       0
+      ],
+      "bar2": true
+     }
+    ],
+    "ships": true
+   },
    "perStation": [
     {
      "id": "68911",

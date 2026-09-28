@@ -3,21 +3,117 @@
   "68817": {
     "why": "Cape Town harbour (Portnet, 2 m): the low-lying city side of Table Mountain and Signal Hill, facing Table Bay. Not the mountain slopes (Tamboerskloof, Oranjezicht, Higgovale: 90-165 m, where the south-easter comes down harder), not the Atlantic seaboard behind Signal Hill (Sea Point, Clifton, Camps Bay), not the southern suburbs in the mountain's lee, not the open coast north (Milnerton, Table View).",
     "towns": [
-      { "name": "Cape Town (city centre)", "lat": -33.92584, "lon": 18.42322, "km": 1.2 },
-      { "name": "Foreshore", "lat": -33.92278, "lon": 18.4409, "km": 1.5 },
-      { "name": "Roggebaai", "lat": -33.91667, "lon": 18.43333, "km": 1 },
-      { "name": "De Waterkant", "lat": -33.91528, "lon": 18.41667, "km": 1 },
-      { "name": "Green Point", "lat": -33.90504, "lon": 18.40725, "km": 1.5 },
-      { "name": "Mouille Point", "lat": -33.90027, "lon": 18.40531, "km": 1 },
-      { "name": "Woodstock", "lat": -33.93156, "lon": 18.4448, "km": 1.5 },
-      { "name": "Salt River", "lat": -33.93339, "lon": 18.4572, "km": 1.5 },
-      { "name": "Paarden Eiland", "lat": -33.9163, "lon": 18.47265, "km": 1.5 }
+      {
+        "name": "Cape Town (city centre)",
+        "lat": -33.92584,
+        "lon": 18.42322,
+        "km": 1.2
+      },
+      {
+        "name": "Foreshore",
+        "lat": -33.92278,
+        "lon": 18.4409,
+        "km": 1.5
+      },
+      {
+        "name": "Roggebaai",
+        "lat": -33.91667,
+        "lon": 18.43333,
+        "km": 1
+      },
+      {
+        "name": "De Waterkant",
+        "lat": -33.91528,
+        "lon": 18.41667,
+        "km": 1
+      },
+      {
+        "name": "Green Point",
+        "lat": -33.90504,
+        "lon": 18.40725,
+        "km": 1.5
+      },
+      {
+        "name": "Mouille Point",
+        "lat": -33.90027,
+        "lon": 18.40531,
+        "km": 1
+      },
+      {
+        "name": "Woodstock",
+        "lat": -33.93156,
+        "lon": 18.4448,
+        "km": 1.5
+      },
+      {
+        "name": "Salt River",
+        "lat": -33.93339,
+        "lon": 18.4572,
+        "km": 1.5
+      },
+      {
+        "name": "Paarden Eiland",
+        "lat": -33.9163,
+        "lon": 18.47265,
+        "km": 1.5
+      }
     ]
   },
   "68176": {
     "why": "Mara (Limpopo, 897 m): Mara village on the same plain, 7.7 km, 6 m lower. The other villages within 12 km are left out: they lie towards the Soutpansberg and their exposure was not checked.",
     "towns": [
-      { "name": "Mara", "lat": -23.11667, "lon": 29.63333, "km": 4 }
+      {
+        "name": "Mara",
+        "lat": -23.11667,
+        "lon": 29.63333,
+        "km": 4
+      }
+    ]
+  },
+  "68911": {
+    "why": "Strand (68911, 7 m, on the False Bay shore): the flat False Bay side below the Helderberg and Hottentots-Holland — Strand, Gordon's Bay, the lower town of Somerset West, Lwandle and Nomzamo. Not Sir Lowry's Pass village (on the pass, 93 m), not the Helderberg slopes, not Stellenbosch or Grabouw (over the mountains). Fable: the station's ratio is likely a floor at Gordon's Bay (the south-easter funnels harder there) and a ceiling in Somerset West.",
+    "towns": [
+      {
+        "name": "Strand",
+        "lat": -34.10687,
+        "lon": 18.82751,
+        "km": 2.5
+      },
+      {
+        "name": "Gordon's Bay",
+        "lat": -34.1575,
+        "lon": 18.866,
+        "km": 2
+      },
+      {
+        "name": "Somerset West (lower town)",
+        "lat": -34.08401,
+        "lon": 18.82113,
+        "km": 2
+      },
+      {
+        "name": "Lwandle",
+        "lat": -34.1208,
+        "lon": 18.86415,
+        "km": 1
+      },
+      {
+        "name": "Nomzamo",
+        "lat": -34.11395,
+        "lon": 18.85202,
+        "km": 1
+      }
+    ]
+  },
+  "68668": {
+    "why": "Mthatha airport (68668, 731 m) on the plateau: Mthatha itself, 11 km east and 37 m lower, the same open inland plateau with no ridge between. The villages around the airport are left out (not checked one by one).",
+    "towns": [
+      {
+        "name": "Mthatha",
+        "lat": -31.58893,
+        "lon": 28.78443,
+        "km": 4
+      }
     ]
   }
 }

@@ -29,7 +29,8 @@ const stations = [];
 for (const [id, c] of Object.entries(res.corrections)) {
   if (!c.ships || !towns[id]?.towns?.length) continue;
   const st = res.stations.find((s) => s.id === id);
-  const cell = res.regions[c.region];
+  // the headline test that governs the station's towns: the Strand zone's own for 68911's zone, else its region's
+  const cell = st.strandZone ? res.regions['Strand zone'] : res.regions[c.region];
   const headline = !(cell?.R2 && cell.R2.stations.includes(id) && !cell.R2.ships);
   stations.push({ id, name: c.name, lat: st.lat, lon: st.lon, sectors: Object.values(c.sectors).map((s) => s.ratio), headline, towns: towns[id].towns });
 }
