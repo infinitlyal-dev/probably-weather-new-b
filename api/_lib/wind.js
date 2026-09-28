@@ -5,6 +5,7 @@
 // live recorder's real sources as a guard) is in wind-table.js, generated from the results; where it was not proven
 // or was blocked, the answer is exactly today's blend.
 import { WIND_TABLE } from './wind-table.js';
+import { WIND_WEIGHTS } from './wind-weights.js';
 import { regionOf } from './regions.js';
 
 const isNum = (v) => typeof v === 'number' && Number.isFinite(v);
@@ -45,15 +46,34 @@ export function windRegionAt(lat, lon) {
   return region;
 }
 
+// Wind's own say-per-source (review/accuracy/v6, EVAL §13): the hourly sources are OM, WA, MET, TI — slots 0, 1, 3, 4
+// of the five (Pirate has no hourly wind).
+const HOURLY_SLOTS = [0, 1, 3, 4];
+function weightedMean(values, weights) {
+  let s = 0, ws = 0;
+  values.forEach((v, i) => { if (isNum(v) && weights[i] > 0) { s += v * weights[i]; ws += weights[i]; } });
+  return ws > 0 ? s / ws : null;
+}
+
 /**
  * One wind number (now, or one hour of the hourly array). raw = today's weighted blend; values = each source's own
- * wind for the same moment; month 1–12 and hour 0–23 are local. Returns the number to show and to decide with, and
- * what made it (for meta.wind and the recorder).
+ * wind for the same moment; slots = the same, one per source in its fixed place (null where a source did not answer —
+ * five for kind 'now' [OM, WA, Pirate, MET, TI], four for kind 'hour' [OM, WA, MET, TI]); month 1–12 and hour 0–23 are
+ * local. Returns the number to show and to decide with, and what made it (for meta.wind and the recorder).
  */
-export function shapeWind({ raw, values, lat, lon, month, hour }) {
+export function shapeWind({ raw, values, slots, kind = 'now', lat, lon, month, hour }) {
   const region = windRegionAt(lat, lon);
   const t = WIND_TABLE;
   if (!region || !isNum(raw)) return { kph: raw ?? null, rawKph: raw ?? null, rule: 'today', ratio: 1, region: region ?? regionOf(lat, lon) ?? null };
+  // v6: where wind's own weights passed, each source's wind counts by how right it has been there (weights renormalise
+  // over the sources that answered), × k — the ratio the Windy consensus then uses too.
+  const lw = WIND_WEIGHTS.regions[region];
+  if (lw && Array.isArray(slots) && (kind === 'now' || WIND_WEIGHTS.hourlyFollows)) {
+    const w = kind === 'hour' ? HOURLY_SLOTS.map((i) => lw.weights[i]) : lw.weights;
+    const k = kind === 'hour' ? lw.k4 : lw.k;
+    const b = weightedMean(slots, w);
+    if (isNum(b)) return { kph: round1(b * k), rawKph: raw, rule: 'LW', ratio: k, region, weights: w };
+  }
   const base = t.rule.startsWith('M') ? median(values) : raw;
   if (!isNum(base)) return { kph: raw, rawKph: raw, rule: 'today', ratio: 1, region };
   const ratio = t.rule.endsWith('C') ? (t.ratios[region]?.[seasonOf(month)]?.[partOf(hour)] ?? 1) : 1;

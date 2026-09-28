@@ -2086,7 +2086,9 @@ export default async function handler(req, res) {
       // Gusts are tracked separately and shown as "(gusts X km/h)" in the UI.
       // 2026-09-28 (review/accuracy/v5, EVAL §12): corrected by the wind table where it was proven (the hour's own
       // day-part and season); today's blend elsewhere. Days 0–1's day cards read these hours (Fable, plan item 6).
-      const effectiveHourlyWind = shapeWind({ raw: avgWind, values: hourWindVals, lat, lon, month: hourMonths[i < 24 ? 0 : 1], hour: i % 24 }).kph;
+      // 2026-09-28 (review/accuracy/v6, EVAL §13): where wind's own weights passed, each source's hour counts by its
+      // record there — slots in their fixed places [OM, WA, MET, TI], null where a source did not answer.
+      const effectiveHourlyWind = shapeWind({ raw: avgWind, values: hourWindVals, slots: hourlies.map(h => (h && isNum(h.winds[i]) ? h.winds[i] : null)), kind: 'hour', lat, lon, month: hourMonths[i < 24 ? 0 : 1], hour: i % 24 }).kph;
 
       // UV: blended across the hourly sources that publish it (Open-Meteo
       // uv_index, WeatherAPI hour.uv; MET compact and Tomorrow.io carry none).
@@ -2414,7 +2416,9 @@ export default async function handler(req, res) {
     // times the wind table's ratio for this region, season and day-part where that rule was proven (Cape Town
     // airport: off by 7.8 → 3.8 km/h on 2026); today's blend where it was not, or was blocked (near Strand's own
     // station it read too high). Gusts (maxWindKph) stay separate for the "(gusts X km/h)" line.
-    const windNow = shapeWind({ raw: medWindKph, values: activeNorms.map(n => n.windKph), lat, lon, month: hourMonths[0], hour: localHour });
+    // v6 (EVAL §13): where wind's own weights passed (the Eastern Cape), each source's own wind in its fixed slot
+    // [OM, WA, Pirate, MET, TI] counts by how right it has been there instead of the shared weights.
+    const windNow = shapeWind({ raw: medWindKph, values: activeNorms.map(n => n.windKph), slots: norms.map(n => (n && isNum(n.windKph) ? n.windKph : null)), kind: 'now', lat, lon, month: hourMonths[0], hour: localHour });
     // What the hero's Windy rung reads: the corrected number at its own line where the headline gate passed.
     const windDecision = windLine(windNow);
     const effectiveDisplayWind = windNow.kph ?? 0;
@@ -2794,6 +2798,8 @@ export default async function handler(req, res) {
           kph: windNow.kph,
           heroKph: windDecision.kph,
           heroThresholdKph: windDecision.thresholdKph,
+          // v6: the five (or, per hour, four) weights used where wind's own weights apply; null elsewhere
+          weights: windNow.weights ?? null,
         },
         // Precision (api/_lib/precision.js): what happened, and the consensus beside the blend for each
         // day it touched, so the recorder can score both (Fable, plan review: shadow mode).
