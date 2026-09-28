@@ -7,6 +7,9 @@ import path from 'node:path';
 import { DATA, loadIsd } from './fetch7.mjs';
 import { inSouthAfrica } from '../../../api/_lib/precision.js';
 
+/** 'YYYY-MM-DDTHH' in SAST (UTC+2) for a UTC instant — the Open-Meteo files are Africa/Johannesburg. */
+export const sastKey = (utcMs) => new Date(utcMs + 2 * 3600e3).toISOString().slice(0, 13);
+
 export function parseSynopLine(line) {
   const c = line.split(',');
   if (c.length < 7 || !/^68\d{3}$/.test(c[0])) return null;
