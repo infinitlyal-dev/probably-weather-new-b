@@ -5,19 +5,23 @@
 // (the last week and the METARs are re-fetched when --fresh is given).
 // Data → review/accuracy/v2/data/v7/.
 //   node review/accuracy/v7/fetch7.mjs [--fresh]
-import { existsSync, writeFileSync, appendFileSync, mkdirSync, readFileSync, readdirSync } from 'node:fs';
+import { existsSync, writeFileSync, appendFileSync } from 'node:fs';
 import path from 'node:path';
-import { DATA as V2DATA } from '../v2/lib.mjs';
 import { STATIONS } from '../v2/stations.mjs';
+import { DATA, loadIsd } from './common.mjs';
 
-export const DATA = path.join(V2DATA, 'v7');
+export { DATA, loadIsd };
 export const FROM = '2026-03-01';
 export const TO = new Date().toISOString().slice(0, 10);
-export const MODELS = ['best_match', 'ecmwf_ifs025', 'gfs_seamless', 'icon_seamless', 'ukmo_seamless', 'meteofrance_seamless'];
-const VARS = ['wind_speed_10m', 'wind_gusts_10m', 'wind_direction_10m', 'temperature_2m'];
+// Two passes to stay inside the free tier (a request counts ~ variables/10 × days/14 calls; 5,000 an hour, 10,000 a
+// day): A = the three gust models with wind, gust, direction, temperature (~18 calls a place, 8 s apart); B = the
+// three mean-only models with wind and temperature (~15 calls a place, 17 s apart).
+export const PASSES = [
+  { tag: 'om', models: ['best_match', 'ecmwf_ifs025', 'gfs_seamless'], vars: ['wind_speed_10m', 'wind_gusts_10m', 'wind_direction_10m', 'temperature_2m'], gapMs: 8_000 },
+  { tag: 'omb', models: ['icon_seamless', 'ukmo_seamless', 'meteofrance_seamless'], vars: ['wind_speed_10m', 'temperature_2m'], gapMs: 17_000 },
+];
 const UA = 'probably-weather accuracy check (research, low volume)';
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
-mkdirSync(DATA, { recursive: true });
 const LOG = path.join(DATA, 'fetch.log');
 const log = (s) => { const l = `${new Date().toISOString()} ${s}`; console.log(l); appendFileSync(LOG, l + '\n'); };
 const fresh = process.argv.includes('--fresh');
@@ -69,34 +73,18 @@ async function isdAndMetar() {
   log('METAR DONE');
 }
 
-/** Block-68 stations from the ISD list: id → {id, name, lat, lon, elev}. */
-export function loadIsd() {
-  const out = new Map();
-  const file = path.join(DATA, 'isd-history.csv');
-  if (!existsSync(file)) return out;
-  for (const l of readFileSync(file, 'utf8').split('\n').slice(1)) {
-    const c = l.split('","').map((x) => x.replace(/"/g, ''));
-    if (c.length < 11) continue;
-    const id = c[0].slice(0, 5), lat = Number(c[6]), lon = Number(c[7]), end = c[10];
-    if (!Number.isFinite(lat) || !Number.isFinite(lon) || (lat === 0 && lon === 0)) continue;
-    const prev = out.get(id);
-    if (!prev || end > prev.end) out.set(id, { id, name: c[2], ctry: c[3], lat, lon, elev: Number(c[9]), end });
-  }
-  return out;
-}
-
-// All six models in one request per place (the free tier counts a request by variables × weeks, ~36 calls each here:
-// 100 places ≈ 3,600 of the 5,000 an hour and 10,000 a day allow), 8 s apart (≤ 270 a minute of the 600).
 async function openMeteo(points) {
-  for (const p of points) {
-    const file = path.join(DATA, `om-${p.id}.json`);
-    if (existsSync(file) && !fresh) continue;
-    const url = `https://historical-forecast-api.open-meteo.com/v1/forecast?latitude=${p.lat}&longitude=${p.lon}&hourly=${VARS.join(',')}&start_date=${FROM}&end_date=${TO}&timezone=Africa%2FJohannesburg&models=${MODELS.join(',')}`;
-    const t = await get(url, (x) => { try { return Boolean(JSON.parse(x).hourly); } catch { return false; } });
-    if (t) { writeFileSync(file, t); log(`om-${p.id}: ${Math.round(t.length / 1024)} KB`); }
-    await sleep(8_000);
+  for (const pass of PASSES) {
+    for (const p of points) {
+      const file = path.join(DATA, `${pass.tag}-${p.id}.json`);
+      if (existsSync(file) && !fresh) continue;
+      const url = `https://historical-forecast-api.open-meteo.com/v1/forecast?latitude=${p.lat}&longitude=${p.lon}&hourly=${pass.vars.join(',')}&start_date=${FROM}&end_date=${TO}&timezone=Africa%2FJohannesburg&models=${pass.models.join(',')}`;
+      const t = await get(url, (x) => { try { return Boolean(JSON.parse(x).hourly); } catch { return false; } });
+      if (t) { writeFileSync(file, t); log(`${pass.tag}-${p.id}: ${Math.round(t.length / 1024)} KB`); }
+      await sleep(pass.gapMs);
+    }
+    log(`OPEN-METEO ${pass.tag} DONE (${points.length} points)`);
   }
-  log(`OPEN-METEO DONE (${points.length} points)`);
 }
 
 if (process.argv[1] && process.argv[1].endsWith('fetch7.mjs')) {
@@ -104,7 +92,12 @@ if (process.argv[1] && process.argv[1].endsWith('fetch7.mjs')) {
   // The stations to fetch models for: every block-68 station inside South Africa that sent a 910ff gust at least
   // 100 times since March, plus the airports.
   const { gustStationsFromDisk } = await import('./synop7.mjs');
-  const pts = [...gustStationsFromDisk(100).map((s) => ({ id: s.id, lat: s.lat, lon: s.lon })), ...STATIONS.map((s) => ({ id: s.id, lat: s.lat, lon: s.lon }))];
+  // Airports: those with no SYNOP station within 3 km (their own truth), and the recorder's six (the fidelity check).
+  const gs = gustStationsFromDisk(100);
+  const RECORDER = ['FACT', 'FAOR', 'FALE', 'FAPE', 'FABL', 'FAGG'];
+  const kmTo = (a, b) => 111 * Math.hypot(a.lat - b.lat, (a.lon - b.lon) * Math.cos(a.lat * Math.PI / 180));
+  const air = STATIONS.filter((a) => !a.skip && (RECORDER.includes(a.id) || !gs.some((s) => kmTo(a, s) <= 3)));
+  const pts = [...gs, ...air].map((s) => ({ id: s.id, lat: s.lat, lon: s.lon }));
   log(`model points: ${pts.length}`);
   await openMeteo(pts);
   log('V7 FETCH DONE');

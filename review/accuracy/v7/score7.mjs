@@ -3,7 +3,7 @@
 import { readFileSync, writeFileSync, existsSync, readdirSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { DATA } from './fetch7.mjs';
+import { DATA } from './common.mjs';
 import { loadSynop, gustStationsFromDisk, sastKey } from './synop7.mjs';
 import { STATIONS } from '../v2/stations.mjs';
 import { VARIANTS, productionWeights } from '../v2/temps-replay.mjs';
@@ -38,10 +38,11 @@ const synop = loadSynop();
 const gustSt = gustStationsFromDisk(100).map((s) => ({ ...s, kind: 'synop', share910: s.gusts / s.reports }));
 const airports = STATIONS.filter((a) => !a.skip).map((a) => ({ id: a.id, name: a.name, lat: a.lat, lon: a.lon, elev: a.elev, kind: 'metar' }))
   .filter((a) => !gustSt.some((s) => km(a.lat, a.lon, s.lat, s.lon) <= 3));
-const all = [...gustSt, ...airports].filter((s) => existsSync(path.join(DATA, `om-${s.id}.json`)));
+const hasModels = (id) => existsSync(path.join(DATA, `om-${id}.json`)) && existsSync(path.join(DATA, `omb-${id}.json`));
+const all = [...gustSt, ...airports].filter((s) => hasModels(s.id));
 for (const s of all) { s.region = regionOf(s.lat, s.lon); s.strandZone = km(s.lat, s.lon, STRAND.lat, STRAND.lon) <= 15; s.gustStation = s.kind === 'synop' && s.share910 >= 0.8; }
 out.stations = all.map((s) => ({ id: s.id, name: s.name, kind: s.kind, region: s.region, lat: s.lat, lon: s.lon, elev: s.elev, reports: s.reports ?? null, share910: s.share910 != null ? round(s.share910, 3) : null, gustStation: s.gustStation, strandZone: s.strandZone }));
-out.dropped = { airportsColocated: STATIONS.filter((a) => !a.skip && !airports.some((b) => b.id === a.id)).map((a) => a.id), noModelFile: [...gustSt, ...airports].filter((s) => !existsSync(path.join(DATA, `om-${s.id}.json`))).map((s) => s.id) };
+out.dropped = { airportsColocated: STATIONS.filter((a) => !a.skip && !airports.some((b) => b.id === a.id)).map((a) => a.id), noModelFile: [...gustSt, ...airports].filter((s) => !hasModels(s.id)).map((s) => s.id) };
 
 // ---------- the check before scoring: Strand 68911 this afternoon ----------
 const s68911 = synop.get('68911');
@@ -52,8 +53,11 @@ out.strandToday = today12 ? { utc: '2026-09-28T12Z', mean: round(today12.kph, 1)
 
 // ---------- rows ----------
 function loadOm(id) {
+  // pass A (the three gust models) and pass B (the three mean-only models), fetch7.mjs PASSES
   const j = JSON.parse(readFileSync(path.join(DATA, `om-${id}.json`), 'utf8'));
-  const H = j.hourly, m = new Map(), highs = {};
+  const jb = JSON.parse(readFileSync(path.join(DATA, `omb-${id}.json`), 'utf8'));
+  if (jb.hourly.time.length !== j.hourly.time.length || jb.hourly.time[0] !== j.hourly.time[0]) throw new Error(`${id}: pass A and B hours differ`);
+  const H = { ...j.hourly, ...jb.hourly }, m = new Map(), highs = {};
   const models = [...new Set(GUESSES.flatMap((g) => [...g.mean, ...g.gust]))];
   H.time.forEach((t, i) => {
     const rec = {};
@@ -99,7 +103,7 @@ let gustScale = 1;
   const omCache = {};
   for (const r of recs) {
     const id = r?.spot === 'Strand' ? '68911' : r?.icao; const p = r?.api?.payload;
-    if (!id || !p?.now || !existsSync(path.join(DATA, `om-${id}.json`))) continue;
+    if (!id || !p?.now || !hasModels(id)) continue;
     omCache[id] ??= loadOm(id).m;
     const key = sastKey(Date.parse(r.runAtUtc)); const mrec = omCache[id].get(key); if (!mrec) continue;
     const served = p.now.conditionSignals?.numeric?.gustKph;

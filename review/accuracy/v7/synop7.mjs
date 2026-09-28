@@ -4,7 +4,7 @@
 // Units from iw (YYGGiw): 3/4 knots, 0/1 m/s, anything else skipped (as live/score.mjs).
 import { readFileSync, readdirSync, existsSync } from 'node:fs';
 import path from 'node:path';
-import { DATA, loadIsd } from './fetch7.mjs';
+import { DATA, loadIsd } from './common.mjs';
 import { inSouthAfrica } from '../../../api/_lib/precision.js';
 
 /** 'YYYY-MM-DDTHH' in SAST (UTC+2) for a UTC instant — the Open-Meteo files are Africa/Johannesburg. */
