@@ -1236,16 +1236,21 @@ big-gust proof hours — under all three guesses. **Most inland stations read th
 |---|---|---|---|
 | **68817 Cape Town harbour (Portnet)** | yes (47 big-gust hours; F1 0.42–0.51 → 0.53–0.59, catch 40–57 → 45–60 %) | city centre (2 km), Foreshore, Roggebaai, De Waterkant, Green Point, Mouille Point, Woodstock, Salt River, Paarden Eiland (1–1.5 km each) — the low city side facing Table Bay; not the slopes, the Atlantic seaboard, the southern suburbs or Milnerton | south-easter ×1.105, south ×0.87, else ×0.85 |
 | **68176 Mara** (Limpopo) | yes (18) | Mara village only | ×0.8 all round |
-| 68911 Strand | **no** — big-gust catch 27 → 37–38 %, F1 0.33 → 0.44–0.46 under all three guesses, but the gust numbers overall were not clearly closer (−0.8 to −1.0 km/h, interval crossing zero); SE sector 28 learning hours (< 30, took the all-direction 1.14) | — | — |
+| **68911 Strand** | **yes, second push** (§14.6) — big-gust catch 27 → 37–38 %, F1 0.33 → 0.44–0.46 under all three guesses, 63 big-gust hours on 34 days; the off-by only −0.8 to −1.0 km/h (interval crossing zero, reported) | Strand (2.5 km), Gordon's Bay (2), Somerset West's lower town (2), Lwandle, Nomzamo (1 each) — the False Bay flat; not Sir Lowry's Pass, the Helderberg slopes or Stellenbosch | north ×0.8, **east ×1.8 (on the clamp, 32 learning hours)**, all others ×1.14 (the south-easter had 28 learning hours, under 30, so it took the all-direction ratio) |
+| **68668 Mthatha** | yes, second push, by the same bar (16 big-gust hours) | Mthatha (4 km) | 0.86–1.07 — changes almost nothing |
 
 **A discrepancy, said:** PLAN §8.7 (Fable's change 7) made the off-by a reported number, not a bar; the committed
 scorer still required it. Under the plan's text 68911 Strand and 68668 Mthatha would also pass. **Fable's ruling (diff
 review Q1): the plan text governs — the MAE line in `score7.mjs` was a transcription error; a raising correction widens
 the many small-gust misses while fixing the big ones, which is what §8.7 was for. Strand's correction should ship, on
 the strongest evidence of any station (63 big-gust hours on 34 days), and Mthatha by the same bar — both or neither.**
-Not in the first push: the scorer is brought to the plan and re-run so Strand's zone R2 (its rule on corrected gusts)
-is scored on even weeks — that decides whether the corrected gust feeds Strand's headline or only the number shown —
-and 68911's towns are written (§14.6). The east sector's 1.8 sits on the clamp with 32 learning hours (floor 30).
+Done the same afternoon as a second push (`944960b`): the scorer brought to the plan (the MAE line removed, the
+comment says why) and re-run — only 68911 and 68668 changed, no ratio and no region verdict moved; the generator takes
+the Strand zone's own R2 for stations in the zone. **Strand's zone R2** (two sources at 25+, on corrected gusts; even
+proof weeks at 68911): caught 8 → 12, 9 → 13, 14 → 17 of 33 pumping hours, false 0 → 0, 1 → 1, 1 → 1 of 91 calm —
+so the corrected gust feeds Strand's headline too. **Watch the east sector (Fable):** it ships at the 1.8 clamp on 32
+learning hours — this morning's 00 UTC (110°, station gust 50, app 35) would read 63 and Windy; a wild number from the
+east at Strand is that ratio.
 Why Strand's correction would not have fixed this afternoon anyway: the south-easter sector took 1.14 → the app's 36
 becomes 41, still under any gust line tested; the headline at Strand comes from §14.2.
 
@@ -1275,3 +1280,20 @@ mean wind number is unchanged everywhere (v5 table, v6 weights).
 Gates on the tree (`96bd486`; `a76edeb` changes only the towns data, `gust-v7.test.js` and the table `--check` re-run):
 serial **153 files / 21,340 tests**, image budget, build, bespoke, rotation, drift guard, seasonal, precision table,
 wind table, wind weights and **gust table `--check`**, fold **80/80**, desktop, gate shots — every step exit 0.
+
+**First push:** `git push origin main` `b9349db` → **`f6f5d9c`** (28 Sept, 14:38 UTC); `/api/version` → `f6f5d9c…`
+within seven minutes. Live smoke (`scripts/live-smoke.mjs`, phone and desktop, five languages): **10/10 legs, 0 console errors, 0 bad
+responses**; Strand's phone Home: "Wind's up." / "Dit waai." / … in all five. Live at 14:46 UTC (station reports are
+6-hourly; its 12 UTC report is the latest): Strand 25.3 km/h, Windy (the mean), gust 37; Gordon's Bay 28.6, Windy,
+gust 59; 68911 at 12 UTC 28 km/h from 140° gusting 59. Cape Town city 31.7, gust 54 → 59.7 (×1.105, harbour, SE),
+Windy; its nearest station Molteno Reservoir 11 km/h gusting 41 (§14.1's finding). Gqeberha 15.9, gust 34, cloudy
+(gust line 50); Ngqura 11 gusting 15.
+
+| second Fable call | tokens (harness count) | verdict |
+|---|---:|---|
+| the delta `f6f5d9c..944960b` (resumed diff reviewer) | 182,355 | SHIP — towns, generator and the bar change checked; the east-sector note added above |
+| **total, three calls** | **484,175** | |
+
+Gates on `944960b`: serial **153 files / 21,340 tests**, image budget, build, bespoke, rotation, drift guard, seasonal,
+precision, wind table, wind weights and gust table `--check`, fold **80/80**, desktop, gate shots — every step exit 0.
+The scorecard's runtime copy (`%USERPROFILE%\pw-scorecard\`) now carries the day's strongest gust (built by hand: 6 lines).
