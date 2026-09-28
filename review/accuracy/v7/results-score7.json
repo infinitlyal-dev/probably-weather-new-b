@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-09-28T14:16:06.504Z",
+ "generatedAt": "2026-09-28T14:22:03.882Z",
  "plan": "review/accuracy/v7/PLAN.md",
  "definitions": {
   "pumping": "gust ≥ 50 or mean ≥ 30",
@@ -16796,7 +16796,15 @@
      "falseBefore": 1,
      "falseAfter": 7
     }
-   ]
+   ],
+   "fullPeriod": {
+    "pumping": 2032,
+    "calm": 53213,
+    "caughtBefore": 1365,
+    "caughtAfter": 1569,
+    "falseBefore": 523,
+    "falseAfter": 840
+   }
   },
   "Free State": {
    "stations": [
@@ -17174,7 +17182,15 @@
      "falseBefore": 5,
      "falseAfter": 21
     }
-   ]
+   ],
+   "fullPeriod": {
+    "pumping": 380,
+    "calm": 20074,
+    "caughtBefore": 236,
+    "caughtAfter": 311,
+    "falseBefore": 87,
+    "falseAfter": 272
+   }
   },
   "Garden Route": {
    "stations": [
@@ -17540,7 +17556,15 @@
      "falseBefore": 3,
      "falseAfter": 8
     }
-   ]
+   ],
+   "fullPeriod": {
+    "pumping": 277,
+    "calm": 25119,
+    "caughtBefore": 228,
+    "caughtAfter": 228,
+    "falseBefore": 419,
+    "falseAfter": 419
+   }
   },
   "Highveld": {
    "stations": [
@@ -18002,7 +18026,15 @@
      "falseBefore": 2,
      "falseAfter": 9
     }
-   ]
+   ],
+   "fullPeriod": {
+    "pumping": 590,
+    "calm": 43808,
+    "caughtBefore": 436,
+    "caughtAfter": 436,
+    "falseBefore": 582,
+    "falseAfter": 582
+   }
   },
   "KZN coast": {
    "stations": [
@@ -18392,7 +18424,15 @@
      "falseBefore": 6,
      "falseAfter": 12
     }
-   ]
+   ],
+   "fullPeriod": {
+    "pumping": 360,
+    "calm": 13592,
+    "caughtBefore": 231,
+    "caughtAfter": 283,
+    "falseBefore": 53,
+    "falseAfter": 158
+   }
   },
   "KZN inland": {
    "stations": [
@@ -18902,7 +18942,15 @@
      "falseBefore": 2,
      "falseAfter": 2
     }
-   ]
+   ],
+   "fullPeriod": {
+    "pumping": 714,
+    "calm": 46949,
+    "caughtBefore": 475,
+    "caughtAfter": 527,
+    "falseBefore": 543,
+    "falseAfter": 795
+   }
   },
   "Karoo": {
    "stations": [
@@ -19256,7 +19304,15 @@
      "falseBefore": 33,
      "falseAfter": 52
     }
-   ]
+   ],
+   "fullPeriod": {
+    "pumping": 1081,
+    "calm": 22357,
+    "caughtBefore": 938,
+    "caughtAfter": 938,
+    "falseBefore": 466,
+    "falseAfter": 466
+   }
   },
   "Limpopo": {
    "stations": [
@@ -19725,7 +19781,15 @@
      "falseBefore": 15,
      "falseAfter": 22
     }
-   ]
+   ],
+   "fullPeriod": {
+    "pumping": 78,
+    "calm": 22655,
+    "caughtBefore": 35,
+    "caughtAfter": 35,
+    "falseBefore": 235,
+    "falseAfter": 235
+   }
   },
   "Lowveld": {
    "stations": [
@@ -20139,7 +20203,15 @@
      "falseBefore": 0,
      "falseAfter": 1
     }
-   ]
+   ],
+   "fullPeriod": {
+    "pumping": 197,
+    "calm": 32495,
+    "caughtBefore": 165,
+    "caughtAfter": 165,
+    "falseBefore": 198,
+    "falseAfter": 198
+   }
   },
   "North West": {
    "stations": [
@@ -20493,7 +20565,15 @@
      "falseBefore": 10,
      "falseAfter": 17
     }
-   ]
+   ],
+   "fullPeriod": {
+    "pumping": 419,
+    "calm": 19392,
+    "caughtBefore": 266,
+    "caughtAfter": 266,
+    "falseBefore": 133,
+    "falseAfter": 133
+   }
   },
   "Northern Cape": {
    "stations": [
@@ -20979,7 +21059,15 @@
      "falseBefore": 4,
      "falseAfter": 5
     }
-   ]
+   ],
+   "fullPeriod": {
+    "pumping": 1266,
+    "calm": 57249,
+    "caughtBefore": 790,
+    "caughtAfter": 918,
+    "falseBefore": 480,
+    "falseAfter": 969
+   }
   },
   "West Coast": {
    "stations": [
@@ -21381,7 +21469,15 @@
      "falseBefore": 0,
      "falseAfter": 9
     }
-   ]
+   ],
+   "fullPeriod": {
+    "pumping": 1293,
+    "calm": 27762,
+    "caughtBefore": 778,
+    "caughtAfter": 1024,
+    "falseBefore": 178,
+    "falseAfter": 453
+   }
   },
   "Western Cape": {
    "stations": [
@@ -21958,7 +22054,15 @@
      "falseBefore": 49,
      "falseAfter": 59
     }
-   ]
+   ],
+   "fullPeriod": {
+    "pumping": 2124,
+    "calm": 24186,
+    "caughtBefore": 1751,
+    "caughtAfter": 1751,
+    "falseBefore": 2737,
+    "falseAfter": 2737
+   }
   },
   "Strand zone": {
    "stations": [
@@ -22193,7 +22297,15 @@
      "falseBefore": 0,
      "falseAfter": 0
     }
-   ]
+   ],
+   "fullPeriod": {
+    "pumping": 125,
+    "calm": 451,
+    "caughtBefore": 24,
+    "caughtAfter": 31,
+    "falseBefore": 1,
+    "falseAfter": 4
+   }
   }
  }
 }

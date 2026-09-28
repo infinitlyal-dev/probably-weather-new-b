@@ -1,4 +1,4 @@
-v7 score — 2026-09-28T14:16:06.504Z
+v7 score — 2026-09-28T14:22:03.882Z
 rows 456639 (pumping 10811, calm 408851); stations 165 (157 SYNOP with gusts, 8 airports)
 Strand 68911 today 12 UTC: {"utc":"2026-09-28T12Z","mean":27.8,"gust":59.3,"dir":140,"pumping":true}
 fidelity: {"recorderReadings":592,"withGusts":592,"servedOverArchive":[0.944,0.969,1],"gustScale":1,"servedMeanGust":30.2,"archiveMeanGust":[31.9,31.1,30.2],"windyAgreement":[{"guess":"old harness","hours":263,"agree":247,"servedWindy":33,"replayWindy":21},{"guess":"ECMWF-heavy","hours":263,"agree":245,"servedWindy":33,"replayWindy":19},{"guess":"mixed","hours":263,"agree":246,"servedWindy":33,"replayWindy":24}]}
@@ -168,69 +168,83 @@ Eastern Cape: ships · candidate {"rule":"R1","G":50,"K":0} · tune R0 {"caught"
    ECMWF-heavy: caught 471/815 → 562 ([11.2,8.2,14.9]), false 183/25637 → 327 ([0.56,0.33,0.82]), band 45.3→48.2%, per false 0.63
    mixed: caught 489/815 → 566 ([9.4,6.9,12.6]), false 269/25637 → 416 ([0.57,0.35,0.81]), band 43.1→45.6%, per false 0.52
    LOSO drop FAPE: bar1 true bar2 true
+   March → today: pumping 2032, called Windy 1365 → 1569; calm 53213, wrongly Windy 523 → 840
 Free State: ships · candidate {"rule":"R1","G":45,"K":0} · tune R0 {"caught":49.2,"false":0.2} · stations 9
    old harness: caught 196/281 → 256 ([21.4,11.1,36.8]), false 70/9839 → 192 ([1.24,0.57,2.1]), band 42.3→45.8%, per false 0.49
    ECMWF-heavy: caught 166/281 → 231 ([23.1,11.4,39.1]), false 63/9839 → 138 ([0.76,0.32,1.36]), band 45→45.7%, per false 0.87
    mixed: caught 199/281 → 247 ([17.1,5.9,32.6]), false 68/9839 → 155 ([0.88,0.4,1.54]), band 42.6→47%, per false 0.55
    LOSO drop 68543: bar1 true bar2 true
+   March → today: pumping 380, called Windy 236 → 311; calm 20074, wrongly Windy 87 → 272
 Garden Route: not clearly better · candidate {"rule":"R1","G":50,"K":0} · tune R0 {"caught":85.7,"false":2.33} · stations 8
    old harness: caught 80/102 → 83 ([2.9,0,8.6]), false 133/13081 → 231 ([0.75,0.35,1.26]), band 65.6→58.7%, per false 0.03
    ECMWF-heavy: caught 81/102 → 83 ([2,0,6.5]), false 186/13081 → 248 ([0.47,0.21,0.8]), band 62→58.3%, per false 0.03
    mixed: caught 73/102 → 75 ([2,0,5.7]), false 95/13081 → 182 ([0.67,0.32,1.12]), band 66.9→60%, per false 0.02
    LOSO drop 68723: bar1 false bar2 true
+   March → today: pumping 277, called Windy 228 → 228; calm 25119, wrongly Windy 419 → 419
 Highveld: not clearly better · candidate {"rule":"R1","G":45,"K":0} · tune R0 {"caught":68.1,"false":0.92} · stations 16
    old harness: caught 308/400 → 326 ([4.5,0,7]), false 317/19467 → 538 ([1.14,0.35,2.23]), band 47.7→45.5%, per false 0.08
    ECMWF-heavy: caught 292/400 → 315 ([5.8,3.3,6.8]), false 376/19467 → 467 ([0.47,0.11,1.02]), band 46.7→46.3%, per false 0.25
    mixed: caught 319/400 → 331 ([3,0,4.4]), false 383/19467 → 540 ([0.81,0.24,1.59]), band 47.2→45.9%, per false 0.08
    LOSO drop 68267: bar1 false bar2 true
+   March → today: pumping 590, called Windy 436 → 436; calm 43808, wrongly Windy 582 → 582
 KZN coast: ships · candidate {"rule":"R1","G":50,"K":0} · tune R0 {"caught":66,"false":0.4} · stations 10
    old harness: caught 159/251 → 197 ([15.1,9.4,20.1]), false 27/5870 → 86 ([1.01,0.46,1.58]), band 43.8→50.5%, per false 0.64
    ECMWF-heavy: caught 155/251 → 196 ([16.3,10.8,21]), false 16/5870 → 53 ([0.63,0.29,1.02]), band 42.2→49%, per false 1.11
    mixed: caught 163/251 → 197 ([13.5,7.5,18.6]), false 23/5870 → 67 ([0.75,0.36,1.13]), band 40.8→50.4%, per false 0.77
    LOSO drop 68588: bar1 true bar2 true
+   March → today: pumping 360, called Windy 231 → 283; calm 13592, wrongly Windy 53 → 158
 KZN inland: ships · candidate {"rule":"R1","G":50,"K":0} · tune R0 {"caught":58.1,"false":1.23} · stations 20
    old harness: caught 326/448 → 358 ([7.1,5.5,10.3]), false 225/22110 → 390 ([0.75,0.48,1.03]), band 34.5→36.6%, per false 0.19
    ECMWF-heavy: caught 322/448 → 354 ([7.1,4.1,12.4]), false 314/22110 → 396 ([0.37,0.24,0.5]), band 30.2→34.7%, per false 0.39
    mixed: caught 313/448 → 356 ([9.6,7.1,12.3]), false 171/22110 → 306 ([0.61,0.35,0.92]), band 37.5→39.2%, per false 0.32
    LOSO drop 68461: bar1 true bar2 true
+   March → today: pumping 714, called Windy 475 → 527; calm 46949, wrongly Windy 543 → 795
 Karoo: not clearly better · candidate {"rule":"R1","G":50,"K":0} · tune R0 {"caught":84,"false":2.14} · stations 7
    old harness: caught 623/701 → 633 ([1.4,0.4,1.9]), false 232/11029 → 334 ([0.92,0.48,1.52]), band 42.5→42.7%, per false 0.1
    ECMWF-heavy: caught 626/701 → 633 ([1,0,2]), false 238/11029 → 311 ([0.66,0.39,1]), band 43.9→43.6%, per false 0.1
    mixed: caught 609/701 → 618 ([1.3,0.5,2.2]), false 199/11029 → 253 ([0.49,0.25,0.81]), band 41.6→42.4%, per false 0.17
    LOSO drop 68538: bar1 false bar2 true
+   March → today: pumping 1081, called Windy 938 → 938; calm 22357, wrongly Windy 466 → 466
 Limpopo: blocked (cries wolf) · candidate {"rule":"R3","G":55,"K":2} · tune R0 {"caught":25,"false":0.61} · stations 8
    old harness: caught 34/66 → 39 ([7.6,0,12.1]), false 150/11786 → 323 ([1.47,0.6,2.68]), band 48.5→39.7%, per false 0.03
    ECMWF-heavy: caught 31/66 → 34 ([4.5,0,8.2]), false 184/11786 → 366 ([1.54,0.69,2.65]), band 46.5→36.4%, per false 0.02
    mixed: caught 32/66 → 37 ([7.6,0,10.6]), false 173/11786 → 372 ([1.69,0.78,2.84]), band 47.7→36.3%, per false 0.03
    LOSO drop 68176: bar1 false bar2 true
+   March → today: pumping 78, called Windy 35 → 35; calm 22655, wrongly Windy 235 → 235
    R2 at 68176: ships=true old harness caught 5/17→5 false 47/908→41 | ECMWF-heavy caught 5/17→5 false 54/908→54 | mixed caught 5/17→5 false 53/908→47
 Lowveld: not clearly better · candidate {"rule":"R1","G":50,"K":0} · tune R0 {"caught":76.3,"false":0.42} · stations 12
    old harness: caught 91/100 → 97 ([6,0,10.4]), false 109/15487 → 202 ([0.6,0.28,1.03]), band 55.6→55.9%, per false 0.06
    ECMWF-heavy: caught 92/100 → 97 ([5,0,9.6]), false 166/15487 → 228 ([0.4,0.17,0.71]), band 52.9→54.6%, per false 0.08
    mixed: caught 89/100 → 93 ([4,0,9.1]), false 107/15487 → 190 ([0.54,0.25,0.92]), band 54.9→55.3%, per false 0.05
    LOSO drop 68291: bar1 false bar2 true
+   March → today: pumping 197, called Windy 165 → 165; calm 32495, wrongly Windy 198 → 198
 North West: not clearly better · candidate {"rule":"R1","G":50,"K":0} · tune R0 {"caught":16.3,"false":0.36} · stations 7
    old harness: caught 238/274 → 249 ([4,2.5,7.8]), false 97/8627 → 167 ([0.81,0.19,1.63]), band 46.7→48.4%, per false 0.16
    ECMWF-heavy: caught 238/274 → 245 ([2.6,0.7,5.2]), false 74/8627 → 87 ([0.15,0.04,0.3]), band 49.4→51.2%, per false 0.54
    mixed: caught 250/274 → 254 ([1.5,0,4.3]), false 112/8627 → 165 ([0.61,0.15,1.27]), band 49.8→49.8%, per false 0.08
    LOSO drop FAMM: bar1 false bar2 true
+   March → today: pumping 419, called Windy 266 → 266; calm 19392, wrongly Windy 133 → 133
 Northern Cape: ships · candidate {"rule":"R1","G":50,"K":0} · tune R0 {"caught":52.5,"false":0.63} · stations 18
    old harness: caught 598/851 → 682 ([9.9,7.6,14.5]), false 354/28339 → 698 ([1.21,0.49,2.15]), band 43.1→42.1%, per false 0.24
    ECMWF-heavy: caught 551/851 → 628 ([9,6.8,12.1]), false 180/28339 → 385 ([0.72,0.3,1.23]), band 45→45.4%, per false 0.38
    mixed: caught 567/851 → 659 ([10.8,7.9,16.2]), false 363/28339 → 639 ([0.97,0.36,1.86]), band 43.2→41.9%, per false 0.33
    LOSO drop 68512: bar1 true bar2 true
+   March → today: pumping 1266, called Windy 790 → 918; calm 57249, wrongly Windy 480 → 969
 West Coast: ships · candidate {"rule":"R3","G":55,"K":2} · tune R0 {"caught":60.2,"false":0.55} · stations 11
    old harness: caught 497/818 → 630 ([16.3,12.3,24.4]), false 114/13044 → 230 ([0.89,0.56,1.28]), band 36.6→46.3%, per false 1.15
    ECMWF-heavy: caught 466/818 → 629 ([19.9,14.6,29.7]), false 85/13044 → 222 ([1.05,0.63,1.57]), band 35.7→45.4%, per false 1.19
    mixed: caught 513/818 → 660 ([18,14.1,26]), false 94/13044 → 273 ([1.37,0.86,2.01]), band 37.9→48.5%, per false 0.82
    LOSO drop 68712: bar1 true bar2 true
+   March → today: pumping 1293, called Windy 778 → 1024; calm 27762, wrongly Windy 178 → 453
 Western Cape: not clearly better · candidate {"rule":"R1","G":50,"K":0} · tune R0 {"caught":82.7,"false":11.46} · stations 17
    old harness: caught 986/1213 → 994 ([0.7,0.2,1.1]), false 1243/11824 → 1301 ([0.49,0.24,0.93]), band 29.6→29.6%, per false 0.14
    ECMWF-heavy: caught 1009/1213 → 1015 ([0.5,0.1,0.9]), false 1443/11824 → 1476 ([0.28,0.14,0.46]), band 28.3→28.8%, per false 0.18
    mixed: caught 997/1213 → 998 ([0.1,0,0.2]), false 1278/11824 → 1304 ([0.22,0.13,0.35]), band 30.1→30%, per false 0.04
    LOSO drop 68916: bar1 false bar2 true
+   March → today: pumping 2124, called Windy 1751 → 1751; calm 24186, wrongly Windy 2737 → 2737
    R2 at 68817: ships=true old harness caught 17/29→17 false 7/124→7 | ECMWF-heavy caught 17/29→17 false 8/124→8 | mixed caught 15/29→15 false 8/124→8
 Strand zone: ships · candidate {"rule":"R3","G":55,"K":2} · tune R0 {"caught":24.3,"false":0.42} · stations 1
    old harness: caught 6/66 → 10 ([6.1,1.6,10.9]), false 0/212 → 0 ([0,0,0]), band 50→47.4%, per false null
    ECMWF-heavy: caught 8/66 → 13 ([7.6,2,11.5]), false 0/212 → 1 ([0.47,0,2.01]), band 50→41.7%, per false 5
    mixed: caught 15/66 → 22 ([10.6,4.8,17.9]), false 0/212 → 1 ([0.47,0,2.01]), band 42.3→39.5%, per false 7
+   March → today: pumping 125, called Windy 24 → 31; calm 451, wrongly Windy 1 → 4

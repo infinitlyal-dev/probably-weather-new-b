@@ -242,6 +242,14 @@ for (const cell of cells) {
   }
   // per-station rows (Fable 2), the first guess, proof months, today's rule vs the candidate
   res.perStation = res.stations.map((id) => { const L = Pf.filter((r) => r.s.id === id); const b = summary(score(L, 0, {})); const a = res.candidate ? summary(score(L, 0, { G: res.candidate.G, K: res.candidate.K })) : b; const s = all.find((x) => x.id === id); return { id, name: s.name, kind: s.kind, pumping: b.pumping, caughtBefore: b.caught, caughtAfter: a.caught, calm: b.calm, falseBefore: b.falseCalls, falseAfter: a.falseCalls }; });
+  // Report only (for Al's summary, added after the run; decides nothing): the whole period March → today, today's rule
+  // against what ships in this cell, each count averaged over the three guesses.
+  {
+    const ship = res.verdict === 'ships' ? { G: res.candidate.G, K: res.candidate.K } : {};
+    const avg = (opt, k) => Math.round(mean(GUESSES.map((_, gi) => score(R, gi, opt)[k])));
+    res.fullPeriod = { pumping: R.filter((r) => r.pumping).length, calm: R.filter((r) => r.calm).length,
+      caughtBefore: avg({}, 'caught'), caughtAfter: avg(ship, 'caught'), falseBefore: avg({}, 'falseCalls'), falseAfter: avg(ship, 'falseCalls') };
+  }
   out.regions[cell.name] = res;
 }
 
@@ -260,6 +268,7 @@ for (const [n, r] of Object.entries(out.regions)) {
   if (r.proof.perGuess) for (const g of r.proof.perGuess) L.push(`   ${g.guess}: caught ${g.before.caught}/${g.before.pumping} → ${g.after.caught} (${JSON.stringify(g.caughtDiff)}), false ${g.before.falseCalls}/${g.before.calm} → ${g.after.falseCalls} (${JSON.stringify(g.falseDiff)}), band ${g.before.bandShare}→${g.after.bandShare}%, per false ${g.extraCaughtPerExtraFalse}`);
   if (r.proof.R0) for (const g of r.proof.R0) L.push(`   ${g.guess}: today caught ${g.caught}/${g.pumping}, false ${g.falseCalls}/${g.calm}`);
   if (r.loso) L.push(`   LOSO drop ${r.loso.dropped}: bar1 ${r.loso.bar1} bar2 ${r.loso.bar2}`);
+  if (r.fullPeriod) L.push(`   March → today: pumping ${r.fullPeriod.pumping}, called Windy ${r.fullPeriod.caughtBefore} → ${r.fullPeriod.caughtAfter}; calm ${r.fullPeriod.calm}, wrongly Windy ${r.fullPeriod.falseBefore} → ${r.fullPeriod.falseAfter}`);
   if (r.R2) L.push(`   R2 at ${r.R2.stations.join(',')}: ships=${r.R2.ships} ${r.R2.perGuess.map((g) => `${g.guess} caught ${g.before.caught}/${g.before.pumping}→${g.after.caught} false ${g.before.falseCalls}/${g.before.calm}→${g.after.falseCalls}`).join(' | ')}`);
 }
 writeFileSync(path.join(here, 'results-score7.txt'), L.join('\n') + '\n');
