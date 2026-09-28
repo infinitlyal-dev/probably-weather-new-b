@@ -45,6 +45,8 @@ import { inSouthAfrica, inLowveld, precisionUrl, precisionConsensus, precisionMi
 import { frostNightLow, FROST_NOT_HERE } from './_lib/frost.js';
 import { shapeWind, windLine } from './_lib/wind.js';
 import { WIND_TABLE } from './_lib/wind-table.js';
+import { gustRuleAt, gustFactorAt, correctGust } from './_lib/gusts.js';
+import { GUST_TABLE } from './_lib/gust-table.js';
 import { PRECISION_TABLE, PRECISION_TABLE_INLAND } from './_lib/precision-table.js';
 import { regionOf, stationCellOf } from './_lib/regions.js';
 // Launch run (2026-09-25): counters for /api/health, written only on failure.
@@ -2389,12 +2391,23 @@ export default async function handler(req, res) {
     // In gusty coastal conditions (Cape Town southeaster etc), gusts are the
     // real story — mean wind can be 18 km/h while gusts hit 45 km/h.
     const gustKphArr   = activeNorms.map(n => n.gustKph).filter(isNum);
-    const maxGust      = gustKphArr.length > 0 ? Math.max(...gustKphArr) : null;
     const maxWindKph   = Math.max(
       ...activeNorms.map(n => n.windKph).filter(isNum),
       ...gustKphArr,
       0
     );
+    // v7 (review/accuracy/v7, EVAL §14, 28 Sept 2026): where a SA Weather Service station proved the models' gusts
+    // read low (or high) there, per wind direction, every source's gust takes that station's ratio for Open-Meteo's
+    // bearing — only at the towns listed for it (api/_lib/gusts.js). maxWindKph above keeps the raw gusts.
+    const gustCorr     = gustFactorAt(lat, lon, norms[0]?.windDir);
+    const rawMaxGust   = gustKphArr.length > 0 ? Math.max(...gustKphArr) : null;
+    const maxGust      = gustCorr.factor !== 1 ? correctGust(rawMaxGust, gustCorr.factor) : rawMaxGust;
+    // The hero's gust line and "enough sources" count for this region (today's 55 and none where nothing passed);
+    // the ladder reads the corrected gust unless the station's headline test cried wolf.
+    const gustRule     = gustRuleAt(lat, lon);
+    const gustHeadlineFactor = gustCorr.factor !== 1 && GUST_TABLE.stations.find(s => s.id === gustCorr.station)?.headline !== false ? gustCorr.factor : 1;
+    const heroGust     = gustHeadlineFactor !== 1 ? maxGust : rawMaxGust;
+    const windSourcesAt25 = activeNorms.filter(n => isNum(n.windKph) && n.windKph >= 25).length;
     const medHumidity  = wAvg(norms, normW, n => n.humidity);
     const medUv        = wAvg(norms, normW, n => n.todayUv);
 
@@ -2508,7 +2521,11 @@ export default async function handler(req, res) {
       now:        true,
       precipMm:   aggregatedHourly[localHour]?.precipMm ?? null,
       rainVotes:  nowRainVotes,
-      gustKph:    maxGust,
+      gustKph:    heroGust,
+      // v7: the region's gust line and "enough sources" rule (api/_lib/gusts.js gustRuleAt)
+      gustLineKph: gustRule.gustLineKph,
+      windSourcesAt25,
+      windSourcesMin: gustRule.sourcesAt25,
       desc:       mostDesc,
       rainChance: currentHourRainChance,
       tempC:      medNowTemp,
@@ -2540,7 +2557,8 @@ export default async function handler(req, res) {
     // review/accuracy/ replays exactly the code production runs.
     {
       const consensus = applyVoteConsensus({ key: nowConditionKey, reason: nowConditionReason, activeNorms, sourceVotes: sourceConditionVotes,
-        windSourceFactor: windDecision.sourceFactor, windThresholdKph: windDecision.thresholdKph });
+        windSourceFactor: windDecision.sourceFactor, windThresholdKph: windDecision.thresholdKph,
+        gustLineKph: gustRule.gustLineKph, gustFactor: gustHeadlineFactor });
       nowConditionKey = consensus.key;
       nowConditionReason = consensus.reason;
       nowOverrides.push(...consensus.overrides);
@@ -2727,7 +2745,11 @@ export default async function handler(req, res) {
         // read off the payload alone (rain: votes + probability + mm; wind: gust).
         precipMm: aggregatedHourly[localHour]?.precipMm ?? null,
         rainVotes: nowRainVotes,
-        gustKph: maxGust,
+        gustKph: heroGust,
+        rawGustKph: rawMaxGust,
+        gustLineKph: gustRule.gustLineKph,
+        windSourcesAt25,
+        windSourcesMin: gustRule.sourcesAt25,
       },
       sourceVotes: sourceConditionVotes,
       overrides: nowOverrides,
@@ -2803,6 +2825,10 @@ export default async function handler(req, res) {
           heroThresholdKph: windDecision.thresholdKph,
           // v6: the five (or, per hour, four) weights used where wind's own weights apply; null elsewhere
           weights: windNow.weights ?? null,
+          // v7 (EVAL §14): the gust — raw largest of the sources, the station correction (factor, station, town,
+          // sector of Open-Meteo's bearing) and the hero's gust line and "enough sources" rule at this place
+          gust: { table: GUST_TABLE.id, rawKph: rawMaxGust, kph: maxGust, factor: gustCorr.factor, station: gustCorr.station, town: gustCorr.town, sector: gustCorr.sector,
+            heroKph: heroGust, lineKph: gustRule.gustLineKph, sourcesMin: gustRule.sourcesAt25, rule: gustRule.rule },
         },
         // Precision (api/_lib/precision.js): what happened, and the consensus beside the blend for each
         // day it touched, so the recorder can score both (Fable, plan review: shadow mode).
@@ -3492,7 +3518,7 @@ function calcFeelsLike(tempC, windKph, humidity) {
  * @param {number}  [params.gustKph]    - now: largest current gust any source reports
  * @returns {string} condition key
  */
-function deriveCondition({ desc, rainChance, tempC, feelsLikeC, windKph, uvIndex, cloudPct, maxWindKph, isDay = true, dailyHighC, dailyLowC, sourceDescs, now = false, precipMm, rainVotes, gustKph, windThresholdKph }) {
+function deriveCondition({ desc, rainChance, tempC, feelsLikeC, windKph, uvIndex, cloudPct, maxWindKph, isDay = true, dailyHighC, dailyLowC, sourceDescs, now = false, precipMm, rainVotes, gustKph, windThresholdKph, gustLineKph, windSourcesAt25, windSourcesMin = 0 }) {
   const d = String(desc || '').toLowerCase();
 
   // Use mean wind speed for condition thresholds. Gusts are displayed separately in the UI.
@@ -3637,7 +3663,10 @@ function deriveCondition({ desc, rainChance, tempC, feelsLikeC, windKph, uvIndex
     //     Gusts count (Al, 2026-09-22): the models' mean wind reads ~40% under the
     //     anemometer at Cape Town and Johannesburg; the gust does not.
     if (isNum(effectiveWind) && effectiveWind >= windNowLine)       return { key: 'wind', reason: 'sustained-wind' };
-    if (isNum(gustKph) && gustKph >= WIND_NOW_GUST_KPH)             return { key: 'wind', reason: 'gust-wind' };
+    //     v7 (EVAL §14): the gust line is the region's where its test passed (api/_lib/gusts.js), 55 elsewhere; and
+    //     where "enough sources at 25 km/h" passed, that many sources' own means at 25+ is Windy too.
+    if (isNum(gustKph) && gustKph >= (isNum(gustLineKph) ? gustLineKph : WIND_NOW_GUST_KPH)) return { key: 'wind', reason: 'gust-wind' };
+    if (windSourcesMin > 0 && isNum(windSourcesAt25) && windSourcesAt25 >= windSourcesMin) return { key: 'wind', reason: 'sources-wind' };
     // 7n. High UV — daytime only, not overcast, not significantly cloudy, not a cold day
     if (highUv) return { key: 'uv', reason: 'high-uv-with-temp-gate' };
     // 7.5n. Showers nearby — the old rain-now evidence (≥ 60 %, ≥ 0.3 mm) without the strict cell: the
@@ -3724,7 +3753,7 @@ function deriveCondition({ desc, rainChance, tempC, feelsLikeC, windKph, uvIndex
  * the audit-trail entries; the caller appends them to nowOverrides. Exported so
  * review/accuracy/lib/replay.mjs runs this exact function.
  */
-function applyVoteConsensus({ key, reason, activeNorms, sourceVotes, windSourceFactor = 1, windThresholdKph = WIND_NOW_MEAN_KPH }) {
+function applyVoteConsensus({ key, reason, activeNorms, sourceVotes, windSourceFactor = 1, windThresholdKph = WIND_NOW_MEAN_KPH, gustLineKph = WIND_NOW_GUST_KPH, gustFactor = 1 }) {
   const overrides = [];
   // 2026-09-22: a might-rain from the hour's blended probability (rain-possible-prob,
   // ≥ 30% across the sources) is already a multi-source verdict, not one source's
@@ -3763,7 +3792,9 @@ function applyVoteConsensus({ key, reason, activeNorms, sourceVotes, windSourceF
     // the raw blend, or 44 km/h gust) — the same under-the-trigger margin B-2 always used.
     // 2026-09-28 (review/accuracy/v5): where the corrected wind decides, each source's own wind takes the same
     // correction and the line is 80% of the corrected trigger (27.5 → 22 km/h); elsewhere factor 1, line 25.
-    wind:  (n) => (isNum(n.windKph) && n.windKph * windSourceFactor >= windThresholdKph * 0.8) || (isNum(n.gustKph) && n.gustKph >= WIND_NOW_GUST_KPH * 0.8),
+    // v7 (EVAL §14): a source's gust takes the station correction the hero's gust took, and supports at 80 % of the
+    // region's gust line (55 → 44 where nothing changed).
+    wind:  (n) => (isNum(n.windKph) && n.windKph * windSourceFactor >= windThresholdKph * 0.8) || (isNum(n.gustKph) && n.gustKph * gustFactor >= gustLineKph * 0.8),
     heat:  (n) => (isNum(n.nowTemp) && n.nowTemp >= HEAT_WARM_C) || (isNum(n.feelsLike) && n.feelsLike >= HEAT_EXTREME_C),
     cold:  (n) => (isNum(n.nowTemp) && n.nowTemp <= 10) || (isNum(n.feelsLike) && n.feelsLike <= -5),
   };

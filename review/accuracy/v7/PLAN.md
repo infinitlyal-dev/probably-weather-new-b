@@ -149,3 +149,7 @@ would need.
 - Minor, applied: a fixture test that 68911's 12 UTC report lands on the 14:00 SAST model hour.
 - Cut, as Fable advised: the Home rule (a gust ≥ 40 always shown) is a product call with existing strings, not tied to
   a bar. The scorecard gust (already built, `0d999bf`) stays.
+- Written before scoring (the generator, `make-gust-table.mjs`): the Strand zone takes its own rule if its own row
+  ships; today's rule if its row cries wolf where the Western Cape ships; otherwise it follows the Western Cape. A
+  station correction whose region's R2 cries wolf is still shown as the gust number, but the ladder reads the raw gust.
+  The hourly array carries no gust (only `maxWind`, unused), so there is no hourly gust to correct.
