@@ -1137,3 +1137,141 @@ five languages): **10/10 legs, 0 console errors, 0 bad responses**.
 pushed with a lease: `3a51b40` → **`50a2758`**. On the rebased branch: serial **152 files / 21,413**, image budget, build,
 wind table and wind weights `--check`, fold **140/140**, desktop, Home D check 26/26. The preview answers `50a2758` and
 serves Gqeberha `LW` 17.3 → 19.1.
+
+## 14. Gusts — the headline follows them, stations correct them, Home shows them (Vonk / Opus 5.5 building, Fable 5.1 reviewing — 28 Sept 2026)
+
+Al, Strand, 28 Sept 14:16 SAST: *"those gusts dont stop. it is pumping outside and it is very unpleasent and our app is
+saying cloudy vibes for strand right now."* And: *"its not just strand, what about gordons bay or any other place
+getting heavy gusts on the day?"* At that hour Strand's station (68911) read 28 km/h from 140°, gusting 59; the live
+app said 23.8 km/h, gust 36, "cloudy" (the blend under 25, the gust under 55). Gordon's Bay, same station, read 26.6 →
+Windy by the mean. Plan `review/accuracy/v7/PLAN.md`, committed as the pre-registration (`159fa87`), Fable's nine
+changes adopted before anything was scored (§8, `589a15e`); scorer committed before it ran (`7b12a14`); one run
+(`results-score7.txt/.json`), then a report-only whole-period count added and re-run with every decision identical.
+
+**Data.** Truth: every SA Weather Service SYNOP in WMO block 68 on Ogimet, 1 March → 28 Sept 12 UTC (30 weekly
+requests, 25 s apart): **157 South African stations send the 910ff gust** (156 with it in ≥ 80 % of reports), plus 8
+airports with no SYNOP twin (METAR, IEM). Models: Open-Meteo's historical-forecast archive at every one of the 167
+places, six models, in two passes paced for the free tier (~5,500 call-units over 81 minutes). **456,639 station-hours:
+10,811 pumping, 408,851 calm.** The three source guesses as v5/v6; every conclusion had to hold under all three.
+
+**Pumping** = the station's gust ≥ 50 km/h or mean ≥ 30. **Calm** = mean < 20 and gust (where sent) < 35. Checked
+before scoring: 68911 at 12 UTC today, 28 km/h gusting 59 — pumping.
+
+**Replay fidelity (Fable 4).** On 592 recorder readings since 25 Sept the served gust is 0.94–1.00 × the archive's
+largest-of-three (no scaling needed). The served hero said Windy in 33 of 263 hours where the replay said so in
+19–24 (agreement 93 %): production calls Windy more often than the archive replay — the real MET Norway and Pirate
+read high on the coast (§13.3). That matters most for the "two sources at 25+" rule (§14.2).
+
+### 14.1 The headline — per region (tuned March–June, proven July → 28 Sept)
+
+The rules: **R0** today (the region's wind line or a gust ≥ 55, with the two-source consensus); **R1** the gust line
+40–60; **R2** R1 on station-corrected gusts; **R3** R0 or at least K sources' own mean ≥ 25. Tuning picked, per
+region, the setting catching most pumping hours with at most +1.0 false per 100 calm hours; one candidate per region
+went to proof. Bars (all three guesses): caught +5 points or more with the interval above zero; false at most +1.5 per
+100 calm hours (upper end ≤ 3); ≥ 30 pumping hours on ≥ 6 days; and the pass survives dropping the station with the
+most pumping hours.
+
+March → 28 Sept, averaged over the three guesses (proof-month intervals in `results-score7.txt`):
+
+| region | stations | pumping hours called Windy: today → shipped | calm hours called Windy: today → shipped | verdict |
+|---|---|---|---|---|
+| **Eastern Cape** | 22 | 1,365 → **1,569** of 2,032 | 523 → 840 of 53,213 | **ships: gust line 50** |
+| **Free State** | 9 | 236 → **311** of 380 | 87 → 272 of 20,074 | **ships: gust line 45** |
+| **KZN coast** | 10 | 231 → **283** of 360 | 53 → 158 of 13,592 | **ships: gust line 50** |
+| **KZN inland** | 20 | 475 → **527** of 714 | 543 → 795 of 46,949 | **ships: gust line 50** |
+| **Northern Cape** | 18 | 790 → **918** of 1,266 | 480 → 969 of 57,249 | **ships: gust line 50** |
+| **West Coast** | 11 | 778 → **1,024** of 1,293 | 178 → 453 of 27,762 | **ships: two sources at 25+** (holds without Cape Columbine) |
+| **Strand's zone** (68911; Strand, Gordon's Bay, Somerset West) | 1 | 24 → **31** of 125 | 1 → 4 of 451 | **ships: two sources at 25+** |
+| Western Cape (rest) | 17 | 1,751 of 2,124 | 2,737 of 24,186 | not clearly better (+0.1 to +0.7 points) |
+| Garden Route | 8 | 228 of 277 | 419 of 25,119 | not clearly better (+2 to +3 points) |
+| Highveld | 16 | 436 of 590 | 582 of 43,808 | not clearly better (+3 to +6 points, two intervals touching zero) |
+| Karoo | 7 | 938 of 1,081 | 466 of 22,357 | not clearly better (+1 to +1.4 points) |
+| Lowveld | 12 | 165 of 197 | 198 of 32,495 | not clearly better |
+| North West | 7 | 266 of 419 | 133 of 19,392 | not clearly better |
+| Limpopo | 8 | 35 of 78 | 235 of 22,655 | **blocked** — two sources at 25+ cries wolf (false +1.5 to +1.7 per 100); its catch was not clearly better either |
+
+- **The price, in hours (Fable 8):** every region that ships buys its extra catches with more false calls in hours:
+  0.4–0.6 extra pumping hours per extra false call in the Eastern Cape, 0.5–0.9 Free State, 0.6–1.1 KZN coast,
+  0.2–0.4 KZN inland and Northern Cape, 0.8–1.2 West Coast (calm hours are 25–40 × as common as pumping hours, so a
+  small rise per 100 calm hours is many hours). Per 100 calm hours the rise is 0.4–1.4 (the bar allowed 1.5).
+- **Multiple testing (Fable 9):** 14 cells, one candidate each; about 0.6 false passes expected at α 0.05; the +5-point
+  floor and leave-one-out are the guard. The split-period signs are in the JSON.
+- **West Coast, a warning (Fable):** in September alone its false rise was +1.6 to +2.6 per 100 calm hours, above the
+  bar for that month, with its windy season ahead. It ships on the whole proof period; a West Coast spot at a 910ff
+  station (Geelbek 68811 or Cape Columbine 68712) belongs in the recorder.
+- **The run's biggest finding, not changed (Fable Q4):** the Western Cape's TODAY rule (v5's ×1.6 table at 27.5, which
+  fires on any raw mean ≥ 17.2) calls **11 % of calm hours Windy** across the 17 Western Cape stations. Per station,
+  proof months, false Windy per 100 calm hours: Cape Point 33, Cape Agulhas 33, Struisbaai 14, **Molteno Reservoir 14
+  (the Cape Town city bowl)**, Slangkop 10, Malmesbury 9, Portnet 6 — and Cape Town airport, where the ×1.6 was
+  learned, 0.9. Cape Town city users get Windy on about one calm hour in ten. That is v5's table, not this job; it is
+  the next wind test (v8), against these stations.
+
+### 14.2 Strand's zone, the rule that ships there, and what it cannot see
+
+Strand, Gordon's Bay and Somerset West (within 15 km of 68911) keep today's blend for the number and now also say
+Windy when **two sources' own wind is 25 km/h or more**. On the archive's stand-in models it lifts Strand's pumping
+hours called Windy from 24 to 31 of 125 (proof: +6.1 to +10.6 points, intervals above zero) with 0 → 0–1 false of 212
+calm proof hours. **Live guard (report only, 12 reports of 68911 since 25 Sept against the recorder's real sources):
+it catches 4 of 5 pumping reports (today's rule 2 of 5) and calls 2 of 5 calm reports Windy (today's 1 of 5)** — the
+real MET Norway and Pirate read 11–13 km/h high at Strand, so production will fire this rule more often than the
+archive did, on calm evenings too (the extra false was 27 Sept 00 UTC: station 9 km/h gusting 19, Pirate 26, MET 28).
+**Shipped as a named trial (Fable Q2):** it passed its pre-registered bar, the live guard (5 against 5) was
+pre-registered as deciding nothing, and it is the only rule that catches Al's afternoon. The trade, plainly: two more
+pumping reports caught in five, and about one calm report in five called Windy (at night, in this sample). **Revert
+rule:** the recorder's share of calm 68911 reports the app calls Windy, over the 14 days to 12 Oct 2026, goes to Al
+with the numbers, and he rules.
+
+Today's afternoon, replayed (`tests/gust-v7.test.js`): OM 12.8, WA 9.7, Pirate 30, MET 37, TI 18 → Windy
+(`sources-wind`); today's rule said cloudy.
+
+### 14.3 Gust corrections per station, by direction
+
+Learned on odd weeks, proven on even weeks (Fable 5), at the 156 910ff stations only (Fable 3); ratio per 45° sector
+of Open-Meteo's bearing, clamped 0.8–1.8. Bar (as the committed scorer ran it): the gust off-by falls with its interval
+below zero, the big-gust (≥ 50) F1 does not fall, the share of big gusts caught falls by no more than 2 points, ≥ 15
+big-gust proof hours — under all three guesses. **Most inland stations read the models' gusts too HIGH** (ratios at the
+0.8 floor): the model's gust is the hour's maximum, the station's the 10 minutes before the report.
+
+| station | ships | who it covers | ratio |
+|---|---|---|---|
+| **68817 Cape Town harbour (Portnet)** | yes (47 big-gust hours; F1 0.42–0.51 → 0.53–0.59, catch 40–57 → 45–60 %) | city centre (2 km), Foreshore, Roggebaai, De Waterkant, Green Point, Mouille Point, Woodstock, Salt River, Paarden Eiland (1–1.5 km each) — the low city side facing Table Bay; not the slopes, the Atlantic seaboard, the southern suburbs or Milnerton | south-easter ×1.105, south ×0.87, else ×0.85 |
+| **68176 Mara** (Limpopo) | yes (18) | Mara village only | ×0.8 all round |
+| 68911 Strand | **no** — big-gust catch 27 → 37–38 %, F1 0.33 → 0.44–0.46 under all three guesses, but the gust numbers overall were not clearly closer (−0.8 to −1.0 km/h, interval crossing zero); SE sector 28 learning hours (< 30, took the all-direction 1.14) | — | — |
+
+**A discrepancy, said:** PLAN §8.7 (Fable's change 7) made the off-by a reported number, not a bar; the committed
+scorer still required it. Under the plan's text 68911 Strand and 68668 Mthatha would also pass. **Fable's ruling (diff
+review Q1): the plan text governs — the MAE line in `score7.mjs` was a transcription error; a raising correction widens
+the many small-gust misses while fixing the big ones, which is what §8.7 was for. Strand's correction should ship, on
+the strongest evidence of any station (63 big-gust hours on 34 days), and Mthatha by the same bar — both or neither.**
+Not in the first push: the scorer is brought to the plan and re-run so Strand's zone R2 (its rule on corrected gusts)
+is scored on even weeks — that decides whether the corrected gust feeds Strand's headline or only the number shown —
+and 68911's towns are written (§14.6). The east sector's 1.8 sits on the clamp with 32 learning hours (floor 30).
+Why Strand's correction would not have fixed this afternoon anyway: the south-easter sector took 1.14 → the app's 36
+becomes 41, still under any gust line tested; the headline at Strand comes from §14.2.
+
+The towns list is `review/accuracy/v7/towns.json` (Fable 6): each town a point with its own radius; a 68817 ratio is
+likely too mild on the slopes, where the south-easter comes down harder, which is why they are left out.
+
+### 14.4 Home and the scorecard
+
+- A gust of **40 km/h or more is always named** on Home ("Wind 24 km/h · SE · gusts 59"), as well as one 1.3 × the
+  wind (the server sends it at ≥ 40 or 1.5 ×) — the existing `weather.gusts` word in all five languages, Home and Home
+  D (Home D reads the same stats row). Before, a 50 beside a mean of 40 was hidden.
+- The scorecard's lines now end with the day's strongest gust: the app's largest across the day's readings and the
+  station's strongest report.
+
+### 14.5 Temperatures
+
+`tests/temp-freeze.test.js` passes unchanged (ten cases, every number exact): nothing here touches a temperature; the
+mean wind number is unchanged everywhere (v5 table, v6 weights).
+
+### 14.6 Fable, gates, shipped
+
+| Fable call | tokens (harness count) | verdict |
+|---|---:|---|
+| the plan | 130,015 | PROCEED WITH CHANGES — nine, adopted in full before scoring (PLAN §8) |
+| the diff | 171,805 | SHIP WITH FIXES — the city centre's radius 2 → 1.2 km (applied, `a76edeb`: Tamboerskloof, Oranjezicht, Gardens and Sea Point now take no correction; the recorder's Cape Town city point does); Q1 the plan's bar governs (§14.3); Q2 Strand's zone ships as a named trial with a revert rule; Q3 Eastern Cape fine; Q4 report the Western Cape; Q6 no code bug; Q7 fine |
+
+Gates on the tree (`96bd486`; `a76edeb` changes only the towns data, `gust-v7.test.js` and the table `--check` re-run):
+serial **153 files / 21,340 tests**, image budget, build, bespoke, rotation, drift guard, seasonal, precision table,
+wind table, wind weights and **gust table `--check`**, fold **80/80**, desktop, gate shots — every step exit 0.
