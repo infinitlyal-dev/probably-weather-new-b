@@ -39,6 +39,7 @@ import {
   waitForWeatherCache,
   cacheableLocationName,
   responseLocationName,
+  snapCoord,
 } from './_lib/weather-cache.js';
 import { consumeProviderBudgets, consumeOwnTrafficBudgets, recordOpenMeteoCallDeferred, OPEN_METEO_PRECISION_UNIT_TENTHS, OWN_TRAFFIC_BUDGETS } from './_lib/provider-budget.js';
 import { inSouthAfrica, inLowveld, precisionUrl, precisionConsensus, precisionMix, PRECISION_DAYS, PRECISION_MODELS } from './_lib/precision.js';
@@ -49,6 +50,8 @@ import { gustRuleAt, gustFactorAt, correctGust } from './_lib/gusts.js';
 import { GUST_TABLE } from './_lib/gust-table.js';
 import { PRECISION_TABLE, PRECISION_TABLE_INLAND } from './_lib/precision-table.js';
 import { regionOf, stationCellOf } from './_lib/regions.js';
+import { readStationObs, stationNow, stationFor } from './_lib/station-now.js';
+import { STATION_MAP } from './_lib/station-map.js';
 // Launch run (2026-09-25): counters for /api/health, written only on failure.
 import { recordSourceFailure, recordServerError } from './_lib/health-counters.js';
 import { parseSourcesOff } from './_lib/sources-off.js';
@@ -1196,6 +1199,10 @@ export default async function handler(req, res) {
     // plan. Its answer is used inside this fan-out, so it is cached with the payload like everything else.
     const precisionWanted = Boolean(OPEN_METEO_API_KEY) && inSouthAfrica(lat, lon) && !inLowveld(lat, lon) && budgetAllows('open-meteo');
     const precisionRequest = precisionWanted ? fetchJson(precisionUrl(openMeteoHost, lat, lon, openMeteoKeyParam)) : Promise.resolve(null);
+    // The live airports' latest reports (api/_lib/station-now.js): a stored copy, read alongside the fan-out; never
+    // waits on the feed itself, and any failure is null — today's answer.
+    const stationHere = stationFor(Number(snapCoord(lat)), Number(snapCoord(lon)));
+    const stationObsRequest = stationHere ? withDeadline(readStationObs(), 1500, null) : Promise.resolve(null);
     if (precisionWanted) recordOpenMeteoCallDeferred(undefined, undefined, undefined, OPEN_METEO_PRECISION_UNIT_TENTHS);
     const weatherApiRequest = (WEATHERAPI_KEY && budgetAllows('weatherapi'))
       ? fetchJson(
@@ -1257,6 +1264,7 @@ export default async function handler(req, res) {
     ]);
     // Item 7: the name lookup ran alongside the fan-out; it never rejects.
     await nameResolution;
+    const stationObs = await stationObsRequest;
 
     function getSettledValue(result) {
       if (result.status === 'fulfilled') {
@@ -2735,6 +2743,36 @@ export default async function handler(req, res) {
       nowConditionReason = 'corroborated-fog-vote';
     }
 
+    // =========================================================================
+    // "NOW" FOLLOWS THE STATION (review/accuracy/stations/PLAN.md, EVAL §15, 29 Sept 2026)
+    // Al, Strand, 29 Sept 08:01: "the wind has been pumping all night ... showing clear is a lie." Where a live airport
+    // represents this place and its region passed the history test (api/_lib/station-map.js), its latest METAR can
+    // make "now" Windy — a pumping report (mean ≥ 30 or gust ≥ 50) at most F hours old, or the station-minus-model gap,
+    // fading over T hours, lifting the numbers over this place's lines — and sets the wind and gust numbers shown.
+    // Thunder, hail, storm and rain the models or radar already call keep the hero. Resolved on the cache cell's
+    // centre, so one cell never hands a station answer to an uncovered neighbour. Everywhere else: exactly today's.
+    // =========================================================================
+    let shownWindKph = effectiveDisplayWind;
+    let shownGustKph = maxGust;
+    const stationWord = stationNow({ lat: Number(snapCoord(lat)), lon: Number(snapCoord(lon)), obs: stationObs,
+      shownWindKph: effectiveDisplayWind, heroWindKph: windDecision.kph, windLineKph: windDecision.thresholdKph,
+      shownGustKph: maxGust, heroGustKph: heroGust, gustLineKph: gustRule.gustLineKph });
+    if (stationWord) {
+      shownWindKph = isNum(stationWord.shownWindKph) ? stationWord.shownWindKph : shownWindKph;
+      shownGustKph = stationWord.shownGustKph;
+      if (stationWord.windy && nowConditionKey !== 'wind' && !['storm', 'thunder', 'hail', 'rain'].includes(nowConditionKey)) {
+        nowOverrides.push({
+          rule: 'station-wind',
+          from: nowConditionKey,
+          to: 'wind',
+          reasonDetail: `${stationWord.station} at ${stationWord.obsUtc}: ${stationWord.meanKph} km/h, gust ${stationWord.gustKph ?? 'none'} (${stationWord.fired})`,
+        });
+        nowConditionKey = 'wind';
+        nowConditionReason = 'station-wind';
+      }
+      debugLog(`[Station] ${stationWord.station} (${stationWord.town}) ${stationWord.ageH} h old: ${stationWord.meanKph} km/h gust ${stationWord.gustKph} → windy=${stationWord.windy} (${stationWord.fired}), shown ${shownWindKph} / gust ${shownGustKph}`);
+    }
+
     // Confidence verdict — computed server-side as the single source of truth so
     // the frontend just reads meta.confidence. LOW when the app is hedging:
     //   · a fog trend is incoming (detector saw it forming, ensemble hasn't), OR
@@ -2806,17 +2844,17 @@ export default async function handler(req, res) {
     const responsePayload = {
       ok: true,
       location: { name: resolvedName || name || 'Unknown', lat, lon },
-      wind_kph:   effectiveDisplayWind,
+      wind_kph:   shownWindKph,
       maxWindKph: maxWindKph > 0 ? maxWindKph : null,
       // v7 §5 (28 Sept 2026): a strong gust (≥ 40 km/h) is always sent; below that, only one well above the wind.
-      gustKph:    isNum(maxGust) && (maxGust >= GUST_SHOW_KPH || maxGust > effectiveDisplayWind * 1.5) ? maxGust : null,
+      gustKph:    isNum(shownGustKph) && (shownGustKph >= GUST_SHOW_KPH || shownGustKph > shownWindKph * 1.5) ? shownGustKph : null,
       // Open-Meteo's bearing, unaggregated — see the windDir note in norms[0].
       // Null whenever OM is the source that failed; the UI simply omits it.
       windDir:    isNum(norms[0]?.windDir) ? norms[0].windDir : null,
       now: {
         tempC:            medNowTemp,
         feelsLikeC:       finalFeelsLike,
-        windKph:          effectiveDisplayWind,
+        windKph:          shownWindKph,
         humidity:         medHumidity,
         rainChance:       currentHourRainChance,  // current hour rain chance
         // Item 3 (prelaunch P1-1): now.uv is the CURRENT-HOUR blended UV, not the
@@ -2872,6 +2910,9 @@ export default async function handler(req, res) {
           gust: { table: GUST_TABLE.id, rawKph: rawMaxGust, kph: maxGust, factor: gustCorr.factor, station: gustCorr.station, town: gustCorr.town, sector: gustCorr.sector,
             heroKph: heroGust, lineKph: gustRule.gustLineKph, sourcesMin: gustRule.sourcesAt25, rule: gustRule.rule },
         },
+        // EVAL §15: the live station's word where one represents this place (null elsewhere) — its report, age, the
+        // rule its region passed, whether it made "now" Windy and how, and the numbers it set.
+        station: stationWord ? { map: STATION_MAP.id, ...stationWord } : null,
         // Precision (api/_lib/precision.js): what happened, and the consensus beside the blend for each
         // day it touched, so the recorder can score both (Fable, plan review: shadow mode).
         precision: {

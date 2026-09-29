@@ -1,0 +1,155 @@
+STATIONS — D coast 10 km, inland 10 km; rows own 74355, cross 0, SYNOP own 631006; cross pairs none
+TUNE S: F 1.5 h (caught 84.0%, false 0.83 vs M 0.70); SC: T 12 h
+SYNOP F by cadence: 1-hourly 9.5 h, 3-hourly 1.5 h, 6-hourly 6.5 h; Strand 08:01 (00Z, 6.0 h old) would hold: true
+
+Eastern Cape — own: FAEL FAPE FAUT; cross: none (persistence only)
+  S: PASS (persistence only); leave-one-out true
+    own: old harness: caught 68.0%→79.7% Δ11.6 [6.1, 18.8], false 0.90→1.02 Δ0.11 [0.00, 0.24] | ECMWF-heavy: caught 65.1%→78.0% Δ12.9 [7.4, 20.4], false 0.89→1.00 Δ0.11 [0.00, 0.24] | mixed: caught 66.6%→79.0% Δ12.4 [7.1, 19.3], false 0.86→0.97 Δ0.11 [0.00, 0.24]; pumping reports 241 on 36 days; bars 123
+  SC: PASS (persistence only); leave-one-out true
+    own: old harness: caught 68.0%→84.6% Δ16.6 [11.0, 24.3], false 0.90→1.07 Δ0.17 [0.06, 0.30] | ECMWF-heavy: caught 65.1%→83.0% Δ17.8 [11.9, 25.5], false 0.89→1.05 Δ0.16 [0.05, 0.29] | mixed: caught 66.6%→84.6% Δ18.0 [12.6, 24.9], false 0.86→1.03 Δ0.17 [0.06, 0.30]; pumping reports 241 on 36 days; bars 123
+  veto (report only): PASS (persistence only); leave-one-out true
+    own: old harness: caught 68.0%→78.8% Δ10.8 [4.7, 18.6], false 0.90→0.61 Δ-0.29 [-0.64, 0.00] | ECMWF-heavy: caught 65.1%→77.6% Δ12.4 [6.6, 20.1], false 0.89→0.60 Δ-0.29 [-0.64, 0.00] | mixed: caught 66.6%→78.2% Δ11.6 [5.7, 19.0], false 0.86→0.59 Δ-0.27 [-0.59, 0.02]; pumping reports 241 on 36 days; bars 123
+  SC-both (report only): PASS (persistence only); leave-one-out true
+    own: old harness: caught 68.0%→83.4% Δ15.4 [9.2, 23.8], false 0.90→1.03 Δ0.12 [0.01, 0.26] | ECMWF-heavy: caught 65.1%→82.2% Δ17.0 [10.8, 24.9], false 0.89→1.03 Δ0.14 [0.00, 0.27] | mixed: caught 66.6%→83.4% Δ16.8 [10.8, 24.3], false 0.86→0.98 Δ0.12 [0.01, 0.26]; pumping reports 241 on 36 days; bars 123
+  shown off-by (mean/gust km/h): M 4.09/10.53 · S 3.97/8.93 · SC 3.4/8.66
+
+Free State — own: FABL; cross: none (persistence only)
+  S: no (persistence only); leave-one-out n/a (one station)
+    own: old harness: caught 87.9%→87.9% Δ0.0 [0.0, 0.0], false 1.55→1.61 Δ0.06 [0.00, 0.19] | ECMWF-heavy: caught 75.8%→81.8% Δ6.1 [0.0, 7.0], false 1.04→1.10 Δ0.06 [0.00, 0.19] | mixed: caught 90.9%→90.9% Δ0.0 [0.0, 0.0], false 1.96→2.02 Δ0.06 [0.00, 0.19]; pumping reports 33 on 8 days; bars -23
+  SC: BLOCKED (persistence only); leave-one-out n/a (one station)
+    own: old harness: caught 87.9%→93.9% Δ6.1 [0.0, 50.0], false 1.55→4.52 Δ2.97 [1.39, 4.94] | ECMWF-heavy: caught 75.8%→87.9% Δ12.1 [6.7, 50.0], false 1.04→1.22 Δ0.18 [0.00, 0.39] | mixed: caught 90.9%→93.9% Δ3.0 [0.0, 50.0], false 1.96→4.49 Δ2.53 [1.19, 4.15]; pumping reports 33 on 8 days; bars --3
+  veto (report only): no (persistence only); leave-one-out n/a (one station)
+    own: old harness: caught 87.9%→87.9% Δ0.0 [0.0, 0.0], false 1.55→0.74 Δ-0.80 [-1.41, -0.33] | ECMWF-heavy: caught 75.8%→81.8% Δ6.1 [0.0, 7.0], false 1.04→0.62 Δ-0.42 [-0.86, -0.11] | mixed: caught 90.9%→90.9% Δ0.0 [0.0, 0.0], false 1.96→0.92 Δ-1.04 [-2.01, -0.34]; pumping reports 33 on 8 days; bars -23
+  SC-both (report only): BLOCKED (persistence only); leave-one-out n/a (one station)
+    own: old harness: caught 87.9%→90.9% Δ3.0 [-6.7, 50.0], false 1.55→4.52 Δ2.97 [1.39, 4.94] | ECMWF-heavy: caught 75.8%→84.8% Δ9.1 [0.0, 50.0], false 1.04→1.22 Δ0.18 [0.00, 0.39] | mixed: caught 90.9%→90.9% Δ0.0 [-6.7, 50.0], false 1.96→4.49 Δ2.53 [1.19, 4.15]; pumping reports 33 on 8 days; bars --3
+  shown off-by (mean/gust km/h): M 3.2/7.07 · S 3.17/6.41 · SC 2.98/6.41
+
+Garden Route — own: FAGG; cross: none (persistence only)
+  S: no (persistence only); leave-one-out n/a (one station)
+    own: old harness: caught 76.9%→84.6% Δ7.7 [0.0, 15.4], false 0.16→0.21 Δ0.05 [0.00, 0.18] | ECMWF-heavy: caught 69.2%→73.1% Δ3.8 [0.0, 7.7], false 0.37→0.37 Δ0.00 [0.00, 0.00] | mixed: caught 57.7%→73.1% Δ15.4 [0.0, 44.4], false 0.10→0.16 Δ0.05 [0.00, 0.18]; pumping reports 26 on 10 days; bars -2-
+  SC: no (persistence only); leave-one-out n/a (one station)
+    own: old harness: caught 76.9%→88.5% Δ11.5 [0.0, 19.4], false 0.16→0.21 Δ0.05 [0.00, 0.18] | ECMWF-heavy: caught 69.2%→88.5% Δ19.2 [12.5, 26.1], false 0.37→0.37 Δ0.00 [0.00, 0.00] | mixed: caught 57.7%→84.6% Δ26.9 [8.3, 69.0], false 0.10→0.16 Δ0.05 [0.00, 0.18]; pumping reports 26 on 10 days; bars -2-
+  veto (report only): no (persistence only); leave-one-out n/a (one station)
+    own: old harness: caught 76.9%→80.8% Δ3.8 [0.0, 7.7], false 0.16→0.21 Δ0.05 [0.00, 0.18] | ECMWF-heavy: caught 69.2%→69.2% Δ0.0 [0.0, 0.0], false 0.37→0.26 Δ-0.10 [-0.36, 0.00] | mixed: caught 57.7%→69.2% Δ11.5 [0.0, 44.4], false 0.10→0.16 Δ0.05 [0.00, 0.18]; pumping reports 26 on 10 days; bars -2-
+  SC-both (report only): no (persistence only); leave-one-out n/a (one station)
+    own: old harness: caught 76.9%→76.9% Δ0.0 [-20.0, 13.3], false 0.16→0.10 Δ-0.05 [-0.17, 0.00] | ECMWF-heavy: caught 69.2%→76.9% Δ7.7 [-10.0, 25.0], false 0.37→0.10 Δ-0.26 [-0.64, 0.00] | mixed: caught 57.7%→76.9% Δ19.2 [-3.5, 69.0], false 0.10→0.05 Δ-0.05 [-0.17, 0.00]; pumping reports 26 on 10 days; bars -2-
+  shown off-by (mean/gust km/h): M 3.47/11.25 · S 3.47/9.56 · SC 2.85/11.63
+
+Highveld — own: FAOR FAWB; cross: none (persistence only)
+  S: no (persistence only); leave-one-out false
+    own: old harness: caught 63.8%→80.0% Δ16.2 [11.3, 36.4], false 0.08→0.11 Δ0.03 [0.00, 0.10] | ECMWF-heavy: caught 55.2%→77.1% Δ21.9 [16.7, 37.5], false 0.03→0.06 Δ0.03 [0.00, 0.10] | mixed: caught 70.5%→81.0% Δ10.5 [6.4, 36.4], false 0.08→0.11 Δ0.03 [0.00, 0.10]; pumping reports 105 on 16 days; bars 123
+  SC: no (persistence only); leave-one-out false
+    own: old harness: caught 63.8%→91.4% Δ27.6 [16.7, 43.7], false 0.08→0.20 Δ0.11 [0.00, 0.26] | ECMWF-heavy: caught 55.2%→88.6% Δ33.3 [22.1, 47.2], false 0.03→0.08 Δ0.06 [0.00, 0.14] | mixed: caught 70.5%→90.5% Δ20.0 [14.4, 37.1], false 0.08→0.14 Δ0.06 [0.00, 0.14]; pumping reports 105 on 16 days; bars 123
+  veto (report only): no (persistence only); leave-one-out false
+    own: old harness: caught 63.8%→80.0% Δ16.2 [11.3, 36.4], false 0.08→0.11 Δ0.03 [0.00, 0.10] | ECMWF-heavy: caught 55.2%→77.1% Δ21.9 [16.7, 37.5], false 0.03→0.03 Δ0.00 [-0.08, 0.09] | mixed: caught 70.5%→81.0% Δ10.5 [6.4, 36.4], false 0.08→0.08 Δ0.00 [-0.08, 0.08]; pumping reports 105 on 16 days; bars 123
+  SC-both (report only): no (persistence only); leave-one-out false
+    own: old harness: caught 63.8%→85.7% Δ21.9 [12.5, 41.0], false 0.08→0.11 Δ0.03 [-0.14, 0.16] | ECMWF-heavy: caught 55.2%→84.8% Δ29.5 [22.1, 43.3], false 0.03→0.08 Δ0.06 [0.00, 0.14] | mixed: caught 70.5%→85.7% Δ15.2 [9.8, 36.4], false 0.08→0.06 Δ-0.03 [-0.13, 0.06]; pumping reports 105 on 16 days; bars 123
+  shown off-by (mean/gust km/h): M 4.17/6.44 · S 4.1/5.86 · SC 2.82/5.61
+
+KZN coast — own: FALE; cross: none (persistence only)
+  S: no (persistence only); leave-one-out n/a (one station)
+    own: old harness: caught 80.9%→88.2% Δ7.4 [0.0, 21.9], false 2.19→2.19 Δ0.00 [0.00, 0.00] | ECMWF-heavy: caught 76.5%→83.8% Δ7.4 [0.0, 21.9], false 1.32→1.32 Δ0.00 [0.00, 0.00] | mixed: caught 79.4%→88.2% Δ8.8 [1.6, 22.2], false 1.38→1.38 Δ0.00 [0.00, 0.00]; pumping reports 68 on 17 days; bars -23
+  SC: PASS (persistence only); leave-one-out n/a (one station)
+    own: old harness: caught 80.9%→91.2% Δ10.3 [2.4, 25.8], false 2.19→2.42 Δ0.23 [0.00, 0.53] | ECMWF-heavy: caught 76.5%→86.8% Δ10.3 [2.4, 25.8], false 1.32→1.50 Δ0.17 [0.00, 0.47] | mixed: caught 79.4%→91.2% Δ11.8 [3.9, 26.8], false 1.38→1.90 Δ0.52 [0.10, 1.06]; pumping reports 68 on 17 days; bars 123
+  veto (report only): no (persistence only); leave-one-out n/a (one station)
+    own: old harness: caught 80.9%→86.8% Δ5.9 [-1.6, 20.7], false 2.19→1.09 Δ-1.09 [-1.88, -0.40] | ECMWF-heavy: caught 76.5%→83.8% Δ7.4 [0.0, 21.9], false 1.32→0.69 Δ-0.63 [-1.14, -0.22] | mixed: caught 79.4%→86.8% Δ7.4 [0.0, 21.7], false 1.38→0.92 Δ-0.46 [-1.02, -0.06]; pumping reports 68 on 17 days; bars -23
+  SC-both (report only): PASS (persistence only); leave-one-out n/a (one station)
+    own: old harness: caught 80.9%→91.2% Δ10.3 [2.4, 25.8], false 2.19→2.30 Δ0.12 [-0.12, 0.45] | ECMWF-heavy: caught 76.5%→86.8% Δ10.3 [2.4, 25.8], false 1.32→1.38 Δ0.06 [-0.23, 0.39] | mixed: caught 79.4%→91.2% Δ11.8 [3.9, 26.8], false 1.38→1.84 Δ0.46 [0.00, 1.01]; pumping reports 68 on 17 days; bars 123
+  shown off-by (mean/gust km/h): M 3.52/13.61 · S 3.46/9.34 · SC 2.94/9.45
+
+Limpopo — own: FAPP; cross: none (persistence only)
+  S: no (persistence only); leave-one-out n/a (one station)
+    own: old harness: caught 79.2%→79.2% Δ0.0 [0.0, 0.0], false 0.16→0.21 Δ0.05 [0.00, 0.16] | ECMWF-heavy: caught 66.7%→75.0% Δ8.3 [0.0, 33.3], false 0.05→0.10 Δ0.05 [0.00, 0.16] | mixed: caught 79.2%→79.2% Δ0.0 [0.0, 0.0], false 0.26→0.31 Δ0.05 [0.00, 0.16]; pumping reports 24 on 8 days; bars -2-
+  SC: no (persistence only); leave-one-out n/a (one station)
+    own: old harness: caught 79.2%→87.5% Δ8.3 [0.0, 33.3], false 0.16→0.26 Δ0.10 [0.00, 0.26] | ECMWF-heavy: caught 66.7%→83.3% Δ16.7 [0.0, 66.7], false 0.05→0.10 Δ0.05 [0.00, 0.16] | mixed: caught 79.2%→87.5% Δ8.3 [0.0, 33.3], false 0.26→0.31 Δ0.05 [0.00, 0.16]; pumping reports 24 on 8 days; bars -2-
+  veto (report only): no (persistence only); leave-one-out n/a (one station)
+    own: old harness: caught 79.2%→79.2% Δ0.0 [0.0, 0.0], false 0.16→0.21 Δ0.05 [0.00, 0.16] | ECMWF-heavy: caught 66.7%→75.0% Δ8.3 [0.0, 33.3], false 0.05→0.10 Δ0.05 [0.00, 0.16] | mixed: caught 79.2%→79.2% Δ0.0 [0.0, 0.0], false 0.26→0.26 Δ0.00 [-0.15, 0.15]; pumping reports 24 on 8 days; bars -2-
+  SC-both (report only): no (persistence only); leave-one-out n/a (one station)
+    own: old harness: caught 79.2%→79.2% Δ0.0 [-18.2, 33.3], false 0.16→0.21 Δ0.05 [0.00, 0.16] | ECMWF-heavy: caught 66.7%→79.2% Δ12.5 [0.0, 66.7], false 0.05→0.10 Δ0.05 [0.00, 0.16] | mixed: caught 79.2%→79.2% Δ0.0 [-18.2, 33.3], false 0.26→0.21 Δ-0.05 [-0.31, 0.15]; pumping reports 24 on 8 days; bars -2-
+  shown off-by (mean/gust km/h): M 3.76/7.95 · S 3.76/7.7 · SC 3.28/6.79
+
+Lowveld — own: FAHS FAKN; cross: none (persistence only)
+  S: no (persistence only); leave-one-out false
+    own: old harness: caught 100.0%→100.0% Δ0.0 [0.0, 0.0], false 1.04→1.04 Δ0.00 [0.00, 0.00] | ECMWF-heavy: caught 100.0%→100.0% Δ0.0 [0.0, 0.0], false 2.08→2.08 Δ0.00 [0.00, 0.00] | mixed: caught 100.0%→100.0% Δ0.0 [0.0, 0.0], false 1.17→1.17 Δ0.00 [0.00, 0.00]; pumping reports 27 on 5 days; bars -2-
+  SC: no (persistence only); leave-one-out false
+    own: old harness: caught 100.0%→100.0% Δ0.0 [0.0, 0.0], false 1.04→1.04 Δ0.00 [0.00, 0.00] | ECMWF-heavy: caught 100.0%→100.0% Δ0.0 [0.0, 0.0], false 2.08→2.08 Δ0.00 [0.00, 0.00] | mixed: caught 100.0%→100.0% Δ0.0 [0.0, 0.0], false 1.17→1.17 Δ0.00 [0.00, 0.00]; pumping reports 27 on 5 days; bars -2-
+  veto (report only): no (persistence only); leave-one-out false
+    own: old harness: caught 100.0%→100.0% Δ0.0 [0.0, 0.0], false 1.04→0.26 Δ-0.78 [-1.73, -0.06] | ECMWF-heavy: caught 100.0%→100.0% Δ0.0 [0.0, 0.0], false 2.08→0.44 Δ-1.64 [-3.51, -0.29] | mixed: caught 100.0%→100.0% Δ0.0 [0.0, 0.0], false 1.17→0.29 Δ-0.88 [-1.85, -0.16]; pumping reports 27 on 5 days; bars -2-
+  SC-both (report only): no (persistence only); leave-one-out false
+    own: old harness: caught 100.0%→77.8% Δ-22.2 [-25.0, -18.2], false 1.04→0.44 Δ-0.60 [-1.37, 0.00] | ECMWF-heavy: caught 100.0%→77.8% Δ-22.2 [-25.0, -18.2], false 2.08→0.44 Δ-1.64 [-3.57, -0.25] | mixed: caught 100.0%→77.8% Δ-22.2 [-25.0, -18.2], false 1.17→0.29 Δ-0.88 [-1.89, -0.15]; pumping reports 27 on 5 days; bars -2-
+  shown off-by (mean/gust km/h): M 3.77/19.68 · S 3.69/14.96 · SC 2.4/7.48
+
+North West — own: FAMM; cross: none (persistence only)
+  S: no (persistence only); leave-one-out n/a (one station)
+    own: old harness: caught 84.2%→91.6% Δ7.4 [2.6, 16.7], false 0.47→0.53 Δ0.06 [0.00, 0.21] | ECMWF-heavy: caught 81.1%→86.3% Δ5.3 [2.6, 7.1], false 0.09→0.15 Δ0.06 [0.00, 0.21] | mixed: caught 92.6%→94.7% Δ2.1 [0.0, 6.5], false 0.53→0.59 Δ0.06 [0.00, 0.21]; pumping reports 95 on 18 days; bars -23
+  SC: no (persistence only); leave-one-out n/a (one station)
+    own: old harness: caught 84.2%→95.8% Δ11.6 [5.1, 29.5], false 0.47→0.77 Δ0.30 [0.00, 0.72] | ECMWF-heavy: caught 81.1%→93.7% Δ12.6 [7.7, 22.2], false 0.09→0.27 Δ0.18 [0.00, 0.42] | mixed: caught 92.6%→97.9% Δ5.3 [0.0, 12.1], false 0.53→0.77 Δ0.24 [0.00, 0.60]; pumping reports 95 on 18 days; bars -23
+  veto (report only): no (persistence only); leave-one-out n/a (one station)
+    own: old harness: caught 84.2%→88.4% Δ4.2 [-1.8, 16.4], false 0.47→0.24 Δ-0.24 [-0.69, 0.00] | ECMWF-heavy: caught 81.1%→83.2% Δ2.1 [-1.8, 6.7], false 0.09→0.15 Δ0.06 [0.00, 0.21] | mixed: caught 92.6%→91.6% Δ-1.1 [-6.7, 6.5], false 0.53→0.30 Δ-0.24 [-0.69, 0.00]; pumping reports 95 on 18 days; bars -23
+  SC-both (report only): no (persistence only); leave-one-out n/a (one station)
+    own: old harness: caught 84.2%→92.6% Δ8.4 [0.0, 25.7], false 0.47→0.77 Δ0.30 [0.00, 0.72] | ECMWF-heavy: caught 81.1%→86.3% Δ5.3 [0.0, 20.8], false 0.09→0.21 Δ0.12 [0.00, 0.33] | mixed: caught 92.6%→93.7% Δ1.1 [-5.8, 8.3], false 0.53→0.77 Δ0.24 [0.00, 0.60]; pumping reports 95 on 18 days; bars -23
+  shown off-by (mean/gust km/h): M 3/7.98 · S 3/7.1 · SC 2.71/6.69
+
+Northern Cape — own: FAKM FAUP; cross: none (persistence only)
+  S: no (persistence only); leave-one-out false
+    own: old harness: caught 84.5%→91.3% Δ6.8 [2.5, 11.1], false 1.69→1.72 Δ0.03 [0.00, 0.09] | ECMWF-heavy: caught 68.0%→81.6% Δ13.6 [9.0, 20.6], false 1.17→1.19 Δ0.03 [0.00, 0.09] | mixed: caught 84.5%→91.3% Δ6.8 [2.5, 11.1], false 1.39→1.42 Δ0.03 [0.00, 0.09]; pumping reports 103 on 19 days; bars 123
+  SC: no (persistence only); leave-one-out false
+    own: old harness: caught 84.5%→91.3% Δ6.8 [2.5, 11.1], false 1.69→2.69 Δ1.00 [0.30, 2.22] | ECMWF-heavy: caught 68.0%→88.3% Δ20.4 [15.6, 29.6], false 1.17→1.28 Δ0.11 [0.00, 0.26] | mixed: caught 84.5%→93.2% Δ8.7 [5.1, 13.0], false 1.39→2.36 Δ0.97 [0.17, 2.28]; pumping reports 103 on 19 days; bars 123
+  veto (report only): no (persistence only); leave-one-out false
+    own: old harness: caught 84.5%→90.3% Δ5.8 [1.9, 10.7], false 1.69→0.78 Δ-0.92 [-1.81, -0.20] | ECMWF-heavy: caught 68.0%→80.6% Δ12.6 [7.4, 20.2], false 1.17→0.64 Δ-0.53 [-1.25, -0.09] | mixed: caught 84.5%→90.3% Δ5.8 [1.9, 10.7], false 1.39→0.69 Δ-0.69 [-1.33, -0.24]; pumping reports 103 on 19 days; bars 123
+  SC-both (report only): no (persistence only); leave-one-out false
+    own: old harness: caught 84.5%→90.3% Δ5.8 [1.9, 10.7], false 1.69→2.64 Δ0.94 [0.26, 2.15] | ECMWF-heavy: caught 68.0%→86.4% Δ18.4 [12.0, 28.6], false 1.17→1.25 Δ0.08 [-0.05, 0.25] | mixed: caught 84.5%→92.2% Δ7.8 [4.7, 11.9], false 1.39→2.30 Δ0.92 [0.13, 2.22]; pumping reports 103 on 19 days; bars 123
+  shown off-by (mean/gust km/h): M 3.73/13.11 · S 3.69/8.48 · SC 3.18/8.79
+
+West Coast — own: FALW; cross: none (persistence only)
+  S: no (persistence only); leave-one-out n/a (one station)
+    own: old harness: caught 85.5%→91.9% Δ6.5 [0.0, 17.6], false 0.79→0.79 Δ0.00 [0.00, 0.00] | ECMWF-heavy: caught 69.4%→85.5% Δ16.1 [5.0, 37.5], false 0.62→0.62 Δ0.00 [0.00, 0.00] | mixed: caught 80.6%→87.1% Δ6.5 [1.7, 12.5], false 0.79→0.79 Δ0.00 [0.00, 0.00]; pumping reports 62 on 10 days; bars -23
+  SC: no (persistence only); leave-one-out n/a (one station)
+    own: old harness: caught 85.5%→95.2% Δ9.7 [0.0, 17.6], false 0.79→1.24 Δ0.44 [0.00, 1.44] | ECMWF-heavy: caught 69.4%→87.1% Δ17.7 [7.1, 37.5], false 0.62→0.62 Δ0.00 [0.00, 0.00] | mixed: caught 80.6%→91.9% Δ11.3 [9.3, 14.3], false 0.79→1.24 Δ0.44 [0.00, 1.44]; pumping reports 62 on 10 days; bars -23
+  veto (report only): no (persistence only); leave-one-out n/a (one station)
+    own: old harness: caught 85.5%→91.9% Δ6.5 [0.0, 17.6], false 0.79→0.35 Δ-0.44 [-1.20, 0.00] | ECMWF-heavy: caught 69.4%→85.5% Δ16.1 [5.0, 37.5], false 0.62→0.18 Δ-0.44 [-1.10, 0.00] | mixed: caught 80.6%→87.1% Δ6.5 [1.7, 12.5], false 0.79→0.26 Δ-0.53 [-1.33, 0.00]; pumping reports 62 on 10 days; bars -23
+  SC-both (report only): no (persistence only); leave-one-out n/a (one station)
+    own: old harness: caught 85.5%→83.9% Δ-1.6 [-25.0, 11.8], false 0.79→0.53 Δ-0.26 [-0.53, 0.00] | ECMWF-heavy: caught 69.4%→82.3% Δ12.9 [1.7, 37.5], false 0.62→0.09 Δ-0.53 [-1.17, 0.00] | mixed: caught 80.6%→83.9% Δ3.2 [-3.7, 14.3], false 0.79→0.53 Δ-0.26 [-0.72, 0.00]; pumping reports 62 on 10 days; bars -23
+  shown off-by (mean/gust km/h): M 3.59/6.14 · S 3.57/5.91 · SC 3.25/5.4
+
+Western Cape — own: FACT; cross: none (persistence only)
+  S: PASS (persistence only); leave-one-out n/a (one station)
+    own: old harness: caught 80.7%→86.1% Δ5.5 [1.5, 12.8], false 0.70→0.98 Δ0.28 [0.00, 0.72] | ECMWF-heavy: caught 73.9%→84.5% Δ10.5 [4.7, 20.1], false 1.19→1.47 Δ0.28 [0.00, 0.72] | mixed: caught 68.1%→83.6% Δ15.5 [7.0, 28.5], false 0.28→0.63 Δ0.35 [0.00, 0.87]; pumping reports 238 on 36 days; bars 123
+  SC: PASS (persistence only); leave-one-out n/a (one station)
+    own: old harness: caught 80.7%→89.9% Δ9.2 [4.9, 17.4], false 0.70→1.68 Δ0.98 [0.39, 2.01] | ECMWF-heavy: caught 73.9%→90.3% Δ16.4 [10.1, 27.3], false 1.19→1.75 Δ0.56 [0.19, 1.15] | mixed: caught 68.1%→89.5% Δ21.4 [12.9, 34.9], false 0.28→0.91 Δ0.63 [0.24, 1.25]; pumping reports 238 on 36 days; bars 123
+  veto (report only): PASS (persistence only); leave-one-out n/a (one station)
+    own: old harness: caught 80.7%→85.7% Δ5.0 [0.7, 12.8], false 0.70→0.84 Δ0.14 [-0.30, 0.65] | ECMWF-heavy: caught 73.9%→84.0% Δ10.1 [4.0, 19.8], false 1.19→1.05 Δ-0.14 [-0.56, 0.26] | mixed: caught 68.1%→83.2% Δ15.1 [6.6, 28.5], false 0.28→0.56 Δ0.28 [0.00, 0.69]; pumping reports 238 on 36 days; bars 123
+  SC-both (report only): PASS (persistence only); leave-one-out n/a (one station)
+    own: old harness: caught 80.7%→88.7% Δ8.0 [3.3, 16.2], false 0.70→1.61 Δ0.91 [0.30, 1.99] | ECMWF-heavy: caught 73.9%→89.1% Δ15.1 [8.3, 26.7], false 1.19→1.61 Δ0.42 [0.08, 0.89] | mixed: caught 68.1%→87.4% Δ19.3 [10.5, 33.0], false 0.28→0.77 Δ0.49 [0.12, 1.03]; pumping reports 238 on 36 days; bars 123
+  shown off-by (mean/gust km/h): M 4.27/9.73 · S 4.16/6.06 · SC 3.6/6.06
+
+SYNOP report-only (proof, what a licensed SAWS feed would do): region stations pumping caught M→S false M→S (veto false, veto caught)
+  Eastern Cape: 20 st, 602 pumping; caught 61.3%→69.0%; false 1.73→1.98 (veto 0.91, caught 63.5%)
+  Free State: 8 st, 248 pumping; caught 83.5%→85.5%; false 2.02→2.27 (veto 1.23, caught 80.8%)
+  Garden Route: 7 st, 75 pumping; caught 76.0%→76.0%; false 1.31→1.4 (veto 0.73, caught 64.7%)
+  Highveld: 14 st, 290 pumping; caught 78.9%→87.7%; false 2.35→2.42 (veto 0.88, caught 83.7%)
+  KZN coast: 9 st, 251 pumping; caught 73.9%→81.1%; false 1.8→2.12 (veto 1.22, caught 75.0%)
+  KZN inland: 20 st, 448 pumping; caught 75.3%→77.6%; false 1.73→1.96 (veto 0.62, caught 72.6%)
+  Karoo: 7 st, 701 pumping; caught 86.7%→88.5%; false 2.2→2.43 (veto 1.17, caught 85.6%)
+  Limpopo: 8 st, 66 pumping; caught 46.0%→56.1%; false 1.48→1.68 (veto 0.71, caught 52.0%)
+  Lowveld: 11 st, 100 pumping; caught 86.1%→87.1%; false 0.95→0.96 (veto 0.34, caught 83.2%)
+  North West: 6 st, 179 pumping; caught 89.3%→90.4%; false 1.23→1.32 (veto 0.67, caught 85.2%)
+  Northern Cape: 18 st, 851 pumping; caught 74.3%→81.2%; false 2.13→2.35 (veto 1, caught 77.1%)
+  Strand's zone: 1 st, 66 pumping; caught 21.0%→73.7%; false 0.55→4.65 (veto 4.57, caught 73.0%)
+  West Coast: 11 st, 818 pumping; caught 75.3%→84.2%; false 2.1→2.4 (veto 1.3, caught 81.2%)
+  Western Cape: 16 st, 1147 pumping; caught 84.8%→91.3%; false 11.53→11.99 (veto 2.83, caught 87.1%)
+
+RAIN: tune F none (M false 0.15); no bars ---; truth reports undefined on undefined days
+
+FOG: tune F 1.5 (M false 1.53); no bars 1-3; truth reports 146 on 38 days
+  old harness: caught 30.8%→70.5% Δ39.7 [25.9, 54.3]; false/100 1.29→1.46; S's own calls 100.0: right 58.0%, around 68.0%; M's calls 370.0 right 12.2%
+    Eastern Cape: own calls 4.0 right 0.0% around 0.0%
+    Free State: own calls 2.0 right 50.0% around 50.0%
+    Garden Route: own calls 33.0 right 57.6% around 72.7% BLOCKED
+    Highveld: own calls 3.0 right 66.7% around 66.7%
+    KZN coast: own calls 10.0 right 70.0% around 70.0% BLOCKED
+    Limpopo: own calls 5.0 right 40.0% around 40.0%
+    Lowveld: own calls 4.0 right 0.0% around 25.0%
+    North West: own calls 1.0 right 0.0% around 0.0%
+    Northern Cape: own calls 3.0 right 66.7% around 66.7%
+    Western Cape: own calls 35.0 right 71.4% around 82.9%

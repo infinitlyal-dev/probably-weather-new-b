@@ -1,0 +1,5467 @@
+{
+ "generatedAt": "2026-09-29T06:41:18.258Z",
+ "plan": "review/accuracy/stations/PLAN.md (§8 amendments)",
+ "D": {
+  "coast": 10,
+  "coastWhy": "no bin qualified from the first → 10 km default",
+  "inland": 10,
+  "inlandWhy": "no bin qualified from the first → 10 km default"
+ },
+ "L": {
+  "metarMin": 10,
+  "synopMin": 60
+ },
+ "gustScale": 1,
+ "crossPairs": [],
+ "rowCounts": {
+  "own": 74355,
+  "cross": 0,
+  "synopOwn": 631006
+ },
+ "tune": {
+  "S": {
+   "mFalse": 0.7034,
+   "chosen": {
+    "F": 1.5,
+    "T": null,
+    "caught": 0.8401,
+    "falsePer100": 0.8303,
+    "ok": true
+   },
+   "grid": [
+    {
+     "F": 1.5,
+     "T": null,
+     "caught": 0.8401,
+     "falsePer100": 0.8303,
+     "ok": true
+    },
+    {
+     "F": 2.5,
+     "T": null,
+     "caught": 0.8401,
+     "falsePer100": 0.8317,
+     "ok": true
+    },
+    {
+     "F": 3.5,
+     "T": null,
+     "caught": 0.8401,
+     "falsePer100": 0.8317,
+     "ok": true
+    },
+    {
+     "F": 4.5,
+     "T": null,
+     "caught": 0.8401,
+     "falsePer100": 0.8317,
+     "ok": true
+    },
+    {
+     "F": 6.5,
+     "T": null,
+     "caught": 0.8401,
+     "falsePer100": 0.8317,
+     "ok": true
+    },
+    {
+     "F": 7.5,
+     "T": null,
+     "caught": 0.8401,
+     "falsePer100": 0.8364,
+     "ok": true
+    },
+    {
+     "F": 9.5,
+     "T": null,
+     "caught": 0.8401,
+     "falsePer100": 0.842,
+     "ok": true
+    }
+   ]
+  },
+  "SC": {
+   "chosen": {
+    "F": 1.5,
+    "T": 12,
+    "caught": 0.889,
+    "falsePer100": 1.1178
+   },
+   "grid": [
+    {
+     "F": 1.5,
+     "T": 3,
+     "caught": 0.8779,
+     "falsePer100": 1.0714
+    },
+    {
+     "F": 1.5,
+     "T": 6,
+     "caught": 0.8846,
+     "falsePer100": 1.0963
+    },
+    {
+     "F": 1.5,
+     "T": 9,
+     "caught": 0.8871,
+     "falsePer100": 1.1047
+    },
+    {
+     "F": 1.5,
+     "T": 12,
+     "caught": 0.889,
+     "falsePer100": 1.1178
+    }
+   ]
+  }
+ },
+ "tuneSynop": {
+  "1": {
+   "mFalse": 2.0109,
+   "chosen": {
+    "F": 9.5,
+    "T": null,
+    "caught": 0.7855,
+    "falsePer100": 2.225,
+    "ok": true
+   },
+   "grid": [
+    {
+     "F": 1.5,
+     "T": null,
+     "caught": 0.7767,
+     "falsePer100": 2.176,
+     "ok": true
+    },
+    {
+     "F": 2.5,
+     "T": null,
+     "caught": 0.7849,
+     "falsePer100": 2.2192,
+     "ok": true
+    },
+    {
+     "F": 3.5,
+     "T": null,
+     "caught": 0.7849,
+     "falsePer100": 2.2209,
+     "ok": true
+    },
+    {
+     "F": 4.5,
+     "T": null,
+     "caught": 0.7851,
+     "falsePer100": 2.2217,
+     "ok": true
+    },
+    {
+     "F": 6.5,
+     "T": null,
+     "caught": 0.7852,
+     "falsePer100": 2.2228,
+     "ok": true
+    },
+    {
+     "F": 7.5,
+     "T": null,
+     "caught": 0.7854,
+     "falsePer100": 2.2239,
+     "ok": true
+    },
+    {
+     "F": 9.5,
+     "T": null,
+     "caught": 0.7855,
+     "falsePer100": 2.225,
+     "ok": true
+    }
+   ]
+  },
+  "3": {
+   "mFalse": 0.5879,
+   "chosen": {
+    "F": 1.5,
+    "T": null,
+    "caught": 1,
+    "falsePer100": 0.6254,
+    "ok": true
+   },
+   "grid": [
+    {
+     "F": 1.5,
+     "T": null,
+     "caught": 1,
+     "falsePer100": 0.6254,
+     "ok": true
+    },
+    {
+     "F": 2.5,
+     "T": null,
+     "caught": 1,
+     "falsePer100": 0.6629,
+     "ok": true
+    },
+    {
+     "F": 3.5,
+     "T": null,
+     "caught": 1,
+     "falsePer100": 0.6629,
+     "ok": true
+    },
+    {
+     "F": 4.5,
+     "T": null,
+     "caught": 1,
+     "falsePer100": 0.6629,
+     "ok": true
+    },
+    {
+     "F": 6.5,
+     "T": null,
+     "caught": 1,
+     "falsePer100": 0.6629,
+     "ok": true
+    },
+    {
+     "F": 7.5,
+     "T": null,
+     "caught": 1,
+     "falsePer100": 0.6629,
+     "ok": true
+    },
+    {
+     "F": 9.5,
+     "T": null,
+     "caught": 1,
+     "falsePer100": 0.6629,
+     "ok": true
+    }
+   ]
+  },
+  "6": {
+   "mFalse": 4.1583,
+   "chosen": {
+    "F": 6.5,
+    "T": null,
+    "caught": 0.7309,
+    "falsePer100": 4.7612,
+    "ok": true
+   },
+   "grid": [
+    {
+     "F": 1.5,
+     "T": null,
+     "caught": 0.6744,
+     "falsePer100": 4.2168,
+     "ok": true
+    },
+    {
+     "F": 2.5,
+     "T": null,
+     "caught": 0.6852,
+     "falsePer100": 4.2917,
+     "ok": true
+    },
+    {
+     "F": 3.5,
+     "T": null,
+     "caught": 0.696,
+     "falsePer100": 4.3838,
+     "ok": true
+    },
+    {
+     "F": 4.5,
+     "T": null,
+     "caught": 0.7072,
+     "falsePer100": 4.4905,
+     "ok": true
+    },
+    {
+     "F": 6.5,
+     "T": null,
+     "caught": 0.7309,
+     "falsePer100": 4.7612,
+     "ok": true
+    },
+    {
+     "F": 7.5,
+     "T": null,
+     "caught": 0.7309,
+     "falsePer100": 4.7638,
+     "ok": true
+    },
+    {
+     "F": 9.5,
+     "T": null,
+     "caught": 0.7309,
+     "falsePer100": 4.7705,
+     "ok": true
+    }
+   ]
+  }
+ },
+ "regions": {
+  "Eastern Cape": {
+   "ownStations": [
+    "FAEL",
+    "FAPE",
+    "FAUT"
+   ],
+   "crossPairs": [],
+   "S": {
+    "own": {
+     "per": [
+      {
+       "guess": "old harness",
+       "M": {
+        "pumping": 241,
+        "caught": 0.6805,
+        "calm": 4432,
+        "falsePer100": 0.9025,
+        "days": 36
+       },
+       "R": {
+        "pumping": 241,
+        "caught": 0.7967,
+        "calm": 4432,
+        "falsePer100": 1.0153,
+        "days": 36
+       },
+       "boot": {
+        "caught": {
+         "d": 0.1162,
+         "lo": 0.0607,
+         "hi": 0.1875
+        },
+        "false": {
+         "d": 0.1128,
+         "lo": 0,
+         "hi": 0.2448
+        }
+       }
+      },
+      {
+       "guess": "ECMWF-heavy",
+       "M": {
+        "pumping": 241,
+        "caught": 0.6515,
+        "calm": 4432,
+        "falsePer100": 0.8912,
+        "days": 36
+       },
+       "R": {
+        "pumping": 241,
+        "caught": 0.7801,
+        "calm": 4432,
+        "falsePer100": 1.0041,
+        "days": 36
+       },
+       "boot": {
+        "caught": {
+         "d": 0.1286,
+         "lo": 0.0736,
+         "hi": 0.2035
+        },
+        "false": {
+         "d": 0.1128,
+         "lo": 0,
+         "hi": 0.2448
+        }
+       }
+      },
+      {
+       "guess": "mixed",
+       "M": {
+        "pumping": 241,
+        "caught": 0.666,
+        "calm": 4432,
+        "falsePer100": 0.8574,
+        "days": 36
+       },
+       "R": {
+        "pumping": 241,
+        "caught": 0.7905,
+        "calm": 4432,
+        "falsePer100": 0.9702,
+        "days": 36
+       },
+       "boot": {
+        "caught": {
+         "d": 0.1245,
+         "lo": 0.0712,
+         "hi": 0.193
+        },
+        "false": {
+         "d": 0.1128,
+         "lo": 0,
+         "hi": 0.2448
+        }
+       }
+      }
+     ],
+     "pumpReports": 241,
+     "pumpDays": 36,
+     "b1": true,
+     "b2": true,
+     "b3": true,
+     "pass": true
+    },
+    "cross": null,
+    "leaveOneOut": true,
+    "persistenceOnly": true,
+    "pass": true,
+    "blocked": false
+   },
+   "SC": {
+    "own": {
+     "per": [
+      {
+       "guess": "old harness",
+       "M": {
+        "pumping": 241,
+        "caught": 0.6805,
+        "calm": 4432,
+        "falsePer100": 0.9025,
+        "days": 36
+       },
+       "R": {
+        "pumping": 241,
+        "caught": 0.8465,
+        "calm": 4432,
+        "falsePer100": 1.0718,
+        "days": 36
+       },
+       "boot": {
+        "caught": {
+         "d": 0.166,
+         "lo": 0.1103,
+         "hi": 0.2426
+        },
+        "false": {
+         "d": 0.1692,
+         "lo": 0.0624,
+         "hi": 0.2967
+        }
+       }
+      },
+      {
+       "guess": "ECMWF-heavy",
+       "M": {
+        "pumping": 241,
+        "caught": 0.6515,
+        "calm": 4432,
+        "falsePer100": 0.8912,
+        "days": 36
+       },
+       "R": {
+        "pumping": 241,
+        "caught": 0.8299,
+        "calm": 4432,
+        "falsePer100": 1.0492,
+        "days": 36
+       },
+       "boot": {
+        "caught": {
+         "d": 0.1784,
+         "lo": 0.1186,
+         "hi": 0.2553
+        },
+        "false": {
+         "d": 0.1579,
+         "lo": 0.0482,
+         "hi": 0.2866
+        }
+       }
+      },
+      {
+       "guess": "mixed",
+       "M": {
+        "pumping": 241,
+        "caught": 0.666,
+        "calm": 4432,
+        "falsePer100": 0.8574,
+        "days": 36
+       },
+       "R": {
+        "pumping": 241,
+        "caught": 0.8465,
+        "calm": 4432,
+        "falsePer100": 1.0266,
+        "days": 36
+       },
+       "boot": {
+        "caught": {
+         "d": 0.1805,
+         "lo": 0.1259,
+         "hi": 0.2488
+        },
+        "false": {
+         "d": 0.1692,
+         "lo": 0.0624,
+         "hi": 0.2967
+        }
+       }
+      }
+     ],
+     "pumpReports": 241,
+     "pumpDays": 36,
+     "b1": true,
+     "b2": true,
+     "b3": true,
+     "pass": true
+    },
+    "cross": null,
+    "leaveOneOut": true,
+    "persistenceOnly": true,
+    "pass": true,
+    "blocked": false
+   },
+   "veto": {
+    "own": {
+     "per": [
+      {
+       "guess": "old harness",
+       "M": {
+        "pumping": 241,
+        "caught": 0.6805,
+        "calm": 4432,
+        "falsePer100": 0.9025,
+        "days": 36
+       },
+       "R": {
+        "pumping": 241,
+        "caught": 0.7884,
+        "calm": 4432,
+        "falsePer100": 0.6092,
+        "days": 36
+       },
+       "boot": {
+        "caught": {
+         "d": 0.1079,
+         "lo": 0.0474,
+         "hi": 0.1863
+        },
+        "false": {
+         "d": -0.2933,
+         "lo": -0.6352,
+         "hi": 0
+        }
+       }
+      },
+      {
+       "guess": "ECMWF-heavy",
+       "M": {
+        "pumping": 241,
+        "caught": 0.6515,
+        "calm": 4432,
+        "falsePer100": 0.8912,
+        "days": 36
+       },
+       "R": {
+        "pumping": 241,
+        "caught": 0.7759,
+        "calm": 4432,
+        "falsePer100": 0.5979,
+        "days": 36
+       },
+       "boot": {
+        "caught": {
+         "d": 0.1245,
+         "lo": 0.0663,
+         "hi": 0.2008
+        },
+        "false": {
+         "d": -0.2933,
+         "lo": -0.6352,
+         "hi": 0
+        }
+       }
+      },
+      {
+       "guess": "mixed",
+       "M": {
+        "pumping": 241,
+        "caught": 0.666,
+        "calm": 4432,
+        "falsePer100": 0.8574,
+        "days": 36
+       },
+       "R": {
+        "pumping": 241,
+        "caught": 0.7822,
+        "calm": 4432,
+        "falsePer100": 0.5866,
+        "days": 36
+       },
+       "boot": {
+        "caught": {
+         "d": 0.1162,
+         "lo": 0.057,
+         "hi": 0.1905
+        },
+        "false": {
+         "d": -0.2708,
+         "lo": -0.585,
+         "hi": 0.02
+        }
+       }
+      }
+     ],
+     "pumpReports": 241,
+     "pumpDays": 36,
+     "b1": true,
+     "b2": true,
+     "b3": true,
+     "pass": true
+    },
+    "cross": null,
+    "leaveOneOut": true,
+    "persistenceOnly": true,
+    "pass": true,
+    "blocked": false
+   },
+   "SC-both": {
+    "own": {
+     "per": [
+      {
+       "guess": "old harness",
+       "M": {
+        "pumping": 241,
+        "caught": 0.6805,
+        "calm": 4432,
+        "falsePer100": 0.9025,
+        "days": 36
+       },
+       "R": {
+        "pumping": 241,
+        "caught": 0.834,
+        "calm": 4432,
+        "falsePer100": 1.0266,
+        "days": 36
+       },
+       "boot": {
+        "caught": {
+         "d": 0.1535,
+         "lo": 0.0916,
+         "hi": 0.2375
+        },
+        "false": {
+         "d": 0.1241,
+         "lo": 0.0121,
+         "hi": 0.2616
+        }
+       }
+      },
+      {
+       "guess": "ECMWF-heavy",
+       "M": {
+        "pumping": 241,
+        "caught": 0.6515,
+        "calm": 4432,
+        "falsePer100": 0.8912,
+        "days": 36
+       },
+       "R": {
+        "pumping": 241,
+        "caught": 0.8216,
+        "calm": 4432,
+        "falsePer100": 1.0266,
+        "days": 36
+       },
+       "boot": {
+        "caught": {
+         "d": 0.1701,
+         "lo": 0.1075,
+         "hi": 0.2487
+        },
+        "false": {
+         "d": 0.1354,
+         "lo": 0,
+         "hi": 0.2715
+        }
+       }
+      },
+      {
+       "guess": "mixed",
+       "M": {
+        "pumping": 241,
+        "caught": 0.666,
+        "calm": 4432,
+        "falsePer100": 0.8574,
+        "days": 36
+       },
+       "R": {
+        "pumping": 241,
+        "caught": 0.834,
+        "calm": 4432,
+        "falsePer100": 0.9815,
+        "days": 36
+       },
+       "boot": {
+        "caught": {
+         "d": 0.168,
+         "lo": 0.1083,
+         "hi": 0.2434
+        },
+        "false": {
+         "d": 0.1241,
+         "lo": 0.0121,
+         "hi": 0.2616
+        }
+       }
+      }
+     ],
+     "pumpReports": 241,
+     "pumpDays": 36,
+     "b1": true,
+     "b2": true,
+     "b3": true,
+     "pass": true
+    },
+    "cross": null,
+    "leaveOneOut": true,
+    "persistenceOnly": true,
+    "pass": true,
+    "blocked": false
+   }
+  },
+  "Free State": {
+   "ownStations": [
+    "FABL"
+   ],
+   "crossPairs": [],
+   "S": {
+    "own": {
+     "per": [
+      {
+       "guess": "old harness",
+       "M": {
+        "pumping": 33,
+        "caught": 0.8788,
+        "calm": 1682,
+        "falsePer100": 1.5458,
+        "days": 8
+       },
+       "R": {
+        "pumping": 33,
+        "caught": 0.8788,
+        "calm": 1682,
+        "falsePer100": 1.6052,
+        "days": 8
+       },
+       "boot": {
+        "caught": {
+         "d": 0,
+         "lo": 0,
+         "hi": 0
+        },
+        "false": {
+         "d": 0.0595,
+         "lo": 0,
+         "hi": 0.1933
+        }
+       }
+      },
+      {
+       "guess": "ECMWF-heavy",
+       "M": {
+        "pumping": 33,
+        "caught": 0.7576,
+        "calm": 1682,
+        "falsePer100": 1.0404,
+        "days": 8
+       },
+       "R": {
+        "pumping": 33,
+        "caught": 0.8182,
+        "calm": 1682,
+        "falsePer100": 1.0999,
+        "days": 8
+       },
+       "boot": {
+        "caught": {
+         "d": 0.0606,
+         "lo": 0,
+         "hi": 0.0698
+        },
+        "false": {
+         "d": 0.0595,
+         "lo": 0,
+         "hi": 0.1933
+        }
+       }
+      },
+      {
+       "guess": "mixed",
+       "M": {
+        "pumping": 33,
+        "caught": 0.9091,
+        "calm": 1682,
+        "falsePer100": 1.962,
+        "days": 8
+       },
+       "R": {
+        "pumping": 33,
+        "caught": 0.9091,
+        "calm": 1682,
+        "falsePer100": 2.0214,
+        "days": 8
+       },
+       "boot": {
+        "caught": {
+         "d": 0,
+         "lo": 0,
+         "hi": 0
+        },
+        "false": {
+         "d": 0.0595,
+         "lo": 0,
+         "hi": 0.1933
+        }
+       }
+      }
+     ],
+     "pumpReports": 33,
+     "pumpDays": 8,
+     "b1": false,
+     "b2": true,
+     "b3": true,
+     "pass": false
+    },
+    "cross": null,
+    "leaveOneOut": "n/a (one station)",
+    "persistenceOnly": true,
+    "pass": false,
+    "blocked": false
+   },
+   "SC": {
+    "own": {
+     "per": [
+      {
+       "guess": "old harness",
+       "M": {
+        "pumping": 33,
+        "caught": 0.8788,
+        "calm": 1682,
+        "falsePer100": 1.5458,
+        "days": 8
+       },
+       "R": {
+        "pumping": 33,
+        "caught": 0.9394,
+        "calm": 1682,
+        "falsePer100": 4.5184,
+        "days": 8
+       },
+       "boot": {
+        "caught": {
+         "d": 0.0606,
+         "lo": 0,
+         "hi": 0.5
+        },
+        "false": {
+         "d": 2.9727,
+         "lo": 1.3896,
+         "hi": 4.9412
+        }
+       }
+      },
+      {
+       "guess": "ECMWF-heavy",
+       "M": {
+        "pumping": 33,
+        "caught": 0.7576,
+        "calm": 1682,
+        "falsePer100": 1.0404,
+        "days": 8
+       },
+       "R": {
+        "pumping": 33,
+        "caught": 0.8788,
+        "calm": 1682,
+        "falsePer100": 1.2188,
+        "days": 8
+       },
+       "boot": {
+        "caught": {
+         "d": 0.1212,
+         "lo": 0.0667,
+         "hi": 0.5
+        },
+        "false": {
+         "d": 0.1784,
+         "lo": 0,
+         "hi": 0.3906
+        }
+       }
+      },
+      {
+       "guess": "mixed",
+       "M": {
+        "pumping": 33,
+        "caught": 0.9091,
+        "calm": 1682,
+        "falsePer100": 1.962,
+        "days": 8
+       },
+       "R": {
+        "pumping": 33,
+        "caught": 0.9394,
+        "calm": 1682,
+        "falsePer100": 4.4887,
+        "days": 8
+       },
+       "boot": {
+        "caught": {
+         "d": 0.0303,
+         "lo": 0,
+         "hi": 0.5
+        },
+        "false": {
+         "d": 2.5268,
+         "lo": 1.1937,
+         "hi": 4.1455
+        }
+       }
+      }
+     ],
+     "pumpReports": 33,
+     "pumpDays": 8,
+     "b1": false,
+     "b2": false,
+     "b3": true,
+     "pass": false
+    },
+    "cross": null,
+    "leaveOneOut": "n/a (one station)",
+    "persistenceOnly": true,
+    "pass": false,
+    "blocked": true
+   },
+   "veto": {
+    "own": {
+     "per": [
+      {
+       "guess": "old harness",
+       "M": {
+        "pumping": 33,
+        "caught": 0.8788,
+        "calm": 1682,
+        "falsePer100": 1.5458,
+        "days": 8
+       },
+       "R": {
+        "pumping": 33,
+        "caught": 0.8788,
+        "calm": 1682,
+        "falsePer100": 0.7432,
+        "days": 8
+       },
+       "boot": {
+        "caught": {
+         "d": 0,
+         "lo": 0,
+         "hi": 0
+        },
+        "false": {
+         "d": -0.8026,
+         "lo": -1.4067,
+         "hi": -0.332
+        }
+       }
+      },
+      {
+       "guess": "ECMWF-heavy",
+       "M": {
+        "pumping": 33,
+        "caught": 0.7576,
+        "calm": 1682,
+        "falsePer100": 1.0404,
+        "days": 8
+       },
+       "R": {
+        "pumping": 33,
+        "caught": 0.8182,
+        "calm": 1682,
+        "falsePer100": 0.6243,
+        "days": 8
+       },
+       "boot": {
+        "caught": {
+         "d": 0.0606,
+         "lo": 0,
+         "hi": 0.0698
+        },
+        "false": {
+         "d": -0.4162,
+         "lo": -0.8641,
+         "hi": -0.1125
+        }
+       }
+      },
+      {
+       "guess": "mixed",
+       "M": {
+        "pumping": 33,
+        "caught": 0.9091,
+        "calm": 1682,
+        "falsePer100": 1.962,
+        "days": 8
+       },
+       "R": {
+        "pumping": 33,
+        "caught": 0.9091,
+        "calm": 1682,
+        "falsePer100": 0.9215,
+        "days": 8
+       },
+       "boot": {
+        "caught": {
+         "d": 0,
+         "lo": 0,
+         "hi": 0
+        },
+        "false": {
+         "d": -1.0404,
+         "lo": -2.0099,
+         "hi": -0.3446
+        }
+       }
+      }
+     ],
+     "pumpReports": 33,
+     "pumpDays": 8,
+     "b1": false,
+     "b2": true,
+     "b3": true,
+     "pass": false
+    },
+    "cross": null,
+    "leaveOneOut": "n/a (one station)",
+    "persistenceOnly": true,
+    "pass": false,
+    "blocked": false
+   },
+   "SC-both": {
+    "own": {
+     "per": [
+      {
+       "guess": "old harness",
+       "M": {
+        "pumping": 33,
+        "caught": 0.8788,
+        "calm": 1682,
+        "falsePer100": 1.5458,
+        "days": 8
+       },
+       "R": {
+        "pumping": 33,
+        "caught": 0.9091,
+        "calm": 1682,
+        "falsePer100": 4.5184,
+        "days": 8
+       },
+       "boot": {
+        "caught": {
+         "d": 0.0303,
+         "lo": -0.0667,
+         "hi": 0.5
+        },
+        "false": {
+         "d": 2.9727,
+         "lo": 1.3896,
+         "hi": 4.9412
+        }
+       }
+      },
+      {
+       "guess": "ECMWF-heavy",
+       "M": {
+        "pumping": 33,
+        "caught": 0.7576,
+        "calm": 1682,
+        "falsePer100": 1.0404,
+        "days": 8
+       },
+       "R": {
+        "pumping": 33,
+        "caught": 0.8485,
+        "calm": 1682,
+        "falsePer100": 1.2188,
+        "days": 8
+       },
+       "boot": {
+        "caught": {
+         "d": 0.0909,
+         "lo": 0,
+         "hi": 0.5
+        },
+        "false": {
+         "d": 0.1784,
+         "lo": 0,
+         "hi": 0.3906
+        }
+       }
+      },
+      {
+       "guess": "mixed",
+       "M": {
+        "pumping": 33,
+        "caught": 0.9091,
+        "calm": 1682,
+        "falsePer100": 1.962,
+        "days": 8
+       },
+       "R": {
+        "pumping": 33,
+        "caught": 0.9091,
+        "calm": 1682,
+        "falsePer100": 4.4887,
+        "days": 8
+       },
+       "boot": {
+        "caught": {
+         "d": 0,
+         "lo": -0.0667,
+         "hi": 0.5
+        },
+        "false": {
+         "d": 2.5268,
+         "lo": 1.1937,
+         "hi": 4.1455
+        }
+       }
+      }
+     ],
+     "pumpReports": 33,
+     "pumpDays": 8,
+     "b1": false,
+     "b2": false,
+     "b3": true,
+     "pass": false
+    },
+    "cross": null,
+    "leaveOneOut": "n/a (one station)",
+    "persistenceOnly": true,
+    "pass": false,
+    "blocked": true
+   }
+  },
+  "Garden Route": {
+   "ownStations": [
+    "FAGG"
+   ],
+   "crossPairs": [],
+   "S": {
+    "own": {
+     "per": [
+      {
+       "guess": "old harness",
+       "M": {
+        "pumping": 26,
+        "caught": 0.7692,
+        "calm": 1906,
+        "falsePer100": 0.1574,
+        "days": 10
+       },
+       "R": {
+        "pumping": 26,
+        "caught": 0.8462,
+        "calm": 1906,
+        "falsePer100": 0.2099,
+        "days": 10
+       },
+       "boot": {
+        "caught": {
+         "d": 0.0769,
+         "lo": 0,
+         "hi": 0.1538
+        },
+        "false": {
+         "d": 0.0525,
+         "lo": 0,
+         "hi": 0.1818
+        }
+       }
+      },
+      {
+       "guess": "ECMWF-heavy",
+       "M": {
+        "pumping": 26,
+        "caught": 0.6923,
+        "calm": 1906,
+        "falsePer100": 0.3673,
+        "days": 10
+       },
+       "R": {
+        "pumping": 26,
+        "caught": 0.7308,
+        "calm": 1906,
+        "falsePer100": 0.3673,
+        "days": 10
+       },
+       "boot": {
+        "caught": {
+         "d": 0.0385,
+         "lo": 0,
+         "hi": 0.0769
+        },
+        "false": {
+         "d": 0,
+         "lo": 0,
+         "hi": 0
+        }
+       }
+      },
+      {
+       "guess": "mixed",
+       "M": {
+        "pumping": 26,
+        "caught": 0.5769,
+        "calm": 1906,
+        "falsePer100": 0.1049,
+        "days": 10
+       },
+       "R": {
+        "pumping": 26,
+        "caught": 0.7308,
+        "calm": 1906,
+        "falsePer100": 0.1574,
+        "days": 10
+       },
+       "boot": {
+        "caught": {
+         "d": 0.1538,
+         "lo": 0,
+         "hi": 0.4444
+        },
+        "false": {
+         "d": 0.0525,
+         "lo": 0,
+         "hi": 0.1818
+        }
+       }
+      }
+     ],
+     "pumpReports": 26,
+     "pumpDays": 10,
+     "b1": false,
+     "b2": true,
+     "b3": false,
+     "pass": false
+    },
+    "cross": null,
+    "leaveOneOut": "n/a (one station)",
+    "persistenceOnly": true,
+    "pass": false,
+    "blocked": false
+   },
+   "SC": {
+    "own": {
+     "per": [
+      {
+       "guess": "old harness",
+       "M": {
+        "pumping": 26,
+        "caught": 0.7692,
+        "calm": 1906,
+        "falsePer100": 0.1574,
+        "days": 10
+       },
+       "R": {
+        "pumping": 26,
+        "caught": 0.8846,
+        "calm": 1906,
+        "falsePer100": 0.2099,
+        "days": 10
+       },
+       "boot": {
+        "caught": {
+         "d": 0.1154,
+         "lo": 0,
+         "hi": 0.1944
+        },
+        "false": {
+         "d": 0.0525,
+         "lo": 0,
+         "hi": 0.1818
+        }
+       }
+      },
+      {
+       "guess": "ECMWF-heavy",
+       "M": {
+        "pumping": 26,
+        "caught": 0.6923,
+        "calm": 1906,
+        "falsePer100": 0.3673,
+        "days": 10
+       },
+       "R": {
+        "pumping": 26,
+        "caught": 0.8846,
+        "calm": 1906,
+        "falsePer100": 0.3673,
+        "days": 10
+       },
+       "boot": {
+        "caught": {
+         "d": 0.1923,
+         "lo": 0.125,
+         "hi": 0.2609
+        },
+        "false": {
+         "d": 0,
+         "lo": 0,
+         "hi": 0
+        }
+       }
+      },
+      {
+       "guess": "mixed",
+       "M": {
+        "pumping": 26,
+        "caught": 0.5769,
+        "calm": 1906,
+        "falsePer100": 0.1049,
+        "days": 10
+       },
+       "R": {
+        "pumping": 26,
+        "caught": 0.8462,
+        "calm": 1906,
+        "falsePer100": 0.1574,
+        "days": 10
+       },
+       "boot": {
+        "caught": {
+         "d": 0.2692,
+         "lo": 0.0833,
+         "hi": 0.6897
+        },
+        "false": {
+         "d": 0.0525,
+         "lo": 0,
+         "hi": 0.1818
+        }
+       }
+      }
+     ],
+     "pumpReports": 26,
+     "pumpDays": 10,
+     "b1": false,
+     "b2": true,
+     "b3": false,
+     "pass": false
+    },
+    "cross": null,
+    "leaveOneOut": "n/a (one station)",
+    "persistenceOnly": true,
+    "pass": false,
+    "blocked": false
+   },
+   "veto": {
+    "own": {
+     "per": [
+      {
+       "guess": "old harness",
+       "M": {
+        "pumping": 26,
+        "caught": 0.7692,
+        "calm": 1906,
+        "falsePer100": 0.1574,
+        "days": 10
+       },
+       "R": {
+        "pumping": 26,
+        "caught": 0.8077,
+        "calm": 1906,
+        "falsePer100": 0.2099,
+        "days": 10
+       },
+       "boot": {
+        "caught": {
+         "d": 0.0385,
+         "lo": 0,
+         "hi": 0.0769
+        },
+        "false": {
+         "d": 0.0525,
+         "lo": 0,
+         "hi": 0.1818
+        }
+       }
+      },
+      {
+       "guess": "ECMWF-heavy",
+       "M": {
+        "pumping": 26,
+        "caught": 0.6923,
+        "calm": 1906,
+        "falsePer100": 0.3673,
+        "days": 10
+       },
+       "R": {
+        "pumping": 26,
+        "caught": 0.6923,
+        "calm": 1906,
+        "falsePer100": 0.2623,
+        "days": 10
+       },
+       "boot": {
+        "caught": {
+         "d": 0,
+         "lo": 0,
+         "hi": 0
+        },
+        "false": {
+         "d": -0.1049,
+         "lo": -0.355,
+         "hi": 0
+        }
+       }
+      },
+      {
+       "guess": "mixed",
+       "M": {
+        "pumping": 26,
+        "caught": 0.5769,
+        "calm": 1906,
+        "falsePer100": 0.1049,
+        "days": 10
+       },
+       "R": {
+        "pumping": 26,
+        "caught": 0.6923,
+        "calm": 1906,
+        "falsePer100": 0.1574,
+        "days": 10
+       },
+       "boot": {
+        "caught": {
+         "d": 0.1154,
+         "lo": 0,
+         "hi": 0.4444
+        },
+        "false": {
+         "d": 0.0525,
+         "lo": 0,
+         "hi": 0.1818
+        }
+       }
+      }
+     ],
+     "pumpReports": 26,
+     "pumpDays": 10,
+     "b1": false,
+     "b2": true,
+     "b3": false,
+     "pass": false
+    },
+    "cross": null,
+    "leaveOneOut": "n/a (one station)",
+    "persistenceOnly": true,
+    "pass": false,
+    "blocked": false
+   },
+   "SC-both": {
+    "own": {
+     "per": [
+      {
+       "guess": "old harness",
+       "M": {
+        "pumping": 26,
+        "caught": 0.7692,
+        "calm": 1906,
+        "falsePer100": 0.1574,
+        "days": 10
+       },
+       "R": {
+        "pumping": 26,
+        "caught": 0.7692,
+        "calm": 1906,
+        "falsePer100": 0.1049,
+        "days": 10
+       },
+       "boot": {
+        "caught": {
+         "d": 0,
+         "lo": -0.2,
+         "hi": 0.1333
+        },
+        "false": {
+         "d": -0.0525,
+         "lo": -0.1714,
+         "hi": 0
+        }
+       }
+      },
+      {
+       "guess": "ECMWF-heavy",
+       "M": {
+        "pumping": 26,
+        "caught": 0.6923,
+        "calm": 1906,
+        "falsePer100": 0.3673,
+        "days": 10
+       },
+       "R": {
+        "pumping": 26,
+        "caught": 0.7692,
+        "calm": 1906,
+        "falsePer100": 0.1049,
+        "days": 10
+       },
+       "boot": {
+        "caught": {
+         "d": 0.0769,
+         "lo": -0.1,
+         "hi": 0.25
+        },
+        "false": {
+         "d": -0.2623,
+         "lo": -0.6448,
+         "hi": 0
+        }
+       }
+      },
+      {
+       "guess": "mixed",
+       "M": {
+        "pumping": 26,
+        "caught": 0.5769,
+        "calm": 1906,
+        "falsePer100": 0.1049,
+        "days": 10
+       },
+       "R": {
+        "pumping": 26,
+        "caught": 0.7692,
+        "calm": 1906,
+        "falsePer100": 0.0525,
+        "days": 10
+       },
+       "boot": {
+        "caught": {
+         "d": 0.1923,
+         "lo": -0.0351,
+         "hi": 0.6897
+        },
+        "false": {
+         "d": -0.0525,
+         "lo": -0.1714,
+         "hi": 0
+        }
+       }
+      }
+     ],
+     "pumpReports": 26,
+     "pumpDays": 10,
+     "b1": false,
+     "b2": true,
+     "b3": false,
+     "pass": false
+    },
+    "cross": null,
+    "leaveOneOut": "n/a (one station)",
+    "persistenceOnly": true,
+    "pass": false,
+    "blocked": false
+   }
+  },
+  "Highveld": {
+   "ownStations": [
+    "FAOR",
+    "FAWB"
+   ],
+   "crossPairs": [],
+   "S": {
+    "own": {
+     "per": [
+      {
+       "guess": "old harness",
+       "M": {
+        "pumping": 105,
+        "caught": 0.6381,
+        "calm": 3569,
+        "falsePer100": 0.0841,
+        "days": 16
+       },
+       "R": {
+        "pumping": 105,
+        "caught": 0.8,
+        "calm": 3569,
+        "falsePer100": 0.1121,
+        "days": 16
+       },
+       "boot": {
+        "caught": {
+         "d": 0.1619,
+         "lo": 0.1134,
+         "hi": 0.3636
+        },
+        "false": {
+         "d": 0.028,
+         "lo": 0,
+         "hi": 0.0986
+        }
+       }
+      },
+      {
+       "guess": "ECMWF-heavy",
+       "M": {
+        "pumping": 105,
+        "caught": 0.5524,
+        "calm": 3569,
+        "falsePer100": 0.028,
+        "days": 16
+       },
+       "R": {
+        "pumping": 105,
+        "caught": 0.7714,
+        "calm": 3569,
+        "falsePer100": 0.056,
+        "days": 16
+       },
+       "boot": {
+        "caught": {
+         "d": 0.219,
+         "lo": 0.1667,
+         "hi": 0.375
+        },
+        "false": {
+         "d": 0.028,
+         "lo": 0,
+         "hi": 0.0986
+        }
+       }
+      },
+      {
+       "guess": "mixed",
+       "M": {
+        "pumping": 105,
+        "caught": 0.7048,
+        "calm": 3569,
+        "falsePer100": 0.0841,
+        "days": 16
+       },
+       "R": {
+        "pumping": 105,
+        "caught": 0.8095,
+        "calm": 3569,
+        "falsePer100": 0.1121,
+        "days": 16
+       },
+       "boot": {
+        "caught": {
+         "d": 0.1048,
+         "lo": 0.0641,
+         "hi": 0.3636
+        },
+        "false": {
+         "d": 0.028,
+         "lo": 0,
+         "hi": 0.0986
+        }
+       }
+      }
+     ],
+     "pumpReports": 105,
+     "pumpDays": 16,
+     "b1": true,
+     "b2": true,
+     "b3": true,
+     "pass": true
+    },
+    "cross": null,
+    "leaveOneOut": false,
+    "persistenceOnly": true,
+    "pass": false,
+    "blocked": false
+   },
+   "SC": {
+    "own": {
+     "per": [
+      {
+       "guess": "old harness",
+       "M": {
+        "pumping": 105,
+        "caught": 0.6381,
+        "calm": 3569,
+        "falsePer100": 0.0841,
+        "days": 16
+       },
+       "R": {
+        "pumping": 105,
+        "caught": 0.9143,
+        "calm": 3569,
+        "falsePer100": 0.1961,
+        "days": 16
+       },
+       "boot": {
+        "caught": {
+         "d": 0.2762,
+         "lo": 0.1667,
+         "hi": 0.4368
+        },
+        "false": {
+         "d": 0.1121,
+         "lo": 0,
+         "hi": 0.263
+        }
+       }
+      },
+      {
+       "guess": "ECMWF-heavy",
+       "M": {
+        "pumping": 105,
+        "caught": 0.5524,
+        "calm": 3569,
+        "falsePer100": 0.028,
+        "days": 16
+       },
+       "R": {
+        "pumping": 105,
+        "caught": 0.8857,
+        "calm": 3569,
+        "falsePer100": 0.0841,
+        "days": 16
+       },
+       "boot": {
+        "caught": {
+         "d": 0.3333,
+         "lo": 0.2211,
+         "hi": 0.4722
+        },
+        "false": {
+         "d": 0.056,
+         "lo": 0,
+         "hi": 0.1431
+        }
+       }
+      },
+      {
+       "guess": "mixed",
+       "M": {
+        "pumping": 105,
+        "caught": 0.7048,
+        "calm": 3569,
+        "falsePer100": 0.0841,
+        "days": 16
+       },
+       "R": {
+        "pumping": 105,
+        "caught": 0.9048,
+        "calm": 3569,
+        "falsePer100": 0.1401,
+        "days": 16
+       },
+       "boot": {
+        "caught": {
+         "d": 0.2,
+         "lo": 0.1437,
+         "hi": 0.3714
+        },
+        "false": {
+         "d": 0.056,
+         "lo": 0,
+         "hi": 0.1431
+        }
+       }
+      }
+     ],
+     "pumpReports": 105,
+     "pumpDays": 16,
+     "b1": true,
+     "b2": true,
+     "b3": true,
+     "pass": true
+    },
+    "cross": null,
+    "leaveOneOut": false,
+    "persistenceOnly": true,
+    "pass": false,
+    "blocked": false
+   },
+   "veto": {
+    "own": {
+     "per": [
+      {
+       "guess": "old harness",
+       "M": {
+        "pumping": 105,
+        "caught": 0.6381,
+        "calm": 3569,
+        "falsePer100": 0.0841,
+        "days": 16
+       },
+       "R": {
+        "pumping": 105,
+        "caught": 0.8,
+        "calm": 3569,
+        "falsePer100": 0.1121,
+        "days": 16
+       },
+       "boot": {
+        "caught": {
+         "d": 0.1619,
+         "lo": 0.1134,
+         "hi": 0.3636
+        },
+        "false": {
+         "d": 0.028,
+         "lo": 0,
+         "hi": 0.0986
+        }
+       }
+      },
+      {
+       "guess": "ECMWF-heavy",
+       "M": {
+        "pumping": 105,
+        "caught": 0.5524,
+        "calm": 3569,
+        "falsePer100": 0.028,
+        "days": 16
+       },
+       "R": {
+        "pumping": 105,
+        "caught": 0.7714,
+        "calm": 3569,
+        "falsePer100": 0.028,
+        "days": 16
+       },
+       "boot": {
+        "caught": {
+         "d": 0.219,
+         "lo": 0.1667,
+         "hi": 0.375
+        },
+        "false": {
+         "d": 0,
+         "lo": -0.0808,
+         "hi": 0.0943
+        }
+       }
+      },
+      {
+       "guess": "mixed",
+       "M": {
+        "pumping": 105,
+        "caught": 0.7048,
+        "calm": 3569,
+        "falsePer100": 0.0841,
+        "days": 16
+       },
+       "R": {
+        "pumping": 105,
+        "caught": 0.8095,
+        "calm": 3569,
+        "falsePer100": 0.0841,
+        "days": 16
+       },
+       "boot": {
+        "caught": {
+         "d": 0.1048,
+         "lo": 0.0641,
+         "hi": 0.3636
+        },
+        "false": {
+         "d": 0,
+         "lo": -0.0802,
+         "hi": 0.0832
+        }
+       }
+      }
+     ],
+     "pumpReports": 105,
+     "pumpDays": 16,
+     "b1": true,
+     "b2": true,
+     "b3": true,
+     "pass": true
+    },
+    "cross": null,
+    "leaveOneOut": false,
+    "persistenceOnly": true,
+    "pass": false,
+    "blocked": false
+   },
+   "SC-both": {
+    "own": {
+     "per": [
+      {
+       "guess": "old harness",
+       "M": {
+        "pumping": 105,
+        "caught": 0.6381,
+        "calm": 3569,
+        "falsePer100": 0.0841,
+        "days": 16
+       },
+       "R": {
+        "pumping": 105,
+        "caught": 0.8571,
+        "calm": 3569,
+        "falsePer100": 0.1121,
+        "days": 16
+       },
+       "boot": {
+        "caught": {
+         "d": 0.219,
+         "lo": 0.125,
+         "hi": 0.4103
+        },
+        "false": {
+         "d": 0.028,
+         "lo": -0.1385,
+         "hi": 0.1595
+        }
+       }
+      },
+      {
+       "guess": "ECMWF-heavy",
+       "M": {
+        "pumping": 105,
+        "caught": 0.5524,
+        "calm": 3569,
+        "falsePer100": 0.028,
+        "days": 16
+       },
+       "R": {
+        "pumping": 105,
+        "caught": 0.8476,
+        "calm": 3569,
+        "falsePer100": 0.0841,
+        "days": 16
+       },
+       "boot": {
+        "caught": {
+         "d": 0.2952,
+         "lo": 0.2211,
+         "hi": 0.4333
+        },
+        "false": {
+         "d": 0.056,
+         "lo": 0,
+         "hi": 0.1431
+        }
+       }
+      },
+      {
+       "guess": "mixed",
+       "M": {
+        "pumping": 105,
+        "caught": 0.7048,
+        "calm": 3569,
+        "falsePer100": 0.0841,
+        "days": 16
+       },
+       "R": {
+        "pumping": 105,
+        "caught": 0.8571,
+        "calm": 3569,
+        "falsePer100": 0.056,
+        "days": 16
+       },
+       "boot": {
+        "caught": {
+         "d": 0.1524,
+         "lo": 0.098,
+         "hi": 0.3636
+        },
+        "false": {
+         "d": -0.028,
+         "lo": -0.1346,
+         "hi": 0.0628
+        }
+       }
+      }
+     ],
+     "pumpReports": 105,
+     "pumpDays": 16,
+     "b1": true,
+     "b2": true,
+     "b3": true,
+     "pass": true
+    },
+    "cross": null,
+    "leaveOneOut": false,
+    "persistenceOnly": true,
+    "pass": false,
+    "blocked": false
+   }
+  },
+  "KZN coast": {
+   "ownStations": [
+    "FALE"
+   ],
+   "crossPairs": [],
+   "S": {
+    "own": {
+     "per": [
+      {
+       "guess": "old harness",
+       "M": {
+        "pumping": 68,
+        "caught": 0.8088,
+        "calm": 1739,
+        "falsePer100": 2.1852,
+        "days": 17
+       },
+       "R": {
+        "pumping": 68,
+        "caught": 0.8824,
+        "calm": 1739,
+        "falsePer100": 2.1852,
+        "days": 17
+       },
+       "boot": {
+        "caught": {
+         "d": 0.0735,
+         "lo": 0,
+         "hi": 0.2188
+        },
+        "false": {
+         "d": 0,
+         "lo": 0,
+         "hi": 0
+        }
+       }
+      },
+      {
+       "guess": "ECMWF-heavy",
+       "M": {
+        "pumping": 68,
+        "caught": 0.7647,
+        "calm": 1739,
+        "falsePer100": 1.3226,
+        "days": 17
+       },
+       "R": {
+        "pumping": 68,
+        "caught": 0.8382,
+        "calm": 1739,
+        "falsePer100": 1.3226,
+        "days": 17
+       },
+       "boot": {
+        "caught": {
+         "d": 0.0735,
+         "lo": 0,
+         "hi": 0.2188
+        },
+        "false": {
+         "d": 0,
+         "lo": 0,
+         "hi": 0
+        }
+       }
+      },
+      {
+       "guess": "mixed",
+       "M": {
+        "pumping": 68,
+        "caught": 0.7941,
+        "calm": 1739,
+        "falsePer100": 1.3801,
+        "days": 17
+       },
+       "R": {
+        "pumping": 68,
+        "caught": 0.8824,
+        "calm": 1739,
+        "falsePer100": 1.3801,
+        "days": 17
+       },
+       "boot": {
+        "caught": {
+         "d": 0.0882,
+         "lo": 0.0156,
+         "hi": 0.2222
+        },
+        "false": {
+         "d": 0,
+         "lo": 0,
+         "hi": 0
+        }
+       }
+      }
+     ],
+     "pumpReports": 68,
+     "pumpDays": 17,
+     "b1": false,
+     "b2": true,
+     "b3": true,
+     "pass": false
+    },
+    "cross": null,
+    "leaveOneOut": "n/a (one station)",
+    "persistenceOnly": true,
+    "pass": false,
+    "blocked": false
+   },
+   "SC": {
+    "own": {
+     "per": [
+      {
+       "guess": "old harness",
+       "M": {
+        "pumping": 68,
+        "caught": 0.8088,
+        "calm": 1739,
+        "falsePer100": 2.1852,
+        "days": 17
+       },
+       "R": {
+        "pumping": 68,
+        "caught": 0.9118,
+        "calm": 1739,
+        "falsePer100": 2.4152,
+        "days": 17
+       },
+       "boot": {
+        "caught": {
+         "d": 0.1029,
+         "lo": 0.0244,
+         "hi": 0.2581
+        },
+        "false": {
+         "d": 0.23,
+         "lo": 0,
+         "hi": 0.5316
+        }
+       }
+      },
+      {
+       "guess": "ECMWF-heavy",
+       "M": {
+        "pumping": 68,
+        "caught": 0.7647,
+        "calm": 1739,
+        "falsePer100": 1.3226,
+        "days": 17
+       },
+       "R": {
+        "pumping": 68,
+        "caught": 0.8676,
+        "calm": 1739,
+        "falsePer100": 1.4951,
+        "days": 17
+       },
+       "boot": {
+        "caught": {
+         "d": 0.1029,
+         "lo": 0.0244,
+         "hi": 0.2581
+        },
+        "false": {
+         "d": 0.1725,
+         "lo": 0,
+         "hi": 0.4661
+        }
+       }
+      },
+      {
+       "guess": "mixed",
+       "M": {
+        "pumping": 68,
+        "caught": 0.7941,
+        "calm": 1739,
+        "falsePer100": 1.3801,
+        "days": 17
+       },
+       "R": {
+        "pumping": 68,
+        "caught": 0.9118,
+        "calm": 1739,
+        "falsePer100": 1.8976,
+        "days": 17
+       },
+       "boot": {
+        "caught": {
+         "d": 0.1176,
+         "lo": 0.0395,
+         "hi": 0.2679
+        },
+        "false": {
+         "d": 0.5175,
+         "lo": 0.1007,
+         "hi": 1.0576
+        }
+       }
+      }
+     ],
+     "pumpReports": 68,
+     "pumpDays": 17,
+     "b1": true,
+     "b2": true,
+     "b3": true,
+     "pass": true
+    },
+    "cross": null,
+    "leaveOneOut": "n/a (one station)",
+    "persistenceOnly": true,
+    "pass": true,
+    "blocked": false
+   },
+   "veto": {
+    "own": {
+     "per": [
+      {
+       "guess": "old harness",
+       "M": {
+        "pumping": 68,
+        "caught": 0.8088,
+        "calm": 1739,
+        "falsePer100": 2.1852,
+        "days": 17
+       },
+       "R": {
+        "pumping": 68,
+        "caught": 0.8676,
+        "calm": 1739,
+        "falsePer100": 1.0926,
+        "days": 17
+       },
+       "boot": {
+        "caught": {
+         "d": 0.0588,
+         "lo": -0.0164,
+         "hi": 0.2069
+        },
+        "false": {
+         "d": -1.0926,
+         "lo": -1.8801,
+         "hi": -0.4034
+        }
+       }
+      },
+      {
+       "guess": "ECMWF-heavy",
+       "M": {
+        "pumping": 68,
+        "caught": 0.7647,
+        "calm": 1739,
+        "falsePer100": 1.3226,
+        "days": 17
+       },
+       "R": {
+        "pumping": 68,
+        "caught": 0.8382,
+        "calm": 1739,
+        "falsePer100": 0.6901,
+        "days": 17
+       },
+       "boot": {
+        "caught": {
+         "d": 0.0735,
+         "lo": 0,
+         "hi": 0.2188
+        },
+        "false": {
+         "d": -0.6325,
+         "lo": -1.1432,
+         "hi": -0.2212
+        }
+       }
+      },
+      {
+       "guess": "mixed",
+       "M": {
+        "pumping": 68,
+        "caught": 0.7941,
+        "calm": 1739,
+        "falsePer100": 1.3801,
+        "days": 17
+       },
+       "R": {
+        "pumping": 68,
+        "caught": 0.8676,
+        "calm": 1739,
+        "falsePer100": 0.9201,
+        "days": 17
+       },
+       "boot": {
+        "caught": {
+         "d": 0.0735,
+         "lo": 0,
+         "hi": 0.2167
+        },
+        "false": {
+         "d": -0.46,
+         "lo": -1.0193,
+         "hi": -0.0553
+        }
+       }
+      }
+     ],
+     "pumpReports": 68,
+     "pumpDays": 17,
+     "b1": false,
+     "b2": true,
+     "b3": true,
+     "pass": false
+    },
+    "cross": null,
+    "leaveOneOut": "n/a (one station)",
+    "persistenceOnly": true,
+    "pass": false,
+    "blocked": false
+   },
+   "SC-both": {
+    "own": {
+     "per": [
+      {
+       "guess": "old harness",
+       "M": {
+        "pumping": 68,
+        "caught": 0.8088,
+        "calm": 1739,
+        "falsePer100": 2.1852,
+        "days": 17
+       },
+       "R": {
+        "pumping": 68,
+        "caught": 0.9118,
+        "calm": 1739,
+        "falsePer100": 2.3002,
+        "days": 17
+       },
+       "boot": {
+        "caught": {
+         "d": 0.1029,
+         "lo": 0.0244,
+         "hi": 0.2581
+        },
+        "false": {
+         "d": 0.115,
+         "lo": -0.1198,
+         "hi": 0.4462
+        }
+       }
+      },
+      {
+       "guess": "ECMWF-heavy",
+       "M": {
+        "pumping": 68,
+        "caught": 0.7647,
+        "calm": 1739,
+        "falsePer100": 1.3226,
+        "days": 17
+       },
+       "R": {
+        "pumping": 68,
+        "caught": 0.8676,
+        "calm": 1739,
+        "falsePer100": 1.3801,
+        "days": 17
+       },
+       "boot": {
+        "caught": {
+         "d": 0.1029,
+         "lo": 0.0244,
+         "hi": 0.2581
+        },
+        "false": {
+         "d": 0.0575,
+         "lo": -0.2313,
+         "hi": 0.3889
+        }
+       }
+      },
+      {
+       "guess": "mixed",
+       "M": {
+        "pumping": 68,
+        "caught": 0.7941,
+        "calm": 1739,
+        "falsePer100": 1.3801,
+        "days": 17
+       },
+       "R": {
+        "pumping": 68,
+        "caught": 0.9118,
+        "calm": 1739,
+        "falsePer100": 1.8401,
+        "days": 17
+       },
+       "boot": {
+        "caught": {
+         "d": 0.1176,
+         "lo": 0.0395,
+         "hi": 0.2679
+        },
+        "false": {
+         "d": 0.46,
+         "lo": 0,
+         "hi": 1.005
+        }
+       }
+      }
+     ],
+     "pumpReports": 68,
+     "pumpDays": 17,
+     "b1": true,
+     "b2": true,
+     "b3": true,
+     "pass": true
+    },
+    "cross": null,
+    "leaveOneOut": "n/a (one station)",
+    "persistenceOnly": true,
+    "pass": true,
+    "blocked": false
+   }
+  },
+  "Limpopo": {
+   "ownStations": [
+    "FAPP"
+   ],
+   "crossPairs": [],
+   "S": {
+    "own": {
+     "per": [
+      {
+       "guess": "old harness",
+       "M": {
+        "pumping": 24,
+        "caught": 0.7917,
+        "calm": 1913,
+        "falsePer100": 0.1568,
+        "days": 8
+       },
+       "R": {
+        "pumping": 24,
+        "caught": 0.7917,
+        "calm": 1913,
+        "falsePer100": 0.2091,
+        "days": 8
+       },
+       "boot": {
+        "caught": {
+         "d": 0,
+         "lo": 0,
+         "hi": 0
+        },
+        "false": {
+         "d": 0.0523,
+         "lo": 0,
+         "hi": 0.1647
+        }
+       }
+      },
+      {
+       "guess": "ECMWF-heavy",
+       "M": {
+        "pumping": 24,
+        "caught": 0.6667,
+        "calm": 1913,
+        "falsePer100": 0.0523,
+        "days": 8
+       },
+       "R": {
+        "pumping": 24,
+        "caught": 0.75,
+        "calm": 1913,
+        "falsePer100": 0.1045,
+        "days": 8
+       },
+       "boot": {
+        "caught": {
+         "d": 0.0833,
+         "lo": 0,
+         "hi": 0.3333
+        },
+        "false": {
+         "d": 0.0523,
+         "lo": 0,
+         "hi": 0.1647
+        }
+       }
+      },
+      {
+       "guess": "mixed",
+       "M": {
+        "pumping": 24,
+        "caught": 0.7917,
+        "calm": 1913,
+        "falsePer100": 0.2614,
+        "days": 8
+       },
+       "R": {
+        "pumping": 24,
+        "caught": 0.7917,
+        "calm": 1913,
+        "falsePer100": 0.3136,
+        "days": 8
+       },
+       "boot": {
+        "caught": {
+         "d": 0,
+         "lo": 0,
+         "hi": 0
+        },
+        "false": {
+         "d": 0.0523,
+         "lo": 0,
+         "hi": 0.1647
+        }
+       }
+      }
+     ],
+     "pumpReports": 24,
+     "pumpDays": 8,
+     "b1": false,
+     "b2": true,
+     "b3": false,
+     "pass": false
+    },
+    "cross": null,
+    "leaveOneOut": "n/a (one station)",
+    "persistenceOnly": true,
+    "pass": false,
+    "blocked": false
+   },
+   "SC": {
+    "own": {
+     "per": [
+      {
+       "guess": "old harness",
+       "M": {
+        "pumping": 24,
+        "caught": 0.7917,
+        "calm": 1913,
+        "falsePer100": 0.1568,
+        "days": 8
+       },
+       "R": {
+        "pumping": 24,
+        "caught": 0.875,
+        "calm": 1913,
+        "falsePer100": 0.2614,
+        "days": 8
+       },
+       "boot": {
+        "caught": {
+         "d": 0.0833,
+         "lo": 0,
+         "hi": 0.3333
+        },
+        "false": {
+         "d": 0.1045,
+         "lo": 0,
+         "hi": 0.2632
+        }
+       }
+      },
+      {
+       "guess": "ECMWF-heavy",
+       "M": {
+        "pumping": 24,
+        "caught": 0.6667,
+        "calm": 1913,
+        "falsePer100": 0.0523,
+        "days": 8
+       },
+       "R": {
+        "pumping": 24,
+        "caught": 0.8333,
+        "calm": 1913,
+        "falsePer100": 0.1045,
+        "days": 8
+       },
+       "boot": {
+        "caught": {
+         "d": 0.1667,
+         "lo": 0,
+         "hi": 0.6667
+        },
+        "false": {
+         "d": 0.0523,
+         "lo": 0,
+         "hi": 0.1647
+        }
+       }
+      },
+      {
+       "guess": "mixed",
+       "M": {
+        "pumping": 24,
+        "caught": 0.7917,
+        "calm": 1913,
+        "falsePer100": 0.2614,
+        "days": 8
+       },
+       "R": {
+        "pumping": 24,
+        "caught": 0.875,
+        "calm": 1913,
+        "falsePer100": 0.3136,
+        "days": 8
+       },
+       "boot": {
+        "caught": {
+         "d": 0.0833,
+         "lo": 0,
+         "hi": 0.3333
+        },
+        "false": {
+         "d": 0.0523,
+         "lo": 0,
+         "hi": 0.1647
+        }
+       }
+      }
+     ],
+     "pumpReports": 24,
+     "pumpDays": 8,
+     "b1": false,
+     "b2": true,
+     "b3": false,
+     "pass": false
+    },
+    "cross": null,
+    "leaveOneOut": "n/a (one station)",
+    "persistenceOnly": true,
+    "pass": false,
+    "blocked": false
+   },
+   "veto": {
+    "own": {
+     "per": [
+      {
+       "guess": "old harness",
+       "M": {
+        "pumping": 24,
+        "caught": 0.7917,
+        "calm": 1913,
+        "falsePer100": 0.1568,
+        "days": 8
+       },
+       "R": {
+        "pumping": 24,
+        "caught": 0.7917,
+        "calm": 1913,
+        "falsePer100": 0.2091,
+        "days": 8
+       },
+       "boot": {
+        "caught": {
+         "d": 0,
+         "lo": 0,
+         "hi": 0
+        },
+        "false": {
+         "d": 0.0523,
+         "lo": 0,
+         "hi": 0.1647
+        }
+       }
+      },
+      {
+       "guess": "ECMWF-heavy",
+       "M": {
+        "pumping": 24,
+        "caught": 0.6667,
+        "calm": 1913,
+        "falsePer100": 0.0523,
+        "days": 8
+       },
+       "R": {
+        "pumping": 24,
+        "caught": 0.75,
+        "calm": 1913,
+        "falsePer100": 0.1045,
+        "days": 8
+       },
+       "boot": {
+        "caught": {
+         "d": 0.0833,
+         "lo": 0,
+         "hi": 0.3333
+        },
+        "false": {
+         "d": 0.0523,
+         "lo": 0,
+         "hi": 0.1647
+        }
+       }
+      },
+      {
+       "guess": "mixed",
+       "M": {
+        "pumping": 24,
+        "caught": 0.7917,
+        "calm": 1913,
+        "falsePer100": 0.2614,
+        "days": 8
+       },
+       "R": {
+        "pumping": 24,
+        "caught": 0.7917,
+        "calm": 1913,
+        "falsePer100": 0.2614,
+        "days": 8
+       },
+       "boot": {
+        "caught": {
+         "d": 0,
+         "lo": 0,
+         "hi": 0
+        },
+        "false": {
+         "d": 0,
+         "lo": -0.1511,
+         "hi": 0.1517
+        }
+       }
+      }
+     ],
+     "pumpReports": 24,
+     "pumpDays": 8,
+     "b1": false,
+     "b2": true,
+     "b3": false,
+     "pass": false
+    },
+    "cross": null,
+    "leaveOneOut": "n/a (one station)",
+    "persistenceOnly": true,
+    "pass": false,
+    "blocked": false
+   },
+   "SC-both": {
+    "own": {
+     "per": [
+      {
+       "guess": "old harness",
+       "M": {
+        "pumping": 24,
+        "caught": 0.7917,
+        "calm": 1913,
+        "falsePer100": 0.1568,
+        "days": 8
+       },
+       "R": {
+        "pumping": 24,
+        "caught": 0.7917,
+        "calm": 1913,
+        "falsePer100": 0.2091,
+        "days": 8
+       },
+       "boot": {
+        "caught": {
+         "d": 0,
+         "lo": -0.1818,
+         "hi": 0.3333
+        },
+        "false": {
+         "d": 0.0523,
+         "lo": 0,
+         "hi": 0.1647
+        }
+       }
+      },
+      {
+       "guess": "ECMWF-heavy",
+       "M": {
+        "pumping": 24,
+        "caught": 0.6667,
+        "calm": 1913,
+        "falsePer100": 0.0523,
+        "days": 8
+       },
+       "R": {
+        "pumping": 24,
+        "caught": 0.7917,
+        "calm": 1913,
+        "falsePer100": 0.1045,
+        "days": 8
+       },
+       "boot": {
+        "caught": {
+         "d": 0.125,
+         "lo": 0,
+         "hi": 0.6667
+        },
+        "false": {
+         "d": 0.0523,
+         "lo": 0,
+         "hi": 0.1647
+        }
+       }
+      },
+      {
+       "guess": "mixed",
+       "M": {
+        "pumping": 24,
+        "caught": 0.7917,
+        "calm": 1913,
+        "falsePer100": 0.2614,
+        "days": 8
+       },
+       "R": {
+        "pumping": 24,
+        "caught": 0.7917,
+        "calm": 1913,
+        "falsePer100": 0.2091,
+        "days": 8
+       },
+       "boot": {
+        "caught": {
+         "d": 0,
+         "lo": -0.1818,
+         "hi": 0.3333
+        },
+        "false": {
+         "d": -0.0523,
+         "lo": -0.3069,
+         "hi": 0.1496
+        }
+       }
+      }
+     ],
+     "pumpReports": 24,
+     "pumpDays": 8,
+     "b1": false,
+     "b2": true,
+     "b3": false,
+     "pass": false
+    },
+    "cross": null,
+    "leaveOneOut": "n/a (one station)",
+    "persistenceOnly": true,
+    "pass": false,
+    "blocked": false
+   }
+  },
+  "Lowveld": {
+   "ownStations": [
+    "FAHS",
+    "FAKN"
+   ],
+   "crossPairs": [],
+   "S": {
+    "own": {
+     "per": [
+      {
+       "guess": "old harness",
+       "M": {
+        "pumping": 27,
+        "caught": 1,
+        "calm": 3848.5,
+        "falsePer100": 1.0394,
+        "days": 5
+       },
+       "R": {
+        "pumping": 27,
+        "caught": 1,
+        "calm": 3848.5,
+        "falsePer100": 1.0394,
+        "days": 5
+       },
+       "boot": {
+        "caught": {
+         "d": 0,
+         "lo": 0,
+         "hi": 0
+        },
+        "false": {
+         "d": 0,
+         "lo": 0,
+         "hi": 0
+        }
+       }
+      },
+      {
+       "guess": "ECMWF-heavy",
+       "M": {
+        "pumping": 27,
+        "caught": 1,
+        "calm": 3848.5,
+        "falsePer100": 2.0787,
+        "days": 5
+       },
+       "R": {
+        "pumping": 27,
+        "caught": 1,
+        "calm": 3848.5,
+        "falsePer100": 2.0787,
+        "days": 5
+       },
+       "boot": {
+        "caught": {
+         "d": 0,
+         "lo": 0,
+         "hi": 0
+        },
+        "false": {
+         "d": 0,
+         "lo": 0,
+         "hi": 0
+        }
+       }
+      },
+      {
+       "guess": "mixed",
+       "M": {
+        "pumping": 27,
+        "caught": 1,
+        "calm": 3848.5,
+        "falsePer100": 1.1693,
+        "days": 5
+       },
+       "R": {
+        "pumping": 27,
+        "caught": 1,
+        "calm": 3848.5,
+        "falsePer100": 1.1693,
+        "days": 5
+       },
+       "boot": {
+        "caught": {
+         "d": 0,
+         "lo": 0,
+         "hi": 0
+        },
+        "false": {
+         "d": 0,
+         "lo": 0,
+         "hi": 0
+        }
+       }
+      }
+     ],
+     "pumpReports": 27,
+     "pumpDays": 5,
+     "b1": false,
+     "b2": true,
+     "b3": false,
+     "pass": false
+    },
+    "cross": null,
+    "leaveOneOut": false,
+    "persistenceOnly": true,
+    "pass": false,
+    "blocked": false
+   },
+   "SC": {
+    "own": {
+     "per": [
+      {
+       "guess": "old harness",
+       "M": {
+        "pumping": 27,
+        "caught": 1,
+        "calm": 3848.5,
+        "falsePer100": 1.0394,
+        "days": 5
+       },
+       "R": {
+        "pumping": 27,
+        "caught": 1,
+        "calm": 3848.5,
+        "falsePer100": 1.0394,
+        "days": 5
+       },
+       "boot": {
+        "caught": {
+         "d": 0,
+         "lo": 0,
+         "hi": 0
+        },
+        "false": {
+         "d": 0,
+         "lo": 0,
+         "hi": 0
+        }
+       }
+      },
+      {
+       "guess": "ECMWF-heavy",
+       "M": {
+        "pumping": 27,
+        "caught": 1,
+        "calm": 3848.5,
+        "falsePer100": 2.0787,
+        "days": 5
+       },
+       "R": {
+        "pumping": 27,
+        "caught": 1,
+        "calm": 3848.5,
+        "falsePer100": 2.0787,
+        "days": 5
+       },
+       "boot": {
+        "caught": {
+         "d": 0,
+         "lo": 0,
+         "hi": 0
+        },
+        "false": {
+         "d": 0,
+         "lo": 0,
+         "hi": 0
+        }
+       }
+      },
+      {
+       "guess": "mixed",
+       "M": {
+        "pumping": 27,
+        "caught": 1,
+        "calm": 3848.5,
+        "falsePer100": 1.1693,
+        "days": 5
+       },
+       "R": {
+        "pumping": 27,
+        "caught": 1,
+        "calm": 3848.5,
+        "falsePer100": 1.1693,
+        "days": 5
+       },
+       "boot": {
+        "caught": {
+         "d": 0,
+         "lo": 0,
+         "hi": 0
+        },
+        "false": {
+         "d": 0,
+         "lo": 0,
+         "hi": 0
+        }
+       }
+      }
+     ],
+     "pumpReports": 27,
+     "pumpDays": 5,
+     "b1": false,
+     "b2": true,
+     "b3": false,
+     "pass": false
+    },
+    "cross": null,
+    "leaveOneOut": false,
+    "persistenceOnly": true,
+    "pass": false,
+    "blocked": false
+   },
+   "veto": {
+    "own": {
+     "per": [
+      {
+       "guess": "old harness",
+       "M": {
+        "pumping": 27,
+        "caught": 1,
+        "calm": 3848.5,
+        "falsePer100": 1.0394,
+        "days": 5
+       },
+       "R": {
+        "pumping": 27,
+        "caught": 1,
+        "calm": 3848.5,
+        "falsePer100": 0.2598,
+        "days": 5
+       },
+       "boot": {
+        "caught": {
+         "d": 0,
+         "lo": 0,
+         "hi": 0
+        },
+        "false": {
+         "d": -0.7795,
+         "lo": -1.7346,
+         "hi": -0.0577
+        }
+       }
+      },
+      {
+       "guess": "ECMWF-heavy",
+       "M": {
+        "pumping": 27,
+        "caught": 1,
+        "calm": 3848.5,
+        "falsePer100": 2.0787,
+        "days": 5
+       },
+       "R": {
+        "pumping": 27,
+        "caught": 1,
+        "calm": 3848.5,
+        "falsePer100": 0.4417,
+        "days": 5
+       },
+       "boot": {
+        "caught": {
+         "d": 0,
+         "lo": 0,
+         "hi": 0
+        },
+        "false": {
+         "d": -1.637,
+         "lo": -3.5129,
+         "hi": -0.286
+        }
+       }
+      },
+      {
+       "guess": "mixed",
+       "M": {
+        "pumping": 27,
+        "caught": 1,
+        "calm": 3848.5,
+        "falsePer100": 1.1693,
+        "days": 5
+       },
+       "R": {
+        "pumping": 27,
+        "caught": 1,
+        "calm": 3848.5,
+        "falsePer100": 0.2858,
+        "days": 5
+       },
+       "boot": {
+        "caught": {
+         "d": 0,
+         "lo": 0,
+         "hi": 0
+        },
+        "false": {
+         "d": -0.8835,
+         "lo": -1.8506,
+         "hi": -0.1573
+        }
+       }
+      }
+     ],
+     "pumpReports": 27,
+     "pumpDays": 5,
+     "b1": false,
+     "b2": true,
+     "b3": false,
+     "pass": false
+    },
+    "cross": null,
+    "leaveOneOut": false,
+    "persistenceOnly": true,
+    "pass": false,
+    "blocked": false
+   },
+   "SC-both": {
+    "own": {
+     "per": [
+      {
+       "guess": "old harness",
+       "M": {
+        "pumping": 27,
+        "caught": 1,
+        "calm": 3848.5,
+        "falsePer100": 1.0394,
+        "days": 5
+       },
+       "R": {
+        "pumping": 27,
+        "caught": 0.7778,
+        "calm": 3848.5,
+        "falsePer100": 0.4417,
+        "days": 5
+       },
+       "boot": {
+        "caught": {
+         "d": -0.2222,
+         "lo": -0.25,
+         "hi": -0.1818
+        },
+        "false": {
+         "d": -0.5976,
+         "lo": -1.3732,
+         "hi": 0
+        }
+       }
+      },
+      {
+       "guess": "ECMWF-heavy",
+       "M": {
+        "pumping": 27,
+        "caught": 1,
+        "calm": 3848.5,
+        "falsePer100": 2.0787,
+        "days": 5
+       },
+       "R": {
+        "pumping": 27,
+        "caught": 0.7778,
+        "calm": 3848.5,
+        "falsePer100": 0.4417,
+        "days": 5
+       },
+       "boot": {
+        "caught": {
+         "d": -0.2222,
+         "lo": -0.25,
+         "hi": -0.1818
+        },
+        "false": {
+         "d": -1.637,
+         "lo": -3.5678,
+         "hi": -0.2484
+        }
+       }
+      },
+      {
+       "guess": "mixed",
+       "M": {
+        "pumping": 27,
+        "caught": 1,
+        "calm": 3848.5,
+        "falsePer100": 1.1693,
+        "days": 5
+       },
+       "R": {
+        "pumping": 27,
+        "caught": 0.7778,
+        "calm": 3848.5,
+        "falsePer100": 0.2858,
+        "days": 5
+       },
+       "boot": {
+        "caught": {
+         "d": -0.2222,
+         "lo": -0.25,
+         "hi": -0.1818
+        },
+        "false": {
+         "d": -0.8835,
+         "lo": -1.8857,
+         "hi": -0.1488
+        }
+       }
+      }
+     ],
+     "pumpReports": 27,
+     "pumpDays": 5,
+     "b1": false,
+     "b2": true,
+     "b3": false,
+     "pass": false
+    },
+    "cross": null,
+    "leaveOneOut": false,
+    "persistenceOnly": true,
+    "pass": false,
+    "blocked": false
+   }
+  },
+  "North West": {
+   "ownStations": [
+    "FAMM"
+   ],
+   "crossPairs": [],
+   "S": {
+    "own": {
+     "per": [
+      {
+       "guess": "old harness",
+       "M": {
+        "pumping": 95,
+        "caught": 0.8421,
+        "calm": 1686,
+        "falsePer100": 0.4745,
+        "days": 18
+       },
+       "R": {
+        "pumping": 95,
+        "caught": 0.9158,
+        "calm": 1686,
+        "falsePer100": 0.5338,
+        "days": 18
+       },
+       "boot": {
+        "caught": {
+         "d": 0.0737,
+         "lo": 0.0263,
+         "hi": 0.1667
+        },
+        "false": {
+         "d": 0.0593,
+         "lo": 0,
+         "hi": 0.2096
+        }
+       }
+      },
+      {
+       "guess": "ECMWF-heavy",
+       "M": {
+        "pumping": 95,
+        "caught": 0.8105,
+        "calm": 1686,
+        "falsePer100": 0.089,
+        "days": 18
+       },
+       "R": {
+        "pumping": 95,
+        "caught": 0.8632,
+        "calm": 1686,
+        "falsePer100": 0.1483,
+        "days": 18
+       },
+       "boot": {
+        "caught": {
+         "d": 0.0526,
+         "lo": 0.0263,
+         "hi": 0.0714
+        },
+        "false": {
+         "d": 0.0593,
+         "lo": 0,
+         "hi": 0.2096
+        }
+       }
+      },
+      {
+       "guess": "mixed",
+       "M": {
+        "pumping": 95,
+        "caught": 0.9263,
+        "calm": 1686,
+        "falsePer100": 0.5338,
+        "days": 18
+       },
+       "R": {
+        "pumping": 95,
+        "caught": 0.9474,
+        "calm": 1686,
+        "falsePer100": 0.5931,
+        "days": 18
+       },
+       "boot": {
+        "caught": {
+         "d": 0.0211,
+         "lo": 0,
+         "hi": 0.0645
+        },
+        "false": {
+         "d": 0.0593,
+         "lo": 0,
+         "hi": 0.2096
+        }
+       }
+      }
+     ],
+     "pumpReports": 95,
+     "pumpDays": 18,
+     "b1": false,
+     "b2": true,
+     "b3": true,
+     "pass": false
+    },
+    "cross": null,
+    "leaveOneOut": "n/a (one station)",
+    "persistenceOnly": true,
+    "pass": false,
+    "blocked": false
+   },
+   "SC": {
+    "own": {
+     "per": [
+      {
+       "guess": "old harness",
+       "M": {
+        "pumping": 95,
+        "caught": 0.8421,
+        "calm": 1686,
+        "falsePer100": 0.4745,
+        "days": 18
+       },
+       "R": {
+        "pumping": 95,
+        "caught": 0.9579,
+        "calm": 1686,
+        "falsePer100": 0.7711,
+        "days": 18
+       },
+       "boot": {
+        "caught": {
+         "d": 0.1158,
+         "lo": 0.0506,
+         "hi": 0.2951
+        },
+        "false": {
+         "d": 0.2966,
+         "lo": 0,
+         "hi": 0.7204
+        }
+       }
+      },
+      {
+       "guess": "ECMWF-heavy",
+       "M": {
+        "pumping": 95,
+        "caught": 0.8105,
+        "calm": 1686,
+        "falsePer100": 0.089,
+        "days": 18
+       },
+       "R": {
+        "pumping": 95,
+        "caught": 0.9368,
+        "calm": 1686,
+        "falsePer100": 0.2669,
+        "days": 18
+       },
+       "boot": {
+        "caught": {
+         "d": 0.1263,
+         "lo": 0.0769,
+         "hi": 0.2222
+        },
+        "false": {
+         "d": 0.1779,
+         "lo": 0,
+         "hi": 0.4189
+        }
+       }
+      },
+      {
+       "guess": "mixed",
+       "M": {
+        "pumping": 95,
+        "caught": 0.9263,
+        "calm": 1686,
+        "falsePer100": 0.5338,
+        "days": 18
+       },
+       "R": {
+        "pumping": 95,
+        "caught": 0.9789,
+        "calm": 1686,
+        "falsePer100": 0.7711,
+        "days": 18
+       },
+       "boot": {
+        "caught": {
+         "d": 0.0526,
+         "lo": 0,
+         "hi": 0.1212
+        },
+        "false": {
+         "d": 0.2372,
+         "lo": 0,
+         "hi": 0.5992
+        }
+       }
+      }
+     ],
+     "pumpReports": 95,
+     "pumpDays": 18,
+     "b1": false,
+     "b2": true,
+     "b3": true,
+     "pass": false
+    },
+    "cross": null,
+    "leaveOneOut": "n/a (one station)",
+    "persistenceOnly": true,
+    "pass": false,
+    "blocked": false
+   },
+   "veto": {
+    "own": {
+     "per": [
+      {
+       "guess": "old harness",
+       "M": {
+        "pumping": 95,
+        "caught": 0.8421,
+        "calm": 1686,
+        "falsePer100": 0.4745,
+        "days": 18
+       },
+       "R": {
+        "pumping": 95,
+        "caught": 0.8842,
+        "calm": 1686,
+        "falsePer100": 0.2372,
+        "days": 18
+       },
+       "boot": {
+        "caught": {
+         "d": 0.0421,
+         "lo": -0.0182,
+         "hi": 0.1639
+        },
+        "false": {
+         "d": -0.2372,
+         "lo": -0.6893,
+         "hi": 0
+        }
+       }
+      },
+      {
+       "guess": "ECMWF-heavy",
+       "M": {
+        "pumping": 95,
+        "caught": 0.8105,
+        "calm": 1686,
+        "falsePer100": 0.089,
+        "days": 18
+       },
+       "R": {
+        "pumping": 95,
+        "caught": 0.8316,
+        "calm": 1686,
+        "falsePer100": 0.1483,
+        "days": 18
+       },
+       "boot": {
+        "caught": {
+         "d": 0.0211,
+         "lo": -0.0183,
+         "hi": 0.0667
+        },
+        "false": {
+         "d": 0.0593,
+         "lo": 0,
+         "hi": 0.2096
+        }
+       }
+      },
+      {
+       "guess": "mixed",
+       "M": {
+        "pumping": 95,
+        "caught": 0.9263,
+        "calm": 1686,
+        "falsePer100": 0.5338,
+        "days": 18
+       },
+       "R": {
+        "pumping": 95,
+        "caught": 0.9158,
+        "calm": 1686,
+        "falsePer100": 0.2966,
+        "days": 18
+       },
+       "boot": {
+        "caught": {
+         "d": -0.0105,
+         "lo": -0.0667,
+         "hi": 0.0645
+        },
+        "false": {
+         "d": -0.2372,
+         "lo": -0.6893,
+         "hi": 0
+        }
+       }
+      }
+     ],
+     "pumpReports": 95,
+     "pumpDays": 18,
+     "b1": false,
+     "b2": true,
+     "b3": true,
+     "pass": false
+    },
+    "cross": null,
+    "leaveOneOut": "n/a (one station)",
+    "persistenceOnly": true,
+    "pass": false,
+    "blocked": false
+   },
+   "SC-both": {
+    "own": {
+     "per": [
+      {
+       "guess": "old harness",
+       "M": {
+        "pumping": 95,
+        "caught": 0.8421,
+        "calm": 1686,
+        "falsePer100": 0.4745,
+        "days": 18
+       },
+       "R": {
+        "pumping": 95,
+        "caught": 0.9263,
+        "calm": 1686,
+        "falsePer100": 0.7711,
+        "days": 18
+       },
+       "boot": {
+        "caught": {
+         "d": 0.0842,
+         "lo": 0,
+         "hi": 0.2571
+        },
+        "false": {
+         "d": 0.2966,
+         "lo": 0,
+         "hi": 0.7204
+        }
+       }
+      },
+      {
+       "guess": "ECMWF-heavy",
+       "M": {
+        "pumping": 95,
+        "caught": 0.8105,
+        "calm": 1686,
+        "falsePer100": 0.089,
+        "days": 18
+       },
+       "R": {
+        "pumping": 95,
+        "caught": 0.8632,
+        "calm": 1686,
+        "falsePer100": 0.2076,
+        "days": 18
+       },
+       "boot": {
+        "caught": {
+         "d": 0.0526,
+         "lo": 0,
+         "hi": 0.2083
+        },
+        "false": {
+         "d": 0.1186,
+         "lo": 0,
+         "hi": 0.3289
+        }
+       }
+      },
+      {
+       "guess": "mixed",
+       "M": {
+        "pumping": 95,
+        "caught": 0.9263,
+        "calm": 1686,
+        "falsePer100": 0.5338,
+        "days": 18
+       },
+       "R": {
+        "pumping": 95,
+        "caught": 0.9368,
+        "calm": 1686,
+        "falsePer100": 0.7711,
+        "days": 18
+       },
+       "boot": {
+        "caught": {
+         "d": 0.0105,
+         "lo": -0.0577,
+         "hi": 0.0833
+        },
+        "false": {
+         "d": 0.2372,
+         "lo": 0,
+         "hi": 0.5992
+        }
+       }
+      }
+     ],
+     "pumpReports": 95,
+     "pumpDays": 18,
+     "b1": false,
+     "b2": true,
+     "b3": true,
+     "pass": false
+    },
+    "cross": null,
+    "leaveOneOut": "n/a (one station)",
+    "persistenceOnly": true,
+    "pass": false,
+    "blocked": false
+   }
+  },
+  "Northern Cape": {
+   "ownStations": [
+    "FAKM",
+    "FAUP"
+   ],
+   "crossPairs": [],
+   "S": {
+    "own": {
+     "per": [
+      {
+       "guess": "old harness",
+       "M": {
+        "pumping": 103,
+        "caught": 0.8447,
+        "calm": 3603,
+        "falsePer100": 1.693,
+        "days": 19
+       },
+       "R": {
+        "pumping": 103,
+        "caught": 0.9126,
+        "calm": 3603,
+        "falsePer100": 1.7208,
+        "days": 19
+       },
+       "boot": {
+        "caught": {
+         "d": 0.068,
+         "lo": 0.025,
+         "hi": 0.1111
+        },
+        "false": {
+         "d": 0.0278,
+         "lo": 0,
+         "hi": 0.0912
+        }
+       }
+      },
+      {
+       "guess": "ECMWF-heavy",
+       "M": {
+        "pumping": 103,
+        "caught": 0.6796,
+        "calm": 3603,
+        "falsePer100": 1.1657,
+        "days": 19
+       },
+       "R": {
+        "pumping": 103,
+        "caught": 0.8155,
+        "calm": 3603,
+        "falsePer100": 1.1934,
+        "days": 19
+       },
+       "boot": {
+        "caught": {
+         "d": 0.1359,
+         "lo": 0.0896,
+         "hi": 0.2059
+        },
+        "false": {
+         "d": 0.0278,
+         "lo": 0,
+         "hi": 0.0912
+        }
+       }
+      },
+      {
+       "guess": "mixed",
+       "M": {
+        "pumping": 103,
+        "caught": 0.8447,
+        "calm": 3603,
+        "falsePer100": 1.3877,
+        "days": 19
+       },
+       "R": {
+        "pumping": 103,
+        "caught": 0.9126,
+        "calm": 3603,
+        "falsePer100": 1.4155,
+        "days": 19
+       },
+       "boot": {
+        "caught": {
+         "d": 0.068,
+         "lo": 0.025,
+         "hi": 0.1111
+        },
+        "false": {
+         "d": 0.0278,
+         "lo": 0,
+         "hi": 0.0912
+        }
+       }
+      }
+     ],
+     "pumpReports": 103,
+     "pumpDays": 19,
+     "b1": true,
+     "b2": true,
+     "b3": true,
+     "pass": true
+    },
+    "cross": null,
+    "leaveOneOut": false,
+    "persistenceOnly": true,
+    "pass": false,
+    "blocked": false
+   },
+   "SC": {
+    "own": {
+     "per": [
+      {
+       "guess": "old harness",
+       "M": {
+        "pumping": 103,
+        "caught": 0.8447,
+        "calm": 3603,
+        "falsePer100": 1.693,
+        "days": 19
+       },
+       "R": {
+        "pumping": 103,
+        "caught": 0.9126,
+        "calm": 3603,
+        "falsePer100": 2.6922,
+        "days": 19
+       },
+       "boot": {
+        "caught": {
+         "d": 0.068,
+         "lo": 0.025,
+         "hi": 0.1111
+        },
+        "false": {
+         "d": 0.9992,
+         "lo": 0.3017,
+         "hi": 2.2215
+        }
+       }
+      },
+      {
+       "guess": "ECMWF-heavy",
+       "M": {
+        "pumping": 103,
+        "caught": 0.6796,
+        "calm": 3603,
+        "falsePer100": 1.1657,
+        "days": 19
+       },
+       "R": {
+        "pumping": 103,
+        "caught": 0.8835,
+        "calm": 3603,
+        "falsePer100": 1.2767,
+        "days": 19
+       },
+       "boot": {
+        "caught": {
+         "d": 0.2039,
+         "lo": 0.1563,
+         "hi": 0.2963
+        },
+        "false": {
+         "d": 0.111,
+         "lo": 0,
+         "hi": 0.2621
+        }
+       }
+      },
+      {
+       "guess": "mixed",
+       "M": {
+        "pumping": 103,
+        "caught": 0.8447,
+        "calm": 3603,
+        "falsePer100": 1.3877,
+        "days": 19
+       },
+       "R": {
+        "pumping": 103,
+        "caught": 0.932,
+        "calm": 3603,
+        "falsePer100": 2.3591,
+        "days": 19
+       },
+       "boot": {
+        "caught": {
+         "d": 0.0874,
+         "lo": 0.0513,
+         "hi": 0.1299
+        },
+        "false": {
+         "d": 0.9714,
+         "lo": 0.1688,
+         "hi": 2.282
+        }
+       }
+      }
+     ],
+     "pumpReports": 103,
+     "pumpDays": 19,
+     "b1": true,
+     "b2": true,
+     "b3": true,
+     "pass": true
+    },
+    "cross": null,
+    "leaveOneOut": false,
+    "persistenceOnly": true,
+    "pass": false,
+    "blocked": false
+   },
+   "veto": {
+    "own": {
+     "per": [
+      {
+       "guess": "old harness",
+       "M": {
+        "pumping": 103,
+        "caught": 0.8447,
+        "calm": 3603,
+        "falsePer100": 1.693,
+        "days": 19
+       },
+       "R": {
+        "pumping": 103,
+        "caught": 0.9029,
+        "calm": 3603,
+        "falsePer100": 0.7771,
+        "days": 19
+       },
+       "boot": {
+        "caught": {
+         "d": 0.0583,
+         "lo": 0.0187,
+         "hi": 0.1071
+        },
+        "false": {
+         "d": -0.9159,
+         "lo": -1.8148,
+         "hi": -0.2029
+        }
+       }
+      },
+      {
+       "guess": "ECMWF-heavy",
+       "M": {
+        "pumping": 103,
+        "caught": 0.6796,
+        "calm": 3603,
+        "falsePer100": 1.1657,
+        "days": 19
+       },
+       "R": {
+        "pumping": 103,
+        "caught": 0.8058,
+        "calm": 3603,
+        "falsePer100": 0.6384,
+        "days": 19
+       },
+       "boot": {
+        "caught": {
+         "d": 0.1262,
+         "lo": 0.0741,
+         "hi": 0.2024
+        },
+        "false": {
+         "d": -0.5273,
+         "lo": -1.253,
+         "hi": -0.0899
+        }
+       }
+      },
+      {
+       "guess": "mixed",
+       "M": {
+        "pumping": 103,
+        "caught": 0.8447,
+        "calm": 3603,
+        "falsePer100": 1.3877,
+        "days": 19
+       },
+       "R": {
+        "pumping": 103,
+        "caught": 0.9029,
+        "calm": 3603,
+        "falsePer100": 0.6939,
+        "days": 19
+       },
+       "boot": {
+        "caught": {
+         "d": 0.0583,
+         "lo": 0.0187,
+         "hi": 0.1071
+        },
+        "false": {
+         "d": -0.6939,
+         "lo": -1.3263,
+         "hi": -0.2418
+        }
+       }
+      }
+     ],
+     "pumpReports": 103,
+     "pumpDays": 19,
+     "b1": true,
+     "b2": true,
+     "b3": true,
+     "pass": true
+    },
+    "cross": null,
+    "leaveOneOut": false,
+    "persistenceOnly": true,
+    "pass": false,
+    "blocked": false
+   },
+   "SC-both": {
+    "own": {
+     "per": [
+      {
+       "guess": "old harness",
+       "M": {
+        "pumping": 103,
+        "caught": 0.8447,
+        "calm": 3603,
+        "falsePer100": 1.693,
+        "days": 19
+       },
+       "R": {
+        "pumping": 103,
+        "caught": 0.9029,
+        "calm": 3603,
+        "falsePer100": 2.6367,
+        "days": 19
+       },
+       "boot": {
+        "caught": {
+         "d": 0.0583,
+         "lo": 0.0187,
+         "hi": 0.1071
+        },
+        "false": {
+         "d": 0.9437,
+         "lo": 0.2619,
+         "hi": 2.1531
+        }
+       }
+      },
+      {
+       "guess": "ECMWF-heavy",
+       "M": {
+        "pumping": 103,
+        "caught": 0.6796,
+        "calm": 3603,
+        "falsePer100": 1.1657,
+        "days": 19
+       },
+       "R": {
+        "pumping": 103,
+        "caught": 0.8641,
+        "calm": 3603,
+        "falsePer100": 1.249,
+        "days": 19
+       },
+       "boot": {
+        "caught": {
+         "d": 0.1845,
+         "lo": 0.1204,
+         "hi": 0.2857
+        },
+        "false": {
+         "d": 0.0833,
+         "lo": -0.0517,
+         "hi": 0.2465
+        }
+       }
+      },
+      {
+       "guess": "mixed",
+       "M": {
+        "pumping": 103,
+        "caught": 0.8447,
+        "calm": 3603,
+        "falsePer100": 1.3877,
+        "days": 19
+       },
+       "R": {
+        "pumping": 103,
+        "caught": 0.9223,
+        "calm": 3603,
+        "falsePer100": 2.3036,
+        "days": 19
+       },
+       "boot": {
+        "caught": {
+         "d": 0.0777,
+         "lo": 0.0469,
+         "hi": 0.1193
+        },
+        "false": {
+         "d": 0.9159,
+         "lo": 0.126,
+         "hi": 2.2249
+        }
+       }
+      }
+     ],
+     "pumpReports": 103,
+     "pumpDays": 19,
+     "b1": true,
+     "b2": true,
+     "b3": true,
+     "pass": true
+    },
+    "cross": null,
+    "leaveOneOut": false,
+    "persistenceOnly": true,
+    "pass": false,
+    "blocked": false
+   }
+  },
+  "West Coast": {
+   "ownStations": [
+    "FALW"
+   ],
+   "crossPairs": [],
+   "S": {
+    "own": {
+     "per": [
+      {
+       "guess": "old harness",
+       "M": {
+        "pumping": 62,
+        "caught": 0.8548,
+        "calm": 1133,
+        "falsePer100": 0.7944,
+        "days": 10
+       },
+       "R": {
+        "pumping": 62,
+        "caught": 0.9194,
+        "calm": 1133,
+        "falsePer100": 0.7944,
+        "days": 10
+       },
+       "boot": {
+        "caught": {
+         "d": 0.0645,
+         "lo": 0,
+         "hi": 0.1765
+        },
+        "false": {
+         "d": 0,
+         "lo": 0,
+         "hi": 0
+        }
+       }
+      },
+      {
+       "guess": "ECMWF-heavy",
+       "M": {
+        "pumping": 62,
+        "caught": 0.6935,
+        "calm": 1133,
+        "falsePer100": 0.6178,
+        "days": 10
+       },
+       "R": {
+        "pumping": 62,
+        "caught": 0.8548,
+        "calm": 1133,
+        "falsePer100": 0.6178,
+        "days": 10
+       },
+       "boot": {
+        "caught": {
+         "d": 0.1613,
+         "lo": 0.05,
+         "hi": 0.375
+        },
+        "false": {
+         "d": 0,
+         "lo": 0,
+         "hi": 0
+        }
+       }
+      },
+      {
+       "guess": "mixed",
+       "M": {
+        "pumping": 62,
+        "caught": 0.8065,
+        "calm": 1133,
+        "falsePer100": 0.7944,
+        "days": 10
+       },
+       "R": {
+        "pumping": 62,
+        "caught": 0.871,
+        "calm": 1133,
+        "falsePer100": 0.7944,
+        "days": 10
+       },
+       "boot": {
+        "caught": {
+         "d": 0.0645,
+         "lo": 0.0167,
+         "hi": 0.125
+        },
+        "false": {
+         "d": 0,
+         "lo": 0,
+         "hi": 0
+        }
+       }
+      }
+     ],
+     "pumpReports": 62,
+     "pumpDays": 10,
+     "b1": false,
+     "b2": true,
+     "b3": true,
+     "pass": false
+    },
+    "cross": null,
+    "leaveOneOut": "n/a (one station)",
+    "persistenceOnly": true,
+    "pass": false,
+    "blocked": false
+   },
+   "SC": {
+    "own": {
+     "per": [
+      {
+       "guess": "old harness",
+       "M": {
+        "pumping": 62,
+        "caught": 0.8548,
+        "calm": 1133,
+        "falsePer100": 0.7944,
+        "days": 10
+       },
+       "R": {
+        "pumping": 62,
+        "caught": 0.9516,
+        "calm": 1133,
+        "falsePer100": 1.2357,
+        "days": 10
+       },
+       "boot": {
+        "caught": {
+         "d": 0.0968,
+         "lo": 0,
+         "hi": 0.1765
+        },
+        "false": {
+         "d": 0.4413,
+         "lo": 0,
+         "hi": 1.4368
+        }
+       }
+      },
+      {
+       "guess": "ECMWF-heavy",
+       "M": {
+        "pumping": 62,
+        "caught": 0.6935,
+        "calm": 1133,
+        "falsePer100": 0.6178,
+        "days": 10
+       },
+       "R": {
+        "pumping": 62,
+        "caught": 0.871,
+        "calm": 1133,
+        "falsePer100": 0.6178,
+        "days": 10
+       },
+       "boot": {
+        "caught": {
+         "d": 0.1774,
+         "lo": 0.0714,
+         "hi": 0.375
+        },
+        "false": {
+         "d": 0,
+         "lo": 0,
+         "hi": 0
+        }
+       }
+      },
+      {
+       "guess": "mixed",
+       "M": {
+        "pumping": 62,
+        "caught": 0.8065,
+        "calm": 1133,
+        "falsePer100": 0.7944,
+        "days": 10
+       },
+       "R": {
+        "pumping": 62,
+        "caught": 0.9194,
+        "calm": 1133,
+        "falsePer100": 1.2357,
+        "days": 10
+       },
+       "boot": {
+        "caught": {
+         "d": 0.1129,
+         "lo": 0.0926,
+         "hi": 0.1429
+        },
+        "false": {
+         "d": 0.4413,
+         "lo": 0,
+         "hi": 1.4368
+        }
+       }
+      }
+     ],
+     "pumpReports": 62,
+     "pumpDays": 10,
+     "b1": false,
+     "b2": true,
+     "b3": true,
+     "pass": false
+    },
+    "cross": null,
+    "leaveOneOut": "n/a (one station)",
+    "persistenceOnly": true,
+    "pass": false,
+    "blocked": false
+   },
+   "veto": {
+    "own": {
+     "per": [
+      {
+       "guess": "old harness",
+       "M": {
+        "pumping": 62,
+        "caught": 0.8548,
+        "calm": 1133,
+        "falsePer100": 0.7944,
+        "days": 10
+       },
+       "R": {
+        "pumping": 62,
+        "caught": 0.9194,
+        "calm": 1133,
+        "falsePer100": 0.353,
+        "days": 10
+       },
+       "boot": {
+        "caught": {
+         "d": 0.0645,
+         "lo": 0,
+         "hi": 0.1765
+        },
+        "false": {
+         "d": -0.4413,
+         "lo": -1.1956,
+         "hi": 0
+        }
+       }
+      },
+      {
+       "guess": "ECMWF-heavy",
+       "M": {
+        "pumping": 62,
+        "caught": 0.6935,
+        "calm": 1133,
+        "falsePer100": 0.6178,
+        "days": 10
+       },
+       "R": {
+        "pumping": 62,
+        "caught": 0.8548,
+        "calm": 1133,
+        "falsePer100": 0.1765,
+        "days": 10
+       },
+       "boot": {
+        "caught": {
+         "d": 0.1613,
+         "lo": 0.05,
+         "hi": 0.375
+        },
+        "false": {
+         "d": -0.4413,
+         "lo": -1.1024,
+         "hi": 0
+        }
+       }
+      },
+      {
+       "guess": "mixed",
+       "M": {
+        "pumping": 62,
+        "caught": 0.8065,
+        "calm": 1133,
+        "falsePer100": 0.7944,
+        "days": 10
+       },
+       "R": {
+        "pumping": 62,
+        "caught": 0.871,
+        "calm": 1133,
+        "falsePer100": 0.2648,
+        "days": 10
+       },
+       "boot": {
+        "caught": {
+         "d": 0.0645,
+         "lo": 0.0167,
+         "hi": 0.125
+        },
+        "false": {
+         "d": -0.5296,
+         "lo": -1.3322,
+         "hi": 0
+        }
+       }
+      }
+     ],
+     "pumpReports": 62,
+     "pumpDays": 10,
+     "b1": false,
+     "b2": true,
+     "b3": true,
+     "pass": false
+    },
+    "cross": null,
+    "leaveOneOut": "n/a (one station)",
+    "persistenceOnly": true,
+    "pass": false,
+    "blocked": false
+   },
+   "SC-both": {
+    "own": {
+     "per": [
+      {
+       "guess": "old harness",
+       "M": {
+        "pumping": 62,
+        "caught": 0.8548,
+        "calm": 1133,
+        "falsePer100": 0.7944,
+        "days": 10
+       },
+       "R": {
+        "pumping": 62,
+        "caught": 0.8387,
+        "calm": 1133,
+        "falsePer100": 0.5296,
+        "days": 10
+       },
+       "boot": {
+        "caught": {
+         "d": -0.0161,
+         "lo": -0.25,
+         "hi": 0.1176
+        },
+        "false": {
+         "d": -0.2648,
+         "lo": -0.5258,
+         "hi": 0
+        }
+       }
+      },
+      {
+       "guess": "ECMWF-heavy",
+       "M": {
+        "pumping": 62,
+        "caught": 0.6935,
+        "calm": 1133,
+        "falsePer100": 0.6178,
+        "days": 10
+       },
+       "R": {
+        "pumping": 62,
+        "caught": 0.8226,
+        "calm": 1133,
+        "falsePer100": 0.0883,
+        "days": 10
+       },
+       "boot": {
+        "caught": {
+         "d": 0.129,
+         "lo": 0.0167,
+         "hi": 0.375
+        },
+        "false": {
+         "d": -0.5296,
+         "lo": -1.1665,
+         "hi": 0
+        }
+       }
+      },
+      {
+       "guess": "mixed",
+       "M": {
+        "pumping": 62,
+        "caught": 0.8065,
+        "calm": 1133,
+        "falsePer100": 0.7944,
+        "days": 10
+       },
+       "R": {
+        "pumping": 62,
+        "caught": 0.8387,
+        "calm": 1133,
+        "falsePer100": 0.5296,
+        "days": 10
+       },
+       "boot": {
+        "caught": {
+         "d": 0.0323,
+         "lo": -0.037,
+         "hi": 0.1429
+        },
+        "false": {
+         "d": -0.2648,
+         "lo": -0.7194,
+         "hi": 0
+        }
+       }
+      }
+     ],
+     "pumpReports": 62,
+     "pumpDays": 10,
+     "b1": false,
+     "b2": true,
+     "b3": true,
+     "pass": false
+    },
+    "cross": null,
+    "leaveOneOut": "n/a (one station)",
+    "persistenceOnly": true,
+    "pass": false,
+    "blocked": false
+   }
+  },
+  "Western Cape": {
+   "ownStations": [
+    "FACT"
+   ],
+   "crossPairs": [],
+   "S": {
+    "own": {
+     "per": [
+      {
+       "guess": "old harness",
+       "M": {
+        "pumping": 238,
+        "caught": 0.8067,
+        "calm": 1425,
+        "falsePer100": 0.7018,
+        "days": 36
+       },
+       "R": {
+        "pumping": 238,
+        "caught": 0.8613,
+        "calm": 1425,
+        "falsePer100": 0.9825,
+        "days": 36
+       },
+       "boot": {
+        "caught": {
+         "d": 0.0546,
+         "lo": 0.0146,
+         "hi": 0.1284
+        },
+        "false": {
+         "d": 0.2807,
+         "lo": 0,
+         "hi": 0.7171
+        }
+       }
+      },
+      {
+       "guess": "ECMWF-heavy",
+       "M": {
+        "pumping": 238,
+        "caught": 0.7395,
+        "calm": 1425,
+        "falsePer100": 1.193,
+        "days": 36
+       },
+       "R": {
+        "pumping": 238,
+        "caught": 0.8445,
+        "calm": 1425,
+        "falsePer100": 1.4737,
+        "days": 36
+       },
+       "boot": {
+        "caught": {
+         "d": 0.105,
+         "lo": 0.0472,
+         "hi": 0.2008
+        },
+        "false": {
+         "d": 0.2807,
+         "lo": 0,
+         "hi": 0.7171
+        }
+       }
+      },
+      {
+       "guess": "mixed",
+       "M": {
+        "pumping": 238,
+        "caught": 0.6807,
+        "calm": 1425,
+        "falsePer100": 0.2807,
+        "days": 36
+       },
+       "R": {
+        "pumping": 238,
+        "caught": 0.8361,
+        "calm": 1425,
+        "falsePer100": 0.6316,
+        "days": 36
+       },
+       "boot": {
+        "caught": {
+         "d": 0.1555,
+         "lo": 0.0705,
+         "hi": 0.2849
+        },
+        "false": {
+         "d": 0.3509,
+         "lo": 0,
+         "hi": 0.8661
+        }
+       }
+      }
+     ],
+     "pumpReports": 238,
+     "pumpDays": 36,
+     "b1": true,
+     "b2": true,
+     "b3": true,
+     "pass": true
+    },
+    "cross": null,
+    "leaveOneOut": "n/a (one station)",
+    "persistenceOnly": true,
+    "pass": true,
+    "blocked": false
+   },
+   "SC": {
+    "own": {
+     "per": [
+      {
+       "guess": "old harness",
+       "M": {
+        "pumping": 238,
+        "caught": 0.8067,
+        "calm": 1425,
+        "falsePer100": 0.7018,
+        "days": 36
+       },
+       "R": {
+        "pumping": 238,
+        "caught": 0.8992,
+        "calm": 1425,
+        "falsePer100": 1.6842,
+        "days": 36
+       },
+       "boot": {
+        "caught": {
+         "d": 0.0924,
+         "lo": 0.0494,
+         "hi": 0.1736
+        },
+        "false": {
+         "d": 0.9825,
+         "lo": 0.3901,
+         "hi": 2.0129
+        }
+       }
+      },
+      {
+       "guess": "ECMWF-heavy",
+       "M": {
+        "pumping": 238,
+        "caught": 0.7395,
+        "calm": 1425,
+        "falsePer100": 1.193,
+        "days": 36
+       },
+       "R": {
+        "pumping": 238,
+        "caught": 0.9034,
+        "calm": 1425,
+        "falsePer100": 1.7544,
+        "days": 36
+       },
+       "boot": {
+        "caught": {
+         "d": 0.1639,
+         "lo": 0.1009,
+         "hi": 0.2727
+        },
+        "false": {
+         "d": 0.5614,
+         "lo": 0.1939,
+         "hi": 1.1477
+        }
+       }
+      },
+      {
+       "guess": "mixed",
+       "M": {
+        "pumping": 238,
+        "caught": 0.6807,
+        "calm": 1425,
+        "falsePer100": 0.2807,
+        "days": 36
+       },
+       "R": {
+        "pumping": 238,
+        "caught": 0.895,
+        "calm": 1425,
+        "falsePer100": 0.9123,
+        "days": 36
+       },
+       "boot": {
+        "caught": {
+         "d": 0.2143,
+         "lo": 0.1289,
+         "hi": 0.3488
+        },
+        "false": {
+         "d": 0.6316,
+         "lo": 0.2412,
+         "hi": 1.25
+        }
+       }
+      }
+     ],
+     "pumpReports": 238,
+     "pumpDays": 36,
+     "b1": true,
+     "b2": true,
+     "b3": true,
+     "pass": true
+    },
+    "cross": null,
+    "leaveOneOut": "n/a (one station)",
+    "persistenceOnly": true,
+    "pass": true,
+    "blocked": false
+   },
+   "veto": {
+    "own": {
+     "per": [
+      {
+       "guess": "old harness",
+       "M": {
+        "pumping": 238,
+        "caught": 0.8067,
+        "calm": 1425,
+        "falsePer100": 0.7018,
+        "days": 36
+       },
+       "R": {
+        "pumping": 238,
+        "caught": 0.8571,
+        "calm": 1425,
+        "falsePer100": 0.8421,
+        "days": 36
+       },
+       "boot": {
+        "caught": {
+         "d": 0.0504,
+         "lo": 0.0073,
+         "hi": 0.1279
+        },
+        "false": {
+         "d": 0.1404,
+         "lo": -0.2992,
+         "hi": 0.6464
+        }
+       }
+      },
+      {
+       "guess": "ECMWF-heavy",
+       "M": {
+        "pumping": 238,
+        "caught": 0.7395,
+        "calm": 1425,
+        "falsePer100": 1.193,
+        "days": 36
+       },
+       "R": {
+        "pumping": 238,
+        "caught": 0.8403,
+        "calm": 1425,
+        "falsePer100": 1.0526,
+        "days": 36
+       },
+       "boot": {
+        "caught": {
+         "d": 0.1008,
+         "lo": 0.0395,
+         "hi": 0.1979
+        },
+        "false": {
+         "d": -0.1404,
+         "lo": -0.563,
+         "hi": 0.2609
+        }
+       }
+      },
+      {
+       "guess": "mixed",
+       "M": {
+        "pumping": 238,
+        "caught": 0.6807,
+        "calm": 1425,
+        "falsePer100": 0.2807,
+        "days": 36
+       },
+       "R": {
+        "pumping": 238,
+        "caught": 0.8319,
+        "calm": 1425,
+        "falsePer100": 0.5614,
+        "days": 36
+       },
+       "boot": {
+        "caught": {
+         "d": 0.1513,
+         "lo": 0.0661,
+         "hi": 0.2849
+        },
+        "false": {
+         "d": 0.2807,
+         "lo": 0,
+         "hi": 0.6944
+        }
+       }
+      }
+     ],
+     "pumpReports": 238,
+     "pumpDays": 36,
+     "b1": true,
+     "b2": true,
+     "b3": true,
+     "pass": true
+    },
+    "cross": null,
+    "leaveOneOut": "n/a (one station)",
+    "persistenceOnly": true,
+    "pass": true,
+    "blocked": false
+   },
+   "SC-both": {
+    "own": {
+     "per": [
+      {
+       "guess": "old harness",
+       "M": {
+        "pumping": 238,
+        "caught": 0.8067,
+        "calm": 1425,
+        "falsePer100": 0.7018,
+        "days": 36
+       },
+       "R": {
+        "pumping": 238,
+        "caught": 0.8866,
+        "calm": 1425,
+        "falsePer100": 1.614,
+        "days": 36
+       },
+       "boot": {
+        "caught": {
+         "d": 0.0798,
+         "lo": 0.0331,
+         "hi": 0.162
+        },
+        "false": {
+         "d": 0.9123,
+         "lo": 0.2999,
+         "hi": 1.9936
+        }
+       }
+      },
+      {
+       "guess": "ECMWF-heavy",
+       "M": {
+        "pumping": 238,
+        "caught": 0.7395,
+        "calm": 1425,
+        "falsePer100": 1.193,
+        "days": 36
+       },
+       "R": {
+        "pumping": 238,
+        "caught": 0.8908,
+        "calm": 1425,
+        "falsePer100": 1.614,
+        "days": 36
+       },
+       "boot": {
+        "caught": {
+         "d": 0.1513,
+         "lo": 0.0831,
+         "hi": 0.2667
+        },
+        "false": {
+         "d": 0.4211,
+         "lo": 0.0751,
+         "hi": 0.8856
+        }
+       }
+      },
+      {
+       "guess": "mixed",
+       "M": {
+        "pumping": 238,
+        "caught": 0.6807,
+        "calm": 1425,
+        "falsePer100": 0.2807,
+        "days": 36
+       },
+       "R": {
+        "pumping": 238,
+        "caught": 0.8739,
+        "calm": 1425,
+        "falsePer100": 0.7719,
+        "days": 36
+       },
+       "boot": {
+        "caught": {
+         "d": 0.1933,
+         "lo": 0.1046,
+         "hi": 0.3296
+        },
+        "false": {
+         "d": 0.4912,
+         "lo": 0.1235,
+         "hi": 1.0264
+        }
+       }
+      }
+     ],
+     "pumpReports": 238,
+     "pumpDays": 36,
+     "b1": true,
+     "b2": true,
+     "b3": true,
+     "pass": true
+    },
+    "cross": null,
+    "leaveOneOut": "n/a (one station)",
+    "persistenceOnly": true,
+    "pass": true,
+    "blocked": false
+   }
+  }
+ },
+ "offBy": {
+  "Eastern Cape": {
+   "M": {
+    "mean": 4.09,
+    "gust": 10.53
+   },
+   "S": {
+    "mean": 3.97,
+    "gust": 8.93
+   },
+   "SC": {
+    "mean": 3.4,
+    "gust": 8.66
+   }
+  },
+  "Free State": {
+   "M": {
+    "mean": 3.2,
+    "gust": 7.07
+   },
+   "S": {
+    "mean": 3.17,
+    "gust": 6.41
+   },
+   "SC": {
+    "mean": 2.98,
+    "gust": 6.41
+   }
+  },
+  "Garden Route": {
+   "M": {
+    "mean": 3.47,
+    "gust": 11.25
+   },
+   "S": {
+    "mean": 3.47,
+    "gust": 9.56
+   },
+   "SC": {
+    "mean": 2.85,
+    "gust": 11.63
+   }
+  },
+  "Highveld": {
+   "M": {
+    "mean": 4.17,
+    "gust": 6.44
+   },
+   "S": {
+    "mean": 4.1,
+    "gust": 5.86
+   },
+   "SC": {
+    "mean": 2.82,
+    "gust": 5.61
+   }
+  },
+  "KZN coast": {
+   "M": {
+    "mean": 3.52,
+    "gust": 13.61
+   },
+   "S": {
+    "mean": 3.46,
+    "gust": 9.34
+   },
+   "SC": {
+    "mean": 2.94,
+    "gust": 9.45
+   }
+  },
+  "Limpopo": {
+   "M": {
+    "mean": 3.76,
+    "gust": 7.95
+   },
+   "S": {
+    "mean": 3.76,
+    "gust": 7.7
+   },
+   "SC": {
+    "mean": 3.28,
+    "gust": 6.79
+   }
+  },
+  "Lowveld": {
+   "M": {
+    "mean": 3.77,
+    "gust": 19.68
+   },
+   "S": {
+    "mean": 3.69,
+    "gust": 14.96
+   },
+   "SC": {
+    "mean": 2.4,
+    "gust": 7.48
+   }
+  },
+  "North West": {
+   "M": {
+    "mean": 3,
+    "gust": 7.98
+   },
+   "S": {
+    "mean": 3,
+    "gust": 7.1
+   },
+   "SC": {
+    "mean": 2.71,
+    "gust": 6.69
+   }
+  },
+  "Northern Cape": {
+   "M": {
+    "mean": 3.73,
+    "gust": 13.11
+   },
+   "S": {
+    "mean": 3.69,
+    "gust": 8.48
+   },
+   "SC": {
+    "mean": 3.18,
+    "gust": 8.79
+   }
+  },
+  "West Coast": {
+   "M": {
+    "mean": 3.59,
+    "gust": 6.14
+   },
+   "S": {
+    "mean": 3.57,
+    "gust": 5.91
+   },
+   "SC": {
+    "mean": 3.25,
+    "gust": 5.4
+   }
+  },
+  "Western Cape": {
+   "M": {
+    "mean": 4.27,
+    "gust": 9.73
+   },
+   "S": {
+    "mean": 4.16,
+    "gust": 6.06
+   },
+   "SC": {
+    "mean": 3.6,
+    "gust": 6.06
+   }
+  }
+ },
+ "synopReportOnly": {
+  "Eastern Cape": {
+   "stations": 20,
+   "pumping": 602,
+   "caughtM": 0.613,
+   "caughtS": 0.69,
+   "falseM": 1.73,
+   "falseS": 1.98,
+   "falseVeto": 0.91,
+   "caughtVeto": 0.635
+  },
+  "Free State": {
+   "stations": 8,
+   "pumping": 248,
+   "caughtM": 0.835,
+   "caughtS": 0.855,
+   "falseM": 2.02,
+   "falseS": 2.27,
+   "falseVeto": 1.23,
+   "caughtVeto": 0.808
+  },
+  "Garden Route": {
+   "stations": 7,
+   "pumping": 75,
+   "caughtM": 0.76,
+   "caughtS": 0.76,
+   "falseM": 1.31,
+   "falseS": 1.4,
+   "falseVeto": 0.73,
+   "caughtVeto": 0.647
+  },
+  "Highveld": {
+   "stations": 14,
+   "pumping": 290,
+   "caughtM": 0.789,
+   "caughtS": 0.877,
+   "falseM": 2.35,
+   "falseS": 2.42,
+   "falseVeto": 0.88,
+   "caughtVeto": 0.837
+  },
+  "KZN coast": {
+   "stations": 9,
+   "pumping": 251,
+   "caughtM": 0.739,
+   "caughtS": 0.811,
+   "falseM": 1.8,
+   "falseS": 2.12,
+   "falseVeto": 1.22,
+   "caughtVeto": 0.75
+  },
+  "KZN inland": {
+   "stations": 20,
+   "pumping": 448,
+   "caughtM": 0.753,
+   "caughtS": 0.776,
+   "falseM": 1.73,
+   "falseS": 1.96,
+   "falseVeto": 0.62,
+   "caughtVeto": 0.726
+  },
+  "Karoo": {
+   "stations": 7,
+   "pumping": 701,
+   "caughtM": 0.867,
+   "caughtS": 0.885,
+   "falseM": 2.2,
+   "falseS": 2.43,
+   "falseVeto": 1.17,
+   "caughtVeto": 0.856
+  },
+  "Limpopo": {
+   "stations": 8,
+   "pumping": 66,
+   "caughtM": 0.46,
+   "caughtS": 0.561,
+   "falseM": 1.48,
+   "falseS": 1.68,
+   "falseVeto": 0.71,
+   "caughtVeto": 0.52
+  },
+  "Lowveld": {
+   "stations": 11,
+   "pumping": 100,
+   "caughtM": 0.861,
+   "caughtS": 0.871,
+   "falseM": 0.95,
+   "falseS": 0.96,
+   "falseVeto": 0.34,
+   "caughtVeto": 0.832
+  },
+  "North West": {
+   "stations": 6,
+   "pumping": 179,
+   "caughtM": 0.893,
+   "caughtS": 0.904,
+   "falseM": 1.23,
+   "falseS": 1.32,
+   "falseVeto": 0.67,
+   "caughtVeto": 0.852
+  },
+  "Northern Cape": {
+   "stations": 18,
+   "pumping": 851,
+   "caughtM": 0.743,
+   "caughtS": 0.812,
+   "falseM": 2.13,
+   "falseS": 2.35,
+   "falseVeto": 1,
+   "caughtVeto": 0.771
+  },
+  "Strand's zone": {
+   "stations": 1,
+   "pumping": 66,
+   "caughtM": 0.21,
+   "caughtS": 0.737,
+   "falseM": 0.55,
+   "falseS": 4.65,
+   "falseVeto": 4.57,
+   "caughtVeto": 0.73
+  },
+  "West Coast": {
+   "stations": 11,
+   "pumping": 818,
+   "caughtM": 0.753,
+   "caughtS": 0.842,
+   "falseM": 2.1,
+   "falseS": 2.4,
+   "falseVeto": 1.3,
+   "caughtVeto": 0.812
+  },
+  "Western Cape": {
+   "stations": 16,
+   "pumping": 1147,
+   "caughtM": 0.848,
+   "caughtS": 0.913,
+   "falseM": 11.53,
+   "falseS": 11.99,
+   "falseVeto": 2.83,
+   "caughtVeto": 0.871
+  }
+ },
+ "strandMorning": {
+  "latestReportAgeH": 6.02,
+  "F6": 6.5,
+  "wouldHold": true
+ },
+ "wet": {
+  "rain": {
+   "tune": {
+    "mFalse": 0.1516,
+    "grid": [
+     {
+      "F": 1.5,
+      "caught": 0.5893,
+      "falsePer100": 1.9243
+     },
+     {
+      "F": 2.5,
+      "caught": 0.59,
+      "falsePer100": 1.9287
+     },
+     {
+      "F": 3.5,
+      "caught": 0.59,
+      "falsePer100": 1.9316
+     }
+    ],
+    "chosen": null
+   }
+  },
+  "fog": {
+   "tune": {
+    "mFalse": 1.5287,
+    "grid": [
+     {
+      "F": 1.5,
+      "caught": 0.76,
+      "falsePer100": 1.7214
+     },
+     {
+      "F": 2.5,
+      "caught": 0.76,
+      "falsePer100": 1.7214
+     },
+     {
+      "F": 3.5,
+      "caught": 0.76,
+      "falsePer100": 1.7214
+     }
+    ],
+    "chosen": {
+     "F": 1.5,
+     "caught": 0.76,
+     "falsePer100": 1.7214
+    }
+   },
+   "per": [
+    {
+     "guess": "old harness",
+     "t": {
+      "truths": 146,
+      "caughtS": 0.7055,
+      "caughtM": 0.3082,
+      "falseS": 1.4618,
+      "falseM": 1.2945,
+      "ownCalls": 100,
+      "ownPrecision": 0.58,
+      "ownNear": 0.68,
+      "mCalls": 370,
+      "mPrecision": 0.1216
+     },
+     "boot": {
+      "d": 0.3973,
+      "lo": 0.2593,
+      "hi": 0.5433
+     }
+    }
+   ],
+   "truthReports": 146,
+   "truthDays": 38,
+   "b1": true,
+   "b2": false,
+   "b3": true,
+   "pass": false,
+   "byRegion": {
+    "Eastern Cape": {
+     "truths": 6,
+     "caughtS": 0,
+     "caughtM": 0,
+     "falseS": 1.854,
+     "falseM": 1.7783,
+     "ownCalls": 4,
+     "ownPrecision": 0,
+     "ownNear": 0,
+     "mCalls": 94,
+     "mPrecision": 0,
+     "blocked": false
+    },
+    "Free State": {
+     "truths": 2,
+     "caughtS": 0.5,
+     "caughtM": 0,
+     "falseS": 0.0536,
+     "falseM": 0,
+     "ownCalls": 2,
+     "ownPrecision": 0.5,
+     "ownNear": 0.5,
+     "mCalls": 0,
+     "mPrecision": null,
+     "blocked": false
+    },
+    "Garden Route": {
+     "truths": 29,
+     "caughtS": 0.6897,
+     "caughtM": 0.0345,
+     "falseS": 2.0948,
+     "falseM": 1.3965,
+     "ownCalls": 33,
+     "ownPrecision": 0.5758,
+     "ownNear": 0.7273,
+     "mCalls": 29,
+     "mPrecision": 0.0345,
+     "blocked": true
+    },
+    "Highveld": {
+     "truths": 5,
+     "caughtS": 1,
+     "caughtM": 0.6,
+     "falseS": 0.2452,
+     "falseM": 0.1962,
+     "ownCalls": 3,
+     "ownPrecision": 0.6667,
+     "ownNear": 0.6667,
+     "mCalls": 7,
+     "mPrecision": 0.4286,
+     "blocked": false
+    },
+    "KZN coast": {
+     "truths": 12,
+     "caughtS": 0.5833,
+     "caughtM": 0,
+     "falseS": 0.7389,
+     "falseM": 0.5911,
+     "ownCalls": 10,
+     "ownPrecision": 0.7,
+     "ownNear": 0.7,
+     "mCalls": 12,
+     "mPrecision": 0,
+     "blocked": true
+    },
+    "Limpopo": {
+     "truths": 4,
+     "caughtS": 0.5,
+     "caughtM": 0,
+     "falseS": 0.7478,
+     "falseM": 0.5982,
+     "ownCalls": 5,
+     "ownPrecision": 0.4,
+     "ownNear": 0.4,
+     "mCalls": 12,
+     "mPrecision": 0,
+     "blocked": false
+    },
+    "Lowveld": {
+     "truths": 4,
+     "caughtS": 0,
+     "caughtM": 0,
+     "falseS": 0.7698,
+     "falseM": 0.5645,
+     "ownCalls": 4,
+     "ownPrecision": 0,
+     "ownNear": 0.25,
+     "mCalls": 11,
+     "mPrecision": 0,
+     "blocked": false
+    },
+    "North West": {
+     "truths": 1,
+     "caughtS": 0,
+     "caughtM": 0,
+     "falseS": 0.0508,
+     "falseM": 0,
+     "ownCalls": 1,
+     "ownPrecision": 0,
+     "ownNear": 0,
+     "mCalls": 0,
+     "mPrecision": null,
+     "blocked": false
+    },
+    "Northern Cape": {
+     "truths": 4,
+     "caughtS": 0.5,
+     "caughtM": 0,
+     "falseS": 0.0252,
+     "falseM": 0,
+     "ownCalls": 3,
+     "ownPrecision": 0.6667,
+     "ownNear": 0.6667,
+     "mCalls": 0,
+     "mPrecision": null,
+     "blocked": false
+    },
+    "Western Cape": {
+     "truths": 79,
+     "caughtS": 0.8354,
+     "caughtM": 0.519,
+     "falseS": 8.7879,
+     "falseM": 8.2828,
+     "ownCalls": 35,
+     "ownPrecision": 0.7143,
+     "ownNear": 0.8286,
+     "mCalls": 205,
+     "mPrecision": 0.2,
+     "blocked": false
+    }
+   }
+  }
+ }
+}
