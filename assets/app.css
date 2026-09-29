@@ -3985,6 +3985,27 @@ body.install-modal-active .nav-hourly-pill { display: none !important; }
   to   { transform: translate(-50%, 0);     opacity: 1; }
 }
 
+/* v8 (29 Sept 2026): "Measured at Cape Town airport, 09:00" under the desktop wind, only when an airport's report set
+   it (app.js renderMeasuredLine). Phones never show this element: Home D copies its text under the credit line. */
+.measured-line {
+  margin: 0.2rem 0 0;
+  font-size: 0.8rem;
+  letter-spacing: 0.2px;
+  color: rgba(255, 255, 255, 0.82);
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9);
+}
+.measured-line[hidden] { display: none; }
+@media (max-width: 768px) {
+  #measuredLine { display: none !important; }
+}
+/* The desktop postcard's actions sit a fixed distance under the voice column; the measured line is one line more,
+   so while it shows the actions step down by that line (there is room above the week strip). */
+@media (min-width: 1024px) {
+  body:has(#measuredLine:not([hidden])) .share-btn,
+  body:has(#measuredLine:not([hidden])) .my-location-btn,
+  body:has(#measuredLine:not([hidden])) .nav-hourly-pill { transform: translateY(2rem); }
+}
+
 /* ═══════════════════════════════════════════════════════════════════════════
    MOBILE FACELIFT — CONTAINED HERO HOME (<=768px)
    Valk-ruled facelift brief. Appended as a self-contained block, exactly as the
@@ -6291,23 +6312,3 @@ body.ads-slots #week-screen .daily-cards > .daily-header { flex: none !important
 .sources-attribution a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
 .sources-attribution .sources-credit-marks { display: block; margin-top: 4px; }
 
-/* v8 (29 Sept 2026): "Measured at Cape Town airport, 09:00" under the desktop wind, only when an airport's report set
-   it (app.js renderMeasuredLine). Phones never show this element: Home D copies its text under the credit line. */
-.measured-line {
-  margin: 0.2rem 0 0;
-  font-size: 0.8rem;
-  letter-spacing: 0.2px;
-  color: rgba(255, 255, 255, 0.82);
-  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9);
-}
-.measured-line[hidden] { display: none; }
-@media (max-width: 768px) {
-  #measuredLine { display: none !important; }
-}
-/* The desktop postcard's actions sit a fixed distance under the voice column; the measured line is one line more,
-   so while it shows the actions step down by that line (there is room above the week strip). */
-@media (min-width: 1024px) {
-  body:has(#measuredLine:not([hidden])) .share-btn,
-  body:has(#measuredLine:not([hidden])) .my-location-btn,
-  body:has(#measuredLine:not([hidden])) .nav-hourly-pill { transform: translateY(2rem); }
-}
