@@ -55,7 +55,14 @@ export async function ensure(points) {
   const need = new Set(points.map(([a, b]) => { const p = pix(a, b); return `${p.tx}_${p.ty}`; }));
   for (const k of need) { const [tx, ty] = k.split('_').map(Number); await loadTile(tx, ty); }
 }
-export const groundAt = (lat, lon) => { const p = pix(lat, lon), h = tiles.get(`${p.tx}_${p.ty}`); return h ? h[p.py * 256 + p.px] : undefined; };
+/** As ensure, `n` downloads at a time (first run). */
+export async function ensureParallel(points, n = 6) {
+  const need = [...new Set(points.map(([a, b]) => { const p = pix(a, b); return `${p.tx}_${p.ty}`; }))];
+  console.log(`tiles needed: ${need.length}`);
+  let i = 0;
+  await Promise.all(Array.from({ length: n }, async () => { while (i < need.length) { const [tx, ty] = need[i++].split('_').map(Number); await loadTile(tx, ty); } }));
+}
+export const groundAt =(lat, lon) => { const p = pix(lat, lon), h = tiles.get(`${p.tx}_${p.ty}`); return h ? h[p.py * 256 + p.px] : undefined; };
 
 export const coastPoints = (lat, lon) => {
   const pts = [[lat, lon]];

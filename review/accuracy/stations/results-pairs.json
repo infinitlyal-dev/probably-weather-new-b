@@ -1,0 +1,522 @@
+{
+ "plan": "review/accuracy/stations/PLAN.md §2, §8.2",
+ "period": "1 March → 30 June 2026 (SAST)",
+ "bins": {
+  "coast": [
+   {
+    "km": "2–10",
+    "pairs": 3,
+    "aPumping": 104,
+    "bCalm": 25,
+    "share": 0.24,
+    "wilsonHi": 0.331
+   },
+   {
+    "km": "10–15",
+    "pairs": 2,
+    "aPumping": 70,
+    "bCalm": 11,
+    "share": 0.157,
+    "wilsonHi": 0.26
+   },
+   {
+    "km": "15–20",
+    "pairs": 2,
+    "aPumping": 35,
+    "bCalm": 2,
+    "share": 0.057,
+    "wilsonHi": 0.186
+   },
+   {
+    "km": "20–25",
+    "pairs": 1,
+    "aPumping": 17,
+    "bCalm": 3,
+    "share": 0.176,
+    "wilsonHi": 0.41
+   },
+   {
+    "km": "25–30",
+    "pairs": 1,
+    "aPumping": 9,
+    "bCalm": 2,
+    "share": 0.222,
+    "wilsonHi": 0.547
+   },
+   {
+    "km": "30–40",
+    "pairs": 2,
+    "aPumping": 101,
+    "bCalm": 24,
+    "share": 0.238,
+    "wilsonHi": 0.329
+   }
+  ],
+  "inland": [
+   {
+    "km": "2–10",
+    "pairs": 0,
+    "aPumping": 0,
+    "bCalm": 0,
+    "share": null,
+    "wilsonHi": 1
+   },
+   {
+    "km": "10–15",
+    "pairs": 1,
+    "aPumping": 4,
+    "bCalm": 2,
+    "share": 0.5,
+    "wilsonHi": 0.85
+   },
+   {
+    "km": "15–20",
+    "pairs": 2,
+    "aPumping": 7,
+    "bCalm": 3,
+    "share": 0.429,
+    "wilsonHi": 0.75
+   },
+   {
+    "km": "20–25",
+    "pairs": 3,
+    "aPumping": 20,
+    "bCalm": 10,
+    "share": 0.5,
+    "wilsonHi": 0.701
+   },
+   {
+    "km": "25–30",
+    "pairs": 3,
+    "aPumping": 58,
+    "bCalm": 27,
+    "share": 0.466,
+    "wilsonHi": 0.592
+   },
+   {
+    "km": "30–40",
+    "pairs": 3,
+    "aPumping": 64,
+    "bCalm": 41,
+    "share": 0.641,
+    "wilsonHi": 0.747
+   }
+  ]
+ },
+ "D": {
+  "coast": 10,
+  "coastWhy": "no bin qualified from the first → 10 km default",
+  "inland": 10,
+  "inlandWhy": "no bin qualified from the first → 10 km default"
+ },
+ "pairs": [
+  {
+   "a": "68182",
+   "b": "68183",
+   "km": 10.4,
+   "ok": true,
+   "coastal": false
+  },
+  {
+   "a": "68182",
+   "b": "68192",
+   "km": 25.7,
+   "ok": true,
+   "coastal": false
+  },
+  {
+   "a": "68183",
+   "b": "68192",
+   "km": 16.3,
+   "ok": true,
+   "coastal": false
+  },
+  {
+   "a": "68263",
+   "b": "68269",
+   "km": 16,
+   "ok": true,
+   "coastal": false
+  },
+  {
+   "a": "68263",
+   "b": "68361",
+   "km": 33.9,
+   "ok": true,
+   "coastal": false
+  },
+  {
+   "a": "68263",
+   "b": "68368",
+   "km": 25.6,
+   "ok": true,
+   "coastal": false
+  },
+  {
+   "a": "68267",
+   "b": "68353",
+   "km": 29.8,
+   "ok": true,
+   "coastal": false
+  },
+  {
+   "a": "68267",
+   "b": "68361",
+   "km": 31.2,
+   "ok": true,
+   "coastal": false
+  },
+  {
+   "a": "68347",
+   "b": "68350",
+   "km": 37.9,
+   "ok": true,
+   "coastal": false
+  },
+  {
+   "a": "68361",
+   "b": "68368",
+   "km": 24.6,
+   "ok": true,
+   "coastal": false
+  },
+  {
+   "a": "68363",
+   "b": "68368",
+   "km": 21.5,
+   "ok": true,
+   "coastal": false
+  },
+  {
+   "a": "68443",
+   "b": "68447",
+   "km": 23.6,
+   "ok": true,
+   "coastal": false
+  },
+  {
+   "a": "68478",
+   "b": "68485",
+   "km": 26.7,
+   "ok": false,
+   "why": "ridge",
+   "coastal": false,
+   "ridge": 1597
+  },
+  {
+   "a": "68488",
+   "b": "68493",
+   "km": 20.2,
+   "ok": false,
+   "why": "height",
+   "coastal": false
+  },
+  {
+   "a": "68494",
+   "b": "68497",
+   "km": 36.7,
+   "ok": false,
+   "why": "exposure",
+   "coastal": false
+  },
+  {
+   "a": "68579",
+   "b": "68587",
+   "km": 35.4,
+   "ok": false,
+   "why": "exposure",
+   "coastal": false
+  },
+  {
+   "a": "68579",
+   "b": "68591",
+   "km": 12.8,
+   "ok": false,
+   "why": "exposure",
+   "coastal": false
+  },
+  {
+   "a": "68580",
+   "b": "68581",
+   "km": 15.9,
+   "ok": false,
+   "why": "height",
+   "coastal": false
+  },
+  {
+   "a": "68580",
+   "b": "68582",
+   "km": 17.2,
+   "ok": false,
+   "why": "height",
+   "coastal": false
+  },
+  {
+   "a": "68583",
+   "b": "68588",
+   "km": 31.5,
+   "ok": true,
+   "coastal": true
+  },
+  {
+   "a": "68583",
+   "b": "68592",
+   "km": 12.2,
+   "ok": true,
+   "coastal": true
+  },
+  {
+   "a": "68583",
+   "b": "68593",
+   "km": 7.9,
+   "ok": true,
+   "coastal": true
+  },
+  {
+   "a": "68587",
+   "b": "68591",
+   "km": 25.9,
+   "ok": true,
+   "coastal": true
+  },
+  {
+   "a": "68588",
+   "b": "68593",
+   "km": 24.4,
+   "ok": true,
+   "coastal": true
+  },
+  {
+   "a": "68592",
+   "b": "68593",
+   "km": 18.6,
+   "ok": true,
+   "coastal": true
+  },
+  {
+   "a": "68712",
+   "b": "68714",
+   "km": 32.7,
+   "ok": false,
+   "why": "exposure",
+   "coastal": true
+  },
+  {
+   "a": "68713",
+   "b": "68715",
+   "km": 36.2,
+   "ok": false,
+   "why": "ridge",
+   "coastal": false,
+   "ridge": 479
+  },
+  {
+   "a": "68714",
+   "b": "68811",
+   "km": 26,
+   "ok": false,
+   "why": "exposure",
+   "coastal": false
+  },
+  {
+   "a": "68718",
+   "b": "68923",
+   "km": 38.9,
+   "ok": false,
+   "why": "ridge",
+   "coastal": false,
+   "ridge": 1206
+  },
+  {
+   "a": "68813",
+   "b": "68816",
+   "km": 28.4,
+   "ok": false,
+   "why": "exposure",
+   "coastal": true
+  },
+  {
+   "a": "68813",
+   "b": "68817",
+   "km": 12.7,
+   "ok": true,
+   "coastal": true
+  },
+  {
+   "a": "68813",
+   "b": "68819",
+   "km": 15.5,
+   "ok": true,
+   "coastal": true
+  },
+  {
+   "a": "68813",
+   "b": "68912",
+   "km": 39.2,
+   "ok": false,
+   "why": "ridge",
+   "coastal": true,
+   "ridge": 490
+  },
+  {
+   "a": "68813",
+   "b": "68999",
+   "km": 28.4,
+   "ok": false,
+   "why": "exposure",
+   "coastal": true
+  },
+  {
+   "a": "68816",
+   "b": "68817",
+   "km": 17.2,
+   "ok": false,
+   "why": "exposure",
+   "coastal": false
+  },
+  {
+   "a": "68816",
+   "b": "68819",
+   "km": 17.4,
+   "ok": false,
+   "why": "exposure",
+   "coastal": false
+  },
+  {
+   "a": "68816",
+   "b": "68911",
+   "km": 30.7,
+   "ok": false,
+   "why": "exposure",
+   "coastal": false
+  },
+  {
+   "a": "68816",
+   "b": "68912",
+   "km": 33.4,
+   "ok": false,
+   "why": "exposure",
+   "coastal": false
+  },
+  {
+   "a": "68817",
+   "b": "68819",
+   "km": 4,
+   "ok": true,
+   "coastal": true
+  },
+  {
+   "a": "68817",
+   "b": "68912",
+   "km": 29.8,
+   "ok": false,
+   "why": "ridge",
+   "coastal": true,
+   "ridge": 1051
+  },
+  {
+   "a": "68817",
+   "b": "68999",
+   "km": 17.1,
+   "ok": false,
+   "why": "exposure",
+   "coastal": true
+  },
+  {
+   "a": "68819",
+   "b": "68912",
+   "km": 25.8,
+   "ok": false,
+   "why": "ridge",
+   "coastal": true,
+   "ridge": 935
+  },
+  {
+   "a": "68819",
+   "b": "68999",
+   "km": 17.3,
+   "ok": false,
+   "why": "exposure",
+   "coastal": true
+  },
+  {
+   "a": "68837",
+   "b": "68839",
+   "km": 24.3,
+   "ok": false,
+   "why": "exposure",
+   "coastal": true
+  },
+  {
+   "a": "68837",
+   "b": "68841",
+   "km": 39.7,
+   "ok": false,
+   "why": "exposure",
+   "coastal": true
+  },
+  {
+   "a": "68911",
+   "b": "68916",
+   "km": 39.1,
+   "ok": true,
+   "coastal": true
+  },
+  {
+   "a": "68911",
+   "b": "68925",
+   "km": 16,
+   "ok": false,
+   "why": "exposure",
+   "coastal": true
+  },
+  {
+   "a": "68911",
+   "b": "68999",
+   "km": 30.7,
+   "ok": false,
+   "why": "exposure",
+   "coastal": true
+  },
+  {
+   "a": "68912",
+   "b": "68916",
+   "km": 27.9,
+   "ok": false,
+   "why": "ridge",
+   "coastal": true,
+   "ridge": 171
+  },
+  {
+   "a": "68912",
+   "b": "68999",
+   "km": 33.1,
+   "ok": false,
+   "why": "exposure",
+   "coastal": true
+  },
+  {
+   "a": "68918",
+   "b": "68925",
+   "km": 37.2,
+   "ok": false,
+   "why": "exposure",
+   "coastal": true
+  },
+  {
+   "a": "68920",
+   "b": "68921",
+   "km": 5.9,
+   "ok": true,
+   "coastal": true
+  },
+  {
+   "a": "68926",
+   "b": "68927",
+   "km": 33.9,
+   "ok": false,
+   "why": "exposure",
+   "coastal": false
+  }
+ ]
+}
