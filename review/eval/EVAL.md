@@ -1562,7 +1562,7 @@ desktop.
 
 | place | headline (photo folder) | wind / gusts shown | measured line | latest report |
 |---|---|---|---|---|
-| Cape Town city | "UV's hectic." (clear) | 12.8 / 24.6 (models) | none (17 km from the airport) | Molteno 68819 06Z calm; airport 10Z 4 kt |
+| Cape Town city | UV (clear) | 12.8 / 24.6 (models) | none (17 km from the airport) | Molteno 68819 06Z calm; airport 10Z 4 kt |
 | Bellville | UV (clear) | **7.4 (airport)** / 22.3 (models) | yes — Cape Town airport, 12:00 | airport 10Z 190° 4 kt |
 | Gqeberha | UV (clear) | **20.4 (airport)** / 40.7 (models) | yes — Gqeberha airport, 12:00 | airport 10Z 080° 11 kt |
 | Strand | UV (clear) | 8.7 / 17.3 (models) | none (no licensed station) | 68911 06Z 130° 26 km/h gusting 70 (the 12Z not yet in) |
