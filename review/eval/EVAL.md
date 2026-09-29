@@ -1327,3 +1327,135 @@ wind table, wind weights and gust table `--check`, fold **140/140** (five langua
 **Live at 15:47 UTC** (68911's latest report is 12 UTC; the next is 18 UTC): Strand 26.3 km/h, **Windy**, gust 37 (not
 shown: under 40) against the station's 28 gusting 59; Gordon's Bay 29.4, **Windy**, gusts 60 shown; Cape Town city
 31.8, Windy, gusts 62 (×1.105 harbour); Gqeberha 13, clear (Ngqura 11, gust 15).
+
+## 15. "Now" follows the stations (Vonk / Opus 5.5 building, Fable 5.1 reviewing — 29 Sept 2026)
+
+Al, Strand, 29 Sept 08:01 SAST: *"the wind has been pumping all night and is pumping badly now as well ... showing
+clear is a lie."* And: *"what about the rest of the country?"* The live app said "Clear sky", 18.4 km/h, gusts 31.7;
+Strand's station 68911 read 37 km/h gusting 78 (28 Sept 18Z) and 30 gusting 63 (29 Sept 00Z). Plan
+`review/accuracy/stations/PLAN.md`, committed before anything was scored (`e7f8af3`); Fable's nine changes and the
+terms outcome adopted before scoring (§8, `ac3ae87`); scorer committed before it ran (`685c123`), run once.
+
+### 15.1 Which live sources we may use (step 1)
+
+| source | what | allowed for a commercial app? | update / delay | notes |
+|---|---|---|---|---|
+| **Iowa Environmental Mesonet** (METAR) | 27 SA airports, raw reports | **yes** — "public domain … any lawful purpose", commercial named on its API page | hourly (big airports half-hourly); a report in within ~5–50 min (probe) | **the live feed** (`api/1/currents.json?network=ZA__ASOS`, ~2 s to answer → Redis copy) |
+| NOAA Aviation Weather (METAR) | same airports | public domain (NWS), foreign reports "under licence of the third party" | receipt 5 min median, 17 min p90 (probe, 64 reports) | not needed beside IEM |
+| Ogimet (SA Weather Service SYNOP) | ~200 stations incl. Strand 68911, harbours, capes | **not clearly** — copyright stays with each country's service ("read WMO resolution 40"); the SAWS Act makes selling met information a SAWS service | hourly AWS in ~20–55 min; 68911 6-hourly, ≤ 70 min | **history only** |
+| SAWS direct / AfriGIS Weather API | SAWS feeds | **paid licence** — AfriGIS pilot 50 credits a day for 60 days; Rand price not published | — | the route to Strand's own station |
+| NOAA tgftp SYNOP bulletins | — | public domain | — | carries **no** SA SYNOPs (checked: 30 newest files; last ZA bulletin 2 Nov 2024) |
+| Transnet port weather | — | no public feed found | — | harbour SYNOPs (e.g. 68817 Portnet) come via SAWS |
+| Weather Underground PWS, Netatmo, Davis WeatherLink, Ambient | home stations | **no** (owner-only or non-commercial) | — | WU paid packages quoted "from $200/month" (third-party) |
+| CWOP / MADIS | home stations | unclear ("no restrictions", but redistribution limits) | — | SA count not found |
+| Xweather / PWSweather | METAR + home stations | paid: €300/month for 1M calls (€0 dev tier, commercial terms not found) | — | |
+| Holfuy, WeatherFlow Tempest, Windfinder | beach / kite stations | **only by agreement / paid** (prices "contact us") | Holfuy 2 min | |
+| Windguru, Cape Kiting, windreport.co.za | kite stations (Strand, Muizenberg, Langebaan, …) | **no** — owner-only or "commercial use forbidden" / "permission required" | — | the stations Al would want most |
+| Synoptic Data, ARC (≈ 650 AWS), Meteostat | aggregators / networks | Synoptic, ARC paid (prices not published); Meteostat CC BY but archive-grade | — | |
+
+**Agreement with the official stations:** IEM's airport reports are the airports' own METARs; where an airport has a
+SYNOP twin within 3 km, both feeds are the same site. Home and kite networks were not measured — none is allowed.
+
+### 15.2 Which towns get a station (step 2)
+
+- **D, learned March–June on pairs of SAWS stations** (same exposure, height, no ridge; `results-pairs.json`): when one
+  station is pumping, the other is **calm in 24 % of hours even 2–10 km apart on the coast** (104 hours), 16 % at
+  10–15 km. No distance passed the ≤ 10 % bar, so the plan's fallback applies: **10 km**.
+- Live stations: the airports whose region passed (§15.3) — **Cape Town (FACT), Gqeberha (FAPE), East London (FAEL),
+  Mthatha (FAUT), King Shaka (FALE)**.
+- **164 places** take one (`towns-stations.json`, every one of 5,899 places listed with its station or the reason it has
+  none): Gqeberha and 51 of its suburbs, East London and 25, Cape Town's northern suburbs around the airport (Bellville,
+  Parow, Gugulethu, Nyanga, Elsies River, Belhar, Delft … 44), Tongaat, La Mercy, Verulam, eMdloti (20), and 22 villages
+  around Mthatha airport. **11 of the 924 places with ≥ 1,000 people; ~1.6 million people — about 3 % of South
+  Africans.** Strand, Gordon's Bay, Cape Town city (17 km from the airport), Durban (30 km from King Shaka),
+  Johannesburg and Pretoria (Highveld did not pass) have none and keep today's "now". Goodwood and 35 other places
+  near an airport were refused on exposure (coastal town, inland airport or the reverse).
+
+### 15.3 Wind — the rule and the result (steps 3–5)
+
+Rules: **M** today; **S** M, or the latest usable report is pumping (mean ≥ 30 or gust ≥ 50) and ≤ F old; **SC** S,
+or the station-minus-model gap (positive only), fading over T, lifts the numbers over the place's lines; shown
+numbers carry the faded gap either way. Tuned March–June nationally: **F 1.5 h, T 12 h**. Proof 1 July → 28 Sept 12Z,
+own-station rows at the 16 airports (no cross pairs exist within 10 km — every region is "persistence only").
+
+Proof, averaged over the three source guesses (per-guess intervals in `results-score.txt`):
+
+| region | airports | pumping reports caught: today → S → SC | calm reports called Windy (per 100): today → S → SC | verdict |
+|---|---|---|---|---|
+| **Western Cape** | FACT | 74 → 85 → **90** % (238 reports, 36 days) | 0.73 → 1.03 → 1.45 | **ships SC** |
+| **Eastern Cape** | FAPE, FAEL, FAUT | 67 → 79 → **84** % (241, 36) | 0.88 → 1.00 → 1.05 | **ships SC** (holds without the busiest) |
+| **KZN coast** | FALE | 79 → 87 → **90** % (68, 17) | 1.63 → 1.63 → 1.94 | **ships SC** (S alone: interval touched zero) |
+| Highveld | FAOR, FAWB | 63 → 79 → 90 % (105, 16) | 0.07 → 0.09 → 0.14 | not shipped — fails without the busiest airport |
+| Northern Cape | FAKM, FAUP | 79 → 88 → 91 % (103, 19) | 1.42 → 1.44 → 2.11 | not shipped — same |
+| North West | FAMM | 86 → 91 → 96 % | 0.37 → 0.43 → 0.60 | not shipped — gain not clearly above zero |
+| West Coast | FALW | 78 → 88 → 91 % | 0.74 → 0.74 → 1.03 | not shipped — same |
+| Free State | FABL | 85 → 87 → 92 % | 1.52 → 1.58 → 3.41 | SC **blocked** (cries wolf); S not clearly better |
+| Garden Route, Limpopo, Lowveld | FAGG; FAPP; FAHS, FAKN | — | — | not shipped — too few pumping reports or no gain |
+
+- **Shown numbers** (proof, where it ships; mean / gust km/h off the next report): Western Cape 4.3 / 9.7 → 3.6 / 6.1;
+  Eastern Cape 4.1 / 10.5 → 3.4 / 8.7; KZN coast 3.5 / 13.6 → 2.9 / 9.5.
+- **Caveat (Fable 8):** the archive's M under-calls Windy against production on the coast, so S's gain is overstated
+  there; the live guard is the check.
+- **Report only — a station veto** (drop the models' Windy when the latest report is calm): at the airports it cuts
+  false Windy (Northern Cape 1.42 → 0.70, KZN coast 1.63 → 0.90); at the 16 Western Cape SAWS stations **11.5 → 2.8
+  per 100 calm hours** (§14.1's finding). Not built.
+- **Report only — SAWS SYNOP, if licensed:** Strand's zone (68911, 6-hourly, F 6.5 h): pumping caught **21 → 74 %** but
+  calm called Windy **0.55 → 4.65 per 100** — it would be **blocked** even with the data: a 6-hourly report held for
+  6 h keeps saying Windy after the wind drops. Al's 08:01 (00Z report, 6.0 h old) would have held. Western Cape SYNOPs:
+  85 → 91 %, false 11.5 → 12.0.
+
+### 15.4 Rain and fog — not shipped
+
+- **Rain:** a shower reported at the airport is still there at the next report only ~59 % of the time; "Rain's here"
+  from the station would be wrong on **1.9 per 100 dry hours** against today's 0.15 — no freshness passed tuning.
+- **Fog:** station fog is right at the next report **58 %** of the time (visibility under 2 km: 68 %) — under the 60 % /
+  80 % bar. Today's own fog calls at the same airports are right **12 %**. Nothing ships; the gap is recorded.
+
+### 15.5 Temperatures
+Untouched: `tests/temp-freeze.test.js` passes unchanged; feels-like still reads the models' blend.
+
+### 15.6 Build
+`api/_lib/station-now.js` (feed, Redis copy refreshed under a lock beside the fan-out, only places with a station read
+it; any failure = today's answer), `api/_lib/station-map.js` (generated, `--check`), `api/weather.js` (station layer
+after the fog layers; never over thunder, hail, storm or rain; `wind_kph`, `now.windKph`, `gustKph` carry the station's
+numbers; `meta.station` records its word). The next hours keep the models' wind (the carry-forward was scored on "now"
+only). Tests `tests/station-now.test.js` (15).
+- **The 5–10 km ring (Fable):** 46 of the 164 places are within 5 km of their airport, 112 at 5–10 km. The pairs say a
+  station 2–10 km away is calm in about a quarter of the hours the other pumps (three coastal pairs, Wilson upper
+  33 %); if that carried to an airport and a suburb it would be ~4 false Windy per 100 calm hours there. The ring rests
+  on the plan's pre-registered fallback, not on evidence, and Bellville-type places cannot be checked live (no station
+  there). Station wind also replaces a fog headline (same precedence as the models' wind).
+- **With any report up to 12 h old the models' own Windy fires without the two-source consensus check** — the same as
+  the scorer did, so the SC false rates above include it.
+
+### 15.7 Fable, gates, shipped
+
+| Fable call | verdict |
+|---|---|
+| the plan | PROCEED WITH CHANGES — nine, adopted before scoring (PLAN §8) |
+| the diff `426d2df..3115803` | SHIP WITH FIXES — (1) carry the gap at most 3 h (East London sends nothing 19Z–03Z; production measures the gap against the current models, which was scored only for fresh reports; T 3 tuned within a point of T 12); (2) drop a report with mean > 120 or gust > 160 km/h; (3) code the shown-number check into the map. No scorer bug; the phone shows "Wind's up." and the wind folder from the server key, and the numbers as sent. All three applied (`28b8562`) |
+| the delta | SHIP — past 3 h no old report can set the numbers or the headline |
+
+Gates on `3115803` (pure UI/content) and `28b8562` (code): serial **155 files / 21,444 tests**, image budget, build,
+bespoke, rotation (exit 0 alone; in the chained run it printed PASS then hung past the 15-min cap), drift guard,
+seasonal, fold **140/140**, desktop, Home D check **26/26**, gate shots, and the precision, wind table, wind weights,
+gust table, hero-lines and station-map `--check`s — every step exit 0. Pushed `426d2df..28b8562` (29 Sept).
+
+`/api/version` → `28b8562` at 07:30:52 UTC. Live smoke (`scripts/live-smoke.mjs`): desktop 5/5 languages all checks true;
+phone home, week, search, settings true × 5, hourly and share false × 5 — the script still clicks the old Home's
+buttons (Home D has neither), as at the Home D ship; no console errors or bad responses logged.
+
+**Live, 29 Sept 07:31 UTC, against each place's latest report:**
+
+| place | app now | photo folder | wind / gust shown | station word | latest report |
+|---|---|---|---|---|---|
+| Strand | clear | clear | 14.9 / 28.8 | none (no licensed station) | **68911 06Z: 130° 26 km/h gusting 70** — the app is still wrong here |
+| Gordon's Bay | Windy (two sources at 25+, §14.2) | wind | 24.4 / — | none | 68911 06Z as above |
+| Cape Town city | clear | clear | 12.6 / 23.4 | none (17 km from the airport) | Molteno 68819 06Z calm, gust 6; FACT 07Z 8 kt |
+| Gqeberha | partly cloudy | cloudy | **11.2 (measured)** / 24.9 | FAPE 07Z, 0.5 h, 11.1 km/h — not Windy | FAPE 07Z 6 kt |
+| Durban | might rain | cloudy | 18.3 / 41.4 | none (30 km from King Shaka) | Virginia 68593 06Z 13 gusting 33; FALE 07Z 8 kt |
+| Johannesburg | might rain | cloudy | 19.1 / 33.8 | none (Highveld not shipped) | FAOR 07Z 9 kt; 68361 no report in 8 h |
+| East London · Bellville · Tongaat | might rain · clear · partly cloudy | cloudy · clear · cloudy | **9.2 · 14.6 · 14.9 (measured)** | FAEL / FACT / FALE 07Z, 0.5 h, none pumping | 5 · 8 · 8 kt |
+
+No covered airport was pumping at the check, so the live Windy path is proven by the tests and the history, not yet by
+a live gale; the recorder's Gqeberha, Cape Town and Durban readings now carry `meta.station` for the next one.
