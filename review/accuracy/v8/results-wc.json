@@ -1,0 +1,639 @@
+{
+ "plan": "review/accuracy/v8/PLAN.md §3, §6.2–4",
+ "factSiteExcluded": [
+  "68816",
+  "68999"
+ ],
+ "rows": {
+  "n": 62965,
+  "stations": [
+   {
+    "id": "68713",
+    "name": "PAARL",
+    "kmToFact": 43.8,
+    "cadence": 6
+   },
+   {
+    "id": "68715",
+    "name": "MALMESBURY",
+    "kmToFact": 56.6,
+    "cadence": 6
+   },
+   {
+    "id": "68718",
+    "name": "ROBERTSON",
+    "kmToFact": 121.4,
+    "cadence": 6
+   },
+   {
+    "id": "68813",
+    "name": "ROBBEN ISLAND",
+    "kmToFact": 28.4,
+    "cadence": 6
+   },
+   {
+    "id": "68817",
+    "name": "CAPE TOWN - PORTNET",
+    "kmToFact": 17.1,
+    "cadence": 6
+   },
+   {
+    "id": "68819",
+    "name": "MOLTENO RESERVIOR",
+    "kmToFact": 17.3,
+    "cadence": 6
+   },
+   {
+    "id": "68821",
+    "name": "WORCESTER",
+    "kmToFact": 89.1,
+    "cadence": 1
+   },
+   {
+    "id": "68912",
+    "name": "SLANGKOP",
+    "kmToFact": 33.1,
+    "cadence": 6
+   },
+   {
+    "id": "68916",
+    "name": "CAPE POINT",
+    "kmToFact": 43.6,
+    "cadence": 1
+   },
+   {
+    "id": "68918",
+    "name": "HERMANUS",
+    "kmToFact": 76.8,
+    "cadence": 1
+   },
+   {
+    "id": "68920",
+    "name": "CAPE AGULHAS",
+    "kmToFact": 161.8,
+    "cadence": 1
+   },
+   {
+    "id": "68921",
+    "name": "STRUISBAAI",
+    "kmToFact": 163.4,
+    "cadence": 6
+   },
+   {
+    "id": "68923",
+    "name": "TIGERHOEK",
+    "kmToFact": 121.5,
+    "cadence": 1
+   },
+   {
+    "id": "68925",
+    "name": "ELGIN EXP FARM",
+    "kmToFact": 43.4,
+    "cadence": 6
+   }
+  ]
+ },
+ "tune": {
+  "M": {
+   "caught": 0.8497,
+   "false": 13.9044
+  },
+  "A": {
+   "P": {
+    "m": 25,
+    "g": 35,
+    "F": 3,
+    "R": 30
+   },
+   "caught": 0.8403,
+   "false": 13.2555
+  },
+  "B": null,
+  "family": "A"
+ },
+ "proof": {
+  "P": {
+   "m": 25,
+   "g": 35,
+   "F": 3,
+   "R": 30
+  },
+  "main": {
+   "per": [
+    {
+     "guess": "old harness",
+     "M": {
+      "pumping": 1049,
+      "caught": 0.8403,
+      "calm": 9772.6667,
+      "falsePer100": 12.418,
+      "caughtW": 881.5,
+      "falseW": 1213.5714
+     },
+     "R": {
+      "pumping": 1049,
+      "caught": 0.836,
+      "calm": 9772.6667,
+      "falsePer100": 12.2065,
+      "caughtW": 877,
+      "falseW": 1192.9048
+     },
+     "boot": {
+      "caught": {
+       "d": -0.0043,
+       "lo": -0.006,
+       "hi": -0.0021
+      },
+      "false": {
+       "d": -0.2115,
+       "lo": -0.3367,
+       "hi": -0.1071
+      }
+     }
+    },
+    {
+     "guess": "ECMWF-heavy",
+     "M": {
+      "pumping": 1049,
+      "caught": 0.8635,
+      "calm": 9772.6667,
+      "falsePer100": 14.2506,
+      "caughtW": 905.8333,
+      "falseW": 1392.6667
+     },
+     "R": {
+      "pumping": 1049,
+      "caught": 0.8575,
+      "calm": 9772.6667,
+      "falsePer100": 13.9539,
+      "caughtW": 899.5,
+      "falseW": 1363.6667
+     },
+     "boot": {
+      "caught": {
+       "d": -0.006,
+       "lo": -0.0084,
+       "hi": -0.0032
+      },
+      "false": {
+       "d": -0.2967,
+       "lo": -0.4522,
+       "hi": -0.1599
+      }
+     }
+    },
+    {
+     "guess": "mixed",
+     "M": {
+      "pumping": 1049,
+      "caught": 0.8618,
+      "calm": 9772.6667,
+      "falsePer100": 12.7676,
+      "caughtW": 904,
+      "falseW": 1247.7381
+     },
+     "R": {
+      "pumping": 1049,
+      "caught": 0.8564,
+      "calm": 9772.6667,
+      "falsePer100": 12.4555,
+      "caughtW": 898.3333,
+      "falseW": 1217.2381
+     },
+     "boot": {
+      "caught": {
+       "d": -0.0054,
+       "lo": -0.0079,
+       "hi": -0.0025
+      },
+      "false": {
+       "d": -0.3121,
+       "lo": -0.4767,
+       "hi": -0.1706
+      }
+     }
+    }
+   ],
+   "pumpReports": 1049,
+   "pumpDays": 65,
+   "b1": false,
+   "b2": true,
+   "b3": true
+  },
+  "perStation": [
+   {
+    "id": "68713",
+    "name": "PAARL",
+    "pumpingHours": 2,
+    "calmHours": 214.3,
+    "maxCaughtLoss": 0,
+    "guesses": [
+     {
+      "caughtM": 0,
+      "caughtR": 0,
+      "falseM": 2.3328,
+      "falseR": 2.3328
+     },
+     {
+      "caughtM": 0,
+      "caughtR": 0,
+      "falseM": 2.4883,
+      "falseR": 2.4883
+     },
+     {
+      "caughtM": 0,
+      "caughtR": 0,
+      "falseM": 1.633,
+      "falseR": 1.633
+     }
+    ],
+    "breach": false
+   },
+   {
+    "id": "68715",
+    "name": "MALMESBURY",
+    "pumpingHours": 0,
+    "calmHours": 333.3,
+    "maxCaughtLoss": 0,
+    "guesses": [
+     {
+      "caughtM": null,
+      "caughtR": null,
+      "falseM": 11.4286,
+      "falseR": 11.4286
+     },
+     {
+      "caughtM": null,
+      "caughtR": null,
+      "falseM": 16,
+      "falseR": 16
+     },
+     {
+      "caughtM": null,
+      "caughtR": null,
+      "falseM": 10.8214,
+      "falseR": 10.8214
+     }
+    ],
+    "breach": false
+   },
+   {
+    "id": "68718",
+    "name": "ROBERTSON",
+    "pumpingHours": 6,
+    "calmHours": 250.3,
+    "maxCaughtLoss": 0,
+    "guesses": [
+     {
+      "caughtM": 0.5833,
+      "caughtR": 0.5833,
+      "falseM": 2.9865,
+      "falseR": 2.9865
+     },
+     {
+      "caughtM": 0.6667,
+      "caughtR": 0.6667,
+      "falseM": 6.382,
+      "falseR": 6.382
+     },
+     {
+      "caughtM": 0.6111,
+      "caughtR": 0.6111,
+      "falseM": 2.9294,
+      "falseR": 2.9294
+     }
+    ],
+    "breach": false
+   },
+   {
+    "id": "68813",
+    "name": "ROBBEN ISLAND",
+    "pumpingHours": 18,
+    "calmHours": 281.3,
+    "maxCaughtLoss": 0.037,
+    "guesses": [
+     {
+      "caughtM": 0.8796,
+      "caughtR": 0.8611,
+      "falseM": 5.1963,
+      "falseR": 4.0115
+     },
+     {
+      "caughtM": 0.8796,
+      "caughtR": 0.8519,
+      "falseM": 7.9722,
+      "falseR": 5.0102
+     },
+     {
+      "caughtM": 0.9352,
+      "caughtR": 0.8981,
+      "falseM": 10.8158,
+      "falseR": 6.3727
+     }
+    ],
+    "breach": false
+   },
+   {
+    "id": "68817",
+    "name": "CAPE TOWN - PORTNET",
+    "pumpingHours": 52,
+    "calmHours": 269,
+    "maxCaughtLoss": 0.077,
+    "guesses": [
+     {
+      "caughtM": 0.6122,
+      "caughtR": 0.5609,
+      "falseM": 5.5054,
+      "falseR": 4.3282
+     },
+     {
+      "caughtM": 0.6506,
+      "caughtR": 0.5737,
+      "falseM": 6.1869,
+      "falseR": 4.8239
+     },
+     {
+      "caughtM": 0.6122,
+      "caughtR": 0.5513,
+      "falseM": 5.5674,
+      "falseR": 4.5141
+     }
+    ],
+    "breach": true
+   },
+   {
+    "id": "68819",
+    "name": "MOLTENO RESERVIOR",
+    "pumpingHours": 22,
+    "calmHours": 298.3,
+    "maxCaughtLoss": 0.083,
+    "guesses": [
+     {
+      "caughtM": 0.8712,
+      "caughtR": 0.803,
+      "falseM": 12.0511,
+      "falseR": 7.3025
+     },
+     {
+      "caughtM": 0.8864,
+      "caughtR": 0.803,
+      "falseM": 13.7829,
+      "falseR": 8.0846
+     },
+     {
+      "caughtM": 0.8864,
+      "caughtR": 0.803,
+      "falseM": 12.7294,
+      "falseR": 7.6457
+     }
+    ],
+    "breach": false
+   },
+   {
+    "id": "68821",
+    "name": "WORCESTER",
+    "pumpingHours": 126,
+    "calmHours": 1569,
+    "maxCaughtLoss": 0,
+    "guesses": [
+     {
+      "caughtM": 0.3016,
+      "caughtR": 0.3016,
+      "falseM": 0.8286,
+      "falseR": 0.8286
+     },
+     {
+      "caughtM": 0.4524,
+      "caughtR": 0.4524,
+      "falseM": 1.7208,
+      "falseR": 1.7208
+     },
+     {
+      "caughtM": 0.381,
+      "caughtR": 0.381,
+      "falseM": 0.5099,
+      "falseR": 0.5099
+     }
+    ],
+    "breach": false
+   },
+   {
+    "id": "68912",
+    "name": "SLANGKOP",
+    "pumpingHours": 69,
+    "calmHours": 225.3,
+    "maxCaughtLoss": 0,
+    "guesses": [
+     {
+      "caughtM": 0.8696,
+      "caughtR": 0.8696,
+      "falseM": 11.2954,
+      "falseR": 11.2954
+     },
+     {
+      "caughtM": 0.9324,
+      "caughtR": 0.9324,
+      "falseM": 16.5258,
+      "falseR": 16.5258
+     },
+     {
+      "caughtM": 0.9807,
+      "caughtR": 0.9807,
+      "falseM": 23.7109,
+      "falseR": 23.7109
+     }
+    ],
+    "breach": false
+   },
+   {
+    "id": "68916",
+    "name": "CAPE POINT",
+    "pumpingHours": 513,
+    "calmHours": 866,
+    "maxCaughtLoss": 0,
+    "guesses": [
+     {
+      "caughtM": 0.9454,
+      "caughtR": 0.9454,
+      "falseM": 32.2171,
+      "falseR": 32.2171
+     },
+     {
+      "caughtM": 0.9357,
+      "caughtR": 0.9357,
+      "falseM": 28.8684,
+      "falseR": 28.8684
+     },
+     {
+      "caughtM": 0.9376,
+      "caughtR": 0.9376,
+      "falseM": 27.0785,
+      "falseR": 27.0785
+     }
+    ],
+    "breach": false
+   },
+   {
+    "id": "68918",
+    "name": "HERMANUS",
+    "pumpingHours": 172,
+    "calmHours": 1386,
+    "maxCaughtLoss": 0,
+    "guesses": [
+     {
+      "caughtM": 0.936,
+      "caughtR": 0.936,
+      "falseM": 2.886,
+      "falseR": 2.886
+     },
+     {
+      "caughtM": 0.9477,
+      "caughtR": 0.9477,
+      "falseM": 3.86,
+      "falseR": 3.86
+     },
+     {
+      "caughtM": 0.9767,
+      "caughtR": 0.9767,
+      "falseM": 5.267,
+      "falseR": 5.267
+     }
+    ],
+    "breach": false
+   },
+   {
+    "id": "68920",
+    "name": "CAPE AGULHAS",
+    "pumpingHours": 20,
+    "calmHours": 1754,
+    "maxCaughtLoss": 0,
+    "guesses": [
+     {
+      "caughtM": 1,
+      "caughtR": 1,
+      "falseM": 33.2383,
+      "falseR": 33.2383
+     },
+     {
+      "caughtM": 1,
+      "caughtR": 1,
+      "falseM": 35.9464,
+      "falseR": 35.9464
+     },
+     {
+      "caughtM": 1,
+      "caughtR": 1,
+      "falseM": 32.4686,
+      "falseR": 32.4686
+     }
+    ],
+    "breach": false
+   },
+   {
+    "id": "68921",
+    "name": "STRUISBAAI",
+    "pumpingHours": 39,
+    "calmHours": 238.3,
+    "maxCaughtLoss": 0,
+    "guesses": [
+     {
+      "caughtM": 0.9658,
+      "caughtR": 0.9658,
+      "falseM": 17.5025,
+      "falseR": 17.5025
+     },
+     {
+      "caughtM": 0.9829,
+      "caughtR": 0.9829,
+      "falseM": 21.1888,
+      "falseR": 21.1888
+     },
+     {
+      "caughtM": 0.9615,
+      "caughtR": 0.9615,
+      "falseM": 17.3726,
+      "falseR": 17.3726
+     }
+    ],
+    "breach": false
+   },
+   {
+    "id": "68923",
+    "name": "TIGERHOEK",
+    "pumpingHours": 2,
+    "calmHours": 1772,
+    "maxCaughtLoss": 0,
+    "guesses": [
+     {
+      "caughtM": 1,
+      "caughtR": 1,
+      "falseM": 5.2483,
+      "falseR": 5.2483
+     },
+     {
+      "caughtM": 1,
+      "caughtR": 1,
+      "falseM": 9.0858,
+      "falseR": 9.0858
+     },
+     {
+      "caughtM": 1,
+      "caughtR": 1,
+      "falseM": 6.772,
+      "falseR": 6.772
+     }
+    ],
+    "breach": false
+   },
+   {
+    "id": "68925",
+    "name": "ELGIN EXP FARM",
+    "pumpingHours": 8,
+    "calmHours": 315.3,
+    "maxCaughtLoss": 0,
+    "guesses": [
+     {
+      "caughtM": 0.9375,
+      "caughtR": 0.9375,
+      "falseM": 7.1202,
+      "falseR": 7.1202
+     },
+     {
+      "caughtM": 1,
+      "caughtR": 1,
+      "falseM": 8.9097,
+      "falseR": 8.9097
+     },
+     {
+      "caughtM": 1,
+      "caughtR": 1,
+      "falseM": 5.5874,
+      "falseR": 5.5874
+     }
+    ],
+    "breach": false
+   }
+  ],
+  "leaveOut": {
+   "topPumping": "68916",
+   "passesWithout": false,
+   "topFalseUnderM": "68920",
+   "passesWithoutFalse": false
+  },
+  "price": [
+   {
+    "pumpingHoursLost": 4.5,
+    "falseCallsSaved": 20.7
+   },
+   {
+    "pumpingHoursLost": 6.3,
+    "falseCallsSaved": 29
+   },
+   {
+    "pumpingHoursLost": 5.7,
+    "falseCallsSaved": 30.5
+   }
+  ]
+ },
+ "ships": false
+}

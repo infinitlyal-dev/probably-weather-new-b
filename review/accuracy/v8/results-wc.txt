@@ -1,0 +1,22 @@
+WC-rest: 14 stations, 62965 instants; tune M caught 85.0% false 13.90/100 calm
+  A best: {"m":25,"g":35,"F":3,"R":30} caught 84.0% false 13.26; B best: none → A to proof
+  old harness: caught 84.0% → 83.6% Δ-0.4 [-0.6, -0.2]; false 12.42 → 12.21 Δ-0.21 [-0.34, -0.11]
+  ECMWF-heavy: caught 86.4% → 85.7% Δ-0.6 [-0.8, -0.3]; false 14.25 → 13.95 Δ-0.30 [-0.45, -0.16]
+  mixed: caught 86.2% → 85.6% Δ-0.5 [-0.8, -0.3]; false 12.77 → 12.46 Δ-0.31 [-0.48, -0.17]
+  bars 1 false 2 true 3 true (1049 pumping reports on 65 days); per-station breach 68817; without 68916 false; without 68920 false
+  price: 4.5 pumping hours lost, 20.7 false calls saved | 6.3 pumping hours lost, 29 false calls saved | 5.7 pumping hours lost, 30.5 false calls saved
+    68713 PAARL: pumping 2 h, calm 214.3 h; caught 0.0%→0.0% 0.0%→0.0% 0.0%→0.0%; false 2.3→2.3 2.5→2.5 1.6→1.6
+    68715 MALMESBURY: pumping 0 h, calm 333.3 h; caught —→— —→— —→—; false 11.4→11.4 16.0→16.0 10.8→10.8
+    68718 ROBERTSON: pumping 6 h, calm 250.3 h; caught 58.3%→58.3% 66.7%→66.7% 61.1%→61.1%; false 3.0→3.0 6.4→6.4 2.9→2.9
+    68813 ROBBEN ISLAND: pumping 18 h, calm 281.3 h; caught 88.0%→86.1% 88.0%→85.2% 93.5%→89.8%; false 5.2→4.0 8.0→5.0 10.8→6.4
+    68817 CAPE TOWN - PORTNET: pumping 52 h, calm 269 h; caught 61.2%→56.1% 65.1%→57.4% 61.2%→55.1%; false 5.5→4.3 6.2→4.8 5.6→4.5
+    68819 MOLTENO RESERVIOR: pumping 22 h, calm 298.3 h; caught 87.1%→80.3% 88.6%→80.3% 88.6%→80.3%; false 12.1→7.3 13.8→8.1 12.7→7.6
+    68821 WORCESTER: pumping 126 h, calm 1569 h; caught 30.2%→30.2% 45.2%→45.2% 38.1%→38.1%; false 0.8→0.8 1.7→1.7 0.5→0.5
+    68912 SLANGKOP: pumping 69 h, calm 225.3 h; caught 87.0%→87.0% 93.2%→93.2% 98.1%→98.1%; false 11.3→11.3 16.5→16.5 23.7→23.7
+    68916 CAPE POINT: pumping 513 h, calm 866 h; caught 94.5%→94.5% 93.6%→93.6% 93.8%→93.8%; false 32.2→32.2 28.9→28.9 27.1→27.1
+    68918 HERMANUS: pumping 172 h, calm 1386 h; caught 93.6%→93.6% 94.8%→94.8% 97.7%→97.7%; false 2.9→2.9 3.9→3.9 5.3→5.3
+    68920 CAPE AGULHAS: pumping 20 h, calm 1754 h; caught 100.0%→100.0% 100.0%→100.0% 100.0%→100.0%; false 33.2→33.2 35.9→35.9 32.5→32.5
+    68921 STRUISBAAI: pumping 39 h, calm 238.3 h; caught 96.6%→96.6% 98.3%→98.3% 96.2%→96.2%; false 17.5→17.5 21.2→21.2 17.4→17.4
+    68923 TIGERHOEK: pumping 2 h, calm 1772 h; caught 100.0%→100.0% 100.0%→100.0% 100.0%→100.0%; false 5.2→5.2 9.1→9.1 6.8→6.8
+    68925 ELGIN EXP FARM: pumping 8 h, calm 315.3 h; caught 93.7%→93.7% 100.0%→100.0% 100.0%→100.0%; false 7.1→7.1 8.9→8.9 5.6→5.6
+WESTERN CAPE: does not ship
