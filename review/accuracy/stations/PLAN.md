@@ -159,3 +159,51 @@ Full gates (serial vitest, image budget, build, table `--check`s, fold, desktop,
 to main, `/api/version`, live smoke; then the six places live against their latest station report (headline, photo
 folder, wind and gust). Nothing that fails its bar ships; where nothing passes, the region keeps today's now and the
 report says why.
+
+## 8. Amendments before scoring (29 Sept, after Fable's plan review and the terms research; nothing scored yet)
+
+**Terms (§1), the outcome that shapes the run.** Allowed for a commercial app today: **airport METARs via the Iowa
+Environmental Mesonet** — "in the public domain and may be used freely by anyone for any lawful purpose", and its API
+page names commercial use outright (mesonet.agron.iastate.edu/disclaimer.php, /api/). **Not clearly allowed: SA
+Weather Service SYNOPs via Ogimet** — Ogimet's licence says the copyright of coded reports stays with each country's
+institution ("read WMO resolution 40"), and the SAWS Act lists selling meteorological information as a SAWS commercial
+service; the paid route is SAWS data through AfriGIS (Rand price not published). Al's brief: *"Use only what the terms
+allow."* So **the live station list is airports only; 68911 Strand and every other SYNOP station are scored on history
+(so the answer is known) but not used live.** Strand's nearest airport is Cape Town (27 km, across the Cape Flats); §2
+decides whether it represents Strand. The live feed is IEM's `api/1/currents.json?network=ZA__ASOS` (raw METARs, 27 SA
+airports; answers in ~2 s, so production reads it from Redis, refreshed in the background).
+
+**Terrain source (§2):** AWS Terrain Tiles (terrarium, zoom 10, ~125 m) replace the Open-Meteo elevation API (the
+towns and lines needed ~760,000 points, far past its free tier). Same test, same thresholds.
+
+**Fable's nine changes, adopted in full:**
+1. **Weights (§3.2):** each instant counts 1/k where k instants share one truth report; bar 3 counts distinct pumping
+   (rain, fog) truth *reports* on ≥ 6 days.
+2. **Cross-station scoring (§2, §5):** for every pair that qualifies under §2 (A a live-eligible station — an airport —
+   and B any scored station within D), S and SC run with A's reports against B's truth, M at B. A region's bar must pass
+   on the pooled cross rows **and** on its own-station rows. A region with no qualifying pair passes on own-station
+   evidence only and is labelled "persistence only". **D is learned on March–June** pairs only.
+3. **SC (§3.3):** only a *positive* gap can raise the headline (Windy_SC = M ∨ S ∨ gap-raised numbers over the line);
+   both-way gaps move the shown numbers only, clamped ≥ 0. The negative-gap veto is reported beside §3.4's S-veto,
+   never shipped.
+4. **Rain/fog bar 2 (§5):** of S's own calls, the share wet (fog) at the truth report must be ≥ M's own-call precision
+   in the same proof period minus 5 points, floor 60 %; the "around the hour" share stays ≥ 80 %.
+5. **Decoder (§3.1):** the SYNOP ww / wawa / VV decoder is fixture-tested on known reports before scoring. Rain and fog
+   S can only fire from stations that send present weather with a cadence inside F_r / F_f — in practice airports
+   (METAR) and the few hourly manned SYNOPs. Live: airports only (§8 terms).
+6. **Phone (§6):** `station-rain` and `station-fog` are honoured before the rain-possible rungs
+   (`assets/app.js` computeHomeDisplayCondition), `station-rain` joins `rainNowOverride`.
+7. **Feed (§6):** one national fetch behind the Redis lock (at most one fetch per 5 min across all instances),
+   stale-served on failure (≤ 30 min), read inside the fan-out so it adds no latency; the station is resolved on the
+   request's cache-cell centre (`snapCoord`), so one cell never serves a station answer to an uncovered neighbour. The
+   cached payload can hold a station key ≤ 15 min past its release — small against F, said in the report. The shown
+   wind becomes the station's while the hourly list stays the models': said in the report.
+8. **Caveat on S's gain:** the archive's M under-calls Windy against production on the coast (EVAL §14.2: 19–24 replayed
+   vs 33 served of 263 h), so S's gain over M is overstated there; v7's gustScale carries over; both named in the report.
+9. **Al's own case first:** with SYNOP not usable live, Strand's morning (latest 68911 report 00Z, ~6 h old at 08:01)
+   is not fixable from 68911 in this run — said to Al first in the last message. The F chosen for 6-hourly stations is
+   still checked against that case in the history, so the answer is on record if SAWS data is licensed.
+
+**Rain and fog town radius (added with change 2, before scoring):** showers and fog are local, so rain and fog S reach a
+town only within **10 km** of its airport (same exposure, height, no ridge), whatever D is for wind. They are scored at
+the airports themselves (own station); no cross-station rain/fog rows (too few SYNOP stations send present weather).
