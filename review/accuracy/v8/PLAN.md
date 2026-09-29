@@ -52,4 +52,5 @@ station layer):**
 
 **Tuning (March–June, all WC-rest stations pooled, the three guesses averaged):** for each family the setting with the
 lowest false rate whose caught share is at most 2 points below M's; ties → the setting that vetoes least (lower
-m_v, lower g_v, shorter F_v, smaller R; for B the lower X). 
+m_v, lower g_v, shorter F_v, smaller R; for B the lower X). Then the one family with
+the lower tuning false rate goes to proof.
