@@ -1,0 +1,131 @@
+{
+ "plan": "review/accuracy/v8/PLAN.md §4, §6.8",
+ "frozenFrom": "v2/results/v6-score.json live.LW",
+ "v6WindowEnd": "2026-09-28T11:10:01.850Z",
+ "window": {
+  "from": "2026-09-25T16:10:06.605Z",
+  "to": "2026-09-29T08:10:52.027Z"
+ },
+ "pooled": {
+  "LW": {
+   "mae": 4.731,
+   "bc": 5.533,
+   "boot": {
+    "diff": -0.8027198560483103,
+    "lo": -1.4976039086916773,
+    "hi": -0.14361656456464192,
+    "days": 15,
+    "n": 262
+   }
+  },
+  "LW4": {
+   "mae": 5.097,
+   "bc4": 5.617,
+   "boot": {
+    "diff": -0.5202322784310544,
+    "lo": -1.123124707657746,
+    "hi": 0.3183955283803522,
+    "days": 15,
+    "n": 262
+   }
+  },
+  "gate": true
+ },
+ "highveld": {
+  "union": {
+   "n": 51,
+   "maeBC": 5.307,
+   "maeLW": 3.718,
+   "diff": -1.589,
+   "blocks": 10,
+   "better": 10,
+   "needBetter": 7,
+   "worse": 0,
+   "full5": 38,
+   "ships": true,
+   "blocked": false
+  },
+  "v6ProofOnly": {
+   "n": 31,
+   "maeBC": 4.365,
+   "maeLW": 3.03,
+   "diff": -1.335,
+   "blocks": 6,
+   "better": 6,
+   "needBetter": 4,
+   "worse": 0,
+   "full5": 23,
+   "ships": false,
+   "blocked": false
+  },
+  "newOnly": {
+   "n": 20,
+   "maeBC": 6.768,
+   "maeLW": 4.785,
+   "diff": -1.983,
+   "blocks": 4,
+   "better": 4,
+   "needBetter": 4,
+   "worse": 0,
+   "full5": 15,
+   "ships": false,
+   "blocked": false
+  },
+  "lw4": {
+   "union": -0.819,
+   "newOnly": -0.992
+  },
+  "windy": {
+   "windyHours": 2,
+   "calmHours": 34,
+   "caughtBC": 0,
+   "caughtLW": 0,
+   "falseBC": 4,
+   "falseLW": 0,
+   "blocksLW": false
+  },
+  "weights": {
+   "mse": [
+    {
+     "mse": 57.51,
+     "n": 28
+    },
+    {
+     "mse": 39.53,
+     "n": 30
+    },
+    {
+     "mse": 21.51,
+     "n": 30
+    },
+    {
+     "mse": 34.21,
+     "n": 30
+    },
+    {
+     "mse": 44.57,
+     "n": 12
+    }
+   ],
+   "weights": [
+    0.1235,
+    0.1796,
+    0.3301,
+    0.2076,
+    0.1593
+   ],
+   "k": {
+    "k": 1.078,
+    "meanObs": 14.0443,
+    "n": 12
+   },
+   "k4": {
+    "k": 1.2536,
+    "meanObs": 14.0443,
+    "n": 12
+   }
+  },
+  "ships": true,
+  "why": "passes: gain ≥ 1 km/h, ⅔ of blocks better, ≥ 24 full-five hours, pooled gate, Windy not doubled, new days better"
+ }
+}

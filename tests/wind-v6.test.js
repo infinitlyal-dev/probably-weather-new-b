@@ -16,9 +16,12 @@ const wmean = (v, w) => { let s = 0, ws = 0; v.forEach((x, i) => { if (Number.is
 
 describe('the weights are the ones that were tested', () => {
   it('only the regions whose decision was LW carry weights, unrefit from the results', () => {
-    const ships = Object.entries(res.decisions.regions).filter(([, d]) => d.rule === 'LW').map(([r]) => r).sort();
+    // v8 (review/accuracy/v8/PLAN.md §4): the Highveld's frozen v6 weights passed v6's bar on the recorder's extra days.
+    const v8 = JSON.parse(readFileSync(new URL('../review/accuracy/v8/results-highveld.json', import.meta.url), 'utf8'));
+    expect(v8.highveld.ships).toBe(true);
+    const ships = [...Object.entries(res.decisions.regions).filter(([, d]) => d.rule === 'LW').map(([r]) => r), 'Highveld'].sort();
     expect(Object.keys(WIND_WEIGHTS.regions).sort()).toEqual(ships);
-    expect(ships).toEqual(['Eastern Cape']);
+    expect(ships).toEqual(['Eastern Cape', 'Highveld']);
     for (const reg of ships) {
       expect(WIND_WEIGHTS.regions[reg].weights).toEqual(res.live.LW[reg].weights);
       expect(WIND_WEIGHTS.regions[reg].k).toBe(res.live.LW[reg].k.k);
@@ -72,11 +75,11 @@ describe('the Eastern Cape: each source by its record', () => {
 
 describe('everywhere else: unchanged', () => {
   const five = [10, 14, 30, 20, 8];
-  it('Cape Town city and Johannesburg keep the v5 table; Strand and London keep today\'s blend', () => {
+  it('Cape Town city keeps the v5 table, Johannesburg takes the Highveld weights (v8); Strand and London keep today\'s blend', () => {
     const ct = shapeWind({ raw: 18, values: five, slots: five, kind: 'now', ...CT_CITY, month: 9, hour: 9 });
     expect(ct).toMatchObject({ rule: 'BC', region: 'Western Cape', kph: r1(18 * WIND_TABLE.ratios['Western Cape'].SON.morning) });
     expect(ct.weights).toBeUndefined();
-    expect(shapeWind({ raw: 18, values: five, slots: five, kind: 'now', ...JHB, month: 9, hour: 9 }).rule).toBe('BC');
+    expect(shapeWind({ raw: 18, values: five, slots: five, kind: 'now', ...JHB, month: 9, hour: 9 })).toMatchObject({ rule: 'LW', region: 'Highveld' });
     expect(shapeWind({ raw: 19.2, values: five, slots: five, kind: 'now', ...STRAND, month: 9, hour: 9 })).toMatchObject({ rule: 'today', kph: 19.2 });
     expect(shapeWind({ raw: 6.1, values: five, slots: five, kind: 'now', ...LONDON, month: 9, hour: 9 })).toMatchObject({ rule: 'today', kph: 6.1 });
   });
