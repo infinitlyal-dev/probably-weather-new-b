@@ -1,7 +1,7 @@
 // "Now" follows the live station (review/accuracy/stations/PLAN.md, EVAL §15, 29 Sept 2026).
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import handler from '../api/weather.js';
-import { parseMetarWind, parseFeed, stationFor, stationNow, readStationObs, _resetStationMemo, STATION_KEY } from '../api/_lib/station-now.js';
+import { parseMetarWind, parseFeed, stationFor, stationNow, stationMeasuredNow, readStationObs, _resetStationMemo, STATION_KEY } from '../api/_lib/station-now.js';
 import { STATION_MAP } from '../api/_lib/station-map.js';
 
 const NOW = Date.parse('2026-09-29T06:20:00Z');
@@ -63,6 +63,11 @@ describe('the station word on "now" (rule SC)', () => {
     expect(stationNow({ ...at, obs: obsOf('FAPE 290600Z 09005KT 9999') }).measured).toBe(true);                       // 20 min
     expect(stationNow({ ...at, obs: obsOf('FAPE 290430Z 09005KT 9999', '2026-09-29T04:30:00Z') }).measured).toBe(false); // 1 h 50
     expect(stationNow({ ...at, obs: obsOf('FAPE 290600Z 13020G34KT 9999') }).measured).toBe(true);                    // pumping
+  });
+  it('a cached word loses "measured" once its report passes 1.5 h (Fable, diff review)', () => {
+    const w = stationNow({ ...at, obs: obsOf('FAPE 290600Z 09005KT 9999') });
+    expect(stationMeasuredNow(w, Date.parse('2026-09-29T07:20:00Z')).measured).toBe(true);
+    expect(stationMeasuredNow(w, Date.parse('2026-09-29T07:40:00Z')).measured).toBe(false);
   });
   it('no report, a report over 12 h old, or no feed → null (today\'s answer)', () => {
     expect(stationNow({ ...at, obs: null })).toBeNull();

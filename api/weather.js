@@ -50,7 +50,7 @@ import { gustRuleAt, gustFactorAt, correctGust } from './_lib/gusts.js';
 import { GUST_TABLE } from './_lib/gust-table.js';
 import { PRECISION_TABLE, PRECISION_TABLE_INLAND } from './_lib/precision-table.js';
 import { regionOf, stationCellOf } from './_lib/regions.js';
-import { readStationObs, stationNow, stationFor } from './_lib/station-now.js';
+import { readStationObs, stationNow, stationFor, stationMeasuredNow } from './_lib/station-now.js';
 import { STATION_MAP } from './_lib/station-map.js';
 // Launch run (2026-09-25): counters for /api/health, written only on failure.
 import { recordSourceFailure, recordServerError } from './_lib/health-counters.js';
@@ -640,7 +640,10 @@ export default async function handler(req, res) {
           name: responseLocationName({ isPlaceholder, callerName: name, cachedName: payload.location?.name }),
           lat, lon,
         },
-        meta: { ...(payload.meta || {}), localHour: freshLocalHour, serverCache, schema: PAYLOAD_SCHEMA },
+        meta: { ...(payload.meta || {}), localHour: freshLocalHour, serverCache, schema: PAYLOAD_SCHEMA,
+          // v8 (Fable, diff review): "Measured at …" re-read against the clock on a cache hit, so a cached answer never
+          // carries the line past the report's 1.5 h (the edge copy can add its own ≤ 6 min).
+          ...(payload.meta?.station ? { station: stationMeasuredNow(payload.meta.station, Date.now()) } : {}) },
       });
     };
     // A cached entry is servable only when it was written by code that carries

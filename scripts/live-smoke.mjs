@@ -6,7 +6,7 @@
 // line at Gqeberha. Phone 414x715 (touch, fresh phone per run), Home D, every language asked for:
 //   a  the joke writes itself on — hidden after the page is up, then fully shown (read off #headline's opacity)
 //   b  tap the photograph: the joke hides; tap again: it shows
-//   c  the pull-up list: at least 12 hour rows on screen, every row with a visible wind number
+//   c  the pull-up list open on screen, at least 12 hour rows in it (the list scrolls), every row with a visible wind number
 //   d  Share hands over exactly one JPEG postcard
 //   e  "Measured at …" under the facts exactly when the page's own /api/weather says the airport's report set the wind
 //      (Gqeberha: shown iff meta.station.measured; Strand: never)
@@ -129,7 +129,7 @@ async function phoneRun(lang, place) {
         row.legs.b = { pass: t1 < 0.05 && t2 > 0.95, afterTap1: t1, afterTap2: t2 };
       }
     }
-    // (c) the pull-up list: rows on screen, each with a visible wind number
+    // (c) the pull-up list open on screen; its rows (the list scrolls), each with a visible wind number
     await page.tap('#dHandle').catch((e) => row.errors.push(`handle: ${e.message.slice(0, 60)}`));
     await page.waitForTimeout(1000);
     row.legs.c = await page.evaluate(() => {
@@ -158,7 +158,10 @@ async function phoneRun(lang, place) {
     const r = m.getBoundingClientRect(), cs = getComputedStyle(m);
     return { visible: r.width > 1 && r.height > 1 && cs.display !== 'none' && cs.visibility !== 'hidden', text: m.textContent.trim() };
   });
-  row.legs.e = { pass: api !== null && (measuredApi ? seen.visible && /\b\d\d:\d\d\b/.test(seen.text || '') : !seen.visible) && (place !== 'Strand' || !measuredApi),
+  // Fable (diff review): the payload must be the place asked for — Gqeberha's carries its airport's word, Strand's none —
+  // so a late or failed location can never pass (e) on the wrong place.
+  const rightPlace = place === 'Gqeberha' ? api?.meta?.station?.station === 'FAPE' : api?.meta?.station == null;
+  row.legs.e = { pass: api !== null && rightPlace && (measuredApi ? seen.visible && /\b\d\d:\d\d\b/.test(seen.text || '') : !seen.visible),
     apiMeasured: measuredApi, apiStation: api?.meta?.station?.station ?? null, ...seen };
   for (const v of Object.values(row.legs)) if (v.pass === false) failed++;
   report.runs.push(row);

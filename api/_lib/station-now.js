@@ -161,3 +161,10 @@ export function stationNow({ lat, lon, obs, nowMs = Date.now(), shownWindKph, he
   return { ...base, windy, fired: byStation ? 'station' : raised ? 'gap' : null, fade: Math.round(fade * 100) / 100, measured,
     gapMeanKph: isNum(gapMean) ? round1(gapMean) : null, gapGustKph: isNum(gapGust) ? round1(gapGust) : null, shownWindKph: shownWind, shownGustKph: shownGust };
 }
+
+/** A stored station word re-read at `nowMs` (a cache hit): "measured" holds only while the report is at most F old. */
+export function stationMeasuredNow(word, nowMs = Date.now()) {
+  if (!word || typeof word !== 'object') return word;
+  const ageH = (nowMs - Date.parse(word.obsUtc ?? '')) / 3600e3;
+  return { ...word, measured: word.measured === true && Number.isFinite(ageH) && ageH <= STATION_MAP.F };
+}
