@@ -151,6 +151,16 @@ export function initHomeD({ label = (k) => k } = {}) {
       s.append(dot, agreeText);
       line.append(s);
     }
+    // v8: "Measured at <airport>, <time>" under the facts when an airport's report set the wind (app.js renders
+    // #measuredLine in the reader's language; it is only ever shown here on a phone).
+    const measured = $('#measuredLine');
+    const measuredText = measured && !measured.hidden ? measured.textContent.trim() : '';
+    if (measuredText) {
+      const m = document.createElement('span');
+      m.className = 'd-measured';
+      m.textContent = measuredText;
+      line.append(m);
+    }
     line.hidden = !line.childNodes.length;
   };
   // A group that opens a new line hides its leading dot. Visibility, not display: the dot keeps its
@@ -329,9 +339,13 @@ export function initHomeD({ label = (k) => k } = {}) {
     const cs = getComputedStyle(headline);
     const pad = parseFloat(cs.paddingTop) + parseFloat(cs.paddingBottom);
     // The handle sits on the nav; everything from its top edge down is not the joke's.
-    const floor = innerHeight - reserveH() - line.getBoundingClientRect().height;
-    const room = floor - status.getBoundingClientRect().bottom - Math.max(D_OPEN_MIN, bannerRoom);
-    const limit = Math.min(innerHeight * D_JOKE_MAX, room - pad);
+    line.classList.remove('d-squeeze');
+    const limitNow = () => {
+      const floor = innerHeight - reserveH() - line.getBoundingClientRect().height;
+      const room = floor - status.getBoundingClientRect().bottom - Math.max(D_OPEN_MIN, bannerRoom);
+      return Math.min(innerHeight * D_JOKE_MAX, room - pad);
+    };
+    let limit = limitNow();
     const textH = () => headline.getBoundingClientRect().height - pad;
     let px = parseFloat(cs.fontSize);
     // A short screen (under 560 px: an iPhone SE under Chrome's bars) lets the longest lines step to 17 px.
@@ -339,6 +353,14 @@ export function initHomeD({ label = (k) => k } = {}) {
     for (let guard = 0; guard < 40 && textH() > limit && px > floorPx; guard++) {
       px = Math.max(floorPx, px - 1);    // the floor holds: a 19.4 px start stops at 19, not 18.4
       headline.style.fontSize = `${px}px`;
+    }
+    // v8 (29 Sept 2026): the airport's "Measured at …" line is one more line under the facts. Only when the joke is
+    // at its floor and still does not fit, and that line is showing, the credit line gives up its "sources agree"
+    // group for this screen (with the wind measured, the models' agreement is the lesser fact) — the fold gate's
+    // 320-wide phones with the longest isiZulu, isiXhosa and Sesotho lines.
+    if (textH() > limit && line.querySelector('.d-measured') && line.querySelector('.d-agree')) {
+      line.classList.add('d-squeeze');
+      limit = limitNow();
     }
   };
   // The subtitle rises when the picture needs the bottom — what TV subtitlers do. Al's crop anchor is
@@ -419,7 +441,7 @@ export function initHomeD({ label = (k) => k } = {}) {
     const el = $(sel);
     if (el) new MutationObserver(fn).observe(el, opts);
   };
-  ['#rangeLine', '#statsRow', '#agreeLine', '#homeHourlyLabel', '#navShare'].forEach((s) => watch(s, refresh));
+  ['#rangeLine', '#statsRow', '#agreeLine', '#measuredLine', '#homeHourlyLabel', '#navShare'].forEach((s) => watch(s, refresh));
   ['#temp', '#description', '#headline', '.header'].forEach((s) => watch(s, queue));
   watch('#installBanner', queue, { attributes: true, attributeFilter: ['class'] });
   // One render rebuilds the list; the panel follows once per frame.

@@ -59,6 +59,11 @@ describe('the station word on "now" (rule SC)', () => {
     const w = stationNow({ ...at, obs: obsOf('FAPE 290200Z 13015KT 9999', '2026-09-29T02:00:00Z') });   // 4.3 h old, 27.8 km/h
     expect(w).toMatchObject({ windy: false, fired: null, fade: 0, shownWindKph: 15 });
   });
+  it('"Measured at …" (v8): only while the report is at most 1.5 h old or fired itself', () => {
+    expect(stationNow({ ...at, obs: obsOf('FAPE 290600Z 09005KT 9999') }).measured).toBe(true);                       // 20 min
+    expect(stationNow({ ...at, obs: obsOf('FAPE 290430Z 09005KT 9999', '2026-09-29T04:30:00Z') }).measured).toBe(false); // 1 h 50
+    expect(stationNow({ ...at, obs: obsOf('FAPE 290600Z 13020G34KT 9999') }).measured).toBe(true);                    // pumping
+  });
   it('no report, a report over 12 h old, or no feed → null (today\'s answer)', () => {
     expect(stationNow({ ...at, obs: null })).toBeNull();
     expect(stationNow({ ...at, obs: obsOf('FAPE 281600Z 13020G34KT', '2026-09-28T16:00:00Z') })).toBeNull();

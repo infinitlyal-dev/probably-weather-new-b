@@ -423,6 +423,15 @@ document.addEventListener("DOMContentLoaded", () => {
       // "imimoya evuthuzayo" is the same review's own word for gusts (witty.wind[49], HIGH) and Leipzig
       // xho #11427 lists it with floods and heavy rain — lang-check PASS, 0 doubts.
       gusts: { en: "gusts", af: "windstote", zu: "kufika ku", xh: "imimoya evuthuzayo", st: "Meya e fokang ka sefutho" },
+      // v8 (29 Sept 2026, Al: go — EN and AF his words): the line under the wind when an airport's report set the
+      // numbers (api/_lib/station-now.js `measured`), one per live airport, {time} = the report's local time. isiZulu,
+      // isiXhosa and Sesotho are one sentence per airport (the place takes a locative), through lang-check: 0 doubts
+      // in 15 (review/v8-measured/). Read without the English fallback — a language missing a line shows none.
+      measuredFACT: { en: "Measured at Cape Town airport, {time}", af: "Gemeet by Kaapstad-lughawe, {time}", zu: "Kulinganiswe esikhumulweni sezindiza saseKapa, {time}", xh: "Kulinganiswe kwisikhululo seenqwelomoya saseKapa, {time}", st: "Ho lekantswe boemafofaneng ba Kapa, {time}" },
+      measuredFAPE: { en: "Measured at Gqeberha airport, {time}", af: "Gemeet by Gqeberha-lughawe, {time}", zu: "Kulinganiswe esikhumulweni sezindiza saseGqeberha, {time}", xh: "Kulinganiswe kwisikhululo seenqwelomoya saseGqeberha, {time}", st: "Ho lekantswe boemafofaneng ba Gqeberha, {time}" },
+      measuredFAEL: { en: "Measured at East London airport, {time}", af: "Gemeet by Oos-Londen-lughawe, {time}", zu: "Kulinganiswe esikhumulweni sezindiza saseMonti, {time}", xh: "Kulinganiswe kwisikhululo seenqwelomoya saseMonti, {time}", st: "Ho lekantswe boemafofaneng ba East London, {time}" },
+      measuredFAUT: { en: "Measured at Mthatha airport, {time}", af: "Gemeet by Mthatha-lughawe, {time}", zu: "Kulinganiswe esikhumulweni sezindiza saseMthatha, {time}", xh: "Kulinganiswe kwisikhululo seenqwelomoya saseMthatha, {time}", st: "Ho lekantswe boemafofaneng ba Mthatha, {time}" },
+      measuredFALE: { en: "Measured at King Shaka airport, {time}", af: "Gemeet by King Shaka-lughawe, {time}", zu: "Kulinganiswe esikhumulweni sezindiza iKing Shaka, {time}", xh: "Kulinganiswe kwisikhululo seenqwelomoya iKing Shaka, {time}", st: "Ho lekantswe boemafofaneng ba King Shaka, {time}" },
       unlikely: { en: "Unlikely", af: "Onwaarskynlik", zu: "Akunakulindeleka", xh: "Akunakulindeleka", st: "Ha ho kgonehe" },
       possible: { en: "Possible", af: "Moontlik", zu: "Kungenzeka", xh: "Kunokwenzeka", st: "Ho ka etsahala" },
       likely: { en: "Likely", af: "Waarskynlik", zu: "Kungenzeka", xh: "Kunokubakho", st: "Ho ka etsahala" },
@@ -2546,6 +2555,8 @@ document.addEventListener("DOMContentLoaded", () => {
       hourly: hourly, daily: payload.daily || [], locationName: payload.location?.name, sourceRanges: meta.sourceRanges || [],
       // Open-Meteo's bearing, unaggregated (scoped data exception, Al 2026-08-06).
       windDir: isNum(payload.windDir) ? payload.windDir : null,
+      // v8: the live airport's word on "now" (null where no airport represents the place) — for the measured line.
+      station: meta.station && typeof meta.station === 'object' ? meta.station : null,
       sourceConditions: meta.sourceConditions || [], // FIX-001: per-source condition votes
       // Layer A/B (Bug 1): confidence register. 'high' unless the API flagged a
       // fog trend or source disagreement. getWittyLine reads `confidence`;
@@ -3032,6 +3043,27 @@ document.addEventListener("DOMContentLoaded", () => {
     return word;
   }
 
+  // v8 (29 Sept 2026): "Measured at Cape Town airport, 09:00" — only when the airport's report set the wind shown
+  // (meta.station.measured). Desktop shows it under the sidebar wind; Home D copies it under its credit line.
+  // The time is the report's, in the place's own local time. No line in a language without its sentence.
+  function measuredLineText(norm) {
+    const s = norm.station;
+    if (!s || s.measured !== true || typeof s.station !== 'string' || !/^[A-Z]{4}$/.test(s.station)) return '';
+    const tpl = T.weather?.[`measured${s.station}`]?.[settings.lang || 'en'];
+    const ms = Date.parse(s.obsUtc ?? '');
+    if (!tpl || !Number.isFinite(ms) || !isNum(norm.utcOffsetSeconds)) return '';
+    const local = new Date(ms + norm.utcOffsetSeconds * 1000);
+    const hhmm = `${String(local.getUTCHours()).padStart(2, '0')}:${String(local.getUTCMinutes()).padStart(2, '0')}`;
+    return tpl.replace('{time}', hhmm);
+  }
+  function renderMeasuredLine(norm) {
+    const el = $('#measuredLine');
+    if (!el) return;
+    const text = norm ? measuredLineText(norm) : '';
+    el.textContent = text;
+    el.hidden = !text;
+  }
+
   function renderStatsRow(norm) {
     if (!statsRowEl) return;
     const wind = norm.windKph, gust = norm.gustKph, rain = norm.rainPct, uv = norm.uv;
@@ -3239,6 +3271,7 @@ document.addEventListener("DOMContentLoaded", () => {
     renderRangeLine(norm);
     renderAgreeLine(norm);
     renderStatsRow(norm);
+    renderMeasuredLine(norm);
     renderCapeWind(norm);
   }
   // Hourly row icon. Delegates to pickHourlyIcon so every branch
@@ -3296,6 +3329,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Hero numbers and copy derived from the payload.
     safeText(tempEl, '--°');
     if (statsRowEl) { statsRowEl.innerHTML = ''; statsRowEl.hidden = true; }
+    renderMeasuredLine(null);
     const bylineEl = $('#weatherByline');
     if (bylineEl) { bylineEl.innerHTML = ''; bylineEl.hidden = true; }
     if (rangeLineEl) { rangeLineEl.innerHTML = ''; rangeLineEl.hidden = true; }

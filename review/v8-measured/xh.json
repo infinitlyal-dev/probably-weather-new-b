@@ -1,0 +1,32 @@
+[
+ {
+  "lang": "xh",
+  "key": "measured.FACT",
+  "en": "Measured at Cape Town airport, 09:00",
+  "text": "Kulinganiswe kwisikhululo seenqwelomoya saseKapa, 09:00"
+ },
+ {
+  "lang": "xh",
+  "key": "measured.FAPE",
+  "en": "Measured at Gqeberha airport, 09:00",
+  "text": "Kulinganiswe kwisikhululo seenqwelomoya saseGqeberha, 09:00"
+ },
+ {
+  "lang": "xh",
+  "key": "measured.FAEL",
+  "en": "Measured at East London airport, 09:00",
+  "text": "Kulinganiswe kwisikhululo seenqwelomoya saseMonti, 09:00"
+ },
+ {
+  "lang": "xh",
+  "key": "measured.FAUT",
+  "en": "Measured at Mthatha airport, 09:00",
+  "text": "Kulinganiswe kwisikhululo seenqwelomoya saseMthatha, 09:00"
+ },
+ {
+  "lang": "xh",
+  "key": "measured.FALE",
+  "en": "Measured at King Shaka airport, 09:00",
+  "text": "Kulinganiswe kwisikhululo seenqwelomoya iKing Shaka, 09:00"
+ }
+]

@@ -141,6 +141,9 @@ function payload() {
       sources: ['Open-Meteo', 'WeatherAPI', 'MET Norway', 'Pirate Weather', 'Tomorrow.io'].map((name) => ({ name, ok: true })),
       sourceConditions: [], sourceRanges: [],
       conditionConfidence: { level: 'high', finalCondition: 'cloudy', sourceAgreement: '3/5' },
+      // v8 (29 Sept 2026): an airport set the wind, so Home D carries the measured line under its facts — Gqeberha's,
+      // the longest in isiZulu and isiXhosa, the languages that decide the fold.
+      station: { station: 'FAPE', measured: true, windy: true, obsUtc: `${DATE}T13:00:00Z` },
     },
   };
 }

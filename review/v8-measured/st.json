@@ -1,0 +1,32 @@
+[
+ {
+  "lang": "st",
+  "key": "measured.FACT",
+  "en": "Measured at Cape Town airport, 09:00",
+  "text": "Ho lekantswe boemafofaneng ba Kapa, 09:00"
+ },
+ {
+  "lang": "st",
+  "key": "measured.FAPE",
+  "en": "Measured at Gqeberha airport, 09:00",
+  "text": "Ho lekantswe boemafofaneng ba Gqeberha, 09:00"
+ },
+ {
+  "lang": "st",
+  "key": "measured.FAEL",
+  "en": "Measured at East London airport, 09:00",
+  "text": "Ho lekantswe boemafofaneng ba East London, 09:00"
+ },
+ {
+  "lang": "st",
+  "key": "measured.FAUT",
+  "en": "Measured at Mthatha airport, 09:00",
+  "text": "Ho lekantswe boemafofaneng ba Mthatha, 09:00"
+ },
+ {
+  "lang": "st",
+  "key": "measured.FALE",
+  "en": "Measured at King Shaka airport, 09:00",
+  "text": "Ho lekantswe boemafofaneng ba King Shaka, 09:00"
+ }
+]

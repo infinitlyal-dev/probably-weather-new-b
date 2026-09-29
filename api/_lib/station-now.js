@@ -141,7 +141,7 @@ export function stationNow({ lat, lon, obs, nowMs = Date.now(), shownWindKph, he
   const byStation = pumping && age <= STATION_MAP.F;
   const base = { station: s.id, name: s.name, town: s.town, rule: s.rule, obsUtc: rep.obsUtc, ageH: round1(age), meanKph: rep.meanKph, gustKph: rep.gustKph, dir: rep.dir, pumping };
   if (s.rule === 'S' || !isNum(STATION_MAP.T)) {
-    return { ...base, windy: byStation, fired: byStation ? 'station' : null,
+    return { ...base, windy: byStation, fired: byStation ? 'station' : null, measured: byStation,
       shownWindKph: byStation ? rep.meanKph : shownWindKph, shownGustKph: byStation ? rep.gustKph : shownGustKph };
   }
   const fade = age <= GAP_MAX_H ? Math.max(0, 1 - age / STATION_MAP.T) : 0;
@@ -152,9 +152,12 @@ export function stationNow({ lat, lon, obs, nowMs = Date.now(), shownWindKph, he
     || (isNum(heroGustKph) && isNum(gustLineKph) && heroGustKph + up(gapGust) >= gustLineKph);
   const windy = byStation || raised;
   const numbers = s.numbers !== false;   // the region's shown-number check (make-map.mjs); false → the headline only
-  if (!numbers) return { ...base, windy, fired: byStation ? 'station' : raised ? 'gap' : null, fade, shownWindKph, shownGustKph };
+  if (!numbers) return { ...base, windy, fired: byStation ? 'station' : raised ? 'gap' : null, fade: Math.round(fade * 100) / 100, measured: false, shownWindKph, shownGustKph };
   const shownWind = byStation ? rep.meanKph : isNum(shownWindKph) ? round1(Math.max(0, shownWindKph + (gapMean ?? 0) * fade)) : shownWindKph;
   const shownGust = byStation ? rep.gustKph : isNum(shownGustKph) && isNum(gapGust) ? round1(Math.max(0, shownGustKph + gapGust * fade)) : shownGustKph;
-  return { ...base, windy, fired: byStation ? 'station' : raised ? 'gap' : null, fade: Math.round(fade * 100) / 100,
+  // v8 (PLAN §6.9): the phone's "Measured at <airport>, <time>" line — only when the airport's report fired "now"
+  // itself or is at most F (1.5 h) old, so the numbers shown are at least 87.5 % the airport's (T = 12 h fade).
+  const measured = byStation || age <= STATION_MAP.F;
+  return { ...base, windy, fired: byStation ? 'station' : raised ? 'gap' : null, fade: Math.round(fade * 100) / 100, measured,
     gapMeanKph: isNum(gapMean) ? round1(gapMean) : null, gapGustKph: isNum(gapGust) ? round1(gapGust) : null, shownWindKph: shownWind, shownGustKph: shownGust };
 }

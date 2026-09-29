@@ -531,6 +531,8 @@
 
       <aside class="sidebar">
         <div id="weatherByline" class="weather-byline sidebar-stats">Wind <span id="windValue">—</span> • Rain <span id="rainValue">—</span> • UV <span id="uvValue">—</span></div>
+        <!-- v8: "Measured at <airport>, <time>" when an airport's report set the wind (app.js renderMeasuredLine). -->
+        <p id="measuredLine" class="measured-line" hidden></p>
       </aside>
       <!-- Bottom-row CTAs, three EQUAL pills (owner ruling 2026-07-14,
            deliberately superseding the 2026-07-06 centre-Share order):
