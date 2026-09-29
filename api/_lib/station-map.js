@@ -19,35 +19,40 @@ export const STATION_MAP = {
    "lat": -33.967,
    "lon": 18.6,
    "region": "Western Cape",
-   "rule": "SC"
+   "rule": "SC",
+   "numbers": true
   },
   "FAEL": {
    "name": "East London",
    "lat": -33.036,
    "lon": 27.826,
    "region": "Eastern Cape",
-   "rule": "SC"
+   "rule": "SC",
+   "numbers": true
   },
   "FALE": {
    "name": "Durban",
    "lat": -29.602,
    "lon": 31.13,
    "region": "KZN coast",
-   "rule": "SC"
+   "rule": "SC",
+   "numbers": true
   },
   "FAPE": {
    "name": "Gqeberha",
    "lat": -33.984,
    "lon": 25.611,
    "region": "Eastern Cape",
-   "rule": "SC"
+   "rule": "SC",
+   "numbers": true
   },
   "FAUT": {
    "name": "Mthatha",
    "lat": -31.53,
    "lon": 28.67,
    "region": "Eastern Cape",
-   "rule": "SC"
+   "rule": "SC",
+   "numbers": true
   }
  },
  "towns": [

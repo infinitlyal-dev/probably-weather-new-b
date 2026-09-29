@@ -14,6 +14,8 @@ describe('the METAR wind group', () => {
     expect(parseMetarWind('FACT 290600Z VRB01KT CAVOK 14/09 Q1022 NOSIG')).toEqual({ meanKph: 1.9, gustKph: null, dir: null });
     expect(parseMetarWind('XXXX 290600Z 18010MPS 9999')).toEqual({ meanKph: 36, gustKph: null, dir: 180 });
     expect(parseMetarWind('garbage')).toBeNull();
+    expect(parseMetarWind('FAPE 290600Z 13099KT 9999')).toBeNull();          // 183 km/h: a typo, dropped
+    expect(parseMetarWind('FAPE 290600Z 13040G95KT 9999')).toBeNull();       // gust 176: dropped
   });
   it('keeps only the live stations', () => {
     const v = parseFeed({ data: [{ station: 'FAPE', utc_valid: '2026-09-29T06:00:00Z', raw: 'FAPE 290600Z 27012KT 9999' }, { station: 'FAOR', utc_valid: '2026-09-29T06:00:00Z', raw: 'FAOR 290600Z 08011KT 9999' }] }, NOW);
@@ -52,6 +54,10 @@ describe('the station word on "now" (rule SC)', () => {
   it('a pumping report older than F no longer fires by itself', () => {
     const w = stationNow({ ...at, obs: obsOf('FAPE 290300Z 13020G34KT 9999', '2026-09-29T03:00:00Z') });
     expect(w.fired).not.toBe('station');
+  });
+  it('the gap is carried at most 3 h (a quiet airport overnight never keeps a town Windy)', () => {
+    const w = stationNow({ ...at, obs: obsOf('FAPE 290200Z 13015KT 9999', '2026-09-29T02:00:00Z') });   // 4.3 h old, 27.8 km/h
+    expect(w).toMatchObject({ windy: false, fired: null, fade: 0, shownWindKph: 15 });
   });
   it('no report, a report over 12 h old, or no feed → null (today\'s answer)', () => {
     expect(stationNow({ ...at, obs: null })).toBeNull();

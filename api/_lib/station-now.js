@@ -19,6 +19,13 @@ export const MAX_FEED_AGE_MS = 30 * 60e3;
 export const MAX_REPORT_AGE_H = 12;          // the carry-forward's longest look back (PLAN §3.3)
 export const TOWN_KM = 5;                    // a place takes the station of the nearest listed town within this
 export const PUMP_MEAN_KPH = 30, PUMP_GUST_KPH = 50;
+// Fable (diff review): the gap is measured against the models' CURRENT numbers, which is what was scored only while
+// the report is fresh (the history test's reports were ≤ ~1.5 h old). Airports that go quiet overnight (East London
+// sends nothing 19Z–03Z) would carry an 18Z gap against models that have since forecast the drop — so the gap is
+// carried at most 3 h (T = 3 tuned within a point of T = 12).
+export const GAP_MAX_H = 3;
+// A mistyped report never reaches the screen: a mean over 120 or a gust over 160 km/h is dropped.
+export const MAX_MEAN_KPH = 120, MAX_GUST_KPH = 160;
 const KT = 1.852, MPS = 3.6;
 const isNum = (v) => typeof v === 'number' && Number.isFinite(v);
 const round1 = (x) => Math.round(x * 10) / 10;
@@ -34,7 +41,9 @@ export function parseMetarWind(raw) {
   const m = /\s(\d{3}|VRB)(\d{2,3})(?:G(\d{2,3}))?(KT|MPS)\s/.exec(` ${String(raw ?? '')} `);
   if (!m) return null;
   const u = m[4] === 'KT' ? KT : MPS;
-  return { meanKph: round1(Number(m[2]) * u), gustKph: m[3] ? round1(Number(m[3]) * u) : null, dir: m[1] === 'VRB' ? null : Number(m[1]) };
+  const meanKph = round1(Number(m[2]) * u), gustKph = m[3] ? round1(Number(m[3]) * u) : null;
+  if (meanKph > MAX_MEAN_KPH || (gustKph !== null && gustKph > MAX_GUST_KPH)) return null;
+  return { meanKph, gustKph, dir: m[1] === 'VRB' ? null : Number(m[1]) };
 }
 
 /** IEM's currents JSON → { fetchedAt, reports: { ICAO: { obsUtc, meanKph, gustKph, dir, raw } } } for the live stations. */
@@ -135,13 +144,15 @@ export function stationNow({ lat, lon, obs, nowMs = Date.now(), shownWindKph, he
     return { ...base, windy: byStation, fired: byStation ? 'station' : null,
       shownWindKph: byStation ? rep.meanKph : shownWindKph, shownGustKph: byStation ? rep.gustKph : shownGustKph };
   }
-  const fade = Math.max(0, 1 - age / STATION_MAP.T);
+  const fade = age <= GAP_MAX_H ? Math.max(0, 1 - age / STATION_MAP.T) : 0;
   const gapMean = isNum(rep.meanKph) && isNum(shownWindKph) ? rep.meanKph - shownWindKph : null;
   const gapGust = isNum(rep.gustKph) && isNum(heroGustKph) ? rep.gustKph - heroGustKph : null;
   const up = (g) => (isNum(g) && g > 0 ? g * fade : 0);
   const raised = (isNum(heroWindKph) && isNum(windLineKph) && heroWindKph + up(gapMean) >= windLineKph)
     || (isNum(heroGustKph) && isNum(gustLineKph) && heroGustKph + up(gapGust) >= gustLineKph);
   const windy = byStation || raised;
+  const numbers = s.numbers !== false;   // the region's shown-number check (make-map.mjs); false → the headline only
+  if (!numbers) return { ...base, windy, fired: byStation ? 'station' : raised ? 'gap' : null, fade, shownWindKph, shownGustKph };
   const shownWind = byStation ? rep.meanKph : isNum(shownWindKph) ? round1(Math.max(0, shownWindKph + (gapMean ?? 0) * fade)) : shownWindKph;
   const shownGust = byStation ? rep.gustKph : isNum(shownGustKph) && isNum(gapGust) ? round1(Math.max(0, shownGustKph + gapGust * fade)) : shownGustKph;
   return { ...base, windy, fired: byStation ? 'station' : raised ? 'gap' : null, fade: Math.round(fade * 100) / 100,
