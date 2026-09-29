@@ -1459,3 +1459,116 @@ buttons (Home D has neither), as at the Home D ship; no console errors or bad re
 
 No covered airport was pumping at the check, so the live Windy path is proven by the tests and the history, not yet by
 a live gale; the recorder's Gqeberha, Cape Town and Durban readings now carry `meta.station` for the next one.
+
+## 16. The "measured at" line, a phone check for Home D, the Western Cape's false Windy, the Highveld weights (Vonk / Opus 5.5 building, Fable 5.1 reviewing — 29 Sept 2026)
+
+Al's brief (after §15): the fixes that do not wait on AfriGIS — the "measured at" line (his go, EN/AF his words), a phone
+smoke that really tests Home D, fewer false Windy calls in the rest of the Western Cape, the Highveld weights re-scored.
+Plan `review/accuracy/v8/PLAN.md`. **Said plainly:** its first two commits (`9fef42c`, `7cb96ef`) were truncated after
+§3's tuning paragraph by a scripted edit of mine before the first commit; Fable reviewed from my description and caught
+it; the full text was restored unchanged in substance with Fable's ten changes as §6 (`3ef81b8`) before anything was
+scored. Scorers committed before they ran (`highveld.mjs`, `wc.mjs` `5202009`).
+
+### 16.1 The Highveld wind weights — ship (the v6 bar, not moved)
+
+v6's weights for the Highveld (learned on OR Tambo's 30 readings before 27 Sept 04:10 UTC; Pirate .33, MET .21, WA .18,
+TI .16, OM .12, k 1.078) re-scored, frozen, on every OR Tambo reading after v6's split to 29 Sept 08:10 UTC, rows built
+by v6's own code (`v8/highveld.mjs`, `results-highveld.json`):
+
+| window | readings | today's rule off by | own weights off by | blocks better | full-five hours |
+|---|---:|---:|---:|---|---:|
+| **all proof (the bar)** | 51 | 5.31 km/h | **3.72** | **10 of 10** (need ⌈⅔⌉ = 7) | 38 (need 24) |
+| v6's proof half | 31 | 4.37 | 3.03 | 6 of 6 | 23 |
+| the new days alone | 20 | 6.77 | 4.79 | 4 of 4 | 15 |
+
+Pooled six-airport interval −0.80 [−1.50, −0.14] (below zero); calm hours called Windy 4 → 0 of 34 (2 windy hours,
+both missed either way). **Ships:** Johannesburg, Pretoria and every Highveld place now read each source by its record
+there. Caveats (Fable): 31 of the 51 readings were seen when v6 was scored — the unseen evidence is 20 readings, 4
+blocks, 15 full-five hours; the hourly winds follow with k4 1.2536 (learned on 12 hours) because `hourlyFollows` is
+v6's global decision, not a Highveld hourly test (its pooled interval includes zero). Temperatures untouched.
+
+### 16.2 The Western Cape's false Windy — nothing ships
+
+Truth: the 14 WC SAWS stations outside Strand's zone (history only), Cape Town airport's own records out (Fable 2).
+Family A — Cape Town airport's calm report vetoes the models' Windy; family B — a higher line (models only). Tuned
+March–June: A's best is "within 30 km, airport mean < 25 and no gust ≥ 35, report ≤ 3 h" (false 13.9 → 13.3 per 100
+calm hours, caught 85.0 → 84.0 %); **no B setting kept the pumping hours within 2 points.** Proof (Jul → 28 Sept):
+
+| guess | pumping caught: today → A | calm called Windy per 100: today → A |
+|---|---|---|
+| old harness | 84.0 → 83.6 % | 12.42 → 12.21 (−0.21 [−0.34, −0.11]) |
+| ECMWF-heavy | 86.4 → 85.7 % | 14.25 → 13.95 |
+| mixed | 86.2 → 85.6 % | 12.77 → 12.46 |
+
+Bar 1 needed −3 per 100: **fails**. Also the harbour (Portnet, 52 pumping hours) loses 5–8 points (bar: ≤ 5). Price:
+4.5–6.3 pumping hours lost for 21–31 false calls saved. **Why:** the false calls are at the exposed capes and points —
+Cape Agulhas 33–36, Cape Point 27–32, Struisbaai 17–21, Slangkop 11–24, Malmesbury 11–16 per 100 calm hours — 45–160 km
+from the airport, where its report cannot vouch. Cape Town city (Molteno, city bowl) would drop 12–14 → 7–8 but lose
+8 points of its pumping hours. What would work, recorded (§15.3): each station's own calm report cuts the WC stations'
+false Windy 11.5 → 2.8 — that needs the SAWS data Al has asked AfriGIS about. Fable's change 10 (Molteno in the recorder,
+a revert date) applied only to a shipped veto — nothing shipped, so no revert rule.
+
+### 16.3 The "measured at" line — ships
+
+- **When:** `meta.station.measured` — the airport's report fired "now" itself, or is at most 1.5 h old (F), so the shown
+  numbers are at least 87.5 % the airport's; never when the models set the wind; re-read against the clock on a cache
+  hit (Fable), so a cached answer does not carry it past 1.5 h (the edge copy can add ≤ 6 min).
+- **Words:** EN "Measured at Cape Town airport, 09:00", AF "Gemeet by Kaapstad-lughawe, 09:00" (Al's). One line per live
+  airport: Cape Town / Kaapstad-lughawe, Gqeberha / Gqeberha-lughawe, East London / **Oos-Londen-lughawe**, Mthatha /
+  Mthatha-lughawe, King Shaka / **King Shaka-lughawe** (the AF airport names are mine, to his pattern). isiZulu
+  "Kulinganiswe esikhumulweni sezindiza saseKapa, 09:00", isiXhosa "Kulinganiswe kwisikhululo seenqwelomoya saseKapa,
+  09:00", Sesotho "Ho lekantswe boemafofaneng ba Kapa, 09:00" (East London: eMonti / East London) — through the language
+  skills and lang-check: **0 doubts in 15** (`review/v8-measured/`; isiZulu's verb moved from *-kala* to *linganisa* on
+  the checker's own evidence). No English fallback: a language without its line shows none.
+- **Where:** Home D — a small second line inside the credit line; desktop — under the sidebar wind, the action buttons
+  step down 2 rem while it shows (≥ 1024 px). **Fit:** fold gate 140/140 with the line in the fixture (Gqeberha's, the
+  longest in isiZulu and isiXhosa). Without help it failed 5 (320×488 and 320×568, zu/xh/st, 12–16 px under the handle):
+  there, only when the joke is at its floor and still does not fit, the credit line gives up its "sources agree" group.
+  Desktop measured at 1440×900 (20 px clear of the buttons) and 1280×720 (6 px).
+
+### 16.4 The phone check — Home D, five languages, with negative controls
+
+`scripts/live-smoke.mjs` phone legs rewritten (desktop legs kept, plus the line at Gqeberha): (a) the joke hidden after
+the page is up, then fully shown; (b) tap the photograph where nothing else is — hides, tap again — shows; (c) the
+pull-up open, ≥ 12 hour rows, every one with a visible wind number; (d) Share hands over exactly one JPEG > 50 KB; (e) the
+measured line visible exactly when the page's own `/api/weather` says so, on the place asked for (Gqeberha's payload
+carries FAPE's word, Strand's none — Fable). All reads are the page's DOM (opacity, rects, `elementFromPoint`); exit 1
+on any failed leg. `--local` serves the built app with a fixture (Gqeberha measured) — the positive case of (e).
+**Negative controls (local, English):** a1 reduced motion (the app's own path: joke at once) → fails (a) only; a2 joke
+never visible → fails (a), (b) blocked (no joke to hide); b taps swallowed → fails (b) only; c hourly winds hidden →
+fails (c) only; d `canShare` refuses files → fails (d) only; e line hidden → fails (e) at Gqeberha, phone and desktop.
+Unbroken, five languages: every leg passes.
+
+### 16.5 Fable, gates, shipped
+
+| Fable call | verdict |
+|---|---|
+| the plan | PROCEED WITH CHANGES — ten (and the truncated file), adopted before scoring (PLAN §6) |
+| the diff `28b8562..68e7819` | SHIP WITH FIXES — (1) re-read "measured" against the clock on a cache hit; (2) the smoke's leg (e) must be on the place asked for; leg (c)'s comment. Highveld re-score faithful (v6's rows, split, frozen weights; the baseline cannot see the Eastern Cape's weights); no English leak; the squeeze cannot flip-flop or fire without a measured line |
+| the delta `68e7819..bf56025` (fixes + the CSS block moved above the phone-only sections, which three guard tests require) | SHIP — the move changes nothing in the cascade |
+
+Gates on `bf56025`: serial **155 files / 21,444–21,446 tests** (the freeze test unchanged), image budget, build, bespoke,
+rotation, drift guard, seasonal, precision / wind table / wind weights / gust table / hero-lines / station-map `--check`,
+fold **140/140**, desktop, Home D check **26/26**, gate shots, the new phone check locally in five languages — every step
+exit 0. (The first chain's serial run failed three CSS guard tests — my desktop rules sat after their markers; moved,
+re-run.) Pushed `1afaf4e..bf56025`; `/api/version` → `bf56025` at 10:08:05 UTC.
+
+**The new smoke on production (five languages): every leg passes** — phone a–e at Strand and Gqeberha, desktop home,
+hourly, weekly, search, settings, share, share card and the measured line. At Gqeberha the line read "Measured at
+Gqeberha airport, 12:00" / "Gemeet by Gqeberha-lughawe, 12:00" / and the isiZulu, isiXhosa, Sesotho lines, on phone and
+desktop.
+
+**Live, 29 Sept 10:08 UTC (12:08 SAST):**
+
+| place | headline (photo folder) | wind / gusts shown | measured line | latest report |
+|---|---|---|---|---|
+| Cape Town city | "UV's hectic." (clear) | 12.8 / 24.6 (models) | none (17 km from the airport) | Molteno 68819 06Z calm; airport 10Z 4 kt |
+| Bellville | UV (clear) | **7.4 (airport)** / 22.3 (models) | yes — Cape Town airport, 12:00 | airport 10Z 190° 4 kt |
+| Gqeberha | UV (clear) | **20.4 (airport)** / 40.7 (models) | yes — Gqeberha airport, 12:00 | airport 10Z 080° 11 kt |
+| Strand | UV (clear) | 8.7 / 17.3 (models) | none (no licensed station) | 68911 06Z 130° 26 km/h gusting 70 (the 12Z not yet in) |
+| Johannesburg | rain (Tomorrow.io radar) | 16.8 / 36 — **Highveld weights (LW)** | none | airport 10Z 070° 10 kt, no rain |
+
+**Found, not changed:** (1) beside "Measured at …" the gust shown is the models' when the airport sends no gust group
+(Gqeberha: "gusts 41" under an airport report with none) — a reader may take it as measured; Al's call whether to hide
+the models' gust while the line shows. (2) Johannesburg's "Rain's here" from Tomorrow.io's radar under a dry METAR
+(reported 23 Sept, still there). (3) The first-visit install banner over the photograph on Home D (known).
