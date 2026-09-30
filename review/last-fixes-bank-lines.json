@@ -1,0 +1,65 @@
+{
+ "note": "Bank lines T1, T4-T8 of review/last-fixes-decisions.json (Al, 30 Sept 2026): air temperatures dropped from the condition bank in five languages. zu/xh/st written with the zu-qc, xh-qc and st-qc guidance (SA Sesotho orthography) and run through scripts/lang-check/triage.mjs: nothing rated triage-high; two lower-confidence semantic notes on xh T7 ('Indlela', unchanged from the old line) and st T6/T7 ('malapa', 'matla'), for a native to read. T8 has no xh or st line in the bank (both empty, unchanged).",
+ "rows": [
+  {
+   "id": "T1",
+   "bin": "witty.heat",
+   "index": 74,
+   "en": "7pm and still this hot. The Karoo doesn't make mistakes, only statements.",
+   "af": "19:00 en steeds so warm. Die Karoo maak nie foute nie, net stellings.",
+   "zu": "Ngu-7 ntambama futhi kusashisa kangaka. IKaroo ayenzi amaphutha, izitatimende kuphela.",
+   "xh": "Ngo-7 ngokuhlwa kusashushu kangaka. IKaroo ayenzi zimpazamo, izenza izibhengezo kuphela.",
+   "st": "7pm 'me e ntse e tjhesa jwalo. Karoo ha e etse diphoso, ke ditlhaloso feela."
+  },
+  {
+   "id": "T4",
+   "bin": "witty.cold-clear",
+   "index": 76,
+   "en": "First star is out. The warmth has clocked out too.",
+   "af": "Eerste ster is uit. Die warmte het ook uitgeklok.",
+   "zu": "Inkanyezi yokuqala isiphumile. Ukufudumala nakho sekuphumile emsebenzini.",
+   "xh": "Inkwenkwezi yokuqala iphumile. Ubushushu nabo sele buphumile emsebenzini.",
+   "st": "Naledi ya pele e tjhabile. Mofuthu le wona o tswile mosebetsing."
+  },
+  {
+   "id": "T5",
+   "bin": "witty.cold-clear",
+   "index": 68,
+   "en": "The sun is heading home now, taking the last of the warmth with it.",
+   "af": "Die son gaan nou huis toe. Vat die laaste bietjie warmte saam.",
+   "zu": "Ilanga liya ekhaya manje, lithathe ukufudumala kokugcina kanye nalo.",
+   "xh": "Ilanga liya ekhaya ngoku, lithatha ubushushu obokugqibela nalo.",
+   "st": "Letsatsi le ya hae jwale, le nka mofuthu wa ho qetela le lona."
+  },
+  {
+   "id": "T6",
+   "bin": "witty.cold",
+   "index": 95,
+   "en": "Outside: freezing. Inside: barely better, and a very good fire. SA homes, hey.",
+   "af": "Buite: yskoud. Binne: skaars beter, en 'n baie goeie vuur. SA huise, nè.",
+   "zu": "Ngaphandle: kubanda kakhulu. Ngaphakathi: kungcono kancane nje, nomlilo omuhle kakhulu. Amakhaya aseSA, hey.",
+   "xh": "Ngaphandle: kubanda kakhulu. Ngaphakathi: kungcono kancinci nje, nomlilo omhle kakhulu. Amakhaya aseMzantsi, andithi.",
+   "st": "Kantle: ho a bata haholo. Ka hare: ho molemo hanyane feela, le mollo o hotle haholo. Malapa a SA, hey."
+  },
+  {
+   "id": "T7",
+   "bin": "witty.cold",
+   "index": 80,
+   "en": "The pass is beautiful. The pass is also the opening act for a hard frost.",
+   "af": "Die pas is mooi. Die pas is ook 'n harde ryp se voorprogram.",
+   "zu": "I-pass inhle. I-pass iphinde ibe umdlalo wokuvula wesithwathwa esinzima.",
+   "xh": "Indlela yasezintabeni intle. Ikwavula umboniso weqabaka elinzima.",
+   "st": "Pass e ntle. Pass hape ke selelekela sa serame se matla."
+  },
+  {
+   "id": "T8",
+   "bin": "witty.heat",
+   "index": 69,
+   "en": "The first sip after a day this hot should honestly be taxable.",
+   "af": "Die eerste sluk ná só 'n warm dag behoort eerlikwaar belasbaar te wees.",
+   "zu": "Ukuphuza kokuqala ngemva kosuku olushisa kangaka kufanele eqinisweni kukhokhelwe intela.",
+   "xh": "",
+   "st": ""
+  }
+ ]
+}

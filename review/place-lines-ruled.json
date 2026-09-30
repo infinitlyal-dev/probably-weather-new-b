@@ -240,7 +240,7 @@
   },
   {
    "key": "P22",
-   "en": "That mug is steaming because Joburg mornings under cloud start at about four degrees.",
+   "en": "That mug is steaming because Joburg mornings under cloud start properly cold.",
    "verdict": "TAG",
    "region": "gauteng",
    "current": null,
@@ -488,7 +488,7 @@
   },
   {
    "key": "P44",
-   "en": "Durban grey is still twenty-four degrees, which is why the promenade never empties.",
+   "en": "Durban grey is still properly warm, which is why the promenade never empties.",
    "verdict": "TAG",
    "region": "kzn",
    "current": null,
@@ -648,7 +648,7 @@
   },
   {
    "key": "P56",
-   "en": "7pm and still 30 degrees. The Karoo doesn't make mistakes, only statements.",
+   "en": "7pm and still this hot. The Karoo doesn't make mistakes, only statements.",
    "verdict": "TAG",
    "region": "karoo",
    "current": "karoo",

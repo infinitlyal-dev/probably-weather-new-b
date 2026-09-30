@@ -4,7 +4,7 @@
 
 | | canon | KEEP | FIX | KILL | new | Al |
 |---|---|---|---|---|---|---|
-| written | 296 | 351 | 61 | 2 | 239 | 36 |
+| written | 293 | 351 | 61 | 2 | 236 | 42 |
 | to Al | 41 | 81 | 22 | 1 | 441 | 12 |
 
 ## Why rows went to Al

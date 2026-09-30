@@ -2,8 +2,8 @@
 // scripts/lang-check/apply-af-accepted.mjs on 2026-09-30 from review/af-bespoke-decisions.json — do not
 // edit by hand.
 //
-// English line → Afrikaans. 985 rows: 296 of Al's native bank lines, 351 drafts kept as they were,
-// 63 rewrites of drafts that did not carry the joke, 239 new transcreations, 36 ruled by Al.
+// English line → Afrikaans. 985 rows: 293 of Al's native bank lines, 351 drafts kept as they were,
+// 63 rewrites of drafts that did not carry the joke, 236 new transcreations, 42 ruled by Al.
 // Every row passed lang-check with no medium or high finding, adds no day or braai the English does
 // not have, and was judged against review/af-voice.md. Rows that did not clear the gate are on
 // review/af-al.html. Served for Afrikaans by applyBespokeLine in assets/app.js, loaded only then.
@@ -12,7 +12,7 @@ export const HERO_LINES_AF = {
  "35 in the shade. In the sun, nobody's counting anymore.": "35 in die skadu. In die son tel niemand meer nie.",
  "50/50 on getting wet. Like a coin toss.": "50/50 kans om nat te word. Better odds as om die Lotto te wen...",
  "6am and the sun is already done warming up. That wasn't a warm-up, that was a warning.": "06:00 en die son is klaar klaar met opwarm. Dit was nie 'n opwarming nie, dit was 'n waarskuwing.",
- "7pm and still 30 degrees. The Karoo doesn't make mistakes, only statements.": "19:00 en steeds 30 grade. Die Karoo maak nie foute nie, net stellings.",
+ "7pm and still this hot. The Karoo doesn't make mistakes, only statements.": "19:00 en steeds so warm. Die Karoo maak nie foute nie, net stellings.",
  "A Free State storm gives you exactly as much warning as it feels like.": "'n Vrystaatse storm gee jou presies soveel waarskuwing soos wat hy lus het.",
  "A clear dusk on the Highveld is just the frost clearing its throat.": "'n Helder skemer op die Hoëveld is net die ryp wat sy keel skoonmaak.",
  "A clear evening pays out about forty minutes of gold, and it has just started.": "'n Helder aand betaal omtrent veertig minute goud uit, en dit het pas begin.",
@@ -47,7 +47,7 @@ export const HERO_LINES_AF = {
  "Blue on the left, business on the right, and the line is moving your way.": "Blou links, ernstige besigheid regs, en die lyn skuif na jou kant toe.",
  "Blue sky from end to end: the meeting has moved outside, and nobody's complaining.": "Blou lug van kant tot kant: die vergadering het buitentoe geskuif, en niemand kla nie.",
  "Blue sky, full sun: the car gets washed, and so does Dad.": "Blou lug, volle son: die kar word gewas, en Pa ook.",
- "Blue sky, minus two. The sun's just here to watch.": "Blou lug, minus twee. Die son is net hier om te kyk.",
+ "Blue sky, proper frost. The sun's just here to watch.": "Blou lug, behoorlike ryp. Die son is net hier om te kyk.",
  "Blue sky: the outdoor gym has suddenly found new members.": "Blou lug: die buitegimnasium het skielik nuwe lede.",
  "Bo-Kaap in the last light, and the wind is doing the housekeeping.": "Bo-Kaap in die laaste lig, en die wind doen die huishouding.",
  "Both hands are on the skirt, which means the hair is on its own.": "Albei hande is op die romp, wat beteken die hare is op sy eie.",
@@ -94,7 +94,7 @@ export const HERO_LINES_AF = {
  "Dew this heavy means the night got properly cold and stayed there.": "Dou só swaar beteken die nag het behoorlik koud geword en so gebly.",
  "Don't trust those clouds. They're plotting.": "Moenie daai wolke vertrou nie. Hulle beplan.",
  "Dry spot found; dignity pending; the rain shows no sign of apologising.": "Droë kol gekry; waardigheid hangende; die reën wys geen teken van verskoning nie.",
- "Durban grey is still twenty-four degrees, which is why the promenade never empties.": "Durban se grys is steeds vier-en-twintig grade, en dis hoekom die promenade nooit leeg raak nie.",
+ "Durban grey is still properly warm, which is why the promenade never empties.": "Durban se grys is steeds lekker warm, en daarom raak die promenade nooit leeg nie.",
  "Duvets in the bakkie, flask on the tailgate: the sky is worth the freeze tonight.": "Duvets in die bakkie, fles op die agterklap: die lug is vanaand die koue werd.",
  "Enjoy it. There's a cold front out there doing warm-ups.": "Geniet dit. Erens daarbuite is 'n kouefront besig om planne te maak.",
  "Eskom wishes it had this power.": "Eskom wens hy het hierdie krag.",
@@ -137,7 +137,7 @@ export const HERO_LINES_AF = {
  "Everything past the streetlight is a rumour until about nine.": "Alles verby die straatlig is 'n gerug tot omtrent nege-uur.",
  "Finish up. The weather won't.": "Maak klaar. Die weer gaan nie klaarmaak nie.",
  "Fire up the Weber. It's the law.": "Steek die Weber aan. Dit is die wet.",
- "First star is out. First ten degrees have also left.": "Eerste ster is uit. Eerste tien grade is ook uit.",
+ "First star is out. The warmth has clocked out too.": "Eerste ster is uit. Die warmte het ook uitgeklok.",
  "First traffic of the morning, and it walks and complains at the same time.": "Die eerste verkeer van die oggend, en dit stap en kla terselfdertyd.",
  "Five guinea fowl crossing in single file: the frost has everyone walking carefully.": "Vyf tarentale stap in 'n ry oor: die ryp laat almal versigtig trap.",
  "Five mattresses on a stoep, and not one of them is a compromise.": "Vyf matrasse op 'n stoep, en nie een van hulle is 'n kompromie nie.",
@@ -224,7 +224,7 @@ export const HERO_LINES_AF = {
  "If you're inside, you're doing it wrong.": "As jy binne is, doen jy dit verkeerd.",
  "If you're working today, we feel sorry for you.": "As jy vandag werk, jammer vir jou.",
  "In the sun: bearable. Two steps left: Antarctica.": "In die son: draaglik. Twee treë links: Antarktika.",
- "It has not dropped below twenty-five in that house since about Tuesday.": "Dit het sedert Dinsdag nog nie onder vyf-en-twintig in daardie huis gesak nie.",
+ "It has not cooled down in that house since about Tuesday.": "Dit het sedert omtrent Dinsdag nie in daardie huis afgekoel nie.",
  "It looks lovely out there. We've chosen to believe it from in here.": "Buite lyk dit heerlik. Ons het besluit om dit te glo van hier af.",
  "It took the wind four seconds to move what took two hours to build.": "Die wind het in vier sekondes weggewaai wat twee uur geneem het om te bou.",
  "It was watered this morning and you would not know it from here.": "Dit is vanoggend natgemaak en van hier af sou jy dit nie sê nie.",
@@ -513,7 +513,7 @@ export const HERO_LINES_AF = {
  "That lawn stopped asking the sky for rain somewhere around the start of November.": "Daardie grasperk het êrens teen die begin van November opgehou om die lug vir reën te vra.",
  "That look is a man asking the clouds for forty-five more minutes.": "Daardie kyk is 'n man wat die wolke vir nog vyf-en-veertig minute vra.",
  "That mist is tomorrow morning's frost out doing a site inspection.": "Daardie mis is môreoggend se ryp wat 'n terreininspeksie doen.",
- "That mug is steaming because Joburg mornings under cloud start at about four degrees.": "Daardie beker stoom, want in Joburg begin bewolkte oggende by omtrent vier grade.",
+ "That mug is steaming because Joburg mornings under cloud start properly cold.": "Daardie beker stoom, want Joburg-oggende onder die wolke begin behoorlik koud.",
  "That number has not moved in eighty kilometres and neither has the scenery.": "Daardie syfer het in tagtig kilometer nie geroer nie, en die uitsig ook nie.",
  "That one bulb is holding this entire building together.": "Daardie een gloeilamp hou hierdie hele gebou aanmekaar.",
  "That one window is doing lighthouse duty tonight, and it is enough.": "Daardie een venster staan vanaand vuurtoringdiens, en dit is genoeg.",
@@ -799,7 +799,7 @@ export const HERO_LINES_AF = {
  "The sun is at the exact height where the whole veld goes gold.": "Die son is op presies die hoogte waar die hele veld goud word.",
  "The sun is coming through the fog at half strength and full gold.": "Die son kom deur die mis teen halwe krag en vol goud.",
  "The sun is down to one beam and the whole veld is watching where it lands.": "Die son is af tot een straal, en die hele veld kyk waar dit gaan land.",
- "The sun is heading home now, taking the last three degrees with it.": "Die son gaan nou huis toe. Vat sy laaste drie grade saam.",
+ "The sun is heading home now, taking the last of the warmth with it.": "Die son gaan nou huis toe. Vat die laaste bietjie warmte saam.",
  "The sun is only just up and she has already picked her spot.": "Die son is skaars op en sy het haar plek reeds gekies.",
  "The sun is out. It means nothing. The sun is lying.": "Die son is uit. Dit beteken niks. Die son jok.",
  "The sun is really milking this exit. Honestly, deserved.": "Die son gaan af soos hy weet ons kyk.",
