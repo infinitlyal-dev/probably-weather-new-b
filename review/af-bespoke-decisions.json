@@ -15583,6 +15583,236 @@
    "afrikaans": "Die son maak van jou karsitplek 'n snackwich-masjien.",
    "score": 5,
    "reason": "Al's ruling of 27 Sept 2026: R08c in his own Afrikaans, R22b as proposed; R06c, R09b and R04c proposed by Maat (Fable 5.1) for the lines Al rewrote, lang-check pass, waiting for his OK or Fix on review/pairs-rolling.html"
+  },
+  {
+   "id": "PR16",
+   "group": "new",
+   "verdict": "NEW",
+   "slot": "storm/dawn",
+   "english": "Thunder at dawn, and suddenly everyone sleeps in your bed.",
+   "afrikaans": "Donder met sonop, en skielik slaap almal in jou bed.",
+   "score": 5,
+   "reason": "Afrikaans proposed with the pair for Al's English line (his photo-batches ruling of 30 Sept 2026, review/photo-batches-ruled.json); written only through the lang-check gate"
+  },
+  {
+   "id": "PR19",
+   "group": "new",
+   "verdict": "NEW",
+   "slot": "wind/dawn",
+   "english": "The wind's been up since five, rearranging everyone's bins.",
+   "afrikaans": "Die wind is al van vyfuur af op en skuif almal se vullisdromme rond.",
+   "score": 5,
+   "reason": "Afrikaans proposed with the pair for Al's English line (his photo-batches ruling of 30 Sept 2026, review/photo-batches-ruled.json); written only through the lang-check gate"
+  },
+  {
+   "id": "PR20",
+   "group": "new",
+   "verdict": "NEW",
+   "slot": "wind/dawn",
+   "english": "School-run wind: every backpack is now a sail.",
+   "afrikaans": "Skoolrit-wind: elke rugsak is nou 'n seil.",
+   "score": 5,
+   "reason": "Afrikaans proposed with the pair for Al's English line (his photo-batches ruling of 30 Sept 2026, review/photo-batches-ruled.json); written only through the lang-check gate"
+  },
+  {
+   "id": "PR21",
+   "group": "new",
+   "verdict": "NEW",
+   "slot": "wind/dusk",
+   "english": "Wind this strong, rugby practice is mostly chasing cones.",
+   "afrikaans": "In dié wind is rugbyoefening meestal keëls jaag.",
+   "score": 5,
+   "reason": "Afrikaans proposed with the pair for Al's English line (his photo-batches ruling of 30 Sept 2026, review/photo-batches-ruled.json); written only through the lang-check gate"
+  },
+  {
+   "id": "PR23",
+   "group": "new",
+   "verdict": "NEW",
+   "slot": "wind/dusk",
+   "english": "The wind has decided the beach day is over.",
+   "afrikaans": "Die wind het besluit die stranddag is verby.",
+   "score": 5,
+   "reason": "Afrikaans proposed with the pair for Al's English line (his photo-batches ruling of 30 Sept 2026, review/photo-batches-ruled.json); written only through the lang-check gate"
+  },
+  {
+   "id": "PR27",
+   "group": "new",
+   "verdict": "NEW",
+   "slot": "wind/night",
+   "english": "Wind like this, the trampoline starts making travel plans.",
+   "afrikaans": "In dié wind begin die trampolien reisplanne maak.",
+   "score": 5,
+   "reason": "Afrikaans proposed with the pair for Al's English line (his photo-batches ruling of 30 Sept 2026, review/photo-batches-ruled.json); written only through the lang-check gate"
+  },
+  {
+   "id": "PR28",
+   "group": "new",
+   "verdict": "NEW",
+   "slot": "cold/dusk",
+   "english": "It's so cold the braai has become a very expensive heater.",
+   "afrikaans": "Dis so koud, die braai is nou 'n baie duur verwarmer.",
+   "score": 5,
+   "reason": "Afrikaans proposed with the pair for Al's English line (his photo-batches ruling of 30 Sept 2026, review/photo-batches-ruled.json); written only through the lang-check gate"
+  },
+  {
+   "id": "PR32",
+   "group": "new",
+   "verdict": "NEW",
+   "slot": "fog/day",
+   "english": "Fog this thick, the goalie is defending a rumour.",
+   "afrikaans": "Mis dié dik, en die doelwagter verdedig 'n gerug.",
+   "score": 5,
+   "reason": "Afrikaans proposed with the pair for Al's English line (his photo-batches ruling of 30 Sept 2026, review/photo-batches-ruled.json); written only through the lang-check gate"
+  },
+  {
+   "id": "PR35",
+   "group": "new",
+   "verdict": "NEW",
+   "slot": "fog/night",
+   "english": "Fog tonight: the waiter arrives like a magic trick.",
+   "afrikaans": "Mis vanaand: die kelner daag op soos 'n towertoertjie.",
+   "score": 5,
+   "reason": "Afrikaans proposed with the pair for Al's English line (his photo-batches ruling of 30 Sept 2026, review/photo-batches-ruled.json); written only through the lang-check gate"
+  },
+  {
+   "id": "PR36",
+   "group": "new",
+   "verdict": "NEW",
+   "slot": "clear/day",
+   "english": "Not a cloud in sight, and every stoep in town is fully booked.",
+   "afrikaans": "Nie 'n wolkie in sig nie, en elke stoep in die dorp is vol bespreek.",
+   "score": 5,
+   "reason": "Afrikaans proposed with the pair for Al's English line (his photo-batches ruling of 30 Sept 2026, review/photo-batches-ruled.json); written only through the lang-check gate"
+  },
+  {
+   "id": "PR37",
+   "group": "new",
+   "verdict": "NEW",
+   "slot": "clear/day",
+   "english": "Blue sky, full sun: the car gets washed, and so does Dad.",
+   "afrikaans": "Blou lug, volle son: die kar word gewas, en Pa ook.",
+   "score": 5,
+   "reason": "Afrikaans proposed with the pair for Al's English line (his photo-batches ruling of 30 Sept 2026, review/photo-batches-ruled.json); written only through the lang-check gate"
+  },
+  {
+   "id": "PR38",
+   "group": "new",
+   "verdict": "NEW",
+   "slot": "clear/day",
+   "english": "Blue sky from end to end: the meeting has moved outside, and nobody's complaining.",
+   "afrikaans": "Blou lug van kant tot kant: die vergadering het buitentoe geskuif, en niemand kla nie.",
+   "score": 5,
+   "reason": "Afrikaans proposed with the pair for Al's English line (his photo-batches ruling of 30 Sept 2026, review/photo-batches-ruled.json); written only through the lang-check gate"
+  },
+  {
+   "id": "PR40",
+   "group": "new",
+   "verdict": "NEW",
+   "slot": "clear/day",
+   "english": "A sky this clear, even the hot-air balloons are showing off.",
+   "afrikaans": "Die lug is so helder, selfs die warmlugballonne pronk.",
+   "score": 5,
+   "reason": "Afrikaans proposed with the pair for Al's English line (his photo-batches ruling of 30 Sept 2026, review/photo-batches-ruled.json); written only through the lang-check gate"
+  },
+  {
+   "id": "PR42",
+   "group": "new",
+   "verdict": "NEW",
+   "slot": "clear/day",
+   "english": "Not a cloud in the sky, and the sea is still 14 degrees.",
+   "afrikaans": "Nie 'n wolk in die lug nie, en die see is steeds 14 grade.",
+   "score": 5,
+   "reason": "Afrikaans proposed with the pair for Al's English line (his photo-batches ruling of 30 Sept 2026, review/photo-batches-ruled.json); written only through the lang-check gate"
+  },
+  {
+   "id": "PR43",
+   "group": "new",
+   "verdict": "NEW",
+   "slot": "heat/day",
+   "english": "So hot the pool is now the only room in the house.",
+   "afrikaans": "So warm, die swembad is nou die enigste kamer in die huis.",
+   "score": 5,
+   "reason": "Afrikaans proposed with the pair for Al's English line (his photo-batches ruling of 30 Sept 2026, review/photo-batches-ruled.json); written only through the lang-check gate"
+  },
+  {
+   "id": "PR44",
+   "group": "new",
+   "verdict": "NEW",
+   "slot": "cloudy/day",
+   "english": "Grey and chilly: suddenly everyone remembers their jersey is in the car.",
+   "afrikaans": "Grys en kouerig: skielik onthou almal hul trui is in die kar.",
+   "score": 5,
+   "reason": "Afrikaans proposed with the pair for Al's English line (his photo-batches ruling of 30 Sept 2026, review/photo-batches-ruled.json); written only through the lang-check gate"
+  },
+  {
+   "id": "PR45",
+   "group": "new",
+   "verdict": "NEW",
+   "slot": "rain/day",
+   "english": "Rain all day, and the lounge has become a cushion fort.",
+   "afrikaans": "Heeldag reën, en die sitkamer het 'n kussingfort geword.",
+   "score": 5,
+   "reason": "Afrikaans proposed with the pair for Al's English line (his photo-batches ruling of 30 Sept 2026, review/photo-batches-ruled.json); written only through the lang-check gate"
+  },
+  {
+   "id": "PR46",
+   "group": "new",
+   "verdict": "NEW",
+   "slot": "storm/night",
+   "english": "Storm tonight, and the dog has chosen the smallest cupboard in the house.",
+   "afrikaans": "Storm vanaand, en die hond het die kleinste kas in die huis gekies.",
+   "score": 5,
+   "reason": "Afrikaans proposed with the pair for Al's English line (his photo-batches ruling of 30 Sept 2026, review/photo-batches-ruled.json); written only through the lang-check gate"
+  },
+  {
+   "id": "PR47",
+   "group": "new",
+   "verdict": "NEW",
+   "slot": "wind/day",
+   "english": "One gust, and every napkin in the café leaves at once.",
+   "afrikaans": "Een rukwind, en elke servet in die kafee vertrek tegelyk.",
+   "score": 5,
+   "reason": "Afrikaans proposed with the pair for Al's English line (his photo-batches ruling of 30 Sept 2026, review/photo-batches-ruled.json); written only through the lang-check gate"
+  },
+  {
+   "id": "PR49",
+   "group": "new",
+   "verdict": "NEW",
+   "slot": "wind/day",
+   "english": "Great wind for kites. Terrible wind for whoever's holding one.",
+   "afrikaans": "Lekker wind vir vlieërs. Verskriklike wind vir wie een vashou.",
+   "score": 5,
+   "reason": "Afrikaans proposed with the pair for Al's English line (his photo-batches ruling of 30 Sept 2026, review/photo-batches-ruled.json); written only through the lang-check gate"
+  },
+  {
+   "id": "PR50",
+   "group": "new",
+   "verdict": "NEW",
+   "slot": "wind/day",
+   "english": "Market day in a gale: every stallholder is holding down a gazebo.",
+   "afrikaans": "Markdag in 'n stormwind: elke stalletjiehouer hou 'n gazebo vas.",
+   "score": 5,
+   "reason": "Afrikaans proposed with the pair for Al's English line (his photo-batches ruling of 30 Sept 2026, review/photo-batches-ruled.json); written only through the lang-check gate"
+  },
+  {
+   "id": "PR52",
+   "group": "new",
+   "verdict": "NEW",
+   "slot": "clear/dawn",
+   "english": "Clear sunrise: the cycling club is out and the coffee stop is already planned.",
+   "afrikaans": "Helder sonop: die fietsryklub is uit, en die koffiestop is klaar beplan.",
+   "score": 5,
+   "reason": "Afrikaans proposed with the pair for Al's English line (his photo-batches ruling of 30 Sept 2026, review/photo-batches-ruled.json); written only through the lang-check gate"
+  },
+  {
+   "id": "PR59",
+   "group": "new",
+   "verdict": "NEW",
+   "slot": "clear/day",
+   "english": "Clear sky and proper sunshine: the ice-cream van has never been this popular.",
+   "afrikaans": "Helder lug en regte sonskyn: die roomysverkoper was nog nooit so gewild nie.",
+   "score": 5,
+   "reason": "Afrikaans proposed with the pair for Al's English line (his photo-batches ruling of 30 Sept 2026, review/photo-batches-ruled.json); written only through the lang-check gate"
   }
  ]
 }

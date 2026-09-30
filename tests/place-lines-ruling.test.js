@@ -167,7 +167,9 @@ describe('Al\'s place ruling is what is wired', () => {
     // rolling page's ruling (2026-09-27): P19 "Nobody on this side of Gqeberha…" was on the flag and palm R48 replaced.
     const RETIRED = new Set((read('../review/set-001-lines-bespoke-final.json').pilotPairs?.retired || []).flatMap((r) => r.lines));
     const stillTagged = tagged.filter((r) => !SEASON_CUT.has(r.en) && !RETIRED.has(r.en));
-    expect(stillTagged.length).toBe(43);
+    // 42 since Al's photo-batches ruling (2026-09-30, review/photo-batches-ruled.json): one place-tagged line left
+    // with the nine photographs the "use" pairs replaced.
+    expect(stillTagged.length).toBe(42);
     for (const r of stillTagged) {
       expect(live.has(r.en), r.key).toBe(true);
       expect(heroLines.HERO_LINE_TAGS[r.en]?.region, r.key).toEqual(r.region);

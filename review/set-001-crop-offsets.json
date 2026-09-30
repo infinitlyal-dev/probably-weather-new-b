@@ -3,11 +3,11 @@
  "ruledBy": "Al, curation tool (meme hero) + 2026-08-18 reshoot",
  "generated": "2026-08-18",
  "counts": {
-  "offsets": 281,
+  "offsets": 295,
   "replaced": 15,
   "reAnchored": 134,
-  "wired": 281,
-  "pilotPairs": 24
+  "wired": 295,
+  "pilotPairs": 47
  },
  "offsets": {
   "dd736311b619": {
@@ -46,14 +46,6 @@
    "slot": "A/wed",
    "image": "clear/week_3/day/7.webp",
    "anchorY": 58
-  },
-  "f673af851f9c": {
-   "verdict": "FIXABLE",
-   "bucket": "clear-day",
-   "slot": "A/thu",
-   "image": "clear/week_3/day/1.webp",
-   "anchorY": 61,
-   "ink": "white"
   },
   "ca6d821f7c9b": {
    "verdict": "FIXABLE",
@@ -830,14 +822,6 @@
    "image": "fog/week_1/night/7.webp",
    "anchorY": 44
   },
-  "7acec82c9b6f": {
-   "verdict": "FIXABLE",
-   "bucket": "fog-night",
-   "slot": "A/fri",
-   "image": "fog/week_2/night/4.webp",
-   "anchorY": 100,
-   "ink": "white"
-  },
   "39c515606f74": {
    "verdict": "FIXABLE",
    "bucket": "fog-night",
@@ -1040,13 +1024,6 @@
    "slot": "A/mon",
    "image": "rain/week_1/day/2.webp",
    "anchorY": 48
-  },
-  "00a672556998": {
-   "verdict": "FIXABLE",
-   "bucket": "rain-day",
-   "slot": "A/tue",
-   "image": "rain/week_1/day/3.webp",
-   "anchorY": 47
   },
   "8ce35385e048": {
    "verdict": "FIXABLE",
@@ -1359,13 +1336,6 @@
    "image": "storm/week_2/night/1.webp",
    "anchorY": 29
   },
-  "2d2e6dd5d7fd": {
-   "verdict": "FIXABLE",
-   "bucket": "storm-night",
-   "slot": "A/sat",
-   "image": "storm/week_2/night/5.webp",
-   "anchorY": 42
-  },
   "14c56f85c353": {
    "verdict": "FIXABLE",
    "bucket": "storm-night",
@@ -1409,14 +1379,6 @@
    "slot": "A/fri",
    "image": "wind/week_4/dawn/1.webp",
    "anchorY": 56
-  },
-  "d0a60d414066": {
-   "verdict": "FIXABLE",
-   "bucket": "wind-dawn",
-   "slot": "A/sat",
-   "image": "wind/week_1/dawn/7.webp",
-   "anchorY": 96,
-   "ink": "white"
   },
   "337d1a2fe2c2": {
    "verdict": "FIXABLE",
@@ -1484,14 +1446,6 @@
    "image": "wind/week_2/day/6.webp",
    "anchorY": 44
   },
-  "9bada961b0a7": {
-   "verdict": "FIXABLE",
-   "bucket": "wind-day",
-   "slot": "B/wed",
-   "image": "wind/week_1/day/3.webp",
-   "anchorY": 90,
-   "ink": "white"
-  },
   "002f0c1d5187": {
    "verdict": "FIXABLE",
    "bucket": "wind-dusk",
@@ -1521,13 +1475,6 @@
    "slot": "A/sat",
    "image": "wind/week_2/dusk/2.webp",
    "anchorY": 50
-  },
-  "38635f77f610": {
-   "verdict": "FIXABLE",
-   "bucket": "wind-dusk",
-   "slot": "A/sun",
-   "image": "wind/week_1/dusk/3.webp",
-   "anchorY": 52
   },
   "f6b55aacae0a": {
    "verdict": "FIXABLE",
@@ -1748,28 +1695,6 @@
    "replacedHash": "96c08c51c831",
    "place": "Johannesburg",
    "source": "/output/reshoot-2026-08-18/19.png",
-   "note": "GPT Image 2, 2026-08-18; anchor is the replacement default, not a per-image ruling"
-  },
-  "5df9d64aa037": {
-   "verdict": "REPLACED",
-   "bucket": "wind-day",
-   "slot": "B/sat",
-   "image": "wind/week_4/day/2.webp",
-   "anchorY": 50,
-   "replacedHash": "d39680c2e0f9",
-   "place": "Johannesburg",
-   "source": "/output/reshoot-2026-08-18/25.png",
-   "note": "GPT Image 2, 2026-08-18; anchor is the replacement default, not a per-image ruling"
-  },
-  "ab2cbee2d73d": {
-   "verdict": "REPLACED",
-   "bucket": "wind-day",
-   "slot": "B/fri",
-   "image": "wind/week_4/day/6.webp",
-   "anchorY": 50,
-   "replacedHash": "58ca4d8de525",
-   "place": "Durban",
-   "source": "/output/reshoot-2026-08-18/27.png",
    "note": "GPT Image 2, 2026-08-18; anchor is the replacement default, not a per-image ruling"
   },
   "b698a0ccc12d": {
@@ -2131,6 +2056,190 @@
    "image": "clear/week_2/day/3.webp",
    "anchorY": 20,
    "pair": "R04c"
+  },
+  "46c3fe4d1244": {
+   "verdict": "PAIR",
+   "bucket": "storm-dawn",
+   "slot": "B/thu",
+   "image": "storm/week_2/dawn/4.webp",
+   "anchorY": 33,
+   "pair": "R16"
+  },
+  "bbf6b6ef796a": {
+   "verdict": "PAIR",
+   "bucket": "wind-dawn",
+   "slot": "A/sat",
+   "image": "wind/week_1/dawn/6.webp",
+   "anchorY": 30,
+   "pair": "R19"
+  },
+  "775f4f1b47b4": {
+   "verdict": "PAIR",
+   "bucket": "wind-dawn",
+   "slot": "B/mon",
+   "image": "wind/week_2/dawn/1.webp",
+   "anchorY": 38,
+   "pair": "R20"
+  },
+  "d68ae3f7c914": {
+   "verdict": "PAIR",
+   "bucket": "wind-dusk",
+   "slot": "B/mon",
+   "image": "wind/week_2/dusk/1.webp",
+   "anchorY": 38,
+   "pair": "R21"
+  },
+  "60b776676824": {
+   "verdict": "PAIR",
+   "bucket": "wind-dusk",
+   "slot": "A/sun",
+   "image": "wind/week_1/dusk/7.webp",
+   "anchorY": 30,
+   "pair": "R23"
+  },
+  "4cbd692804c1": {
+   "verdict": "PAIR",
+   "bucket": "wind-night",
+   "slot": "B/sat",
+   "image": "wind/week_2/night/6.webp",
+   "anchorY": 40,
+   "pair": "R27"
+  },
+  "7d459440d824": {
+   "verdict": "PAIR",
+   "bucket": "cold-dusk",
+   "slot": "B/fri",
+   "image": "cold/week_2/dusk/5.webp",
+   "anchorY": 33,
+   "pair": "R28"
+  },
+  "01c4ac751dea": {
+   "verdict": "PAIR",
+   "bucket": "fog-day",
+   "slot": "B/mon",
+   "image": "fog/week_2/day/1.webp",
+   "anchorY": 38,
+   "pair": "R32"
+  },
+  "4b77f610c3f8": {
+   "verdict": "PAIR",
+   "bucket": "fog-night",
+   "slot": "A/fri",
+   "image": "fog/week_1/night/5.webp",
+   "anchorY": 33,
+   "pair": "R35"
+  },
+  "744643e152b8": {
+   "verdict": "PAIR",
+   "bucket": "clear-day",
+   "slot": "B/sun",
+   "image": "clear/week_4/day/7.webp",
+   "anchorY": 35,
+   "pair": "R36"
+  },
+  "508a39ca3436": {
+   "verdict": "PAIR",
+   "bucket": "clear-day",
+   "slot": "B/sat",
+   "image": "clear/week_4/day/6.webp",
+   "anchorY": 33,
+   "pair": "R37"
+  },
+  "42df59c8ac8a": {
+   "verdict": "PAIR",
+   "bucket": "clear-day",
+   "slot": "A/fri",
+   "image": "clear/week_3/day/5.webp",
+   "anchorY": 35,
+   "pair": "R38"
+  },
+  "4754436d6979": {
+   "verdict": "PAIR",
+   "bucket": "clear-day",
+   "slot": "B/fri",
+   "image": "clear/week_4/day/5.webp",
+   "anchorY": 35,
+   "pair": "R40"
+  },
+  "f9f55b1dcfeb": {
+   "verdict": "PAIR",
+   "bucket": "clear-day",
+   "slot": "A/wed",
+   "image": "clear/week_3/day/3.webp",
+   "anchorY": 35,
+   "pair": "R42"
+  },
+  "0fe1f7c40461": {
+   "verdict": "PAIR",
+   "bucket": "heat-day",
+   "slot": "A/tue",
+   "image": "heat/week_3/day/2.webp",
+   "anchorY": 35,
+   "pair": "R43"
+  },
+  "3c8fb431fafe": {
+   "verdict": "PAIR",
+   "bucket": "cloudy-day",
+   "slot": "B/sun",
+   "image": "cloudy/week_4/day/7.webp",
+   "anchorY": 30,
+   "pair": "R44"
+  },
+  "fbaca052756a": {
+   "verdict": "PAIR",
+   "bucket": "rain-day",
+   "slot": "A/tue",
+   "image": "rain/week_1/day/2.webp",
+   "anchorY": 33,
+   "pair": "R45"
+  },
+  "504caee429a0": {
+   "verdict": "PAIR",
+   "bucket": "storm-night",
+   "slot": "A/sat",
+   "image": "storm/week_1/night/6.webp",
+   "anchorY": 35,
+   "pair": "R46"
+  },
+  "00f62db773d8": {
+   "verdict": "PAIR",
+   "bucket": "wind-day",
+   "slot": "B/tue",
+   "image": "wind/week_2/day/2.webp",
+   "anchorY": 33,
+   "pair": "R47"
+  },
+  "81077e7802e8": {
+   "verdict": "PAIR",
+   "bucket": "wind-day",
+   "slot": "B/fri",
+   "image": "wind/week_2/day/5.webp",
+   "anchorY": 35,
+   "pair": "R49"
+  },
+  "454c5a6995aa": {
+   "verdict": "PAIR",
+   "bucket": "wind-day",
+   "slot": "B/sat",
+   "image": "wind/week_2/day/6.webp",
+   "anchorY": 33,
+   "pair": "R50"
+  },
+  "a300495d4526": {
+   "verdict": "PAIR",
+   "bucket": "clear-dawn",
+   "slot": "B/sat",
+   "image": "clear/week_2/dawn/6.webp",
+   "anchorY": 30,
+   "pair": "R52"
+  },
+  "0d7c5c34c6a0": {
+   "verdict": "PAIR",
+   "bucket": "clear-day",
+   "slot": "A/thu",
+   "image": "clear/week_1/day/4.webp",
+   "anchorY": 30,
+   "pair": "R59"
   }
  }
 }

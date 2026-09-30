@@ -1,0 +1,820 @@
+{
+ "note": "Al's ruling on his photo-batches page (review/photo-batches-ruled.json, 30 Sept 2026 12:11 UTC), turned into slots by Vonk (the source is review/photo-batches-ruled-plan.json in the OneDrive working copy). BESIDE: the new photo takes only the listed slots and the old photo keeps its other slots and its lines. USE: the new photo takes every listed slot and the old photo, left with no slot, retires with its lines. R19, R23 and R45 are the re-rolls Al marked USE ANYWAY. R41 is held (re-rolled, not wired). Lines naming an air temperature lose it (R37, R38, R44, R59). R43 uses R43-1-fixed.png.",
+ "ruling": "review/photo-batches-ruled.json (Al, 30 Sept 2026)",
+ "ruledBy": "Al: his marks on the photo-batches page, review/photo-batches-ruled.json, 30 Sept 2026",
+ "afReason": "Afrikaans proposed with the pair for Al's English line (his photo-batches ruling of 30 Sept 2026, review/photo-batches-ruled.json); written only through the lang-check gate",
+ "pairs": [
+  {
+   "id": "R16",
+   "condition": "storm",
+   "time": "dawn",
+   "line": "Thunder at dawn, and suddenly everyone sleeps in your bed.",
+   "af": "Donder met sonop, en skielik slaap almal in jou bed.",
+   "slots": [
+    "storm/week_2/dawn/4.webp",
+    "storm/week_4/dawn/4.webp"
+   ],
+   "expect": "a785060d7357",
+   "why": "Al: BESIDE. Goes beside the photo now in storm/week_2/dawn/4.webp, storm/week_4/dawn/4.webp (a785060d7357); the old photo keeps its other slots and its lines.",
+   "anchorY": 33,
+   "source": "C:\\Users\\27741\\OneDrive\\Desktop\\Probably weather new\\probably-weather-new-c\\review\\pairs-job\\chatgpt\\R16-1.png",
+   "pick": "BESIDE"
+  },
+  {
+   "id": "R19",
+   "condition": "wind",
+   "time": "dawn",
+   "line": "The wind's been up since five, rearranging everyone's bins.",
+   "af": "Die wind is al van vyfuur af op en skuif almal se vullisdromme rond.",
+   "slots": [
+    "wind/week_1/dawn/6.webp",
+    "wind/week_2/dawn/6.webp",
+    "wind/week_3/dawn/6.webp",
+    "wind/week_4/dawn/6.webp"
+   ],
+   "expect": "d0a60d414066",
+   "why": "Al: USE ANYWAY. Replaces Fitness-ad jogging duo past sea spray (Saturday dawn, R20's spot).",
+   "anchorY": 30,
+   "source": "C:\\Users\\27741\\OneDrive\\Desktop\\Probably weather new\\probably-weather-new-c\\review\\pairs-job\\chatgpt\\R19-1.png",
+   "pick": "USE ANYWAY"
+  },
+  {
+   "id": "R20",
+   "condition": "wind",
+   "time": "dawn",
+   "line": "School-run wind: every backpack is now a sail.",
+   "af": "Skoolrit-wind: elke rugsak is nou 'n seil.",
+   "slots": [
+    "wind/week_2/dawn/1.webp",
+    "wind/week_4/dawn/1.webp"
+   ],
+   "expect": "c121631aca0a",
+   "why": "Al: BESIDE. Goes beside the photo now in wind/week_2/dawn/1.webp, wind/week_4/dawn/1.webp (c121631aca0a); the old photo keeps its other slots and its lines.",
+   "anchorY": 38,
+   "source": "C:\\Users\\27741\\OneDrive\\Desktop\\Probably weather new\\probably-weather-new-c\\review\\pairs-job\\agent-batch-2\\R20.png",
+   "pick": "BESIDE"
+  },
+  {
+   "id": "R21",
+   "condition": "wind",
+   "time": "dusk",
+   "line": "Wind this strong, rugby practice is mostly chasing cones.",
+   "af": "In dié wind is rugbyoefening meestal keëls jaag.",
+   "slots": [
+    "wind/week_2/dusk/1.webp",
+    "wind/week_4/dusk/1.webp"
+   ],
+   "expect": "002f0c1d5187",
+   "why": "Al: BESIDE. Goes beside the photo now in wind/week_2/dusk/1.webp, wind/week_4/dusk/1.webp (002f0c1d5187); the old photo keeps its other slots and its lines.",
+   "anchorY": 38,
+   "source": "C:\\Users\\27741\\OneDrive\\Desktop\\Probably weather new\\probably-weather-new-c\\review\\pairs-job\\agent-batch-2\\R21.png",
+   "pick": "BESIDE"
+  },
+  {
+   "id": "R23",
+   "condition": "wind",
+   "time": "dusk",
+   "line": "The wind has decided the beach day is over.",
+   "af": "Die wind het besluit die stranddag is verby.",
+   "slots": [
+    "wind/week_1/dusk/7.webp",
+    "wind/week_2/dusk/7.webp",
+    "wind/week_3/dusk/7.webp",
+    "wind/week_4/dusk/7.webp"
+   ],
+   "expect": "38635f77f610",
+   "why": "Al: USE ANYWAY. Replaces Laughing couple on the beach.",
+   "anchorY": 30,
+   "source": "C:\\Users\\27741\\OneDrive\\Desktop\\Probably weather new\\probably-weather-new-c\\review\\pairs-job\\agent-batch-2\\R23.png",
+   "pick": "USE ANYWAY"
+  },
+  {
+   "id": "R27",
+   "condition": "wind",
+   "time": "night",
+   "line": "Wind like this, the trampoline starts making travel plans.",
+   "af": "In dié wind begin die trampolien reisplanne maak.",
+   "slots": [
+    "wind/week_2/night/6.webp",
+    "wind/week_4/night/6.webp"
+   ],
+   "expect": "be8276f7384b",
+   "why": "Al: BESIDE. Goes beside the photo now in wind/week_2/night/6.webp, wind/week_4/night/6.webp (be8276f7384b); the old photo keeps its other slots and its lines.",
+   "anchorY": 40,
+   "source": "C:\\Users\\27741\\OneDrive\\Desktop\\Probably weather new\\probably-weather-new-c\\review\\pairs-job\\chatgpt\\R27-1.png",
+   "pick": "BESIDE"
+  },
+  {
+   "id": "R28",
+   "condition": "cold",
+   "time": "dusk",
+   "line": "It's so cold the braai has become a very expensive heater.",
+   "af": "Dis so koud, die braai is nou 'n baie duur verwarmer.",
+   "slots": [
+    "cold/week_2/dusk/5.webp",
+    "cold/week_4/dusk/5.webp"
+   ],
+   "expect": "917c4c0a6fac",
+   "why": "Al: BESIDE. Goes beside the photo now in cold/week_2/dusk/5.webp, cold/week_4/dusk/5.webp (917c4c0a6fac); the old photo keeps its other slots and its lines.",
+   "anchorY": 33,
+   "source": "C:\\Users\\27741\\OneDrive\\Desktop\\Probably weather new\\probably-weather-new-c\\review\\pairs-job\\chatgpt\\R28-1.png",
+   "pick": "BESIDE"
+  },
+  {
+   "id": "R32",
+   "condition": "fog",
+   "time": "day",
+   "line": "Fog this thick, the goalie is defending a rumour.",
+   "af": "Mis dié dik, en die doelwagter verdedig 'n gerug.",
+   "slots": [
+    "fog/week_2/day/1.webp",
+    "fog/week_4/day/1.webp"
+   ],
+   "expect": "2d71f451d0df",
+   "why": "Al: BESIDE. Goes beside the photo now in fog/week_2/day/1.webp, fog/week_4/day/1.webp (2d71f451d0df); the old photo keeps its other slots and its lines.",
+   "anchorY": 38,
+   "source": "C:\\Users\\27741\\OneDrive\\Desktop\\Probably weather new\\probably-weather-new-c\\review\\pairs-job\\chatgpt\\R32-1.png",
+   "pick": "BESIDE"
+  },
+  {
+   "id": "R35",
+   "condition": "fog",
+   "time": "night",
+   "line": "Fog tonight: the waiter arrives like a magic trick.",
+   "af": "Mis vanaand: die kelner daag op soos 'n towertoertjie.",
+   "slots": [
+    "fog/week_1/night/5.webp",
+    "fog/week_2/night/5.webp",
+    "fog/week_3/night/5.webp",
+    "fog/week_4/night/5.webp"
+   ],
+   "expect": "7acec82c9b6f",
+   "why": "Al: USE. Replaces A couple walking the dog, smiling.",
+   "anchorY": 33,
+   "source": "C:\\Users\\27741\\OneDrive\\Desktop\\Probably weather new\\probably-weather-new-c\\review\\pairs-job\\chatgpt\\R35-1.png",
+   "pick": "USE"
+  },
+  {
+   "id": "R36",
+   "condition": "clear",
+   "time": "day",
+   "line": "Not a cloud in sight, and every stoep in town is fully booked.",
+   "af": "Nie 'n wolkie in sig nie, en elke stoep in die dorp is vol bespreek.",
+   "slots": [
+    "clear/week_4/day/7.webp"
+   ],
+   "expect": "03a31c2b8e88",
+   "why": "Al: BESIDE. Goes beside the photo now in clear/week_4/day/7.webp (03a31c2b8e88); the old photo keeps its other slots and its lines.",
+   "anchorY": 35,
+   "source": "C:\\Users\\27741\\OneDrive\\Desktop\\Probably weather new\\probably-weather-new-c\\review\\pairs-job\\chatgpt\\R36-1.png",
+   "pick": "BESIDE"
+  },
+  {
+   "id": "R37",
+   "condition": "clear",
+   "time": "day",
+   "line": "Blue sky, full sun: the car gets washed, and so does Dad.",
+   "af": "Blou lug, volle son: die kar word gewas, en Pa ook.",
+   "slots": [
+    "clear/week_4/day/6.webp"
+   ],
+   "expect": "6e598ae56c12",
+   "why": "Al: BESIDE. Goes beside the photo now in clear/week_4/day/6.webp (6e598ae56c12); the old photo keeps its other slots and its lines. Line changed: Al: lose the 25°.",
+   "anchorY": 33,
+   "source": "C:\\Users\\27741\\OneDrive\\Desktop\\Probably weather new\\probably-weather-new-c\\review\\pairs-job\\chatgpt\\R37-1.png",
+   "pick": "BESIDE"
+  },
+  {
+   "id": "R38",
+   "condition": "clear",
+   "time": "day",
+   "line": "Blue sky from end to end: the meeting has moved outside, and nobody's complaining.",
+   "af": "Blou lug van kant tot kant: die vergadering het buitentoe geskuif, en niemand kla nie.",
+   "slots": [
+    "clear/week_3/day/5.webp"
+   ],
+   "expect": "ca6d821f7c9b",
+   "why": "Al: BESIDE. Goes beside the photo now in clear/week_3/day/5.webp (ca6d821f7c9b); the old photo keeps its other slots and its lines. Line changed: Al: lose the 23°.",
+   "anchorY": 35,
+   "source": "C:\\Users\\27741\\OneDrive\\Desktop\\Probably weather new\\probably-weather-new-c\\review\\pairs-job\\agent-batch-2\\R38.png",
+   "pick": "BESIDE"
+  },
+  {
+   "id": "R40",
+   "condition": "clear",
+   "time": "day",
+   "line": "A sky this clear, even the hot-air balloons are showing off.",
+   "af": "Die lug is so helder, selfs die warmlugballonne pronk.",
+   "slots": [
+    "clear/week_4/day/5.webp"
+   ],
+   "expect": "ed953578deec",
+   "why": "Al: BESIDE. Goes beside the photo now in clear/week_4/day/5.webp (ed953578deec); the old photo keeps its other slots and its lines.",
+   "anchorY": 35,
+   "source": "C:\\Users\\27741\\OneDrive\\Desktop\\Probably weather new\\probably-weather-new-c\\review\\pairs-job\\agent-batch-2\\R40.png",
+   "pick": "BESIDE"
+  },
+  {
+   "id": "R42",
+   "condition": "clear",
+   "time": "day",
+   "line": "Not a cloud in the sky, and the sea is still 14 degrees.",
+   "af": "Nie 'n wolk in die lug nie, en die see is steeds 14 grade.",
+   "slots": [
+    "clear/week_3/day/3.webp"
+   ],
+   "expect": "77cfc93827e3",
+   "why": "Al: BESIDE. Goes beside the photo now in clear/week_3/day/3.webp (77cfc93827e3); the old photo keeps its other slots and its lines.",
+   "anchorY": 35,
+   "source": "C:\\Users\\27741\\OneDrive\\Desktop\\Probably weather new\\probably-weather-new-c\\review\\pairs-job\\agent-batch-2\\R42.png",
+   "pick": "BESIDE"
+  },
+  {
+   "id": "R43",
+   "condition": "heat",
+   "time": "day",
+   "line": "So hot the pool is now the only room in the house.",
+   "af": "So warm, die swembad is nou die enigste kamer in die huis.",
+   "slots": [
+    "heat/week_3/day/2.webp"
+   ],
+   "expect": "d6593f52fb76",
+   "why": "Al: BESIDE. Goes beside the photo now in heat/week_3/day/2.webp (d6593f52fb76); the old photo keeps its other slots and its lines. Photo changed: Al: the green blemish on her shoulder (a pool-colour cast) corrected locally, 9,616 pixels in one feathered box, nothing else touched.",
+   "anchorY": 35,
+   "source": "C:\\Users\\27741\\OneDrive\\Desktop\\Probably weather new\\probably-weather-new-c\\review\\pairs-job\\chatgpt\\R43-1-fixed.png",
+   "pick": "BESIDE"
+  },
+  {
+   "id": "R44",
+   "condition": "cloudy",
+   "time": "day",
+   "line": "Grey and chilly: suddenly everyone remembers their jersey is in the car.",
+   "af": "Grys en kouerig: skielik onthou almal hul trui is in die kar.",
+   "slots": [
+    "cloudy/week_4/day/7.webp"
+   ],
+   "expect": "04bdf14c306b",
+   "why": "Al: BESIDE. Goes beside the photo now in cloudy/week_4/day/7.webp (04bdf14c306b); the old photo keeps its other slots and its lines. Line changed: Vonk, by Al's reason on R37/R38/R59: '17 degrees' out.",
+   "anchorY": 30,
+   "source": "C:\\Users\\27741\\OneDrive\\Desktop\\Probably weather new\\probably-weather-new-c\\review\\pairs-job\\chatgpt\\R44-2.png",
+   "pick": "BESIDE"
+  },
+  {
+   "id": "R45",
+   "condition": "rain",
+   "time": "day",
+   "line": "Rain all day, and the lounge has become a cushion fort.",
+   "af": "Heeldag reën, en die sitkamer het 'n kussingfort geword.",
+   "slots": [
+    "rain/week_1/day/2.webp",
+    "rain/week_3/day/2.webp"
+   ],
+   "expect": "00a672556998",
+   "why": "Al: USE ANYWAY. Replaces Kids lined up in a puddle smiling at the camera.",
+   "anchorY": 33,
+   "source": "C:\\Users\\27741\\OneDrive\\Desktop\\Probably weather new\\probably-weather-new-c\\review\\pairs-job\\chatgpt\\R45-1.png",
+   "pick": "USE ANYWAY"
+  },
+  {
+   "id": "R46",
+   "condition": "storm",
+   "time": "night",
+   "line": "Storm tonight, and the dog has chosen the smallest cupboard in the house.",
+   "af": "Storm vanaand, en die hond het die kleinste kas in die huis gekies.",
+   "slots": [
+    "storm/week_1/night/6.webp",
+    "storm/week_3/night/6.webp"
+   ],
+   "expect": "2d2e6dd5d7fd",
+   "why": "Al: USE. Replaces A couple staged laughing at a roof leak.",
+   "anchorY": 35,
+   "source": "C:\\Users\\27741\\OneDrive\\Desktop\\Probably weather new\\probably-weather-new-c\\review\\pairs-job\\chatgpt\\R46-1.png",
+   "pick": "USE"
+  },
+  {
+   "id": "R47",
+   "condition": "wind",
+   "time": "day",
+   "line": "One gust, and every napkin in the café leaves at once.",
+   "af": "Een rukwind, en elke servet in die kafee vertrek tegelyk.",
+   "slots": [
+    "wind/week_2/day/2.webp",
+    "wind/week_4/day/2.webp"
+   ],
+   "expect": "9bada961b0a7",
+   "why": "Al: USE. Replaces Wind havoc, but a spilled bin's rubbish fills the bottom.",
+   "anchorY": 33,
+   "source": "C:\\Users\\27741\\OneDrive\\Desktop\\Probably weather new\\probably-weather-new-c\\review\\pairs-job\\agent-batch-2\\R47.png",
+   "pick": "USE"
+  },
+  {
+   "id": "R49",
+   "condition": "wind",
+   "time": "day",
+   "line": "Great wind for kites. Terrible wind for whoever's holding one.",
+   "af": "Lekker wind vir vlieërs. Verskriklike wind vir wie een vashou.",
+   "slots": [
+    "wind/week_2/day/5.webp",
+    "wind/week_4/day/5.webp"
+   ],
+   "expect": "ab2cbee2d73d",
+   "why": "Al: USE. Replaces Palms whipping over an empty street, no one.",
+   "anchorY": 35,
+   "source": "C:\\Users\\27741\\OneDrive\\Desktop\\Probably weather new\\probably-weather-new-c\\review\\pairs-job\\agent-batch-2\\R49.png",
+   "pick": "USE"
+  },
+  {
+   "id": "R50",
+   "condition": "wind",
+   "time": "day",
+   "line": "Market day in a gale: every stallholder is holding down a gazebo.",
+   "af": "Markdag in 'n stormwind: elke stalletjiehouer hou 'n gazebo vas.",
+   "slots": [
+    "wind/week_2/day/6.webp",
+    "wind/week_4/day/6.webp"
+   ],
+   "expect": "5df9d64aa037",
+   "why": "Al: USE. Replaces Jacaranda bending over an empty street, no one.",
+   "anchorY": 33,
+   "source": "C:\\Users\\27741\\OneDrive\\Desktop\\Probably weather new\\probably-weather-new-c\\review\\pairs-job\\agent-batch-2\\R50.png",
+   "pick": "USE"
+  },
+  {
+   "id": "R52",
+   "condition": "clear",
+   "time": "dawn",
+   "line": "Clear sunrise: the cycling club is out and the coffee stop is already planned.",
+   "af": "Helder sonop: die fietsryklub is uit, en die koffiestop is klaar beplan.",
+   "slots": [
+    "clear/week_2/dawn/6.webp",
+    "clear/week_4/dawn/6.webp"
+   ],
+   "expect": "d529968dcb50",
+   "why": "Al: USE. Replaces nothing (beside the lone beach walker).",
+   "anchorY": 30,
+   "source": "C:\\Users\\27741\\OneDrive\\Desktop\\Probably weather new\\probably-weather-new-c\\review\\pairs-job\\agent-batch-2\\R52.png",
+   "pick": "USE"
+  },
+  {
+   "id": "R59",
+   "condition": "clear",
+   "time": "day",
+   "line": "Clear sky and proper sunshine: the ice-cream van has never been this popular.",
+   "af": "Helder lug en regte sonskyn: die roomysverkoper was nog nooit so gewild nie.",
+   "slots": [
+    "clear/week_1/day/4.webp",
+    "clear/week_3/day/4.webp"
+   ],
+   "expect": "f673af851f9c",
+   "why": "Al: USE. Replaces Soccer kids eating chips; the weather plays no part. Line changed: Al: lose the 26°.",
+   "anchorY": 30,
+   "source": "C:\\Users\\27741\\OneDrive\\Desktop\\Probably weather new\\probably-weather-new-c\\review\\pairs-job\\agent-batch-2\\R59.png",
+   "pick": "USE"
+  }
+ ],
+ "held": [
+  {
+   "id": "R41",
+   "why": "Al: 'I dont want people looking at the camera' and take the 24° out; re-roll",
+   "line": "Blue sky: the outdoor gym has suddenly found new members.",
+   "extraSentence": "Nobody looks at the camera: a newcomer is stuck halfway up a pull-up while a regular on the next bar watches, caught mid-moment.",
+   "spot": "clear/week_1/day/1.webp and clear/week_3/day/1.webp (Monday)"
+  }
+ ],
+ "appliedRuns": [],
+ "applied": {
+  "on": "2026-09-30",
+  "applied": [
+   {
+    "id": "R16",
+    "hash": "46c3fe4d1244",
+    "canonical": "e552f33a0ddf…",
+    "bytes": 257716,
+    "quality": 92,
+    "slots": [
+     "storm/week_2/dawn/4.webp",
+     "storm/week_4/dawn/4.webp"
+    ],
+    "replaced": "a785060d7357"
+   },
+   {
+    "id": "R19",
+    "hash": "bbf6b6ef796a",
+    "canonical": "27f11a9217b0…",
+    "bytes": 302124,
+    "quality": 91,
+    "slots": [
+     "wind/week_1/dawn/6.webp",
+     "wind/week_2/dawn/6.webp",
+     "wind/week_3/dawn/6.webp",
+     "wind/week_4/dawn/6.webp"
+    ],
+    "replaced": "d0a60d414066"
+   },
+   {
+    "id": "R20",
+    "hash": "775f4f1b47b4",
+    "canonical": "8d356934188b…",
+    "bytes": 297842,
+    "quality": 89,
+    "slots": [
+     "wind/week_2/dawn/1.webp",
+     "wind/week_4/dawn/1.webp"
+    ],
+    "replaced": "c121631aca0a"
+   },
+   {
+    "id": "R21",
+    "hash": "d68ae3f7c914",
+    "canonical": "b73464c41fbd…",
+    "bytes": 297940,
+    "quality": 91,
+    "slots": [
+     "wind/week_2/dusk/1.webp",
+     "wind/week_4/dusk/1.webp"
+    ],
+    "replaced": "002f0c1d5187"
+   },
+   {
+    "id": "R23",
+    "hash": "60b776676824",
+    "canonical": "87e07b56b41e…",
+    "bytes": 289714,
+    "quality": 92,
+    "slots": [
+     "wind/week_1/dusk/7.webp",
+     "wind/week_2/dusk/7.webp",
+     "wind/week_3/dusk/7.webp",
+     "wind/week_4/dusk/7.webp"
+    ],
+    "replaced": "38635f77f610"
+   },
+   {
+    "id": "R27",
+    "hash": "4cbd692804c1",
+    "canonical": "c036292efae0…",
+    "bytes": 293668,
+    "quality": 89,
+    "slots": [
+     "wind/week_2/night/6.webp",
+     "wind/week_4/night/6.webp"
+    ],
+    "replaced": "be8276f7384b"
+   },
+   {
+    "id": "R28",
+    "hash": "7d459440d824",
+    "canonical": "9ac66197c309…",
+    "bytes": 297132,
+    "quality": 89,
+    "slots": [
+     "cold/week_2/dusk/5.webp",
+     "cold/week_4/dusk/5.webp"
+    ],
+    "replaced": "917c4c0a6fac"
+   },
+   {
+    "id": "R32",
+    "hash": "01c4ac751dea",
+    "canonical": "d191fcd93dec…",
+    "bytes": 221772,
+    "quality": 92,
+    "slots": [
+     "fog/week_2/day/1.webp",
+     "fog/week_4/day/1.webp"
+    ],
+    "replaced": "2d71f451d0df"
+   },
+   {
+    "id": "R35",
+    "hash": "4b77f610c3f8",
+    "canonical": "4f60e05575f5…",
+    "bytes": 173152,
+    "quality": 92,
+    "slots": [
+     "fog/week_1/night/5.webp",
+     "fog/week_2/night/5.webp",
+     "fog/week_3/night/5.webp",
+     "fog/week_4/night/5.webp"
+    ],
+    "replaced": "7acec82c9b6f"
+   },
+   {
+    "id": "R36",
+    "hash": "744643e152b8",
+    "canonical": "9a3f2d5dcb08…",
+    "bytes": 301080,
+    "quality": 83,
+    "slots": [
+     "clear/week_4/day/7.webp"
+    ],
+    "replaced": "03a31c2b8e88"
+   },
+   {
+    "id": "R37",
+    "hash": "508a39ca3436",
+    "canonical": "fe3c3903b855…",
+    "bytes": 298044,
+    "quality": 83,
+    "slots": [
+     "clear/week_4/day/6.webp"
+    ],
+    "replaced": "6e598ae56c12"
+   },
+   {
+    "id": "R38",
+    "hash": "42df59c8ac8a",
+    "canonical": "6fb3c41873bd…",
+    "bytes": 297758,
+    "quality": 82,
+    "slots": [
+     "clear/week_3/day/5.webp"
+    ],
+    "replaced": "ca6d821f7c9b"
+   },
+   {
+    "id": "R40",
+    "hash": "4754436d6979",
+    "canonical": "a447a0e5821f…",
+    "bytes": 298228,
+    "quality": 86,
+    "slots": [
+     "clear/week_4/day/5.webp"
+    ],
+    "replaced": "ed953578deec"
+   },
+   {
+    "id": "R42",
+    "hash": "f9f55b1dcfeb",
+    "canonical": "d1650da77f23…",
+    "bytes": 292114,
+    "quality": 92,
+    "slots": [
+     "clear/week_3/day/3.webp"
+    ],
+    "replaced": "77cfc93827e3"
+   },
+   {
+    "id": "R43",
+    "hash": "0fe1f7c40461",
+    "canonical": "9bfc9b513ef9…",
+    "bytes": 293696,
+    "quality": 92,
+    "slots": [
+     "heat/week_3/day/2.webp"
+    ],
+    "replaced": "d6593f52fb76"
+   },
+   {
+    "id": "R44",
+    "hash": "3c8fb431fafe",
+    "canonical": "727ef0886266…",
+    "bytes": 289824,
+    "quality": 92,
+    "slots": [
+     "cloudy/week_4/day/7.webp"
+    ],
+    "replaced": "04bdf14c306b"
+   },
+   {
+    "id": "R45",
+    "hash": "fbaca052756a",
+    "canonical": "cacc6f5e5595…",
+    "bytes": 295508,
+    "quality": 90,
+    "slots": [
+     "rain/week_1/day/2.webp",
+     "rain/week_3/day/2.webp"
+    ],
+    "replaced": "00a672556998"
+   },
+   {
+    "id": "R46",
+    "hash": "504caee429a0",
+    "canonical": "38632e00861e…",
+    "bytes": 180280,
+    "quality": 92,
+    "slots": [
+     "storm/week_1/night/6.webp",
+     "storm/week_3/night/6.webp"
+    ],
+    "replaced": "2d2e6dd5d7fd"
+   },
+   {
+    "id": "R47",
+    "hash": "00f62db773d8",
+    "canonical": "17c4f81e0d3d…",
+    "bytes": 307026,
+    "quality": 82,
+    "slots": [
+     "wind/week_2/day/2.webp",
+     "wind/week_4/day/2.webp"
+    ],
+    "replaced": "9bada961b0a7"
+   },
+   {
+    "id": "R49",
+    "hash": "81077e7802e8",
+    "canonical": "dd633b4c48a2…",
+    "bytes": 300722,
+    "quality": 92,
+    "slots": [
+     "wind/week_2/day/5.webp",
+     "wind/week_4/day/5.webp"
+    ],
+    "replaced": "ab2cbee2d73d"
+   },
+   {
+    "id": "R50",
+    "hash": "454c5a6995aa",
+    "canonical": "be7617dc182a…",
+    "bytes": 305114,
+    "quality": 85,
+    "slots": [
+     "wind/week_2/day/6.webp",
+     "wind/week_4/day/6.webp"
+    ],
+    "replaced": "5df9d64aa037"
+   },
+   {
+    "id": "R52",
+    "hash": "a300495d4526",
+    "canonical": "9c9fbb120b64…",
+    "bytes": 297452,
+    "quality": 86,
+    "slots": [
+     "clear/week_2/dawn/6.webp",
+     "clear/week_4/dawn/6.webp"
+    ],
+    "replaced": "d529968dcb50"
+   },
+   {
+    "id": "R59",
+    "hash": "0d7c5c34c6a0",
+    "canonical": "afb8e0d1b866…",
+    "bytes": 295914,
+    "quality": 76,
+    "slots": [
+     "clear/week_1/day/4.webp",
+     "clear/week_3/day/4.webp"
+    ],
+    "replaced": "f673af851f9c"
+   }
+  ],
+  "retired": [
+   {
+    "hash": "38635f77f610",
+    "image": "wind/week_1/dusk/7.webp",
+    "paths": [
+     "wind/week_1/dusk/7.webp",
+     "wind/week_2/dusk/7.webp",
+     "wind/week_3/dusk/7.webp",
+     "wind/week_4/dusk/7.webp"
+    ],
+    "byPair": "R23",
+    "lines": [
+     "Sand in places sand should never be.",
+     "Neither of them can stand up straight and neither of them seems to mind.",
+     "The footprints behind them are already filling in and they only just walked there.",
+     "The beach itself is moving faster than they are, and in the same direction."
+    ],
+    "anchorY": 52
+   },
+   {
+    "hash": "5df9d64aa037",
+    "image": "wind/week_2/day/6.webp",
+    "paths": [
+     "wind/week_2/day/6.webp",
+     "wind/week_4/day/6.webp"
+    ],
+    "byPair": "R50",
+    "lines": [
+     "Saturday, and the wind has strong opinions about your plans for the garden.",
+     "That grass on the verge has been lying flat since Thursday.",
+     "Somebody is going to sweep all that purple up and somebody is not.",
+     "The sky has gone the colour that makes Joburg check the group chat.",
+     "Every tree on the street is bowing the same way. Peer pressure."
+    ],
+    "anchorY": null
+   },
+   {
+    "hash": "ab2cbee2d73d",
+    "image": "wind/week_2/day/5.webp",
+    "paths": [
+     "wind/week_2/day/5.webp",
+     "wind/week_4/day/5.webp"
+    ],
+    "byPair": "R49",
+    "lines": [
+     "The banana leaves are being redesigned in real time and taking it well.",
+     "That shade cloth has been drumming since breakfast and nobody can hear the television.",
+     "The sea looks calm from up here, which is a complete lie.",
+     "Friday, and the humidity has teamed up with the wind against everybody.",
+     "Every leaf on that palm is now a slightly different length."
+    ],
+    "anchorY": null
+   },
+   {
+    "hash": "9bada961b0a7",
+    "image": "wind/week_2/day/2.webp",
+    "paths": [
+     "wind/week_2/day/2.webp",
+     "wind/week_4/day/2.webp"
+    ],
+    "byPair": "R47",
+    "lines": [
+     "The bin made it to the pavement and then made its own decisions.",
+     "Tuesday is bin day, and the wind has clearly read the schedule too.",
+     "Half of this street's recycling is now the hedge's problem.",
+     "The oaks are fine. The wheelie bins never stood a chance.",
+     "Three houses are out there picking up what the wind redistributed."
+    ],
+    "anchorY": 90
+   },
+   {
+    "hash": "d0a60d414066",
+    "image": "wind/week_1/dawn/6.webp",
+    "paths": [
+     "wind/week_1/dawn/6.webp",
+     "wind/week_2/dawn/6.webp",
+     "wind/week_3/dawn/6.webp",
+     "wind/week_4/dawn/6.webp"
+    ],
+    "byPair": "R19",
+    "lines": [
+     "The paving is soaked in front of them and it has not rained once.",
+     "Saturday morning, and the sea has already been over that railing twice.",
+     "Neither of them is going to be the one who suggests turning back.",
+     "That sea wall is doing its absolute best and it is still losing.",
+     "They will be getting salt off those shoes for the rest of the weekend.",
+     "Everyone's jogging at a slight angle this morning."
+    ],
+    "anchorY": 96
+   },
+   {
+    "hash": "2d2e6dd5d7fd",
+    "image": "storm/week_1/night/6.webp",
+    "paths": [
+     "storm/week_1/night/6.webp",
+     "storm/week_3/night/6.webp"
+    ],
+    "byPair": "R46",
+    "lines": [
+     "Rain was the warning. This is the follow-through.",
+     "Proper storm. Not the pretty kind."
+    ],
+    "anchorY": 42
+   },
+   {
+    "hash": "00a672556998",
+    "image": "rain/week_1/day/2.webp",
+    "paths": [
+     "rain/week_1/day/2.webp",
+     "rain/week_3/day/2.webp"
+    ],
+    "byPair": "R45",
+    "lines": [
+     "Breaking news: the puddles are open for business.",
+     "The rain made the puddle; the puddle made the afternoon.",
+     "Six raincoats, one puddle, zero regrets: the rain knows its audience."
+    ],
+    "anchorY": 47
+   },
+   {
+    "hash": "7acec82c9b6f",
+    "image": "fog/week_1/night/5.webp",
+    "paths": [
+     "fog/week_1/night/5.webp",
+     "fog/week_2/night/5.webp",
+     "fog/week_3/night/5.webp",
+     "fog/week_4/night/5.webp"
+    ],
+    "byPair": "R35",
+    "lines": [
+     "Visibility: vibes only.",
+     "The fog moved in an hour ago and the streetlights have doubled in size since."
+    ],
+    "anchorY": 100
+   },
+   {
+    "hash": "f673af851f9c",
+    "image": "clear/week_1/day/4.webp",
+    "paths": [
+     "clear/week_1/day/4.webp",
+     "clear/week_3/day/4.webp"
+    ],
+    "byPair": "R59",
+    "lines": [
+     "The sky's giving everything today.",
+     "Weather this well-behaved is definitely up to something.",
+     "The sun stayed out for the whole match and is hanging around for the chips.",
+     "Match played, chips out, and the sky never once threatened the fixture.",
+     "The sort of afternoon that keeps a whole soccer team sitting on a curb."
+    ],
+    "anchorY": 61
+   }
+  ],
+  "benchChanges": [],
+  "curatedBodies": 317
+ }
+}

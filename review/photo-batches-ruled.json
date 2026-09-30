@@ -1,0 +1,148 @@
+{
+ "generated": "2026-09-30T12:11:45.320Z",
+ "ruledBy": "Al, review/photo-batches-for-al.html",
+ "pairs": [
+  {
+   "id": "R16",
+   "pick": "BESIDE",
+   "afPick": "OK",
+   "afFix": ""
+  },
+  {
+   "id": "R20",
+   "pick": "BESIDE",
+   "afPick": "OK",
+   "afFix": ""
+  },
+  {
+   "id": "R21",
+   "pick": "BESIDE",
+   "afPick": "OK",
+   "afFix": ""
+  },
+  {
+   "id": "R27",
+   "pick": "BESIDE",
+   "afPick": "OK",
+   "afFix": ""
+  },
+  {
+   "id": "R28",
+   "pick": "BESIDE",
+   "afPick": "OK",
+   "afFix": ""
+  },
+  {
+   "id": "R32",
+   "pick": "BESIDE",
+   "afPick": "OK",
+   "afFix": ""
+  },
+  {
+   "id": "R35",
+   "pick": "USE",
+   "afPick": "OK",
+   "afFix": ""
+  },
+  {
+   "id": "R36",
+   "pick": "BESIDE",
+   "afPick": "OK",
+   "afFix": ""
+  },
+  {
+   "id": "R37",
+   "pick": "BESIDE",
+   "afPick": "FIX",
+   "afFix": "Change the line so you lose the 25C because it could be a bit cooler or warmer and then it becomes misleading. "
+  },
+  {
+   "id": "R38",
+   "pick": "BESIDE",
+   "afPick": "FIX",
+   "afFix": "Change the line so you lose the 23C because it could be a bit cooler or warmer and then it becomes misleading. "
+  },
+  {
+   "id": "R40",
+   "pick": "BESIDE",
+   "afPick": "OK",
+   "afFix": ""
+  },
+  {
+   "id": "R42",
+   "pick": "BESIDE",
+   "afPick": "OK",
+   "afFix": ""
+  },
+  {
+   "id": "R43",
+   "pick": "BESIDE",
+   "afPick": "FIX",
+   "afFix": "Check the woman at the laptops shoulder, there is a weird green blemish that looks odd."
+  },
+  {
+   "id": "R44",
+   "pick": "BESIDE",
+   "afPick": "OK",
+   "afFix": ""
+  },
+  {
+   "id": "R46",
+   "pick": "USE",
+   "afPick": "OK",
+   "afFix": ""
+  },
+  {
+   "id": "R47",
+   "pick": "USE",
+   "afPick": "OK",
+   "afFix": ""
+  },
+  {
+   "id": "R49",
+   "pick": "USE",
+   "afPick": "OK",
+   "afFix": ""
+  },
+  {
+   "id": "R50",
+   "pick": "USE",
+   "afPick": "OK",
+   "afFix": ""
+  },
+  {
+   "id": "R52",
+   "pick": "USE",
+   "afPick": "OK",
+   "afFix": ""
+  },
+  {
+   "id": "R59",
+   "pick": "USE",
+   "afPick": "FIX",
+   "afFix": "Change the line so you lose the 26C because it could be a bit cooler or warmer and then it becomes misleading. "
+  }
+ ],
+ "rerolls": [
+  {
+   "id": "R19",
+   "pick": "USE ANYWAY",
+   "extraSentence": "Dress him in a tracksuit or work clothes, not a dressing gown - the app already has a robed man wheeling a bin."
+  },
+  {
+   "id": "R23",
+   "pick": "USE ANYWAY",
+   "extraSentence": "No gazebo: the beach umbrella is turning inside out and the towels are leaving while two friends pack up in a hurry."
+  },
+  {
+   "id": "R41",
+   "pick": "USE ANYWAY",
+   "extraSentence": "I dont want people looking at the camera and chane the line by taking the 24c out. coudl be misleading."
+  },
+  {
+   "id": "R45",
+   "pick": "USE ANYWAY",
+   "extraSentence": "Not a dad with two kids and a dog: two teenage sisters in day clothes are building the fort."
+  }
+ ]
+}

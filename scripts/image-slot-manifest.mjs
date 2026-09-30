@@ -19,8 +19,8 @@ function filesystemPath(value) {
   return value instanceof URL ? fileURLToPath(value) : path.resolve(value);
 }
 
-/** 303 curated photographs since 2026-09-27 (the pairs, review/pairs-rolling-2-plan.json; see verifyBackgroundImageArtifact). */
-export const CURATED_BODIES = 303;
+/** 317 curated photographs since 2026-09-30 (the pairs, review/photo-batches-plan.json; see verifyBackgroundImageArtifact). */
+export const CURATED_BODIES = 317;
 
 /**
  * Photographs benched by ruling (review/benched-photos.json): out of rotation
