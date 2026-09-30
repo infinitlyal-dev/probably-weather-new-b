@@ -24,7 +24,7 @@ button { font:inherit; padding:8px 14px; border-radius:6px; border:1px solid var
 </style>
 <main>
 <h1>Afrikaans lines for Al</h1>
-<p class="lede">574 bespoke lines did not clear the gate on 2026-09-30, out of 1569. The other 995 are wired for Afrikaans. Each row shows the English, the Afrikaans proposal and why it is here. Edit the proposal if needed, tick <b>Use</b>, then export and run <code>node scripts/lang-check/apply-af-accepted.mjs --decisions review/af-al-decisions.json</code>. A line you rule is written unless lang-check rates it triage-high.</p>
+<p class="lede">591 bespoke lines did not clear the gate on 2026-09-30, out of 1581. The other 990 are wired for Afrikaans. Each row shows the English, the Afrikaans proposal and why it is here. Edit the proposal if needed, tick <b>Use</b>, then export and run <code>node scripts/lang-check/apply-af-accepted.mjs --decisions review/af-al-decisions.json</code>. A line you rule is written unless lang-check rates it triage-high.</p>
 <details><summary>The voice these were judged against (review/af-voice.md)</summary><p>Extracted on 2026-09-15 from the 350 canon rows (grey, native-reviewed) in</p>
 <p>review/af-side-by-side.html, and nothing else. Every rule cites canon lines by their</p>
 <p>sheet id. The gate that applies it is scripts/lang-check/apply-af-accepted.mjs; the</p>
@@ -3665,6 +3665,48 @@ button { font:inherit; padding:8px 14px; border-radius:6px; border:1px solid var
 <td class="why"><ul><li>its English line is no longer wired in assets/hero-lines.js</li></ul></td>
 <td class="use"><label><input type="checkbox"> Use</label></td>
 </tr>
+<tr data-id="B316" data-english="Thursday night, and the balcony has been promoted to the main room.">
+<td class="id">B316<span>KEEP · heat/night</span></td>
+<td class="en">Thursday night, and the balcony has been promoted to the main room.</td>
+<td class="af"><textarea rows="3" aria-label="Afrikaans for B316">Donderdagaand, en die balkon is tot hoofkamer bevorder.</textarea></td>
+<td class="why"><ul><li>its English line is no longer wired in assets/hero-lines.js</li></ul></td>
+<td class="use"><label><input type="checkbox"> Use</label></td>
+</tr>
+<tr data-id="B317" data-english="It is cooler out here at midnight than it was inside at six.">
+<td class="id">B317<span>KEEP · heat/night</span></td>
+<td class="en">It is cooler out here at midnight than it was inside at six.</td>
+<td class="af"><textarea rows="3" aria-label="Afrikaans for B317">Dit is hier buite om middernag koeler as wat dit sesuur binne was.</textarea></td>
+<td class="why"><ul><li>its English line is no longer wired in assets/hero-lines.js</li></ul></td>
+<td class="use"><label><input type="checkbox"> Use</label></td>
+</tr>
+<tr data-id="B318" data-english="The ice in that jug never stood a chance and everybody knew it.">
+<td class="id">B318<span>FIX · heat/night</span></td>
+<td class="en">The ice in that jug never stood a chance and everybody knew it.</td>
+<td class="af"><textarea rows="3" aria-label="Afrikaans for B318">Die ys in daardie kan het nooit 'n kans gestaan nie, en almal het dit geweet.</textarea><div class="draft">Earlier draft: Die ys in daardie beker het nooit 'n kans gestaan nie en almal het geweet.</div></td>
+<td class="why"><ul><li>its English line is no longer wired in assets/hero-lines.js</li></ul><div class="note">Judge: 'kan' for jug; 'geweet' needs 'dit' (score 4)</div></td>
+<td class="use"><label><input type="checkbox"> Use</label></td>
+</tr>
+<tr data-id="B319" data-english="That curtain is the only moving air in the entire flat.">
+<td class="id">B319<span>KEEP · heat/night</span></td>
+<td class="en">That curtain is the only moving air in the entire flat.</td>
+<td class="af"><textarea rows="3" aria-label="Afrikaans for B319">Daardie gordyn is die enigste bewegende lug in die hele woonstel.</textarea></td>
+<td class="why"><ul><li>its English line is no longer wired in assets/hero-lines.js</li></ul></td>
+<td class="use"><label><input type="checkbox"> Use</label></td>
+</tr>
+<tr data-id="B320" data-english="Nobody is going back in there until the walls let go of the day.">
+<td class="id">B320<span>AL · heat/night</span></td>
+<td class="en">Nobody is going back in there until the walls let go of the day.</td>
+<td class="af"><textarea rows="3" aria-label="Afrikaans for B320">Niemand gaan weer in todat die mure die dag laat gaan het nie.</textarea></td>
+<td class="why"><ul><li>its English line is no longer wired in assets/hero-lines.js</li></ul><div class="note">Judge: Ruled by Al</div></td>
+<td class="use"><label><input type="checkbox"> Use</label></td>
+</tr>
+<tr data-id="B321" data-english="Ice in the jug, fan on the chair: the night shift of a forty-degree day.">
+<td class="id">B321<span>FIX · heat/night</span></td>
+<td class="en">Ice in the jug, fan on the chair: the night shift of a forty-degree day.</td>
+<td class="af"><textarea rows="3" aria-label="Afrikaans for B321">Ys in die kan, waaier op die stoel: die nagskof van 'n veertig-grade-dag.</textarea><div class="draft">Earlier draft: Ys in die beker, waaier op die stoel: die nagskof van 'n veertiggraaddag.</div></td>
+<td class="why"><ul><li>its English line is no longer wired in assets/hero-lines.js</li></ul><div class="note">Judge: 'kan' for jug; 'veertiggraaddag' is unattested (score 4)</div></td>
+<td class="use"><label><input type="checkbox"> Use</label></td>
+</tr>
 <tr data-id="B353" data-english="Construction finished at nine: one duvet cave, single occupant, no visitors till spring.">
 <td class="id">B353<span>KEEP · cold/day</span></td>
 <td class="en">Construction finished at nine: one duvet cave, single occupant, no visitors till spring.</td>
@@ -3690,6 +3732,13 @@ button { font:inherit; padding:8px 14px; border-radius:6px; border:1px solid var
 <td class="id">B361<span>KEEP · cold/day</span></td>
 <td class="en">Wet road, grey sky, dog in a jersey: winter is fully operational.</td>
 <td class="af"><textarea rows="3" aria-label="Afrikaans for B361">Nat pad, grys lug, hond in 'n trui: winter is ten volle in werking.</textarea></td>
+<td class="why"><ul><li>its English line is no longer wired in assets/hero-lines.js</li></ul></td>
+<td class="use"><label><input type="checkbox"> Use</label></td>
+</tr>
+<tr data-id="B366" data-english="The sun is leaving the mountains one shelf at a time.">
+<td class="id">B366<span>KEEP · cold/dusk</span></td>
+<td class="en">The sun is leaving the mountains one shelf at a time.</td>
+<td class="af"><textarea rows="3" aria-label="Afrikaans for B366">Die son verlaat die berge een rak op 'n slag.</textarea></td>
 <td class="why"><ul><li>its English line is no longer wired in assets/hero-lines.js</li></ul></td>
 <td class="use"><label><input type="checkbox"> Use</label></td>
 </tr>
@@ -3777,6 +3826,20 @@ button { font:inherit; padding:8px 14px; border-radius:6px; border:1px solid var
 <td class="why"><ul><li>its English line is no longer wired in assets/hero-lines.js</li></ul><div class="note">Judge: Keeps the rewrite both judges agreed on (review/af-accepted.json); the side-by-side sheet showed the earlier draft (score 5)</div></td>
 <td class="use"><label><input type="checkbox"> Use</label></td>
 </tr>
+<tr data-id="B403" data-english="The temperature dropped with the sun and the circle got tighter by exactly that much.">
+<td class="id">B403<span>KEEP · cold-clear/dusk</span></td>
+<td class="en">The temperature dropped with the sun and the circle got tighter by exactly that much.</td>
+<td class="af"><textarea rows="3" aria-label="Afrikaans for B403">Die temperatuur het saam met die son geval en die kring het presies soveel nader getrek.</textarea></td>
+<td class="why"><ul><li>its English line is no longer wired in assets/hero-lines.js</li></ul></td>
+<td class="use"><label><input type="checkbox"> Use</label></td>
+</tr>
+<tr data-id="B404" data-english="The evening turned cold the minute it turned beautiful, which is the usual trade.">
+<td class="id">B404<span>KEEP · cold-clear/dusk</span></td>
+<td class="en">The evening turned cold the minute it turned beautiful, which is the usual trade.</td>
+<td class="af"><textarea rows="3" aria-label="Afrikaans for B404">Die aand het koud geword die oomblik toe dit mooi word — dis maar die gewone ruil.</textarea></td>
+<td class="why"><ul><li>its English line is no longer wired in assets/hero-lines.js</li></ul></td>
+<td class="use"><label><input type="checkbox"> Use</label></td>
+</tr>
 <tr data-id="B412" data-english="Braaiing in beanies under a hard clear sky: winter never cancelled anything here.">
 <td class="id">B412<span>FIX · cold-clear/night</span></td>
 <td class="en">Braaiing in beanies under a hard clear sky: winter never cancelled anything here.</td>
@@ -3784,10 +3847,24 @@ button { font:inherit; padding:8px 14px; border-radius:6px; border:1px solid var
 <td class="why"><ul><li>its English line is no longer wired in assets/hero-lines.js</li></ul><div class="note">Judge: 'hard skoon lug' is not Afrikaans (score 4)</div></td>
 <td class="use"><label><input type="checkbox"> Use</label></td>
 </tr>
+<tr data-id="B432" data-english="The fog got to the lookout first and took the whole view for itself.">
+<td class="id">B432<span>KEEP · fog/dusk</span></td>
+<td class="en">The fog got to the lookout first and took the whole view for itself.</td>
+<td class="af"><textarea rows="3" aria-label="Afrikaans for B432">Die mis was eerste by die uitkykpunt en het die hele uitsig vir homself gevat.</textarea></td>
+<td class="why"><ul><li>its English line is no longer wired in assets/hero-lines.js</li></ul></td>
+<td class="use"><label><input type="checkbox"> Use</label></td>
+</tr>
 <tr data-id="B437" data-english="The fog moved in an hour ago and the streetlights have doubled in size since.">
 <td class="id">B437<span>KEEP · fog/night</span></td>
 <td class="en">The fog moved in an hour ago and the streetlights have doubled in size since.</td>
 <td class="af"><textarea rows="3" aria-label="Afrikaans for B437">Die mis het 'n uur gelede ingetrek en die straatligte het sedertdien verdubbel.</textarea></td>
+<td class="why"><ul><li>its English line is no longer wired in assets/hero-lines.js</li></ul></td>
+<td class="use"><label><input type="checkbox"> Use</label></td>
+</tr>
+<tr data-id="B442" data-english="One night of proper rain and the driveway has joined the water table.">
+<td class="id">B442<span>KEEP · rain/dawn</span></td>
+<td class="en">One night of proper rain and the driveway has joined the water table.</td>
+<td class="af"><textarea rows="3" aria-label="Afrikaans for B442">Een nag se ordentlike reën en die oprit het by die watertafel aangesluit.</textarea></td>
 <td class="why"><ul><li>its English line is no longer wired in assets/hero-lines.js</li></ul></td>
 <td class="use"><label><input type="checkbox"> Use</label></td>
 </tr>
@@ -4036,6 +4113,13 @@ button { font:inherit; padding:8px 14px; border-radius:6px; border:1px solid var
 <td class="why"><ul><li>its English line is no longer wired in assets/hero-lines.js</li></ul><div class="note">Judge: Al's native condition-bank line, reused for this photograph</div></td>
 <td class="use"><label><input type="checkbox"> Use</label></td>
 </tr>
+<tr data-id="C244" data-english="The braai is happening. The braai always happens. We just pull the chairs closer.">
+<td class="id">C244<span>CANON · cold-clear/dusk</span></td>
+<td class="en">The braai is happening. The braai always happens. We just pull the chairs closer.</td>
+<td class="af"><textarea rows="3" aria-label="Afrikaans for C244">Die braai gaan aan. Die braai gaan altyd aan. Ons trek net die stoele nader.</textarea></td>
+<td class="why"><ul><li>its English line is no longer wired in assets/hero-lines.js</li></ul><div class="note">Judge: Al's native condition-bank line, reused for this photograph</div></td>
+<td class="use"><label><input type="checkbox"> Use</label></td>
+</tr>
 <tr data-id="C252" data-english="Clear nights are winter's way of apologising.">
 <td class="id">C252<span>CANON · cold-clear/night</span></td>
 <td class="en">Clear nights are winter's way of apologising.</td>
@@ -4043,10 +4127,38 @@ button { font:inherit; padding:8px 14px; border-radius:6px; border:1px solid var
 <td class="why"><ul><li>its English line is no longer wired in assets/hero-lines.js</li></ul><div class="note">Judge: Al's native condition-bank line, reused for this photograph</div></td>
 <td class="use"><label><input type="checkbox"> Use</label></td>
 </tr>
+<tr data-id="C273" data-english="Perfect weather to bump into someone you've 'been meaning to call'.">
+<td class="id">C273<span>CANON · fog/dusk</span></td>
+<td class="en">Perfect weather to bump into someone you've 'been meaning to call'.</td>
+<td class="af"><textarea rows="3" aria-label="Afrikaans for C273">Perfekte weer om iemand raak te loop wat jy 'nog wou bel'.</textarea></td>
+<td class="why"><ul><li>its English line is no longer wired in assets/hero-lines.js</li></ul><div class="note">Judge: Al's native condition-bank line, reused for this photograph</div></td>
+<td class="use"><label><input type="checkbox"> Use</label></td>
+</tr>
+<tr data-id="C275" data-english="The street signs gave up.">
+<td class="id">C275<span>CANON · fog/dusk</span></td>
+<td class="en">The street signs gave up.</td>
+<td class="af"><textarea rows="3" aria-label="Afrikaans for C275">Die straatborde het tou opgegooi.</textarea></td>
+<td class="why"><ul><li>its English line is no longer wired in assets/hero-lines.js</li></ul><div class="note">Judge: Al's native condition-bank line, reused for this photograph</div></td>
+<td class="use"><label><input type="checkbox"> Use</label></td>
+</tr>
 <tr data-id="C282" data-english="Visibility: vibes only.">
 <td class="id">C282<span>CANON · fog/night</span></td>
 <td class="en">Visibility: vibes only.</td>
 <td class="af"><textarea rows="3" aria-label="Afrikaans for C282">Sigbaarheid: net vibes.</textarea></td>
+<td class="why"><ul><li>its English line is no longer wired in assets/hero-lines.js</li></ul><div class="note">Judge: Al's native condition-bank line, reused for this photograph</div></td>
+<td class="use"><label><input type="checkbox"> Use</label></td>
+</tr>
+<tr data-id="C288" data-english="Rain on a farm isn't weather. It's a salary falling from the sky.">
+<td class="id">C288<span>CANON · rain/dawn</span></td>
+<td class="en">Rain on a farm isn't weather. It's a salary falling from the sky.</td>
+<td class="af"><textarea rows="3" aria-label="Afrikaans for C288">Reën op 'n plaas is nie weer nie. Dis 'n salaris wat val.</textarea></td>
+<td class="why"><ul><li>its English line is no longer wired in assets/hero-lines.js</li></ul><div class="note">Judge: Al's native condition-bank line, reused for this photograph</div></td>
+<td class="use"><label><input type="checkbox"> Use</label></td>
+</tr>
+<tr data-id="C289" data-english="The dams are doing a happy dance.">
+<td class="id">C289<span>CANON · rain/dawn</span></td>
+<td class="en">The dams are doing a happy dance.</td>
+<td class="af"><textarea rows="3" aria-label="Afrikaans for C289">Die damme doen 'n bly dansie.</textarea></td>
 <td class="why"><ul><li>its English line is no longer wired in assets/hero-lines.js</li></ul><div class="note">Judge: Al's native condition-bank line, reused for this photograph</div></td>
 <td class="use"><label><input type="checkbox"> Use</label></td>
 </tr>
@@ -4068,6 +4180,13 @@ button { font:inherit; padding:8px 14px; border-radius:6px; border:1px solid var
 <td class="id">C303<span>CANON · rain/day</span></td>
 <td class="en">Forgot your jacket? The universe noticed.</td>
 <td class="af"><textarea rows="3" aria-label="Afrikaans for C303">Jou baadjie vergeet? Die heelal het opgemerk.</textarea></td>
+<td class="why"><ul><li>its English line is no longer wired in assets/hero-lines.js</li></ul><div class="note">Judge: Al's native condition-bank line, reused for this photograph</div></td>
+<td class="use"><label><input type="checkbox"> Use</label></td>
+</tr>
+<tr data-id="C319" data-english="The sky's CV just got updated.">
+<td class="id">C319<span>CANON · storm/dawn</span></td>
+<td class="en">The sky's CV just got updated.</td>
+<td class="af"><textarea rows="3" aria-label="Afrikaans for C319">Die lug se CV is pas opgedateer.</textarea></td>
 <td class="why"><ul><li>its English line is no longer wired in assets/hero-lines.js</li></ul><div class="note">Judge: Al's native condition-bank line, reused for this photograph</div></td>
 <td class="use"><label><input type="checkbox"> Use</label></td>
 </tr>

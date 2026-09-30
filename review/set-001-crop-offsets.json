@@ -3,11 +3,11 @@
  "ruledBy": "Al, curation tool (meme hero) + 2026-08-18 reshoot",
  "generated": "2026-08-18",
  "counts": {
-  "offsets": 295,
+  "offsets": 300,
   "replaced": 15,
   "reAnchored": 134,
-  "wired": 295,
-  "pilotPairs": 47
+  "wired": 300,
+  "pilotPairs": 59
  },
  "offsets": {
   "dd736311b619": {
@@ -387,13 +387,6 @@
    "image": "cold-clear/week_2/dusk/6.webp",
    "anchorY": 33
   },
-  "827554552d76": {
-   "verdict": "FIXABLE",
-   "bucket": "cold-clear-dusk",
-   "slot": "A/fri",
-   "image": "cold-clear/week_1/dusk/5.webp",
-   "anchorY": 61
-  },
   "da90853b2ccb": {
    "verdict": "FIXABLE",
    "bucket": "cold-clear-night",
@@ -571,14 +564,6 @@
    "slot": "A/mon",
    "image": "cold/week_1/dusk/7.webp",
    "anchorY": 56
-  },
-  "55da2af2c2bd": {
-   "verdict": "FIXABLE",
-   "bucket": "cold-dusk",
-   "slot": "A/tue",
-   "image": "cold/week_1/dusk/3.webp",
-   "anchorY": 75,
-   "ink": "white"
   },
   "50eb6a4aa792": {
    "verdict": "FIXABLE",
@@ -766,13 +751,6 @@
    "anchorY": 71,
    "ink": "white"
   },
-  "5cd228859e14": {
-   "verdict": "FIXABLE",
-   "bucket": "fog-dusk",
-   "slot": "A/wed",
-   "image": "fog/week_2/dusk/3.webp",
-   "anchorY": 61
-  },
   "a0b24a9ae618": {
    "verdict": "FIXABLE",
    "bucket": "fog-dusk",
@@ -793,13 +771,6 @@
    "slot": "A/sat",
    "image": "fog/week_2/dusk/7.webp",
    "anchorY": 57
-  },
-  "b64f87c2b2bc": {
-   "verdict": "FIXABLE",
-   "bucket": "fog-dusk",
-   "slot": "A/sun",
-   "image": "fog/week_1/dusk/6.webp",
-   "anchorY": 48
   },
   "05b3727f7c16": {
    "verdict": "FIXABLE",
@@ -1159,13 +1130,6 @@
    "slot": "A/tue",
    "image": "storm/week_1/dawn/3.webp",
    "anchorY": 65
-  },
-  "f0b49be17750": {
-   "verdict": "FIXABLE",
-   "bucket": "storm-dawn",
-   "slot": "A/wed",
-   "image": "storm/week_1/dawn/5.webp",
-   "anchorY": 47
   },
   "a785060d7357": {
    "verdict": "FIXABLE",
@@ -1529,14 +1493,6 @@
    "image": "heat/week_2/dusk/3.webp",
    "anchorY": 55
   },
-  "706cd1220e10": {
-   "verdict": "FIXABLE",
-   "bucket": "heat-night",
-   "slot": "A/thu",
-   "image": "heat/week_1/night/3.webp",
-   "anchorY": 74,
-   "ink": "white"
-  },
   "ea333aeefd0d": {
    "verdict": "FIXABLE",
    "bucket": "heat-night",
@@ -1550,13 +1506,6 @@
    "bucket": "rain-dawn",
    "slot": "A/wed",
    "image": "rain/week_2/dawn/5.webp",
-   "anchorY": 55
-  },
-  "5526989179bd": {
-   "verdict": "REPLACED",
-   "bucket": "rain-dawn",
-   "slot": "A/thu",
-   "image": "rain/week_2/dawn/6.webp",
    "anchorY": 55
   },
   "f7f51acb22c9": {
@@ -2240,6 +2189,102 @@
    "image": "clear/week_1/day/4.webp",
    "anchorY": 30,
    "pair": "R59"
+  },
+  "636c4074f988": {
+   "verdict": "PAIR",
+   "bucket": "cold-night",
+   "slot": "B/fri",
+   "image": "cold/week_2/night/5.webp",
+   "anchorY": 30,
+   "pair": "R29"
+  },
+  "3bb43b4437ad": {
+   "verdict": "PAIR",
+   "bucket": "cold-clear-dusk",
+   "slot": "A/fri",
+   "image": "cold-clear/week_1/dusk/5.webp",
+   "anchorY": 30,
+   "pair": "R31"
+  },
+  "13f616637843": {
+   "verdict": "PAIR",
+   "bucket": "fog-dusk",
+   "slot": "A/wed",
+   "image": "fog/week_1/dusk/3.webp",
+   "anchorY": 30,
+   "pair": "R33"
+  },
+  "4191f6a7d49f": {
+   "verdict": "PAIR",
+   "bucket": "fog-dusk",
+   "slot": "A/sun",
+   "image": "fog/week_1/dusk/7.webp",
+   "anchorY": 22,
+   "pair": "R34"
+  },
+  "1c3c5a763f13": {
+   "verdict": "PAIR",
+   "bucket": "clear-day",
+   "slot": "A/mon",
+   "image": "clear/week_3/day/1.webp",
+   "anchorY": 30,
+   "pair": "R36b"
+  },
+  "7d13aaa156f4": {
+   "verdict": "PAIR",
+   "bucket": "clear-day",
+   "slot": "B/mon",
+   "image": "clear/week_4/day/1.webp",
+   "anchorY": 25,
+   "pair": "R41"
+  },
+  "c0246be3744d": {
+   "verdict": "PAIR",
+   "bucket": "clear-dawn",
+   "slot": "B/thu",
+   "image": "clear/week_2/dawn/4.webp",
+   "anchorY": 28,
+   "pair": "R52b"
+  },
+  "1d12b604469e": {
+   "verdict": "PAIR",
+   "bucket": "heat-night",
+   "slot": "A/thu",
+   "image": "heat/week_1/night/4.webp",
+   "anchorY": 22,
+   "pair": "R54"
+  },
+  "1914aa132481": {
+   "verdict": "PAIR",
+   "bucket": "rain-dawn",
+   "slot": "A/thu",
+   "image": "rain/week_1/dawn/4.webp",
+   "anchorY": 30,
+   "pair": "R55"
+  },
+  "5542dfc7215d": {
+   "verdict": "PAIR",
+   "bucket": "rain-dusk",
+   "slot": "B/wed",
+   "image": "rain/week_2/dusk/3.webp",
+   "anchorY": 30,
+   "pair": "R57"
+  },
+  "b0496e09ee35": {
+   "verdict": "PAIR",
+   "bucket": "storm-dawn",
+   "slot": "A/wed",
+   "image": "storm/week_1/dawn/3.webp",
+   "anchorY": 25,
+   "pair": "R58"
+  },
+  "8d215e14d9ba": {
+   "verdict": "PAIR",
+   "bucket": "cold-dusk",
+   "slot": "A/tue",
+   "image": "cold/week_1/dusk/2.webp",
+   "anchorY": 30,
+   "pair": "R60"
   }
  }
 }

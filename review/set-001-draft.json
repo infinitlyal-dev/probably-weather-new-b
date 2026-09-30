@@ -3,7 +3,7 @@
  "set": "set-001",
  "exported": "2026-08-05T15:09:25.023Z",
  "complete": false,
- "filled": 317,
+ "filled": 322,
  "total": 504,
  "note": "Curation artifact only — not app-consumed. hash = sha1-12 of image bytes; image = canonical path under assets/images/bg/; paths = every duplicate file with those bytes. | 2026-09-06: 532 uncurated slots overwritten with copies of curated photographs from the same condition and time-of-day, so the app serves set-001 only. `paths` now includes those copies. set-002 replaces them with new curated photographs. | 2026-09-06: grid laid out on disk by scripts/layout-set-001-grid.mjs — week A = week_1+week_3, week B = week_2+week_4, day = slot index (Mon=1..Sun=7); an empty grid position takes the same-day photograph from the other week. `image` and `paths` name the slots holding each photograph; `previousImage` is the pre-layout canonical path. | 2026-09-06 (pm): wind pair 9bada961b0a7 -> tue and 330bfae094d5 -> wed (Al's swap ruling). | 2026-09-06: grid laid out on disk by scripts/layout-set-001-grid.mjs — week A = week_1+week_3, week B = week_2+week_4, day = slot index (Mon=1..Sun=7); an empty grid position takes the same-day photograph from the other week. `image` and `paths` name the slots holding each photograph; `previousImage` is the pre-layout canonical path. | 2026-09-16: rain/week_2/day/3.webp rerolled — 3bd49d0acf2b (Subaru badge, Australian-looking plate and streetscape) replaced by fec85aba3f48, GPT Image 2 via Higgsfield, Al chose candidate 2 of 3. Both slot copies (week_2 and week_4) rewritten; the bespoke lines were re-keyed to the new hash. | 2026-09-23: 6 photographs moved by Al's rulings (review/cold-move-ruled.json, review/bucket-check-ruled.json) — each takes weeks 2+4 of its own weekday in the new bucket, the photograph there keeps weeks 1+3; `movedFrom` names the slots it left, which are benched (review/benched-photos.json) and still hold its bytes on disk.",
  "assignments": [
@@ -46,9 +46,7 @@
    "image": "clear/week_1/dawn/4.webp",
    "paths": [
     "clear/week_1/dawn/4.webp",
-    "clear/week_2/dawn/4.webp",
-    "clear/week_3/dawn/4.webp",
-    "clear/week_4/dawn/4.webp"
+    "clear/week_3/dawn/4.webp"
    ],
    "previousImage": "clear/week_1/dawn/5.webp"
   },
@@ -73,8 +71,7 @@
    "hash": "84beada2e358",
    "image": "clear/week_1/day/1.webp",
    "paths": [
-    "clear/week_1/day/1.webp",
-    "clear/week_3/day/1.webp"
+    "clear/week_1/day/1.webp"
    ],
    "previousImage": "clear/week_3/day/4.webp"
   },
@@ -138,8 +135,7 @@
    "hash": "0009c55ad6a5",
    "image": "clear/week_2/day/1.webp",
    "paths": [
-    "clear/week_2/day/1.webp",
-    "clear/week_4/day/1.webp"
+    "clear/week_2/day/1.webp"
    ],
    "previousImage": "clear/week_3/day/3.webp"
   },
@@ -1195,19 +1191,6 @@
    "condition": "cold",
    "time": "dusk",
    "week": "A",
-   "day": "tue",
-   "hash": "55da2af2c2bd",
-   "image": "cold/week_1/dusk/2.webp",
-   "paths": [
-    "cold/week_1/dusk/2.webp",
-    "cold/week_3/dusk/2.webp"
-   ],
-   "previousImage": "cold/week_1/dusk/3.webp"
-  },
-  {
-   "condition": "cold",
-   "time": "dusk",
-   "week": "A",
    "day": "wed",
    "hash": "50eb6a4aa792",
    "image": "cold/week_1/dusk/3.webp",
@@ -1341,9 +1324,7 @@
    "image": "cold/week_1/night/5.webp",
    "paths": [
     "cold/week_1/night/5.webp",
-    "cold/week_2/night/5.webp",
-    "cold/week_3/night/5.webp",
-    "cold/week_4/night/5.webp"
+    "cold/week_3/night/5.webp"
    ],
    "previousImage": "cold/week_2/night/5.webp"
   },
@@ -1636,20 +1617,6 @@
     "cold-clear/week_4/dusk/4.webp"
    ],
    "previousImage": "cold-clear/week_2/dusk/6.webp"
-  },
-  {
-   "condition": "cold-clear",
-   "time": "dusk",
-   "week": "A",
-   "day": "fri",
-   "hash": "827554552d76",
-   "image": "cold-clear/week_1/dusk/5.webp",
-   "paths": [
-    "cold-clear/week_1/dusk/5.webp",
-    "cold-clear/week_2/dusk/5.webp",
-    "cold-clear/week_3/dusk/5.webp",
-    "cold-clear/week_4/dusk/5.webp"
-   ]
   },
   {
    "condition": "cold-clear",
@@ -2025,21 +1992,6 @@
    "condition": "fog",
    "time": "dusk",
    "week": "A",
-   "day": "wed",
-   "hash": "5cd228859e14",
-   "image": "fog/week_1/dusk/3.webp",
-   "paths": [
-    "fog/week_1/dusk/3.webp",
-    "fog/week_2/dusk/3.webp",
-    "fog/week_3/dusk/3.webp",
-    "fog/week_4/dusk/3.webp"
-   ],
-   "previousImage": "fog/week_2/dusk/3.webp"
-  },
-  {
-   "condition": "fog",
-   "time": "dusk",
-   "week": "A",
    "day": "thu",
    "hash": "a0b24a9ae618",
    "image": "fog/week_1/dusk/4.webp",
@@ -2079,21 +2031,6 @@
     "fog/week_4/dusk/6.webp"
    ],
    "previousImage": "fog/week_2/dusk/7.webp"
-  },
-  {
-   "condition": "fog",
-   "time": "dusk",
-   "week": "A",
-   "day": "sun",
-   "hash": "b64f87c2b2bc",
-   "image": "fog/week_1/dusk/7.webp",
-   "paths": [
-    "fog/week_1/dusk/7.webp",
-    "fog/week_2/dusk/7.webp",
-    "fog/week_3/dusk/7.webp",
-    "fog/week_4/dusk/7.webp"
-   ],
-   "previousImage": "fog/week_1/dusk/6.webp"
   },
   {
    "condition": "fog",
@@ -2529,21 +2466,6 @@
    "condition": "heat",
    "time": "night",
    "week": "A",
-   "day": "thu",
-   "hash": "706cd1220e10",
-   "image": "heat/week_1/night/4.webp",
-   "paths": [
-    "heat/week_1/night/4.webp",
-    "heat/week_2/night/4.webp",
-    "heat/week_3/night/4.webp",
-    "heat/week_4/night/4.webp"
-   ],
-   "previousImage": "heat/week_1/night/3.webp"
-  },
-  {
-   "condition": "heat",
-   "time": "night",
-   "week": "A",
    "day": "fri",
    "hash": "73f8b2781c4c",
    "image": "heat/week_1/night/5.webp",
@@ -2629,21 +2551,6 @@
     "rain/week_4/dawn/3.webp"
    ],
    "previousImage": "rain/week_2/dawn/5.webp"
-  },
-  {
-   "condition": "rain",
-   "time": "dawn",
-   "week": "A",
-   "day": "thu",
-   "hash": "5526989179bd",
-   "image": "rain/week_1/dawn/4.webp",
-   "paths": [
-    "rain/week_1/dawn/4.webp",
-    "rain/week_2/dawn/4.webp",
-    "rain/week_3/dawn/4.webp",
-    "rain/week_4/dawn/4.webp"
-   ],
-   "previousImage": "rain/week_2/dawn/6.webp"
   },
   {
    "condition": "rain",
@@ -2881,9 +2788,7 @@
    "image": "rain/week_1/dusk/3.webp",
    "paths": [
     "rain/week_1/dusk/3.webp",
-    "rain/week_2/dusk/3.webp",
-    "rain/week_3/dusk/3.webp",
-    "rain/week_4/dusk/3.webp"
+    "rain/week_3/dusk/3.webp"
    ],
    "previousImage": "rain/week_1/dusk/5.webp"
   },
@@ -3080,21 +2985,6 @@
     "storm/week_4/dawn/2.webp"
    ],
    "previousImage": "storm/week_1/dawn/3.webp"
-  },
-  {
-   "condition": "storm",
-   "time": "dawn",
-   "week": "A",
-   "day": "wed",
-   "hash": "f0b49be17750",
-   "image": "storm/week_1/dawn/3.webp",
-   "paths": [
-    "storm/week_1/dawn/3.webp",
-    "storm/week_2/dawn/3.webp",
-    "storm/week_3/dawn/3.webp",
-    "storm/week_4/dawn/3.webp"
-   ],
-   "previousImage": "storm/week_1/dawn/5.webp"
   },
   {
    "condition": "storm",
@@ -4508,6 +4398,172 @@
     "clear/week_3/day/4.webp"
    ],
    "pair": "R59"
+  },
+  {
+   "condition": "cold",
+   "time": "night",
+   "week": "B",
+   "day": "fri",
+   "hash": "636c4074f988",
+   "image": "cold/week_2/night/5.webp",
+   "paths": [
+    "cold/week_2/night/5.webp",
+    "cold/week_4/night/5.webp"
+   ],
+   "pair": "R29"
+  },
+  {
+   "condition": "cold-clear",
+   "time": "dusk",
+   "week": "A",
+   "day": "fri",
+   "hash": "3bb43b4437ad",
+   "image": "cold-clear/week_1/dusk/5.webp",
+   "paths": [
+    "cold-clear/week_1/dusk/5.webp",
+    "cold-clear/week_2/dusk/5.webp",
+    "cold-clear/week_3/dusk/5.webp",
+    "cold-clear/week_4/dusk/5.webp"
+   ],
+   "pair": "R31"
+  },
+  {
+   "condition": "fog",
+   "time": "dusk",
+   "week": "A",
+   "day": "wed",
+   "hash": "13f616637843",
+   "image": "fog/week_1/dusk/3.webp",
+   "paths": [
+    "fog/week_1/dusk/3.webp",
+    "fog/week_2/dusk/3.webp",
+    "fog/week_3/dusk/3.webp",
+    "fog/week_4/dusk/3.webp"
+   ],
+   "pair": "R33"
+  },
+  {
+   "condition": "fog",
+   "time": "dusk",
+   "week": "A",
+   "day": "sun",
+   "hash": "4191f6a7d49f",
+   "image": "fog/week_1/dusk/7.webp",
+   "paths": [
+    "fog/week_1/dusk/7.webp",
+    "fog/week_2/dusk/7.webp",
+    "fog/week_3/dusk/7.webp",
+    "fog/week_4/dusk/7.webp"
+   ],
+   "pair": "R34"
+  },
+  {
+   "condition": "clear",
+   "time": "day",
+   "week": "A",
+   "day": "mon",
+   "hash": "1c3c5a763f13",
+   "image": "clear/week_3/day/1.webp",
+   "paths": [
+    "clear/week_3/day/1.webp"
+   ],
+   "pair": "R36b"
+  },
+  {
+   "condition": "clear",
+   "time": "day",
+   "week": "B",
+   "day": "mon",
+   "hash": "7d13aaa156f4",
+   "image": "clear/week_4/day/1.webp",
+   "paths": [
+    "clear/week_4/day/1.webp"
+   ],
+   "pair": "R41"
+  },
+  {
+   "condition": "clear",
+   "time": "dawn",
+   "week": "B",
+   "day": "thu",
+   "hash": "c0246be3744d",
+   "image": "clear/week_2/dawn/4.webp",
+   "paths": [
+    "clear/week_2/dawn/4.webp",
+    "clear/week_4/dawn/4.webp"
+   ],
+   "pair": "R52b"
+  },
+  {
+   "condition": "heat",
+   "time": "night",
+   "week": "A",
+   "day": "thu",
+   "hash": "1d12b604469e",
+   "image": "heat/week_1/night/4.webp",
+   "paths": [
+    "heat/week_1/night/4.webp",
+    "heat/week_2/night/4.webp",
+    "heat/week_3/night/4.webp",
+    "heat/week_4/night/4.webp"
+   ],
+   "pair": "R54"
+  },
+  {
+   "condition": "rain",
+   "time": "dawn",
+   "week": "A",
+   "day": "thu",
+   "hash": "1914aa132481",
+   "image": "rain/week_1/dawn/4.webp",
+   "paths": [
+    "rain/week_1/dawn/4.webp",
+    "rain/week_2/dawn/4.webp",
+    "rain/week_3/dawn/4.webp",
+    "rain/week_4/dawn/4.webp"
+   ],
+   "pair": "R55"
+  },
+  {
+   "condition": "rain",
+   "time": "dusk",
+   "week": "B",
+   "day": "wed",
+   "hash": "5542dfc7215d",
+   "image": "rain/week_2/dusk/3.webp",
+   "paths": [
+    "rain/week_2/dusk/3.webp",
+    "rain/week_4/dusk/3.webp"
+   ],
+   "pair": "R57"
+  },
+  {
+   "condition": "storm",
+   "time": "dawn",
+   "week": "A",
+   "day": "wed",
+   "hash": "b0496e09ee35",
+   "image": "storm/week_1/dawn/3.webp",
+   "paths": [
+    "storm/week_1/dawn/3.webp",
+    "storm/week_2/dawn/3.webp",
+    "storm/week_3/dawn/3.webp",
+    "storm/week_4/dawn/3.webp"
+   ],
+   "pair": "R58"
+  },
+  {
+   "condition": "cold",
+   "time": "dusk",
+   "week": "A",
+   "day": "tue",
+   "hash": "8d215e14d9ba",
+   "image": "cold/week_1/dusk/2.webp",
+   "paths": [
+    "cold/week_1/dusk/2.webp",
+    "cold/week_3/dusk/2.webp"
+   ],
+   "pair": "R60"
   }
  ]
 }

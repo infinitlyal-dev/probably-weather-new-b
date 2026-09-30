@@ -1,0 +1,90 @@
+{
+ "generated": "2026-09-30T15:25:06.754Z",
+ "ruledBy": "Al, review/photo-batch-3-for-al.html",
+ "pairs": [
+  {
+   "id": "R29",
+   "pick": "BESIDE",
+   "afPick": "OK",
+   "afFix": ""
+  },
+  {
+   "id": "R31",
+   "pick": "USE",
+   "afPick": "OK",
+   "afFix": ""
+  },
+  {
+   "id": "R33",
+   "pick": "USE",
+   "afPick": "OK",
+   "afFix": ""
+  },
+  {
+   "id": "R34",
+   "pick": "USE",
+   "afPick": "OK",
+   "afFix": ""
+  },
+  {
+   "id": "R36",
+   "pick": "BESIDE",
+   "afPick": "OK",
+   "afFix": ""
+  },
+  {
+   "id": "R41",
+   "pick": "BESIDE",
+   "afPick": "OK",
+   "afFix": ""
+  },
+  {
+   "id": "R52b",
+   "pick": "BESIDE",
+   "afPick": "OK",
+   "afFix": ""
+  },
+  {
+   "id": "R54",
+   "pick": "USE",
+   "afPick": "OK",
+   "afFix": ""
+  },
+  {
+   "id": "R55",
+   "pick": "USE",
+   "afPick": "OK",
+   "afFix": ""
+  },
+  {
+   "id": "R57",
+   "pick": "BESIDE",
+   "afPick": "OK",
+   "afFix": ""
+  },
+  {
+   "id": "R58",
+   "pick": "USE",
+   "afPick": "OK",
+   "afFix": ""
+  },
+  {
+   "id": "R60",
+   "pick": "USE",
+   "afPick": "OK",
+   "afFix": ""
+  }
+ ],
+ "rerolls": [
+  {
+   "id": "R53",
+   "pick": "RE-ROLL",
+   "extraSentence": "Make him the farmer, not a labourer: a clean khaki shirt and hat, mopping his brow on his bakkie's tailgate beside the vines, with real skin and no orange glaze."
+  },
+  {
+   "id": "R56",
+   "pick": "RE-ROLL",
+   "extraSentence": "Rain is visibly falling: a grey sky, streaks of rain across the runners, no sunrise glow."
+  }
+ ]
+}

@@ -15813,6 +15813,126 @@
    "afrikaans": "Helder lug en regte sonskyn: die roomysverkoper was nog nooit so gewild nie.",
    "score": 5,
    "reason": "Afrikaans proposed with the pair for Al's English line (his photo-batches ruling of 30 Sept 2026, review/photo-batches-ruled.json); written only through the lang-check gate"
+  },
+  {
+   "id": "PR29",
+   "group": "new",
+   "verdict": "NEW",
+   "slot": "cold/night",
+   "english": "Cold tonight: getting into bed is now an act of courage.",
+   "afrikaans": "Koud vanaand: in die bed klim is nou 'n daad van moed.",
+   "score": 5,
+   "reason": "Afrikaans proposed with the pair for Al's English line (his batch-3 ruling of 30 Sept 2026, review/photo-batch-3-ruled.json); written only through the lang-check gate"
+  },
+  {
+   "id": "PR31",
+   "group": "new",
+   "verdict": "NEW",
+   "slot": "cold-clear/dusk",
+   "english": "Clear sky at sunset: time to tuck the car in before the frost does.",
+   "afrikaans": "Helder lug met sononder: tyd om die kar toe te maak voor die ryp dit doen.",
+   "score": 5,
+   "reason": "Afrikaans proposed with the pair for Al's English line (his batch-3 ruling of 30 Sept 2026, review/photo-batch-3-ruled.json); written only through the lang-check gate"
+  },
+  {
+   "id": "PR33",
+   "group": "new",
+   "verdict": "NEW",
+   "slot": "fog/dusk",
+   "english": "Fog tonight: the house with the sea view is just a house.",
+   "afrikaans": "Mis vanaand: die huis met die seesig is net 'n huis.",
+   "score": 5,
+   "reason": "Afrikaans proposed with the pair for Al's English line (his batch-3 ruling of 30 Sept 2026, review/photo-batch-3-ruled.json); written only through the lang-check gate"
+  },
+  {
+   "id": "PR34",
+   "group": "new",
+   "verdict": "NEW",
+   "slot": "fog/dusk",
+   "english": "Fog's rolled in, and the lifeguard has officially lost the sea.",
+   "afrikaans": "Die mis het ingerol, en die strandwag het amptelik die see verloor.",
+   "score": 5,
+   "reason": "Afrikaans proposed with the pair for Al's English line (his batch-3 ruling of 30 Sept 2026, review/photo-batch-3-ruled.json); written only through the lang-check gate"
+  },
+  {
+   "id": "PR36b",
+   "group": "new",
+   "verdict": "NEW",
+   "slot": "clear/day",
+   "english": "Not a cloud in sight: perfect for sports day, less perfect for the dads' race.",
+   "afrikaans": "Nie 'n wolkie in sig nie: perfek vir sportdag, minder perfek vir die pa's se wedloop.",
+   "score": 5,
+   "reason": "Afrikaans proposed with the pair for Al's English line (his batch-3 ruling of 30 Sept 2026, review/photo-batch-3-ruled.json); written only through the lang-check gate"
+  },
+  {
+   "id": "PR41",
+   "group": "new",
+   "verdict": "NEW",
+   "slot": "clear/day",
+   "english": "Blue sky: the outdoor gym has suddenly found new members.",
+   "afrikaans": "Blou lug: die buitegimnasium het skielik nuwe lede.",
+   "score": 5,
+   "reason": "Afrikaans proposed with the pair for Al's English line (his batch-3 ruling of 30 Sept 2026, review/photo-batch-3-ruled.json); written only through the lang-check gate"
+  },
+  {
+   "id": "PR52b",
+   "group": "new",
+   "verdict": "NEW",
+   "slot": "clear/dawn",
+   "english": "Clear sunrise, flat sea: every fisherman in town is already on the rocks.",
+   "afrikaans": "Helder sonop, plat see: elke hengelaar in die dorp staan al op die rotse.",
+   "score": 5,
+   "reason": "Afrikaans proposed with the pair for Al's English line (his batch-3 ruling of 30 Sept 2026, review/photo-batch-3-ruled.json); written only through the lang-check gate"
+  },
+  {
+   "id": "PR54",
+   "group": "new",
+   "verdict": "NEW",
+   "slot": "heat/night",
+   "english": "Too hot to sleep: the bath is now the coolest bed in the house.",
+   "afrikaans": "Te warm om te slaap: die bad is nou die koelste bed in die huis.",
+   "score": 5,
+   "reason": "Afrikaans proposed with the pair for Al's English line (his batch-3 ruling of 30 Sept 2026, review/photo-batch-3-ruled.json); written only through the lang-check gate"
+  },
+  {
+   "id": "PR55",
+   "group": "new",
+   "verdict": "NEW",
+   "slot": "rain/dawn",
+   "english": "Rain at sunrise, and the swim squad doesn't care. Wet is wet.",
+   "afrikaans": "Reën met sonop, en die swemspan gee nie om nie. Nat is nat.",
+   "score": 5,
+   "reason": "Afrikaans proposed with the pair for Al's English line (his batch-3 ruling of 30 Sept 2026, review/photo-batch-3-ruled.json); written only through the lang-check gate"
+  },
+  {
+   "id": "PR57",
+   "group": "new",
+   "verdict": "NEW",
+   "slot": "rain/dusk",
+   "english": "Rain at home time: the whole office is waiting it out in the lobby.",
+   "afrikaans": "Reën met uitkomtyd: die hele kantoor wag dit in die voorportaal uit.",
+   "score": 5,
+   "reason": "Afrikaans proposed with the pair for Al's English line (his batch-3 ruling of 30 Sept 2026, review/photo-batch-3-ruled.json); written only through the lang-check gate"
+  },
+  {
+   "id": "PR58",
+   "group": "new",
+   "verdict": "NEW",
+   "slot": "storm/dawn",
+   "english": "Thunder at dawn, and the rooster has been completely upstaged.",
+   "afrikaans": "Donder met dagbreek, en die haan het sy kalklig verloor.",
+   "score": 5,
+   "reason": "Afrikaans proposed with the pair for Al's English line (his batch-3 ruling of 30 Sept 2026, review/photo-batch-3-ruled.json); written only through the lang-check gate"
+  },
+  {
+   "id": "PR60",
+   "group": "new",
+   "verdict": "NEW",
+   "slot": "cold/dusk",
+   "english": "Cold enough that the coffee queue goes round the block.",
+   "afrikaans": "Koud genoeg dat die koffie-tou om die blok loop.",
+   "score": 5,
+   "reason": "Afrikaans proposed with the pair for Al's English line (his batch-3 ruling of 30 Sept 2026, review/photo-batch-3-ruled.json); written only through the lang-check gate"
   }
  ]
 }

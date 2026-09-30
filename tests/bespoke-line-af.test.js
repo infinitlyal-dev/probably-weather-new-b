@@ -169,8 +169,9 @@ describe('the Afrikaans table is the gate\'s output', () => {
     // A floor against the table being dropped in bulk: 1009 rows before Al's photo-batches ruling, 995 since (Al,
     // 30 Sept 2026, review/photo-batches-ruled.json: nine photographs retired with their lines, twenty-three new
     // lines in). Just under the real count, so a silent drop of a handful of rows fails; it tracks the count rather
-    // than being loosened.
-    expect(rows.length).toBeGreaterThan(990);
+    // than being loosened. 990 since Al's batch 3 (30 Sept 2026, review/photo-batch-3-ruled.json: twelve new lines in,
+    // seventeen lines retired with seven photographs; 995 + 12 - 17), so the floor is 989.
+    expect(rows.length).toBeGreaterThan(989);
     for (const [english, afrikaans] of rows) {
       expect(wired.has(english), english).toBe(true);
       expect(afrikaans.trim()).not.toBe('');

@@ -31,7 +31,10 @@ describe('desktop polaroid reads Al\'s ruled anchor for every photograph', () =>
     // 303 since the rolling page's ruling (2026-09-27: eight in, six retired — review/pairs-rolling-1-plan.json)
     // 317 since Al's photo-batches ruling (2026-09-30, review/photo-batches-ruled.json: twenty-three new photographs,
     // nine old ones retired; the thirteen "beside" pairs leave the old photo in its other slots — review/photo-batches-plan.json)
-    expect(photos.size).toBe(317);
+    // 322 since Al's batch 3 (30 Sept 2026, review/photo-batch-3-ruled.json: twelve new photographs, seven old ones retired —
+    // the seven "use" pairs R31, R33, R34, R54, R55, R58 and R60 replaced theirs; the five "beside" pairs R29, R36b, R41, R52b, R57
+    // leave the old photo in its other slots — review/photo-batch-3-plan.json)
+    expect(photos.size).toBe(322);
     let ruled = 0;
     for (const [sha1, p] of photos) {
       const want = anchors[sha1] ? anchors[sha1].anchorY : null;
