@@ -79,7 +79,7 @@
    "bucket": "clear-day",
    "image": "clear/week_3/day/3.webp"
   },
-  "9ab8b9f07431": {
+  "aa3420ca4da1": {
    "verdict": "FIXABLE",
    "anchorY": 60,
    "ink": "white",
@@ -870,7 +870,7 @@
    "bucket": "cold-night",
    "image": "cold/week_4/night/1.webp"
   },
-  "b850a52403e3": {
+  "c50ba2c591aa": {
    "verdict": "FIXABLE",
    "anchorY": 36,
    "ink": "white",
@@ -1521,7 +1521,7 @@
    "bucket": "storm-dawn",
    "image": "storm/week_2/dawn/7.webp"
   },
-  "56af96f529d2": {
+  "4e474a9a4873": {
    "verdict": "FIXABLE",
    "anchorY": 31,
    "ink": "white",

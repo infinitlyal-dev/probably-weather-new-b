@@ -1,0 +1,38 @@
+{
+ "note": "Al's three fixed photographs (review/photo-fixes/photo-fixes.html in the OneDrive working copy, approved 30 Sept 2026): each is the same picture with the one thing removed. Source of truth for scripts/apply-photo-fixes.mjs. `oldSha256` is the full sha256 of the photograph in the slots now; `source` is the take Al approved (take 2 for all three).",
+ "ruledBy": "Al: approved the R17, R39 and R51 fixes on review/photo-fixes/photo-fixes.html, 30 Sept 2026",
+ "fixes": [
+  {
+   "id": "R17",
+   "source": "C:\\Users\\27741\\OneDrive\\Desktop\\Probably weather new\\probably-weather-new-c\\review\\photo-fixes\\R17-fixed-2.png",
+   "oldSha256": "8051f1c3947db45ae313770d285f8e1f01c73aeae2149e4ae7805770ab2ac7fd",
+   "slots": [
+    "storm/week_1/dawn/6.webp",
+    "storm/week_2/dawn/6.webp",
+    "storm/week_3/dawn/6.webp",
+    "storm/week_4/dawn/6.webp"
+   ],
+   "what": "brand logo removed from the runner's shirt"
+  },
+  {
+   "id": "R39",
+   "source": "C:\\Users\\27741\\OneDrive\\Desktop\\Probably weather new\\probably-weather-new-c\\review\\photo-fixes\\R39-fixed-2.png",
+   "oldSha256": "fed27f42e4098802347eb0662260793de68f969b4b7fa4410eb87654adc2f9ac",
+   "slots": [
+    "clear/week_2/day/2.webp",
+    "clear/week_4/day/2.webp"
+   ],
+   "what": "a bank's name removed from the tower"
+  },
+  {
+   "id": "R51",
+   "source": "C:\\Users\\27741\\OneDrive\\Desktop\\Probably weather new\\probably-weather-new-c\\review\\photo-fixes\\R51-fixed-2.png",
+   "oldSha256": "0cf2acaa4c432f235633e03fabe7bba4af83e206d3f7d37e28d073b8fe007182",
+   "slots": [
+    "cold/week_1/night/7.webp",
+    "cold/week_3/night/7.webp"
+   ],
+   "what": "a real book cover replaced with a plain one"
+  }
+ ]
+}

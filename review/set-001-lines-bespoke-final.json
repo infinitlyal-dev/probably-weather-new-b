@@ -1422,7 +1422,7 @@
   },
   {
    "image": "clear/week_2/day/2.webp",
-   "hash": "9ab8b9f07431",
+   "hash": "aa3420ca4da1",
    "condition": "clear",
    "time": "day",
    "week": "B",
@@ -4829,7 +4829,7 @@
   },
   {
    "image": "storm/week_1/dawn/6.webp",
-   "hash": "56af96f529d2",
+   "hash": "4e474a9a4873",
    "condition": "storm",
    "time": "dawn",
    "week": "A",
@@ -6686,7 +6686,7 @@
   },
   {
    "image": "cold/week_1/night/7.webp",
-   "hash": "b850a52403e3",
+   "hash": "c50ba2c591aa",
    "condition": "cold",
    "time": "night",
    "week": "A",
@@ -7018,6 +7018,60 @@
    "review/pairs-batch-1-plan.json",
    "review/pairs-rolling-1-plan.json",
    "review/pairs-rolling-2-plan.json"
+  ]
+ },
+ "photoFixes": {
+  "on": "2026-09-30",
+  "record": "review/photo-fixes-plan.json",
+  "ruledBy": "Al: approved the R17, R39 and R51 fixes on review/photo-fixes/photo-fixes.html, 30 Sept 2026",
+  "fixes": [
+   {
+    "id": "R17",
+    "what": "brand logo removed from the runner's shirt",
+    "hadLines": true,
+    "oldHash": "56af96f529d2",
+    "newHash": "4e474a9a4873",
+    "oldSha256": "8051f1c3947db45ae313770d285f8e1f01c73aeae2149e4ae7805770ab2ac7fd",
+    "newSha256": "76da98d30473bfe66beaa66e3845070a5b66197d8ab13f689b0126e92c114a40",
+    "slots": [
+     "storm/week_1/dawn/6.webp",
+     "storm/week_2/dawn/6.webp",
+     "storm/week_3/dawn/6.webp",
+     "storm/week_4/dawn/6.webp"
+    ],
+    "bytes": 132896,
+    "quality": 92
+   },
+   {
+    "id": "R39",
+    "what": "a bank's name removed from the tower",
+    "hadLines": true,
+    "oldHash": "9ab8b9f07431",
+    "newHash": "aa3420ca4da1",
+    "oldSha256": "fed27f42e4098802347eb0662260793de68f969b4b7fa4410eb87654adc2f9ac",
+    "newSha256": "2db91b27fb8db150fbc4d7507b73504512526a74d7f420d5d095173f3c6af292",
+    "slots": [
+     "clear/week_2/day/2.webp",
+     "clear/week_4/day/2.webp"
+    ],
+    "bytes": 290196,
+    "quality": 92
+   },
+   {
+    "id": "R51",
+    "what": "a real book cover replaced with a plain one",
+    "hadLines": false,
+    "oldHash": "b850a52403e3",
+    "newHash": "c50ba2c591aa",
+    "oldSha256": "0cf2acaa4c432f235633e03fabe7bba4af83e206d3f7d37e28d073b8fe007182",
+    "newSha256": "1a0f6c78d796d5d9200d0da25538b1fe557ece9f889a36fb9cea0c168799ca36",
+    "slots": [
+     "cold/week_1/night/7.webp",
+     "cold/week_3/night/7.webp"
+    ],
+    "bytes": 115086,
+    "quality": 92
+   }
   ]
  }
 }

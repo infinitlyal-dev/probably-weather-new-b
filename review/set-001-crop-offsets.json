@@ -71,7 +71,7 @@
    "anchorY": 44,
    "ink": "white"
   },
-  "9ab8b9f07431": {
+  "aa3420ca4da1": {
    "verdict": "FIXABLE",
    "bucket": "clear-day",
    "slot": "B/tue",
@@ -656,7 +656,7 @@
    "anchorY": 100,
    "ink": "white"
   },
-  "b850a52403e3": {
+  "c50ba2c591aa": {
    "verdict": "FIXABLE",
    "bucket": "cold-night",
    "slot": "A/sun",
@@ -1204,7 +1204,7 @@
    "image": "storm/week_2/dawn/7.webp",
    "anchorY": 62
   },
-  "56af96f529d2": {
+  "4e474a9a4873": {
    "verdict": "FIXABLE",
    "bucket": "storm-dawn",
    "slot": "A/sat",
