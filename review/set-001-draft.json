@@ -2171,21 +2171,6 @@
    "condition": "heat",
    "time": "dawn",
    "week": "A",
-   "day": "fri",
-   "hash": "818c078a2bda",
-   "image": "heat/week_1/dawn/5.webp",
-   "paths": [
-    "heat/week_1/dawn/5.webp",
-    "heat/week_2/dawn/5.webp",
-    "heat/week_3/dawn/5.webp",
-    "heat/week_4/dawn/5.webp"
-   ],
-   "previousImage": "heat/week_2/dawn/3.webp"
-  },
-  {
-   "condition": "heat",
-   "time": "dawn",
-   "week": "A",
    "day": "sat",
    "hash": "b81a91a1f851",
    "image": "heat/week_1/dawn/6.webp",
@@ -2566,20 +2551,6 @@
     "rain/week_4/dawn/5.webp"
    ],
    "previousImage": "rain/week_2/dawn/2.webp"
-  },
-  {
-   "condition": "rain",
-   "time": "dawn",
-   "week": "A",
-   "day": "sat",
-   "hash": "73567b0c612e",
-   "image": "rain/week_1/dawn/6.webp",
-   "paths": [
-    "rain/week_1/dawn/6.webp",
-    "rain/week_2/dawn/6.webp",
-    "rain/week_3/dawn/6.webp",
-    "rain/week_4/dawn/6.webp"
-   ]
   },
   {
    "condition": "rain",
@@ -4564,6 +4535,36 @@
     "cold/week_3/dusk/2.webp"
    ],
    "pair": "R60"
+  },
+  {
+   "condition": "heat",
+   "time": "dawn",
+   "week": "A",
+   "day": "fri",
+   "hash": "7d4fb2e85dbf",
+   "image": "heat/week_1/dawn/5.webp",
+   "paths": [
+    "heat/week_1/dawn/5.webp",
+    "heat/week_2/dawn/5.webp",
+    "heat/week_3/dawn/5.webp",
+    "heat/week_4/dawn/5.webp"
+   ],
+   "pair": "R53"
+  },
+  {
+   "condition": "rain",
+   "time": "dawn",
+   "week": "A",
+   "day": "sat",
+   "hash": "60d5a3416f6b",
+   "image": "rain/week_1/dawn/6.webp",
+   "paths": [
+    "rain/week_1/dawn/6.webp",
+    "rain/week_2/dawn/6.webp",
+    "rain/week_3/dawn/6.webp",
+    "rain/week_4/dawn/6.webp"
+   ],
+   "pair": "R56"
   }
  ]
 }

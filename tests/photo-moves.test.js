@@ -64,7 +64,13 @@ describe('photo moves — Al\'s rulings of 2026-09-23', () => {
   it('the three KEEP rows are untouched: in their slots, off the bench', () => {
     for (const r of bucket.rows.filter((x) => x.verdict === 'KEEP')) {
       expect(benchOf.has(r.sha1), `#${r.n}`).toBe(false);
-      for (const s of r.slots) { expect(sha1Of(s)).toBe(r.sha1); expect(servedAt.get(s)).toBe(s); }
+      // One KEEP row, the wet jacaranda street (rain dawn 6, 73567b0c612e), was kept on 2026-09-23 and replaced on
+      // 2026-09-30 (Al, review/last-fixes-decisions.json: the re-roll R56 took all four of its slots, review/last-fixes-plan.json),
+      // so it retired on record; its slots are checked as holding the pair that replaced it.
+      for (const s of r.slots) {
+        expect(sha1Of(s)).toBe(retired.has(r.sha1) ? pairHashAt.get(s) : r.sha1);
+        expect(servedAt.get(s)).toBe(s);
+      }
     }
   });
 

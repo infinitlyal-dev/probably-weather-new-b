@@ -34,6 +34,8 @@ describe('desktop polaroid reads Al\'s ruled anchor for every photograph', () =>
     // 322 since Al's batch 3 (30 Sept 2026, review/photo-batch-3-ruled.json: twelve new photographs, seven old ones retired —
     // the seven "use" pairs R31, R33, R34, R54, R55, R58 and R60 replaced theirs; the five "beside" pairs R29, R36b, R41, R52b, R57
     // leave the old photo in its other slots — review/photo-batch-3-plan.json)
+    // 322 still after Al's last fixes (30 Sept 2026, review/last-fixes-decisions.json): the re-rolls R53 and R56 each took all
+    // four slots of one old photograph, so two new photographs in, two old ones retired — review/last-fixes-plan.json
     expect(photos.size).toBe(322);
     let ruled = 0;
     for (const [sha1, p] of photos) {

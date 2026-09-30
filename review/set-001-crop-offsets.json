@@ -7,7 +7,7 @@
   "replaced": 15,
   "reAnchored": 134,
   "wired": 300,
-  "pilotPairs": 59
+  "pilotPairs": 61
  },
  "offsets": {
   "dd736311b619": {
@@ -829,13 +829,6 @@
    "image": "heat/week_1/dawn/7.webp",
    "anchorY": 100,
    "ink": "white"
-  },
-  "818c078a2bda": {
-   "verdict": "FIXABLE",
-   "bucket": "heat-dawn",
-   "slot": "A/fri",
-   "image": "heat/week_2/dawn/3.webp",
-   "anchorY": 58
   },
   "b81a91a1f851": {
    "verdict": "FIXABLE",
@@ -1786,13 +1779,6 @@
    "anchorY": 100,
    "ink": "white"
   },
-  "73567b0c612e": {
-   "verdict": "FIXABLE",
-   "bucket": "rain-dawn",
-   "image": "rain/week_1/dawn/6.webp",
-   "anchorY": 100,
-   "ink": "white"
-  },
   "057e8c9e5039": {
    "verdict": "FIXABLE",
    "bucket": "rain-day",
@@ -2285,6 +2271,22 @@
    "image": "cold/week_1/dusk/2.webp",
    "anchorY": 30,
    "pair": "R60"
+  },
+  "7d4fb2e85dbf": {
+   "verdict": "PAIR",
+   "bucket": "heat-dawn",
+   "slot": "A/fri",
+   "image": "heat/week_1/dawn/5.webp",
+   "anchorY": 28,
+   "pair": "R53"
+  },
+  "60d5a3416f6b": {
+   "verdict": "PAIR",
+   "bucket": "rain-dawn",
+   "slot": "A/sat",
+   "image": "rain/week_1/dawn/6.webp",
+   "anchorY": 28,
+   "pair": "R56"
   }
  }
 }

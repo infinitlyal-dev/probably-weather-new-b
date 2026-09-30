@@ -15933,6 +15933,26 @@
    "afrikaans": "Koud genoeg dat die koffie-tou om die blok loop.",
    "score": 5,
    "reason": "Afrikaans proposed with the pair for Al's English line (his batch-3 ruling of 30 Sept 2026, review/photo-batch-3-ruled.json); written only through the lang-check gate"
+  },
+  {
+   "id": "PR53",
+   "group": "new",
+   "verdict": "NEW",
+   "slot": "heat/dawn",
+   "english": "Hot already at sunrise: the farmer's day starts at four and ends by ten.",
+   "afrikaans": "Al warm met sonop: die boer se dag begin om vier en is om tien verby.",
+   "score": 5,
+   "reason": "Afrikaans proposed with the pair for Al's English line (review/last-fixes-decisions.json, 30 Sept 2026); written only through the lang-check gate"
+  },
+  {
+   "id": "PR56",
+   "group": "new",
+   "verdict": "NEW",
+   "slot": "rain/dawn",
+   "english": "Rain at sunrise: this morning's run has become a mud run.",
+   "afrikaans": "Reën met sonop: vanoggend se draf het 'n modderdraf geword.",
+   "score": 5,
+   "reason": "Afrikaans proposed with the pair for Al's English line (review/last-fixes-decisions.json, 30 Sept 2026); written only through the lang-check gate"
   }
  ]
 }

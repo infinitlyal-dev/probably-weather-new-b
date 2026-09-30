@@ -1,0 +1,117 @@
+{
+ "note": "The two re-rolled photos of Al's batch 3 (R53, R56), both USE, full takeover (review/last-fixes-decisions.json, 30 Sept 2026). Each new photo takes all four slots of the photo it replaces; that photo has no other slot, so it retires with its lines. Slots confirmed against the full sha256 in review/pairs-job/targets.json (replaces.sha256) before writing.",
+ "ruling": "review/last-fixes-decisions.json (Al, 30 Sept 2026)",
+ "ruledBy": "Al: R53 and R56 re-rolls passed, review/last-fixes-decisions.json, 30 Sept 2026",
+ "afReason": "Afrikaans proposed with the pair for Al's English line (review/last-fixes-decisions.json, 30 Sept 2026); written only through the lang-check gate",
+ "pairs": [
+  {
+   "id": "R53",
+   "condition": "heat",
+   "time": "dawn",
+   "line": "Hot already at sunrise: the farmer's day starts at four and ends by ten.",
+   "af": "Al warm met sonop: die boer se dag begin om vier en is om tien verby.",
+   "slots": [
+    "heat/week_1/dawn/5.webp",
+    "heat/week_2/dawn/5.webp",
+    "heat/week_3/dawn/5.webp",
+    "heat/week_4/dawn/5.webp"
+   ],
+   "expect": "818c078a2bda",
+   "why": "Al: USE (review/last-fixes-decisions.json, 30 Sept 2026). Replaces Farm stoep with a sprinkler at sunrise; a pleasant morning, not heat.",
+   "anchorY": 28,
+   "source": "C:/Users/27741/OneDrive/Desktop/Probably weather new/probably-weather-new-c/review/pairs-job/agent-batch-3/R53-2.png",
+   "pick": "USE"
+  },
+  {
+   "id": "R56",
+   "condition": "rain",
+   "time": "dawn",
+   "line": "Rain at sunrise: this morning's run has become a mud run.",
+   "af": "Reën met sonop: vanoggend se draf het 'n modderdraf geword.",
+   "slots": [
+    "rain/week_1/dawn/6.webp",
+    "rain/week_2/dawn/6.webp",
+    "rain/week_3/dawn/6.webp",
+    "rain/week_4/dawn/6.webp"
+   ],
+   "expect": "73567b0c612e",
+   "why": "Al: USE (review/last-fixes-decisions.json, 30 Sept 2026). Replaces Wet jacaranda street in bright sun; reads as after the rain.",
+   "anchorY": 28,
+   "source": "C:/Users/27741/OneDrive/Desktop/Probably weather new/probably-weather-new-c/review/pairs-job/agent-batch-3/R56-2.png",
+   "pick": "USE"
+  }
+ ],
+ "appliedRuns": [],
+ "applied": {
+  "on": "2026-09-30",
+  "applied": [
+   {
+    "id": "R53",
+    "hash": "7d4fb2e85dbf",
+    "canonical": "72f7ec5adb2f…",
+    "bytes": 305148,
+    "quality": 81,
+    "slots": [
+     "heat/week_1/dawn/5.webp",
+     "heat/week_2/dawn/5.webp",
+     "heat/week_3/dawn/5.webp",
+     "heat/week_4/dawn/5.webp"
+    ],
+    "replaced": "818c078a2bda"
+   },
+   {
+    "id": "R56",
+    "hash": "60d5a3416f6b",
+    "canonical": "bcc58bff516f…",
+    "bytes": 302706,
+    "quality": 82,
+    "slots": [
+     "rain/week_1/dawn/6.webp",
+     "rain/week_2/dawn/6.webp",
+     "rain/week_3/dawn/6.webp",
+     "rain/week_4/dawn/6.webp"
+    ],
+    "replaced": "73567b0c612e"
+   }
+  ],
+  "retired": [
+   {
+    "hash": "73567b0c612e",
+    "image": "rain/week_1/dawn/6.webp",
+    "paths": [
+     "rain/week_1/dawn/6.webp",
+     "rain/week_2/dawn/6.webp",
+     "rain/week_3/dawn/6.webp",
+     "rain/week_4/dawn/6.webp"
+    ],
+    "byPair": "R56",
+    "lines": [
+     "Wet tar plus sunrise equals a street made of gold, briefly.",
+     "Somebody ordered rain for the night and sun for the morning, and it was delivered."
+    ],
+    "anchorY": 100
+   },
+   {
+    "hash": "818c078a2bda",
+    "image": "heat/week_1/dawn/5.webp",
+    "paths": [
+     "heat/week_1/dawn/5.webp",
+     "heat/week_2/dawn/5.webp",
+     "heat/week_3/dawn/5.webp",
+     "heat/week_4/dawn/5.webp"
+    ],
+    "byPair": "R53",
+    "lines": [
+     "The sprinkler goes on at five and it is off again by seven.",
+     "Everything green in this photograph is on a timer and everything else is not.",
+     "The aloes have not needed a drop of that and they never will.",
+     "That lawn is the only thing for forty kilometres that gets a say.",
+     "Friday, and by eleven this whole ridge will be one colour again."
+    ],
+    "anchorY": 58
+   }
+  ],
+  "benchChanges": [],
+  "curatedBodies": 322
+ }
+}

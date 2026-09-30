@@ -2,8 +2,8 @@
 // scripts/lang-check/apply-af-accepted.mjs on 2026-09-30 from review/af-bespoke-decisions.json — do not
 // edit by hand.
 //
-// English line → Afrikaans. 990 rows: 296 of Al's native bank lines, 357 drafts kept as they were,
-// 64 rewrites of drafts that did not carry the joke, 237 new transcreations, 36 ruled by Al.
+// English line → Afrikaans. 985 rows: 296 of Al's native bank lines, 351 drafts kept as they were,
+// 63 rewrites of drafts that did not carry the joke, 239 new transcreations, 36 ruled by Al.
 // Every row passed lang-check with no medium or high finding, adds no day or braai the English does
 // not have, and was judged against review/af-voice.md. Rows that did not clear the gate are on
 // review/af-al.html. Served for Afrikaans by applyBespokeLine in assets/app.js, loaded only then.
@@ -128,7 +128,6 @@ export const HERO_LINES_AF = {
  "Everyone on this street is now standing at a window they never use.": "Almal in hierdie straat staan nou by 'n venster wat hulle nooit gebruik nie.",
  "Everyone with a pool just became very popular.": "Almal met 'n swembad het skielik baie populêr geword.",
  "Everyone's forgotten how to drive. Again.": "Almal het vergeet hoe om te bestuur. Weer.",
- "Everything green in this photograph is on a timer and everything else is not.": "Alles wat groen is in hierdie foto is op 'n timer en al die res nie.",
  "Everything green out there is having the best night of its life.": "Alles wat groen is daar buite het die beste nag van sy lewe.",
  "Everything looks 4K today. The sky's in ultra mode.": "Alles lyk 4K vandag. Die lug is in ultra modus.",
  "Everything looks like a film scene. A creepy one.": "Alles lyk soos 'n filmtoneel. 'n Grillerige een.",
@@ -160,7 +159,6 @@ export const HERO_LINES_AF = {
  "Friday night on the promenade and the sea has cleared everyone's diary.": "Vrydagaand op die promenade en die see het almal se dagboek skoongemaak.",
  "Friday night, and the ceiling has been upgraded considerably.": "Vrydagaand, en die plafon is aansienlik opgegradeer.",
  "Friday night, and the stoep has quietly become the whole evening.": "Vrydagaand, en die stoep het stilweg die hele aand geword.",
- "Friday, and by eleven this whole ridge will be one colour again.": "Vrydag, en teen elf gaan hierdie hele rant weer een kleur wees.",
  "Friday, and that is the only moving air for about sixty kilometres.": "Vrydag, en dit is die enigste bewegende lug vir omtrent sestig kilometer.",
  "Friday, and the aloes have not noticed anything unusual at all.": "Vrydag, en die aalwyne het glad niks ongewoons opgemerk nie.",
  "Friday, and the wind is doing half of this job for her, free of charge.": "Vrydag, en die wind doen die helfte van hierdie werk vir haar, gratis.",
@@ -218,6 +216,7 @@ export const HERO_LINES_AF = {
  "Her hair is going one way, the palm is going the same way, and neither was asked.": "Haar hare gaan een kant toe, die palm gaan dieselfde kant toe, en nie een is gevra nie.",
  "Highveld rain doesn’t arrive. It gets delivered — all at once, one farm at a time.": "Hoëveldse reën kom nie aan nie. Dit word afgelewer — alles tegelyk, een plaas op 'n slag.",
  "Hold onto your hat! And your kids.": "Hou jou hoed vas! En jou kinders.",
+ "Hot already at sunrise: the farmer's day starts at four and ends by ten.": "Al warm met sonop: die boer se dag begin om vier en is om tien verby.",
  "Hot chocolate is not a want. It's a need.": "Warm sjokolade is nie 'n wens nie. Dis 'n behoefte.",
  "Hot chocolate weather is self-diagnosing. The marshmallows are the second opinion.": "Warmsjokolade-weer diagnoseer homself. Die malvalekkers is die tweede mening.",
  "Hot water bottle is the real MVP today.": "Warmwaterbottel is die werklike held vandag.",
@@ -366,6 +365,7 @@ export const HERO_LINES_AF = {
  "Rain all day, and the lounge has become a cushion fort.": "Heeldag reën, en die sitkamer het 'n kussingfort geword.",
  "Rain at home time: the whole office is waiting it out in the lobby.": "Reën met uitkomtyd: die hele kantoor wag dit in die voorportaal uit.",
  "Rain at sunrise, and the swim squad doesn't care. Wet is wet.": "Reën met sonop, en die swemspan gee nie om nie. Nat is nat.",
+ "Rain at sunrise: this morning's run has become a mud run.": "Reën met sonop: vanoggend se draf het 'n modderdraf geword.",
  "Rain came all the way home.": "Die reën het die hele pad saam huis toe gekom.",
  "Rain coming off the roof in one solid sheet: the stoep has a curtain tonight.": "Reën wat in een soliede laken van die dak afkom: die stoep het vanaand 'n gordyn.",
  "Rain on an otherwise good-looking evening.": "Reën op 'n andersins mooi aand.",
@@ -417,7 +417,6 @@ export const HERO_LINES_AF = {
  "Somebody is going to remember that washing at about two in the morning.": "Iemand gaan omtrent tweeuur die oggend aan daardie wasgoed dink.",
  "Somebody left the freezer door open overnight.": "Die Karoo het die yskas oornag oopgelos.",
  "Somebody left the light on inside and nobody is going back for it.": "Iemand het die lig binne aangelos en niemand gaan terug daarvoor nie.",
- "Somebody ordered rain for the night and sun for the morning, and it was delivered.": "Iemand het reën vir die nag en son vir die oggend bestel, en dit is afgelewer.",
  "Somebody said the padkos would be fine in the boot. Somebody was wrong.": "Iemand het gesê die padkos sal oukei wees in die kattebak. Iemand was mis.",
  "Somebody will be picking leaves out of that back seat for a week.": "Iemand gaan vir 'n week blare uit daardie agtersitplek uithaal.",
  "Somebody's optimism is still on the table, under a millimetre of frost.": "Iemand se optimisme lê nog op die tafel, onder 'n millimeter ryp.",
@@ -511,7 +510,6 @@ export const HERO_LINES_AF = {
  "That is the third time tonight and not one of them is about food.": "Dit is die derde keer vanaand en nie een van hulle gaan oor kos nie.",
  "That jacket has been trying to leave since he got on the bike.": "Daardie baadjie probeer wegkom vandat hy op die fiets geklim het.",
  "That jug has been refilled twice and it is not even properly dark yet.": "Daardie kan is al twee keer weer volgemaak, en dis nog nie eers behoorlik donker nie.",
- "That lawn is the only thing for forty kilometres that gets a say.": "Daardie grasperk is die enigste ding vir veertig kilometer wat 'n sê het.",
  "That lawn stopped asking the sky for rain somewhere around the start of November.": "Daardie grasperk het êrens teen die begin van November opgehou om die lug vir reën te vra.",
  "That look is a man asking the clouds for forty-five more minutes.": "Daardie kyk is 'n man wat die wolke vir nog vyf-en-veertig minute vra.",
  "That mist is tomorrow morning's frost out doing a site inspection.": "Daardie mis is môreoggend se ryp wat 'n terreininspeksie doen.",
@@ -564,7 +562,6 @@ export const HERO_LINES_AF = {
  "The aircon is losing and everyone in this car has stopped talking about it.": "Die aircon verloor, en almal in hierdie kar het opgehou om daaroor te praat.",
  "The aircon remote is now public property. Negotiate.": "Die aircon-afstandsbeheer is nou openbare eiendom. Onderhandel.",
  "The aloe is not moving and has no intention of starting now.": "Die aalwyn beweeg nie en is glad nie van plan om nou te begin nie.",
- "The aloes have not needed a drop of that and they never will.": "Die aalwyne het nie 'n druppel daarvan nodig gehad nie en sal ook nooit nie.",
  "The app says cloudy. Aunty's knee says rain. We trust the knee.": "Die app sê bewolk. Tannie se knie sê reën. Ons vertrou die knie.",
  "The bakkie iced over under a completely clear sky, which is exactly how it works.": "Die bakkie het onder 'n heeltemal skoon lug toegevries — presies hoe dit werk.",
  "The balcony beats the couch when the sky is doing this.": "Die balkon klop die bank as die lug dít doen.",
@@ -781,7 +778,6 @@ export const HERO_LINES_AF = {
  "The south-easter has found the one open window on the whole street.": "Die suidooster het die een oop venster in die hele straat gekry.",
  "The southeaster doesn’t knock. You’ll hear it under the door all night.": "Die suidooster klop nie. Jy gaan hom die hele nag onder die deur hoor.",
  "The sparks are going sideways and the tongs are still going in.": "Die vonke gaan sywaarts en die tang gaan steeds in.",
- "The sprinkler goes on at five and it is off again by seven.": "Die sproeier gaan vyfuur aan en is teen sewe weer af.",
  "The steering wheel in there is currently not something you can hold.": "Die stuurwiel daarin is op die oomblik nie iets wat jy kan vashou nie.",
  "The stoep step is still warm and will be for another hour yet.": "Die stoeptrap is nog warm en gaan nog 'n uur so bly.",
  "The storm has arrived. Everything else can wait.": "Die storm het aangekom. Al die res kan wag.",
@@ -958,7 +954,6 @@ export const HERO_LINES_AF = {
  "Wet jeans for the rest of the day. The classic punishment.": "Nat jeans vir die res van die dag. Die klassieke straf.",
  "Wet out. The city can keep the colour.": "Nat daar buite. Die stad kan die kleur hou.",
  "Wet socks. The ultimate betrayal.": "Nat sokkies. Die finale verraad.",
- "Wet tar plus sunrise equals a street made of gold, briefly.": "Nat teer plus sonop is gelyk aan 'n straat van goud, vir 'n rukkie.",
  "Whatever is not pegged down out there is already somebody else's problem.": "Wat ook al nie daar buite vasgemaak is nie, is reeds iemand anders se probleem.",
  "When the sky starts talking, everything else stops.": "Wanneer die lug begin praat, hou al die res op.",
  "When the weather behaves this well, so do we. Roughly.": "As die weer só gedra, gedra ons ook. Min of meer.",

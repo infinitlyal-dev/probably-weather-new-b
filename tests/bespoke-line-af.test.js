@@ -170,8 +170,10 @@ describe('the Afrikaans table is the gate\'s output', () => {
     // 30 Sept 2026, review/photo-batches-ruled.json: nine photographs retired with their lines, twenty-three new
     // lines in). Just under the real count, so a silent drop of a handful of rows fails; it tracks the count rather
     // than being loosened. 990 since Al's batch 3 (30 Sept 2026, review/photo-batch-3-ruled.json: twelve new lines in,
-    // seventeen lines retired with seven photographs; 995 + 12 - 17), so the floor is 989.
-    expect(rows.length).toBeGreaterThan(989);
+    // seventeen lines retired with seven photographs; 995 + 12 - 17), so the floor is 989. 985 since Al's last fixes (30 Sept 2026,
+    // review/last-fixes-decisions.json: the re-rolls R53 and R56 in with two lines, their two old photographs retired with
+    // seven lines; 990 + 2 - 7), so the floor is 984.
+    expect(rows.length).toBeGreaterThan(984);
     for (const [english, afrikaans] of rows) {
       expect(wired.has(english), english).toBe(true);
       expect(afrikaans.trim()).not.toBe('');
