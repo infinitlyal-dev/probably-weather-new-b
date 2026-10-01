@@ -39,3 +39,9 @@ review/accuracy/live/recorder.log
 
 # Precision check raw downloads (review/accuracy/v2/fetch.mjs re-creates them)
 review/accuracy/v2/data/
+
+# Home B check (review/launch/home-b-check, 25 Sept 2026): the per-viewport measurements and shots are 4 MB and the
+# b-*.mjs scripts regenerate them; the scripts, summary and small results are kept
+review/launch/home-b-check/data/b-measure-*.json
+review/launch/home-b-check/data/b-worst.json
+review/launch/home-b-check/shots/

@@ -1,0 +1,3574 @@
+[
+ {
+  "n": 1,
+  "hash8": "ee562e8a",
+  "size": "360x688",
+  "looked": "second",
+  "lang": "zu",
+  "line": "Awekho amaphiksha okushona kwelanga namuhla ebusuku. Ama-privacy settings ezulu avuliwe.",
+  "verdict": "clear",
+  "note": "clouds below the moon; the moon stays clear"
+ },
+ {
+  "n": 1,
+  "hash8": "ee562e8a",
+  "size": "414x715",
+  "looked": "within",
+  "lang": "xh",
+  "line": "Kwenye indawo i-braai isele isemalahleni okugqibela, akukho nkwenkwezi — incoko ithwala ubusuku.",
+  "verdict": "clear",
+  "note": "dark clouds below the moon; the moon stays clear"
+ },
+ {
+  "n": 2,
+  "hash8": "825a6ff6",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "st",
+  "line": "Lehlwa dithabeng. Group e nngwe le e nngwe ya lelapa ya WhatsApp jwale e na le foto e tshoanang.",
+  "verdict": "clear",
+  "note": "the pipe and the drip below the spout; the tap head and spout stay clear"
+ },
+ {
+  "n": 3,
+  "hash8": "0af3b5a8",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "Isidlo sasemini sifudukele ngaphandle kuba ngaphakathi kushushu ngaphezu kwangaphandle. Akukho mntu unokuyicacisa.",
+  "verdict": "partly",
+  "note": "the kids' legs and the sprinkler (faces stay clear)"
+ },
+ {
+  "n": 4,
+  "hash8": "1a02b7d7",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "Isidlo sasemini sifudukele ngaphandle kuba ngaphakathi kushushu ngaphezu kwangaphandle. Akukho mntu unokuyicacisa.",
+  "verdict": "clear",
+  "note": "the cage below the parrot; the parrot stays clear"
+ },
+ {
+  "n": 5,
+  "hash8": "3fbe216c",
+  "size": "360x688",
+  "looked": "second",
+  "lang": "st",
+  "line": "Dikgomo di tseba hantle moo di leng teng. Ho fetang seo rona kaofela re ka se bolelang.",
+  "verdict": "covers",
+  "note": "the golf ball in the grass"
+ },
+ {
+  "n": 5,
+  "hash8": "3fbe216c",
+  "size": "414x715",
+  "looked": "open",
+  "lang": "st",
+  "line": "Mohodi o ntse o eketseha, mohlomong. Ho bulela mabone a koloi ho ke ke ha senya letho.",
+  "verdict": "covers",
+  "note": "the golf ball in the grass, wholly under the joke (the golfer stays clear; D's joke sat between them)",
+  "band": [
+   288,
+   355
+  ]
+ },
+ {
+  "n": 6,
+  "hash8": "43dc1982",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "zu",
+  "line": "Ama-hadedas amathathu, amagwababa amabili, nomuntu oyedwa oqhaqhazelayo endaweni yokuphakela izinyoni.",
+  "verdict": "covers",
+  "note": "the boy climbing into the bakkie, from his face down (the man above stays clear)"
+ },
+ {
+  "n": 7,
+  "hash8": "45f77f76",
+  "size": "414x715",
+  "looked": "open",
+  "lang": "zu",
+  "line": "Ama-hadedas amathathu, amagwababa amabili, nomuntu oyedwa oqhaqhazelayo endaweni yokuphakela izinyoni.",
+  "verdict": "partly",
+  "note": "the dog's body and paws (its face stays just clear; D's risen joke was above it)",
+  "band": [
+   155,
+   395
+  ]
+ },
+ {
+  "n": 8,
+  "hash8": "46cd4cef",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "Isidlo sasemini sifudukele ngaphandle kuba ngaphakathi kushushu ngaphezu kwangaphandle. Akukho mntu unokuyicacisa.",
+  "verdict": "partly",
+  "note": "the two women's backs and chairs (heads stay clear)"
+ },
+ {
+  "n": 9,
+  "hash8": "4c74b554",
+  "size": "414x715",
+  "looked": "open",
+  "lang": "st",
+  "line": "Mohodi o ntse o eketseha, mohlomong. Ho bulela mabone a koloi ho ke ke ha senya letho.",
+  "verdict": "clear",
+  "note": "the dashboard and the phone's foot; his face stays clear"
+ },
+ {
+  "n": 10,
+  "hash8": "63272c17",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "zu",
+  "line": "Ama-hadedas amathathu, amagwababa amabili, nomuntu oyedwa oqhaqhazelayo endaweni yokuphakela izinyoni.",
+  "verdict": "partly",
+  "note": "the toddler's hands and the porridge (faces stay clear)"
+ },
+ {
+  "n": 11,
+  "hash8": "7b6de3ab",
+  "size": "414x715",
+  "looked": "open",
+  "lang": "st",
+  "line": "Mohodi o ntse o eketseha, mohlomong. Ho bulela mabone a koloi ho ke ke ha senya letho.",
+  "verdict": "clear",
+  "note": "misty rooftops"
+ },
+ {
+  "n": 12,
+  "hash8": "af6a66e2",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "Isidlo sasemini sifudukele ngaphandle kuba ngaphakathi kushushu ngaphezu kwangaphandle. Akukho mntu unokuyicacisa.",
+  "verdict": "covers",
+  "note": "the dog in the paddling pool"
+ },
+ {
+  "n": 13,
+  "hash8": "b0695f2c",
+  "size": "414x715",
+  "looked": "open",
+  "lang": "st",
+  "line": "Mohodi o ntse o eketseha, mohlomong. Ho bulela mabone a koloi ho ke ke ha senya letho.",
+  "verdict": "clear",
+  "note": "the misty field below the posts"
+ },
+ {
+  "n": 14,
+  "hash8": "b1ae5ed3",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "Isidlo sasemini sifudukele ngaphandle kuba ngaphakathi kushushu ngaphezu kwangaphandle. Akukho mntu unokuyicacisa.",
+  "verdict": "partly",
+  "note": "the man's legs and the car's bonnet (the pan and the kids' faces stay clear)"
+ },
+ {
+  "n": 15,
+  "hash8": "bc3c55df",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "Isidlo sasemini sifudukele ngaphandle kuba ngaphakathi kushushu ngaphezu kwangaphandle. Akukho mntu unokuyicacisa.",
+  "verdict": "covers",
+  "note": "the first line runs through the 38° reading"
+ },
+ {
+  "n": 16,
+  "hash8": "c7090cc8",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "zu",
+  "line": "Ama-hadedas amathathu, amagwababa amabili, nomuntu oyedwa oqhaqhazelayo endaweni yokuphakela izinyoni.",
+  "verdict": "partly",
+  "note": "their coats (faces and cups stay just clear)"
+ },
+ {
+  "n": 17,
+  "hash8": "cca354da",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "st",
+  "line": "Mohodi o ntse o eketseha, mohlomong. Ho bulela mabone a koloi ho ke ke ha senya letho.",
+  "verdict": "partly",
+  "note": "the cat's body and the wall (its face stays clear)"
+ },
+ {
+  "n": 18,
+  "hash8": "dbadc260",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "Isidlo sasemini sifudukele ngaphandle kuba ngaphakathi kushushu ngaphezu kwangaphandle. Akukho mntu unokuyicacisa.",
+  "verdict": "covers",
+  "note": "the melting half of the chocolate and its puddle"
+ },
+ {
+  "n": 19,
+  "hash8": "e202753f",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "st",
+  "line": "Mohodi o ntse o eketseha, mohlomong. Ho bulela mabone a koloi ho ke ke ha senya letho.",
+  "verdict": "partly",
+  "note": "his back and the bin (his head stays clear)"
+ },
+ {
+  "n": 20,
+  "hash8": "ed88abf0",
+  "size": "320x488",
+  "looked": "small",
+  "lang": "xh",
+  "line": "EBloemfontein ngo-6 kusasa: ijezi, igawuni, isikhafu, iitakkies, nobuso obuzenza ngathi kulungile.",
+  "verdict": "partly",
+  "note": "his shoulder, the only part of him left on the card (the joke runs up under the header)"
+ },
+ {
+  "n": 20,
+  "hash8": "ed88abf0",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "zu",
+  "line": "Ama-hadedas amathathu, amagwababa amabili, nomuntu oyedwa oqhaqhazelayo endaweni yokuphakela izinyoni.",
+  "verdict": "partly",
+  "note": "his shoulder and arms on the wall (his face stays clear)"
+ },
+ {
+  "n": 21,
+  "hash8": "f23e83d5",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "st",
+  "line": "Mohodi o ntse o eketseha, mohlomong. Ho bulela mabone a koloi ho ke ke ha senya letho.",
+  "verdict": "partly",
+  "note": "her legs (her face and jersey stay clear)"
+ },
+ {
+  "n": 22,
+  "hash8": "f946db7e",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "zu",
+  "line": "Ama-hadedas amathathu, amagwababa amabili, nomuntu oyedwa oqhaqhazelayo endaweni yokuphakela izinyoni.",
+  "verdict": "partly",
+  "note": "the runners' bodies (faces stay clear)"
+ },
+ {
+  "n": 23,
+  "hash8": "09999b1e",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "Abantu abadala 'abahamba nje egadini' kanye apho i-sprinkler ifefa khona. Yintlanganiso yamabhaqo, nè.",
+  "verdict": "covers",
+  "note": "the sleepers on their mattresses, heads and all"
+ },
+ {
+  "n": 24,
+  "hash8": "12dc0835",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "Abantu abadala 'abahamba nje egadini' kanye apho i-sprinkler ifefa khona. Yintlanganiso yamabhaqo, nè.",
+  "verdict": "covers",
+  "note": "the jug of ice and the glasses on the table"
+ },
+ {
+  "n": 25,
+  "hash8": "13f86b79",
+  "size": "360x688",
+  "looked": "second",
+  "lang": "st",
+  "line": "Ngaka ya Cape e ho di-round tsa hoseng. Ha ho hlokahale appointment, ka bomadimabe.",
+  "verdict": "clear",
+  "note": "the promenade and the palms' trunks; the crowns stay clear"
+ },
+ {
+  "n": 25,
+  "hash8": "13f86b79",
+  "size": "414x715",
+  "looked": "far",
+  "lang": "xh",
+  "line": "Kunokuba nomoya onamandla ngamaxesha athile. Uqikelelo aluqinisekanga kule meko",
+  "verdict": "clear",
+  "note": "the promenade, lamps and sea below the palms"
+ },
+ {
+  "n": 26,
+  "hash8": "16a1b557",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "zu",
+  "line": "Ama-hadedas amathathu, amagwababa amabili, nomuntu oyedwa oqhaqhazelayo endaweni yokuphakela izinyoni.",
+  "verdict": "partly",
+  "note": "the fire drum and their bodies (faces stay clear)"
+ },
+ {
+  "n": 27,
+  "hash8": "1c3fdb55",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "Abantu abadala 'abahamba nje egadini' kanye apho i-sprinkler ifefa khona. Yintlanganiso yamabhaqo, nè.",
+  "verdict": "partly",
+  "note": "the 2:00 clock and the bed (the sleeper's face stays clear)"
+ },
+ {
+  "n": 28,
+  "hash8": "1da71cd8",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "zu",
+  "line": "Ama-hadedas amathathu, amagwababa amabili, nomuntu oyedwa oqhaqhazelayo endaweni yokuphakela izinyoni.",
+  "verdict": "partly",
+  "note": "the frosted car's side (its roof stays clear)"
+ },
+ {
+  "n": 29,
+  "hash8": "20567f2a",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "Imizuzu emihlanu yokubukela iinkwenkwezi. Emva koko ubaleka ubuyele ngaphakathi. Sisivumelwano eso.",
+  "verdict": "partly",
+  "note": "the couple's backs in their blanket (their heads sit on the joke's top edge)"
+ },
+ {
+  "n": 30,
+  "hash8": "216875af",
+  "size": "414x715",
+  "looked": "open",
+  "lang": "zu",
+  "line": "Omakhelwane abaseduze bangamakhilomitha angamashumi amathathu kude futhi namuhla ebusuku bakubona kancane nakakhulu.",
+  "verdict": "clear",
+  "note": "fog below the traffic light"
+ },
+ {
+  "n": 31,
+  "hash8": "22e65e5f",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "st",
+  "line": "'Sundowner e le nngwe feela' — mantswe a ho qetela a tummeng, nako e nngwe le e nngwe.",
+  "verdict": "covers",
+  "note": "the table, and the face of the diner in front on the right (the others' faces stay clear)"
+ },
+ {
+  "n": 32,
+  "hash8": "25ba4c13",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "zu",
+  "line": "Omakhelwane abaseduze bangamakhilomitha angamashumi amathathu kude futhi namuhla ebusuku bakubona kancane nakakhulu.",
+  "verdict": "covers",
+  "note": "the dog walking between them, and their legs (their faces stay clear)"
+ },
+ {
+  "n": 33,
+  "hash8": "2dc9d103",
+  "size": "320x488",
+  "looked": "small",
+  "lang": "zu",
+  "line": "Amabhomu amancane eqhwa ayawa. Icebo linye kuphela: hlala ngaphakathi.",
+  "verdict": "partly",
+  "note": "the bucket and their hands (faces stay clear)"
+ },
+ {
+  "n": 33,
+  "hash8": "2dc9d103",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "Iindudumo zikuvolumu yeshumi, inja yommelwane kweyeshumi elinanye.",
+  "verdict": "clear",
+  "note": "the bed below the bucket; the bucket and their faces stay clear"
+ },
+ {
+  "n": 34,
+  "hash8": "3561a9c4",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "Kunokuba nomoya onamandla ngamaxesha athile. Uqikelelo aluqinisekanga kule meko",
+  "verdict": "partly",
+  "note": "the aloe at the foot of the bending bush (the bush's crown stays clear)"
+ },
+ {
+  "n": 35,
+  "hash8": "360fe761",
+  "size": "414x715",
+  "looked": "open",
+  "lang": "xh",
+  "line": "Kunokuba nomoya onamandla ngamaxesha athile. Uqikelelo aluqinisekanga kule meko",
+  "verdict": "clear",
+  "note": "the street and walls below the palm"
+ },
+ {
+  "n": 36,
+  "hash8": "39f844a9",
+  "size": "360x688",
+  "looked": "second",
+  "lang": "zu",
+  "line": "Amabhomu amancane eqhwa ayawa. Icebo linye kuphela: hlala ngaphakathi.",
+  "verdict": "clear",
+  "note": "the fence and the wet road below the tree"
+ },
+ {
+  "n": 36,
+  "hash8": "39f844a9",
+  "size": "414x715",
+  "looked": "open",
+  "lang": "xh",
+  "line": "Iindudumo zikuvolumu yeshumi, inja yommelwane kweyeshumi elinanye.",
+  "verdict": "clear",
+  "note": "the fence and ground below the tree"
+ },
+ {
+  "n": 37,
+  "hash8": "3b370a59",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "Abantu abadala 'abahamba nje egadini' kanye apho i-sprinkler ifefa khona. Yintlanganiso yamabhaqo, nè.",
+  "verdict": "covers",
+  "note": "the man in the front of the pool, head and shoulders (the women's faces stay clear)"
+ },
+ {
+  "n": 38,
+  "hash8": "3ee09fa7",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "Kunokuba nomoya onamandla ngamaxesha athile. Uqikelelo aluqinisekanga kule meko",
+  "verdict": "partly",
+  "note": "the cat's lower body (its face stays clear)"
+ },
+ {
+  "n": 39,
+  "hash8": "51ffc9cf",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "IJoburg ina imizuzu engamashumi amabini, ize ipeyinte isibhakabhaka ngathi akukho nto yenzekileyo.",
+  "verdict": "clear",
+  "note": "the wet promenade below the railing; the wave stays clear"
+ },
+ {
+  "n": 40,
+  "hash8": "549601db",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "Kwenye indawo i-braai isele isemalahleni okugqibela, akukho nkwenkwezi — incoko ithwala ubusuku.",
+  "verdict": "covers",
+  "note": "the dog on its lead and the man's legs (his face stays clear)"
+ },
+ {
+  "n": 41,
+  "hash8": "5b1fb72a",
+  "size": "320x488",
+  "looked": "small",
+  "lang": "st",
+  "line": "Letsatsi le hlile le diehisa ho tsamaya ha lona, le ipontsha. Ka nnete, le a tshwanelwa.",
+  "verdict": "partly",
+  "note": "the lamp's lower half (the moth stays just clear)"
+ },
+ {
+  "n": 41,
+  "hash8": "5b1fb72a",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "st",
+  "line": "'Sundowner e le nngwe feela' — mantswe a ho qetela a tummeng, nako e nngwe le e nngwe.",
+  "verdict": "clear",
+  "note": "the aloe and the wall below the lamp; the lamp and the moth stay clear"
+ },
+ {
+  "n": 42,
+  "hash8": "5d44b242",
+  "size": "320x488",
+  "looked": "small",
+  "lang": "xh",
+  "line": "Kunokuba nomoya onamandla ngamaxesha athile. Uqikelelo aluqinisekanga kule meko",
+  "verdict": "covers",
+  "note": "the washing on the line (the joke also runs up under the header)"
+ },
+ {
+  "n": 42,
+  "hash8": "5d44b242",
+  "size": "360x688",
+  "looked": "second",
+  "lang": "st",
+  "line": "Ngaka ya Cape e ho di-round tsa hoseng. Ha ho hlokahale appointment, ka bomadimabe.",
+  "verdict": "clear",
+  "note": "the fence below the washing; its hem grazes the first line"
+ },
+ {
+  "n": 42,
+  "hash8": "5d44b242",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "Kunokuba nomoya onamandla ngamaxesha athile. Uqikelelo aluqinisekanga kule meko",
+  "verdict": "clear",
+  "note": "the wall below the washing; the washing stays clear"
+ },
+ {
+  "n": 43,
+  "hash8": "66c0e87e",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "zu",
+  "line": "Ama-hadedas amathathu, amagwababa amabili, nomuntu oyedwa oqhaqhazelayo endaweni yokuphakela izinyoni.",
+  "verdict": "partly",
+  "note": "his steaming mug and his body (his face stays clear)"
+ },
+ {
+  "n": 44,
+  "hash8": "6e508ccb",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "Abantu abadala 'abahamba nje egadini' kanye apho i-sprinkler ifefa khona. Yintlanganiso yamabhaqo, nè.",
+  "verdict": "partly",
+  "note": "her body at the open fridge (her face stays clear)"
+ },
+ {
+  "n": 45,
+  "hash8": "7563eedc",
+  "size": "414x715",
+  "looked": "open",
+  "lang": "zu",
+  "line": "Ama-hadedas amathathu, amagwababa amabili, nomuntu oyedwa oqhaqhazelayo endaweni yokuphakela izinyoni.",
+  "verdict": "clear",
+  "note": "the house's lower storey and frosted fence; the frosted roof stays clear"
+ },
+ {
+  "n": 46,
+  "hash8": "84079013",
+  "size": "360x688",
+  "looked": "second",
+  "lang": "st",
+  "line": "Joburg e na metsotso e mashome a mabedi, ebe e penta lehodimo eka ha ho letho le etsahetseng.",
+  "verdict": "clear",
+  "note": "the wet street"
+ },
+ {
+  "n": 46,
+  "hash8": "84079013",
+  "size": "414x715",
+  "looked": "within",
+  "lang": "xh",
+  "line": "IJoburg ina imizuzu engamashumi amabini, ize ipeyinte isibhakabhaka ngathi akukho nto yenzekileyo.",
+  "verdict": "clear",
+  "note": "the wet street"
+ },
+ {
+  "n": 47,
+  "hash8": "8afed8c5",
+  "size": "360x688",
+  "looked": "second",
+  "lang": "zu",
+  "line": "Ndawana ngaphansi kwalezo zinkanyezi, umuntu uhamba ngamazwane engagqokile eya endlini yangasese. Amandla.",
+  "verdict": "covers",
+  "note": "the cat curled up on the armchair"
+ },
+ {
+  "n": 47,
+  "hash8": "8afed8c5",
+  "size": "414x715",
+  "looked": "open",
+  "lang": "xh",
+  "line": "Imizuzu emihlanu yokubukela iinkwenkwezi. Emva koko ubaleka ubuyele ngaphakathi. Sisivumelwano eso.",
+  "verdict": "covers",
+  "note": "the cat curled up on the armchair, under the first line",
+  "band": [
+   218,
+   272
+  ]
+ },
+ {
+  "n": 48,
+  "hash8": "8cc6367d",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "zu",
+  "line": "Ama-hadedas amathathu, amagwababa amabili, nomuntu oyedwa oqhaqhazelayo endaweni yokuphakela izinyoni.",
+  "verdict": "partly",
+  "note": "his body and the bin (his face and breath stay clear)",
+  "band": [
+   237,
+   400
+  ]
+ },
+ {
+  "n": 49,
+  "hash8": "9248c64f",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "Kunokuba nomoya onamandla ngamaxesha athile. Uqikelelo aluqinisekanga kule meko",
+  "verdict": "partly",
+  "note": "their hands and the braai tongs (faces stay clear)"
+ },
+ {
+  "n": 50,
+  "hash8": "928ed2d8",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "st",
+  "line": "'Sundowner e le nngwe feela' — mantswe a ho qetela a tummeng, nako e nngwe le e nngwe.",
+  "verdict": "partly",
+  "note": "the cat's body on the lawn (its face stays clear)"
+ },
+ {
+  "n": 51,
+  "hash8": "929560dd",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "zu",
+  "line": "Ama-hadedas amathathu, amagwababa amabili, nomuntu oyedwa oqhaqhazelayo endaweni yokuphakela izinyoni.",
+  "verdict": "partly",
+  "note": "their blankets and mugs (faces stay clear)"
+ },
+ {
+  "n": 52,
+  "hash8": "99418a17",
+  "size": "360x688",
+  "looked": "small",
+  "lang": "zu",
+  "line": "Ngu-7 ntambama futhi kusengama-degree angama-30. IKaroo ayenzi amaphutha, izitatimende kuphela.",
+  "verdict": "covers",
+  "note": "the dog's head under the first line"
+ },
+ {
+  "n": 52,
+  "hash8": "99418a17",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "Abantu abadala 'abahamba nje egadini' kanye apho i-sprinkler ifefa khona. Yintlanganiso yamabhaqo, nè.",
+  "verdict": "covers",
+  "note": "the dog's head, lying lowest, under the first line (its body stays clear)"
+ },
+ {
+  "n": 53,
+  "hash8": "9a85d13f",
+  "size": "320x488",
+  "looked": "small",
+  "lang": "xh",
+  "line": "Ndaweni ithile ixilongo lenkungu liyabhonga kwaye abantu abaliwaka bathi 'ag nee' ngexesha elinye kanye.",
+  "verdict": "covers",
+  "note": "the taxis in the fog (the joke also runs up under the header)"
+ },
+ {
+  "n": 53,
+  "hash8": "9a85d13f",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "zu",
+  "line": "Omakhelwane abaseduze bangamakhilomitha angamashumi amathathu kude futhi namuhla ebusuku bakubona kancane nakakhulu.",
+  "verdict": "clear",
+  "note": "the wet tarmac below the taxis; the taxis stay clear"
+ },
+ {
+  "n": 54,
+  "hash8": "9ad51600",
+  "size": "360x688",
+  "looked": "second",
+  "lang": "zu",
+  "line": "Amabhomu amancane eqhwa ayawa. Icebo linye kuphela: hlala ngaphakathi.",
+  "verdict": "clear",
+  "note": "the garage doors and the driveway below the lightning"
+ },
+ {
+  "n": 54,
+  "hash8": "9ad51600",
+  "size": "414x715",
+  "looked": "open",
+  "lang": "xh",
+  "line": "Iindudumo zikuvolumu yeshumi, inja yommelwane kweyeshumi elinanye.",
+  "verdict": "clear",
+  "note": "the driveway below the garage doors; the lightning stays clear"
+ },
+ {
+  "n": 55,
+  "hash8": "a2510ecf",
+  "size": "360x688",
+  "looked": "second",
+  "lang": "st",
+  "line": "Joburg e na metsotso e mashome a mabedi, ebe e penta lehodimo eka ha ho letho le etsahetseng.",
+  "verdict": "clear",
+  "note": "the wall and the wet pavement"
+ },
+ {
+  "n": 55,
+  "hash8": "a2510ecf",
+  "size": "414x715",
+  "looked": "open",
+  "lang": "xh",
+  "line": "IJoburg ina imizuzu engamashumi amabini, ize ipeyinte isibhakabhaka ngathi akukho nto yenzekileyo.",
+  "verdict": "clear",
+  "note": "the wall and the wet pavement"
+ },
+ {
+  "n": 56,
+  "hash8": "a7e3f546",
+  "size": "320x488",
+  "looked": "second",
+  "lang": "en",
+  "line": "Wait it out indoors. The mountains aren't going anywhere.",
+  "verdict": "clear",
+  "note": "his arm and shirt, and the lightning's foot; the phone and his face stay clear (as D judged his shirt)"
+ },
+ {
+  "n": 56,
+  "hash8": "a7e3f546",
+  "size": "414x715",
+  "looked": "open",
+  "lang": "xh",
+  "line": "Iindudumo zikuvolumu yeshumi, inja yommelwane kweyeshumi elinanye.",
+  "verdict": "clear",
+  "note": "the lower window and his shirt; his face, the phone and the lightning stay clear"
+ },
+ {
+  "n": 57,
+  "hash8": "a80a9bab",
+  "size": "360x688",
+  "looked": "second",
+  "lang": "st",
+  "line": "Joburg e na metsotso e mashome a mabedi, ebe e penta lehodimo eka ha ho letho le etsahetseng.",
+  "verdict": "clear",
+  "note": "the running gutter"
+ },
+ {
+  "n": 57,
+  "hash8": "a80a9bab",
+  "size": "414x715",
+  "looked": "open",
+  "lang": "xh",
+  "line": "IJoburg ina imizuzu engamashumi amabini, ize ipeyinte isibhakabhaka ngathi akukho nto yenzekileyo.",
+  "verdict": "clear",
+  "note": "the running gutter"
+ },
+ {
+  "n": 58,
+  "hash8": "a94870b0",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "zu",
+  "line": "Omakhelwane abaseduze bangamakhilomitha angamashumi amathathu kude futhi namuhla ebusuku bakubona kancane nakakhulu.",
+  "verdict": "partly",
+  "note": "his legs and the road (his face and body stay clear)"
+ },
+ {
+  "n": 59,
+  "hash8": "b207cb7f",
+  "size": "360x688",
+  "looked": "second",
+  "lang": "af",
+  "line": "Reën wat in een soliede laken van die dak afkom: die stoep het vanaand 'n gordyn.",
+  "verdict": "clear",
+  "note": "the flooded stoep"
+ },
+ {
+  "n": 59,
+  "hash8": "b207cb7f",
+  "size": "414x715",
+  "looked": "open",
+  "lang": "xh",
+  "line": "Iindudumo zikuvolumu yeshumi, inja yommelwane kweyeshumi elinanye.",
+  "verdict": "clear",
+  "note": "the flooded stoep"
+ },
+ {
+  "n": 60,
+  "hash8": "b6001c42",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "Imizuzu emihlanu yokubukela iinkwenkwezi. Emva koko ubaleka ubuyele ngaphakathi. Sisivumelwano eso.",
+  "verdict": "partly",
+  "note": "the laptop, her mug and hands (her face stays clear)"
+ },
+ {
+  "n": 61,
+  "hash8": "b665da78",
+  "size": "414x715",
+  "looked": "open",
+  "lang": "st",
+  "line": "'Sundowner e le nngwe feela' — mantswe a ho qetela a tummeng, nako e nngwe le e nngwe.",
+  "verdict": "clear",
+  "note": "the mountain's silhouette and the horizon; the Milky Way stays clear"
+ },
+ {
+  "n": 62,
+  "hash8": "bb0451e1",
+  "size": "320x488",
+  "looked": "second",
+  "lang": "zu",
+  "line": "Amabhomu amancane eqhwa ayawa. Icebo linye kuphela: hlala ngaphakathi.",
+  "verdict": "clear",
+  "note": "the blanket and the city lights, as D judged them clear; his face stays clear"
+ },
+ {
+  "n": 62,
+  "hash8": "bb0451e1",
+  "size": "414x715",
+  "looked": "open",
+  "lang": "xh",
+  "line": "Iindudumo zikuvolumu yeshumi, inja yommelwane kweyeshumi elinanye.",
+  "verdict": "clear",
+  "note": "the window sill and the blanket's hem (his face stays clear)"
+ },
+ {
+  "n": 63,
+  "hash8": "bba8e41b",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "zu",
+  "line": "Omakhelwane abaseduze bangamakhilomitha angamashumi amathathu kude futhi namuhla ebusuku bakubona kancane nakakhulu.",
+  "verdict": "partly",
+  "note": "his legs and the path (his face and body stay clear)"
+ },
+ {
+  "n": 64,
+  "hash8": "cd60e0b2",
+  "size": "414x715",
+  "looked": "open",
+  "lang": "zu",
+  "line": "Omakhelwane abaseduze bangamakhilomitha angamashumi amathathu kude futhi namuhla ebusuku bakubona kancane nakakhulu.",
+  "verdict": "clear",
+  "note": "the city lights under fog"
+ },
+ {
+  "n": 65,
+  "hash8": "ce5d0f16",
+  "size": "360x688",
+  "looked": "second",
+  "lang": "zu",
+  "line": "Amabhomu amancane eqhwa ayawa. Icebo linye kuphela: hlala ngaphakathi.",
+  "verdict": "clear",
+  "note": "the wall and lawn below the lightning"
+ },
+ {
+  "n": 65,
+  "hash8": "ce5d0f16",
+  "size": "414x715",
+  "looked": "open",
+  "lang": "xh",
+  "line": "Iindudumo zikuvolumu yeshumi, inja yommelwane kweyeshumi elinanye.",
+  "verdict": "clear",
+  "note": "the wall and lawn below the lightning"
+ },
+ {
+  "n": 66,
+  "hash8": "cea9050d",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "IJoburg ina imizuzu engamashumi amabini, ize ipeyinte isibhakabhaka ngathi akukho nto yenzekileyo.",
+  "verdict": "partly",
+  "note": "his hands on the wheel (his face stays clear)"
+ },
+ {
+  "n": 67,
+  "hash8": "d1a05b54",
+  "size": "414x715",
+  "looked": "open",
+  "lang": "xh",
+  "line": "Kunokuba nomoya onamandla ngamaxesha athile. Uqikelelo aluqinisekanga kule meko",
+  "verdict": "clear",
+  "note": "the wet promenade below the palms"
+ },
+ {
+  "n": 68,
+  "hash8": "d3c3724a",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "st",
+  "line": "'Sundowner e le nngwe feela' — mantswe a ho qetela a tummeng, nako e nngwe le e nngwe.",
+  "verdict": "partly",
+  "note": "the hem of the long sheet blowing (the rest of the washing stays clear)"
+ },
+ {
+  "n": 69,
+  "hash8": "d5eb736e",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "zu",
+  "line": "Omakhelwane abaseduze bangamakhilomitha angamashumi amathathu kude futhi namuhla ebusuku bakubona kancane nakakhulu.",
+  "verdict": "partly",
+  "note": "her blanket and the railing (her face and mug stay clear)"
+ },
+ {
+  "n": 70,
+  "hash8": "e25e5992",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "Kwenye indawo i-braai isele isemalahleni okugqibela, akukho nkwenkwezi — incoko ithwala ubusuku.",
+  "verdict": "covers",
+  "note": "the man with the torch, head and all, under the first line"
+ },
+ {
+  "n": 71,
+  "hash8": "e2f0a2c1",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "Imizuzu emihlanu yokubukela iinkwenkwezi. Emva koko ubaleka ubuyele ngaphakathi. Sisivumelwano eso.",
+  "verdict": "partly",
+  "note": "the front of the lit café stoep and the wet street (the man and the café stay clear)"
+ },
+ {
+  "n": 72,
+  "hash8": "e6a67f80",
+  "size": "360x688",
+  "looked": "second",
+  "lang": "st",
+  "line": "Joburg e na metsotso e mashome a mabedi, ebe e penta lehodimo eka ha ho letho le etsahetseng.",
+  "verdict": "clear",
+  "note": "the pool"
+ },
+ {
+  "n": 72,
+  "hash8": "e6a67f80",
+  "size": "414x715",
+  "looked": "open",
+  "lang": "xh",
+  "line": "IJoburg ina imizuzu engamashumi amabini, ize ipeyinte isibhakabhaka ngathi akukho nto yenzekileyo.",
+  "verdict": "clear",
+  "note": "the pool"
+ },
+ {
+  "n": 73,
+  "hash8": "ed4291a6",
+  "size": "414x715",
+  "looked": "open",
+  "lang": "st",
+  "line": "'Sundowner e le nngwe feela' — mantswe a ho qetela a tummeng, nako e nngwe le e nngwe.",
+  "verdict": "clear",
+  "note": "the city lights"
+ },
+ {
+  "n": 74,
+  "hash8": "f0960365",
+  "size": "414x715",
+  "looked": "open",
+  "lang": "st",
+  "line": "'Sundowner e le nngwe feela' — mantswe a ho qetela a tummeng, nako e nngwe le e nngwe.",
+  "verdict": "covers",
+  "note": "the people lying in the bakkie's back, arms up, under the joke (D's joke never reached them)",
+  "band": [
+   230,
+   335
+  ]
+ },
+ {
+  "n": 75,
+  "hash8": "f449894c",
+  "size": "414x715",
+  "looked": "open",
+  "lang": "xh",
+  "line": "IJoburg ina imizuzu engamashumi amabini, ize ipeyinte isibhakabhaka ngathi akukho nto yenzekileyo.",
+  "verdict": "partly",
+  "note": "the broken umbrella's lower half in the flooded gutter (its top stays clear)",
+  "band": [
+   180,
+   295
+  ]
+ },
+ {
+  "n": 76,
+  "hash8": "f47163b5",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "zu",
+  "line": "Ama-hadedas amathathu, amagwababa amabili, nomuntu oyedwa oqhaqhazelayo endaweni yokuphakela izinyoni.",
+  "verdict": "covers",
+  "note": "the couple lying in the bakkie, heads and all"
+ },
+ {
+  "n": 77,
+  "hash8": "fb15a66a",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "Abantu abadala 'abahamba nje egadini' kanye apho i-sprinkler ifefa khona. Yintlanganiso yamabhaqo, nè.",
+  "verdict": "covers",
+  "note": "the bicycle and the glass of ice water"
+ },
+ {
+  "n": 78,
+  "hash8": "fd0a18b2",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "Kwenye indawo i-braai isele isemalahleni okugqibela, akukho nkwenkwezi — incoko ithwala ubusuku.",
+  "verdict": "covers",
+  "note": "the bakkie's front and its headlights"
+ },
+ {
+  "n": 79,
+  "hash8": "08c461c7",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "st",
+  "line": "Lehlwa dithabeng. Group e nngwe le e nngwe ya lelapa ya WhatsApp jwale e na le foto e tshoanang.",
+  "verdict": "covers",
+  "note": "the dog in the patch of sun, wholly under the joke (the family's faces stay clear)"
+ },
+ {
+  "n": 80,
+  "hash8": "11312da8",
+  "size": "414x715",
+  "looked": "open",
+  "lang": "xh",
+  "line": "Kunokuba nomoya onamandla ngamaxesha athile. Uqikelelo aluqinisekanga kule meko",
+  "verdict": "clear",
+  "note": "the wall and pavement below the flag"
+ },
+ {
+  "n": 81,
+  "hash8": "14fb224f",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "st",
+  "line": "Letsatsi le le leng le phethahetseng le fanwe. Ha le fetisetswe. Le sebedise ka bohlale.",
+  "verdict": "partly",
+  "note": "the chairs' feet and the cool box (the umbrella and the chair backs stay clear)"
+ },
+ {
+  "n": 82,
+  "hash8": "181d7c88",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "Sisenokwenzeka isaqhwithi, asikaqinisekiswa. Hlala uphaphile.",
+  "verdict": "partly",
+  "note": "his legs and lower body (his face and the umbrella stay clear)"
+ },
+ {
+  "n": 83,
+  "hash8": "191654e6",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "Sisenokwenzeka isaqhwithi, asikaqinisekiswa. Hlala uphaphile.",
+  "verdict": "partly",
+  "note": "the golfers' bags and feet (heads stay clear)"
+ },
+ {
+  "n": 84,
+  "hash8": "1c536cb7",
+  "size": "414x715",
+  "looked": "open",
+  "lang": "xh",
+  "line": "'Siza kubona ukuba kukhangeleka njani' — yi-RSVP esemthethweni yoMzantsi Afrika.",
+  "verdict": "clear",
+  "note": "the rugby field"
+ },
+ {
+  "n": 85,
+  "hash8": "1c9e8b5c",
+  "size": "360x688",
+  "looked": "second",
+  "lang": "zu",
+  "line": "Amabhomu amancane eqhwa ayawa. Icebo linye kuphela: hlala ngaphakathi.",
+  "verdict": "clear",
+  "note": "the pitch, stumps and kit bags below the blowing cover; the cover stays clear"
+ },
+ {
+  "n": 85,
+  "hash8": "1c9e8b5c",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "Sisenokwenzeka isaqhwithi, asikaqinisekiswa. Hlala uphaphile.",
+  "verdict": "clear",
+  "note": "the pitch and the kit bags below the blowing cover; the cover stays clear"
+ },
+ {
+  "n": 86,
+  "hash8": "259aec69",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "Kunokuba nomoya onamandla ngamaxesha athile. Uqikelelo aluqinisekanga kule meko",
+  "verdict": "partly",
+  "note": "her jacket (her face and phone stay clear)"
+ },
+ {
+  "n": 87,
+  "hash8": "2b85cbde",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "zu",
+  "line": "Imvula iphendula wonke umshayeli waseNingizimu Afrika abe umfundi futhi. Ama-hazards avuliwe, isithunzi sicishiwe.",
+  "verdict": "partly",
+  "note": "the worker's vest and trousers (his face stays clear)"
+ },
+ {
+  "n": 88,
+  "hash8": "2edc1c0d",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "'Siza kubona ukuba kukhangeleka njani' — yi-RSVP esemthethweni yoMzantsi Afrika.",
+  "verdict": "partly",
+  "note": "the lower grid (the meat and the hand with the tongs stay clear)"
+ },
+ {
+  "n": 89,
+  "hash8": "3017aed2",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "Kunokuba nomoya onamandla ngamaxesha athile. Uqikelelo aluqinisekanga kule meko",
+  "verdict": "partly",
+  "note": "the dog's body (its face stays clear)"
+ },
+ {
+  "n": 90,
+  "hash8": "30307b4b",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "st",
+  "line": "Lehlwa dithabeng. Group e nngwe le e nngwe ya lelapa ya WhatsApp jwale e na le foto e tshoanang.",
+  "verdict": "partly",
+  "note": "the frosted car's front and his legs (his head stays clear)"
+ },
+ {
+  "n": 91,
+  "hash8": "319c3448",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "st",
+  "line": "Lehlwa dithabeng. Group e nngwe le e nngwe ya lelapa ya WhatsApp jwale e na le foto e tshoanang.",
+  "verdict": "partly",
+  "note": "her coat and the bench (her face and cup stay clear)"
+ },
+ {
+  "n": 92,
+  "hash8": "32e5db4c",
+  "size": "360x688",
+  "looked": "second",
+  "lang": "zu",
+  "line": "Amabhomu amancane eqhwa ayawa. Icebo linye kuphela: hlala ngaphakathi.",
+  "verdict": "clear",
+  "note": "the road and the verge"
+ },
+ {
+  "n": 92,
+  "hash8": "32e5db4c",
+  "size": "414x715",
+  "looked": "open",
+  "lang": "xh",
+  "line": "Sisenokwenzeka isaqhwithi, asikaqinisekiswa. Hlala uphaphile.",
+  "verdict": "clear",
+  "note": "the road and the verge"
+ },
+ {
+  "n": 93,
+  "hash8": "3442cc22",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "Kunokuba nomoya onamandla ngamaxesha athile. Uqikelelo aluqinisekanga kule meko",
+  "verdict": "partly",
+  "note": "her hands holding her skirt (her face stays clear)"
+ },
+ {
+  "n": 94,
+  "hash8": "3975a423",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "'Siza kubona ukuba kukhangeleka njani' — yi-RSVP esemthethweni yoMzantsi Afrika.",
+  "verdict": "partly",
+  "note": "the lower half of the sheets on the line"
+ },
+ {
+  "n": 95,
+  "hash8": "3db700a6",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "zu",
+  "line": "Imvula iphendula wonke umshayeli waseNingizimu Afrika abe umfundi futhi. Ama-hazards avuliwe, isithunzi sicishiwe.",
+  "verdict": "partly",
+  "note": "her legs and the puddle (she stays clear from the waist up)"
+ },
+ {
+  "n": 96,
+  "hash8": "3edd5a2c",
+  "size": "320x488",
+  "looked": "small",
+  "lang": "xh",
+  "line": "Imizuzu emihlanu engaphezulu. Kulungile, elishumi. Kulungile, de ilanga lifike ebhedini.",
+  "verdict": "partly",
+  "note": "the blanket over the dog (its face at the card's top stays clear; the joke runs up under the header)"
+ },
+ {
+  "n": 96,
+  "hash8": "3edd5a2c",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "st",
+  "line": "Lehlwa dithabeng. Group e nngwe le e nngwe ya lelapa ya WhatsApp jwale e na le foto e tshoanang.",
+  "verdict": "partly",
+  "note": "the blanket over the dog's body (its face stays clear)"
+ },
+ {
+  "n": 97,
+  "hash8": "4073f1fd",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "st",
+  "line": "Letsatsi le le leng le phethahetseng le fanwe. Ha le fetisetswe. Le sebedise ka bohlale.",
+  "verdict": "partly",
+  "note": "the kids' legs and the lawn (faces stay clear)"
+ },
+ {
+  "n": 98,
+  "hash8": "43784257",
+  "size": "414x715",
+  "looked": "open",
+  "lang": "xh",
+  "line": "'Siza kubona ukuba kukhangeleka njani' — yi-RSVP esemthethweni yoMzantsi Afrika.",
+  "verdict": "clear",
+  "note": "the grass below the sheep; the sheep stay clear"
+ },
+ {
+  "n": 99,
+  "hash8": "44af2aeb",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "st",
+  "line": "Lehlwa dithabeng. Group e nngwe le e nngwe ya lelapa ya WhatsApp jwale e na le foto e tshoanang.",
+  "verdict": "partly",
+  "note": "the frosted table's ironwork (the sunglasses stay clear)"
+ },
+ {
+  "n": 100,
+  "hash8": "486fd16a",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "zu",
+  "line": "Imvula iphendula wonke umshayeli waseNingizimu Afrika abe umfundi futhi. Ama-hazards avuliwe, isithunzi sicishiwe.",
+  "verdict": "partly",
+  "note": "her hand on the wheel and her shoulder (her head stays clear)"
+ },
+ {
+  "n": 101,
+  "hash8": "52fb371c",
+  "size": "414x715",
+  "looked": "open",
+  "lang": "en",
+  "line": "That shade cloth has been drumming since breakfast and nobody can hear the television.",
+  "verdict": "clear",
+  "note": "the wall and road below the blowing shade cover"
+ },
+ {
+  "n": 102,
+  "hash8": "5306c059",
+  "size": "320x488",
+  "looked": "small",
+  "lang": "xh",
+  "line": "Kunokuba nomoya onamandla ngamaxesha athile. Uqikelelo aluqinisekanga kule meko",
+  "verdict": "partly",
+  "note": "the trampoline's lower half (the joke also runs up under the header)"
+ },
+ {
+  "n": 102,
+  "hash8": "5306c059",
+  "size": "360x688",
+  "looked": "second",
+  "lang": "st",
+  "line": "Ngaka ya Cape e ho di-round tsa hoseng. Ha ho hlokahale appointment, ka bomadimabe.",
+  "verdict": "partly",
+  "note": "the trampoline's lower frame under the first line (its net stays clear)"
+ },
+ {
+  "n": 102,
+  "hash8": "5306c059",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "Kunokuba nomoya onamandla ngamaxesha athile. Uqikelelo aluqinisekanga kule meko",
+  "verdict": "clear",
+  "note": "the lawn below the blown-over trampoline; the trampoline stays clear"
+ },
+ {
+  "n": 103,
+  "hash8": "5477e28c",
+  "size": "414x715",
+  "looked": "open",
+  "lang": "xh",
+  "line": "'Siza kubona ukuba kukhangeleka njani' — yi-RSVP esemthethweni yoMzantsi Afrika.",
+  "verdict": "clear",
+  "note": "the grass under the cloud base"
+ },
+ {
+  "n": 104,
+  "hash8": "552cf0a8",
+  "size": "360x688",
+  "looked": "small",
+  "lang": "zu",
+  "line": "Amabhomu amancane eqhwa ayawa. Icebo linye kuphela: hlala ngaphakathi.",
+  "verdict": "covers",
+  "note": "the blown-over chair and its cushion"
+ },
+ {
+  "n": 104,
+  "hash8": "552cf0a8",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "Sisenokwenzeka isaqhwithi, asikaqinisekiswa. Hlala uphaphile.",
+  "verdict": "covers",
+  "note": "the blown-over chair and its cushion on the grass"
+ },
+ {
+  "n": 105,
+  "hash8": "578472c5",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "Kunokuba nomoya onamandla ngamaxesha athile. Uqikelelo aluqinisekanga kule meko",
+  "verdict": "partly",
+  "note": "the kids' legs and the pavement (faces stay clear)"
+ },
+ {
+  "n": 106,
+  "hash8": "593bee14",
+  "size": "414x715",
+  "looked": "open",
+  "lang": "xh",
+  "line": "'Siza kubona ukuba kukhangeleka njani' — yi-RSVP esemthethweni yoMzantsi Afrika.",
+  "verdict": "clear",
+  "note": "the street and the pavement"
+ },
+ {
+  "n": 107,
+  "hash8": "5a08fa13",
+  "size": "360x688",
+  "looked": "third",
+  "lang": "zu",
+  "line": "Imvula iphendula wonke umshayeli waseNingizimu Afrika abe umfundi futhi. Ama-hazards avuliwe, isithunzi sicishiwe.",
+  "verdict": "clear",
+  "note": "the harbour wall and the boats; the two watchers stand just above the first line"
+ },
+ {
+  "n": 107,
+  "hash8": "5a08fa13",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "zu",
+  "line": "Imvula iphendula wonke umshayeli waseNingizimu Afrika abe umfundi futhi. Ama-hazards avuliwe, isithunzi sicishiwe.",
+  "verdict": "clear",
+  "note": "the harbour wall and the boats below the watchers (D's band reaches the wall); the wave and the two watchers stay clear"
+ },
+ {
+  "n": 108,
+  "hash8": "5ab21fef",
+  "size": "414x715",
+  "looked": "open",
+  "lang": "st",
+  "line": "Letsatsi le le leng le phethahetseng le fanwe. Ha le fetisetswe. Le sebedise ka bohlale.",
+  "verdict": "partly",
+  "note": "the dog's front paws under the first line (its head and body stay clear; D's joke never reached it)",
+  "band": [
+   175,
+   295
+  ]
+ },
+ {
+  "n": 109,
+  "hash8": "652cc55c",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "zu",
+  "line": "Imvula iphendula wonke umshayeli waseNingizimu Afrika abe umfundi futhi. Ama-hazards avuliwe, isithunzi sicishiwe.",
+  "verdict": "partly",
+  "note": "the kids' gumboots and the puddle (faces stay clear)"
+ },
+ {
+  "n": 110,
+  "hash8": "66854831",
+  "size": "414x715",
+  "looked": "open",
+  "lang": "xh",
+  "line": "Kunokuba nomoya onamandla ngamaxesha athile. Uqikelelo aluqinisekanga kule meko",
+  "verdict": "clear",
+  "note": "the garden below the washing"
+ },
+ {
+  "n": 111,
+  "hash8": "668c5587",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "st",
+  "line": "Letsatsi le le leng le phethahetseng le fanwe. Ha le fetisetswe. Le sebedise ka bohlale.",
+  "verdict": "covers",
+  "note": "dad's face under the first line (the kids' faces stay clear)"
+ },
+ {
+  "n": 112,
+  "hash8": "6d489d62",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "st",
+  "line": "Letsatsi le le leng le phethahetseng le fanwe. Ha le fetisetswe. Le sebedise ka bohlale.",
+  "verdict": "partly",
+  "note": "the team's knees and boots (faces and chips stay clear)"
+ },
+ {
+  "n": 113,
+  "hash8": "72425df6",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "Sisenokwenzeka isaqhwithi, asikaqinisekiswa. Hlala uphaphile.",
+  "verdict": "partly",
+  "note": "his legs and the dust (his face stays clear)"
+ },
+ {
+  "n": 114,
+  "hash8": "752ebaed",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "st",
+  "line": "Letsatsi le le leng le phethahetseng le fanwe. Ha le fetisetswe. Le sebedise ka bohlale.",
+  "verdict": "partly",
+  "note": "his shorts, legs and the foot of his bag (his head stays clear)"
+ },
+ {
+  "n": 115,
+  "hash8": "77077da4",
+  "size": "320x488",
+  "looked": "second",
+  "lang": "en",
+  "line": "That grey column is someone’s afternoon getting cancelled. Ours is next in line.",
+  "verdict": "clear",
+  "note": "the flooded road; the blown-over chair is cropped off this card"
+ },
+ {
+  "n": 115,
+  "hash8": "77077da4",
+  "size": "414x715",
+  "looked": "open",
+  "lang": "xh",
+  "line": "Sisenokwenzeka isaqhwithi, asikaqinisekiswa. Hlala uphaphile.",
+  "verdict": "covers",
+  "note": "the blown-over chair in the flooded road, wholly under the joke (D's joke only touched its backrest)",
+  "band": [
+   285,
+   370
+  ]
+ },
+ {
+  "n": 116,
+  "hash8": "7cd32257",
+  "size": "360x688",
+  "looked": "small",
+  "lang": "st",
+  "line": "Ngaka ya Cape e ho di-round tsa hoseng. Ha ho hlokahale appointment, ka bomadimabe.",
+  "verdict": "partly",
+  "note": "the cat's lower body and the wall (its face stays clear)"
+ },
+ {
+  "n": 116,
+  "hash8": "7cd32257",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "Kunokuba nomoya onamandla ngamaxesha athile. Uqikelelo aluqinisekanga kule meko",
+  "verdict": "clear",
+  "note": "the wall below the cat; its paws reach the first line's top"
+ },
+ {
+  "n": 117,
+  "hash8": "7da77729",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "st",
+  "line": "Letsatsi le le leng le phethahetseng le fanwe. Ha le fetisetswe. Le sebedise ka bohlale.",
+  "verdict": "partly",
+  "note": "his body, his beer and his legs (his face stays clear)"
+ },
+ {
+  "n": 118,
+  "hash8": "818a6e89",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "Sisenokwenzeka isaqhwithi, asikaqinisekiswa. Hlala uphaphile.",
+  "verdict": "partly",
+  "note": "the tarp and the bakkie (his head stays clear)"
+ },
+ {
+  "n": 119,
+  "hash8": "83e944cb",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "st",
+  "line": "Lehlwa dithabeng. Group e nngwe le e nngwe ya lelapa ya WhatsApp jwale e na le foto e tshoanang.",
+  "verdict": "partly",
+  "note": "the socks' toes and the rug (the rest of the socks and the heater stay clear)"
+ },
+ {
+  "n": 120,
+  "hash8": "853aefff",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "zu",
+  "line": "Imvula iphendula wonke umshayeli waseNingizimu Afrika abe umfundi futhi. Ama-hazards avuliwe, isithunzi sicishiwe.",
+  "verdict": "partly",
+  "note": "his legs, the skis and the splash (his face stays clear)"
+ },
+ {
+  "n": 121,
+  "hash8": "868fd901",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "zu",
+  "line": "Imvula iphendula wonke umshayeli waseNingizimu Afrika abe umfundi futhi. Ama-hazards avuliwe, isithunzi sicishiwe.",
+  "verdict": "partly",
+  "note": "the kids' legs, boots and the puddle (faces stay clear)"
+ },
+ {
+  "n": 122,
+  "hash8": "86ce321b",
+  "size": "414x715",
+  "looked": "open",
+  "lang": "zu",
+  "line": "Ama-hadedas amathathu, amagwababa amabili, nomuntu oyedwa oqhaqhazelayo endaweni yokuphakela izinyoni.",
+  "verdict": "clear",
+  "note": "the rugby field"
+ },
+ {
+  "n": 123,
+  "hash8": "8bc9f9cb",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "'Siza kubona ukuba kukhangeleka njani' — yi-RSVP esemthethweni yoMzantsi Afrika.",
+  "verdict": "partly",
+  "note": "the dogs' hind legs and the floor (their heads stay clear)"
+ },
+ {
+  "n": 124,
+  "hash8": "90566b9c",
+  "size": "360x688",
+  "looked": "third",
+  "lang": "zu",
+  "line": "Usuku olulodwa oluphelele lukhishiwe. Aludluliseleki. Lusebenzise ngokuhlakanipha.",
+  "verdict": "clear",
+  "note": "the floor below the walkers; their feet reach the top edge"
+ },
+ {
+  "n": 124,
+  "hash8": "90566b9c",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "st",
+  "line": "Letsatsi le le leng le phethahetseng le fanwe. Ha le fetisetswe. Le sebedise ka bohlale.",
+  "verdict": "clear",
+  "note": "the floor below the walkers (D's band reaches the floor); only their feet reach the first line's top"
+ },
+ {
+  "n": 125,
+  "hash8": "9124414f",
+  "size": "414x715",
+  "looked": "open",
+  "lang": "zu",
+  "line": "Imvula iphendula wonke umshayeli waseNingizimu Afrika abe umfundi futhi. Ama-hazards avuliwe, isithunzi sicishiwe.",
+  "verdict": "clear",
+  "note": "the rainy windscreen and the tail lights"
+ },
+ {
+  "n": 126,
+  "hash8": "9204050e",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "Kunokuba nomoya onamandla ngamaxesha athile. Uqikelelo aluqinisekanga kule meko",
+  "verdict": "partly",
+  "note": "his legs (his face stays clear)"
+ },
+ {
+  "n": 127,
+  "hash8": "92d7d25f",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "'Siza kubona ukuba kukhangeleka njani' — yi-RSVP esemthethweni yoMzantsi Afrika.",
+  "verdict": "partly",
+  "note": "the chameleon's curled tail (its head and body stay clear)",
+  "band": [
+   225,
+   305
+  ]
+ },
+ {
+  "n": 128,
+  "hash8": "94ea185a",
+  "size": "414x715",
+  "looked": "open",
+  "lang": "xh",
+  "line": "Kunokuba nomoya onamandla ngamaxesha athile. Uqikelelo aluqinisekanga kule meko",
+  "verdict": "clear",
+  "note": "the road below the jacaranda"
+ },
+ {
+  "n": 129,
+  "hash8": "9df3ba12",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "st",
+  "line": "Lehlwa dithabeng. Group e nngwe le e nngwe ya lelapa ya WhatsApp jwale e na le foto e tshoanang.",
+  "verdict": "clear",
+  "note": "the duvet's edge and the rug below the child; the child's face stays clear"
+ },
+ {
+  "n": 130,
+  "hash8": "a4e1da99",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "'Siza kubona ukuba kukhangeleka njani' — yi-RSVP esemthethweni yoMzantsi Afrika.",
+  "verdict": "partly",
+  "note": "her body, towel and the sunscreen (her face stays clear)"
+ },
+ {
+  "n": 131,
+  "hash8": "a9c1572f",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "st",
+  "line": "Letsatsi le le leng le phethahetseng le fanwe. Ha le fetisetswe. Le sebedise ka bohlale.",
+  "verdict": "partly",
+  "note": "their legs, the cool box and the floor (faces and laptops stay clear)"
+ },
+ {
+  "n": 132,
+  "hash8": "abf4cc94",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "'Siza kubona ukuba kukhangeleka njani' — yi-RSVP esemthethweni yoMzantsi Afrika.",
+  "verdict": "partly",
+  "note": "his jeans and the solar panels (his face stays clear)"
+ },
+ {
+  "n": 133,
+  "hash8": "add32aa8",
+  "size": "414x715",
+  "looked": "far",
+  "lang": "zu",
+  "line": "Ama-hadedas amathathu, amagwababa amabili, nomuntu oyedwa oqhaqhazelayo endaweni yokuphakela izinyoni.",
+  "verdict": "covers",
+  "note": "the dog on the lawn, wholly under the first lines (D's risen joke was at the top)",
+  "band": [
+   225,
+   295
+  ]
+ },
+ {
+  "n": 134,
+  "hash8": "ae7148dc",
+  "size": "360x688",
+  "looked": "small",
+  "lang": "st",
+  "line": "Letsatsi le le leng le phethahetseng le fanwe. Ha le fetisetswe. Le sebedise ka bohlale.",
+  "verdict": "partly",
+  "note": "the hadeda's legs, beak tip and the soil (its head stays clear)"
+ },
+ {
+  "n": 134,
+  "hash8": "ae7148dc",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "st",
+  "line": "Letsatsi le le leng le phethahetseng le fanwe. Ha le fetisetswe. Le sebedise ka bohlale.",
+  "verdict": "partly",
+  "note": "the hadeda's feet and the soil (its head and body stay clear)"
+ },
+ {
+  "n": 135,
+  "hash8": "afe79b6d",
+  "size": "360x688",
+  "looked": "second",
+  "lang": "st",
+  "line": "Ngaka ya Cape e ho di-round tsa hoseng. Ha ho hlokahale appointment, ka bomadimabe.",
+  "verdict": "clear",
+  "note": "the tipped bin and its litter; the three chasing it stay clear"
+ },
+ {
+  "n": 135,
+  "hash8": "afe79b6d",
+  "size": "414x715",
+  "looked": "far",
+  "lang": "xh",
+  "line": "Kunokuba nomoya onamandla ngamaxesha athile. Uqikelelo aluqinisekanga kule meko",
+  "verdict": "clear",
+  "note": "the path and the foot of the tipped bin; the three chasing the litter stay clear"
+ },
+ {
+  "n": 136,
+  "hash8": "b3e1239d",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "Sisenokwenzeka isaqhwithi, asikaqinisekiswa. Hlala uphaphile.",
+  "verdict": "partly",
+  "note": "their legs and the trolleys (faces stay clear)"
+ },
+ {
+  "n": 137,
+  "hash8": "b6dbfe87",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "st",
+  "line": "Lehlwa dithabeng. Group e nngwe le e nngwe ya lelapa ya WhatsApp jwale e na le foto e tshoanang.",
+  "verdict": "partly",
+  "note": "his blanket, the mug and the heater's foot (his face stays clear)"
+ },
+ {
+  "n": 138,
+  "hash8": "c049b4e6",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "st",
+  "line": "Lehlwa dithabeng. Group e nngwe le e nngwe ya lelapa ya WhatsApp jwale e na le foto e tshoanang.",
+  "verdict": "partly",
+  "note": "his jersey (his hands and face stay clear)"
+ },
+ {
+  "n": 139,
+  "hash8": "c652e583",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "zu",
+  "line": "Imvula iphendula wonke umshayeli waseNingizimu Afrika abe umfundi futhi. Ama-hazards avuliwe, isithunzi sicishiwe.",
+  "verdict": "covers",
+  "note": "the gumboots at the door"
+ },
+ {
+  "n": 140,
+  "hash8": "c7964542",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "'Siza kubona ukuba kukhangeleka njani' — yi-RSVP esemthethweni yoMzantsi Afrika.",
+  "verdict": "partly",
+  "note": "his legs and the umbrella in his hand (his head and back stay clear)"
+ },
+ {
+  "n": 141,
+  "hash8": "d09eebb8",
+  "size": "360x688",
+  "looked": "second",
+  "lang": "zu",
+  "line": "Amabhomu amancane eqhwa ayawa. Icebo linye kuphela: hlala ngaphakathi.",
+  "verdict": "clear",
+  "note": "the pitch and the lower stands below the lightning"
+ },
+ {
+  "n": 141,
+  "hash8": "d09eebb8",
+  "size": "414x715",
+  "looked": "open",
+  "lang": "xh",
+  "line": "Sisenokwenzeka isaqhwithi, asikaqinisekiswa. Hlala uphaphile.",
+  "verdict": "clear",
+  "note": "the pitch below the stands; the lightning stays clear"
+ },
+ {
+  "n": 142,
+  "hash8": "d3de1926",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "st",
+  "line": "Lehlwa dithabeng. Group e nngwe le e nngwe ya lelapa ya WhatsApp jwale e na le foto e tshoanang.",
+  "verdict": "covers",
+  "note": "the dog, wholly under the joke, and the man's legs (his face stays clear)"
+ },
+ {
+  "n": 143,
+  "hash8": "d5ba1f11",
+  "size": "360x688",
+  "looked": "second",
+  "lang": "zu",
+  "line": "Amabhomu amancane eqhwa ayawa. Icebo linye kuphela: hlala ngaphakathi.",
+  "verdict": "clear",
+  "note": "the dashboard below the phone; the phone and the lightning stay clear"
+ },
+ {
+  "n": 143,
+  "hash8": "d5ba1f11",
+  "size": "414x715",
+  "looked": "within",
+  "lang": "xh",
+  "line": "Sisenokwenzeka isaqhwithi, asikaqinisekiswa. Hlala uphaphile.",
+  "verdict": "clear",
+  "note": "the dashboard below the phone; the phone and the lightning stay clear"
+ },
+ {
+  "n": 144,
+  "hash8": "d656b20a",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "Kunokuba nomoya onamandla ngamaxesha athile. Uqikelelo aluqinisekanga kule meko",
+  "verdict": "partly",
+  "note": "the car door, the girl's legs and his legs (faces stay clear)"
+ },
+ {
+  "n": 145,
+  "hash8": "da3c8d03",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "Sisenokwenzeka isaqhwithi, asikaqinisekiswa. Hlala uphaphile.",
+  "verdict": "partly",
+  "note": "her legs and the leaves on the road (her face stays clear)"
+ },
+ {
+  "n": 146,
+  "hash8": "dac88237",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "Sisenokwenzeka isaqhwithi, asikaqinisekiswa. Hlala uphaphile.",
+  "verdict": "partly",
+  "note": "the dog's body and paws (its face stays just clear)"
+ },
+ {
+  "n": 147,
+  "hash8": "dc5ec5c7",
+  "size": "414x715",
+  "looked": "open",
+  "lang": "zu",
+  "line": "Imvula iphendula wonke umshayeli waseNingizimu Afrika abe umfundi futhi. Ama-hazards avuliwe, isithunzi sicishiwe.",
+  "verdict": "partly",
+  "note": "the fern's pot, overflowing, under the first line (the fern stays clear; D's joke sat lower)",
+  "band": [
+   245,
+   335
+  ]
+ },
+ {
+  "n": 148,
+  "hash8": "dde50ae6",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "st",
+  "line": "Letsatsi le le leng le phethahetseng le fanwe. Ha le fetisetswe. Le sebedise ka bohlale.",
+  "verdict": "partly",
+  "note": "the sunglasses and the glass's foot (the glass stays clear)"
+ },
+ {
+  "n": 149,
+  "hash8": "df3033af",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "Kunokuba nomoya onamandla ngamaxesha athile. Uqikelelo aluqinisekanga kule meko",
+  "verdict": "partly",
+  "note": "her legs, the lawn and the braai (her face and basket stay clear)"
+ },
+ {
+  "n": 150,
+  "hash8": "e3f7fefc",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "Sisenokwenzeka isaqhwithi, asikaqinisekiswa. Hlala uphaphile.",
+  "verdict": "partly",
+  "note": "the surfer's legs and the beach (his body and board stay clear)"
+ },
+ {
+  "n": 151,
+  "hash8": "e617f182",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "zu",
+  "line": "Imvula iphendula wonke umshayeli waseNingizimu Afrika abe umfundi futhi. Ama-hazards avuliwe, isithunzi sicishiwe.",
+  "verdict": "partly",
+  "note": "the cat's paws and lower body in the puddle (its face stays clear)"
+ },
+ {
+  "n": 152,
+  "hash8": "e69199a6",
+  "size": "414x715",
+  "looked": "far",
+  "lang": "st",
+  "line": "Lehlwa dithabeng. Group e nngwe le e nngwe ya lelapa ya WhatsApp jwale e na le foto e tshoanang.",
+  "verdict": "clear",
+  "note": "the doormat below the dog; the dog stays clear"
+ },
+ {
+  "n": 153,
+  "hash8": "e6cf9290",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "st",
+  "line": "Letsatsi le le leng le phethahetseng le fanwe. Ha le fetisetswe. Le sebedise ka bohlale.",
+  "verdict": "partly",
+  "note": "the hadeda's legs and the lawn (its body and head stay clear)"
+ },
+ {
+  "n": 154,
+  "hash8": "ea93fbda",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "zu",
+  "line": "Imvula iphendula wonke umshayeli waseNingizimu Afrika abe umfundi futhi. Ama-hazards avuliwe, isithunzi sicishiwe.",
+  "verdict": "partly",
+  "note": "the kids' bodies and the mother's jacket (every face stays clear; the boy's just)"
+ },
+ {
+  "n": 155,
+  "hash8": "eb699c28",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "st",
+  "line": "Letsatsi le le leng le phethahetseng le fanwe. Ha le fetisetswe. Le sebedise ka bohlale.",
+  "verdict": "partly",
+  "note": "their aprons, hands and the braai tongs (faces stay clear)"
+ },
+ {
+  "n": 156,
+  "hash8": "ee678255",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "'Siza kubona ukuba kukhangeleka njani' — yi-RSVP esemthethweni yoMzantsi Afrika.",
+  "verdict": "partly",
+  "note": "the runner's legs (her face and body stay clear)"
+ },
+ {
+  "n": 157,
+  "hash8": "f0aee457",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "zu",
+  "line": "Imvula iphendula wonke umshayeli waseNingizimu Afrika abe umfundi futhi. Ama-hazards avuliwe, isithunzi sicishiwe.",
+  "verdict": "covers",
+  "note": "the shoes on the mat and the foot of the wet jacket"
+ },
+ {
+  "n": 158,
+  "hash8": "f4ea0b14",
+  "size": "414x715",
+  "looked": "open",
+  "lang": "xh",
+  "line": "'Siza kubona ukuba kukhangeleka njani' — yi-RSVP esemthethweni yoMzantsi Afrika.",
+  "verdict": "clear",
+  "note": "the ground below the dog; its chin and paws graze the first line's top (under D's 40 px)"
+ },
+ {
+  "n": 159,
+  "hash8": "f59b6f76",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "zu",
+  "line": "Imvula iphendula wonke umshayeli waseNingizimu Afrika abe umfundi futhi. Ama-hazards avuliwe, isithunzi sicishiwe.",
+  "verdict": "partly",
+  "note": "their bodies from the chest down (faces stay clear)"
+ },
+ {
+  "n": 160,
+  "hash8": "fc5b0a6e",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "'Siza kubona ukuba kukhangeleka njani' — yi-RSVP esemthethweni yoMzantsi Afrika.",
+  "verdict": "partly",
+  "note": "his shorts, legs and the mower (his face stays clear)"
+ },
+ {
+  "n": 161,
+  "hash8": "fed27f42",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "st",
+  "line": "Letsatsi le le leng le phethahetseng le fanwe. Ha le fetisetswe. Le sebedise ka bohlale.",
+  "verdict": "partly",
+  "note": "their hands, the flask and the cup, and their laps (faces stay clear)"
+ },
+ {
+  "n": 162,
+  "hash8": "0cf2acaa",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "Imizuzu emihlanu yokubukela iinkwenkwezi. Emva koko ubaleka ubuyele ngaphakathi. Sisivumelwano eso.",
+  "verdict": "partly",
+  "note": "the torch, the book's foot and his legs (his face stays clear)"
+ },
+ {
+  "n": 163,
+  "hash8": "544c1615",
+  "size": "360x688",
+  "looked": "second",
+  "lang": "zu",
+  "line": "Ndawana ngaphansi kwalezo zinkanyezi, umuntu uhamba ngamazwane engagqokile eya endlini yangasese. Amandla.",
+  "verdict": "partly",
+  "note": "the lantern, the table and their laps (faces stay clear)"
+ },
+ {
+  "n": 163,
+  "hash8": "544c1615",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "Imizuzu emihlanu yokubukela iinkwenkwezi. Emva koko ubaleka ubuyele ngaphakathi. Sisivumelwano eso.",
+  "verdict": "partly",
+  "note": "the lantern, the table and their laps (faces stay clear)",
+  "band": [
+   224,
+   350
+  ]
+ },
+ {
+  "n": 164,
+  "hash8": "5557eb34",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "Imizuzu emihlanu yokubukela iinkwenkwezi. Emva koko ubaleka ubuyele ngaphakathi. Sisivumelwano eso.",
+  "verdict": "partly",
+  "note": "his legs and the pot plant (his head stays clear)"
+ },
+ {
+  "n": 165,
+  "hash8": "5df9bca2",
+  "size": "360x688",
+  "looked": "small",
+  "lang": "zu",
+  "line": "Ndawana ngaphansi kwalezo zinkanyezi, umuntu uhamba ngamazwane engagqokile eya endlini yangasese. Amandla.",
+  "verdict": "partly",
+  "note": "the cat's curled body (its face stays clear)"
+ },
+ {
+  "n": 165,
+  "hash8": "5df9bca2",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "Imizuzu emihlanu yokubukela iinkwenkwezi. Emva koko ubaleka ubuyele ngaphakathi. Sisivumelwano eso.",
+  "verdict": "partly",
+  "note": "the cat's curled body and tail (its face stays clear; D's band stops above them)"
+ },
+ {
+  "n": 166,
+  "hash8": "6e0d76c6",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "Imizuzu emihlanu yokubukela iinkwenkwezi. Emva koko ubaleka ubuyele ngaphakathi. Sisivumelwano eso.",
+  "verdict": "partly",
+  "note": "his legs and the deck chair (his face stays clear)"
+ },
+ {
+  "n": 167,
+  "hash8": "96829ba0",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "Imizuzu emihlanu yokubukela iinkwenkwezi. Emva koko ubaleka ubuyele ngaphakathi. Sisivumelwano eso.",
+  "verdict": "partly",
+  "note": "the braai fire, the table and the right man's legs (their heads stay clear)"
+ },
+ {
+  "n": 168,
+  "hash8": "4f833d5c",
+  "size": "320x488",
+  "looked": "second",
+  "lang": "en",
+  "line": "Flat grey light, no glare, no wind: perfect painting weather, and he knows it.",
+  "verdict": "partly",
+  "note": "his paint-splashed jacket and the ladder (his face, under the header, stays clear)",
+  "band": [
+   60,
+   190
+  ]
+ },
+ {
+  "n": 168,
+  "hash8": "4f833d5c",
+  "size": "414x715",
+  "looked": "open",
+  "lang": "st",
+  "line": "Maru hanyane, letsatsi hanyane. Karolelano ya tsona ke kgakanyo ya mang kapa mang.",
+  "verdict": "clear",
+  "note": "his legs and the ladder, as under D's joke (D judged these clear); his face and the brush stay clear"
+ },
+ {
+  "n": 169,
+  "hash8": "791e756e",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "Akukho zifoto zokutshona kwelanga ngokuhlwanje. Ii-privacy settings zesibhakabhaka zivuliwe.",
+  "verdict": "partly",
+  "note": "the bicycle and his legs (his face and jersey stay clear)"
+ },
+ {
+  "n": 170,
+  "hash8": "00989238",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "st",
+  "line": "Hobaneng wena-wa-nakong-e-fetileng o entse merero? Wena-wa-nakong-e-fetileng o mobe.",
+  "verdict": "partly",
+  "note": "the sheep and the foot of the farmer's coat (his head stays clear)"
+ },
+ {
+  "n": 171,
+  "hash8": "01082a85",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "Kunokuba nomoya onamandla ngamaxesha athile. Uqikelelo aluqinisekanga kule meko",
+  "verdict": "covers",
+  "note": "the nearest seagull, under the first line (the line of gulls behind stays clear)"
+ },
+ {
+  "n": 172,
+  "hash8": "015fe1a7",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "st",
+  "line": "Letsatsi le le leng le phethahetseng le fanwe. Ha le fetisetswe. Le sebedise ka bohlale.",
+  "verdict": "clear",
+  "note": "the roof below the hadeda; the hadeda stays clear"
+ },
+ {
+  "n": 173,
+  "hash8": "03b8d3e5",
+  "size": "360x688",
+  "looked": "second",
+  "lang": "zu",
+  "line": "Amabhomu amancane eqhwa ayawa. Icebo linye kuphela: hlala ngaphakathi.",
+  "verdict": "clear",
+  "note": "the flooded street and the parked cars below the lightning"
+ },
+ {
+  "n": 173,
+  "hash8": "03b8d3e5",
+  "size": "414x715",
+  "looked": "open",
+  "lang": "xh",
+  "line": "Sisenokwenzeka isaqhwithi, asikaqinisekiswa. Hlala uphaphile.",
+  "verdict": "clear",
+  "note": "the flooded street and the car below the lightning"
+ },
+ {
+  "n": 174,
+  "hash8": "10fb7ce7",
+  "size": "414x715",
+  "looked": "open",
+  "lang": "zu",
+  "line": "Ama-hadedas amathathu, amagwababa amabili, nomuntu oyedwa oqhaqhazelayo endaweni yokuphakela izinyoni.",
+  "verdict": "clear",
+  "note": "the windpump's legs and the veld, as under D's joke (the wheel stays clear)"
+ },
+ {
+  "n": 175,
+  "hash8": "135baf75",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "Sisenokwenzeka isaqhwithi, asikaqinisekiswa. Hlala uphaphile.",
+  "verdict": "partly",
+  "note": "their hands and the rug, the dog under the bed at the top edge (faces stay clear)"
+ },
+ {
+  "n": 176,
+  "hash8": "13b538b6",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "st",
+  "line": "Hobaneng wena-wa-nakong-e-fetileng o entse merero? Wena-wa-nakong-e-fetileng o mobe.",
+  "verdict": "clear",
+  "note": "the lawn below the dog; its paws reach the top edge"
+ },
+ {
+  "n": 177,
+  "hash8": "16417b9d",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "zu",
+  "line": "Ama-hadedas amathathu, amagwababa amabili, nomuntu oyedwa oqhaqhazelayo endaweni yokuphakela izinyoni.",
+  "verdict": "covers",
+  "note": "the nearest frosted wheelie bins"
+ },
+ {
+  "n": 178,
+  "hash8": "1694b4ae",
+  "size": "414x715",
+  "looked": "far",
+  "lang": "st",
+  "line": "Maru hanyane, letsatsi hanyane. Karolelano ya tsona ke kgakanyo ya mang kapa mang.",
+  "verdict": "partly",
+  "note": "the runner's legs and the street (her head stays clear; D's risen joke was on it)",
+  "band": [
+   250,
+   400
+  ]
+ },
+ {
+  "n": 179,
+  "hash8": "1dc5c3cf",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "st",
+  "line": "Mohodi o ntse o eketseha, mohlomong. Ho bulela mabone a koloi ho ke ke ha senya letho.",
+  "verdict": "partly",
+  "note": "the cow's legs and the grass (its face stays clear)"
+ },
+ {
+  "n": 180,
+  "hash8": "26beb874",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "zu",
+  "line": "Ama-hadedas amathathu, amagwababa amabili, nomuntu oyedwa oqhaqhazelayo endaweni yokuphakela izinyoni.",
+  "verdict": "partly",
+  "note": "the bicycle and the cyclist's legs (his head stays clear)"
+ },
+ {
+  "n": 181,
+  "hash8": "2e3fe554",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "zu",
+  "line": "Ama-hadedas amathathu, amagwababa amabili, nomuntu oyedwa oqhaqhazelayo endaweni yokuphakela izinyoni.",
+  "verdict": "partly",
+  "note": "the hadeda's legs, under the first line (its body and head stay clear)"
+ },
+ {
+  "n": 182,
+  "hash8": "39021494",
+  "size": "414x715",
+  "looked": "open",
+  "lang": "xh",
+  "line": "Kunokuba nomoya onamandla ngamaxesha athile. Uqikelelo aluqinisekanga kule meko",
+  "verdict": "clear",
+  "note": "the houses and sunbeams below the palm"
+ },
+ {
+  "n": 183,
+  "hash8": "3d5ba6fd",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "Ngentsimbi yeshumi elinesibini la manzi abushushu njengawokuhlamba. Ceba ngokufanelekileyo.",
+  "verdict": "clear",
+  "note": "the pool wall below the dog; the float and its paws graze the first line (under D's 40 px), the dog stays clear"
+ },
+ {
+  "n": 184,
+  "hash8": "44786fa8",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "st",
+  "line": "Letsatsi le le leng le phethahetseng le fanwe. Ha le fetisetswe. Le sebedise ka bohlale.",
+  "verdict": "partly",
+  "note": "the kids' legs and the pavement (faces stay clear)"
+ },
+ {
+  "n": 185,
+  "hash8": "4c12a169",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "Ngentsimbi yeshumi elinesibini la manzi abushushu njengawokuhlamba. Ceba ngokufanelekileyo.",
+  "verdict": "partly",
+  "note": "the joggers' legs (faces stay clear)"
+ },
+ {
+  "n": 186,
+  "hash8": "51b110e0",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "zu",
+  "line": "Ama-hadedas amathathu, amagwababa amabili, nomuntu oyedwa oqhaqhazelayo endaweni yokuphakela izinyoni.",
+  "verdict": "partly",
+  "note": "the kids' bodies and the frosted car (every face stays clear)"
+ },
+ {
+  "n": 187,
+  "hash8": "56b235bb",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "Ngentsimbi yeshumi elinesibini la manzi abushushu njengawokuhlamba. Ceba ngokufanelekileyo.",
+  "verdict": "partly",
+  "note": "his legs in the pool (his body and face stay clear)"
+ },
+ {
+  "n": 188,
+  "hash8": "5f26348d",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "st",
+  "line": "Maru hanyane, letsatsi hanyane. Karolelano ya tsona ke kgakanyo ya mang kapa mang.",
+  "verdict": "partly",
+  "note": "the boat's hull and the men's waders (faces stay clear)"
+ },
+ {
+  "n": 189,
+  "hash8": "628d097a",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "st",
+  "line": "Hobaneng wena-wa-nakong-e-fetileng o entse merero? Wena-wa-nakong-e-fetileng o mobe.",
+  "verdict": "partly",
+  "note": "the frosted car's bonnet and front (its windscreen stays clear)"
+ },
+ {
+  "n": 190,
+  "hash8": "6464ed68",
+  "size": "414x715",
+  "looked": "open",
+  "lang": "xh",
+  "line": "Kwenye indawo iambrela isand’ ukujikwa ngumoya ngaphakathi ngaphandle. Umzuzu wokuthi cwaka.",
+  "verdict": "clear",
+  "note": "the wet street; the far cyclist sits just above the first line"
+ },
+ {
+  "n": 191,
+  "hash8": "64a6c1aa",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "st",
+  "line": "Letsatsi le le leng le phethahetseng le fanwe. Ha le fetisetswe. Le sebedise ka bohlale.",
+  "verdict": "partly",
+  "note": "his legs, the hose and the spray (his face stays clear)"
+ },
+ {
+  "n": 192,
+  "hash8": "691f6997",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "af",
+  "line": "Die den agter hom is heeltemal oorgebuig, so dit was nooit 'n regverdige wedstryd nie.",
+  "verdict": "partly",
+  "note": "his legs and the blowing braai cover (his face stays clear)"
+ },
+ {
+  "n": 193,
+  "hash8": "6a8154f7",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "st",
+  "line": "Letsatsi le le leng le phethahetseng le fanwe. Ha le fetisetswe. Le sebedise ka bohlale.",
+  "verdict": "clear",
+  "note": "the stoep's balustrade and the houses below; the woman grazes the top edge (under D's 40 px)"
+ },
+ {
+  "n": 194,
+  "hash8": "6c2fdfff",
+  "size": "414x715",
+  "looked": "far",
+  "lang": "st",
+  "line": "Maru hanyane, letsatsi hanyane. Karolelano ya tsona ke kgakanyo ya mang kapa mang.",
+  "verdict": "clear",
+  "note": "the coastal path below the runner; her shoes graze the top edge"
+ },
+ {
+  "n": 195,
+  "hash8": "6eba2bcf",
+  "size": "414x715",
+  "looked": "open",
+  "lang": "st",
+  "line": "Mohodi o ntse o eketseha, mohlomong. Ho bulela mabone a koloi ho ke ke ha senya letho.",
+  "verdict": "clear",
+  "note": "the fog below the window's beam"
+ },
+ {
+  "n": 196,
+  "hash8": "79b25525",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "st",
+  "line": "Mohodi o ntse o eketseha, mohlomong. Ho bulela mabone a koloi ho ke ke ha senya letho.",
+  "verdict": "partly",
+  "note": "the child's legs (his face, vest and bag stay clear)"
+ },
+ {
+  "n": 197,
+  "hash8": "8051f1c3",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "Sisenokwenzeka isaqhwithi, asikaqinisekiswa. Hlala uphaphile.",
+  "verdict": "partly",
+  "note": "his shorts and hands on his hips (his face stays clear)"
+ },
+ {
+  "n": 198,
+  "hash8": "80639465",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "Kwenye indawo iambrela isand’ ukujikwa ngumoya ngaphakathi ngaphandle. Umzuzu wokuthi cwaka.",
+  "verdict": "partly",
+  "note": "the farmhouse's stoep and lower walls under the first line (its roof and the windmill stay clear)"
+ },
+ {
+  "n": 199,
+  "hash8": "82ab32f7",
+  "size": "360x688",
+  "looked": "second",
+  "lang": "zu",
+  "line": "Amabhomu amancane eqhwa ayawa. Icebo linye kuphela: hlala ngaphakathi.",
+  "verdict": "clear",
+  "note": "the traffic, as D judged it clear"
+ },
+ {
+  "n": 199,
+  "hash8": "82ab32f7",
+  "size": "414x715",
+  "looked": "open",
+  "lang": "xh",
+  "line": "Sisenokwenzeka isaqhwithi, asikaqinisekiswa. Hlala uphaphile.",
+  "verdict": "clear",
+  "note": "the traffic, as under D's joke (D judged it clear)"
+ },
+ {
+  "n": 200,
+  "hash8": "844ccaf4",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "Ngentsimbi yeshumi elinesibini la manzi abushushu njengawokuhlamba. Ceba ngokufanelekileyo.",
+  "verdict": "covers",
+  "note": "the egg frying on the bonnet"
+ },
+ {
+  "n": 201,
+  "hash8": "86e55c0d",
+  "size": "360x688",
+  "looked": "second",
+  "lang": "zu",
+  "line": "Amabhomu amancane eqhwa ayawa. Icebo linye kuphela: hlala ngaphakathi.",
+  "verdict": "clear",
+  "note": "the field and the windmill's base"
+ },
+ {
+  "n": 201,
+  "hash8": "86e55c0d",
+  "size": "414x715",
+  "looked": "open",
+  "lang": "xh",
+  "line": "Sisenokwenzeka isaqhwithi, asikaqinisekiswa. Hlala uphaphile.",
+  "verdict": "clear",
+  "note": "the field and the windmill's base, as under D's joke"
+ },
+ {
+  "n": 202,
+  "hash8": "88ab478a",
+  "size": "360x688",
+  "looked": "second",
+  "lang": "st",
+  "line": "Letamo le ne le tebile ho feta kamoo le neng le shebahala kateng. Le dula le tebile.",
+  "verdict": "clear",
+  "note": "the wet road and the tail lights through the wiper"
+ },
+ {
+  "n": 202,
+  "hash8": "88ab478a",
+  "size": "414x715",
+  "looked": "open",
+  "lang": "xh",
+  "line": "Kwenye indawo iambrela isand’ ukujikwa ngumoya ngaphakathi ngaphandle. Umzuzu wokuthi cwaka.",
+  "verdict": "clear",
+  "note": "the wet road and the tail lights through the wiper, as under D's joke"
+ },
+ {
+  "n": 203,
+  "hash8": "88f884c9",
+  "size": "414x715",
+  "looked": "open",
+  "lang": "st",
+  "line": "Mohodi o ntse o eketseha, mohlomong. Ho bulela mabone a koloi ho ke ke ha senya letho.",
+  "verdict": "partly",
+  "note": "the runner's legs under the first two lines (seen from behind; D's risen joke was above her)",
+  "band": [
+   190,
+   355
+  ]
+ },
+ {
+  "n": 204,
+  "hash8": "922d1f4d",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "st",
+  "line": "Maru hanyane, letsatsi hanyane. Karolelano ya tsona ke kgakanyo ya mang kapa mang.",
+  "verdict": "partly",
+  "note": "the boy's legs (his face and hands stay clear)"
+ },
+ {
+  "n": 205,
+  "hash8": "93f23aa6",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "zu",
+  "line": "Ama-hadedas amathathu, amagwababa amabili, nomuntu oyedwa oqhaqhazelayo endaweni yokuphakela izinyoni.",
+  "verdict": "partly",
+  "note": "his legs and the hillside (his head stays clear)"
+ },
+ {
+  "n": 206,
+  "hash8": "9728190b",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "Kunokuba nomoya onamandla ngamaxesha athile. Uqikelelo aluqinisekanga kule meko",
+  "verdict": "partly",
+  "note": "her legs (her face stays clear)"
+ },
+ {
+  "n": 207,
+  "hash8": "9864fb8d",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "st",
+  "line": "Letsatsi le le leng le phethahetseng le fanwe. Ha le fetisetswe. Le sebedise ka bohlale.",
+  "verdict": "clear",
+  "note": "the wet sand below the surfer; his feet graze the top edge"
+ },
+ {
+  "n": 208,
+  "hash8": "9aef9333",
+  "size": "414x715",
+  "looked": "open",
+  "lang": "xh",
+  "line": "Ngentsimbi yeshumi elinesibini la manzi abushushu njengawokuhlamba. Ceba ngokufanelekileyo.",
+  "verdict": "partly",
+  "note": "the dog's body and front paws under the first line (its face stays clear; D's risen joke was above it)",
+  "band": [
+   165,
+   320
+  ]
+ },
+ {
+  "n": 209,
+  "hash8": "9e79cedf",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "Ngentsimbi yeshumi elinesibini la manzi abushushu njengawokuhlamba. Ceba ngokufanelekileyo.",
+  "verdict": "partly",
+  "note": "the cat's hind legs and tail on the sill (its face stays clear)"
+ },
+ {
+  "n": 210,
+  "hash8": "9ef8811a",
+  "size": "360x688",
+  "looked": "small",
+  "lang": "st",
+  "line": "Letamo le ne le tebile ho feta kamoo le neng le shebahala kateng. Le dula le tebile.",
+  "verdict": "partly",
+  "note": "the first line runs through the mug"
+ },
+ {
+  "n": 210,
+  "hash8": "9ef8811a",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "Kwenye indawo iambrela isand’ ukujikwa ngumoya ngaphakathi ngaphandle. Umzuzu wokuthi cwaka.",
+  "verdict": "partly",
+  "note": "the first line runs through the mug's lower half"
+ },
+ {
+  "n": 211,
+  "hash8": "aaaf3c5a",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "zu",
+  "line": "Ama-hadedas amathathu, amagwababa amabili, nomuntu oyedwa oqhaqhazelayo endaweni yokuphakela izinyoni.",
+  "verdict": "clear",
+  "note": "the frosty verge below the guinea fowl; their feet graze the first line (under D's 40 px)"
+ },
+ {
+  "n": 212,
+  "hash8": "afa49b48",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "Kwenye indawo iambrela isand’ ukujikwa ngumoya ngaphakathi ngaphandle. Umzuzu wokuthi cwaka.",
+  "verdict": "partly",
+  "note": "the kids' legs and boots (faces and umbrella stay clear)"
+ },
+ {
+  "n": 213,
+  "hash8": "b57f33b4",
+  "size": "360x688",
+  "looked": "second",
+  "lang": "st",
+  "line": "Dikgomo di tseba hantle moo di leng teng. Ho fetang seo rona kaofela re ka se bolelang.",
+  "verdict": "clear",
+  "note": "the grass below the cattle; their legs graze the first line"
+ },
+ {
+  "n": 213,
+  "hash8": "b57f33b4",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "st",
+  "line": "Mohodi o ntse o eketseha, mohlomong. Ho bulela mabone a koloi ho ke ke ha senya letho.",
+  "verdict": "clear",
+  "note": "the grass below the cattle"
+ },
+ {
+  "n": 214,
+  "hash8": "b7b5166f",
+  "size": "414x715",
+  "looked": "far",
+  "lang": "st",
+  "line": "Hobaneng wena-wa-nakong-e-fetileng o entse merero? Wena-wa-nakong-e-fetileng o mobe.",
+  "verdict": "covers",
+  "note": "the two steaming mugs on the wall, under the first line (D's band was the chimney smoke, where its risen joke sat)",
+  "band": [
+   272,
+   322
+  ]
+ },
+ {
+  "n": 215,
+  "hash8": "b9211ac2",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "af",
+  "line": "Daar is meer pennetjies op daardie draad as wat die wasgoed nodig het, en sy weet hoekom.",
+  "verdict": "partly",
+  "note": "her skirt and legs (her face and the washing stay clear)"
+ },
+ {
+  "n": 216,
+  "hash8": "bbba6c12",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "st",
+  "line": "Hobaneng wena-wa-nakong-e-fetileng o entse merero? Wena-wa-nakong-e-fetileng o mobe.",
+  "verdict": "partly",
+  "note": "the mother's hands at the zip and the boy's jacket (both faces stay clear)"
+ },
+ {
+  "n": 217,
+  "hash8": "c19d5809",
+  "size": "320x488",
+  "looked": "small",
+  "lang": "xh",
+  "line": "Ngentsimbi yeshumi elinesibini la manzi abushushu njengawokuhlamba. Ceba ngokufanelekileyo.",
+  "verdict": "covers",
+  "note": "the sprinkler: the joke covers all 27 px of photograph left below the header, and runs into it"
+ },
+ {
+  "n": 217,
+  "hash8": "c19d5809",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "Ngentsimbi yeshumi elinesibini la manzi abushushu njengawokuhlamba. Ceba ngokufanelekileyo.",
+  "verdict": "covers",
+  "note": "the sprinkler and its spray"
+ },
+ {
+  "n": 218,
+  "hash8": "c697bc07",
+  "size": "414x715",
+  "looked": "open",
+  "lang": "st",
+  "line": "Mohodi o ntse o eketseha, mohlomong. Ho bulela mabone a koloi ho ke ke ha senya letho.",
+  "verdict": "clear",
+  "note": "the road and the field below the gum trees"
+ },
+ {
+  "n": 219,
+  "hash8": "d25fb115",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "Sisenokwenzeka isaqhwithi, asikaqinisekiswa. Hlala uphaphile.",
+  "verdict": "partly",
+  "note": "the foot of her gown and the garden (her face and mug stay clear)"
+ },
+ {
+  "n": 220,
+  "hash8": "d26fb6bb",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "Sisenokwenzeka isaqhwithi, asikaqinisekiswa. Hlala uphaphile.",
+  "verdict": "partly",
+  "note": "the dust behind the bakkie; the bakkie itself sits just above the first line"
+ },
+ {
+  "n": 221,
+  "hash8": "d411804a",
+  "size": "414x715",
+  "looked": "open",
+  "lang": "st",
+  "line": "Maru hanyane, letsatsi hanyane. Karolelano ya tsona ke kgakanyo ya mang kapa mang.",
+  "verdict": "clear",
+  "note": "the road through the dunes"
+ },
+ {
+  "n": 222,
+  "hash8": "d8d6e0e7",
+  "size": "360x688",
+  "looked": "second",
+  "lang": "st",
+  "line": "Letamo le ne le tebile ho feta kamoo le neng le shebahala kateng. Le dula le tebile.",
+  "verdict": "clear",
+  "note": "the flooded yard below the gate"
+ },
+ {
+  "n": 222,
+  "hash8": "d8d6e0e7",
+  "size": "414x715",
+  "looked": "open",
+  "lang": "xh",
+  "line": "Kwenye indawo iambrela isand’ ukujikwa ngumoya ngaphakathi ngaphandle. Umzuzu wokuthi cwaka.",
+  "verdict": "clear",
+  "note": "the flooded yard and the windpump's reflection below the gate"
+ },
+ {
+  "n": 223,
+  "hash8": "e93354d9",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "st",
+  "line": "Hobaneng wena-wa-nakong-e-fetileng o entse merero? Wena-wa-nakong-e-fetileng o mobe.",
+  "verdict": "partly",
+  "note": "the SUV's front wheel, bumper and the paving (its frosted windscreen stays clear)"
+ },
+ {
+  "n": 224,
+  "hash8": "ebd82e69",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "Kwenye indawo iambrela isand’ ukujikwa ngumoya ngaphakathi ngaphandle. Umzuzu wokuthi cwaka.",
+  "verdict": "partly",
+  "note": "their legs, skirts and the car's nose (faces stay clear)"
+ },
+ {
+  "n": 225,
+  "hash8": "ebf8739c",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "Kunokuba nomoya onamandla ngamaxesha athile. Uqikelelo aluqinisekanga kule meko",
+  "verdict": "partly",
+  "note": "the runner's legs and the promenade (her face and body stay clear)"
+ },
+ {
+  "n": 226,
+  "hash8": "f0a699d8",
+  "size": "414x715",
+  "looked": "open",
+  "lang": "st",
+  "line": "Mohodi o ntse o eketseha, mohlomong. Ho bulela mabone a koloi ho ke ke ha senya letho.",
+  "verdict": "clear",
+  "note": "the foggy street below the lamps"
+ },
+ {
+  "n": 227,
+  "hash8": "f26595a6",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "st",
+  "line": "Letsatsi le le leng le phethahetseng le fanwe. Ha le fetisetswe. Le sebedise ka bohlale.",
+  "verdict": "partly",
+  "note": "the runners' legs and the promenade (faces stay clear)"
+ },
+ {
+  "n": 228,
+  "hash8": "f60a4033",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "Kunokuba nomoya onamandla ngamaxesha athile. Uqikelelo aluqinisekanga kule meko",
+  "verdict": "partly",
+  "note": "the runners' feet and the wet promenade (faces stay clear)"
+ },
+ {
+  "n": 229,
+  "hash8": "f644b0ec",
+  "size": "414x715",
+  "looked": "open",
+  "lang": "st",
+  "line": "Letsatsi le le leng le phethahetseng le fanwe. Ha le fetisetswe. Le sebedise ka bohlale.",
+  "verdict": "partly",
+  "note": "the sleeping dog's muzzle and front legs (its eyes and body stay clear; D's risen joke was above it)",
+  "band": [
+   185,
+   330
+  ]
+ },
+ {
+  "n": 230,
+  "hash8": "0051649d",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "zu",
+  "line": "Ama-hadedas amathathu, amagwababa amabili, nomuntu oyedwa oqhaqhazelayo endaweni yokuphakela izinyoni.",
+  "verdict": "partly",
+  "note": "the dog's body (its head stays clear)"
+ },
+ {
+  "n": 231,
+  "hash8": "012477e2",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "Sisenokwenzeka isaqhwithi, asikaqinisekiswa. Hlala uphaphile.",
+  "verdict": "partly",
+  "note": "her shoulders and the balcony (her head stays clear)"
+ },
+ {
+  "n": 232,
+  "hash8": "01edf502",
+  "size": "414x715",
+  "looked": "open",
+  "lang": "xh",
+  "line": "Akukho zifoto zokutshona kwelanga ngokuhlwanje. Ii-privacy settings zesibhakabhaka zivuliwe.",
+  "verdict": "clear",
+  "note": "the town's rooftops"
+ },
+ {
+  "n": 233,
+  "hash8": "05a3ab4a",
+  "size": "360x688",
+  "looked": "second",
+  "lang": "zu",
+  "line": "Amabhomu amancane eqhwa ayawa. Icebo linye kuphela: hlala ngaphakathi.",
+  "verdict": "clear",
+  "note": "the wet street below the houses"
+ },
+ {
+  "n": 233,
+  "hash8": "05a3ab4a",
+  "size": "414x715",
+  "looked": "open",
+  "lang": "xh",
+  "line": "Sisenokwenzeka isaqhwithi, asikaqinisekiswa. Hlala uphaphile.",
+  "verdict": "clear",
+  "note": "the wet street below the houses and the lightning"
+ },
+ {
+  "n": 234,
+  "hash8": "0b5d114e",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "IJoburg ina imizuzu engamashumi amabini, ize ipeyinte isibhakabhaka ngathi akukho nto yenzekileyo.",
+  "verdict": "partly",
+  "note": "his trousers and the wet jacket's hem (his face stays clear)"
+ },
+ {
+  "n": 235,
+  "hash8": "0e1a4e31",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "Akukho zifoto zokutshona kwelanga ngokuhlwanje. Ii-privacy settings zesibhakabhaka zivuliwe.",
+  "verdict": "partly",
+  "note": "the bride's dress, the bouquet and the kneeling photographer's legs (faces stay clear)"
+ },
+ {
+  "n": 236,
+  "hash8": "1affc7f9",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "Abantu abadala 'abahamba nje egadini' kanye apho i-sprinkler ifefa khona. Yintlanganiso yamabhaqo, nè.",
+  "verdict": "partly",
+  "note": "the friends' legs and the promenade (faces and ice creams stay clear; D's risen joke was on the faces)"
+ },
+ {
+  "n": 237,
+  "hash8": "1bf137cc",
+  "size": "320x488",
+  "looked": "second",
+  "lang": "zu",
+  "line": "Amabhomu amancane eqhwa ayawa. Icebo linye kuphela: hlala ngaphakathi.",
+  "verdict": "clear",
+  "note": "his back and the city lights, as D judged his back clear; the phone and the lightning stay clear"
+ },
+ {
+  "n": 237,
+  "hash8": "1bf137cc",
+  "size": "414x715",
+  "looked": "within",
+  "lang": "xh",
+  "line": "Sisenokwenzeka isaqhwithi, asikaqinisekiswa. Hlala uphaphile.",
+  "verdict": "clear",
+  "note": "the balcony and the city lights; his back, the phone and the lightning stay clear"
+ },
+ {
+  "n": 238,
+  "hash8": "2075c3e3",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "Umntu uqhuba esiya ekhaya ngoku ne-heater ivuliwe ngokupheleleyo ne-seat warmer njengebhonasi.",
+  "verdict": "partly",
+  "note": "the heater under the cat (the cat stays clear)"
+ },
+ {
+  "n": 239,
+  "hash8": "243eadef",
+  "size": "360x688",
+  "looked": "second",
+  "lang": "zu",
+  "line": "Ngu-7 ntambama futhi kusengama-degree angama-30. IKaroo ayenzi amaphutha, izitatimende kuphela.",
+  "verdict": "partly",
+  "note": "her legs and feet on the steps, under the first line (her face and glass stay clear)"
+ },
+ {
+  "n": 239,
+  "hash8": "243eadef",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "Abantu abadala 'abahamba nje egadini' kanye apho i-sprinkler ifefa khona. Yintlanganiso yamabhaqo, nè.",
+  "verdict": "clear",
+  "note": "the stoep steps below the woman; her feet reach the first line's top edge"
+ },
+ {
+  "n": 240,
+  "hash8": "26260612",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "zu",
+  "line": "Wonke umgwaqo unuka njengesidlo sakusihlwa somunye umuntu futhi inkungu ayifuni ukusho ukuthi ngesikabani.",
+  "verdict": "partly",
+  "note": "the dog, faint in the fog, and her feet (the woman stays clear)"
+ },
+ {
+  "n": 241,
+  "hash8": "28a6f313",
+  "size": "414x715",
+  "looked": "open",
+  "lang": "zu",
+  "line": "Wonke umgwaqo unuka njengesidlo sakusihlwa somunye umuntu futhi inkungu ayifuni ukusho ukuthi ngesikabani.",
+  "verdict": "clear",
+  "note": "the road below the car's lights in the fog"
+ },
+ {
+  "n": 242,
+  "hash8": "2948e9ed",
+  "size": "414x715",
+  "looked": "open",
+  "lang": "xh",
+  "line": "Umntu uqhuba esiya ekhaya ngoku ne-heater ivuliwe ngokupheleleyo ne-seat warmer njengebhonasi.",
+  "verdict": "clear",
+  "note": "the stoep floor below the chair, mug and shoes"
+ },
+ {
+  "n": 243,
+  "hash8": "2f31adfb",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "zu",
+  "line": "Ama-hadedas amathathu, amagwababa amabili, nomuntu oyedwa oqhaqhazelayo endaweni yokuphakela izinyoni.",
+  "verdict": "partly",
+  "note": "the lower half of the frozen washing"
+ },
+ {
+  "n": 244,
+  "hash8": "336f4186",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "zu",
+  "line": "Wonke umgwaqo unuka njengesidlo sakusihlwa somunye umuntu futhi inkungu ayifuni ukusho ukuthi ngesikabani.",
+  "verdict": "partly",
+  "note": "his legs, the watering can and the steps (his face stays clear)"
+ },
+ {
+  "n": 245,
+  "hash8": "357e2151",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "st",
+  "line": "'Sundowner e le nngwe feela' — mantswe a ho qetela a tummeng, nako e nngwe le e nngwe.",
+  "verdict": "partly",
+  "note": "their legs on the tidal pool wall (faces stay clear)"
+ },
+ {
+  "n": 246,
+  "hash8": "41a1917d",
+  "size": "414x715",
+  "looked": "open",
+  "lang": "xh",
+  "line": "Akukho zifoto zokutshona kwelanga ngokuhlwanje. Ii-privacy settings zesibhakabhaka zivuliwe.",
+  "verdict": "clear",
+  "note": "the veld below the braai and the picnic table"
+ },
+ {
+  "n": 247,
+  "hash8": "45d3aa3a",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "IJoburg ina imizuzu engamashumi amabini, ize ipeyinte isibhakabhaka ngathi akukho nto yenzekileyo.",
+  "verdict": "partly",
+  "note": "his legs, the umbrella's tip and the passing car (his face stays clear)"
+ },
+ {
+  "n": 248,
+  "hash8": "4a0b5d3b",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "Kunokuba nomoya onamandla ngamaxesha athile. Uqikelelo aluqinisekanga kule meko",
+  "verdict": "partly",
+  "note": "their bodies and jeans (faces stay clear)"
+ },
+ {
+  "n": 249,
+  "hash8": "531aa52f",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "IJoburg ina imizuzu engamashumi amabini, ize ipeyinte isibhakabhaka ngathi akukho nto yenzekileyo.",
+  "verdict": "partly",
+  "note": "his body from the chest down (his face and umbrella stay clear)"
+ },
+ {
+  "n": 250,
+  "hash8": "531fffa1",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "st",
+  "line": "'Sundowner e le nngwe feela' — mantswe a ho qetela a tummeng, nako e nngwe le e nngwe.",
+  "verdict": "partly",
+  "note": "the street cricket's wicket (a bin) and the boys' legs (faces stay clear)"
+ },
+ {
+  "n": 251,
+  "hash8": "541d9d0e",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "st",
+  "line": "'Sundowner e le nngwe feela' — mantswe a ho qetela a tummeng, nako e nngwe le e nngwe.",
+  "verdict": "partly",
+  "note": "the mower and his legs (his head stays clear)"
+ },
+ {
+  "n": 252,
+  "hash8": "55f1d80f",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "Kunokuba nomoya onamandla ngamaxesha athile. Uqikelelo aluqinisekanga kule meko",
+  "verdict": "partly",
+  "note": "the lower woman's dress and the garden (both faces and the washing stay clear)"
+ },
+ {
+  "n": 253,
+  "hash8": "572a51d3",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "Sisenokwenzeka isaqhwithi, asikaqinisekiswa. Hlala uphaphile.",
+  "verdict": "covers",
+  "note": "the bucket catching the leak"
+ },
+ {
+  "n": 254,
+  "hash8": "5813c7f5",
+  "size": "360x688",
+  "looked": "small",
+  "lang": "st",
+  "line": "Ngaka ya Cape e ho di-round tsa hoseng. Ha ho hlokahale appointment, ka bomadimabe.",
+  "verdict": "partly",
+  "note": "the bicycle's wheels (the cyclist stays clear)"
+ },
+ {
+  "n": 254,
+  "hash8": "5813c7f5",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "Kunokuba nomoya onamandla ngamaxesha athile. Uqikelelo aluqinisekanga kule meko",
+  "verdict": "partly",
+  "note": "the bicycle's front wheel (the cyclist stays clear)"
+ },
+ {
+  "n": 255,
+  "hash8": "5d58c604",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "zu",
+  "line": "Ama-hadedas amathathu, amagwababa amabili, nomuntu oyedwa oqhaqhazelayo endaweni yokuphakela izinyoni.",
+  "verdict": "partly",
+  "note": "the bench's legs and the ball on the frosted grass (the seat and blanket stay clear)"
+ },
+ {
+  "n": 256,
+  "hash8": "5e824620",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "IJoburg ina imizuzu engamashumi amabini, ize ipeyinte isibhakabhaka ngathi akukho nto yenzekileyo.",
+  "verdict": "partly",
+  "note": "the plant's pot (its leaves and flowers stay clear)"
+ },
+ {
+  "n": 257,
+  "hash8": "6ee74c96",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "Abantu abadala 'abahamba nje egadini' kanye apho i-sprinkler ifefa khona. Yintlanganiso yamabhaqo, nè.",
+  "verdict": "partly",
+  "note": "the sunflower's pot and the stoep (the flower head stays clear)"
+ },
+ {
+  "n": 258,
+  "hash8": "71648fc0",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "IJoburg ina imizuzu engamashumi amabini, ize ipeyinte isibhakabhaka ngathi akukho nto yenzekileyo.",
+  "verdict": "partly",
+  "note": "the cyclist's body and handlebars, and the car (both faces stay clear, hers just)"
+ },
+ {
+  "n": 259,
+  "hash8": "7b2ce5e4",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "Abantu abadala 'abahamba nje egadini' kanye apho i-sprinkler ifefa khona. Yintlanganiso yamabhaqo, nè.",
+  "verdict": "partly",
+  "note": "her hands, the glass and the water jug (her face stays clear)"
+ },
+ {
+  "n": 260,
+  "hash8": "7c81a1ae",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "Kunokuba nomoya onamandla ngamaxesha athile. Uqikelelo aluqinisekanga kule meko",
+  "verdict": "partly",
+  "note": "her body from the waist down (her face stays clear)"
+ },
+ {
+  "n": 261,
+  "hash8": "8008693b",
+  "size": "414x715",
+  "looked": "open",
+  "lang": "xh",
+  "line": "Abantu abadala 'abahamba nje egadini' kanye apho i-sprinkler ifefa khona. Yintlanganiso yamabhaqo, nè.",
+  "verdict": "clear",
+  "note": "the pool wall below the dog; the dog stays clear"
+ },
+ {
+  "n": 262,
+  "hash8": "817d8e1e",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "IJoburg ina imizuzu engamashumi amabini, ize ipeyinte isibhakabhaka ngathi akukho nto yenzekileyo.",
+  "verdict": "partly",
+  "note": "her body and hands on the wheel (her face stays clear)"
+ },
+ {
+  "n": 263,
+  "hash8": "8278f1fd",
+  "size": "360x688",
+  "looked": "second",
+  "lang": "zu",
+  "line": "Amabhomu amancane eqhwa ayawa. Icebo linye kuphela: hlala ngaphakathi.",
+  "verdict": "clear",
+  "note": "the flooded street below the police lights"
+ },
+ {
+  "n": 263,
+  "hash8": "8278f1fd",
+  "size": "414x715",
+  "looked": "open",
+  "lang": "xh",
+  "line": "Sisenokwenzeka isaqhwithi, asikaqinisekiswa. Hlala uphaphile.",
+  "verdict": "clear",
+  "note": "the flooded street below the police lights"
+ },
+ {
+  "n": 264,
+  "hash8": "88617f05",
+  "size": "414x715",
+  "looked": "open",
+  "lang": "st",
+  "line": "'Sundowner e le nngwe feela' — mantswe a ho qetela a tummeng, nako e nngwe le e nngwe.",
+  "verdict": "clear",
+  "note": "the dirt road below the birds on the wire"
+ },
+ {
+  "n": 265,
+  "hash8": "8cc0e2a4",
+  "size": "360x688",
+  "looked": "second",
+  "lang": "zu",
+  "line": "Umuntu ushayela eya ekhaya njengamanje ne-heater ivuliwe ngokugcwele ne-seat warmer njenge-bonus.",
+  "verdict": "clear",
+  "note": "the sea"
+ },
+ {
+  "n": 265,
+  "hash8": "8cc0e2a4",
+  "size": "414x715",
+  "looked": "open",
+  "lang": "xh",
+  "line": "Umntu uqhuba esiya ekhaya ngoku ne-heater ivuliwe ngokupheleleyo ne-seat warmer njengebhonasi.",
+  "verdict": "clear",
+  "note": "the wet sand and the sea"
+ },
+ {
+  "n": 266,
+  "hash8": "914f369f",
+  "size": "414x715",
+  "looked": "open",
+  "lang": "xh",
+  "line": "Umntu uqhuba esiya ekhaya ngoku ne-heater ivuliwe ngokupheleleyo ne-seat warmer njengebhonasi.",
+  "verdict": "clear",
+  "note": "the gate and the road below the trees"
+ },
+ {
+  "n": 267,
+  "hash8": "937d0902",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "zu",
+  "line": "Ama-hadedas amathathu, amagwababa amabili, nomuntu oyedwa oqhaqhazelayo endaweni yokuphakela izinyoni.",
+  "verdict": "partly",
+  "note": "the girl's body from the chest down, and the house (her face and the ball stay clear)"
+ },
+ {
+  "n": 268,
+  "hash8": "957ef16d",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "zu",
+  "line": "Wonke umgwaqo unuka njengesidlo sakusihlwa somunye umuntu futhi inkungu ayifuni ukusho ukuthi ngesikabani.",
+  "verdict": "partly",
+  "note": "their legs and the bikes' wheels (faces stay clear)"
+ },
+ {
+  "n": 269,
+  "hash8": "a3c3db31",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "st",
+  "line": "'Sundowner e le nngwe feela' — mantswe a ho qetela a tummeng, nako e nngwe le e nngwe.",
+  "verdict": "partly",
+  "note": "the bike and his legs (his face stays clear)"
+ },
+ {
+  "n": 270,
+  "hash8": "a67edaa1",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "zu",
+  "line": "Wonke umgwaqo unuka njengesidlo sakusihlwa somunye umuntu futhi inkungu ayifuni ukusho ukuthi ngesikabani.",
+  "verdict": "partly",
+  "note": "their legs and jackets (faces and the phone stay clear)"
+ },
+ {
+  "n": 271,
+  "hash8": "abf16c11",
+  "size": "360x688",
+  "looked": "small",
+  "lang": "zu",
+  "line": "Umuntu ushayela eya ekhaya njengamanje ne-heater ivuliwe ngokugcwele ne-seat warmer njenge-bonus.",
+  "verdict": "covers",
+  "note": "the hot chocolate the joke is about, under the first line"
+ },
+ {
+  "n": 271,
+  "hash8": "abf16c11",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "Umntu uqhuba esiya ekhaya ngoku ne-heater ivuliwe ngokupheleleyo ne-seat warmer njengebhonasi.",
+  "verdict": "clear",
+  "note": "the table and the blanket below the hot chocolate; the mug's base sits on the top edge"
+ },
+ {
+  "n": 272,
+  "hash8": "b2c32c85",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "Abantu abadala 'abahamba nje egadini' kanye apho i-sprinkler ifefa khona. Yintlanganiso yamabhaqo, nè.",
+  "verdict": "partly",
+  "note": "the sprinkler the joke names and their feet (dad and the kid stay clear above)"
+ },
+ {
+  "n": 273,
+  "hash8": "b8c7819a",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "zu",
+  "line": "Ama-hadedas amathathu, amagwababa amabili, nomuntu oyedwa oqhaqhazelayo endaweni yokuphakela izinyoni.",
+  "verdict": "partly",
+  "note": "the fire pit, their mugs and laps (faces stay clear)"
+ },
+ {
+  "n": 274,
+  "hash8": "b8f8ea34",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "st",
+  "line": "'Sundowner e le nngwe feela' — mantswe a ho qetela a tummeng, nako e nngwe le e nngwe.",
+  "verdict": "partly",
+  "note": "the friends' backs and legs (heads stay clear)"
+ },
+ {
+  "n": 275,
+  "hash8": "c19b2bf4",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "zu",
+  "line": "Ama-hadedas amathathu, amagwababa amabili, nomuntu oyedwa oqhaqhazelayo endaweni yokuphakela izinyoni.",
+  "verdict": "partly",
+  "note": "the horses' bodies and legs (their heads stay clear)"
+ },
+ {
+  "n": 276,
+  "hash8": "c2845db6",
+  "size": "414x715",
+  "looked": "open",
+  "lang": "xh",
+  "line": "Akukho zifoto zokutshona kwelanga ngokuhlwanje. Ii-privacy settings zesibhakabhaka zivuliwe.",
+  "verdict": "clear",
+  "note": "the dunes below the figure and the mountain"
+ },
+ {
+  "n": 277,
+  "hash8": "c2bc4bc4",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "Kunokuba nomoya onamandla ngamaxesha athile. Uqikelelo aluqinisekanga kule meko",
+  "verdict": "covers",
+  "note": "the washing blowing on the line, under the first line"
+ },
+ {
+  "n": 278,
+  "hash8": "c892be6f",
+  "size": "320x488",
+  "looked": "second",
+  "lang": "en",
+  "line": "Two drops on a windscreen and the whole N1 forgets everything it ever learned.",
+  "verdict": "clear",
+  "note": "the traffic in the rain"
+ },
+ {
+  "n": 278,
+  "hash8": "c892be6f",
+  "size": "414x715",
+  "looked": "within",
+  "lang": "xh",
+  "line": "IJoburg ina imizuzu engamashumi amabini, ize ipeyinte isibhakabhaka ngathi akukho nto yenzekileyo.",
+  "verdict": "clear",
+  "note": "the traffic in the rain, as under D's joke"
+ },
+ {
+  "n": 279,
+  "hash8": "cb0804cb",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "Kunokuba nomoya onamandla ngamaxesha athile. Uqikelelo aluqinisekanga kule meko",
+  "verdict": "partly",
+  "note": "the houses' lower storeys and the stoep"
+ },
+ {
+  "n": 280,
+  "hash8": "cb8642ad",
+  "size": "360x688",
+  "looked": "second",
+  "lang": "zu",
+  "line": "Amabhomu amancane eqhwa ayawa. Icebo linye kuphela: hlala ngaphakathi.",
+  "verdict": "clear",
+  "note": "the sea and rocks below the lightning"
+ },
+ {
+  "n": 280,
+  "hash8": "cb8642ad",
+  "size": "414x715",
+  "looked": "within",
+  "lang": "xh",
+  "line": "Sisenokwenzeka isaqhwithi, asikaqinisekiswa. Hlala uphaphile.",
+  "verdict": "clear",
+  "note": "the sea and rocks below the lightning"
+ },
+ {
+  "n": 281,
+  "hash8": "d5f43207",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "Abantu abadala 'abahamba nje egadini' kanye apho i-sprinkler ifefa khona. Yintlanganiso yamabhaqo, nè.",
+  "verdict": "partly",
+  "note": "her legs, the fruit boxes and the car (her face and the watermelon stay clear)"
+ },
+ {
+  "n": 282,
+  "hash8": "e9b04541",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "zu",
+  "line": "Ama-hadedas amathathu, amagwababa amabili, nomuntu oyedwa oqhaqhazelayo endaweni yokuphakela izinyoni.",
+  "verdict": "partly",
+  "note": "the cat's body on the sill (its head stays clear)"
+ },
+ {
+  "n": 283,
+  "hash8": "ebac96be",
+  "size": "414x715",
+  "looked": "open",
+  "lang": "zu",
+  "line": "Wonke umgwaqo unuka njengesidlo sakusihlwa somunye umuntu futhi inkungu ayifuni ukusho ukuthi ngesikabani.",
+  "verdict": "clear",
+  "note": "the jetty below the boats in the fog"
+ },
+ {
+  "n": 284,
+  "hash8": "ec24bcde",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "st",
+  "line": "'Sundowner e le nngwe feela' — mantswe a ho qetela a tummeng, nako e nngwe le e nngwe.",
+  "verdict": "partly",
+  "note": "the braai fire and the men's bodies (faces stay just clear)"
+ },
+ {
+  "n": 285,
+  "hash8": "f49a362f",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "Umntu uqhuba esiya ekhaya ngoku ne-heater ivuliwe ngokupheleleyo ne-seat warmer njengebhonasi.",
+  "verdict": "partly",
+  "note": "the dog's legs and the walkers' feet (heads and the dog's face stay clear)"
+ },
+ {
+  "n": 286,
+  "hash8": "f9af47cd",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "Sisenokwenzeka isaqhwithi, asikaqinisekiswa. Hlala uphaphile.",
+  "verdict": "partly",
+  "note": "the farmers' legs and the fallen bale (heads stay clear)"
+ },
+ {
+  "n": 287,
+  "hash8": "fada902c",
+  "size": "414x715",
+  "looked": "open",
+  "lang": "xh",
+  "line": "Akukho zifoto zokutshona kwelanga ngokuhlwanje. Ii-privacy settings zesibhakabhaka zivuliwe.",
+  "verdict": "clear",
+  "note": "the dark rooftops and lit windows"
+ },
+ {
+  "n": 288,
+  "hash8": "fbba3dfe",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "Kunokuba nomoya onamandla ngamaxesha athile. Uqikelelo aluqinisekanga kule meko",
+  "verdict": "partly",
+  "note": "the couple's legs and the sand (faces stay clear)"
+ },
+ {
+  "n": 289,
+  "hash8": "fe5774dc",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "zu",
+  "line": "Wonke umgwaqo unuka njengesidlo sakusihlwa somunye umuntu futhi inkungu ayifuni ukusho ukuthi ngesikabani.",
+  "verdict": "covers",
+  "note": "the car's headlights in the fog, under the first line"
+ },
+ {
+  "n": 290,
+  "hash8": "1a7797ca",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "st",
+  "line": "Hobaneng wena-wa-nakong-e-fetileng o entse merero? Wena-wa-nakong-e-fetileng o mobe.",
+  "verdict": "partly",
+  "note": "the vendor's legs and the car door (his face stays clear)"
+ },
+ {
+  "n": 291,
+  "hash8": "2f56b7f0",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "st",
+  "line": "Hobaneng wena-wa-nakong-e-fetileng o entse merero? Wena-wa-nakong-e-fetileng o mobe.",
+  "verdict": "partly",
+  "note": "the flat middle of the duvet (its rumpled heap stays clear)"
+ },
+ {
+  "n": 292,
+  "hash8": "6c75084d",
+  "size": "360x688",
+  "looked": "second",
+  "lang": "zu",
+  "line": "Umuntu ushayela eya ekhaya njengamanje ne-heater ivuliwe ngokugcwele ne-seat warmer njenge-bonus.",
+  "verdict": "clear",
+  "note": "the road below the car on the pass; its lights stay clear"
+ },
+ {
+  "n": 292,
+  "hash8": "6c75084d",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "Umntu uqhuba esiya ekhaya ngoku ne-heater ivuliwe ngokupheleleyo ne-seat warmer njengebhonasi.",
+  "verdict": "clear",
+  "note": "the road below the car on the pass; its lights stay clear"
+ },
+ {
+  "n": 293,
+  "hash8": "f20554e0",
+  "size": "360x688",
+  "looked": "third",
+  "lang": "zu",
+  "line": "Umuntu ushayela eya ekhaya njengamanje ne-heater ivuliwe ngokugcwele ne-seat warmer njenge-bonus.",
+  "verdict": "clear",
+  "note": "the cushion (D's band takes it in); the dog's chin grazes the first line's top"
+ },
+ {
+  "n": 293,
+  "hash8": "f20554e0",
+  "size": "414x715",
+  "looked": "near",
+  "lang": "xh",
+  "line": "Umntu uqhuba esiya ekhaya ngoku ne-heater ivuliwe ngokupheleleyo ne-seat warmer njengebhonasi.",
+  "verdict": "clear",
+  "note": "the cushion's front edge and the floor (D's band takes in the cushion); the dog stays clear"
+ }
+]

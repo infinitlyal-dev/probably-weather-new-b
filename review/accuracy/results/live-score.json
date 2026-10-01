@@ -1,75 +1,98 @@
 {
- "generatedAt": "2026-09-25T15:48:56.280Z",
+ "generatedAt": "2026-09-28T09:13:06.284Z",
  "files": [
   "2026-09-24.jsonl",
-  "2026-09-25.jsonl"
+  "2026-09-25.jsonl",
+  "2026-09-26.jsonl",
+  "2026-09-27.jsonl",
+  "2026-09-28.jsonl"
  ],
- "records": 114,
- "failedReads": 0,
- "scoredNow": 95,
+ "records": 510,
+ "failedReads": 18,
+ "scoredNow": 389,
  "agreeNow": {
-  "n": 95,
-  "ok": 46
+  "n": 389,
+  "ok": 230
  },
  "byCity": {
   "FACT": {
-   "n": 19,
-   "ok": 2
+   "n": 68,
+   "ok": 35
   },
   "FAOR": {
-   "n": 19,
-   "ok": 13
+   "n": 79,
+   "ok": 66
   },
   "FALE": {
-   "n": 19,
-   "ok": 12
+   "n": 74,
+   "ok": 43
   },
   "FAGG": {
-   "n": 17,
-   "ok": 3
+   "n": 70,
+   "ok": 27
   },
   "FAPE": {
-   "n": 11,
-   "ok": 7
+   "n": 51,
+   "ok": 26
   },
   "FABL": {
-   "n": 10,
-   "ok": 9
+   "n": 47,
+   "ok": 33
   }
  },
  "falseRain": {
-  "served": 0,
-  "dry": 0
+  "served": 27,
+  "dry": 13
  },
  "radar": {
-  "overrides": 0,
-  "nextHourBumps": 0
+  "overrides": 27,
+  "nextHourBumps": 8
  },
  "calibration": [
   {
    "bin": "0–9",
-   "n": 81,
-   "rained": 0
+   "n": 244,
+   "rained": 1
   },
   {
    "bin": "10–19",
-   "n": 14,
-   "rained": 0
+   "n": 61,
+   "rained": 4
   },
   {
    "bin": "20–29",
-   "n": 2,
-   "rained": 0
+   "n": 31,
+   "rained": 3
   },
   {
    "bin": "30–39",
-   "n": 1,
+   "n": 24,
+   "rained": 3
+  },
+  {
+   "bin": "40–49",
+   "n": 39,
+   "rained": 8
+  },
+  {
+   "bin": "50–59",
+   "n": 6,
    "rained": 0
   },
   {
    "bin": "60–69",
-   "n": 1,
-   "rained": 0
+   "n": 13,
+   "rained": 4
+  },
+  {
+   "bin": "70–79",
+   "n": 26,
+   "rained": 10
+  },
+  {
+   "bin": "80–89",
+   "n": 3,
+   "rained": 2
   }
  ],
  "mismatches": [
@@ -121,8 +144,205 @@
   "2026-09-25T14:17 FAGG served rain-possible (rain-possible-prob) · airport clear",
   "2026-09-25T15:10 FACT served cloudy (overcast) · airport clear",
   "2026-09-25T15:10 FABL served cloudy (overcast) · airport clear",
-  "2026-09-25T15:10 FAGG served rain-possible (rain-possible-prob) · airport clear"
+  "2026-09-25T15:10 FAGG served rain-possible (rain-possible-prob) · airport clear",
+  "2026-09-25T16:10 FACT served cloudy (mostly-cloudy) · airport clear",
+  "2026-09-25T16:10 FABL served cloudy (overcast) · airport clear",
+  "2026-09-25T16:10 FAGG served cloudy (overcast) · airport clear",
+  "2026-09-25T17:10 FACT served cloudy (overcast) · airport clear",
+  "2026-09-25T17:10 FALE served cloudy (overcast) · airport clear",
+  "2026-09-25T17:10 FABL served cloudy (overcast) · airport clear",
+  "2026-09-25T17:10 FAGG served rain-possible (desc-rain-unconfirmed) · airport mist",
+  "2026-09-25T18:10 FABL served cloudy (overcast) · airport clear",
+  "2026-09-25T18:10 FAGG served rain (tomorrow-io-radar-override) · airport clear",
+  "2026-09-25T19:10 FAOR served cloudy (mostly-cloudy) · airport clear",
+  "2026-09-25T19:10 FAGG served rain-possible (desc-rain-unconfirmed) · airport mist",
+  "2026-09-25T20:10 FACT served thunder (two-source-consensus-thunder) · airport mist",
+  "2026-09-25T20:10 FAOR served cloudy (mostly-cloudy) · airport clear",
+  "2026-09-25T20:10 FAPE served cloudy (overcast) · airport clear",
+  "2026-09-25T20:10 FAGG served rain-possible (rain-possible-prob) · airport mist",
+  "2026-09-25T21:10 FALE served cloudy (mostly-cloudy) · airport clear",
+  "2026-09-25T21:10 FAPE served rain-possible (rain-possible-prob) · airport clear",
+  "2026-09-25T21:10 FAGG served rain-possible (rain-possible-prob) · airport mist",
+  "2026-09-25T22:10 FALE served fog (visibility-humidity-fog-detector) · airport clear",
+  "2026-09-25T22:10 FAPE served rain-possible (desc-rain-unconfirmed) · airport clear",
+  "2026-09-25T22:10 FAGG served rain-possible (rain-possible-prob) · airport mist",
+  "2026-09-25T23:10 FACT served thunder (two-source-consensus-thunder) · airport mist",
+  "2026-09-25T23:10 FALE served fog (visibility-humidity-fog-detector) · airport clear",
+  "2026-09-26T00:10 FALE served fog (visibility-humidity-fog-detector) · airport clear",
+  "2026-09-26T00:10 FAGG served rain-possible (desc-rain-unconfirmed) · airport mist",
+  "2026-09-26T01:10 FACT served rain-possible (desc-rain-unconfirmed) · airport mist",
+  "2026-09-26T01:10 FALE served fog (visibility-humidity-fog-detector) · airport clear",
+  "2026-09-26T02:10 FACT served rain-possible (desc-rain-unconfirmed) · airport mist",
+  "2026-09-26T03:10 FALE served cloudy (overcast) · airport clear",
+  "2026-09-26T03:10 FABL served cloudy (mostly-cloudy) · airport clear",
+  "2026-09-26T03:10 FAGG served rain (tomorrow-io-radar-override) · airport mist",
+  "2026-09-26T04:10 FACT served rain-possible (desc-rain-unconfirmed) · airport mist",
+  "2026-09-26T04:10 FALE served cloudy (overcast) · airport clear",
+  "2026-09-26T04:10 FAGG served rain (tomorrow-io-radar-override) · airport fog",
+  "2026-09-26T05:10 FACT served rain-possible (desc-rain-unconfirmed) · airport mist",
+  "2026-09-26T05:10 FALE served cloudy (overcast) · airport clear",
+  "2026-09-26T05:10 FAPE served rain (tomorrow-io-radar-override) · airport clear",
+  "2026-09-26T05:10 FABL served cloudy (overcast) · airport clear",
+  "2026-09-26T05:10 FAGG served rain-possible (rain-possible-prob) · airport fog",
+  "2026-09-26T06:10 FACT served rain-possible (rain-possible-prob) · airport mist",
+  "2026-09-26T06:10 FABL served cloudy (overcast) · airport clear",
+  "2026-09-26T07:10 FABL served cloudy (overcast) · airport clear",
+  "2026-09-26T07:10 FAGG served rain-possible (rain-possible-prob) · airport mist",
+  "2026-09-26T08:10 FACT served partly-cloudy (partly-cloudy) · airport cloudy",
+  "2026-09-26T08:10 FAPE served rain-possible (showers-nearby) · airport clear",
+  "2026-09-26T08:10 FABL served rain (tomorrow-io-radar-override) · airport clear",
+  "2026-09-26T08:10 FAGG served rain-possible (desc-rain-unconfirmed) · airport mist",
+  "2026-09-26T09:10 FACT served rain-possible (desc-rain-unconfirmed) · airport scattered",
+  "2026-09-26T09:10 FAPE served rain (tomorrow-io-radar-override) · airport clear",
+  "2026-09-26T09:10 FABL served cloudy (overcast) · airport clear",
+  "2026-09-26T09:10 FAGG served rain-possible (desc-rain-unconfirmed) · airport mist",
+  "2026-09-26T10:10 FALE served cloudy (overcast) · airport clear",
+  "2026-09-26T10:10 FAPE served rain-possible (desc-rain-unconfirmed) · airport clear",
+  "2026-09-26T10:10 FAGG served rain-possible (desc-rain-unconfirmed) · airport fog",
+  "2026-09-26T11:10 FALE served cloudy (mostly-cloudy) · airport clear",
+  "2026-09-26T11:10 FAPE served rain-possible (rain-possible-prob) · airport clear",
+  "2026-09-26T11:10 FAGG served rain-possible (desc-rain-unconfirmed) · airport fog",
+  "2026-09-26T12:10 FAPE served rain-possible (rain-possible-prob) · airport clear",
+  "2026-09-26T13:10 FACT served partly-cloudy (partly-cloudy) · airport cloudy",
+  "2026-09-26T13:10 FAPE served rain-possible (desc-rain-unconfirmed) · airport clear",
+  "2026-09-26T13:10 FAGG served rain-possible (desc-rain-unconfirmed) · airport mist",
+  "2026-09-26T14:10 FAGG served rain-possible (desc-rain-unconfirmed) · airport mist",
+  "2026-09-26T15:10 FALE served cloudy (mostly-cloudy) · airport clear",
+  "2026-09-26T15:10 FAPE served rain-possible (rain-possible-prob) · airport mist",
+  "2026-09-26T15:10 FAGG served rain-possible (desc-rain-unconfirmed) · airport fog",
+  "2026-09-26T16:10 FABL served rain (tomorrow-io-radar-override) · airport cloudy",
+  "2026-09-26T16:10 FAGG served rain-possible (desc-rain-unconfirmed) · airport mist",
+  "2026-09-26T18:10 FAPE served rain-possible (rain-possible-prob) · airport clear",
+  "2026-09-26T20:10 FAOR served cloudy (overcast) · airport clear",
+  "2026-09-26T23:10 FALE served rain-possible (rain-possible-prob) · airport scattered",
+  "2026-09-27T00:10 FALE served cloudy (overcast) · airport clear",
+  "2026-09-27T05:10 FACT served clear (majority-override-clear) · airport cloudy",
+  "2026-09-27T06:10 FABL served fog (visibility-humidity-fog-detector) · airport clear",
+  "2026-09-27T08:10 FABL served partly-cloudy (partly-cloudy) · airport cloudy",
+  "2026-09-27T12:10 FAGG served rain-possible (desc-rain-unconfirmed) · airport scattered",
+  "2026-09-27T13:11 FALE served rain (tomorrow-io-radar-override) · airport clear",
+  "2026-09-27T13:11 FABL served clear (desc-clear-keyword) · airport cloudy",
+  "2026-09-27T13:11 FAGG served rain-possible (desc-rain-unconfirmed) · airport scattered",
+  "2026-09-27T14:10 FAGG served rain-possible (rain-possible-prob) · airport clear",
+  "2026-09-27T15:10 FAGG served rain-possible (rain-possible-prob) · airport clear",
+  "2026-09-27T17:10 FAGG served rain-possible (desc-rain-unconfirmed) · airport scattered",
+  "2026-09-27T18:10 FALE served rain (tomorrow-io-radar-override) · airport clear",
+  "2026-09-27T18:10 FAPE served rain-possible (rain-possible-prob) · airport clear",
+  "2026-09-27T18:10 FAGG served rain-possible (desc-rain-unconfirmed) · airport scattered",
+  "2026-09-27T19:10 FAPE served rain-possible (rain-possible-prob) · airport clear",
+  "2026-09-27T20:10 FALE served cloudy (overcast) · airport clear",
+  "2026-09-27T20:10 FAPE served rain-possible (rain-possible-prob) · airport scattered",
+  "2026-09-27T21:10 FAPE served rain-possible (rain-possible-prob) · airport clear",
+  "2026-09-27T22:09 FALE served cloudy (overcast) · airport rain",
+  "2026-09-27T22:09 FAPE served rain-possible (desc-rain-unconfirmed) · airport scattered",
+  "2026-09-27T23:10 FALE served rain (tomorrow-io-radar-override) · airport cloudy",
+  "2026-09-27T23:10 FAPE served rain-possible (desc-rain-unconfirmed) · airport clear",
+  "2026-09-28T00:09 FALE served rain (tomorrow-io-radar-override) · airport cloudy",
+  "2026-09-28T01:10 FAPE served rain-possible (desc-rain-unconfirmed) · airport clear",
+  "2026-09-28T02:09 FAOR served clear (desc-clear-keyword) · airport mist",
+  "2026-09-28T03:10 FAOR served clear (desc-clear-keyword) · airport cloudy",
+  "2026-09-28T03:09 FAGG served cold-clear (dry-cold-clear-sky) · airport rain",
+  "2026-09-28T04:10 FAOR served clear (desc-clear-keyword) · airport mist",
+  "2026-09-28T04:09 FAGG served partly-cloudy (partly-cloudy) · airport cloudy",
+  "2026-09-28T05:10 FAOR served clear (desc-clear-keyword) · airport mist",
+  "2026-09-28T05:09 FAPE served partly-cloudy (partly-cloudy) · airport rain",
+  "2026-09-28T05:09 FAGG served partly-cloudy (partly-cloudy) · airport cloudy",
+  "2026-09-28T06:10 FACT served cloudy (overcast) · airport clear",
+  "2026-09-28T06:09 FALE served cloudy (overcast) · airport clear",
+  "2026-09-28T07:10 FALE served cloudy (overcast) · airport clear",
+  "2026-09-28T08:10 FACT served cloudy (overcast) · airport clear",
+  "2026-09-28T08:10 FALE served cloudy (overcast) · airport clear",
+  "2026-09-28T09:09 FACT served cloudy (overcast) · airport clear",
+  "2026-09-28T09:09 FALE served cloudy (overcast) · airport clear",
+  "2026-09-28T09:09 FAPE served rain-possible (desc-rain-unconfirmed) · airport scattered"
  ],
+ "wind": {
+  "ec7ae52": {
+   "airport": {
+    "n": 43,
+    "abs": 191.80399999999997,
+    "bias": -84.436,
+    "rawAbs": 0,
+    "rawN": 0
+   },
+   "strand": {
+    "n": 0,
+    "abs": 0,
+    "bias": 0,
+    "gustN": 0,
+    "gustAbs": 0,
+    "list": []
+   }
+  },
+  "84fc691": {
+   "airport": {
+    "n": 44,
+    "abs": 231.53999999999996,
+    "bias": -178.60399999999998,
+    "rawAbs": 0,
+    "rawN": 0
+   },
+   "strand": {
+    "n": 0,
+    "abs": 0,
+    "bias": 0,
+    "gustN": 0,
+    "gustAbs": 0,
+    "list": []
+   }
+  },
+  "7525fd2": {
+   "airport": {
+    "n": 100,
+    "abs": 454.49599999999987,
+    "bias": -183.72000000000006,
+    "rawAbs": 0,
+    "rawN": 0
+   },
+   "strand": {
+    "n": 0,
+    "abs": 0,
+    "bias": 0,
+    "gustN": 0,
+    "gustAbs": 0,
+    "list": []
+   }
+  },
+  "274e5cf": {
+   "airport": {
+    "n": 29,
+    "abs": 195.512,
+    "bias": -152.88800000000003,
+    "rawAbs": 0,
+    "rawN": 0
+   },
+   "strand": {
+    "n": 0,
+    "abs": 0,
+    "bias": 0,
+    "gustN": 0,
+    "gustAbs": 0,
+    "list": []
+   }
+  },
+  "e688913": {
+   "airport": {
+    "n": 175,
+    "abs": 1104.0280000000005,
+    "bias": -301.0600000000004,
+    "rawAbs": 0,
+    "rawN": 0
+   },
+   "strand": {
+    "n": 0,
+    "abs": 0,
+    "bias": 0,
+    "gustN": 0,
+    "gustAbs": 0,
+    "list": []
+   }
+  }
+ },
  "alNote": {
   "quote": "it has been showing fog a lot when it isnt really that foggy and the rain thing i noticed the last couple of days and it felt off.",
   "byVersion": {
@@ -153,6 +373,75 @@
      },
      "Cape Town city": {
       "hours": 2,
+      "fog": 0,
+      "rainHere": 0,
+      "nearby": 0
+     }
+    }
+   },
+   "7525fd2": {
+    "hours": 119,
+    "fog": 4,
+    "fogSeen": 0,
+    "rainHere": 14,
+    "rainHereWet": 9,
+    "nearby": 5,
+    "nearbyWet": 4,
+    "spots": {
+     "Strand": {
+      "hours": 21,
+      "fog": 3,
+      "rainHere": 1,
+      "nearby": 0
+     },
+     "Cape Town city": {
+      "hours": 21,
+      "fog": 0,
+      "rainHere": 0,
+      "nearby": 0
+     }
+    }
+   },
+   "274e5cf": {
+    "hours": 33,
+    "fog": 0,
+    "fogSeen": 0,
+    "rainHere": 3,
+    "rainHereWet": 3,
+    "nearby": 1,
+    "nearbyWet": 0,
+    "spots": {
+     "Strand": {
+      "hours": 6,
+      "fog": 0,
+      "rainHere": 0,
+      "nearby": 0
+     },
+     "Cape Town city": {
+      "hours": 6,
+      "fog": 0,
+      "rainHere": 0,
+      "nearby": 0
+     }
+    }
+   },
+   "e688913": {
+    "hours": 203,
+    "fog": 3,
+    "fogSeen": 2,
+    "rainHere": 9,
+    "rainHereWet": 7,
+    "nearby": 6,
+    "nearbyWet": 2,
+    "spots": {
+     "Strand": {
+      "hours": 36,
+      "fog": 0,
+      "rainHere": 0,
+      "nearby": 0
+     },
+     "Cape Town city": {
+      "hours": 36,
       "fog": 0,
       "rainHere": 0,
       "nearby": 0

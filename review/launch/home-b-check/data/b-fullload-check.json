@@ -1,0 +1,2186 @@
+[
+ {
+  "n": 2,
+  "hash8": "825a6ff6",
+  "size": "414x715",
+  "lang": "en",
+  "folder": "cold",
+  "slot": "cold/week_1/day/1.webp",
+  "served": true,
+  "anchorOk": true,
+  "line": "The garden tap grew a white beard overnight; the night was that serious.",
+  "full": [
+   362,
+   473,
+   35.03,
+   478,
+   66,
+   0
+  ],
+  "inPlace": [
+   362,
+   473,
+   35.03,
+   478,
+   66
+  ],
+  "how": "in-place run",
+  "same": true
+ },
+ {
+  "n": 6,
+  "hash8": "43dc1982",
+  "size": "414x715",
+  "lang": "af",
+  "folder": "cold-clear",
+  "slot": "cold-clear/week_1/day/3.webp",
+  "served": true,
+  "anchorOk": true,
+  "line": "Die bakkie het onder 'n heeltemal skoon lug toegevries — presies hoe dit werk.",
+  "full": [
+   349,
+   460,
+   35.03,
+   465,
+   50,
+   0
+  ],
+  "inPlace": [
+   349,
+   460,
+   35.03,
+   465,
+   50
+  ],
+  "how": "in-place run",
+  "same": true
+ },
+ {
+  "n": 10,
+  "hash8": "63272c17",
+  "size": "414x715",
+  "lang": "zu",
+  "folder": "cold-clear",
+  "slot": "cold-clear/week_1/day/4.webp",
+  "served": true,
+  "anchorOk": true,
+  "line": "Kubanda okweWelkom namuhla. Amakhaza angena kuma-jersey amathathu sengathi awekho.",
+  "full": [
+   280,
+   428,
+   35.03,
+   433,
+   41,
+   0
+  ],
+  "inPlace": [
+   280,
+   428,
+   35.03,
+   433,
+   41
+  ],
+  "how": "measured in place now",
+  "same": true
+ },
+ {
+  "n": 14,
+  "hash8": "b1ae5ed3",
+  "size": "414x715",
+  "lang": "xh",
+  "folder": "heat",
+  "slot": "heat/week_1/day/1.webp",
+  "served": true,
+  "anchorOk": true,
+  "line": "Kushushu kakhulu ube uxoxa. Kushushu kakhulu for nukusebenza.",
+  "full": [
+   272,
+   383,
+   35.03,
+   388,
+   68,
+   0
+  ],
+  "inPlace": [
+   272,
+   383,
+   35.03,
+   388,
+   68
+  ],
+  "how": "measured in place now",
+  "same": true
+ },
+ {
+  "n": 18,
+  "hash8": "dbadc260",
+  "size": "414x715",
+  "lang": "st",
+  "folder": "heat",
+  "slot": "heat/week_1/day/4.webp",
+  "served": true,
+  "anchorOk": true,
+  "line": "Mohlomong sebakeng se seng tshokolate e sa tswa qhibiliha.",
+  "full": [
+   348,
+   422,
+   35.03,
+   427,
+   76,
+   0
+  ],
+  "inPlace": [
+   348,
+   422,
+   35.03,
+   427,
+   76
+  ],
+  "how": "measured in place now",
+  "same": true
+ },
+ {
+  "n": 22,
+  "hash8": "f946db7e",
+  "size": "414x715",
+  "lang": "en",
+  "folder": "cold-clear",
+  "slot": "cold-clear/week_1/day/7.webp",
+  "served": true,
+  "anchorOk": true,
+  "line": "Cold enough to see every breath, clear enough that nobody minds.",
+  "full": [
+   362,
+   473,
+   35.03,
+   478,
+   63,
+   0
+  ],
+  "inPlace": [
+   362,
+   473,
+   35.03,
+   478,
+   63
+  ],
+  "how": "in-place run",
+  "same": true
+ },
+ {
+  "n": 82,
+  "hash8": "181d7c88",
+  "size": "414x715",
+  "lang": "af",
+  "folder": "storm",
+  "slot": "storm/week_2/day/4.webp",
+  "served": true,
+  "anchorOk": true,
+  "line": "Kanselleer alles. Selfs jou verskonings.",
+  "full": [
+   386,
+   460,
+   35.03,
+   465,
+   71,
+   0
+  ],
+  "inPlace": [
+   386,
+   460,
+   35.03,
+   465,
+   71
+  ],
+  "how": "in-place run",
+  "same": true
+ },
+ {
+  "n": 86,
+  "hash8": "259aec69",
+  "size": "414x715",
+  "lang": "zu",
+  "folder": "wind",
+  "slot": "wind/week_1/day/4.webp",
+  "served": true,
+  "anchorOk": true,
+  "line": "Indwangu yendlalwe ngaphambi kokuba umuntu a-ode ibhulakufesi.",
+  "full": [
+   317,
+   428,
+   35.03,
+   433,
+   43,
+   0
+  ],
+  "inPlace": [
+   317,
+   428,
+   35.03,
+   433,
+   43
+  ],
+  "how": "measured in place now",
+  "same": true
+ },
+ {
+  "n": 90,
+  "hash8": "30307b4b",
+  "size": "414x715",
+  "lang": "xh",
+  "folder": "cold",
+  "slot": "cold/week_1/day/3.webp",
+  "served": true,
+  "anchorOk": true,
+  "line": "Ibhatyi yakho inebhatyi. Yimini enjalo.",
+  "full": [
+   309,
+   383,
+   35.03,
+   388,
+   44,
+   0
+  ],
+  "inPlace": [
+   309,
+   383,
+   35.03,
+   388,
+   44
+  ],
+  "how": "measured in place now",
+  "same": true
+ },
+ {
+  "n": 94,
+  "hash8": "3975a423",
+  "size": "414x715",
+  "lang": "st",
+  "folder": "cloudy",
+  "slot": "cloudy/week_2/day/4.webp",
+  "served": true,
+  "anchorOk": true,
+  "line": "Lehodimo le karolelano le etsang dintho tsa karolelano.",
+  "full": [
+   348,
+   422,
+   35.03,
+   427,
+   78,
+   0
+  ],
+  "inPlace": [
+   348,
+   422,
+   35.03,
+   427,
+   78
+  ],
+  "how": "measured in place now",
+  "same": true
+ },
+ {
+  "n": 98,
+  "hash8": "43784257",
+  "size": "414x715",
+  "lang": "en",
+  "folder": "cloudy",
+  "slot": "cloudy/week_2/day/3.webp",
+  "served": true,
+  "anchorOk": true,
+  "line": "Cloud cover with a side of who-cares.",
+  "full": [
+   399,
+   473,
+   35.03,
+   478,
+   94,
+   0
+  ],
+  "inPlace": [
+   399,
+   473,
+   35.03,
+   478,
+   94
+  ],
+  "how": "in-place run",
+  "same": true
+ },
+ {
+  "n": 102,
+  "hash8": "5306c059",
+  "size": "414x715",
+  "lang": "af",
+  "folder": "wind",
+  "slot": "wind/week_2/day/1.webp",
+  "served": true,
+  "anchorOk": true,
+  "line": "Die wind het in vier sekondes weggewaai wat twee uur geneem het om te bou.",
+  "full": [
+   349,
+   460,
+   35.03,
+   465,
+   50,
+   0
+  ],
+  "inPlace": [
+   349,
+   460,
+   35.03,
+   465,
+   50
+  ],
+  "how": "in-place run",
+  "same": true
+ },
+ {
+  "n": 106,
+  "hash8": "593bee14",
+  "size": "414x715",
+  "lang": "zu",
+  "folder": "cloudy",
+  "slot": "cloudy/week_2/day/1.webp",
+  "served": true,
+  "anchorOk": true,
+  "line": "Impunga nayo ingumbala, kusho umama. Namuhla ngiyamkholwa.",
+  "full": [
+   337,
+   448,
+   35.03,
+   453,
+   78,
+   0
+  ],
+  "inPlace": [
+   337,
+   448,
+   35.03,
+   453,
+   78
+  ],
+  "how": "measured in place now",
+  "same": true
+ },
+ {
+  "n": 110,
+  "hash8": "66854831",
+  "size": "414x715",
+  "lang": "xh",
+  "folder": "wind",
+  "slot": "wind/week_2/day/7.webp",
+  "served": true,
+  "anchorOk": true,
+  "line": "Lala kamnandi. Umoya uza kugada indlu. Ngokungxola.",
+  "full": [
+   296,
+   370,
+   35.03,
+   375,
+   50,
+   0
+  ],
+  "inPlace": [
+   296,
+   370,
+   35.03,
+   375,
+   50
+  ],
+  "how": "measured in place now",
+  "same": true
+ },
+ {
+  "n": 114,
+  "hash8": "752ebaed",
+  "size": "414x715",
+  "lang": "st",
+  "folder": "clear",
+  "slot": "clear/week_1/day/1.webp",
+  "served": true,
+  "anchorOk": true,
+  "line": "Boemo ba lehodimo bo phethahetseng hakana ke kadimo. Moya wa borwa o boloka di-receipt.",
+  "full": [
+   254,
+   402,
+   35.03,
+   407,
+   68,
+   0
+  ],
+  "inPlace": [
+   254,
+   402,
+   35.03,
+   407,
+   68
+  ],
+  "how": "in-place run",
+  "same": true
+ },
+ {
+  "n": 118,
+  "hash8": "818a6e89",
+  "size": "414x715",
+  "lang": "en",
+  "folder": "storm",
+  "slot": "storm/week_2/day/5.webp",
+  "served": true,
+  "anchorOk": true,
+  "line": "Not the time for hero moves, hey.",
+  "full": [
+   399,
+   473,
+   35.03,
+   478,
+   49,
+   0
+  ],
+  "inPlace": [
+   399,
+   473,
+   35.03,
+   478,
+   49
+  ],
+  "how": "in-place run",
+  "same": true
+ },
+ {
+  "n": 122,
+  "hash8": "86ce321b",
+  "size": "414x715",
+  "lang": "af",
+  "folder": "cold-clear",
+  "slot": "cold-clear/week_1/day/6.webp",
+  "served": true,
+  "anchorOk": true,
+  "line": "Die braai gaan aan. Die braai gaan altyd aan. Ons trek net die stoele nader.",
+  "full": [
+   349,
+   460,
+   35.03,
+   465,
+   74,
+   0
+  ],
+  "inPlace": [
+   349,
+   460,
+   35.03,
+   465,
+   74
+  ],
+  "how": "measured in place now",
+  "same": true
+ },
+ {
+  "n": 126,
+  "hash8": "9204050e",
+  "size": "414x715",
+  "lang": "zu",
+  "folder": "wind",
+  "slot": "wind/week_2/day/3.webp",
+  "served": true,
+  "anchorOk": true,
+  "line": "UDokotela waseKapa ufikile ezovakasha.",
+  "full": [
+   354,
+   428,
+   35.03,
+   433,
+   44,
+   0
+  ],
+  "inPlace": [
+   354,
+   428,
+   35.03,
+   433,
+   44
+  ],
+  "how": "measured in place now",
+  "same": true
+ },
+ {
+  "n": 130,
+  "hash8": "a4e1da99",
+  "size": "414x715",
+  "lang": "xh",
+  "folder": "cloudy",
+  "slot": "cloudy/week_2/day/6.webp",
+  "served": true,
+  "anchorOk": true,
+  "line": "Imozulu efanelekileyo yokuya eWoolies nokubukela iNetflix.",
+  "full": [
+   309,
+   383,
+   35.03,
+   388,
+   61,
+   0
+  ],
+  "inPlace": [
+   309,
+   383,
+   35.03,
+   388,
+   61
+  ],
+  "how": "measured in place now",
+  "same": true
+ },
+ {
+  "n": 134,
+  "hash8": "ae7148dc",
+  "size": "414x715",
+  "lang": "st",
+  "folder": "clear",
+  "slot": "clear/week_2/day/1.webp",
+  "served": true,
+  "anchorOk": true,
+  "line": "Tlhaho e iponahatsa mme re teng.",
+  "full": [
+   328,
+   402,
+   35.03,
+   407,
+   88,
+   0
+  ],
+  "inPlace": [
+   328,
+   402,
+   35.03,
+   407,
+   88
+  ],
+  "how": "measured in place now",
+  "same": true
+ },
+ {
+  "n": 138,
+  "hash8": "c049b4e6",
+  "size": "414x715",
+  "lang": "en",
+  "folder": "cold",
+  "slot": "cold/week_2/day/5.webp",
+  "served": true,
+  "anchorOk": true,
+  "line": "The jersey got promoted to balaclava somewhere between the door and the gate.",
+  "full": [
+   362,
+   473,
+   35.03,
+   478,
+   30,
+   0
+  ],
+  "inPlace": [
+   362,
+   473,
+   35.03,
+   478,
+   30
+  ],
+  "how": "in-place run",
+  "same": true
+ },
+ {
+  "n": 142,
+  "hash8": "d3de1926",
+  "size": "414x715",
+  "lang": "af",
+  "folder": "cold",
+  "slot": "cold/week_2/day/1.webp",
+  "served": true,
+  "anchorOk": true,
+  "line": "Drie pare sokkies en steeds nie genoeg nie.",
+  "full": [
+   386,
+   460,
+   35.03,
+   465,
+   86,
+   0
+  ],
+  "inPlace": [
+   386,
+   460,
+   35.03,
+   465,
+   86
+  ],
+  "how": "measured in place now",
+  "same": true
+ },
+ {
+  "n": 146,
+  "hash8": "dac88237",
+  "size": "414x715",
+  "lang": "zu",
+  "folder": "storm",
+  "slot": "storm/week_1/day/5.webp",
+  "served": true,
+  "anchorOk": true,
+  "line": "U-Eskom ufisa ukuba namandla anje.",
+  "full": [
+   374,
+   448,
+   35.03,
+   453,
+   69,
+   0
+  ],
+  "inPlace": [
+   374,
+   448,
+   35.03,
+   453,
+   69
+  ],
+  "how": "measured in place now",
+  "same": true
+ },
+ {
+  "n": 150,
+  "hash8": "e3f7fefc",
+  "size": "414x715",
+  "lang": "xh",
+  "folder": "storm",
+  "slot": "storm/week_2/day/6.webp",
+  "served": true,
+  "anchorOk": true,
+  "line": "Isibhakabhaka sivele saba yi-Carte Blanche ngokupheleleyo.",
+  "full": [
+   296,
+   370,
+   35.03,
+   375,
+   67,
+   0
+  ],
+  "inPlace": [
+   296,
+   370,
+   35.03,
+   375,
+   67
+  ],
+  "how": "measured in place now",
+  "same": true
+ },
+ {
+  "n": 154,
+  "hash8": "ea93fbda",
+  "size": "414x715",
+  "lang": "st",
+  "folder": "rain",
+  "slot": "rain/week_2/day/2.webp",
+  "served": true,
+  "anchorOk": true,
+  "line": "Mola seteisheneng sa petlolo o sa tswa phethahala hararo.",
+  "full": [
+   348,
+   422,
+   35.03,
+   427,
+   26,
+   0
+  ],
+  "inPlace": [
+   348,
+   422,
+   35.03,
+   427,
+   26
+  ],
+  "how": "measured in place now",
+  "same": true
+ },
+ {
+  "n": 158,
+  "hash8": "f4ea0b14",
+  "size": "414x715",
+  "lang": "en",
+  "folder": "cloudy",
+  "slot": "cloudy/week_1/day/2.webp",
+  "served": true,
+  "anchorOk": true,
+  "line": "The concrete is still damp and the sky looks like it isn't finished.",
+  "full": [
+   362,
+   473,
+   35.03,
+   478,
+   100,
+   0
+  ],
+  "inPlace": [
+   362,
+   473,
+   35.03,
+   478,
+   100
+  ],
+  "how": "in-place run",
+  "same": true
+ },
+ {
+  "n": 3,
+  "hash8": "0af3b5a8",
+  "size": "360x688",
+  "lang": "zu",
+  "folder": "heat",
+  "slot": "heat/week_1/day/7.webp",
+  "served": true,
+  "anchorOk": true,
+  "line": "Iqhwa esiphuzweni sakho lihlale imizuzwana engu-30.",
+  "full": [
+   311,
+   383,
+   33.71,
+   388,
+   70,
+   0
+  ],
+  "inPlace": [
+   311,
+   383,
+   33.71,
+   388,
+   70
+  ],
+  "how": "measured in place now",
+  "same": true
+ },
+ {
+  "n": 7,
+  "hash8": "45f77f76",
+  "size": "360x688",
+  "lang": "xh",
+  "folder": "cold-clear",
+  "slot": "cold-clear/week_1/day/1.webp",
+  "served": true,
+  "anchorOk": true,
+  "line": "Ilanga emqolo wakho, i-freezer ebusweni bakho.",
+  "full": [
+   239,
+   311,
+   33.71,
+   316,
+   100,
+   0
+  ],
+  "inPlace": [
+   239,
+   311,
+   33.71,
+   316,
+   100
+  ],
+  "how": "measured in place now",
+  "same": true
+ },
+ {
+  "n": 11,
+  "hash8": "7b6de3ab",
+  "size": "360x688",
+  "lang": "st",
+  "folder": "fog",
+  "slot": "fog/week_1/day/3.webp",
+  "served": true,
+  "anchorOk": true,
+  "line": "Mohodi o fihlile a sa memioa. Mohodi wa setso.",
+  "full": [
+   278,
+   350,
+   33.71,
+   355,
+   61,
+   0
+  ],
+  "inPlace": [
+   278,
+   350,
+   33.71,
+   355,
+   61
+  ],
+  "how": "measured in place now",
+  "same": true
+ },
+ {
+  "n": 15,
+  "hash8": "bc3c55df",
+  "size": "360x688",
+  "lang": "en",
+  "folder": "heat",
+  "slot": "heat/week_1/day/6.webp",
+  "served": true,
+  "anchorOk": true,
+  "line": "Saturday, and the only shade for the next hour is inside this car.",
+  "full": [
+   326,
+   434,
+   33.71,
+   439,
+   56,
+   0
+  ],
+  "inPlace": [
+   326,
+   434,
+   33.71,
+   439,
+   56
+  ],
+  "how": "in-place run",
+  "same": true
+ },
+ {
+  "n": 19,
+  "hash8": "e202753f",
+  "size": "360x688",
+  "lang": "af",
+  "folder": "fog",
+  "slot": "fog/week_1/day/5.webp",
+  "served": true,
+  "anchorOk": true,
+  "line": "Kamerjas, pantoffels, dertig meter sig: vullisdag wag vir geen weer nie.",
+  "full": [
+   301,
+   409,
+   33.71,
+   414,
+   61,
+   0
+  ],
+  "inPlace": [
+   301,
+   409,
+   33.71,
+   414,
+   61
+  ],
+  "how": "in-place run",
+  "same": true
+ },
+ {
+  "n": 79,
+  "hash8": "08c461c7",
+  "size": "360x688",
+  "lang": "zu",
+  "folder": "cold",
+  "slot": "cold/week_1/day/7.webp",
+  "served": true,
+  "anchorOk": true,
+  "line": "Amanzi abukeka njengengilazi. Azwakala njengeqhwa. Ungawenzi lo mzamo.",
+  "full": [
+   265,
+   409,
+   33.71,
+   414,
+   55,
+   0
+  ],
+  "inPlace": [
+   265,
+   409,
+   33.71,
+   414,
+   55
+  ],
+  "how": "measured in place now",
+  "same": true
+ },
+ {
+  "n": 83,
+  "hash8": "191654e6",
+  "size": "360x688",
+  "lang": "xh",
+  "folder": "storm",
+  "slot": "storm/week_1/day/3.webp",
+  "served": true,
+  "anchorOk": true,
+  "line": "Kuhle kwaye koyikisa ngokulinganayo.",
+  "full": [
+   239,
+   311,
+   33.71,
+   316,
+   48,
+   0
+  ],
+  "inPlace": [
+   239,
+   311,
+   33.71,
+   316,
+   48
+  ],
+  "how": "measured in place now",
+  "same": true
+ },
+ {
+  "n": 87,
+  "hash8": "2b85cbde",
+  "size": "360x688",
+  "lang": "st",
+  "folder": "rain",
+  "slot": "rain/week_2/day/1.webp",
+  "served": true,
+  "anchorOk": true,
+  "line": "Jarata e re kea leboha qetellong.",
+  "full": [
+   298,
+   370,
+   33.71,
+   375,
+   44,
+   0
+  ],
+  "inPlace": [
+   298,
+   370,
+   33.71,
+   375,
+   44
+  ],
+  "how": "measured in place now",
+  "same": true
+ },
+ {
+  "n": 91,
+  "hash8": "319c3448",
+  "size": "360x688",
+  "lang": "en",
+  "folder": "cold",
+  "slot": "cold/week_2/day/4.webp",
+  "served": true,
+  "anchorOk": true,
+  "line": "Gloves-around-the-cup weather: the coffee is doing two jobs at once.",
+  "full": [
+   339,
+   447,
+   33.71,
+   452,
+   58,
+   0
+  ],
+  "inPlace": [
+   339,
+   447,
+   33.71,
+   452,
+   58
+  ],
+  "how": "in-place run",
+  "same": true
+ },
+ {
+  "n": 95,
+  "hash8": "3db700a6",
+  "size": "360x688",
+  "lang": "af",
+  "folder": "rain",
+  "slot": "rain/week_1/day/5.webp",
+  "served": true,
+  "anchorOk": true,
+  "line": "Ja, dit reën sywaarts. Suid-Afrikaanse spesialiteit.",
+  "full": [
+   301,
+   409,
+   33.71,
+   414,
+   57,
+   0
+  ],
+  "inPlace": [
+   301,
+   409,
+   33.71,
+   414,
+   57
+  ],
+  "how": "in-place run",
+  "same": true
+ },
+ {
+  "n": 99,
+  "hash8": "44af2aeb",
+  "size": "360x688",
+  "lang": "zu",
+  "folder": "cold",
+  "slot": "cold/week_1/day/6.webp",
+  "served": true,
+  "anchorOk": true,
+  "line": "Lokhu akukhona okwethenjiswa yincwadi yokuvakasha.",
+  "full": [
+   301,
+   409,
+   33.71,
+   414,
+   56,
+   0
+  ],
+  "inPlace": [
+   301,
+   409,
+   33.71,
+   414,
+   56
+  ],
+  "how": "measured in place now",
+  "same": true
+ },
+ {
+  "n": 103,
+  "hash8": "5477e28c",
+  "size": "360x688",
+  "lang": "xh",
+  "folder": "cloudy",
+  "slot": "cloudy/week_1/day/1.webp",
+  "served": true,
+  "anchorOk": true,
+  "line": "Bekunokuba kubi ngakumbi. Bekunokuba bhetele nayo.",
+  "full": [
+   223,
+   331,
+   33.71,
+   336,
+   78,
+   0
+  ],
+  "inPlace": [
+   223,
+   331,
+   33.71,
+   336,
+   78
+  ],
+  "how": "measured in place now",
+  "same": true
+ },
+ {
+  "n": 107,
+  "hash8": "5a08fa13",
+  "size": "360x688",
+  "lang": "st",
+  "folder": "rain",
+  "slot": "rain/week_1/day/7.webp",
+  "served": true,
+  "anchorOk": true,
+  "line": "Sekhele se robehile ka moya wa pele. Setso.",
+  "full": [
+   298,
+   370,
+   33.71,
+   375,
+   78,
+   0
+  ],
+  "inPlace": [
+   298,
+   370,
+   33.71,
+   375,
+   78
+  ],
+  "how": "measured in place now",
+  "same": true
+ },
+ {
+  "n": 111,
+  "hash8": "668c5587",
+  "size": "360x688",
+  "lang": "en",
+  "folder": "clear",
+  "slot": "clear/week_1/day/7.webp",
+  "served": true,
+  "anchorOk": true,
+  "line": "Grass warm, sky empty — the kind of Sunday that resets a whole family.",
+  "full": [
+   339,
+   447,
+   33.71,
+   452,
+   66,
+   0
+  ],
+  "inPlace": [
+   339,
+   447,
+   33.71,
+   452,
+   66
+  ],
+  "how": "in-place run",
+  "same": true
+ },
+ {
+  "n": 115,
+  "hash8": "77077da4",
+  "size": "360x688",
+  "lang": "af",
+  "folder": "storm",
+  "slot": "storm/week_2/day/3.webp",
+  "served": true,
+  "anchorOk": true,
+  "line": "Die storm het aangekom. Al die res kan wag.",
+  "full": [
+   317,
+   389,
+   33.71,
+   394,
+   55,
+   0
+  ],
+  "inPlace": [
+   317,
+   389,
+   33.71,
+   394,
+   55
+  ],
+  "how": "in-place run",
+  "same": true
+ },
+ {
+  "n": 119,
+  "hash8": "83e944cb",
+  "size": "360x688",
+  "lang": "zu",
+  "folder": "cold",
+  "slot": "cold/week_2/day/3.webp",
+  "served": true,
+  "anchorOk": true,
+  "line": "Akekho ozibhalisele leli zinga lokushisa.",
+  "full": [
+   337,
+   409,
+   33.71,
+   414,
+   78,
+   0
+  ],
+  "inPlace": [
+   337,
+   409,
+   33.71,
+   414,
+   78
+  ],
+  "how": "measured in place now",
+  "same": true
+ },
+ {
+  "n": 123,
+  "hash8": "8bc9f9cb",
+  "size": "360x688",
+  "lang": "xh",
+  "folder": "cloudy",
+  "slot": "cloudy/week_2/day/5.webp",
+  "served": true,
+  "anchorOk": true,
+  "line": "Amafu aphendule athi “mhlawumbi,” kodwa avele afika kunjalo.",
+  "full": [
+   223,
+   331,
+   33.71,
+   336,
+   63,
+   0
+  ],
+  "inPlace": [
+   223,
+   331,
+   33.71,
+   336,
+   63
+  ],
+  "how": "measured in place now",
+  "same": true
+ },
+ {
+  "n": 127,
+  "hash8": "92d7d25f",
+  "size": "360x688",
+  "lang": "st",
+  "folder": "cloudy",
+  "slot": "cloudy/week_1/day/5.webp",
+  "served": true,
+  "anchorOk": true,
+  "line": "Letsatsi ka tsela ya ts'ebetso le teng. Ka moya le sebakeng se seng.",
+  "full": [
+   242,
+   350,
+   33.71,
+   355,
+   78,
+   0
+  ],
+  "inPlace": [
+   242,
+   350,
+   33.71,
+   355,
+   78
+  ],
+  "how": "measured in place now",
+  "same": true
+ },
+ {
+  "n": 131,
+  "hash8": "a9c1572f",
+  "size": "360x688",
+  "lang": "en",
+  "folder": "clear",
+  "slot": "clear/week_1/day/3.webp",
+  "served": true,
+  "anchorOk": true,
+  "line": "One perfect day issued. Non-transferable. Spend it wisely.",
+  "full": [
+   339,
+   447,
+   33.71,
+   452,
+   58,
+   0
+  ],
+  "inPlace": [
+   339,
+   447,
+   33.71,
+   452,
+   58
+  ],
+  "how": "in-place run",
+  "same": true
+ },
+ {
+  "n": 135,
+  "hash8": "afe79b6d",
+  "size": "360x688",
+  "lang": "af",
+  "folder": "wind",
+  "slot": "wind/week_2/day/2.webp",
+  "served": true,
+  "anchorOk": true,
+  "line": "Die eike is oukei. Die vullisdromme het nooit 'n kans gestaan nie.",
+  "full": [
+   301,
+   409,
+   33.71,
+   414,
+   90,
+   0
+  ],
+  "inPlace": [
+   301,
+   409,
+   33.71,
+   414,
+   90
+  ],
+  "how": "in-place run",
+  "same": true
+ },
+ {
+  "n": 139,
+  "hash8": "c652e583",
+  "size": "360x688",
+  "lang": "zu",
+  "folder": "rain",
+  "slot": "rain/week_2/day/6.webp",
+  "served": true,
+  "anchorOk": true,
+  "line": "Amaconsi amabili ku-windscreen bese yonke i-N1 ikhohlwa yikho konke eyake yakufunda.",
+  "full": [
+   245,
+   389,
+   33.71,
+   394,
+   56,
+   0
+  ],
+  "inPlace": [
+   245,
+   389,
+   33.71,
+   394,
+   56
+  ],
+  "how": "measured in place now",
+  "same": true
+ },
+ {
+  "n": 143,
+  "hash8": "d5ba1f11",
+  "size": "360x688",
+  "lang": "xh",
+  "folder": "storm",
+  "slot": "storm/week_1/day/7.webp",
+  "served": true,
+  "anchorOk": true,
+  "line": "Khupha izinto kumbane. Isibhakabhaka sinezicwangciso.",
+  "full": [
+   203,
+   311,
+   33.71,
+   316,
+   43,
+   0
+  ],
+  "inPlace": [
+   203,
+   311,
+   33.71,
+   316,
+   43
+  ],
+  "how": "measured in place now",
+  "same": true
+ },
+ {
+  "n": 147,
+  "hash8": "dc5ec5c7",
+  "size": "360x688",
+  "lang": "st",
+  "folder": "rain",
+  "slot": "rain/week_2/day/7.webp",
+  "served": true,
+  "anchorOk": true,
+  "line": "Mme wa motho e mong o tla omanya. Ho ne ho le molemo.",
+  "full": [
+   262,
+   370,
+   33.71,
+   375,
+   52,
+   0
+  ],
+  "inPlace": [
+   262,
+   370,
+   33.71,
+   375,
+   52
+  ],
+  "how": "measured in place now",
+  "same": true
+ },
+ {
+  "n": 151,
+  "hash8": "e617f182",
+  "size": "360x688",
+  "lang": "en",
+  "folder": "rain",
+  "slot": "rain/week_1/day/4.webp",
+  "served": true,
+  "anchorOk": true,
+  "line": "Rain so heavy it should pay rent.",
+  "full": [
+   375,
+   447,
+   33.71,
+   452,
+   50,
+   0
+  ],
+  "inPlace": [
+   375,
+   447,
+   33.71,
+   452,
+   50
+  ],
+  "how": "in-place run",
+  "same": true
+ },
+ {
+  "n": 155,
+  "hash8": "eb699c28",
+  "size": "360x688",
+  "lang": "af",
+  "folder": "clear",
+  "slot": "clear/week_2/day/6.webp",
+  "served": true,
+  "anchorOk": true,
+  "line": "Die rook gaan reguit op, en dis die lug se manier om 'n braai goed te keur.",
+  "full": [
+   301,
+   409,
+   33.71,
+   414,
+   55,
+   0
+  ],
+  "inPlace": [
+   301,
+   409,
+   33.71,
+   414,
+   55
+  ],
+  "how": "in-place run",
+  "same": true
+ },
+ {
+  "n": 159,
+  "hash8": "f59b6f76",
+  "size": "360x688",
+  "lang": "zu",
+  "folder": "rain",
+  "slot": "rain/week_2/day/5.webp",
+  "served": true,
+  "anchorOk": true,
+  "line": "I-N1 manje yi-waterpark.",
+  "full": [
+   353,
+   389,
+   33.71,
+   394,
+   29,
+   0
+  ],
+  "inPlace": [
+   353,
+   389,
+   33.71,
+   394,
+   29
+  ],
+  "how": "measured in place now",
+  "same": true
+ },
+ {
+  "n": 4,
+  "hash8": "1a02b7d7",
+  "size": "320x488",
+  "lang": "st",
+  "folder": "heat",
+  "slot": "heat/week_1/day/5.webp",
+  "served": true,
+  "anchorOk": true,
+  "line": "Tara e bonolo. Batho ba bonolo le ho feta.",
+  "full": [
+   94,
+   144,
+   23.91,
+   146,
+   66,
+   0
+  ],
+  "inPlace": [
+   94,
+   144,
+   23.91,
+   146,
+   66
+  ],
+  "how": "measured in place now",
+  "same": true
+ },
+ {
+  "n": 8,
+  "hash8": "46cd4cef",
+  "size": "320x488",
+  "lang": "en",
+  "folder": "heat",
+  "slot": "heat/week_1/day/2.webp",
+  "served": true,
+  "anchorOk": true,
+  "line": "The aircon remote is now public property. Negotiate.",
+  "full": [
+   166,
+   216,
+   23.91,
+   218,
+   59,
+   0
+  ],
+  "inPlace": [
+   166,
+   216,
+   23.91,
+   218,
+   59
+  ],
+  "how": "in-place run",
+  "same": true
+ },
+ {
+  "n": 12,
+  "hash8": "af6a66e2",
+  "size": "320x488",
+  "lang": "af",
+  "folder": "heat",
+  "slot": "heat/week_1/day/3.webp",
+  "served": true,
+  "anchorOk": true,
+  "line": "Die swembad is reeds bespreek. Deur almal. Vir die hele dag.",
+  "full": [
+   133,
+   183,
+   23.91,
+   185,
+   53,
+   0
+  ],
+  "inPlace": [
+   133,
+   183,
+   23.91,
+   185,
+   53
+  ],
+  "how": "in-place run",
+  "same": true
+ },
+ {
+  "n": 16,
+  "hash8": "c7090cc8",
+  "size": "320x488",
+  "lang": "zu",
+  "folder": "cold-clear",
+  "slot": "cold-clear/week_1/day/5.webp",
+  "served": true,
+  "anchorOk": true,
+  "line": "Izingane zisaya esikoleni ngama-shorts. Ziyazi izinto thina esingazazi.",
+  "full": [
+   104,
+   176,
+   22.91,
+   178,
+   74,
+   0
+  ],
+  "inPlace": [
+   104,
+   176,
+   22.91,
+   178,
+   74
+  ],
+  "how": "measured in place now",
+  "same": true
+ },
+ {
+  "n": 20,
+  "hash8": "ed88abf0",
+  "size": "320x488",
+  "lang": "xh",
+  "folder": "cold-clear",
+  "slot": "cold-clear/week_1/day/2.webp",
+  "served": true,
+  "anchorOk": true,
+  "line": "I-heater yemoto yeyona relationship ibalulekileyo ebomini bakho ngoku.",
+  "full": [
+   45,
+   85,
+   18.91,
+   87,
+   54,
+   0
+  ],
+  "inPlace": [
+   45,
+   85,
+   18.91,
+   87,
+   54
+  ],
+  "how": "measured in place now",
+  "same": true
+ },
+ {
+  "n": 80,
+  "hash8": "11312da8",
+  "size": "320x488",
+  "lang": "st",
+  "folder": "wind",
+  "slot": "wind/week_2/day/4.webp",
+  "served": true,
+  "anchorOk": true,
+  "line": "Microdermabrasion ya mahala promenade-ng kajeno.",
+  "full": [
+   94,
+   144,
+   23.91,
+   146,
+   50,
+   0
+  ],
+  "inPlace": [
+   94,
+   144,
+   23.91,
+   146,
+   50
+  ],
+  "how": "measured in place now",
+  "same": true
+ },
+ {
+  "n": 84,
+  "hash8": "1c536cb7",
+  "size": "320x488",
+  "lang": "en",
+  "folder": "cloudy",
+  "slot": "cloudy/week_1/day/3.webp",
+  "served": true,
+  "anchorOk": true,
+  "line": "The sun's bunking today.",
+  "full": [
+   171,
+   196,
+   23.91,
+   198,
+   47,
+   0
+  ],
+  "inPlace": [
+   171,
+   196,
+   23.91,
+   198,
+   47
+  ],
+  "how": "in-place run",
+  "same": true
+ },
+ {
+  "n": 88,
+  "hash8": "2edc1c0d",
+  "size": "320x488",
+  "lang": "af",
+  "folder": "cloudy",
+  "slot": "cloudy/week_1/day/7.webp",
+  "served": true,
+  "anchorOk": true,
+  "line": "Die lug dreig, die aanmaakblokkies antwoord: 'n baie Suid-Afrikaanse kragmeting.",
+  "full": [
+   121,
+   196,
+   23.91,
+   198,
+   78,
+   0
+  ],
+  "inPlace": [
+   121,
+   196,
+   23.91,
+   198,
+   78
+  ],
+  "how": "in-place run",
+  "same": true
+ },
+ {
+  "n": 92,
+  "hash8": "32e5db4c",
+  "size": "320x488",
+  "lang": "zu",
+  "folder": "storm",
+  "slot": "storm/week_2/day/1.webp",
+  "served": true,
+  "anchorOk": true,
+  "line": "Lokhu ukuhlolwa kwesibhakabhaka. Siphasile.",
+  "full": [
+   146,
+   196,
+   23.91,
+   198,
+   64,
+   0
+  ],
+  "inPlace": [
+   146,
+   196,
+   23.91,
+   198,
+   64
+  ],
+  "how": "measured in place now",
+  "same": true
+ },
+ {
+  "n": 96,
+  "hash8": "3edd5a2c",
+  "size": "320x488",
+  "lang": "xh",
+  "folder": "cold",
+  "slot": "cold/week_1/day/4.webp",
+  "served": true,
+  "anchorOk": true,
+  "line": "Iinzwane zakho zifake isikhalazo esisemthethweni.",
+  "full": [
+   65,
+   105,
+   18.91,
+   107,
+   61,
+   0
+  ],
+  "inPlace": [
+   65,
+   105,
+   18.91,
+   107,
+   61
+  ],
+  "how": "measured in place now",
+  "same": true
+ },
+ {
+  "n": 100,
+  "hash8": "486fd16a",
+  "size": "320x488",
+  "lang": "st",
+  "folder": "rain",
+  "slot": "rain/week_1/day/3.webp",
+  "served": true,
+  "anchorOk": true,
+  "line": "Metsotso e mashome a mabedi ya opera, ebe letsatsi le iketsa eka ha ho letho le etsahetseng.",
+  "full": [
+   84,
+   144,
+   18.91,
+   146,
+   61,
+   0
+  ],
+  "inPlace": [
+   84,
+   144,
+   18.91,
+   146,
+   61
+  ],
+  "how": "in-place run",
+  "same": true
+ },
+ {
+  "n": 104,
+  "hash8": "552cf0a8",
+  "size": "320x488",
+  "lang": "en",
+  "folder": "storm",
+  "slot": "storm/week_2/day/2.webp",
+  "served": true,
+  "anchorOk": true,
+  "line": "The sky just went full Carte Blanche.",
+  "full": [
+   146,
+   196,
+   23.91,
+   198,
+   62,
+   0
+  ],
+  "inPlace": [
+   146,
+   196,
+   23.91,
+   198,
+   62
+  ],
+  "how": "in-place run",
+  "same": true
+ },
+ {
+  "n": 108,
+  "hash8": "5ab21fef",
+  "size": "320x488",
+  "lang": "af",
+  "folder": "clear",
+  "slot": "clear/week_2/day/4.webp",
+  "served": true,
+  "anchorOk": true,
+  "line": "Donderdag se voorspelling, soos die hond dit lees: warm planke tot verdere kennisgewing.",
+  "full": [
+   121,
+   196,
+   23.91,
+   198,
+   100,
+   0
+  ],
+  "inPlace": [
+   121,
+   196,
+   23.91,
+   198,
+   100
+  ],
+  "how": "in-place run",
+  "same": true
+ },
+ {
+  "n": 112,
+  "hash8": "6d489d62",
+  "size": "320x488",
+  "lang": "zu",
+  "folder": "clear",
+  "slot": "clear/week_1/day/4.webp",
+  "served": true,
+  "anchorOk": true,
+  "line": "Usuku oluphelele. Akukho zaba. Phuma.",
+  "full": [
+   120,
+   170,
+   23.91,
+   172,
+   61,
+   0
+  ],
+  "inPlace": [
+   120,
+   170,
+   23.91,
+   172,
+   61
+  ],
+  "how": "measured in place now",
+  "same": true
+ },
+ {
+  "n": 116,
+  "hash8": "7cd32257",
+  "size": "320x488",
+  "lang": "xh",
+  "folder": "wind",
+  "slot": "wind/week_1/day/5.webp",
+  "served": true,
+  "anchorOk": true,
+  "line": "Isimbo seenwele zakho? Simkile. Yamkela.",
+  "full": [
+   85,
+   105,
+   18.91,
+   107,
+   82,
+   0
+  ],
+  "inPlace": [
+   85,
+   105,
+   18.91,
+   107,
+   82
+  ],
+  "how": "measured in place now",
+  "same": true
+ },
+ {
+  "n": 120,
+  "hash8": "853aefff",
+  "size": "320x488",
+  "lang": "st",
+  "folder": "rain",
+  "slot": "rain/week_1/day/1.webp",
+  "served": true,
+  "anchorOk": true,
+  "line": "Matamo a etsa motjeko o thabileng.",
+  "full": [
+   94,
+   144,
+   23.91,
+   146,
+   48,
+   0
+  ],
+  "inPlace": [
+   94,
+   144,
+   23.91,
+   146,
+   48
+  ],
+  "how": "measured in place now",
+  "same": true
+ },
+ {
+  "n": 124,
+  "hash8": "90566b9c",
+  "size": "320x488",
+  "lang": "en",
+  "folder": "clear",
+  "slot": "clear/week_1/day/5.webp",
+  "served": true,
+  "anchorOk": true,
+  "line": "Forty floors of glass and every one of them is showing the same blue.",
+  "full": [
+   121,
+   196,
+   23.91,
+   198,
+   99,
+   0
+  ],
+  "inPlace": [
+   121,
+   196,
+   23.91,
+   198,
+   99
+  ],
+  "how": "in-place run",
+  "same": true
+ },
+ {
+  "n": 128,
+  "hash8": "94ea185a",
+  "size": "320x488",
+  "lang": "af",
+  "folder": "wind",
+  "slot": "wind/week_2/day/6.webp",
+  "served": true,
+  "anchorOk": true,
+  "line": "Saterdag, en die wind het sterk menings oor jou planne vir die tuin.",
+  "full": [
+   141,
+   216,
+   23.91,
+   218,
+   50,
+   0
+  ],
+  "inPlace": [
+   141,
+   216,
+   23.91,
+   218,
+   50
+  ],
+  "how": "in-place run",
+  "same": true
+ },
+ {
+  "n": 132,
+  "hash8": "abf4cc94",
+  "size": "320x488",
+  "lang": "zu",
+  "folder": "cloudy",
+  "slot": "cloudy/week_2/day/2.webp",
+  "served": true,
+  "anchorOk": true,
+  "line": "Isibhakabhaka sithulile. Akekho okhonondayo.",
+  "full": [
+   146,
+   196,
+   23.91,
+   198,
+   51,
+   0
+  ],
+  "inPlace": [
+   146,
+   196,
+   23.91,
+   198,
+   51
+  ],
+  "how": "measured in place now",
+  "same": true
+ },
+ {
+  "n": 136,
+  "hash8": "b3e1239d",
+  "size": "320x488",
+  "lang": "xh",
+  "folder": "storm",
+  "slot": "storm/week_1/day/2.webp",
+  "served": true,
+  "anchorOk": true,
+  "line": "Umbane ubeka i-Eskom ehlazweni.",
+  "full": [
+   81,
+   105,
+   22.91,
+   107,
+   53,
+   0
+  ],
+  "inPlace": [
+   81,
+   105,
+   22.91,
+   107,
+   53
+  ],
+  "how": "measured in place now",
+  "same": true
+ },
+ {
+  "n": 140,
+  "hash8": "c7964542",
+  "size": "320x488",
+  "lang": "st",
+  "folder": "cloudy",
+  "slot": "cloudy/week_1/day/4.webp",
+  "served": true,
+  "anchorOk": true,
+  "line": "Lehodimo le loketseng ho phela ntle le mafolofolo.",
+  "full": [
+   94,
+   144,
+   23.91,
+   146,
+   63,
+   0
+  ],
+  "inPlace": [
+   94,
+   144,
+   23.91,
+   146,
+   63
+  ],
+  "how": "measured in place now",
+  "same": true
+ },
+ {
+  "n": 144,
+  "hash8": "d656b20a",
+  "size": "320x488",
+  "lang": "en",
+  "folder": "wind",
+  "slot": "wind/week_1/day/3.webp",
+  "served": true,
+  "anchorOk": true,
+  "line": "Every leaf in the street is queueing to get into that car.",
+  "full": [
+   166,
+   216,
+   23.91,
+   218,
+   39,
+   0
+  ],
+  "inPlace": [
+   166,
+   216,
+   23.91,
+   218,
+   39
+  ],
+  "how": "in-place run",
+  "same": true
+ },
+ {
+  "n": 148,
+  "hash8": "dde50ae6",
+  "size": "320x488",
+  "lang": "af",
+  "folder": "clear",
+  "slot": "clear/week_2/day/5.webp",
+  "served": true,
+  "anchorOk": true,
+  "line": "Lug so skoon, jy kan amper tot môre toe sien.",
+  "full": [
+   146,
+   196,
+   23.91,
+   198,
+   94,
+   0
+  ],
+  "inPlace": [
+   146,
+   196,
+   23.91,
+   198,
+   94
+  ],
+  "how": "in-place run",
+  "same": true
+ },
+ {
+  "n": 152,
+  "hash8": "e69199a6",
+  "size": "320x488",
+  "lang": "zu",
+  "folder": "cold",
+  "slot": "cold/week_2/day/2.webp",
+  "served": true,
+  "anchorOk": true,
+  "line": "Ibhodlela lamanzi ashisayo yiqhawe langempela namuhla.",
+  "full": [
+   146,
+   196,
+   23.91,
+   198,
+   98,
+   0
+  ],
+  "inPlace": [
+   146,
+   196,
+   23.91,
+   198,
+   98
+  ],
+  "how": "measured in place now",
+  "same": true
+ },
+ {
+  "n": 156,
+  "hash8": "ee678255",
+  "size": "320x488",
+  "lang": "xh",
+  "folder": "cloudy",
+  "slot": "cloudy/week_2/day/7.webp",
+  "served": true,
+  "anchorOk": true,
+  "line": "I-app ithi kunamafu. Idolo likamakhulu lithi imvula. Sithemba idolo.",
+  "full": [
+   65,
+   105,
+   18.91,
+   107,
+   88,
+   0
+  ],
+  "inPlace": [
+   65,
+   105,
+   18.91,
+   107,
+   88
+  ],
+  "how": "measured in place now",
+  "same": true
+ },
+ {
+  "n": 160,
+  "hash8": "fc5b0a6e",
+  "size": "320x488",
+  "lang": "st",
+  "folder": "cloudy",
+  "slot": "cloudy/week_1/day/6.webp",
+  "served": true,
+  "anchorOk": true,
+  "line": "Ho aparetse ka maru ha se ho hlakolwa, ke moya o monate.",
+  "full": [
+   94,
+   144,
+   23.91,
+   146,
+   51,
+   0
+  ],
+  "inPlace": [
+   94,
+   144,
+   23.91,
+   146,
+   51
+  ],
+  "how": "measured in place now",
+  "same": true
+ }
+]

@@ -1,0 +1,7466 @@
+[
+ {
+  "n": 1,
+  "hash": "ee562e8adf7312026fe28159b55c8bb72dfbf83a1a8e02eb20a648e19eaa7f6b",
+  "anchor": 44,
+  "folder": "cloudy",
+  "size": "414x715",
+  "why": "within",
+  "lang": "xh",
+  "line": "Kwenye indawo i-braai isele isemalahleni okugqibela, akukho nkwenkwezi — incoko ithwala ubusuku.",
+  "px": 35.035,
+  "textTop": 235,
+  "textBottom": 383,
+  "band": null,
+  "bandY": null,
+  "level": "clear",
+  "words": "clouds and sky below the moon"
+ },
+ {
+  "n": 2,
+  "hash": "825a6ff641243640ad29eed63e07ddcee661e6e71a2c84850a6c999b7a1e062d",
+  "anchor": 66,
+  "folder": "cold",
+  "size": "414x715",
+  "why": "near",
+  "lang": "st",
+  "line": "Lehlwa dithabeng. Group e nngwe le e nngwe ya lelapa ya WhatsApp jwale e na le foto e tshoanang.",
+  "px": 35.035,
+  "textTop": 274,
+  "textBottom": 422,
+  "band": [
+   45,
+   65
+  ],
+  "bandY": [
+   131.66999999999996,
+   274.6699999999999
+  ],
+  "level": "partly",
+  "words": "the tap's frosted spout (the tap head stays clear)"
+ },
+ {
+  "n": 3,
+  "hash": "0af3b5a8e364791761c448e994ad918b8d1a69ff13beb72b01f9fb59b5253b06",
+  "anchor": 70,
+  "folder": "heat",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "Isidlo sasemini sifudukele ngaphandle kuba ngaphakathi kushushu ngaphezu kwangaphandle. Akukho mntu unokuyicacisa.",
+  "px": 31.035,
+  "textTop": 218,
+  "textBottom": 383,
+  "band": [
+   44,
+   80
+  ],
+  "bandY": [
+   85.70000000000002,
+   343.1
+  ],
+  "level": "covers",
+  "words": "the kids running through the sprinkler"
+ },
+ {
+  "n": 4,
+  "hash": "1a02b7d7a1d8b2a77ca44e3eb9b60a9a5eef1225a703ee0bf451d55b3b470684",
+  "anchor": 66,
+  "folder": "heat",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "Isidlo sasemini sifudukele ngaphandle kuba ngaphakathi kushushu ngaphezu kwangaphandle. Akukho mntu unokuyicacisa.",
+  "px": 31.035,
+  "textTop": 218,
+  "textBottom": 383,
+  "band": [
+   45,
+   60
+  ],
+  "bandY": [
+   105.92999999999995,
+   213.17999999999995
+  ],
+  "level": "covers",
+  "words": "the parrot on its cage"
+ },
+ {
+  "n": 5,
+  "hash": "3fbe216c40e0809485e1371daae089dfedaae71cf0439349f3fb7d1a14f66c3c",
+  "anchor": 64,
+  "folder": "fog",
+  "size": "414x715",
+  "why": "open",
+  "lang": "st",
+  "line": "Mohodi o ntse o eketseha, mohlomong. Ho bulela mabone a koloi ho ke ke ha senya letho.",
+  "px": 35.035,
+  "textTop": 274,
+  "textBottom": 422,
+  "band": null,
+  "bandY": null,
+  "level": "clear",
+  "words": "the grass between the golfer and the ball"
+ },
+ {
+  "n": 6,
+  "hash": "43dc1982b6f4535190ac2165cea5565c6ed1dd9b170367be8921c5a9f6f90c3f",
+  "anchor": 50,
+  "folder": "cold-clear",
+  "size": "414x715",
+  "why": "near",
+  "lang": "zu",
+  "line": "Ama-hadedas amathathu, amagwababa amabili, nomuntu oyedwa oqhaqhazelayo endaweni yokuphakela izinyoni.",
+  "px": 35.035,
+  "textTop": 243,
+  "textBottom": 428,
+  "band": [
+   42,
+   80
+  ],
+  "bandY": [
+   167.1324528301887,
+   401.6283018867924
+  ],
+  "level": "covers",
+  "words": "the boy climbing into the bakkie"
+ },
+ {
+  "n": 7,
+  "hash": "45f77f76f9e8519d390bba58827f928b65a690b2679d743131b7d95794c7bee5",
+  "anchor": 100,
+  "folder": "cold-clear",
+  "size": "414x715",
+  "why": "open",
+  "lang": "zu",
+  "line": "Ama-hadedas amathathu, amagwababa amabili, nomuntu oyedwa oqhaqhazelayo endaweni yokuphakela izinyoni.",
+  "px": 35.035,
+  "textTop": 243,
+  "textBottom": 428,
+  "band": null,
+  "bandY": null,
+  "level": "clear",
+  "words": "risen: the fence above the dog"
+ },
+ {
+  "n": 8,
+  "hash": "46cd4cefcca2ba1be3324f0744729d148c430aa721857f0666f6d130c30820a9",
+  "anchor": 59,
+  "folder": "heat",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "Isidlo sasemini sifudukele ngaphandle kuba ngaphakathi kushushu ngaphezu kwangaphandle. Akukho mntu unokuyicacisa.",
+  "px": 31.035,
+  "textTop": 218,
+  "textBottom": 383,
+  "band": [
+   46,
+   78
+  ],
+  "bandY": [
+   135.97000000000003,
+   364.7700000000001
+  ],
+  "level": "covers",
+  "words": "the two women at their desks"
+ },
+ {
+  "n": 9,
+  "hash": "4c74b554204ff9188705b2876d241be7ff642d44aafb235a7243fd36db529c91",
+  "anchor": 43,
+  "folder": "fog",
+  "size": "414x715",
+  "why": "open",
+  "lang": "st",
+  "line": "Mohodi o ntse o eketseha, mohlomong. Ho bulela mabone a koloi ho ke ke ha senya letho.",
+  "px": 35.035,
+  "textTop": 274,
+  "textBottom": 422,
+  "band": null,
+  "bandY": null,
+  "level": "clear",
+  "words": "the dashboard and wheel, below his face"
+ },
+ {
+  "n": 10,
+  "hash": "63272c175d0783b76ff76d760951431d6e9699a4022af0de9c16ea4402ee2721",
+  "anchor": 41,
+  "folder": "cold-clear",
+  "size": "414x715",
+  "why": "near",
+  "lang": "zu",
+  "line": "Ama-hadedas amathathu, amagwababa amabili, nomuntu oyedwa oqhaqhazelayo endaweni yokuphakela izinyoni.",
+  "px": 35.035,
+  "textTop": 243,
+  "textBottom": 428,
+  "band": [
+   44,
+   72
+  ],
+  "bandY": [
+   198.98000000000005,
+   399.17999999999995
+  ],
+  "level": "covers",
+  "words": "the toddler's face and the porridge"
+ },
+ {
+  "n": 11,
+  "hash": "7b6de3ab0922e431c961ec7c14d5761ddd88f75f10a7a6eed78e7ef8ee7736c1",
+  "anchor": 61,
+  "folder": "fog",
+  "size": "414x715",
+  "why": "open",
+  "lang": "st",
+  "line": "Mohodi o ntse o eketseha, mohlomong. Ho bulela mabone a koloi ho ke ke ha senya letho.",
+  "px": 35.035,
+  "textTop": 274,
+  "textBottom": 422,
+  "band": null,
+  "bandY": null,
+  "level": "clear",
+  "words": "misty rooftops"
+ },
+ {
+  "n": 12,
+  "hash": "af6a66e2446f1fb317d2018ea116220ffb013a89506c60892a55fffc246aae4d",
+  "anchor": 53,
+  "folder": "heat",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "Isidlo sasemini sifudukele ngaphandle kuba ngaphakathi kushushu ngaphezu kwangaphandle. Akukho mntu unokuyicacisa.",
+  "px": 31.035,
+  "textTop": 218,
+  "textBottom": 383,
+  "band": [
+   52,
+   78
+  ],
+  "bandY": [
+   198.49,
+   384.39000000000004
+  ],
+  "level": "covers",
+  "words": "the dog in the paddling pool"
+ },
+ {
+  "n": 13,
+  "hash": "b0695f2cebc73b1c336231c5c55783024d81d6112c66602a0ea32f7a4385b9ac",
+  "anchor": 43,
+  "folder": "fog",
+  "size": "414x715",
+  "why": "open",
+  "lang": "st",
+  "line": "Mohodi o ntse o eketseha, mohlomong. Ho bulela mabone a koloi ho ke ke ha senya letho.",
+  "px": 35.035,
+  "textTop": 274,
+  "textBottom": 422,
+  "band": null,
+  "bandY": null,
+  "level": "clear",
+  "words": "the misty field"
+ },
+ {
+  "n": 14,
+  "hash": "b1ae5ed3f1e46c448d3f3ab4e9f8f0d03e8f223e70f837f60a63693230ed5044",
+  "anchor": 68,
+  "folder": "heat",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "Isidlo sasemini sifudukele ngaphandle kuba ngaphakathi kushushu ngaphezu kwangaphandle. Akukho mntu unokuyicacisa.",
+  "px": 31.035,
+  "textTop": 218,
+  "textBottom": 383,
+  "band": [
+   45,
+   72
+  ],
+  "bandY": [
+   99.38999999999999,
+   292.44
+  ],
+  "level": "covers",
+  "words": "the egg in the pan and the kids watching"
+ },
+ {
+  "n": 15,
+  "hash": "bc3c55df9e9a604fffdf4d44b6137a773050f290f45ddd5d08d57190d501abec",
+  "anchor": 56,
+  "folder": "heat",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "Isidlo sasemini sifudukele ngaphandle kuba ngaphakathi kushushu ngaphezu kwangaphandle. Akukho mntu unokuyicacisa.",
+  "px": 31.035,
+  "textTop": 218,
+  "textBottom": 383,
+  "band": [
+   52,
+   64
+  ],
+  "bandY": [
+   188.68,
+   274.48
+  ],
+  "level": "covers",
+  "words": "the dashboard's 38° reading the joke is about"
+ },
+ {
+  "n": 16,
+  "hash": "c7090cc8143069a1a8e66856c6a1fbe497f6cdde91daec029d05323285b8d201",
+  "anchor": 74,
+  "folder": "cold-clear",
+  "size": "414x715",
+  "why": "near",
+  "lang": "zu",
+  "line": "Ama-hadedas amathathu, amagwababa amabili, nomuntu oyedwa oqhaqhazelayo endaweni yokuphakela izinyoni.",
+  "px": 35.035,
+  "textTop": 243,
+  "textBottom": 428,
+  "band": [
+   46,
+   68
+  ],
+  "bandY": [
+   120.22000000000006,
+   277.5200000000001
+  ],
+  "level": "covers",
+  "words": "the coffee drinkers' faces and cups"
+ },
+ {
+  "n": 17,
+  "hash": "cca354da10378cc7c2d412caf296630fd50ccf149b5c942ecc7e82851c85e63a",
+  "anchor": 54,
+  "folder": "fog",
+  "size": "414x715",
+  "why": "near",
+  "lang": "st",
+  "line": "Mohodi o ntse o eketseha, mohlomong. Ho bulela mabone a koloi ho ke ke ha senya letho.",
+  "px": 35.035,
+  "textTop": 274,
+  "textBottom": 422,
+  "band": [
+   40,
+   70
+  ],
+  "bandY": [
+   130.48,
+   344.9799999999999
+  ],
+  "level": "covers",
+  "words": "the cat on the wall"
+ },
+ {
+  "n": 18,
+  "hash": "dbadc260a0fbdeff4fc15a7cb347bbacb2def1d5c4fd762e8f398863fb1a4e1b",
+  "anchor": 76,
+  "folder": "heat",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "Isidlo sasemini sifudukele ngaphandle kuba ngaphakathi kushushu ngaphezu kwangaphandle. Akukho mntu unokuyicacisa.",
+  "px": 31.035,
+  "textTop": 218,
+  "textBottom": 383,
+  "band": [
+   55,
+   72
+  ],
+  "bandY": [
+   144.73000000000002,
+   266.28
+  ],
+  "level": "covers",
+  "words": "the chocolate melting on the dashboard"
+ },
+ {
+  "n": 19,
+  "hash": "e202753ff25acc7563e0c9c9418d5b847bec7419995eb6ba0de4682295b95b35",
+  "anchor": 61,
+  "folder": "fog",
+  "size": "414x715",
+  "why": "near",
+  "lang": "st",
+  "line": "Mohodi o ntse o eketseha, mohlomong. Ho bulela mabone a koloi ho ke ke ha senya letho.",
+  "px": 35.035,
+  "textTop": 274,
+  "textBottom": 422,
+  "band": [
+   40,
+   90
+  ],
+  "bandY": [
+   110.32,
+   467.81999999999994
+  ],
+  "level": "partly",
+  "words": "the man's back and his bin (his head stays clear)"
+ },
+ {
+  "n": 20,
+  "hash": "ed88abf02958901d54b780f8f33819a7270450587b43169c9cdd747792f1b7b7",
+  "anchor": 54,
+  "folder": "cold-clear",
+  "size": "414x715",
+  "why": "near",
+  "lang": "zu",
+  "line": "Ama-hadedas amathathu, amagwababa amabili, nomuntu oyedwa oqhaqhazelayo endaweni yokuphakela izinyoni.",
+  "px": 35.035,
+  "textTop": 243,
+  "textBottom": 428,
+  "band": [
+   42,
+   58
+  ],
+  "bandY": [
+   148.01999999999998,
+   262.41999999999996
+  ],
+  "level": "partly",
+  "words": "his chin and shoulder (his face stays clear)"
+ },
+ {
+  "n": 20,
+  "hash": "ed88abf02958901d54b780f8f33819a7270450587b43169c9cdd747792f1b7b7",
+  "anchor": 54,
+  "folder": "cold-clear",
+  "size": "320x488",
+  "why": "small",
+  "lang": "xh",
+  "line": "EBloemfontein ngo-6 kusasa: ijezi, igawuni, isikhafu, iitakkies, nobuso obuzenza ngathi kulungile.",
+  "px": 18.912001,
+  "textTop": 25,
+  "textBottom": 85,
+  "band": [
+   42,
+   58
+  ],
+  "bandY": [
+   -19.338840579710165,
+   69.08628019323669
+  ],
+  "level": "partly",
+  "words": "his chin and shoulder (his face stays clear)"
+ },
+ {
+  "n": 21,
+  "hash": "f23e83d55db33bbc82806bcca5d8cffafcbe05f0d847db1dd4643b49143fbfbb",
+  "anchor": 61,
+  "folder": "fog",
+  "size": "414x715",
+  "why": "near",
+  "lang": "st",
+  "line": "Mohodi o ntse o eketseha, mohlomong. Ho bulela mabone a koloi ho ke ke ha senya letho.",
+  "px": 35.035,
+  "textTop": 274,
+  "textBottom": 422,
+  "band": [
+   38,
+   95
+  ],
+  "bandY": [
+   96.01999999999998,
+   503.57
+  ],
+  "level": "partly",
+  "words": "the walker's jersey (her face stays clear)"
+ },
+ {
+  "n": 22,
+  "hash": "f946db7e2903b52d4334f0e04f62fd82e61a9f7b9907d316d66b9fd1cf1dc7da",
+  "anchor": 63,
+  "folder": "cold-clear",
+  "size": "414x715",
+  "why": "near",
+  "lang": "zu",
+  "line": "Ama-hadedas amathathu, amagwababa amabili, nomuntu oyedwa oqhaqhazelayo endaweni yokuphakela izinyoni.",
+  "px": 35.035,
+  "textTop": 243,
+  "textBottom": 428,
+  "band": [
+   48,
+   72
+  ],
+  "bandY": [
+   165.54000000000002,
+   337.13999999999993
+  ],
+  "level": "covers",
+  "words": "the runners"
+ },
+ {
+  "n": 23,
+  "hash": "09999b1e33e4f7bdafb176e51602254aef7d00d3d96899cd1f2afdb57ea8f4c8",
+  "anchor": null,
+  "folder": "heat",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "Abantu abadala 'abahamba nje egadini' kanye apho i-sprinkler ifefa khona. Yintlanganiso yamabhaqo, nè.",
+  "px": 35.035,
+  "textTop": 235,
+  "textBottom": 383,
+  "band": [
+   70,
+   85
+  ],
+  "bandY": [
+   245.44,
+   352.69
+  ],
+  "level": "partly",
+  "words": "the sleepers on the stoep"
+ },
+ {
+  "n": 24,
+  "hash": "12dc08356d8858edc9b684051c996f4d519977e7e0108a1924f6faebf35096c9",
+  "anchor": 74,
+  "folder": "heat",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "Abantu abadala 'abahamba nje egadini' kanye apho i-sprinkler ifefa khona. Yintlanganiso yamabhaqo, nè.",
+  "px": 35.035,
+  "textTop": 235,
+  "textBottom": 383,
+  "band": [
+   60,
+   76
+  ],
+  "bandY": [
+   187.02000000000004,
+   301.41999999999996
+  ],
+  "level": "covers",
+  "words": "the jug of ice on the table"
+ },
+ {
+  "n": 25,
+  "hash": "13f86b7909396e0e9edd88783197f94bb9412c74a2ce266625862426e234ba76",
+  "anchor": 83,
+  "folder": "wind",
+  "size": "414x715",
+  "why": "far",
+  "lang": "xh",
+  "line": "Kunokuba nomoya onamandla ngamaxesha athile. Uqikelelo aluqinisekanga kule meko",
+  "px": 35.035,
+  "textTop": 259,
+  "textBottom": 370,
+  "band": [
+   32,
+   55
+  ],
+  "bandY": [
+   -53.39999999999998,
+   111.05000000000007
+  ],
+  "level": "partly",
+  "words": "risen: the crown of the nearest bending palm"
+ },
+ {
+  "n": 26,
+  "hash": "16a1b557a12bd5d8b20c17f0816c52417f44300bd957faf5b5c740174f7eddbb",
+  "anchor": 72,
+  "folder": "cold-clear",
+  "size": "414x715",
+  "why": "near",
+  "lang": "zu",
+  "line": "Ama-hadedas amathathu, amagwababa amabili, nomuntu oyedwa oqhaqhazelayo endaweni yokuphakela izinyoni.",
+  "px": 35.035,
+  "textTop": 243,
+  "textBottom": 428,
+  "band": [
+   50,
+   78
+  ],
+  "bandY": [
+   154.46,
+   354.6600000000001
+  ],
+  "level": "covers",
+  "words": "the friends around the fire drum"
+ },
+ {
+  "n": 27,
+  "hash": "1c3fdb556279b30576ec5e4637649dd429d4671bedf628cc57f6a0f259f7af9a",
+  "anchor": 51,
+  "folder": "heat",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "Abantu abadala 'abahamba nje egadini' kanye apho i-sprinkler ifefa khona. Yintlanganiso yamabhaqo, nè.",
+  "px": 35.035,
+  "textTop": 235,
+  "textBottom": 383,
+  "band": [
+   50,
+   70
+  ],
+  "bandY": [
+   190.73,
+   333.7299999999999
+  ],
+  "level": "covers",
+  "words": "the sleeper and the 2:00 clock"
+ },
+ {
+  "n": 28,
+  "hash": "1da71cd80b8ecca6b78608f3e61d7374c518e4ba252ff8258c4e4e64265fc422",
+  "anchor": null,
+  "folder": "cold-clear",
+  "size": "414x715",
+  "why": "near",
+  "lang": "zu",
+  "line": "Ama-hadedas amathathu, amagwababa amabili, nomuntu oyedwa oqhaqhazelayo endaweni yokuphakela izinyoni.",
+  "px": 35.035,
+  "textTop": 243,
+  "textBottom": 428,
+  "band": [
+   55,
+   90
+  ],
+  "bandY": [
+   173.29000000000005,
+   423.53999999999996
+  ],
+  "level": "partly",
+  "words": "the frosted car's roof and windscreen"
+ },
+ {
+  "n": 29,
+  "hash": "20567f2a95864a0148ba46d091d5c79426e7fd24360aaaf010bcaba96c396a8d",
+  "anchor": 55,
+  "folder": "cold",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "Imizuzu emihlanu yokubukela iinkwenkwezi. Emva koko ubaleka ubuyele ngaphakathi. Sisivumelwano eso.",
+  "px": 35.035,
+  "textTop": 235,
+  "textBottom": 383,
+  "band": [
+   50,
+   72
+  ],
+  "bandY": [
+   177.65000000000006,
+   334.94999999999993
+  ],
+  "level": "covers",
+  "words": "the couple and their tent"
+ },
+ {
+  "n": 30,
+  "hash": "216875afead72d381a78a3a8f1767bc818a1945cc97396f019acdab8c84c719e",
+  "anchor": 32,
+  "folder": "fog",
+  "size": "414x715",
+  "why": "open",
+  "lang": "zu",
+  "line": "Omakhelwane abaseduze bangamakhilomitha angamashumi amathathu kude futhi namuhla ebusuku bakubona kancane nakakhulu.",
+  "px": 35.035,
+  "textTop": 263,
+  "textBottom": 448,
+  "band": null,
+  "bandY": null,
+  "level": "clear",
+  "words": "fog below the traffic light"
+ },
+ {
+  "n": 31,
+  "hash": "22e65e5fd954acd67621cb416e7bf49990ce20082f3267d08d5b9e7362414569",
+  "anchor": 66,
+  "folder": "clear",
+  "size": "414x715",
+  "why": "near",
+  "lang": "st",
+  "line": "'Sundowner e le nngwe feela' — mantswe a ho qetela a tummeng, nako e nngwe le e nngwe.",
+  "px": 35.035,
+  "textTop": 254,
+  "textBottom": 402,
+  "band": [
+   52,
+   80
+  ],
+  "bandY": [
+   168.52000000000004,
+   368.71999999999997
+  ],
+  "level": "covers",
+  "words": "the diners' faces"
+ },
+ {
+  "n": 32,
+  "hash": "25ba4c136948e57115d89ab6468a8b0b3a78672c6fdb108b72ee4f1944b7c8ac",
+  "anchor": 100,
+  "folder": "fog",
+  "size": "414x715",
+  "why": "near",
+  "lang": "zu",
+  "line": "Omakhelwane abaseduze bangamakhilomitha angamashumi amathathu kude futhi namuhla ebusuku bakubona kancane nakakhulu.",
+  "px": 35.035,
+  "textTop": 263,
+  "textBottom": 448,
+  "band": [
+   58,
+   92
+  ],
+  "bandY": [
+   152.7,
+   395.80000000000007
+  ],
+  "level": "covers",
+  "words": "the couple's heads"
+ },
+ {
+  "n": 33,
+  "hash": "2dc9d10318b7f3ff5e8a5e75dd546822358c1ff9450e869086093217256d6a19",
+  "anchor": 42,
+  "folder": "storm",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "Iindudumo zikuvolumu yeshumi, inja yommelwane kweyeshumi elinanye.",
+  "px": 35.035,
+  "textTop": 259,
+  "textBottom": 370,
+  "band": [
+   45,
+   60
+  ],
+  "bandY": [
+   178.95,
+   286.2
+  ],
+  "level": "partly",
+  "words": "the bucket and their hands (faces clear)"
+ },
+ {
+  "n": 33,
+  "hash": "2dc9d10318b7f3ff5e8a5e75dd546822358c1ff9450e869086093217256d6a19",
+  "anchor": 42,
+  "folder": "storm",
+  "size": "320x488",
+  "why": "small",
+  "lang": "zu",
+  "line": "Amabhomu amancane eqhwa ayawa. Icebo linye kuphela: hlala ngaphakathi.",
+  "px": 23.912001,
+  "textTop": 121,
+  "textBottom": 196,
+  "band": [
+   45,
+   60
+  ],
+  "bandY": [
+   99.73971014492753,
+   182.6382608695652
+  ],
+  "level": "partly",
+  "words": "the bucket and their hands (faces clear)"
+ },
+ {
+  "n": 34,
+  "hash": "3561a9c4d6b2427b4b24ff3828531dc948c4c387c54f3372fbff91bf90972872",
+  "anchor": 50,
+  "folder": "wind",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "Kunokuba nomoya onamandla ngamaxesha athile. Uqikelelo aluqinisekanga kule meko",
+  "px": 35.035,
+  "textTop": 259,
+  "textBottom": 370,
+  "band": [
+   38,
+   68
+  ],
+  "bandY": [
+   101.69999999999999,
+   316.20000000000005
+  ],
+  "level": "partly",
+  "words": "the aloe under the bending bush"
+ },
+ {
+  "n": 35,
+  "hash": "360fe761dd56984fe5246331628e0bfc369f64ae903790639d83357d0306cfab",
+  "anchor": 50,
+  "folder": "wind",
+  "size": "414x715",
+  "why": "open",
+  "lang": "xh",
+  "line": "Kunokuba nomoya onamandla ngamaxesha athile. Uqikelelo aluqinisekanga kule meko",
+  "px": 35.035,
+  "textTop": 259,
+  "textBottom": 370,
+  "band": null,
+  "bandY": null,
+  "level": "clear",
+  "words": "the street below the palm"
+ },
+ {
+  "n": 36,
+  "hash": "39f844a99d163b928272d769496465c6d0c04a7c6028fa98af1dd953abacd86c",
+  "anchor": 50,
+  "folder": "storm",
+  "size": "414x715",
+  "why": "open",
+  "lang": "xh",
+  "line": "Iindudumo zikuvolumu yeshumi, inja yommelwane kweyeshumi elinanye.",
+  "px": 35.035,
+  "textTop": 259,
+  "textBottom": 370,
+  "band": null,
+  "bandY": null,
+  "level": "clear",
+  "words": "the fence below the tree"
+ },
+ {
+  "n": 37,
+  "hash": "3b370a59f9fdefff4b2c898d5ce0863a784e3d3fed71104c791a42be3e822b6d",
+  "anchor": 68,
+  "folder": "heat",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "Abantu abadala 'abahamba nje egadini' kanye apho i-sprinkler ifefa khona. Yintlanganiso yamabhaqo, nè.",
+  "px": 35.035,
+  "textTop": 235,
+  "textBottom": 383,
+  "band": [
+   50,
+   90
+  ],
+  "bandY": [
+   135.13999999999996,
+   421.14
+  ],
+  "level": "covers",
+  "words": "the friends in the pool"
+ },
+ {
+  "n": 38,
+  "hash": "3ee09fa71a7613faceb044858e622ab630f1b5a5becfcea427d625c5e581c681",
+  "anchor": 56,
+  "folder": "wind",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "Kunokuba nomoya onamandla ngamaxesha athile. Uqikelelo aluqinisekanga kule meko",
+  "px": 35.035,
+  "textTop": 259,
+  "textBottom": 370,
+  "band": [
+   38,
+   75
+  ],
+  "bandY": [
+   81.29999999999995,
+   345.84999999999997
+  ],
+  "level": "partly",
+  "words": "the cat's body (its face stays clear)"
+ },
+ {
+  "n": 39,
+  "hash": "51ffc9cf374e1ef091b5f429d9074a7b9f88874ba1f34f027cd305d1e69bcb60",
+  "anchor": 55,
+  "folder": "rain",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "IJoburg ina imizuzu engamashumi amabini, ize ipeyinte isibhakabhaka ngathi akukho nto yenzekileyo.",
+  "px": 35.035,
+  "textTop": 222,
+  "textBottom": 370,
+  "band": [
+   42,
+   56
+  ],
+  "bandY": [
+   113.30000000000001,
+   213.40000000000003
+  ],
+  "level": "partly",
+  "words": "the wave splashing over the railing"
+ },
+ {
+  "n": 40,
+  "hash": "549601db52a8dded6c4ebedfa5c6fdaeb279c02a1b27e2a8f1f5de64431304dc",
+  "anchor": 68,
+  "folder": "cloudy",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "Kwenye indawo i-braai isele isemalahleni okugqibela, akukho nkwenkwezi — incoko ithwala ubusuku.",
+  "px": 35.035,
+  "textTop": 235,
+  "textBottom": 383,
+  "band": [
+   50,
+   85
+  ],
+  "bandY": [
+   135.13999999999996,
+   385.39
+  ],
+  "level": "covers",
+  "words": "the man walking his dog"
+ },
+ {
+  "n": 41,
+  "hash": "5b1fb72a7e581195434718f5fcdb89406a29b21004a15f490d67bd13b16cbd95",
+  "anchor": 45,
+  "folder": "clear",
+  "size": "414x715",
+  "why": "near",
+  "lang": "st",
+  "line": "'Sundowner e le nngwe feela' — mantswe a ho qetela a tummeng, nako e nngwe le e nngwe.",
+  "px": 35.035,
+  "textTop": 254,
+  "textBottom": 402,
+  "band": [
+   48,
+   58
+  ],
+  "bandY": [
+   204.6,
+   276.1
+  ],
+  "level": "partly",
+  "words": "the lamp; the moth sits on the joke's top edge"
+ },
+ {
+  "n": 41,
+  "hash": "5b1fb72a7e581195434718f5fcdb89406a29b21004a15f490d67bd13b16cbd95",
+  "anchor": 45,
+  "folder": "clear",
+  "size": "320x488",
+  "why": "small",
+  "lang": "st",
+  "line": "Letsatsi le hlile le diehisa ho tsamaya ha lona, le ipontsha. Ka nnete, le a tshwanelwa.",
+  "px": 18.912001,
+  "textTop": 84,
+  "textBottom": 144,
+  "band": [
+   48,
+   58
+  ],
+  "bandY": [
+   82.27971014492752,
+   137.5454106280193
+  ],
+  "level": "partly",
+  "words": "the lamp; the moth sits on the joke's top edge"
+ },
+ {
+  "n": 42,
+  "hash": "5d44b24259176cce356e97b116c34741eeb8a10f27cdd552d9a04678fe395463",
+  "anchor": 50,
+  "folder": "wind",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "Kunokuba nomoya onamandla ngamaxesha athile. Uqikelelo aluqinisekanga kule meko",
+  "px": 35.035,
+  "textTop": 259,
+  "textBottom": 370,
+  "band": [
+   46,
+   56
+  ],
+  "bandY": [
+   158.90000000000003,
+   230.40000000000003
+  ],
+  "level": "covers",
+  "words": "the washing blowing on the line"
+ },
+ {
+  "n": 42,
+  "hash": "5d44b24259176cce356e97b116c34741eeb8a10f27cdd552d9a04678fe395463",
+  "anchor": 50,
+  "folder": "wind",
+  "size": "320x488",
+  "why": "small",
+  "lang": "xh",
+  "line": "Kunokuba nomoya onamandla ngamaxesha athile. Uqikelelo aluqinisekanga kule meko",
+  "px": 18.912001,
+  "textTop": 45,
+  "textBottom": 105,
+  "band": [
+   46,
+   56
+  ],
+  "bandY": [
+   31.39371980676333,
+   86.65942028985506
+  ],
+  "level": "covers",
+  "words": "the washing blowing on the line"
+ },
+ {
+  "n": 43,
+  "hash": "66c0e87e8481895b84eb721c852e4e76b76ddf306ba4dcdb09a3afc95c7e3879",
+  "anchor": 61,
+  "folder": "cold-clear",
+  "size": "414x715",
+  "why": "near",
+  "lang": "zu",
+  "line": "Ama-hadedas amathathu, amagwababa amabili, nomuntu oyedwa oqhaqhazelayo endaweni yokuphakela izinyoni.",
+  "px": 35.035,
+  "textTop": 243,
+  "textBottom": 428,
+  "band": [
+   48,
+   66
+  ],
+  "bandY": [
+   171.18,
+   299.88
+  ],
+  "level": "covers",
+  "words": "the man and his steaming mug"
+ },
+ {
+  "n": 44,
+  "hash": "6e508ccb58cc006631b9de70c980906e285570f1ac7623acbac8979ea9674512",
+  "anchor": 31,
+  "folder": "heat",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "Abantu abadala 'abahamba nje egadini' kanye apho i-sprinkler ifefa khona. Yintlanganiso yamabhaqo, nè.",
+  "px": 35.035,
+  "textTop": 235,
+  "textBottom": 383,
+  "band": [
+   36,
+   80
+  ],
+  "bandY": [
+   156.02999999999997,
+   470.63
+  ],
+  "level": "partly",
+  "words": "her body at the open fridge (her face stays clear)"
+ },
+ {
+  "n": 45,
+  "hash": "7563eedc5863a72c03d73f1208b4574775e066fa9028dc678d68343df3f00abe",
+  "anchor": 76,
+  "folder": "cold-clear",
+  "size": "414x715",
+  "why": "open",
+  "lang": "zu",
+  "line": "Ama-hadedas amathathu, amagwababa amabili, nomuntu oyedwa oqhaqhazelayo endaweni yokuphakela izinyoni.",
+  "px": 35.035,
+  "textTop": 243,
+  "textBottom": 428,
+  "band": null,
+  "bandY": null,
+  "level": "clear",
+  "words": "night sky above the frosted roof"
+ },
+ {
+  "n": 46,
+  "hash": "840790135cf5a568b058c6eacda112e0226573f5c1308b1cc5fedfe8a459de1f",
+  "anchor": 45,
+  "folder": "rain",
+  "size": "414x715",
+  "why": "within",
+  "lang": "xh",
+  "line": "IJoburg ina imizuzu engamashumi amabini, ize ipeyinte isibhakabhaka ngathi akukho nto yenzekileyo.",
+  "px": 35.035,
+  "textTop": 222,
+  "textBottom": 370,
+  "band": null,
+  "bandY": null,
+  "level": "clear",
+  "words": "the wet street"
+ },
+ {
+  "n": 47,
+  "hash": "8afed8c579b8a61ac6fbbfd7839dfcdd5d5f0d3d2c7befcb4e171317fb4ce097",
+  "anchor": 93,
+  "folder": "cold",
+  "size": "414x715",
+  "why": "open",
+  "lang": "xh",
+  "line": "Imizuzu emihlanu yokubukela iinkwenkwezi. Emva koko ubaleka ubuyele ngaphakathi. Sisivumelwano eso.",
+  "px": 35.035,
+  "textTop": 235,
+  "textBottom": 383,
+  "band": null,
+  "bandY": null,
+  "level": "clear",
+  "words": "the armchair's back; the cat lies below, under the facts band"
+ },
+ {
+  "n": 48,
+  "hash": "8cc6367de3d1e1ccb2084168b423842ac75ae584dc7cc05600ff57f5867db19b",
+  "anchor": 68,
+  "folder": "cold-clear",
+  "size": "414x715",
+  "why": "near",
+  "lang": "zu",
+  "line": "Ama-hadedas amathathu, amagwababa amabili, nomuntu oyedwa oqhaqhazelayo endaweni yokuphakela izinyoni.",
+  "px": 35.035,
+  "textTop": 243,
+  "textBottom": 428,
+  "band": [
+   48,
+   60
+  ],
+  "bandY": [
+   151.44,
+   237.2399999999999
+  ],
+  "level": "covers",
+  "words": "the man's face and his steaming breath"
+ },
+ {
+  "n": 49,
+  "hash": "9248c64fdecc1a45432aa41c045977d64504e02c95c6aab72db2800553871d3e",
+  "anchor": 64,
+  "folder": "wind",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "Kunokuba nomoya onamandla ngamaxesha athile. Uqikelelo aluqinisekanga kule meko",
+  "px": 35.035,
+  "textTop": 259,
+  "textBottom": 370,
+  "band": [
+   38,
+   90
+  ],
+  "bandY": [
+   54.099999999999994,
+   425.9000000000001
+  ],
+  "level": "partly",
+  "words": "their hands and the braai tongs (faces stay clear)"
+ },
+ {
+  "n": 50,
+  "hash": "928ed2d8b02f58eaac182c6a5e49f0a9ec1fe3cb8e4ccac86b5d6c3d110bf26b",
+  "anchor": 58,
+  "folder": "clear",
+  "size": "414x715",
+  "why": "near",
+  "lang": "st",
+  "line": "'Sundowner e le nngwe feela' — mantswe a ho qetela a tummeng, nako e nngwe le e nngwe.",
+  "px": 35.035,
+  "textTop": 254,
+  "textBottom": 402,
+  "band": [
+   50,
+   72
+  ],
+  "bandY": [
+   178.86000000000007,
+   336.1599999999999
+  ],
+  "level": "covers",
+  "words": "the cat on the lawn"
+ },
+ {
+  "n": 51,
+  "hash": "929560dd0f3239cd5abfe9959a7820a70a89246c9519112016776383c2773f32",
+  "anchor": 55,
+  "folder": "cold-clear",
+  "size": "414x715",
+  "why": "near",
+  "lang": "zu",
+  "line": "Ama-hadedas amathathu, amagwababa amabili, nomuntu oyedwa oqhaqhazelayo endaweni yokuphakela izinyoni.",
+  "px": 35.035,
+  "textTop": 243,
+  "textBottom": 428,
+  "band": [
+   48,
+   72
+  ],
+  "bandY": [
+   188.1,
+   359.69999999999993
+  ],
+  "level": "covers",
+  "words": "the three under blankets watching TV"
+ },
+ {
+  "n": 52,
+  "hash": "99418a1761068f4143c08dc79dad8947345efa6403bc23a8479d96ecb42a2433",
+  "anchor": 77,
+  "folder": "heat",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "Abantu abadala 'abahamba nje egadini' kanye apho i-sprinkler ifefa khona. Yintlanganiso yamabhaqo, nè.",
+  "px": 35.035,
+  "textTop": 235,
+  "textBottom": 383,
+  "band": [
+   52,
+   72
+  ],
+  "bandY": [
+   120.01000000000005,
+   263.00999999999993
+  ],
+  "level": "covers",
+  "words": "the dog sleeping on the cool tiles"
+ },
+ {
+  "n": 52,
+  "hash": "99418a1761068f4143c08dc79dad8947345efa6403bc23a8479d96ecb42a2433",
+  "anchor": 77,
+  "folder": "heat",
+  "size": "360x688",
+  "why": "small",
+  "lang": "zu",
+  "line": "Ngu-7 ntambama futhi kusengama-degree angama-30. IKaroo ayenzi amaphutha, izitatimende kuphela.",
+  "px": 30.712002,
+  "textTop": 218,
+  "textBottom": 383,
+  "band": [
+   52,
+   72
+  ],
+  "bandY": [
+   143.3252173913044,
+   267.67304347826087
+  ],
+  "level": "covers",
+  "words": "the dog sleeping on the cool tiles"
+ },
+ {
+  "n": 53,
+  "hash": "9a85d13f82d172a1bada67c50a401de765c8caf75aefc7e5ba34c9eed7845c1b",
+  "anchor": 55,
+  "folder": "fog",
+  "size": "414x715",
+  "why": "near",
+  "lang": "zu",
+  "line": "Omakhelwane abaseduze bangamakhilomitha angamashumi amathathu kude futhi namuhla ebusuku bakubona kancane nakakhulu.",
+  "px": 35.035,
+  "textTop": 263,
+  "textBottom": 448,
+  "band": [
+   46,
+   60
+  ],
+  "bandY": [
+   184.80000000000004,
+   284.9000000000001
+  ],
+  "level": "covers",
+  "words": "the taxis in the fog"
+ },
+ {
+  "n": 53,
+  "hash": "9a85d13f82d172a1bada67c50a401de765c8caf75aefc7e5ba34c9eed7845c1b",
+  "anchor": 55,
+  "folder": "fog",
+  "size": "320x488",
+  "why": "small",
+  "lang": "xh",
+  "line": "Ndaweni ithile ixilongo lenkungu liyabhonga kwaye abantu abaliwaka bathi 'ag nee' ngexesha elinye kanye.",
+  "px": 18.912001,
+  "textTop": 45,
+  "textBottom": 105,
+  "band": [
+   46,
+   60
+  ],
+  "bandY": [
+   9.110869565217428,
+   86.48285024154589
+  ],
+  "level": "covers",
+  "words": "the taxis in the fog"
+ },
+ {
+  "n": 54,
+  "hash": "9ad51600286ade33f8e1436eab7203672d3d4784692ae9e8705e686abea21dad",
+  "anchor": 50,
+  "folder": "storm",
+  "size": "414x715",
+  "why": "open",
+  "lang": "xh",
+  "line": "Iindudumo zikuvolumu yeshumi, inja yommelwane kweyeshumi elinanye.",
+  "px": 35.035,
+  "textTop": 259,
+  "textBottom": 370,
+  "band": null,
+  "bandY": null,
+  "level": "clear",
+  "words": "the garage doors below the lightning"
+ },
+ {
+  "n": 55,
+  "hash": "a2510ecf3c92acadaeb955b19ccd8e88370dd55b54568db3928bcd6a5c3d3451",
+  "anchor": 50,
+  "folder": "rain",
+  "size": "414x715",
+  "why": "open",
+  "lang": "xh",
+  "line": "IJoburg ina imizuzu engamashumi amabini, ize ipeyinte isibhakabhaka ngathi akukho nto yenzekileyo.",
+  "px": 35.035,
+  "textTop": 222,
+  "textBottom": 370,
+  "band": null,
+  "bandY": null,
+  "level": "clear",
+  "words": "the wall"
+ },
+ {
+  "n": 56,
+  "hash": "a7e3f5461ad2e6711e370e4577008642f883ebd64beb0feeb67ff048749858bf",
+  "anchor": 23,
+  "folder": "storm",
+  "size": "414x715",
+  "why": "open",
+  "lang": "xh",
+  "line": "Iindudumo zikuvolumu yeshumi, inja yommelwane kweyeshumi elinanye.",
+  "px": 35.035,
+  "textTop": 259,
+  "textBottom": 370,
+  "band": null,
+  "bandY": null,
+  "level": "clear",
+  "words": "his shirt; the phone, his face and the lightning stay clear"
+ },
+ {
+  "n": 57,
+  "hash": "a80a9bab25ffdfc255dd87731731c27b69394d49c3a97cf118985e41b561f9bd",
+  "anchor": 50,
+  "folder": "rain",
+  "size": "414x715",
+  "why": "open",
+  "lang": "xh",
+  "line": "IJoburg ina imizuzu engamashumi amabini, ize ipeyinte isibhakabhaka ngathi akukho nto yenzekileyo.",
+  "px": 35.035,
+  "textTop": 222,
+  "textBottom": 370,
+  "band": null,
+  "bandY": null,
+  "level": "clear",
+  "words": "the running gutter"
+ },
+ {
+  "n": 58,
+  "hash": "a94870b02afaed5e430b3fd510139deff6c1d927eaf7a4f070cf5fa6e171d612",
+  "anchor": 44,
+  "folder": "fog",
+  "size": "414x715",
+  "why": "near",
+  "lang": "zu",
+  "line": "Omakhelwane abaseduze bangamakhilomitha angamashumi amathathu kude futhi namuhla ebusuku bakubona kancane nakakhulu.",
+  "px": 35.035,
+  "textTop": 263,
+  "textBottom": 448,
+  "band": [
+   40,
+   62
+  ],
+  "bandY": [
+   170.72000000000003,
+   328.02000000000004
+  ],
+  "level": "covers",
+  "words": "the man under the streetlight"
+ },
+ {
+  "n": 59,
+  "hash": "b207cb7f098385091a52773bc794ac2eb27b07643bdcd781b084915a9529592e",
+  "anchor": 50,
+  "folder": "storm",
+  "size": "414x715",
+  "why": "open",
+  "lang": "xh",
+  "line": "Iindudumo zikuvolumu yeshumi, inja yommelwane kweyeshumi elinanye.",
+  "px": 35.035,
+  "textTop": 259,
+  "textBottom": 370,
+  "band": null,
+  "bandY": null,
+  "level": "clear",
+  "words": "the wall and the flooded stoep"
+ },
+ {
+  "n": 60,
+  "hash": "b6001c42c97329bd0cabb308a74779c7aed765851805b790c03631cab057b18c",
+  "anchor": 36,
+  "folder": "cold",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "Imizuzu emihlanu yokubukela iinkwenkwezi. Emva koko ubaleka ubuyele ngaphakathi. Sisivumelwano eso.",
+  "px": 35.035,
+  "textTop": 235,
+  "textBottom": 383,
+  "band": [
+   36,
+   72
+  ],
+  "bandY": [
+   139.67999999999998,
+   397.0799999999999
+  ],
+  "level": "partly",
+  "words": "the laptop and her mug (her face stays clear)"
+ },
+ {
+  "n": 61,
+  "hash": "b665da7894175b13c23e513e12c00600faba2ec0f04b6ee180bda73a4b019e80",
+  "anchor": null,
+  "folder": "clear",
+  "size": "414x715",
+  "why": "open",
+  "lang": "st",
+  "line": "'Sundowner e le nngwe feela' — mantswe a ho qetela a tummeng, nako e nngwe le e nngwe.",
+  "px": 35.035,
+  "textTop": 254,
+  "textBottom": 402,
+  "band": null,
+  "bandY": null,
+  "level": "clear",
+  "words": "the lower Milky Way; the mountain below"
+ },
+ {
+  "n": 62,
+  "hash": "bb0451e106356e26add3711b341d682072915d9f0134510814459b10608c970c",
+  "anchor": 29,
+  "folder": "storm",
+  "size": "414x715",
+  "why": "open",
+  "lang": "xh",
+  "line": "Iindudumo zikuvolumu yeshumi, inja yommelwane kweyeshumi elinanye.",
+  "px": 35.035,
+  "textTop": 259,
+  "textBottom": 370,
+  "band": null,
+  "bandY": null,
+  "level": "clear",
+  "words": "the window sill and blanket (his face stays clear)"
+ },
+ {
+  "n": 63,
+  "hash": "bba8e41bc3751f7b975ea41bdd0d403319a86495cd871485196b028ebd4b26ec",
+  "anchor": 65,
+  "folder": "fog",
+  "size": "414x715",
+  "why": "near",
+  "lang": "zu",
+  "line": "Omakhelwane abaseduze bangamakhilomitha angamashumi amathathu kude futhi namuhla ebusuku bakubona kancane nakakhulu.",
+  "px": 35.035,
+  "textTop": 263,
+  "textBottom": 448,
+  "band": [
+   52,
+   72
+  ],
+  "bandY": [
+   201.49999999999997,
+   344.4999999999999
+  ],
+  "level": "covers",
+  "words": "the man in the fog"
+ },
+ {
+  "n": 64,
+  "hash": "cd60e0b23ac91cdb6b939f82454e1366d61aff1886d64f5a74b97df0eed1ef7d",
+  "anchor": 41,
+  "folder": "fog",
+  "size": "414x715",
+  "why": "open",
+  "lang": "zu",
+  "line": "Omakhelwane abaseduze bangamakhilomitha angamashumi amathathu kude futhi namuhla ebusuku bakubona kancane nakakhulu.",
+  "px": 35.035,
+  "textTop": 263,
+  "textBottom": 448,
+  "band": null,
+  "bandY": null,
+  "level": "clear",
+  "words": "the city lights under fog"
+ },
+ {
+  "n": 65,
+  "hash": "ce5d0f16ddede9cc1e32f5052df2960ef6ad5740ab39f347efc318835c38a485",
+  "anchor": 50,
+  "folder": "storm",
+  "size": "414x715",
+  "why": "open",
+  "lang": "xh",
+  "line": "Iindudumo zikuvolumu yeshumi, inja yommelwane kweyeshumi elinanye.",
+  "px": 35.035,
+  "textTop": 259,
+  "textBottom": 370,
+  "band": null,
+  "bandY": null,
+  "level": "clear",
+  "words": "the wall below the lightning"
+ },
+ {
+  "n": 66,
+  "hash": "cea9050dc02b3547b0847acd69322842872836ed9138dc4ffec679d0b6f71490",
+  "anchor": 40,
+  "folder": "rain",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "IJoburg ina imizuzu engamashumi amabini, ize ipeyinte isibhakabhaka ngathi akukho nto yenzekileyo.",
+  "px": 35.035,
+  "textTop": 222,
+  "textBottom": 370,
+  "band": [
+   36,
+   72
+  ],
+  "bandY": [
+   121.39999999999995,
+   378.79999999999995
+  ],
+  "level": "partly",
+  "words": "his hands on the wheel (his face stays clear)"
+ },
+ {
+  "n": 67,
+  "hash": "d1a05b5478ab6c1333917f0fbe31b565b1c1d05444e6f5e4ffcf62e32c449c88",
+  "anchor": 50,
+  "folder": "wind",
+  "size": "414x715",
+  "why": "open",
+  "lang": "xh",
+  "line": "Kunokuba nomoya onamandla ngamaxesha athile. Uqikelelo aluqinisekanga kule meko",
+  "px": 35.035,
+  "textTop": 259,
+  "textBottom": 370,
+  "band": null,
+  "bandY": null,
+  "level": "clear",
+  "words": "the promenade below the palm"
+ },
+ {
+  "n": 68,
+  "hash": "d3c3724ad566c1fe9afb7127b8863f2267558a537f32c8a7bfbd8a057711d938",
+  "anchor": 82,
+  "folder": "clear",
+  "size": "414x715",
+  "why": "near",
+  "lang": "st",
+  "line": "'Sundowner e le nngwe feela' — mantswe a ho qetela a tummeng, nako e nngwe le e nngwe.",
+  "px": 35.035,
+  "textTop": 254,
+  "textBottom": 402,
+  "band": [
+   46,
+   78
+  ],
+  "bandY": [
+   76.34000000000003,
+   305.1400000000001
+  ],
+  "level": "covers",
+  "words": "the washing on the line"
+ },
+ {
+  "n": 69,
+  "hash": "d5eb736e24642fabd374c37e8b4c7bbfed0dfa18f0af307714d2c4f327bf617d",
+  "anchor": 49,
+  "folder": "fog",
+  "size": "414x715",
+  "why": "near",
+  "lang": "zu",
+  "line": "Omakhelwane abaseduze bangamakhilomitha angamashumi amathathu kude futhi namuhla ebusuku bakubona kancane nakakhulu.",
+  "px": 35.035,
+  "textTop": 263,
+  "textBottom": 448,
+  "band": [
+   42,
+   72
+  ],
+  "bandY": [
+   171.92000000000004,
+   386.41999999999996
+  ],
+  "level": "covers",
+  "words": "the woman with her mug at the railing"
+ },
+ {
+  "n": 70,
+  "hash": "e25e5992ff0bf872e4a1736b5ba59974ccbbba23ddb839d6c7971346ee82a539",
+  "anchor": 53,
+  "folder": "cloudy",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "Kwenye indawo i-braai isele isemalahleni okugqibela, akukho nkwenkwezi — incoko ithwala ubusuku.",
+  "px": 35.035,
+  "textTop": 235,
+  "textBottom": 383,
+  "band": [
+   58,
+   90
+  ],
+  "bandY": [
+   241.38999999999993,
+   470.19
+  ],
+  "level": "covers",
+  "words": "the man with the torch by the windmill"
+ },
+ {
+  "n": 71,
+  "hash": "e2f0a2c1d410db1f3ed66104e829371fe55f4b982c8b5ee1cada5e0752352f4b",
+  "anchor": 76,
+  "folder": "cold",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "Imizuzu emihlanu yokubukela iinkwenkwezi. Emva koko ubaleka ubuyele ngaphakathi. Sisivumelwano eso.",
+  "px": 35.035,
+  "textTop": 235,
+  "textBottom": 383,
+  "band": [
+   55,
+   75
+  ],
+  "bandY": [
+   144.73000000000002,
+   287.73
+  ],
+  "level": "partly",
+  "words": "the lit café stoep"
+ },
+ {
+  "n": 72,
+  "hash": "e6a67f800f6bb84d369359fa5cdfa7f7decdc601794f9af667aa603d73acde20",
+  "anchor": 48,
+  "folder": "rain",
+  "size": "414x715",
+  "why": "open",
+  "lang": "xh",
+  "line": "IJoburg ina imizuzu engamashumi amabini, ize ipeyinte isibhakabhaka ngathi akukho nto yenzekileyo.",
+  "px": 35.035,
+  "textTop": 222,
+  "textBottom": 370,
+  "band": null,
+  "bandY": null,
+  "level": "clear",
+  "words": "the pool"
+ },
+ {
+  "n": 73,
+  "hash": "ed4291a686a0287060e198542952114d5f6433a7d7a98ce2fc5d8f6aaa7ee43b",
+  "anchor": 61,
+  "folder": "clear",
+  "size": "414x715",
+  "why": "open",
+  "lang": "st",
+  "line": "'Sundowner e le nngwe feela' — mantswe a ho qetela a tummeng, nako e nngwe le e nngwe.",
+  "px": 35.035,
+  "textTop": 254,
+  "textBottom": 402,
+  "band": null,
+  "bandY": null,
+  "level": "clear",
+  "words": "the city lights"
+ },
+ {
+  "n": 74,
+  "hash": "f09603654890381efdf31cabc36d3184b2c7b37de192cb9e16857f96402c3dd9",
+  "anchor": null,
+  "folder": "clear",
+  "size": "414x715",
+  "why": "open",
+  "lang": "st",
+  "line": "'Sundowner e le nngwe feela' — mantswe a ho qetela a tummeng, nako e nngwe le e nngwe.",
+  "px": 35.035,
+  "textTop": 254,
+  "textBottom": 402,
+  "band": null,
+  "bandY": null,
+  "level": "clear",
+  "words": "the horizon; the people in the bakkie lie below, under the facts band"
+ },
+ {
+  "n": 75,
+  "hash": "f449894c7ba446323feb267f7ffcde2f10dbbcab90c4626ddb653c32463fba3f",
+  "anchor": 90,
+  "folder": "rain",
+  "size": "414x715",
+  "why": "open",
+  "lang": "xh",
+  "line": "IJoburg ina imizuzu engamashumi amabini, ize ipeyinte isibhakabhaka ngathi akukho nto yenzekileyo.",
+  "px": 35.035,
+  "textTop": 222,
+  "textBottom": 370,
+  "band": null,
+  "bandY": null,
+  "level": "clear",
+  "words": "risen: the hedge above the broken umbrella"
+ },
+ {
+  "n": 76,
+  "hash": "f47163b5b4102c735b81e2d976a999b4437725fd6ef6864d4bb8c73b68d9f491",
+  "anchor": 57,
+  "folder": "cold-clear",
+  "size": "414x715",
+  "why": "near",
+  "lang": "zu",
+  "line": "Ama-hadedas amathathu, amagwababa amabili, nomuntu oyedwa oqhaqhazelayo endaweni yokuphakela izinyoni.",
+  "px": 35.035,
+  "textTop": 243,
+  "textBottom": 428,
+  "band": [
+   55,
+   78
+  ],
+  "bandY": [
+   232.51000000000005,
+   396.9600000000001
+  ],
+  "level": "covers",
+  "words": "the couple lying in the bakkie"
+ },
+ {
+  "n": 77,
+  "hash": "fb15a66aa4b13408a30a34cec9afb32583e6503d63c391b9f1088265296c66e5",
+  "anchor": 43,
+  "folder": "heat",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "Abantu abadala 'abahamba nje egadini' kanye apho i-sprinkler ifefa khona. Yintlanganiso yamabhaqo, nè.",
+  "px": 35.035,
+  "textTop": 235,
+  "textBottom": 383,
+  "band": [
+   52,
+   80
+  ],
+  "bandY": [
+   231.19,
+   431.39
+  ],
+  "level": "partly",
+  "words": "the bicycle and the top of the glass of ice water"
+ },
+ {
+  "n": 78,
+  "hash": "fd0a18b25b4e35699d54747d494468b1cba98548bfd9557ada359f04686f9b41",
+  "anchor": null,
+  "folder": "cloudy",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "Kwenye indawo i-braai isele isemalahleni okugqibela, akukho nkwenkwezi — incoko ithwala ubusuku.",
+  "px": 35.035,
+  "textTop": 235,
+  "textBottom": 383,
+  "band": [
+   55,
+   75
+  ],
+  "bandY": [
+   138.19000000000005,
+   281.19
+  ],
+  "level": "covers",
+  "words": "the bakkie in its headlights"
+ },
+ {
+  "n": 79,
+  "hash": "08c461c74e9ce38b8691ebe8e3a0e8ddb26ab7bc2383fe23782784314b440539",
+  "anchor": 55,
+  "folder": "cold",
+  "size": "414x715",
+  "why": "near",
+  "lang": "st",
+  "line": "Lehlwa dithabeng. Group e nngwe le e nngwe ya lelapa ya WhatsApp jwale e na le foto e tshoanang.",
+  "px": 35.035,
+  "textTop": 274,
+  "textBottom": 422,
+  "band": [
+   58,
+   74
+  ],
+  "bandY": [
+   256.30000000000007,
+   370.69999999999993
+  ],
+  "level": "partly",
+  "words": "the top of the dog in the patch of sun the joke is about"
+ },
+ {
+  "n": 80,
+  "hash": "11312da815eb96a457a52b90da420cc20a665e644754d0d936e248e053661481",
+  "anchor": 50,
+  "folder": "wind",
+  "size": "414x715",
+  "why": "open",
+  "lang": "xh",
+  "line": "Kunokuba nomoya onamandla ngamaxesha athile. Uqikelelo aluqinisekanga kule meko",
+  "px": 35.035,
+  "textTop": 259,
+  "textBottom": 370,
+  "band": null,
+  "bandY": null,
+  "level": "clear",
+  "words": "the wall below the flag"
+ },
+ {
+  "n": 81,
+  "hash": "14fb224fa5c5b44c6d7d49ee21821feef2221853a97b977182d8963fd5885fac",
+  "anchor": null,
+  "folder": "clear",
+  "size": "414x715",
+  "why": "near",
+  "lang": "st",
+  "line": "Letsatsi le le leng le phethahetseng le fanwe. Ha le fetisetswe. Le sebedise ka bohlale.",
+  "px": 35.035,
+  "textTop": 254,
+  "textBottom": 402,
+  "band": [
+   48,
+   72
+  ],
+  "bandY": [
+   102.95999999999998,
+   274.55999999999995
+  ],
+  "level": "covers",
+  "words": "the beach umbrella and chairs"
+ },
+ {
+  "n": 82,
+  "hash": "181d7c88356334cbdf56dae85b4419b985b3ff4159593483c7c402d0f97f59cf",
+  "anchor": 71,
+  "folder": "storm",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "Sisenokwenzeka isaqhwithi, asikaqinisekiswa. Hlala uphaphile.",
+  "px": 35.035,
+  "textTop": 259,
+  "textBottom": 370,
+  "band": [
+   55,
+   85
+  ],
+  "bandY": [
+   151.85000000000008,
+   366.34999999999997
+  ],
+  "level": "covers",
+  "words": "the man holding the patio umbrella"
+ },
+ {
+  "n": 83,
+  "hash": "191654e60dfd16013b85e21e0b3002762dcf1aef24dbc896cab1c8b0c84e6ca9",
+  "anchor": 48,
+  "folder": "storm",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "Sisenokwenzeka isaqhwithi, asikaqinisekiswa. Hlala uphaphile.",
+  "px": 35.035,
+  "textTop": 259,
+  "textBottom": 370,
+  "band": [
+   42,
+   72
+  ],
+  "bandY": [
+   137.1,
+   351.6
+  ],
+  "level": "partly",
+  "words": "the golfers' bags (heads stay clear)"
+ },
+ {
+  "n": 84,
+  "hash": "1c536cb795d498ce4c87a4e34119a6db92753d01cdd22e6d9203f2115bdc36ad",
+  "anchor": 47,
+  "folder": "cloudy",
+  "size": "414x715",
+  "why": "open",
+  "lang": "xh",
+  "line": "'Siza kubona ukuba kukhangeleka njani' — yi-RSVP esemthethweni yoMzantsi Afrika.",
+  "px": 35.035,
+  "textTop": 235,
+  "textBottom": 383,
+  "band": null,
+  "bandY": null,
+  "level": "clear",
+  "words": "the rugby field"
+ },
+ {
+  "n": 85,
+  "hash": "1c9e8b5c756140ed990f20c7c1d64abd4dcd4dbb7a14eb7f37bf73311039a2b6",
+  "anchor": 69,
+  "folder": "storm",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "Sisenokwenzeka isaqhwithi, asikaqinisekiswa. Hlala uphaphile.",
+  "px": 35.035,
+  "textTop": 259,
+  "textBottom": 370,
+  "band": [
+   55,
+   68
+  ],
+  "bandY": [
+   158.65000000000012,
+   251.60000000000005
+  ],
+  "level": "covers",
+  "words": "the pitch cover blowing"
+ },
+ {
+  "n": 86,
+  "hash": "259aec698a6d03f953958ba942f937548b5ab8a8879179259a4d1bd557a289fc",
+  "anchor": 43,
+  "folder": "wind",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "Kunokuba nomoya onamandla ngamaxesha athile. Uqikelelo aluqinisekanga kule meko",
+  "px": 35.035,
+  "textTop": 259,
+  "textBottom": 370,
+  "band": [
+   36,
+   80
+  ],
+  "bandY": [
+   111.19999999999996,
+   425.79999999999995
+  ],
+  "level": "partly",
+  "words": "her jacket (her face stays clear)"
+ },
+ {
+  "n": 87,
+  "hash": "2b85cbdecded3c5f27e21081563b0112cf4c0abc15d488764fb04d8ea2cc938a",
+  "anchor": 44,
+  "folder": "rain",
+  "size": "414x715",
+  "why": "near",
+  "lang": "zu",
+  "line": "Imvula iphendula wonke umshayeli waseNingizimu Afrika abe umfundi futhi. Ama-hazards avuliwe, isithunzi sicishiwe.",
+  "px": 35.035,
+  "textTop": 263,
+  "textBottom": 448,
+  "band": [
+   40,
+   95
+  ],
+  "bandY": [
+   170.72000000000003,
+   563.97
+  ],
+  "level": "partly",
+  "words": "the worker's vest (face just clear)"
+ },
+ {
+  "n": 88,
+  "hash": "2edc1c0df186c99325635474be429661e84fbb05fac0e40e47df894f5ae9d29b",
+  "anchor": null,
+  "folder": "cloudy",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "'Siza kubona ukuba kukhangeleka njani' — yi-RSVP esemthethweni yoMzantsi Afrika.",
+  "px": 35.035,
+  "textTop": 235,
+  "textBottom": 383,
+  "band": [
+   40,
+   85
+  ],
+  "bandY": [
+   30.939999999999998,
+   352.69
+  ],
+  "level": "partly",
+  "words": "the braai grid and the hand with the tongs (the meat stays clear)"
+ },
+ {
+  "n": 89,
+  "hash": "3017aed2600791455479309d60a5c74598a70e4ef158f6b452993f16b76e3ac8",
+  "anchor": 61,
+  "folder": "wind",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "Kunokuba nomoya onamandla ngamaxesha athile. Uqikelelo aluqinisekanga kule meko",
+  "px": 35.035,
+  "textTop": 259,
+  "textBottom": 370,
+  "band": [
+   48,
+   85
+  ],
+  "bandY": [
+   135.79999999999998,
+   400.3499999999999
+  ],
+  "level": "covers",
+  "words": "the dog on the lead"
+ },
+ {
+  "n": 90,
+  "hash": "30307b4b49c4d093542bbbc043cff9ff5f1d03d57112df843728f2f857a67e24",
+  "anchor": 44,
+  "folder": "cold",
+  "size": "414x715",
+  "why": "near",
+  "lang": "st",
+  "line": "Lehlwa dithabeng. Group e nngwe le e nngwe ya lelapa ya WhatsApp jwale e na le foto e tshoanang.",
+  "px": 35.035,
+  "textTop": 274,
+  "textBottom": 422,
+  "band": [
+   40,
+   90
+  ],
+  "bandY": [
+   159.27999999999997,
+   516.78
+  ],
+  "level": "partly",
+  "words": "the man and the frosted car"
+ },
+ {
+  "n": 91,
+  "hash": "319c3448a3e8848940673c3f6738de148ac68f12769a49112e1fa90f55646953",
+  "anchor": 58,
+  "folder": "cold",
+  "size": "414x715",
+  "why": "near",
+  "lang": "st",
+  "line": "Lehlwa dithabeng. Group e nngwe le e nngwe ya lelapa ya WhatsApp jwale e na le foto e tshoanang.",
+  "px": 35.035,
+  "textTop": 274,
+  "textBottom": 422,
+  "band": [
+   36,
+   80
+  ],
+  "bandY": [
+   90.35999999999999,
+   404.96000000000004
+  ],
+  "level": "partly",
+  "words": "her cup and body (her face stays clear)"
+ },
+ {
+  "n": 92,
+  "hash": "32e5db4cd2f6fea1a9692db9673518a70420c88508aee5a83c7cfd8027a45281",
+  "anchor": 64,
+  "folder": "storm",
+  "size": "414x715",
+  "why": "open",
+  "lang": "xh",
+  "line": "Sisenokwenzeka isaqhwithi, asikaqinisekiswa. Hlala uphaphile.",
+  "px": 35.035,
+  "textTop": 259,
+  "textBottom": 370,
+  "band": null,
+  "bandY": null,
+  "level": "clear",
+  "words": "the road"
+ },
+ {
+  "n": 93,
+  "hash": "3442cc22fc1e323c853666d76576690b9d429950f159c9d4c62f0a3909b15e1e",
+  "anchor": 16,
+  "folder": "wind",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "Kunokuba nomoya onamandla ngamaxesha athile. Uqikelelo aluqinisekanga kule meko",
+  "px": 35.035,
+  "textTop": 259,
+  "textBottom": 370,
+  "band": [
+   22,
+   95
+  ],
+  "bandY": [
+   102.90000000000003,
+   624.85
+  ],
+  "level": "partly",
+  "words": "her hands holding her skirt"
+ },
+ {
+  "n": 94,
+  "hash": "3975a423d9c845b806278cf361bb8042673dbc34479602e62ec84dbadf57e116",
+  "anchor": null,
+  "folder": "cloudy",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "'Siza kubona ukuba kukhangeleka njani' — yi-RSVP esemthethweni yoMzantsi Afrika.",
+  "px": 35.035,
+  "textTop": 235,
+  "textBottom": 383,
+  "band": [
+   55,
+   75
+  ],
+  "bandY": [
+   138.19,
+   281.19
+  ],
+  "level": "covers",
+  "words": "the washing on the line"
+ },
+ {
+  "n": 95,
+  "hash": "3db700a622060a8f96d8d5ee12fbf6b1d9d85d9a23eaa181e3e4aad57baf61ab",
+  "anchor": 57,
+  "folder": "rain",
+  "size": "414x715",
+  "why": "near",
+  "lang": "zu",
+  "line": "Imvula iphendula wonke umshayeli waseNingizimu Afrika abe umfundi futhi. Ama-hazards avuliwe, isithunzi sicishiwe.",
+  "px": 35.035,
+  "textTop": 263,
+  "textBottom": 448,
+  "band": [
+   40,
+   78
+  ],
+  "bandY": [
+   136.66000000000003,
+   408.36
+  ],
+  "level": "covers",
+  "words": "the woman leaping the puddle"
+ },
+ {
+  "n": 96,
+  "hash": "3edd5a2c5f60309ee214fd52869290b859131dc632b084731aebb7e85e8c0454",
+  "anchor": 61,
+  "folder": "cold",
+  "size": "414x715",
+  "why": "near",
+  "lang": "st",
+  "line": "Lehlwa dithabeng. Group e nngwe le e nngwe ya lelapa ya WhatsApp jwale e na le foto e tshoanang.",
+  "px": 35.035,
+  "textTop": 274,
+  "textBottom": 422,
+  "band": [
+   48,
+   68
+  ],
+  "bandY": [
+   167.51999999999998,
+   310.52000000000004
+  ],
+  "level": "covers",
+  "words": "the dog under the blanket"
+ },
+ {
+  "n": 96,
+  "hash": "3edd5a2c5f60309ee214fd52869290b859131dc632b084731aebb7e85e8c0454",
+  "anchor": 61,
+  "folder": "cold",
+  "size": "320x488",
+  "why": "small",
+  "lang": "xh",
+  "line": "Imizuzu emihlanu engaphezulu. Kulungile, elishumi. Kulungile, de ilanga lifike ebhedini.",
+  "px": 18.912001,
+  "textTop": 45,
+  "textBottom": 105,
+  "band": [
+   48,
+   68
+  ],
+  "bandY": [
+   -6.57541062801937,
+   103.95599033816427
+  ],
+  "level": "covers",
+  "words": "the dog under the blanket"
+ },
+ {
+  "n": 97,
+  "hash": "4073f1fd86704492edc674090712c67c372bb76fd82cc8e33bed9b6ca735d59e",
+  "anchor": 51,
+  "folder": "clear",
+  "size": "414x715",
+  "why": "near",
+  "lang": "st",
+  "line": "Letsatsi le le leng le phethahetseng le fanwe. Ha le fetisetswe. Le sebedise ka bohlale.",
+  "px": 35.035,
+  "textTop": 254,
+  "textBottom": 402,
+  "band": [
+   35,
+   95
+  ],
+  "bandY": [
+   93.16999999999999,
+   522.1700000000001
+  ],
+  "level": "partly",
+  "words": "the kids' bodies (faces stay clear)"
+ },
+ {
+  "n": 98,
+  "hash": "43784257b98adc96a1bd295edd9d62f79109287a58882f0293690219a0249e80",
+  "anchor": 94,
+  "folder": "cloudy",
+  "size": "414x715",
+  "why": "open",
+  "lang": "xh",
+  "line": "'Siza kubona ukuba kukhangeleka njani' — yi-RSVP esemthethweni yoMzantsi Afrika.",
+  "px": 35.035,
+  "textTop": 235,
+  "textBottom": 383,
+  "band": null,
+  "bandY": null,
+  "level": "clear",
+  "words": "risen: the sunbeam above the sheep"
+ },
+ {
+  "n": 99,
+  "hash": "44af2aeba2a442d22001a0eab7bf0296221a4dffb194d60824f98a1920b582e5",
+  "anchor": 56,
+  "folder": "cold",
+  "size": "414x715",
+  "why": "near",
+  "lang": "st",
+  "line": "Lehlwa dithabeng. Group e nngwe le e nngwe ya lelapa ya WhatsApp jwale e na le foto e tshoanang.",
+  "px": 35.035,
+  "textTop": 274,
+  "textBottom": 422,
+  "band": [
+   48,
+   72
+  ],
+  "bandY": [
+   181.92,
+   353.52
+  ],
+  "level": "covers",
+  "words": "the frosted table and the sunglasses"
+ },
+ {
+  "n": 100,
+  "hash": "486fd16a92387ea8ef5060c85cfa64dc96f362dda49282638618c7112418d33a",
+  "anchor": 61,
+  "folder": "rain",
+  "size": "414x715",
+  "why": "near",
+  "lang": "zu",
+  "line": "Imvula iphendula wonke umshayeli waseNingizimu Afrika abe umfundi futhi. Ama-hazards avuliwe, isithunzi sicishiwe.",
+  "px": 35.035,
+  "textTop": 263,
+  "textBottom": 448,
+  "band": [
+   44,
+   75
+  ],
+  "bandY": [
+   154.78000000000003,
+   376.42999999999995
+  ],
+  "level": "covers",
+  "words": "the driver"
+ },
+ {
+  "n": 101,
+  "hash": "52fb371c628b68e4a80eb44a76273d461e1200cd39d5ee5c748784587ad08aeb",
+  "anchor": 50,
+  "folder": "wind",
+  "size": "414x715",
+  "why": "open",
+  "lang": "en",
+  "line": "That shade cloth has been drumming since breakfast and nobody can hear the television.",
+  "px": 35.035,
+  "textTop": 325,
+  "textBottom": 473,
+  "band": null,
+  "bandY": null,
+  "level": "clear",
+  "words": "the wall below the blowing shade cover"
+ },
+ {
+  "n": 102,
+  "hash": "5306c0597333e511c03125bd43324c96fa22cea4337c45c1e718453f328bb890",
+  "anchor": 50,
+  "folder": "wind",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "Kunokuba nomoya onamandla ngamaxesha athile. Uqikelelo aluqinisekanga kule meko",
+  "px": 35.035,
+  "textTop": 259,
+  "textBottom": 370,
+  "band": [
+   38,
+   60
+  ],
+  "bandY": [
+   101.69999999999999,
+   259
+  ],
+  "level": "partly",
+  "words": "the blown-over trampoline"
+ },
+ {
+  "n": 102,
+  "hash": "5306c0597333e511c03125bd43324c96fa22cea4337c45c1e718453f328bb890",
+  "anchor": 50,
+  "folder": "wind",
+  "size": "320x488",
+  "why": "small",
+  "lang": "xh",
+  "line": "Kunokuba nomoya onamandla ngamaxesha athile. Uqikelelo aluqinisekanga kule meko",
+  "px": 18.912001,
+  "textTop": 45,
+  "textBottom": 105,
+  "band": [
+   38,
+   60
+  ],
+  "bandY": [
+   -12.818840579710155,
+   108.76570048309179
+  ],
+  "level": "partly",
+  "words": "the blown-over trampoline"
+ },
+ {
+  "n": 103,
+  "hash": "5477e28c417fccb52e56893059fb3dd7e42b33d4e081d267e4722b5d7e16ca6d",
+  "anchor": null,
+  "folder": "cloudy",
+  "size": "414x715",
+  "why": "open",
+  "lang": "xh",
+  "line": "'Siza kubona ukuba kukhangeleka njani' — yi-RSVP esemthethweni yoMzantsi Afrika.",
+  "px": 35.035,
+  "textTop": 235,
+  "textBottom": 383,
+  "band": null,
+  "bandY": null,
+  "level": "clear",
+  "words": "the cloud base"
+ },
+ {
+  "n": 104,
+  "hash": "552cf0a869eedd9e7c4ebbefdb7291286d589ee60f5d1d0c6982e297ad8ea2c1",
+  "anchor": 62,
+  "folder": "storm",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "Sisenokwenzeka isaqhwithi, asikaqinisekiswa. Hlala uphaphile.",
+  "px": 35.035,
+  "textTop": 259,
+  "textBottom": 370,
+  "band": [
+   55,
+   70
+  ],
+  "bandY": [
+   182.45000000000002,
+   289.69999999999993
+  ],
+  "level": "covers",
+  "words": "the blown-over garden chairs"
+ },
+ {
+  "n": 104,
+  "hash": "552cf0a869eedd9e7c4ebbefdb7291286d589ee60f5d1d0c6982e297ad8ea2c1",
+  "anchor": 62,
+  "folder": "storm",
+  "size": "360x688",
+  "why": "small",
+  "lang": "zu",
+  "line": "Amabhomu amancane eqhwa ayawa. Icebo linye kuphela: hlala ngaphakathi.",
+  "px": 33.712002,
+  "textTop": 245,
+  "textBottom": 389,
+  "band": [
+   55,
+   70
+  ],
+  "bandY": [
+   200.75826086956528,
+   294.0191304347826
+  ],
+  "level": "covers",
+  "words": "the blown-over garden chairs"
+ },
+ {
+  "n": 105,
+  "hash": "578472c58967b6e13aa85be9082f3852f981c4944547cedacfdc081e348c1c7e",
+  "anchor": 46,
+  "folder": "wind",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "Kunokuba nomoya onamandla ngamaxesha athile. Uqikelelo aluqinisekanga kule meko",
+  "px": 35.035,
+  "textTop": 259,
+  "textBottom": 370,
+  "band": [
+   40,
+   95
+  ],
+  "bandY": [
+   129.60000000000002,
+   522.8499999999999
+  ],
+  "level": "partly",
+  "words": "the kids leaning into the wind (faces stay clear)"
+ },
+ {
+  "n": 106,
+  "hash": "593bee14001cfb65a18e859f146303a724072d141e8351dbbf29400f1a0bd0ef",
+  "anchor": null,
+  "folder": "cloudy",
+  "size": "414x715",
+  "why": "open",
+  "lang": "xh",
+  "line": "'Siza kubona ukuba kukhangeleka njani' — yi-RSVP esemthethweni yoMzantsi Afrika.",
+  "px": 35.035,
+  "textTop": 235,
+  "textBottom": 383,
+  "band": null,
+  "bandY": null,
+  "level": "clear",
+  "words": "the street"
+ },
+ {
+  "n": 107,
+  "hash": "5a08fa13f99d2d2733aaaf4977ef131595df457eb0eacbfe396d8f8280543462",
+  "anchor": null,
+  "folder": "rain",
+  "size": "414x715",
+  "why": "near",
+  "lang": "zu",
+  "line": "Imvula iphendula wonke umshayeli waseNingizimu Afrika abe umfundi futhi. Ama-hazards avuliwe, isithunzi sicishiwe.",
+  "px": 35.035,
+  "textTop": 263,
+  "textBottom": 448,
+  "band": [
+   45,
+   72
+  ],
+  "bandY": [
+   117.38999999999999,
+   310.43999999999994
+  ],
+  "level": "covers",
+  "words": "the wave and the two people watching"
+ },
+ {
+  "n": 108,
+  "hash": "5ab21fef44c2fb7159d46214299fe1ac5a01efdf2a3087a33bd645201e976c78",
+  "anchor": 100,
+  "folder": "clear",
+  "size": "414x715",
+  "why": "open",
+  "lang": "st",
+  "line": "Letsatsi le le leng le phethahetseng le fanwe. Ha le fetisetswe. Le sebedise ka bohlale.",
+  "px": 35.035,
+  "textTop": 254,
+  "textBottom": 402,
+  "band": null,
+  "bandY": null,
+  "level": "clear",
+  "words": "risen: the braai area; the dog lies at the facts band"
+ },
+ {
+  "n": 109,
+  "hash": "652cc55ceb6e4a881abd49e33ff54a73398ff11393ab9ce32dfe277af4d16e4a",
+  "anchor": 25,
+  "folder": "rain",
+  "size": "414x715",
+  "why": "near",
+  "lang": "zu",
+  "line": "Imvula iphendula wonke umshayeli waseNingizimu Afrika abe umfundi futhi. Ama-hazards avuliwe, isithunzi sicishiwe.",
+  "px": 35.035,
+  "textTop": 263,
+  "textBottom": 448,
+  "band": [
+   35,
+   72
+  ],
+  "bandY": [
+   184.74999999999997,
+   449.29999999999995
+  ],
+  "level": "partly",
+  "words": "the kids' gumboots at the puddle (faces clear)"
+ },
+ {
+  "n": 110,
+  "hash": "66854831dff3a5b9b6f16c2bc9698ceee75566bdd948469f08ff54d09606d971",
+  "anchor": 50,
+  "folder": "wind",
+  "size": "414x715",
+  "why": "open",
+  "lang": "xh",
+  "line": "Kunokuba nomoya onamandla ngamaxesha athile. Uqikelelo aluqinisekanga kule meko",
+  "px": 35.035,
+  "textTop": 259,
+  "textBottom": 370,
+  "band": null,
+  "bandY": null,
+  "level": "clear",
+  "words": "the garden below the washing"
+ },
+ {
+  "n": 111,
+  "hash": "668c558784196b0c2fc19cc2ce777ba4e56cbee2708f65607b11162c90a3c472",
+  "anchor": 66,
+  "folder": "clear",
+  "size": "414x715",
+  "why": "near",
+  "lang": "st",
+  "line": "Letsatsi le le leng le phethahetseng le fanwe. Ha le fetisetswe. Le sebedise ka bohlale.",
+  "px": 35.035,
+  "textTop": 254,
+  "textBottom": 402,
+  "band": [
+   52,
+   78
+  ],
+  "bandY": [
+   168.51999999999995,
+   354.4200000000001
+  ],
+  "level": "covers",
+  "words": "dad and the kids laughing on the grass"
+ },
+ {
+  "n": 112,
+  "hash": "6d489d62f30f83f8f289d2e6360d224fe55e95cc661edc1341bc463eaf7f58cd",
+  "anchor": 61,
+  "folder": "clear",
+  "size": "414x715",
+  "why": "near",
+  "lang": "st",
+  "line": "Letsatsi le le leng le phethahetseng le fanwe. Ha le fetisetswe. Le sebedise ka bohlale.",
+  "px": 35.035,
+  "textTop": 254,
+  "textBottom": 402,
+  "band": [
+   38,
+   90
+  ],
+  "bandY": [
+   83.82,
+   455.61999999999995
+  ],
+  "level": "partly",
+  "words": "the soccer team's chips and knees (faces clear)"
+ },
+ {
+  "n": 113,
+  "hash": "72425df6ac895ae08dfa8c32564e7be4c50d659894e4b23cc96868709e597e41",
+  "anchor": 69,
+  "folder": "storm",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "Sisenokwenzeka isaqhwithi, asikaqinisekiswa. Hlala uphaphile.",
+  "px": 35.035,
+  "textTop": 259,
+  "textBottom": 370,
+  "band": [
+   52,
+   90
+  ],
+  "bandY": [
+   137.20000000000002,
+   408.9
+  ],
+  "level": "covers",
+  "words": "the man at the shed in the dust"
+ },
+ {
+  "n": 114,
+  "hash": "752ebaed7c7a6ecbdf3127a081fc207d1e6dea64528f9f7a017b804901d273b4",
+  "anchor": 68,
+  "folder": "clear",
+  "size": "414x715",
+  "why": "near",
+  "lang": "st",
+  "line": "Letsatsi le le leng le phethahetseng le fanwe. Ha le fetisetswe. Le sebedise ka bohlale.",
+  "px": 35.035,
+  "textTop": 254,
+  "textBottom": 402,
+  "band": [
+   36,
+   95
+  ],
+  "bandY": [
+   47.95999999999992,
+   469.80999999999995
+  ],
+  "level": "partly",
+  "words": "his back and bag (head clear)"
+ },
+ {
+  "n": 115,
+  "hash": "77077da42999c1f4e4d5d7527e73fd44b1d2f2c793faa24a52e2fb8073f319cc",
+  "anchor": 55,
+  "folder": "storm",
+  "size": "414x715",
+  "why": "open",
+  "lang": "xh",
+  "line": "Sisenokwenzeka isaqhwithi, asikaqinisekiswa. Hlala uphaphile.",
+  "px": 35.035,
+  "textTop": 259,
+  "textBottom": 370,
+  "band": null,
+  "bandY": null,
+  "level": "clear",
+  "words": "the flooded road; the chair's backrest just touches the last line"
+ },
+ {
+  "n": 116,
+  "hash": "7cd322576ac98a21328191adea57f69d0a00c434b04332bfb19cf09f166f38ae",
+  "anchor": 82,
+  "folder": "wind",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "Kunokuba nomoya onamandla ngamaxesha athile. Uqikelelo aluqinisekanga kule meko",
+  "px": 35.035,
+  "textTop": 259,
+  "textBottom": 370,
+  "band": [
+   50,
+   75
+  ],
+  "bandY": [
+   78.7000000000001,
+   257.45
+  ],
+  "level": "covers",
+  "words": "the cat on the wall"
+ },
+ {
+  "n": 116,
+  "hash": "7cd322576ac98a21328191adea57f69d0a00c434b04332bfb19cf09f166f38ae",
+  "anchor": 82,
+  "folder": "wind",
+  "size": "360x688",
+  "why": "small",
+  "lang": "st",
+  "line": "Ngaka ya Cape e ho di-round tsa hoseng. Ha ho hlokahale appointment, ka bomadimabe.",
+  "px": 33.712002,
+  "textTop": 206,
+  "textBottom": 350,
+  "band": [
+   50,
+   75
+  ],
+  "bandY": [
+   92.14347826086961,
+   247.57826086956524
+  ],
+  "level": "covers",
+  "words": "the cat on the wall"
+ },
+ {
+  "n": 117,
+  "hash": "7da77729d4d25b22c59c210f13506e4de7fde93a6960444a0ccd4bb9c86034e1",
+  "anchor": 44,
+  "folder": "clear",
+  "size": "414x715",
+  "why": "near",
+  "lang": "st",
+  "line": "Letsatsi le le leng le phethahetseng le fanwe. Ha le fetisetswe. Le sebedise ka bohlale.",
+  "px": 35.035,
+  "textTop": 254,
+  "textBottom": 402,
+  "band": [
+   42,
+   90
+  ],
+  "bandY": [
+   164.78000000000003,
+   507.98
+  ],
+  "level": "partly",
+  "words": "his body and his beer (his face stays clear)"
+ },
+ {
+  "n": 118,
+  "hash": "818a6e89a5f5ba80c9e5aca68d56a23f7fe924a5c711dac80f7879f30e9c1261",
+  "anchor": 49,
+  "folder": "storm",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "Sisenokwenzeka isaqhwithi, asikaqinisekiswa. Hlala uphaphile.",
+  "px": 35.035,
+  "textTop": 259,
+  "textBottom": 370,
+  "band": [
+   36,
+   90
+  ],
+  "bandY": [
+   90.80000000000001,
+   476.9
+  ],
+  "level": "partly",
+  "words": "the tarp and bakkie (his head clear)"
+ },
+ {
+  "n": 119,
+  "hash": "83e944cbfa2a0236262766ded724d40a399c8bbc1a27f25d9a9b4cc8a577050a",
+  "anchor": null,
+  "folder": "cold",
+  "size": "414x715",
+  "why": "near",
+  "lang": "st",
+  "line": "Lehlwa dithabeng. Group e nngwe le e nngwe ya lelapa ya WhatsApp jwale e na le foto e tshoanang.",
+  "px": 35.035,
+  "textTop": 274,
+  "textBottom": 422,
+  "band": [
+   42,
+   85
+  ],
+  "bandY": [
+   75.66,
+   383.11
+  ],
+  "level": "covers",
+  "words": "the socks drying on the heater"
+ },
+ {
+  "n": 120,
+  "hash": "853aefffc7e2f6ea841820c9f4527dae412a2106d1077bfad5283d45b11cbaa4",
+  "anchor": 48,
+  "folder": "rain",
+  "size": "414x715",
+  "why": "near",
+  "lang": "zu",
+  "line": "Imvula iphendula wonke umshayeli waseNingizimu Afrika abe umfundi futhi. Ama-hazards avuliwe, isithunzi sicishiwe.",
+  "px": 35.035,
+  "textTop": 263,
+  "textBottom": 448,
+  "band": [
+   42,
+   72
+  ],
+  "bandY": [
+   174.54,
+   389.03999999999996
+  ],
+  "level": "covers",
+  "words": "the man skiing the flooded street"
+ },
+ {
+  "n": 121,
+  "hash": "868fd901ef1480a15c609074ed3b7e974dfcf09e749ec0ecc4ef355eeb2184d9",
+  "anchor": 47,
+  "folder": "rain",
+  "size": "414x715",
+  "why": "near",
+  "lang": "zu",
+  "line": "Imvula iphendula wonke umshayeli waseNingizimu Afrika abe umfundi futhi. Ama-hazards avuliwe, isithunzi sicishiwe.",
+  "px": 35.035,
+  "textTop": 263,
+  "textBottom": 448,
+  "band": [
+   42,
+   78
+  ],
+  "bandY": [
+   177.16,
+   434.56000000000006
+  ],
+  "level": "covers",
+  "words": "the kids jumping in puddles"
+ },
+ {
+  "n": 122,
+  "hash": "86ce321be59c54933d8c42dbe080d373300c4ad850a84f57839dccbf00e5ca7e",
+  "anchor": 74,
+  "folder": "cold-clear",
+  "size": "414x715",
+  "why": "open",
+  "lang": "zu",
+  "line": "Ama-hadedas amathathu, amagwababa amabili, nomuntu oyedwa oqhaqhazelayo endaweni yokuphakela izinyoni.",
+  "px": 35.035,
+  "textTop": 243,
+  "textBottom": 428,
+  "band": null,
+  "bandY": null,
+  "level": "clear",
+  "words": "the trees behind the rugby posts"
+ },
+ {
+  "n": 123,
+  "hash": "8bc9f9cb40afc9b2781f517397769f5c6e8efb10442f64a6f2683c56b7d616de",
+  "anchor": 63,
+  "folder": "cloudy",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "'Siza kubona ukuba kukhangeleka njani' — yi-RSVP esemthethweni yoMzantsi Afrika.",
+  "px": 35.035,
+  "textTop": 235,
+  "textBottom": 383,
+  "band": [
+   50,
+   72
+  ],
+  "bandY": [
+   151.49,
+   308.7899999999999
+  ],
+  "level": "covers",
+  "words": "the two dogs at the door"
+ },
+ {
+  "n": 124,
+  "hash": "90566b9c8c8cbcf5e7693de288906baa06f09141f418c43b3114a1d46d87904d",
+  "anchor": 99,
+  "folder": "clear",
+  "size": "414x715",
+  "why": "near",
+  "lang": "st",
+  "line": "Letsatsi le le leng le phethahetseng le fanwe. Ha le fetisetswe. Le sebedise ka bohlale.",
+  "px": 35.035,
+  "textTop": 254,
+  "textBottom": 402,
+  "band": [
+   48,
+   90
+  ],
+  "bandY": [
+   38.27999999999997,
+   338.58
+  ],
+  "level": "partly",
+  "words": "risen: the raised arms at the revolving door"
+ },
+ {
+  "n": 125,
+  "hash": "9124414f81ecd38c3b7af660b63c158231154b6e1b5f33add5ef5766bdeeccdb",
+  "anchor": null,
+  "folder": "rain",
+  "size": "414x715",
+  "why": "open",
+  "lang": "zu",
+  "line": "Imvula iphendula wonke umshayeli waseNingizimu Afrika abe umfundi futhi. Ama-hazards avuliwe, isithunzi sicishiwe.",
+  "px": 35.035,
+  "textTop": 263,
+  "textBottom": 448,
+  "band": null,
+  "bandY": null,
+  "level": "clear",
+  "words": "the traffic through the rain"
+ },
+ {
+  "n": 126,
+  "hash": "9204050ecced654d1de0d3522cf145e2cc110b4aa1adcfeddbadca001445cfbb",
+  "anchor": 44,
+  "folder": "wind",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "Kunokuba nomoya onamandla ngamaxesha athile. Uqikelelo aluqinisekanga kule meko",
+  "px": 35.035,
+  "textTop": 259,
+  "textBottom": 370,
+  "band": [
+   38,
+   95
+  ],
+  "bandY": [
+   122.1,
+   529.65
+  ],
+  "level": "partly",
+  "words": "his legs (face clear)"
+ },
+ {
+  "n": 127,
+  "hash": "92d7d25f019bcbb7880a606641921103643cb9285ce8358f888b3c26103b5f66",
+  "anchor": null,
+  "folder": "cloudy",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "'Siza kubona ukuba kukhangeleka njani' — yi-RSVP esemthethweni yoMzantsi Afrika.",
+  "px": 35.035,
+  "textTop": 235,
+  "textBottom": 383,
+  "band": [
+   50,
+   65
+  ],
+  "bandY": [
+   102.44,
+   209.69
+  ],
+  "level": "covers",
+  "words": "the chameleon"
+ },
+ {
+  "n": 128,
+  "hash": "94ea185a88df3838956c309727980390c08708526029ebc13e7daa0bd3d79341",
+  "anchor": 50,
+  "folder": "wind",
+  "size": "414x715",
+  "why": "open",
+  "lang": "xh",
+  "line": "Kunokuba nomoya onamandla ngamaxesha athile. Uqikelelo aluqinisekanga kule meko",
+  "px": 35.035,
+  "textTop": 259,
+  "textBottom": 370,
+  "band": null,
+  "bandY": null,
+  "level": "clear",
+  "words": "the road below the jacaranda"
+ },
+ {
+  "n": 129,
+  "hash": "9df3ba1266474e1ffbd7131f8bb243c258ddbdc0249a4661189d042fc08c61d8",
+  "anchor": null,
+  "folder": "cold",
+  "size": "414x715",
+  "why": "near",
+  "lang": "st",
+  "line": "Lehlwa dithabeng. Group e nngwe le e nngwe ya lelapa ya WhatsApp jwale e na le foto e tshoanang.",
+  "px": 35.035,
+  "textTop": 274,
+  "textBottom": 422,
+  "band": [
+   52,
+   68
+  ],
+  "bandY": [
+   147.16000000000005,
+   261.56000000000006
+  ],
+  "level": "covers",
+  "words": "the child peeking from the duvet"
+ },
+ {
+  "n": 130,
+  "hash": "a4e1da997c4aaf0a41e6e15cd91633a472adf4de0ca96ccb0660cd9ac7a82567",
+  "anchor": 61,
+  "folder": "cloudy",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "'Siza kubona ukuba kukhangeleka njani' — yi-RSVP esemthethweni yoMzantsi Afrika.",
+  "px": 35.035,
+  "textTop": 235,
+  "textBottom": 383,
+  "band": [
+   42,
+   78
+  ],
+  "bandY": [
+   100.83000000000001,
+   358.23
+  ],
+  "level": "partly",
+  "words": "her body and the sunscreen (her face stays clear)"
+ },
+ {
+  "n": 131,
+  "hash": "a9c1572f1be4ece59ae488800066700e442a033ab023822102c9d6fbc53eacd6",
+  "anchor": 58,
+  "folder": "clear",
+  "size": "414x715",
+  "why": "near",
+  "lang": "st",
+  "line": "Letsatsi le le leng le phethahetseng le fanwe. Ha le fetisetswe. Le sebedise ka bohlale.",
+  "px": 35.035,
+  "textTop": 254,
+  "textBottom": 402,
+  "band": [
+   46,
+   72
+  ],
+  "bandY": [
+   150.26000000000005,
+   336.15999999999997
+  ],
+  "level": "covers",
+  "words": "the two women on laptops"
+ },
+ {
+  "n": 132,
+  "hash": "abf4cc943c519af1524158af204e0090984c6937921ea938647a4d000dd6c101",
+  "anchor": 51,
+  "folder": "cloudy",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "'Siza kubona ukuba kukhangeleka njani' — yi-RSVP esemthethweni yoMzantsi Afrika.",
+  "px": 35.035,
+  "textTop": 235,
+  "textBottom": 383,
+  "band": [
+   40,
+   95
+  ],
+  "bandY": [
+   119.22999999999999,
+   512.48
+  ],
+  "level": "partly",
+  "words": "the man on the roof (face clear)"
+ },
+ {
+  "n": 133,
+  "hash": "add32aa85b80ea31df34d84ac6613e9cebc4e9aae309b134e3e584e31fd80e2d",
+  "anchor": 100,
+  "folder": "cold-clear",
+  "size": "414x715",
+  "why": "far",
+  "lang": "zu",
+  "line": "Ama-hadedas amathathu, amagwababa amabili, nomuntu oyedwa oqhaqhazelayo endaweni yokuphakela izinyoni.",
+  "px": 35.035,
+  "textTop": 243,
+  "textBottom": 428,
+  "band": [
+   35,
+   60
+  ],
+  "bandY": [
+   -31.75,
+   147
+  ],
+  "level": "partly",
+  "words": "risen: the snowy peaks and washing; the dog sits at the facts band"
+ },
+ {
+  "n": 134,
+  "hash": "ae7148dc2255db2320f361a1f4dc0ec09b62445501a408dfbea9d6a051b9b580",
+  "anchor": 88,
+  "folder": "clear",
+  "size": "414x715",
+  "why": "near",
+  "lang": "st",
+  "line": "Letsatsi le le leng le phethahetseng le fanwe. Ha le fetisetswe. Le sebedise ka bohlale.",
+  "px": 35.035,
+  "textTop": 254,
+  "textBottom": 402,
+  "band": [
+   48,
+   78
+  ],
+  "bandY": [
+   72.16000000000003,
+   286.6600000000001
+  ],
+  "level": "covers",
+  "words": "the hadeda among the agapanthus"
+ },
+ {
+  "n": 134,
+  "hash": "ae7148dc2255db2320f361a1f4dc0ec09b62445501a408dfbea9d6a051b9b580",
+  "anchor": 88,
+  "folder": "clear",
+  "size": "360x688",
+  "why": "small",
+  "lang": "st",
+  "line": "Letsatsi le le leng le phethahetseng le fanwe. Ha le fetisetswe. Le sebedise ka bohlale.",
+  "px": 33.712002,
+  "textTop": 206,
+  "textBottom": 350,
+  "band": [
+   48,
+   78
+  ],
+  "bandY": [
+   63.70434782608692,
+   250.22608695652178
+  ],
+  "level": "covers",
+  "words": "the hadeda among the agapanthus"
+ },
+ {
+  "n": 135,
+  "hash": "afe79b6ded39280e27ad59f973b407e4ad35db75ca74c03788b9196ddabefdbf",
+  "anchor": 90,
+  "folder": "wind",
+  "size": "414x715",
+  "why": "far",
+  "lang": "xh",
+  "line": "Kunokuba nomoya onamandla ngamaxesha athile. Uqikelelo aluqinisekanga kule meko",
+  "px": 35.035,
+  "textTop": 259,
+  "textBottom": 370,
+  "band": [
+   56,
+   68
+  ],
+  "bandY": [
+   94.39999999999998,
+   180.2
+  ],
+  "level": "covers",
+  "words": "the three chasing the litter"
+ },
+ {
+  "n": 136,
+  "hash": "b3e1239dd81c38710a1113cf1dff9f051dcafd2b60426ae1e27ba68ce62c6144",
+  "anchor": 53,
+  "folder": "storm",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "Sisenokwenzeka isaqhwithi, asikaqinisekiswa. Hlala uphaphile.",
+  "px": 35.035,
+  "textTop": 259,
+  "textBottom": 370,
+  "band": [
+   48,
+   92
+  ],
+  "bandY": [
+   163,
+   477.6000000000001
+  ],
+  "level": "partly",
+  "words": "the people under the canopy (faces clear)"
+ },
+ {
+  "n": 137,
+  "hash": "b6dbfe87e5aeee5a5351fd31f1015e9b53c46b04b892d280e92ff52553053a08",
+  "anchor": 59,
+  "folder": "cold",
+  "size": "414x715",
+  "why": "near",
+  "lang": "st",
+  "line": "Lehlwa dithabeng. Group e nngwe le e nngwe ya lelapa ya WhatsApp jwale e na le foto e tshoanang.",
+  "px": 35.035,
+  "textTop": 274,
+  "textBottom": 422,
+  "band": [
+   44,
+   72
+  ],
+  "bandY": [
+   144.68,
+   344.87999999999994
+  ],
+  "level": "partly",
+  "words": "his blanket and the heater (his face stays clear)"
+ },
+ {
+  "n": 138,
+  "hash": "c049b4e672c97462a2b8323f6ca1641c7285e7b108a41a062513eee4501e4c3a",
+  "anchor": 30,
+  "folder": "cold",
+  "size": "414x715",
+  "why": "near",
+  "lang": "st",
+  "line": "Lehlwa dithabeng. Group e nngwe le e nngwe ya lelapa ya WhatsApp jwale e na le foto e tshoanang.",
+  "px": 35.035,
+  "textTop": 274,
+  "textBottom": 422,
+  "band": [
+   30,
+   95
+  ],
+  "bandY": [
+   128.09999999999997,
+   592.8499999999999
+  ],
+  "level": "partly",
+  "words": "his jersey (his hands and face stay clear)"
+ },
+ {
+  "n": 139,
+  "hash": "c652e5832dbed8950f5ed3f229c9a2982d49d9c47f99c36953328a9c54621554",
+  "anchor": 56,
+  "folder": "rain",
+  "size": "414x715",
+  "why": "near",
+  "lang": "zu",
+  "line": "Imvula iphendula wonke umshayeli waseNingizimu Afrika abe umfundi futhi. Ama-hazards avuliwe, isithunzi sicishiwe.",
+  "px": 35.035,
+  "textTop": 263,
+  "textBottom": 448,
+  "band": [
+   52,
+   70
+  ],
+  "bandY": [
+   225.08,
+   353.77999999999986
+  ],
+  "level": "covers",
+  "words": "the gumboots at the door"
+ },
+ {
+  "n": 140,
+  "hash": "c796454299a4bc32a520ae2ebeafe6a9447f253be2261c1612164a9f1a3cbaa1",
+  "anchor": 63,
+  "folder": "cloudy",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "'Siza kubona ukuba kukhangeleka njani' — yi-RSVP esemthethweni yoMzantsi Afrika.",
+  "px": 35.035,
+  "textTop": 235,
+  "textBottom": 383,
+  "band": [
+   38,
+   95
+  ],
+  "bandY": [
+   65.69,
+   473.23999999999995
+  ],
+  "level": "partly",
+  "words": "his back and the umbrella"
+ },
+ {
+  "n": 141,
+  "hash": "d09eebb882b56eacaa44a04b2af3ed15f8e53f7c1bfba3611a0b4e323f5da2a0",
+  "anchor": 70,
+  "folder": "storm",
+  "size": "414x715",
+  "why": "open",
+  "lang": "xh",
+  "line": "Sisenokwenzeka isaqhwithi, asikaqinisekiswa. Hlala uphaphile.",
+  "px": 35.035,
+  "textTop": 259,
+  "textBottom": 370,
+  "band": null,
+  "bandY": null,
+  "level": "clear",
+  "words": "the stadium stands"
+ },
+ {
+  "n": 142,
+  "hash": "d3de1926905de4e53cf10c6da4a0a536f19e96e2a6f551ecf0a0d80cd87621ea",
+  "anchor": 86,
+  "folder": "cold",
+  "size": "414x715",
+  "why": "near",
+  "lang": "st",
+  "line": "Lehlwa dithabeng. Group e nngwe le e nngwe ya lelapa ya WhatsApp jwale e na le foto e tshoanang.",
+  "px": 35.035,
+  "textTop": 274,
+  "textBottom": 422,
+  "band": [
+   44,
+   85
+  ],
+  "bandY": [
+   66.92000000000002,
+   360.06999999999994
+  ],
+  "level": "partly",
+  "words": "the man walking the dog in the rain"
+ },
+ {
+  "n": 143,
+  "hash": "d5ba1f11fcceaa270ef0f254f8326753737af23179b05efb29f610638955ac39",
+  "anchor": 43,
+  "folder": "storm",
+  "size": "414x715",
+  "why": "within",
+  "lang": "xh",
+  "line": "Sisenokwenzeka isaqhwithi, asikaqinisekiswa. Hlala uphaphile.",
+  "px": 35.035,
+  "textTop": 259,
+  "textBottom": 370,
+  "band": null,
+  "bandY": null,
+  "level": "clear",
+  "words": "the dashboard below the phone"
+ },
+ {
+  "n": 144,
+  "hash": "d656b20a224e9108750856919cf8ae8e30fff2b81fa57d7d27be04e098bdb914",
+  "anchor": 39,
+  "folder": "wind",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "Kunokuba nomoya onamandla ngamaxesha athile. Uqikelelo aluqinisekanga kule meko",
+  "px": 35.035,
+  "textTop": 259,
+  "textBottom": 370,
+  "band": [
+   42,
+   95
+  ],
+  "bandY": [
+   167.70000000000002,
+   546.6500000000001
+  ],
+  "level": "partly",
+  "words": "the girl and the man at the car door (faces clear)"
+ },
+ {
+  "n": 145,
+  "hash": "da3c8d038046993d079ac0872b48cc3e314d22939cef56c88501e51954b290d3",
+  "anchor": 71,
+  "folder": "storm",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "Sisenokwenzeka isaqhwithi, asikaqinisekiswa. Hlala uphaphile.",
+  "px": 35.035,
+  "textTop": 259,
+  "textBottom": 370,
+  "band": [
+   48,
+   95
+  ],
+  "bandY": [
+   101.80000000000001,
+   437.84999999999997
+  ],
+  "level": "covers",
+  "words": "the person bent into the wind"
+ },
+ {
+  "n": 146,
+  "hash": "dac8823704af6a1b9bf2d2778296a7ec95b6bb7e66888e7945e80e6960cb30ec",
+  "anchor": 69,
+  "folder": "storm",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "Sisenokwenzeka isaqhwithi, asikaqinisekiswa. Hlala uphaphile.",
+  "px": 35.035,
+  "textTop": 259,
+  "textBottom": 370,
+  "band": [
+   55,
+   78
+  ],
+  "bandY": [
+   158.65000000000012,
+   323.1
+  ],
+  "level": "covers",
+  "words": "the dog cowering under the table"
+ },
+ {
+  "n": 147,
+  "hash": "dc5ec5c77af625d56242a5e6fc95bb98559dcd13ea7bc709e8424895f9f3467d",
+  "anchor": 52,
+  "folder": "rain",
+  "size": "414x715",
+  "why": "open",
+  "lang": "zu",
+  "line": "Imvula iphendula wonke umshayeli waseNingizimu Afrika abe umfundi futhi. Ama-hazards avuliwe, isithunzi sicishiwe.",
+  "px": 35.035,
+  "textTop": 263,
+  "textBottom": 448,
+  "band": null,
+  "bandY": null,
+  "level": "clear",
+  "words": "the potted fern on the patio"
+ },
+ {
+  "n": 148,
+  "hash": "dde50ae61ffb87cf18a6315df08924dbf2d6d17ed8c4046b8d4926b5e10569f7",
+  "anchor": 94,
+  "folder": "clear",
+  "size": "414x715",
+  "why": "near",
+  "lang": "st",
+  "line": "Letsatsi le le leng le phethahetseng le fanwe. Ha le fetisetswe. Le sebedise ka bohlale.",
+  "px": 35.035,
+  "textTop": 254,
+  "textBottom": 402,
+  "band": [
+   62,
+   82
+  ],
+  "bandY": [
+   153.78000000000003,
+   296.78
+  ],
+  "level": "partly",
+  "words": "the glass of iced tea"
+ },
+ {
+  "n": 149,
+  "hash": "df3033afec4a18edec34602b29a703a5bd399dc5cc16df2f1d8894accb02ca88",
+  "anchor": 55,
+  "folder": "wind",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "Kunokuba nomoya onamandla ngamaxesha athile. Uqikelelo aluqinisekanga kule meko",
+  "px": 35.035,
+  "textTop": 259,
+  "textBottom": 370,
+  "band": [
+   36,
+   95
+  ],
+  "bandY": [
+   70.39999999999998,
+   492.24999999999994
+  ],
+  "level": "partly",
+  "words": "her body and basket (face clear)"
+ },
+ {
+  "n": 150,
+  "hash": "e3f7fefc2b23dfeca5393d02c346bee81d0a5abaced0dfa87490adf8296fb6aa",
+  "anchor": 67,
+  "folder": "storm",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "Sisenokwenzeka isaqhwithi, asikaqinisekiswa. Hlala uphaphile.",
+  "px": 35.035,
+  "textTop": 259,
+  "textBottom": 370,
+  "band": [
+   50,
+   85
+  ],
+  "bandY": [
+   129.7,
+   379.95
+  ],
+  "level": "covers",
+  "words": "the surfer walking out"
+ },
+ {
+  "n": 151,
+  "hash": "e617f1822eafba8cf27112745de345969482f4be105b27bc698c2122841c0129",
+  "anchor": 50,
+  "folder": "rain",
+  "size": "414x715",
+  "why": "near",
+  "lang": "zu",
+  "line": "Imvula iphendula wonke umshayeli waseNingizimu Afrika abe umfundi futhi. Ama-hazards avuliwe, isithunzi sicishiwe.",
+  "px": 35.035,
+  "textTop": 263,
+  "textBottom": 448,
+  "band": [
+   42,
+   72
+  ],
+  "bandY": [
+   169.3,
+   383.79999999999995
+  ],
+  "level": "covers",
+  "words": "the cat in the rain"
+ },
+ {
+  "n": 152,
+  "hash": "e69199a64628bb5fb6bd309ec94a93e66e844d474a3d6a84fe6784b6ecf3fd63",
+  "anchor": 98,
+  "folder": "cold",
+  "size": "414x715",
+  "why": "far",
+  "lang": "st",
+  "line": "Lehlwa dithabeng. Group e nngwe le e nngwe ya lelapa ya WhatsApp jwale e na le foto e tshoanang.",
+  "px": 35.035,
+  "textTop": 274,
+  "textBottom": 422,
+  "band": [
+   48,
+   70
+  ],
+  "bandY": [
+   60.95999999999998,
+   218.25999999999993
+  ],
+  "level": "partly",
+  "words": "risen: the top of the dog's head"
+ },
+ {
+  "n": 153,
+  "hash": "e6cf92909ea486a225207c5c5dd4253e676ffeb65b1fb34b43f9ba38687b331a",
+  "anchor": 86,
+  "folder": "clear",
+  "size": "414x715",
+  "why": "near",
+  "lang": "st",
+  "line": "Letsatsi le le leng le phethahetseng le fanwe. Ha le fetisetswe. Le sebedise ka bohlale.",
+  "px": 35.035,
+  "textTop": 254,
+  "textBottom": 402,
+  "band": [
+   55,
+   75
+  ],
+  "bandY": [
+   128.37000000000006,
+   271.37000000000006
+  ],
+  "level": "covers",
+  "words": "the hadeda on the lawn"
+ },
+ {
+  "n": 154,
+  "hash": "ea93fbda5aae8e06415ca730ec39bf8d4d944bc0803406ec2cdf82172ba6fd6b",
+  "anchor": 26,
+  "folder": "rain",
+  "size": "414x715",
+  "why": "near",
+  "lang": "zu",
+  "line": "Imvula iphendula wonke umshayeli waseNingizimu Afrika abe umfundi futhi. Ama-hazards avuliwe, isithunzi sicishiwe.",
+  "px": 35.035,
+  "textTop": 263,
+  "textBottom": 448,
+  "band": [
+   40,
+   95
+  ],
+  "bandY": [
+   217.88,
+   611.13
+  ],
+  "level": "covers",
+  "words": "the woman and kids in the rain"
+ },
+ {
+  "n": 155,
+  "hash": "eb699c28bbf79a91a9c9be1e8a978832918ea1a45ccf7b3bf7ec271df43ce539",
+  "anchor": 55,
+  "folder": "clear",
+  "size": "414x715",
+  "why": "near",
+  "lang": "st",
+  "line": "Letsatsi le le leng le phethahetseng le fanwe. Ha le fetisetswe. Le sebedise ka bohlale.",
+  "px": 35.035,
+  "textTop": 254,
+  "textBottom": 402,
+  "band": [
+   45,
+   80
+  ],
+  "bandY": [
+   152.34999999999997,
+   402.59999999999997
+  ],
+  "level": "covers",
+  "words": "the women at the braai"
+ },
+ {
+  "n": 156,
+  "hash": "ee6782554c5f9cf28100d8f2597478e524cad5f390483000fc1e3ace026f7f16",
+  "anchor": 88,
+  "folder": "cloudy",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "'Siza kubona ukuba kukhangeleka njani' — yi-RSVP esemthethweni yoMzantsi Afrika.",
+  "px": 35.035,
+  "textTop": 235,
+  "textBottom": 383,
+  "band": [
+   50,
+   95
+  ],
+  "bandY": [
+   69.74000000000001,
+   391.49
+  ],
+  "level": "covers",
+  "words": "the runner"
+ },
+ {
+  "n": 157,
+  "hash": "f0aee457348824eb2dd50825620bdcc6a0a9d6cbe90c3c168df5c3ec431b7e0f",
+  "anchor": 87,
+  "folder": "rain",
+  "size": "414x715",
+  "why": "near",
+  "lang": "zu",
+  "line": "Imvula iphendula wonke umshayeli waseNingizimu Afrika abe umfundi futhi. Ama-hazards avuliwe, isithunzi sicishiwe.",
+  "px": 35.035,
+  "textTop": 263,
+  "textBottom": 448,
+  "band": [
+   58,
+   78
+  ],
+  "bandY": [
+   186.75999999999996,
+   329.7600000000001
+  ],
+  "level": "covers",
+  "words": "the wet jacket and shoes at the door"
+ },
+ {
+  "n": 158,
+  "hash": "f4ea0b14220694960f2f847953d93288ec197d4d871551e6a5df48df9a33f6d2",
+  "anchor": 100,
+  "folder": "cloudy",
+  "size": "414x715",
+  "why": "open",
+  "lang": "xh",
+  "line": "'Siza kubona ukuba kukhangeleka njani' — yi-RSVP esemthethweni yoMzantsi Afrika.",
+  "px": 35.035,
+  "textTop": 235,
+  "textBottom": 383,
+  "band": null,
+  "bandY": null,
+  "level": "clear",
+  "words": "risen: trees; the dog lies at the facts band"
+ },
+ {
+  "n": 159,
+  "hash": "f59b6f76a2cd4ddfcc2389840ac9e6c99ebcf919a665898e445fdebebb064bac",
+  "anchor": 29,
+  "folder": "rain",
+  "size": "414x715",
+  "why": "near",
+  "lang": "zu",
+  "line": "Imvula iphendula wonke umshayeli waseNingizimu Afrika abe umfundi futhi. Ama-hazards avuliwe, isithunzi sicishiwe.",
+  "px": 35.035,
+  "textTop": 263,
+  "textBottom": 448,
+  "band": [
+   38,
+   95
+  ],
+  "bandY": [
+   195.71999999999997,
+   603.27
+  ],
+  "level": "partly",
+  "words": "the two men under the umbrella (faces clear)"
+ },
+ {
+  "n": 160,
+  "hash": "fc5b0a6e83ae292e917f91efb0246d9f44b9d8bebefcb5940d19fdad9ff3342c",
+  "anchor": 51,
+  "folder": "cloudy",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "'Siza kubona ukuba kukhangeleka njani' — yi-RSVP esemthethweni yoMzantsi Afrika.",
+  "px": 35.035,
+  "textTop": 235,
+  "textBottom": 383,
+  "band": [
+   30,
+   95
+  ],
+  "bandY": [
+   47.73000000000002,
+   512.48
+  ],
+  "level": "partly",
+  "words": "the mower (his face clear)"
+ },
+ {
+  "n": 161,
+  "hash": "fed27f42e4098802347eb0662260793de68f969b4b7fa4410eb87654adc2f9ac",
+  "anchor": 60,
+  "folder": "clear",
+  "size": "414x715",
+  "why": "near",
+  "lang": "st",
+  "line": "Letsatsi le le leng le phethahetseng le fanwe. Ha le fetisetswe. Le sebedise ka bohlale.",
+  "px": 35.035,
+  "textTop": 254,
+  "textBottom": 402,
+  "band": [
+   45,
+   90
+  ],
+  "bandY": [
+   136.95000000000002,
+   458.70000000000005
+  ],
+  "level": "covers",
+  "words": "the women pouring tea on the rooftop"
+ },
+ {
+  "n": 162,
+  "hash": "0cf2acaa4c432f235633e03fabe7bba4af83e206d3f7d37e28d073b8fe007182",
+  "anchor": 36,
+  "folder": "cold",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "Imizuzu emihlanu yokubukela iinkwenkwezi. Emva koko ubaleka ubuyele ngaphakathi. Sisivumelwano eso.",
+  "px": 35.035,
+  "textTop": 235,
+  "textBottom": 383,
+  "band": [
+   22,
+   75
+  ],
+  "bandY": [
+   39.58000000000001,
+   418.53
+  ],
+  "level": "partly",
+  "words": "the book and torch (face clear)"
+ },
+ {
+  "n": 163,
+  "hash": "544c1615ccb0a07111eb186cd30d144ef25e9534f00d53228ad7d117d935c25e",
+  "anchor": 89,
+  "folder": "cold",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "Imizuzu emihlanu yokubukela iinkwenkwezi. Emva koko ubaleka ubuyele ngaphakathi. Sisivumelwano eso.",
+  "px": 35.035,
+  "textTop": 235,
+  "textBottom": 383,
+  "band": [
+   48,
+   72
+  ],
+  "bandY": [
+   52.16999999999996,
+   223.76999999999998
+  ],
+  "level": "covers",
+  "words": "the friends around the lantern"
+ },
+ {
+  "n": 164,
+  "hash": "5557eb34c34315f38fd279c4c32156ecc44898fa79529d9816a48ff830620b89",
+  "anchor": 50,
+  "folder": "cold",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "Imizuzu emihlanu yokubukela iinkwenkwezi. Emva koko ubaleka ubuyele ngaphakathi. Sisivumelwano eso.",
+  "px": 35.035,
+  "textTop": 235,
+  "textBottom": 383,
+  "band": [
+   38,
+   95
+  ],
+  "bandY": [
+   108.19999999999999,
+   515.75
+  ],
+  "level": "partly",
+  "words": "the man on the stoep (head clear)"
+ },
+ {
+  "n": 165,
+  "hash": "5df9bca2b53222d5d6d358aafccfea90f3c76f34332c940ff03a0553e8b38740",
+  "anchor": 71,
+  "folder": "cold",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "Imizuzu emihlanu yokubukela iinkwenkwezi. Emva koko ubaleka ubuyele ngaphakathi. Sisivumelwano eso.",
+  "px": 35.035,
+  "textTop": 235,
+  "textBottom": 383,
+  "band": [
+   52,
+   70
+  ],
+  "bandY": [
+   139.63000000000005,
+   268.33
+  ],
+  "level": "covers",
+  "words": "the cat asleep in the jumper"
+ },
+ {
+  "n": 165,
+  "hash": "5df9bca2b53222d5d6d358aafccfea90f3c76f34332c940ff03a0553e8b38740",
+  "anchor": 71,
+  "folder": "cold",
+  "size": "360x688",
+  "why": "small",
+  "lang": "zu",
+  "line": "Ndawana ngaphansi kwalezo zinkanyezi, umuntu uhamba ngamazwane engagqokile eya endlini yangasese. Amandla.",
+  "px": 32.712002,
+  "textTop": 234,
+  "textBottom": 409,
+  "band": [
+   52,
+   70
+  ],
+  "bandY": [
+   175.80956521739137,
+   287.7226086956522
+  ],
+  "level": "covers",
+  "words": "the cat asleep in the jumper"
+ },
+ {
+  "n": 166,
+  "hash": "6e0d76c63cde82b91119b5f5853d9ada08f19557a8a5c8cce7a79c1d06331024",
+  "anchor": 76,
+  "folder": "cold",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "Imizuzu emihlanu yokubukela iinkwenkwezi. Emva koko ubaleka ubuyele ngaphakathi. Sisivumelwano eso.",
+  "px": 35.035,
+  "textTop": 235,
+  "textBottom": 383,
+  "band": [
+   52,
+   80
+  ],
+  "bandY": [
+   123.27999999999992,
+   323.48
+  ],
+  "level": "covers",
+  "words": "the man in the deck chair"
+ },
+ {
+  "n": 167,
+  "hash": "96829ba00efb9e143fc51a33936025f560649eaa79ccd653cb8c09ff2b0c60a3",
+  "anchor": 100,
+  "folder": "cold",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "Imizuzu emihlanu yokubukela iinkwenkwezi. Emva koko ubaleka ubuyele ngaphakathi. Sisivumelwano eso.",
+  "px": 35.035,
+  "textTop": 235,
+  "textBottom": 383,
+  "band": [
+   53,
+   90
+  ],
+  "bandY": [
+   51.950000000000045,
+   316.5
+  ],
+  "level": "covers",
+  "words": "risen: the two men's heads at the braai"
+ },
+ {
+  "n": 168,
+  "hash": "4f833d5c5db4bf89c68be1dce8f53b38e7652ddda5bcdcd4ea13df83a73371a6",
+  "anchor": 14,
+  "folder": "cloudy",
+  "size": "414x715",
+  "why": "open",
+  "lang": "st",
+  "line": "Maru hanyane, letsatsi hanyane. Karolelano ya tsona ke kgakanyo ya mang kapa mang.",
+  "px": 35.035,
+  "textTop": 274,
+  "textBottom": 422,
+  "band": null,
+  "bandY": null,
+  "level": "clear",
+  "words": "the ladder and his legs"
+ },
+ {
+  "n": 169,
+  "hash": "791e756ecc1d68c7cb9a600fafcda18b191fbc4fbae35c28f116b9635c2248d3",
+  "anchor": 77,
+  "folder": "cloudy",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "Akukho zifoto zokutshona kwelanga ngokuhlwanje. Ii-privacy settings zesibhakabhaka zivuliwe.",
+  "px": 35.035,
+  "textTop": 235,
+  "textBottom": 383,
+  "band": [
+   36,
+   95
+  ],
+  "bandY": [
+   5.610000000000014,
+   427.46
+  ],
+  "level": "partly",
+  "words": "the cyclist's jersey (head clear)"
+ },
+ {
+  "n": 170,
+  "hash": "00989238a8dce054e9e41f24d5842ce5a5f90540d5cb7777662ff15df60e77f0",
+  "anchor": 61,
+  "folder": "cold",
+  "size": "414x715",
+  "why": "near",
+  "lang": "st",
+  "line": "Hobaneng wena-wa-nakong-e-fetileng o entse merero? Wena-wa-nakong-e-fetileng o mobe.",
+  "px": 35.035,
+  "textTop": 274,
+  "textBottom": 422,
+  "band": [
+   30,
+   95
+  ],
+  "bandY": [
+   38.81999999999999,
+   503.56999999999994
+  ],
+  "level": "partly",
+  "words": "the sheep and the farmer's coat (head clear)"
+ },
+ {
+  "n": 171,
+  "hash": "01082a853faf6df7bb29951b85ec914c4141c0761c5ae0cc36da0f583a50a273",
+  "anchor": 55,
+  "folder": "wind",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "Kunokuba nomoya onamandla ngamaxesha athile. Uqikelelo aluqinisekanga kule meko",
+  "px": 35.035,
+  "textTop": 259,
+  "textBottom": 370,
+  "band": [
+   52,
+   78
+  ],
+  "bandY": [
+   184.8,
+   370.7
+  ],
+  "level": "covers",
+  "words": "the seagulls walking"
+ },
+ {
+  "n": 172,
+  "hash": "015fe1a72983fd52e3e589916111385aef136ae928dabd35dc4e30c00ef74461",
+  "anchor": 63,
+  "folder": "clear",
+  "size": "414x715",
+  "why": "near",
+  "lang": "st",
+  "line": "Letsatsi le le leng le phethahetseng le fanwe. Ha le fetisetswe. Le sebedise ka bohlale.",
+  "px": 35.035,
+  "textTop": 254,
+  "textBottom": 402,
+  "band": [
+   48,
+   62
+  ],
+  "bandY": [
+   149.16,
+   249.26000000000008
+  ],
+  "level": "covers",
+  "words": "the hadeda on the roof"
+ },
+ {
+  "n": 173,
+  "hash": "03b8d3e5a890aab11369d8ffc337837091e80c8e332dc5e8b2169124db8ed486",
+  "anchor": 65,
+  "folder": "storm",
+  "size": "414x715",
+  "why": "open",
+  "lang": "xh",
+  "line": "Sisenokwenzeka isaqhwithi, asikaqinisekiswa. Hlala uphaphile.",
+  "px": 35.035,
+  "textTop": 259,
+  "textBottom": 370,
+  "band": null,
+  "bandY": null,
+  "level": "clear",
+  "words": "the houses below the lightning"
+ },
+ {
+  "n": 174,
+  "hash": "10fb7ce73fa41eddeb139a0609e919c940c6659c4649288153bf549fc05265d4",
+  "anchor": 52,
+  "folder": "cold-clear",
+  "size": "414x715",
+  "why": "open",
+  "lang": "zu",
+  "line": "Ama-hadedas amathathu, amagwababa amabili, nomuntu oyedwa oqhaqhazelayo endaweni yokuphakela izinyoni.",
+  "px": 35.035,
+  "textTop": 243,
+  "textBottom": 428,
+  "band": null,
+  "bandY": null,
+  "level": "clear",
+  "words": "the windpump's legs"
+ },
+ {
+  "n": 175,
+  "hash": "135baf75a010969dee221b889dff19ba23f765116e7b6b39192604f702653520",
+  "anchor": 63,
+  "folder": "storm",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "Sisenokwenzeka isaqhwithi, asikaqinisekiswa. Hlala uphaphile.",
+  "px": 35.035,
+  "textTop": 259,
+  "textBottom": 370,
+  "band": [
+   50,
+   72
+  ],
+  "bandY": [
+   143.30000000000007,
+   300.59999999999997
+  ],
+  "level": "covers",
+  "words": "the couple looking under the bed"
+ },
+ {
+  "n": 176,
+  "hash": "13b538b6e4d9ace67c7b1a097dc91de6f14f3552b3fb8a90de6348bfbbcec4db",
+  "anchor": 84,
+  "folder": "cold",
+  "size": "414x715",
+  "why": "near",
+  "lang": "st",
+  "line": "Hobaneng wena-wa-nakong-e-fetileng o entse merero? Wena-wa-nakong-e-fetileng o mobe.",
+  "px": 35.035,
+  "textTop": 274,
+  "textBottom": 422,
+  "band": [
+   40,
+   72
+  ],
+  "bandY": [
+   44.079999999999984,
+   272.87999999999994
+  ],
+  "level": "partly",
+  "words": "the dog's jersey (face clear)"
+ },
+ {
+  "n": 177,
+  "hash": "16417b9db10c0f9fe76a505d22a040d415546dba6a54122cb69d890c4a3d6be0",
+  "anchor": 64,
+  "folder": "cold-clear",
+  "size": "414x715",
+  "why": "near",
+  "lang": "zu",
+  "line": "Ama-hadedas amathathu, amagwababa amabili, nomuntu oyedwa oqhaqhazelayo endaweni yokuphakela izinyoni.",
+  "px": 35.035,
+  "textTop": 243,
+  "textBottom": 428,
+  "band": [
+   50,
+   95
+  ],
+  "bandY": [
+   177.01999999999998,
+   498.77000000000004
+  ],
+  "level": "covers",
+  "words": "the frosted wheelie bins"
+ },
+ {
+  "n": 178,
+  "hash": "1694b4ae44c20d65f719f842775cc307feb196485289838c41c2b879cc0a4a9f",
+  "anchor": 90,
+  "folder": "cloudy",
+  "size": "414x715",
+  "why": "far",
+  "lang": "st",
+  "line": "Maru hanyane, letsatsi hanyane. Karolelano ya tsona ke kgakanyo ya mang kapa mang.",
+  "px": 35.035,
+  "textTop": 274,
+  "textBottom": 422,
+  "band": [
+   51,
+   56
+  ],
+  "bandY": [
+   105.44999999999999,
+   141.2
+  ],
+  "level": "covers",
+  "words": "risen: the runner's head"
+ },
+ {
+  "n": 179,
+  "hash": "1dc5c3cfe096a5598643c1ae55f129fd5d873c23774d6183b7f450772d4c319a",
+  "anchor": 53,
+  "folder": "fog",
+  "size": "414x715",
+  "why": "near",
+  "lang": "st",
+  "line": "Mohodi o ntse o eketseha, mohlomong. Ho bulela mabone a koloi ho ke ke ha senya letho.",
+  "px": 35.035,
+  "textTop": 274,
+  "textBottom": 422,
+  "band": [
+   40,
+   66
+  ],
+  "bandY": [
+   133.36,
+   319.2600000000001
+  ],
+  "level": "covers",
+  "words": "the cow in the mist"
+ },
+ {
+  "n": 180,
+  "hash": "26beb87414292120ae909cf58c5dcb5d4fb17d2f67789c2d3bf8d801dd1ee695",
+  "anchor": 100,
+  "folder": "cold-clear",
+  "size": "414x715",
+  "why": "near",
+  "lang": "zu",
+  "line": "Ama-hadedas amathathu, amagwababa amabili, nomuntu oyedwa oqhaqhazelayo endaweni yokuphakela izinyoni.",
+  "px": 35.035,
+  "textTop": 243,
+  "textBottom": 428,
+  "band": [
+   64,
+   86
+  ],
+  "bandY": [
+   175.60000000000002,
+   332.9
+  ],
+  "level": "partly",
+  "words": "the cyclist"
+ },
+ {
+  "n": 181,
+  "hash": "2e3fe554a2ed26d1c41e1a042ed58f74018ca49271a114ed6121a91b89c057aa",
+  "anchor": 66,
+  "folder": "cold-clear",
+  "size": "414x715",
+  "why": "near",
+  "lang": "zu",
+  "line": "Ama-hadedas amathathu, amagwababa amabili, nomuntu oyedwa oqhaqhazelayo endaweni yokuphakela izinyoni.",
+  "px": 35.035,
+  "textTop": 243,
+  "textBottom": 428,
+  "band": [
+   42,
+   68
+  ],
+  "bandY": [
+   114.18000000000004,
+   300.08000000000004
+  ],
+  "level": "covers",
+  "words": "the hadeda landing on the frost"
+ },
+ {
+  "n": 182,
+  "hash": "39021494d6a3f746a0eadcb74e6ab8a2c1f43d05b7ff798d84e319213b77c627",
+  "anchor": 60,
+  "folder": "wind",
+  "size": "414x715",
+  "why": "open",
+  "lang": "xh",
+  "line": "Kunokuba nomoya onamandla ngamaxesha athile. Uqikelelo aluqinisekanga kule meko",
+  "px": 35.035,
+  "textTop": 259,
+  "textBottom": 370,
+  "band": null,
+  "bandY": null,
+  "level": "clear",
+  "words": "the sunrise below the palm"
+ },
+ {
+  "n": 183,
+  "hash": "3d5ba6fd7a8172083aa66e8f1ed007311b529a91740a3a359e005bc2a5f80405",
+  "anchor": 69,
+  "folder": "heat",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "Ngentsimbi yeshumi elinesibini la manzi abushushu njengawokuhlamba. Ceba ngokufanelekileyo.",
+  "px": 35.035,
+  "textTop": 235,
+  "textBottom": 383,
+  "band": [
+   52,
+   68
+  ],
+  "bandY": [
+   146.17000000000002,
+   260.57000000000005
+  ],
+  "level": "covers",
+  "words": "the dog on the float"
+ },
+ {
+  "n": 184,
+  "hash": "44786fa8cca62831e864d9d98d63234a48281b97de1263d355e0d741bfabf0fa",
+  "anchor": 80,
+  "folder": "clear",
+  "size": "414x715",
+  "why": "near",
+  "lang": "st",
+  "line": "Letsatsi le le leng le phethahetseng le fanwe. Ha le fetisetswe. Le sebedise ka bohlale.",
+  "px": 35.035,
+  "textTop": 254,
+  "textBottom": 402,
+  "band": [
+   50,
+   95
+  ],
+  "bandY": [
+   111.10000000000008,
+   432.84999999999997
+  ],
+  "level": "covers",
+  "words": "the three school kids"
+ },
+ {
+  "n": 185,
+  "hash": "4c12a169237911506240ef8b71f61de0fe0a77888ac40c9f684c32e0ac66be03",
+  "anchor": 69,
+  "folder": "heat",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "Ngentsimbi yeshumi elinesibini la manzi abushushu njengawokuhlamba. Ceba ngokufanelekileyo.",
+  "px": 35.035,
+  "textTop": 235,
+  "textBottom": 383,
+  "band": [
+   52,
+   95
+  ],
+  "bandY": [
+   146.17000000000004,
+   453.62
+  ],
+  "level": "covers",
+  "words": "the three joggers"
+ },
+ {
+  "n": 186,
+  "hash": "51b110e053e56638b17ce600465a574011cb0545a4191a4e6abdc25377cba1db",
+  "anchor": 87,
+  "folder": "cold-clear",
+  "size": "414x715",
+  "why": "near",
+  "lang": "zu",
+  "line": "Ama-hadedas amathathu, amagwababa amabili, nomuntu oyedwa oqhaqhazelayo endaweni yokuphakela izinyoni.",
+  "px": 35.035,
+  "textTop": 243,
+  "textBottom": 428,
+  "band": [
+   50,
+   80
+  ],
+  "bandY": [
+   112.15999999999997,
+   326.65999999999997
+  ],
+  "level": "covers",
+  "words": "the family scraping frost off the car"
+ },
+ {
+  "n": 187,
+  "hash": "56b235bb6107af5172eaac5a1078ccbc24fc029dc5ee0850e5e59e55d7fd2bef",
+  "anchor": 55,
+  "folder": "heat",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "Ngentsimbi yeshumi elinesibini la manzi abushushu njengawokuhlamba. Ceba ngokufanelekileyo.",
+  "px": 35.035,
+  "textTop": 235,
+  "textBottom": 383,
+  "band": [
+   46,
+   72
+  ],
+  "bandY": [
+   149.05000000000004,
+   334.94999999999993
+  ],
+  "level": "covers",
+  "words": "the man at the pool edge"
+ },
+ {
+  "n": 188,
+  "hash": "5f26348d76d0cf614809dadd0cbbe3a5d7b3e403d53409d337917dc5eb0d4328",
+  "anchor": 50,
+  "folder": "cloudy",
+  "size": "414x715",
+  "why": "near",
+  "lang": "st",
+  "line": "Maru hanyane, letsatsi hanyane. Karolelano ya tsona ke kgakanyo ya mang kapa mang.",
+  "px": 35.035,
+  "textTop": 274,
+  "textBottom": 422,
+  "band": [
+   45,
+   75
+  ],
+  "bandY": [
+   177.75,
+   392.25
+  ],
+  "level": "covers",
+  "words": "the fishermen and their boat"
+ },
+ {
+  "n": 189,
+  "hash": "628d097a55e41b21d965d2d8bb577f060cdf9134a037a2a29cb84a4a97436b81",
+  "anchor": null,
+  "folder": "cold",
+  "size": "414x715",
+  "why": "near",
+  "lang": "st",
+  "line": "Hobaneng wena-wa-nakong-e-fetileng o entse merero? Wena-wa-nakong-e-fetileng o mobe.",
+  "px": 35.035,
+  "textTop": 274,
+  "textBottom": 422,
+  "band": [
+   50,
+   90
+  ],
+  "bandY": [
+   132.86,
+   418.86
+  ],
+  "level": "covers",
+  "words": "the frosted car"
+ },
+ {
+  "n": 190,
+  "hash": "6464ed68f19d5cf88ded513d5f7d4ba919815d72ac959c53dc50f4517e9a3045",
+  "anchor": 100,
+  "folder": "rain",
+  "size": "414x715",
+  "why": "open",
+  "lang": "xh",
+  "line": "Kwenye indawo iambrela isand’ ukujikwa ngumoya ngaphakathi ngaphandle. Umzuzu wokuthi cwaka.",
+  "px": 35.035,
+  "textTop": 222,
+  "textBottom": 370,
+  "band": null,
+  "bandY": null,
+  "level": "clear",
+  "words": "risen: the sky above the jacaranda street"
+ },
+ {
+  "n": 191,
+  "hash": "64a6c1aa77c9f1ee5abea15b5d79ef5568e64b85cb940801be55f8371adfa208",
+  "anchor": 55,
+  "folder": "clear",
+  "size": "414x715",
+  "why": "near",
+  "lang": "st",
+  "line": "Letsatsi le le leng le phethahetseng le fanwe. Ha le fetisetswe. Le sebedise ka bohlale.",
+  "px": 35.035,
+  "textTop": 254,
+  "textBottom": 402,
+  "band": [
+   46,
+   72
+  ],
+  "bandY": [
+   159.50000000000003,
+   345.39999999999986
+  ],
+  "level": "covers",
+  "words": "the man watering the lawn"
+ },
+ {
+  "n": 192,
+  "hash": "691f699747f17e9ba54a860761005693533b1a38aee000dd4cda8ac0c69e0c7c",
+  "anchor": 55,
+  "folder": "wind",
+  "size": "414x715",
+  "why": "near",
+  "lang": "af",
+  "line": "Die den agter hom is heeltemal oorgebuig, so dit was nooit 'n regverdige wedstryd nie.",
+  "px": 35.035,
+  "textTop": 312,
+  "textBottom": 460,
+  "band": [
+   48,
+   70
+  ],
+  "bandY": [
+   205.7,
+   362.99999999999994
+  ],
+  "level": "covers",
+  "words": "the man chasing the braai cover"
+ },
+ {
+  "n": 193,
+  "hash": "6a8154f7a40144a8e3c3453e8069466dc162d8fd914bcd5f073dc547319ca73c",
+  "anchor": 74,
+  "folder": "clear",
+  "size": "414x715",
+  "why": "near",
+  "lang": "st",
+  "line": "Letsatsi le le leng le phethahetseng le fanwe. Ha le fetisetswe. Le sebedise ka bohlale.",
+  "px": 35.035,
+  "textTop": 254,
+  "textBottom": 402,
+  "band": [
+   55,
+   70
+  ],
+  "bandY": [
+   165.33000000000013,
+   272.5799999999999
+  ],
+  "level": "covers",
+  "words": "the woman on the stoep in the Bo-Kaap"
+ },
+ {
+  "n": 194,
+  "hash": "6c2fdfff70be475cbcc98636ae90fba9972bc6710c8f94baab8d7978fbc8c772",
+  "anchor": 100,
+  "folder": "cloudy",
+  "size": "414x715",
+  "why": "far",
+  "lang": "st",
+  "line": "Maru hanyane, letsatsi hanyane. Karolelano ya tsona ke kgakanyo ya mang kapa mang.",
+  "px": 35.035,
+  "textTop": 274,
+  "textBottom": 422,
+  "band": [
+   47,
+   56
+  ],
+  "bandY": [
+   48.049999999999955,
+   112.40000000000003
+  ],
+  "level": "covers",
+  "words": "risen: the runner's head and face"
+ },
+ {
+  "n": 195,
+  "hash": "6eba2bcf34237b8f9027006bdee56871e4948f1c99226e28ec9c81b93f5ed326",
+  "anchor": 39,
+  "folder": "fog",
+  "size": "414x715",
+  "why": "open",
+  "lang": "st",
+  "line": "Mohodi o ntse o eketseha, mohlomong. Ho bulela mabone a koloi ho ke ke ha senya letho.",
+  "px": 35.035,
+  "textTop": 274,
+  "textBottom": 422,
+  "band": null,
+  "bandY": null,
+  "level": "clear",
+  "words": "the lit window's beam"
+ },
+ {
+  "n": 196,
+  "hash": "79b25525790f0558877e3bc948e8cf147256fa648b5dba59ac0f1684317590cd",
+  "anchor": 67,
+  "folder": "fog",
+  "size": "414x715",
+  "why": "near",
+  "lang": "st",
+  "line": "Mohodi o ntse o eketseha, mohlomong. Ho bulela mabone a koloi ho ke ke ha senya letho.",
+  "px": 35.035,
+  "textTop": 274,
+  "textBottom": 422,
+  "band": [
+   40,
+   95
+  ],
+  "bandY": [
+   93.03999999999999,
+   486.2900000000001
+  ],
+  "level": "partly",
+  "words": "the child's vest and bag (face clear)"
+ },
+ {
+  "n": 197,
+  "hash": "8051f1c3947db45ae313770d285f8e1f01c73aeae2149e4ae7805770ab2ac7fd",
+  "anchor": 31,
+  "folder": "storm",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "Sisenokwenzeka isaqhwithi, asikaqinisekiswa. Hlala uphaphile.",
+  "px": 35.035,
+  "textTop": 259,
+  "textBottom": 370,
+  "band": [
+   22,
+   95
+  ],
+  "bandY": [
+   51.900000000000006,
+   573.85
+  ],
+  "level": "partly",
+  "words": "his shorts (face clear)"
+ },
+ {
+  "n": 198,
+  "hash": "80639465edba98bf219e02b7c4d40e5953d718b51ed03a6ba2df6afd287ed1d0",
+  "anchor": 49,
+  "folder": "rain",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "Kwenye indawo iambrela isand’ ukujikwa ngumoya ngaphakathi ngaphandle. Umzuzu wokuthi cwaka.",
+  "px": 35.035,
+  "textTop": 222,
+  "textBottom": 370,
+  "band": [
+   48,
+   60
+  ],
+  "bandY": [
+   176.60000000000002,
+   262.40000000000003
+  ],
+  "level": "covers",
+  "words": "the Karoo farmhouse"
+ },
+ {
+  "n": 199,
+  "hash": "82ab32f7e25cc807f5730caebc989f682279caf5213d1f500e0cef0aa9f0a64e",
+  "anchor": 55,
+  "folder": "storm",
+  "size": "414x715",
+  "why": "open",
+  "lang": "xh",
+  "line": "Sisenokwenzeka isaqhwithi, asikaqinisekiswa. Hlala uphaphile.",
+  "px": 35.035,
+  "textTop": 259,
+  "textBottom": 370,
+  "band": null,
+  "bandY": null,
+  "level": "clear",
+  "words": "the traffic"
+ },
+ {
+  "n": 200,
+  "hash": "844ccaf4333e68341736fd9b55e945d7c6addee3ce85229251d45d15175e5cb7",
+  "anchor": 44,
+  "folder": "heat",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "Ngentsimbi yeshumi elinesibini la manzi abushushu njengawokuhlamba. Ceba ngokufanelekileyo.",
+  "px": 35.035,
+  "textTop": 235,
+  "textBottom": 383,
+  "band": [
+   52,
+   64
+  ],
+  "bandY": [
+   227.92000000000004,
+   313.72
+  ],
+  "level": "covers",
+  "words": "the egg frying on the bonnet"
+ },
+ {
+  "n": 201,
+  "hash": "86e55c0d5dca0b19a7ed7ce3ed6307cef6ba253802b43f0dda0d894d295e4591",
+  "anchor": 47,
+  "folder": "storm",
+  "size": "414x715",
+  "why": "open",
+  "lang": "xh",
+  "line": "Sisenokwenzeka isaqhwithi, asikaqinisekiswa. Hlala uphaphile.",
+  "px": 35.035,
+  "textTop": 259,
+  "textBottom": 370,
+  "band": null,
+  "bandY": null,
+  "level": "clear",
+  "words": "the windmill's base"
+ },
+ {
+  "n": 202,
+  "hash": "88ab478a71b1137fbed523aa9fda3a9c4061f9d6977766a2b8b2c3586fcc051b",
+  "anchor": 58,
+  "folder": "rain",
+  "size": "414x715",
+  "why": "open",
+  "lang": "xh",
+  "line": "Kwenye indawo iambrela isand’ ukujikwa ngumoya ngaphakathi ngaphandle. Umzuzu wokuthi cwaka.",
+  "px": 35.035,
+  "textTop": 222,
+  "textBottom": 370,
+  "band": null,
+  "bandY": null,
+  "level": "clear",
+  "words": "the traffic through the wiper"
+ },
+ {
+  "n": 203,
+  "hash": "88f884c93f2ae86820065486b03edb2c3a325d2df066b2337340111f97e0992f",
+  "anchor": 100,
+  "folder": "fog",
+  "size": "414x715",
+  "why": "open",
+  "lang": "st",
+  "line": "Mohodi o ntse o eketseha, mohlomong. Ho bulela mabone a koloi ho ke ke ha senya letho.",
+  "px": 35.035,
+  "textTop": 274,
+  "textBottom": 422,
+  "band": null,
+  "bandY": null,
+  "level": "clear",
+  "words": "risen: trees above the runner"
+ },
+ {
+  "n": 204,
+  "hash": "922d1f4d30d84bc26c7b96f58ffc7ee03dbd424917afec4b02d35dc3475e31f1",
+  "anchor": 43,
+  "folder": "cloudy",
+  "size": "414x715",
+  "why": "near",
+  "lang": "st",
+  "line": "Maru hanyane, letsatsi hanyane. Karolelano ya tsona ke kgakanyo ya mang kapa mang.",
+  "px": 35.035,
+  "textTop": 274,
+  "textBottom": 422,
+  "band": [
+   36,
+   95
+  ],
+  "bandY": [
+   133.55999999999995,
+   555.41
+  ],
+  "level": "partly",
+  "words": "the boy at the window (face clear)"
+ },
+ {
+  "n": 205,
+  "hash": "93f23aa636c0d7e60a09783e432f47ba0738df64b132bf3e366e14a911df8f8e",
+  "anchor": 73,
+  "folder": "cold-clear",
+  "size": "414x715",
+  "why": "near",
+  "lang": "zu",
+  "line": "Ama-hadedas amathathu, amagwababa amabili, nomuntu oyedwa oqhaqhazelayo endaweni yokuphakela izinyoni.",
+  "px": 35.035,
+  "textTop": 243,
+  "textBottom": 428,
+  "band": [
+   36,
+   95
+  ],
+  "bandY": [
+   51.539999999999964,
+   473.39000000000004
+  ],
+  "level": "partly",
+  "words": "the man and the skyline (head clear)"
+ },
+ {
+  "n": 206,
+  "hash": "9728190bc67c9bf3fd0ef7d2dccbe2cbb8bb9da3f14a8694e6dc75d291dd5080",
+  "anchor": 39,
+  "folder": "wind",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "Kunokuba nomoya onamandla ngamaxesha athile. Uqikelelo aluqinisekanga kule meko",
+  "px": 35.035,
+  "textTop": 259,
+  "textBottom": 370,
+  "band": [
+   30,
+   90
+  ],
+  "bandY": [
+   81.9,
+   510.9000000000001
+  ],
+  "level": "partly",
+  "words": "her legs (face clear)"
+ },
+ {
+  "n": 207,
+  "hash": "9864fb8df7da7089aae6e0ac771d7b02e251ed1797830bea11e1be5dfd85629d",
+  "anchor": 66,
+  "folder": "clear",
+  "size": "414x715",
+  "why": "near",
+  "lang": "st",
+  "line": "Letsatsi le le leng le phethahetseng le fanwe. Ha le fetisetswe. Le sebedise ka bohlale.",
+  "px": 35.035,
+  "textTop": 254,
+  "textBottom": 402,
+  "band": [
+   52,
+   64
+  ],
+  "bandY": [
+   168.52,
+   254.32000000000002
+  ],
+  "level": "covers",
+  "words": "the surfer on the beach"
+ },
+ {
+  "n": 208,
+  "hash": "9aef9333db41486fc9068b54e4a1b1237b77b17a3663ed01ffe5ace4f2bfade1",
+  "anchor": 100,
+  "folder": "heat",
+  "size": "414x715",
+  "why": "open",
+  "lang": "xh",
+  "line": "Ngentsimbi yeshumi elinesibini la manzi abushushu njengawokuhlamba. Ceba ngokufanelekileyo.",
+  "px": 35.035,
+  "textTop": 235,
+  "textBottom": 383,
+  "band": null,
+  "bandY": null,
+  "level": "clear",
+  "words": "risen: the windmill; the farmhouse and dog in the shade stay clear"
+ },
+ {
+  "n": 209,
+  "hash": "9e79cedfe3b233b305eacc156e3e6d7068b118de20c7ffcb2d424ae75e0d9581",
+  "anchor": 83,
+  "folder": "heat",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "Ngentsimbi yeshumi elinesibini la manzi abushushu njengawokuhlamba. Ceba ngokufanelekileyo.",
+  "px": 35.035,
+  "textTop": 235,
+  "textBottom": 383,
+  "band": [
+   55,
+   78
+  ],
+  "bandY": [
+   121.84000000000009,
+   286.29
+  ],
+  "level": "covers",
+  "words": "the cat on the warm sill"
+ },
+ {
+  "n": 210,
+  "hash": "9ef8811a702cb2d33ab7fd83a502a7d8fc1af7faec1a84b7d094dc07b0a4061e",
+  "anchor": 83,
+  "folder": "rain",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "Kwenye indawo iambrela isand’ ukujikwa ngumoya ngaphakathi ngaphandle. Umzuzu wokuthi cwaka.",
+  "px": 35.035,
+  "textTop": 222,
+  "textBottom": 370,
+  "band": [
+   66,
+   74
+  ],
+  "bandY": [
+   189.70000000000005,
+   246.89999999999998
+  ],
+  "level": "partly",
+  "words": "the mug by the glass"
+ },
+ {
+  "n": 210,
+  "hash": "9ef8811a702cb2d33ab7fd83a502a7d8fc1af7faec1a84b7d094dc07b0a4061e",
+  "anchor": 83,
+  "folder": "rain",
+  "size": "360x688",
+  "why": "small",
+  "lang": "st",
+  "line": "Letamo le ne le tebile ho feta kamoo le neng le shebahala kateng. Le dula le tebile.",
+  "px": 33.712002,
+  "textTop": 226,
+  "textBottom": 370,
+  "band": [
+   66,
+   74
+  ],
+  "bandY": [
+   205.554347826087,
+   255.29347826086956
+  ],
+  "level": "partly",
+  "words": "the mug by the glass"
+ },
+ {
+  "n": 211,
+  "hash": "aaaf3c5aba4c02beea7f8534ca5ff3a3dca0ee39451374dbcaa7be43af951bfc",
+  "anchor": 84,
+  "folder": "cold-clear",
+  "size": "414x715",
+  "why": "near",
+  "lang": "zu",
+  "line": "Ama-hadedas amathathu, amagwababa amabili, nomuntu oyedwa oqhaqhazelayo endaweni yokuphakela izinyoni.",
+  "px": 35.035,
+  "textTop": 243,
+  "textBottom": 428,
+  "band": [
+   58,
+   70
+  ],
+  "bandY": [
+   177.82000000000005,
+   263.62
+  ],
+  "level": "covers",
+  "words": "the guinea fowl crossing"
+ },
+ {
+  "n": 212,
+  "hash": "afa49b48781a942c28d1b9ad44747326e5f0aa9600bcdeb81d87d547b7e6dbd1",
+  "anchor": 42,
+  "folder": "rain",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "Kwenye indawo iambrela isand’ ukujikwa ngumoya ngaphakathi ngaphandle. Umzuzu wokuthi cwaka.",
+  "px": 35.035,
+  "textTop": 222,
+  "textBottom": 370,
+  "band": [
+   38,
+   72
+  ],
+  "bandY": [
+   128.9,
+   372
+  ],
+  "level": "partly",
+  "words": "the kids at the bus stop (faces clear)"
+ },
+ {
+  "n": 213,
+  "hash": "b57f33b40e016642fd464ba0ea6c7b40cdaa6ddcecb9f1e522a3ea8f13c7c67d",
+  "anchor": 56,
+  "folder": "fog",
+  "size": "414x715",
+  "why": "near",
+  "lang": "st",
+  "line": "Mohodi o ntse o eketseha, mohlomong. Ho bulela mabone a koloi ho ke ke ha senya letho.",
+  "px": 35.035,
+  "textTop": 274,
+  "textBottom": 422,
+  "band": [
+   48,
+   60
+  ],
+  "bandY": [
+   181.91999999999996,
+   267.71999999999997
+  ],
+  "level": "covers",
+  "words": "the Nguni cattle in the mist"
+ },
+ {
+  "n": 214,
+  "hash": "b7b5166f676eaaf2c8402e0cca3486ed07b2f93ae36d8b94fac8381d70bd9bfe",
+  "anchor": 100,
+  "folder": "cold",
+  "size": "414x715",
+  "why": "far",
+  "lang": "st",
+  "line": "Hobaneng wena-wa-nakong-e-fetileng o entse merero? Wena-wa-nakong-e-fetileng o mobe.",
+  "px": 35.035,
+  "textTop": 274,
+  "textBottom": 422,
+  "band": [
+   30,
+   55
+  ],
+  "bandY": [
+   -73.5,
+   105.25000000000006
+  ],
+  "level": "covers",
+  "words": "risen: the chimney smoke the joke is about"
+ },
+ {
+  "n": 215,
+  "hash": "b9211ac24b2e2e9701060986d302eafb3aa5d0844b6da87a3450d489f9082178",
+  "anchor": 56,
+  "folder": "wind",
+  "size": "414x715",
+  "why": "near",
+  "lang": "af",
+  "line": "Daar is meer pennetjies op daardie draad as wat die wasgoed nodig het, en sy weet hoekom.",
+  "px": 35.035,
+  "textTop": 312,
+  "textBottom": 460,
+  "band": [
+   50,
+   75
+  ],
+  "bandY": [
+   217.50000000000003,
+   396.25
+  ],
+  "level": "covers",
+  "words": "the woman chasing the washing"
+ },
+ {
+  "n": 216,
+  "hash": "bbba6c120fecb532bca81e0ff31fbf42084fa8755cff612a20a83c0ea3fa3c75",
+  "anchor": 33,
+  "folder": "cold",
+  "size": "414x715",
+  "why": "near",
+  "lang": "st",
+  "line": "Hobaneng wena-wa-nakong-e-fetileng o entse merero? Wena-wa-nakong-e-fetileng o mobe.",
+  "px": 35.035,
+  "textTop": 274,
+  "textBottom": 422,
+  "band": [
+   45,
+   80
+  ],
+  "bandY": [
+   226.71,
+   476.9599999999999
+  ],
+  "level": "covers",
+  "words": "the mother zipping the boy's jacket"
+ },
+ {
+  "n": 217,
+  "hash": "c19d58094ef454f9a14aaeed8293979b889e42d16d21e34b74328369a09381e7",
+  "anchor": 58,
+  "folder": "heat",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "Ngentsimbi yeshumi elinesibini la manzi abushushu njengawokuhlamba. Ceba ngokufanelekileyo.",
+  "px": 35.035,
+  "textTop": 235,
+  "textBottom": 383,
+  "band": [
+   52,
+   62
+  ],
+  "bandY": [
+   182.14000000000004,
+   253.64
+  ],
+  "level": "covers",
+  "words": "the sprinkler"
+ },
+ {
+  "n": 217,
+  "hash": "c19d58094ef454f9a14aaeed8293979b889e42d16d21e34b74328369a09381e7",
+  "anchor": 58,
+  "folder": "heat",
+  "size": "320x488",
+  "why": "small",
+  "lang": "xh",
+  "line": "Ngentsimbi yeshumi elinesibini la manzi abushushu njengawokuhlamba. Ceba ngokufanelekileyo.",
+  "px": 18.912001,
+  "textTop": 45,
+  "textBottom": 105,
+  "band": [
+   52,
+   62
+  ],
+  "bandY": [
+   28.90057971014494,
+   84.16628019323667
+  ],
+  "level": "covers",
+  "words": "the sprinkler"
+ },
+ {
+  "n": 218,
+  "hash": "c697bc07025c9051315d27885325518dc508b4afe4c76a2790d9fb8bacc67f82",
+  "anchor": null,
+  "folder": "fog",
+  "size": "414x715",
+  "why": "open",
+  "lang": "st",
+  "line": "Mohodi o ntse o eketseha, mohlomong. Ho bulela mabone a koloi ho ke ke ha senya letho.",
+  "px": 35.035,
+  "textTop": 274,
+  "textBottom": 422,
+  "band": null,
+  "bandY": null,
+  "level": "clear",
+  "words": "the misty gum trees"
+ },
+ {
+  "n": 219,
+  "hash": "d25fb1153ed0ab96e6c42e901b596e94e73a98e2b1a1efce1bcca870fdd6ac6e",
+  "anchor": 63,
+  "folder": "storm",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "Sisenokwenzeka isaqhwithi, asikaqinisekiswa. Hlala uphaphile.",
+  "px": 35.035,
+  "textTop": 259,
+  "textBottom": 370,
+  "band": [
+   28,
+   95
+  ],
+  "bandY": [
+   -14,
+   465.05
+  ],
+  "level": "partly",
+  "words": "the woman in the doorway (face clear)"
+ },
+ {
+  "n": 220,
+  "hash": "d26fb6bbee9db6057706181e2a6bfa1623a7d2a0a17e62645ab58b6fbdefbe56",
+  "anchor": 62,
+  "folder": "storm",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "Sisenokwenzeka isaqhwithi, asikaqinisekiswa. Hlala uphaphile.",
+  "px": 35.035,
+  "textTop": 259,
+  "textBottom": 370,
+  "band": [
+   62,
+   70
+  ],
+  "bandY": [
+   232.5,
+   289.7
+  ],
+  "level": "covers",
+  "words": "the bakkie on the dirt road"
+ },
+ {
+  "n": 221,
+  "hash": "d411804af654face836735a04fd228b11ce481a0f33569f81218d8049639f44a",
+  "anchor": null,
+  "folder": "cloudy",
+  "size": "414x715",
+  "why": "open",
+  "lang": "st",
+  "line": "Maru hanyane, letsatsi hanyane. Karolelano ya tsona ke kgakanyo ya mang kapa mang.",
+  "px": 35.035,
+  "textTop": 274,
+  "textBottom": 422,
+  "band": null,
+  "bandY": null,
+  "level": "clear",
+  "words": "the dunes path"
+ },
+ {
+  "n": 222,
+  "hash": "d8d6e0e7fcf4fc1b962b722603f6881e324c2b80e41540d79717404f40138b1c",
+  "anchor": 55,
+  "folder": "rain",
+  "size": "414x715",
+  "why": "open",
+  "lang": "xh",
+  "line": "Kwenye indawo iambrela isand’ ukujikwa ngumoya ngaphakathi ngaphandle. Umzuzu wokuthi cwaka.",
+  "px": 35.035,
+  "textTop": 222,
+  "textBottom": 370,
+  "band": null,
+  "bandY": null,
+  "level": "clear",
+  "words": "the farm gate and puddle"
+ },
+ {
+  "n": 223,
+  "hash": "e93354d9b468c40a7d2b83699f809d25459d8915246921233d427ad1735581a7",
+  "anchor": 35,
+  "folder": "cold",
+  "size": "414x715",
+  "why": "near",
+  "lang": "st",
+  "line": "Hobaneng wena-wa-nakong-e-fetileng o entse merero? Wena-wa-nakong-e-fetileng o mobe.",
+  "px": 35.035,
+  "textTop": 274,
+  "textBottom": 422,
+  "band": [
+   30,
+   80
+  ],
+  "bandY": [
+   113.69999999999999,
+   471.19999999999993
+  ],
+  "level": "partly",
+  "words": "the SUV's front (frosted windscreen clear)"
+ },
+ {
+  "n": 224,
+  "hash": "ebd82e69c2ef0fe085fdffbe09f779494af4bc16774fd8e5c020ac799ef6e70e",
+  "anchor": 55,
+  "folder": "rain",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "Kwenye indawo iambrela isand’ ukujikwa ngumoya ngaphakathi ngaphandle. Umzuzu wokuthi cwaka.",
+  "px": 35.035,
+  "textTop": 222,
+  "textBottom": 370,
+  "band": [
+   40,
+   90
+  ],
+  "bandY": [
+   99,
+   456.49999999999994
+  ],
+  "level": "partly",
+  "words": "mother and daughter (faces clear)"
+ },
+ {
+  "n": 225,
+  "hash": "ebf8739c63fe226d2b2e8923be9bbf5fedac384b6f4fd179391ba814c5aeb9d0",
+  "anchor": 87,
+  "folder": "wind",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "Kunokuba nomoya onamandla ngamaxesha athile. Uqikelelo aluqinisekanga kule meko",
+  "px": 35.035,
+  "textTop": 259,
+  "textBottom": 370,
+  "band": [
+   57,
+   90
+  ],
+  "bandY": [
+   111.74999999999994,
+   347.7
+  ],
+  "level": "covers",
+  "words": "the runner"
+ },
+ {
+  "n": 226,
+  "hash": "f0a699d8f8db3baed70f9a6950b1927ec8271979e9d54b9b76820d951e00a713",
+  "anchor": 57,
+  "folder": "fog",
+  "size": "414x715",
+  "why": "open",
+  "lang": "st",
+  "line": "Mohodi o ntse o eketseha, mohlomong. Ho bulela mabone a koloi ho ke ke ha senya letho.",
+  "px": 35.035,
+  "textTop": 274,
+  "textBottom": 422,
+  "band": null,
+  "bandY": null,
+  "level": "clear",
+  "words": "the foggy street"
+ },
+ {
+  "n": 227,
+  "hash": "f26595a6b5d772cb483fa8b0bd8d6d60d630fc3d13affbff394650f1df3d574e",
+  "anchor": 91,
+  "folder": "clear",
+  "size": "414x715",
+  "why": "near",
+  "lang": "st",
+  "line": "Letsatsi le le leng le phethahetseng le fanwe. Ha le fetisetswe. Le sebedise ka bohlale.",
+  "px": 35.035,
+  "textTop": 254,
+  "textBottom": 402,
+  "band": [
+   50,
+   95
+  ],
+  "bandY": [
+   77.22000000000003,
+   398.97
+  ],
+  "level": "covers",
+  "words": "the three runners on the promenade"
+ },
+ {
+  "n": 228,
+  "hash": "f60a403312467b3d8a4fdcf64f42b836abce99efc72209df53a22fffd96fc37c",
+  "anchor": 96,
+  "folder": "wind",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "Kunokuba nomoya onamandla ngamaxesha athile. Uqikelelo aluqinisekanga kule meko",
+  "px": 35.035,
+  "textTop": 259,
+  "textBottom": 370,
+  "band": [
+   54,
+   88
+  ],
+  "bandY": [
+   59.700000000000045,
+   302.8
+  ],
+  "level": "covers",
+  "words": "the two runners"
+ },
+ {
+  "n": 229,
+  "hash": "f644b0ec45868cc656daeffc0ad658e9b7b63c5465a7242ecd3d26393e8a998b",
+  "anchor": 100,
+  "folder": "clear",
+  "size": "414x715",
+  "why": "open",
+  "lang": "st",
+  "line": "Letsatsi le le leng le phethahetseng le fanwe. Ha le fetisetswe. Le sebedise ka bohlale.",
+  "px": 35.035,
+  "textTop": 254,
+  "textBottom": 402,
+  "band": null,
+  "bandY": null,
+  "level": "clear",
+  "words": "risen: the garden; the dog lies at the facts band"
+ },
+ {
+  "n": 230,
+  "hash": "0051649d84e5e3525b2119649803b3fb8cc57cd64d1d1b1f513ce814a6d5c261",
+  "anchor": null,
+  "folder": "cold-clear",
+  "size": "414x715",
+  "why": "near",
+  "lang": "zu",
+  "line": "Ama-hadedas amathathu, amagwababa amabili, nomuntu oyedwa oqhaqhazelayo endaweni yokuphakela izinyoni.",
+  "px": 35.035,
+  "textTop": 243,
+  "textBottom": 428,
+  "band": [
+   48,
+   90
+  ],
+  "bandY": [
+   123.23999999999998,
+   423.53999999999996
+  ],
+  "level": "covers",
+  "words": "the dog at the gate"
+ },
+ {
+  "n": 231,
+  "hash": "012477e282cc086683649ec1ec90c89d3f0c857d6c8a02d84448f90f0f177ab1",
+  "anchor": 43,
+  "folder": "storm",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "Sisenokwenzeka isaqhwithi, asikaqinisekiswa. Hlala uphaphile.",
+  "px": 35.035,
+  "textTop": 259,
+  "textBottom": 370,
+  "band": [
+   42,
+   95
+  ],
+  "bandY": [
+   154.10000000000002,
+   533.0500000000001
+  ],
+  "level": "partly",
+  "words": "the woman on the balcony (head clear)"
+ },
+ {
+  "n": 232,
+  "hash": "01edf502a02c55d47429a40d929162ca8ccae8ddf5864aeb1977e9a68e98eb58",
+  "anchor": null,
+  "folder": "cloudy",
+  "size": "414x715",
+  "why": "open",
+  "lang": "xh",
+  "line": "Akukho zifoto zokutshona kwelanga ngokuhlwanje. Ii-privacy settings zesibhakabhaka zivuliwe.",
+  "px": 35.035,
+  "textTop": 235,
+  "textBottom": 383,
+  "band": null,
+  "bandY": null,
+  "level": "clear",
+  "words": "the town"
+ },
+ {
+  "n": 233,
+  "hash": "05a3ab4a3961e26cac7cf68156003ffe149cd4d6144cbe16033ccb1fca7b659c",
+  "anchor": 55,
+  "folder": "storm",
+  "size": "414x715",
+  "why": "open",
+  "lang": "xh",
+  "line": "Sisenokwenzeka isaqhwithi, asikaqinisekiswa. Hlala uphaphile.",
+  "px": 35.035,
+  "textTop": 259,
+  "textBottom": 370,
+  "band": null,
+  "bandY": null,
+  "level": "clear",
+  "words": "the houses below the lightning"
+ },
+ {
+  "n": 234,
+  "hash": "0b5d114ee7fd96a7a919ec3b4895250aee924b9ed6f9295187f4a57e2d18dff0",
+  "anchor": 32,
+  "folder": "rain",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "IJoburg ina imizuzu engamashumi amabini, ize ipeyinte isibhakabhaka ngathi akukho nto yenzekileyo.",
+  "px": 35.035,
+  "textTop": 222,
+  "textBottom": 370,
+  "band": [
+   30,
+   95
+  ],
+  "bandY": [
+   105.7,
+   570.45
+  ],
+  "level": "partly",
+  "words": "the wet jacket (face clear)"
+ },
+ {
+  "n": 235,
+  "hash": "0e1a4e312bcc93bb9bae44352277a5b9b8c2e226acb80c2d284a58b31ba52487",
+  "anchor": 60,
+  "folder": "cloudy",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "Akukho zifoto zokutshona kwelanga ngokuhlwanje. Ii-privacy settings zesibhakabhaka zivuliwe.",
+  "px": 35.035,
+  "textTop": 235,
+  "textBottom": 383,
+  "band": [
+   40,
+   95
+  ],
+  "bandY": [
+   89.80000000000004,
+   483.05000000000007
+  ],
+  "level": "partly",
+  "words": "the wedding couple and photographer (faces clear)"
+ },
+ {
+  "n": 236,
+  "hash": "1affc7f9fe4aa9fb2d37c320c8b3f406c21c8232a8819ece93b3ae83cc84751c",
+  "anchor": 89,
+  "folder": "heat",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "Abantu abadala 'abahamba nje egadini' kanye apho i-sprinkler ifefa khona. Yintlanganiso yamabhaqo, nè.",
+  "px": 35.035,
+  "textTop": 235,
+  "textBottom": 383,
+  "band": [
+   48,
+   95
+  ],
+  "bandY": [
+   52.16999999999996,
+   388.22
+  ],
+  "level": "covers",
+  "words": "risen: the friends' faces"
+ },
+ {
+  "n": 237,
+  "hash": "1bf137ccfaad57dbfcc1801342fe6ec401360ed50f7680df61ce0c1c48bf7e86",
+  "anchor": 41,
+  "folder": "storm",
+  "size": "414x715",
+  "why": "within",
+  "lang": "xh",
+  "line": "Sisenokwenzeka isaqhwithi, asikaqinisekiswa. Hlala uphaphile.",
+  "px": 35.035,
+  "textTop": 259,
+  "textBottom": 370,
+  "band": null,
+  "bandY": null,
+  "level": "clear",
+  "words": "his back; phone and lightning clear"
+ },
+ {
+  "n": 238,
+  "hash": "2075c3e34891abe1c429ce5167589501cea1e9f3e987e0644ba4885a74641974",
+  "anchor": 56,
+  "folder": "cold",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "Umntu uqhuba esiya ekhaya ngoku ne-heater ivuliwe ngokupheleleyo ne-seat warmer njengebhonasi.",
+  "px": 35.035,
+  "textTop": 235,
+  "textBottom": 383,
+  "band": [
+   46,
+   70
+  ],
+  "bandY": [
+   145.78,
+   317.38
+  ],
+  "level": "covers",
+  "words": "the cat on the heater"
+ },
+ {
+  "n": 239,
+  "hash": "243eadef3d4887895250fa67e432b63253ddfc57169498919ed942bead508c96",
+  "anchor": 87,
+  "folder": "heat",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "Abantu abadala 'abahamba nje egadini' kanye apho i-sprinkler ifefa khona. Yintlanganiso yamabhaqo, nè.",
+  "px": 35.035,
+  "textTop": 235,
+  "textBottom": 383,
+  "band": [
+   52,
+   72
+  ],
+  "bandY": [
+   87.31,
+   230.30999999999995
+  ],
+  "level": "covers",
+  "words": "the woman on the stoep steps"
+ },
+ {
+  "n": 240,
+  "hash": "26260612a6f27ce8718acbcb329b41be199d30b98ce1ff9dd504c8a104590a05",
+  "anchor": 71,
+  "folder": "fog",
+  "size": "414x715",
+  "why": "near",
+  "lang": "zu",
+  "line": "Wonke umgwaqo unuka njengesidlo sakusihlwa somunye umuntu futhi inkungu ayifuni ukusho ukuthi ngesikabani.",
+  "px": 35.035,
+  "textTop": 263,
+  "textBottom": 448,
+  "band": [
+   42,
+   78
+  ],
+  "bandY": [
+   114.28000000000006,
+   371.68000000000006
+  ],
+  "level": "covers",
+  "words": "the woman walking her dog in the fog"
+ },
+ {
+  "n": 241,
+  "hash": "28a6f313803c3fe5e5b7f72c8c2cd1cd1bdf70354f2b1bcf6b2498a8cd470ee4",
+  "anchor": 56,
+  "folder": "fog",
+  "size": "414x715",
+  "why": "open",
+  "lang": "zu",
+  "line": "Wonke umgwaqo unuka njengesidlo sakusihlwa somunye umuntu futhi inkungu ayifuni ukusho ukuthi ngesikabani.",
+  "px": 35.035,
+  "textTop": 263,
+  "textBottom": 448,
+  "band": null,
+  "bandY": null,
+  "level": "clear",
+  "words": "the car lights in the fog"
+ },
+ {
+  "n": 242,
+  "hash": "2948e9edde577d77c1c9c2100aed6cbc92b7d5e02d5788cd40810e8654747270",
+  "anchor": 94,
+  "folder": "cold",
+  "size": "414x715",
+  "why": "open",
+  "lang": "xh",
+  "line": "Umntu uqhuba esiya ekhaya ngoku ne-heater ivuliwe ngokupheleleyo ne-seat warmer njengebhonasi.",
+  "px": 35.035,
+  "textTop": 235,
+  "textBottom": 383,
+  "band": null,
+  "bandY": null,
+  "level": "clear",
+  "words": "risen: the roof above the chair and mug"
+ },
+ {
+  "n": 243,
+  "hash": "2f31adfb194e60e4c1f300cd769b69840ae324d376215c04353bf18ecd1ab34b",
+  "anchor": 58,
+  "folder": "cold-clear",
+  "size": "414x715",
+  "why": "near",
+  "lang": "zu",
+  "line": "Ama-hadedas amathathu, amagwababa amabili, nomuntu oyedwa oqhaqhazelayo endaweni yokuphakela izinyoni.",
+  "px": 35.035,
+  "textTop": 243,
+  "textBottom": 428,
+  "band": [
+   45,
+   85
+  ],
+  "bandY": [
+   158.19000000000003,
+   444.18999999999994
+  ],
+  "level": "covers",
+  "words": "the frozen washing"
+ },
+ {
+  "n": 244,
+  "hash": "336f41869884bd7b62ab2c3e346f56b611c00f4c4ef109fe30b9897c1017cf55",
+  "anchor": 69,
+  "folder": "fog",
+  "size": "414x715",
+  "why": "near",
+  "lang": "zu",
+  "line": "Wonke umgwaqo unuka njengesidlo sakusihlwa somunye umuntu futhi inkungu ayifuni ukusho ukuthi ngesikabani.",
+  "px": 35.035,
+  "textTop": 263,
+  "textBottom": 448,
+  "band": [
+   55,
+   72
+  ],
+  "bandY": [
+   212.47000000000014,
+   334.02
+  ],
+  "level": "covers",
+  "words": "the man watering at the door"
+ },
+ {
+  "n": 245,
+  "hash": "357e2151b07dc48b5749049a908a726b9260cb088de2e3fb443a94aff07b2eb3",
+  "anchor": 61,
+  "folder": "clear",
+  "size": "414x715",
+  "why": "near",
+  "lang": "st",
+  "line": "'Sundowner e le nngwe feela' — mantswe a ho qetela a tummeng, nako e nngwe le e nngwe.",
+  "px": 35.035,
+  "textTop": 254,
+  "textBottom": 402,
+  "band": [
+   46,
+   70
+  ],
+  "bandY": [
+   141.02000000000004,
+   312.61999999999995
+  ],
+  "level": "covers",
+  "words": "the couple on the tidal pool wall"
+ },
+ {
+  "n": 246,
+  "hash": "41a1917dbae93fbcc3f34535b5c62cbc50d469262bec9464ef0637df540e62f8",
+  "anchor": 100,
+  "folder": "cloudy",
+  "size": "414x715",
+  "why": "open",
+  "lang": "xh",
+  "line": "Akukho zifoto zokutshona kwelanga ngokuhlwanje. Ii-privacy settings zesibhakabhaka zivuliwe.",
+  "px": 35.035,
+  "textTop": 235,
+  "textBottom": 383,
+  "band": null,
+  "bandY": null,
+  "level": "clear",
+  "words": "risen: the clouds"
+ },
+ {
+  "n": 247,
+  "hash": "45d3aa3a916abe943da88de39d25abc520c098e0d4500af706961a633c955ec8",
+  "anchor": 55,
+  "folder": "rain",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "IJoburg ina imizuzu engamashumi amabini, ize ipeyinte isibhakabhaka ngathi akukho nto yenzekileyo.",
+  "px": 35.035,
+  "textTop": 222,
+  "textBottom": 370,
+  "band": [
+   42,
+   72
+  ],
+  "bandY": [
+   113.30000000000001,
+   327.7999999999999
+  ],
+  "level": "covers",
+  "words": "the man at the gate"
+ },
+ {
+  "n": 248,
+  "hash": "4a0b5d3b10ec517285cbdd3954ca7bcc19284559273995988a60b27c2d241cda",
+  "anchor": 75,
+  "folder": "wind",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "Kunokuba nomoya onamandla ngamaxesha athile. Uqikelelo aluqinisekanga kule meko",
+  "px": 35.035,
+  "textTop": 259,
+  "textBottom": 370,
+  "band": [
+   45,
+   80
+  ],
+  "bandY": [
+   66.75,
+   317
+  ],
+  "level": "partly",
+  "words": "the two women's bodies (faces clear)"
+ },
+ {
+  "n": 249,
+  "hash": "531aa52feade355b7e7ebe2703f509dec7cea76dcab24fa45db327830a77d332",
+  "anchor": 36,
+  "folder": "rain",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "IJoburg ina imizuzu engamashumi amabini, ize ipeyinte isibhakabhaka ngathi akukho nto yenzekileyo.",
+  "px": 35.035,
+  "textTop": 222,
+  "textBottom": 370,
+  "band": [
+   36,
+   95
+  ],
+  "bandY": [
+   134.99999999999997,
+   556.8499999999999
+  ],
+  "level": "partly",
+  "words": "the man with the umbrella (head clear)"
+ },
+ {
+  "n": 250,
+  "hash": "531fffa148b855c4cbe0d17680515ef787a6c4dc27284cad3118edeaa126c46e",
+  "anchor": 98,
+  "folder": "clear",
+  "size": "414x715",
+  "why": "near",
+  "lang": "st",
+  "line": "'Sundowner e le nngwe feela' — mantswe a ho qetela a tummeng, nako e nngwe le e nngwe.",
+  "px": 35.035,
+  "textTop": 254,
+  "textBottom": 402,
+  "band": [
+   62,
+   92
+  ],
+  "bandY": [
+   141.45999999999998,
+   355.9600000000001
+  ],
+  "level": "partly",
+  "words": "the street cricket"
+ },
+ {
+  "n": 251,
+  "hash": "541d9d0e15943b037b99aed2bd8613fe06c959c7c0dd78d94cdccd2c76de9c1f",
+  "anchor": 52,
+  "folder": "clear",
+  "size": "414x715",
+  "why": "near",
+  "lang": "st",
+  "line": "'Sundowner e le nngwe feela' — mantswe a ho qetela a tummeng, nako e nngwe le e nngwe.",
+  "px": 35.035,
+  "textTop": 254,
+  "textBottom": 402,
+  "band": [
+   44,
+   78
+  ],
+  "bandY": [
+   154.44000000000003,
+   397.53999999999996
+  ],
+  "level": "partly",
+  "words": "the man mowing (head at the edge)"
+ },
+ {
+  "n": 252,
+  "hash": "55f1d80fdf9d654f2649d20f4c9ebf7c3b9ccf93c87aef6a6f65fb37645ddc85",
+  "anchor": 30,
+  "folder": "wind",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "Kunokuba nomoya onamandla ngamaxesha athile. Uqikelelo aluqinisekanga kule meko",
+  "px": 35.035,
+  "textTop": 259,
+  "textBottom": 370,
+  "band": [
+   38,
+   95
+  ],
+  "bandY": [
+   169.7,
+   577.25
+  ],
+  "level": "partly",
+  "words": "the woman at the wall (face clear)"
+ },
+ {
+  "n": 253,
+  "hash": "572a51d30dc5fe66a2a81e320d29a397f36c23d579c564d8e520f0682c8dea3b",
+  "anchor": 73,
+  "folder": "storm",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "Sisenokwenzeka isaqhwithi, asikaqinisekiswa. Hlala uphaphile.",
+  "px": 35.035,
+  "textTop": 259,
+  "textBottom": 370,
+  "band": [
+   62,
+   85
+  ],
+  "bandY": [
+   195.09999999999997,
+   359.55000000000007
+  ],
+  "level": "covers",
+  "words": "the bucket catching the leak"
+ },
+ {
+  "n": 254,
+  "hash": "5813c7f5260837814ef66d1ff1373d2edd7e22bdc6f8755b3576f976ced33d80",
+  "anchor": 91,
+  "folder": "wind",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "Kunokuba nomoya onamandla ngamaxesha athile. Uqikelelo aluqinisekanga kule meko",
+  "px": 35.035,
+  "textTop": 259,
+  "textBottom": 370,
+  "band": [
+   45,
+   80
+  ],
+  "bandY": [
+   12.350000000000023,
+   262.6
+  ],
+  "level": "partly",
+  "words": "the cyclist"
+ },
+ {
+  "n": 254,
+  "hash": "5813c7f5260837814ef66d1ff1373d2edd7e22bdc6f8755b3576f976ced33d80",
+  "anchor": 91,
+  "folder": "wind",
+  "size": "360x688",
+  "why": "small",
+  "lang": "st",
+  "line": "Ngaka ya Cape e ho di-round tsa hoseng. Ha ho hlokahale appointment, ka bomadimabe.",
+  "px": 33.712002,
+  "textTop": 206,
+  "textBottom": 350,
+  "band": [
+   45,
+   80
+  ],
+  "bandY": [
+   37.049999999999955,
+   254.65869565217383
+  ],
+  "level": "partly",
+  "words": "the cyclist"
+ },
+ {
+  "n": 255,
+  "hash": "5d58c6044925911215d06dcf1848bf6603d04bb98220cbcd88f74ed4c07b0f13",
+  "anchor": 93,
+  "folder": "cold-clear",
+  "size": "414x715",
+  "why": "near",
+  "lang": "zu",
+  "line": "Ama-hadedas amathathu, amagwababa amabili, nomuntu oyedwa oqhaqhazelayo endaweni yokuphakela izinyoni.",
+  "px": 35.035,
+  "textTop": 243,
+  "textBottom": 428,
+  "band": [
+   55,
+   72
+  ],
+  "bandY": [
+   130.99000000000012,
+   252.5399999999999
+  ],
+  "level": "covers",
+  "words": "the frosted bench"
+ },
+ {
+  "n": 256,
+  "hash": "5e8246208843fe0a835c719744d6bf49971720f5f2b6985e6839742adf8d64f3",
+  "anchor": 72,
+  "folder": "rain",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "IJoburg ina imizuzu engamashumi amabini, ize ipeyinte isibhakabhaka ngathi akukho nto yenzekileyo.",
+  "px": 35.035,
+  "textTop": 222,
+  "textBottom": 370,
+  "band": [
+   52,
+   78
+  ],
+  "bandY": [
+   127,
+   312.90000000000003
+  ],
+  "level": "covers",
+  "words": "the potted plant on the balcony"
+ },
+ {
+  "n": 257,
+  "hash": "6ee74c96c0bc3a153e5dff93662d560463b98abfbad53178ad56539019f3ae54",
+  "anchor": 63,
+  "folder": "heat",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "Abantu abadala 'abahamba nje egadini' kanye apho i-sprinkler ifefa khona. Yintlanganiso yamabhaqo, nè.",
+  "px": 35.035,
+  "textTop": 235,
+  "textBottom": 383,
+  "band": [
+   42,
+   78
+  ],
+  "bandY": [
+   94.29000000000002,
+   351.69
+  ],
+  "level": "partly",
+  "words": "the sunflower pot and stoep"
+ },
+ {
+  "n": 258,
+  "hash": "71648fc051b36275534962f5627ad4c6c2979a1322392f62e5ba7b9773b4da6a",
+  "anchor": 38,
+  "folder": "rain",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "IJoburg ina imizuzu engamashumi amabini, ize ipeyinte isibhakabhaka ngathi akukho nto yenzekileyo.",
+  "px": 35.035,
+  "textTop": 222,
+  "textBottom": 370,
+  "band": [
+   44,
+   70
+  ],
+  "bandY": [
+   185.40000000000003,
+   371.3
+  ],
+  "level": "covers",
+  "words": "the shouting driver and the cyclist"
+ },
+ {
+  "n": 259,
+  "hash": "7b2ce5e4f66ef2bc28ab90f7786777af67a93ce46adb6dac8512ee09f2d530b6",
+  "anchor": 69,
+  "folder": "heat",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "Abantu abadala 'abahamba nje egadini' kanye apho i-sprinkler ifefa khona. Yintlanganiso yamabhaqo, nè.",
+  "px": 35.035,
+  "textTop": 235,
+  "textBottom": 383,
+  "band": [
+   38,
+   80
+  ],
+  "bandY": [
+   46.07000000000002,
+   346.37
+  ],
+  "level": "partly",
+  "words": "her hands and the water jug (face clear)"
+ },
+ {
+  "n": 260,
+  "hash": "7c81a1ae1c2c96154fda708d1915bd2a30c5392cda8fa5da4785adc560f46e86",
+  "anchor": 50,
+  "folder": "wind",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "Kunokuba nomoya onamandla ngamaxesha athile. Uqikelelo aluqinisekanga kule meko",
+  "px": 35.035,
+  "textTop": 259,
+  "textBottom": 370,
+  "band": [
+   40,
+   95
+  ],
+  "bandY": [
+   116,
+   509.25
+  ],
+  "level": "partly",
+  "words": "her body (face clear)"
+ },
+ {
+  "n": 261,
+  "hash": "8008693b97ee6e635f2a004bfa7e5c54373375dfd37db0dad0307985a0c4f6ad",
+  "anchor": 100,
+  "folder": "heat",
+  "size": "414x715",
+  "why": "open",
+  "lang": "xh",
+  "line": "Abantu abadala 'abahamba nje egadini' kanye apho i-sprinkler ifefa khona. Yintlanganiso yamabhaqo, nè.",
+  "px": 35.035,
+  "textTop": 235,
+  "textBottom": 383,
+  "band": null,
+  "bandY": null,
+  "level": "clear",
+  "words": "risen: the deck above the dog in the pool"
+ },
+ {
+  "n": 262,
+  "hash": "817d8e1e843eea68438c39160fa0245e3e63d1a163b0e956e5c60ed810fd024a",
+  "anchor": 42,
+  "folder": "rain",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "IJoburg ina imizuzu engamashumi amabini, ize ipeyinte isibhakabhaka ngathi akukho nto yenzekileyo.",
+  "px": 35.035,
+  "textTop": 222,
+  "textBottom": 370,
+  "band": [
+   36,
+   72
+  ],
+  "bandY": [
+   114.59999999999997,
+   372
+  ],
+  "level": "partly",
+  "words": "her hands on the wheel (face clear)"
+ },
+ {
+  "n": 263,
+  "hash": "8278f1fd2e1e369312dd78e685f5227e7901146f5712f5d00e0fa16a294df725",
+  "anchor": 47,
+  "folder": "storm",
+  "size": "414x715",
+  "why": "open",
+  "lang": "xh",
+  "line": "Sisenokwenzeka isaqhwithi, asikaqinisekiswa. Hlala uphaphile.",
+  "px": 35.035,
+  "textTop": 259,
+  "textBottom": 370,
+  "band": null,
+  "bandY": null,
+  "level": "clear",
+  "words": "the flooded street"
+ },
+ {
+  "n": 264,
+  "hash": "88617f054c9bf6cac35b3a1f9bca03c04f57d3955484d147cd7e4bd69c3b7e6c",
+  "anchor": null,
+  "folder": "clear",
+  "size": "414x715",
+  "why": "open",
+  "lang": "st",
+  "line": "'Sundowner e le nngwe feela' — mantswe a ho qetela a tummeng, nako e nngwe le e nngwe.",
+  "px": 35.035,
+  "textTop": 254,
+  "textBottom": 402,
+  "band": null,
+  "bandY": null,
+  "level": "clear",
+  "words": "the horizon below the birds"
+ },
+ {
+  "n": 265,
+  "hash": "8cc0e2a4cb5284d07dad4ddeabe7776a0c10ae44b6de24b0204b130691d28b33",
+  "anchor": 67,
+  "folder": "cold",
+  "size": "414x715",
+  "why": "open",
+  "lang": "xh",
+  "line": "Umntu uqhuba esiya ekhaya ngoku ne-heater ivuliwe ngokupheleleyo ne-seat warmer njengebhonasi.",
+  "px": 35.035,
+  "textTop": 235,
+  "textBottom": 383,
+  "band": null,
+  "bandY": null,
+  "level": "clear",
+  "words": "the wet sand and rocks"
+ },
+ {
+  "n": 266,
+  "hash": "914f369f7f8f494e92af00e0cdf84afa4abb594662e56e3f3b75ba83f2b164c5",
+  "anchor": 85,
+  "folder": "cold",
+  "size": "414x715",
+  "why": "open",
+  "lang": "xh",
+  "line": "Umntu uqhuba esiya ekhaya ngoku ne-heater ivuliwe ngokupheleleyo ne-seat warmer njengebhonasi.",
+  "px": 35.035,
+  "textTop": 235,
+  "textBottom": 383,
+  "band": null,
+  "bandY": null,
+  "level": "clear",
+  "words": "the misty valley"
+ },
+ {
+  "n": 267,
+  "hash": "937d0902c1d0fc164b4890d0f1f84ea019e5e515aa64eeccb990300ff2de5828",
+  "anchor": 33,
+  "folder": "cold-clear",
+  "size": "414x715",
+  "why": "near",
+  "lang": "zu",
+  "line": "Ama-hadedas amathathu, amagwababa amabili, nomuntu oyedwa oqhaqhazelayo endaweni yokuphakela izinyoni.",
+  "px": 35.035,
+  "textTop": 243,
+  "textBottom": 428,
+  "band": [
+   30,
+   95
+  ],
+  "bandY": [
+   121.44,
+   586.1899999999999
+  ],
+  "level": "partly",
+  "words": "the girl's jump (face clear)"
+ },
+ {
+  "n": 268,
+  "hash": "957ef16d9b295921cf572f6089814b19293d8feed88483a3bc594f28dda9dc2b",
+  "anchor": 61,
+  "folder": "fog",
+  "size": "414x715",
+  "why": "near",
+  "lang": "zu",
+  "line": "Wonke umgwaqo unuka njengesidlo sakusihlwa somunye umuntu futhi inkungu ayifuni ukusho ukuthi ngesikabani.",
+  "px": 35.035,
+  "textTop": 263,
+  "textBottom": 448,
+  "band": [
+   45,
+   72
+  ],
+  "bandY": [
+   161.93,
+   354.9799999999999
+  ],
+  "level": "covers",
+  "words": "the couple walking bikes"
+ },
+ {
+  "n": 269,
+  "hash": "a3c3db31075002872d80adb2dfc04f76b927d4056d5ae798cdc070eaa06dc732",
+  "anchor": 37,
+  "folder": "clear",
+  "size": "414x715",
+  "why": "near",
+  "lang": "st",
+  "line": "'Sundowner e le nngwe feela' — mantswe a ho qetela a tummeng, nako e nngwe le e nngwe.",
+  "px": 35.035,
+  "textTop": 254,
+  "textBottom": 402,
+  "band": [
+   30,
+   85
+  ],
+  "bandY": [
+   100.54,
+   493.78999999999996
+  ],
+  "level": "partly",
+  "words": "the bike (head clear)"
+ },
+ {
+  "n": 270,
+  "hash": "a67edaa1585b4651dffc326c59ef46b72b5fb0eee583da7fa8af2d680b166b32",
+  "anchor": 48,
+  "folder": "fog",
+  "size": "414x715",
+  "why": "near",
+  "lang": "zu",
+  "line": "Wonke umgwaqo unuka njengesidlo sakusihlwa somunye umuntu futhi inkungu ayifuni ukusho ukuthi ngesikabani.",
+  "px": 35.035,
+  "textTop": 263,
+  "textBottom": 448,
+  "band": [
+   38,
+   95
+  ],
+  "bandY": [
+   145.93999999999997,
+   553.49
+  ],
+  "level": "partly",
+  "words": "the selfie-takers' bodies (faces clear)"
+ },
+ {
+  "n": 271,
+  "hash": "abf16c113fdba3f1902377073552b06c6d57b0ed7aa7967494c138878eac8b5c",
+  "anchor": 85,
+  "folder": "cold",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "Umntu uqhuba esiya ekhaya ngoku ne-heater ivuliwe ngokupheleleyo ne-seat warmer njengebhonasi.",
+  "px": 35.035,
+  "textTop": 235,
+  "textBottom": 383,
+  "band": [
+   60,
+   75
+  ],
+  "bandY": [
+   151.05000000000007,
+   258.29999999999995
+  ],
+  "level": "covers",
+  "words": "the hot chocolate the joke is about"
+ },
+ {
+  "n": 271,
+  "hash": "abf16c113fdba3f1902377073552b06c6d57b0ed7aa7967494c138878eac8b5c",
+  "anchor": 85,
+  "folder": "cold",
+  "size": "360x688",
+  "why": "small",
+  "lang": "zu",
+  "line": "Umuntu ushayela eya ekhaya njengamanje ne-heater ivuliwe ngokugcwele ne-seat warmer njenge-bonus.",
+  "px": 32.712002,
+  "textTop": 234,
+  "textBottom": 409,
+  "band": [
+   60,
+   75
+  ],
+  "bandY": [
+   196.46521739130438,
+   289.7260869565217
+  ],
+  "level": "covers",
+  "words": "the hot chocolate the joke is about"
+ },
+ {
+  "n": 272,
+  "hash": "b2c32c8589039a7a03205c598acc52f6bc50853fa5ebc78042b978d9863e8e8d",
+  "anchor": 81,
+  "folder": "heat",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "Abantu abadala 'abahamba nje egadini' kanye apho i-sprinkler ifefa khona. Yintlanganiso yamabhaqo, nè.",
+  "px": 35.035,
+  "textTop": 235,
+  "textBottom": 383,
+  "band": [
+   48,
+   78
+  ],
+  "bandY": [
+   78.32999999999998,
+   292.83000000000004
+  ],
+  "level": "covers",
+  "words": "dad and kid in the sprinkler"
+ },
+ {
+  "n": 273,
+  "hash": "b8c7819a2f6dbd78b2871a7eff4aa7c019ee0852ba8bb5d4e7196f62fd4e9782",
+  "anchor": 61,
+  "folder": "cold-clear",
+  "size": "414x715",
+  "why": "near",
+  "lang": "zu",
+  "line": "Ama-hadedas amathathu, amagwababa amabili, nomuntu oyedwa oqhaqhazelayo endaweni yokuphakela izinyoni.",
+  "px": 35.035,
+  "textTop": 243,
+  "textBottom": 428,
+  "band": [
+   48,
+   75
+  ],
+  "bandY": [
+   171.18,
+   364.22999999999996
+  ],
+  "level": "covers",
+  "words": "the friends around the fire pit"
+ },
+ {
+  "n": 274,
+  "hash": "b8f8ea343b77586d191afc873309450d62dce914ec0f6c1debe6e90b46af2145",
+  "anchor": 77,
+  "folder": "clear",
+  "size": "414x715",
+  "why": "near",
+  "lang": "st",
+  "line": "'Sundowner e le nngwe feela' — mantswe a ho qetela a tummeng, nako e nngwe le e nngwe.",
+  "px": 35.035,
+  "textTop": 254,
+  "textBottom": 402,
+  "band": [
+   55,
+   95
+  ],
+  "bandY": [
+   156.09,
+   442.0899999999999
+  ],
+  "level": "covers",
+  "words": "the three friends walking"
+ },
+ {
+  "n": 275,
+  "hash": "c19b2bf4d644ee61056106f0ec8b95887f385a24a81e4316849825aea7770d52",
+  "anchor": 44,
+  "folder": "cold-clear",
+  "size": "414x715",
+  "why": "near",
+  "lang": "zu",
+  "line": "Ama-hadedas amathathu, amagwababa amabili, nomuntu oyedwa oqhaqhazelayo endaweni yokuphakela izinyoni.",
+  "px": 35.035,
+  "textTop": 243,
+  "textBottom": 428,
+  "band": [
+   40,
+   78
+  ],
+  "bandY": [
+   161.92000000000002,
+   433.62000000000006
+  ],
+  "level": "covers",
+  "words": "the two horses in the frost"
+ },
+ {
+  "n": 276,
+  "hash": "c2845db66d7b715adba42daecd7819342933bc40659461e5bfa572ae8b57374e",
+  "anchor": 93,
+  "folder": "cloudy",
+  "size": "414x715",
+  "why": "open",
+  "lang": "xh",
+  "line": "Akukho zifoto zokutshona kwelanga ngokuhlwanje. Ii-privacy settings zesibhakabhaka zivuliwe.",
+  "px": 35.035,
+  "textTop": 235,
+  "textBottom": 383,
+  "band": null,
+  "bandY": null,
+  "level": "clear",
+  "words": "risen: the red sky above Table Mountain"
+ },
+ {
+  "n": 277,
+  "hash": "c2bc4bc434666ee3fca00c7c2ef2d03960fc330efd74dfdc6388ae464d69ac36",
+  "anchor": 50,
+  "folder": "wind",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "Kunokuba nomoya onamandla ngamaxesha athile. Uqikelelo aluqinisekanga kule meko",
+  "px": 35.035,
+  "textTop": 259,
+  "textBottom": 370,
+  "band": [
+   55,
+   72
+  ],
+  "bandY": [
+   223.2500000000001,
+   344.79999999999995
+  ],
+  "level": "partly",
+  "words": "the washing blowing on the line"
+ },
+ {
+  "n": 278,
+  "hash": "c892be6f44d78716392adbe0f0ade0a4f5638f52df562f0e02088a4c284ca8b3",
+  "anchor": 35,
+  "folder": "rain",
+  "size": "414x715",
+  "why": "within",
+  "lang": "xh",
+  "line": "IJoburg ina imizuzu engamashumi amabini, ize ipeyinte isibhakabhaka ngathi akukho nto yenzekileyo.",
+  "px": 35.035,
+  "textTop": 222,
+  "textBottom": 370,
+  "band": null,
+  "bandY": null,
+  "level": "clear",
+  "words": "the traffic in the rain"
+ },
+ {
+  "n": 279,
+  "hash": "cb0804cb6b7b16d97e4b4e745a9f2c6bebe1afba41a364eae68e70e98d806fcf",
+  "anchor": 82,
+  "folder": "wind",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "Kunokuba nomoya onamandla ngamaxesha athile. Uqikelelo aluqinisekanga kule meko",
+  "px": 35.035,
+  "textTop": 259,
+  "textBottom": 370,
+  "band": [
+   52,
+   90
+  ],
+  "bandY": [
+   93,
+   364.70000000000005
+  ],
+  "level": "partly",
+  "words": "the Bo-Kaap houses"
+ },
+ {
+  "n": 280,
+  "hash": "cb8642ad87a0a0809d2a492c7a4599263dc1725804f2d2f6de56d6de74e83ff4",
+  "anchor": 43,
+  "folder": "storm",
+  "size": "414x715",
+  "why": "within",
+  "lang": "xh",
+  "line": "Sisenokwenzeka isaqhwithi, asikaqinisekiswa. Hlala uphaphile.",
+  "px": 35.035,
+  "textTop": 259,
+  "textBottom": 370,
+  "band": null,
+  "bandY": null,
+  "level": "clear",
+  "words": "the sea below the lightning"
+ },
+ {
+  "n": 281,
+  "hash": "d5f43207994b887a457959e59d79b4067eb68c9b33187bdae6831051cb2a90ae",
+  "anchor": 55,
+  "folder": "heat",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "Abantu abadala 'abahamba nje egadini' kanye apho i-sprinkler ifefa khona. Yintlanganiso yamabhaqo, nè.",
+  "px": 35.035,
+  "textTop": 235,
+  "textBottom": 383,
+  "band": [
+   48,
+   75
+  ],
+  "bandY": [
+   163.35,
+   356.4
+  ],
+  "level": "partly",
+  "words": "the watermelon and her body (her face stays clear)"
+ },
+ {
+  "n": 282,
+  "hash": "e9b045413ea5995203ae0896f4b0d03f0cda245597c1f9d7e1563fe95812c0f7",
+  "anchor": null,
+  "folder": "cold-clear",
+  "size": "414x715",
+  "why": "near",
+  "lang": "zu",
+  "line": "Ama-hadedas amathathu, amagwababa amabili, nomuntu oyedwa oqhaqhazelayo endaweni yokuphakela izinyoni.",
+  "px": 35.035,
+  "textTop": 243,
+  "textBottom": 428,
+  "band": [
+   48,
+   90
+  ],
+  "bandY": [
+   123.23999999999998,
+   423.53999999999996
+  ],
+  "level": "covers",
+  "words": "the cat at the frosty window"
+ },
+ {
+  "n": 283,
+  "hash": "ebac96bef8e4ead03dac58563388ce45c0d74349c626efaab06a1ad1b9594fa4",
+  "anchor": 57,
+  "folder": "fog",
+  "size": "414x715",
+  "why": "open",
+  "lang": "zu",
+  "line": "Wonke umgwaqo unuka njengesidlo sakusihlwa somunye umuntu futhi inkungu ayifuni ukusho ukuthi ngesikabani.",
+  "px": 35.035,
+  "textTop": 263,
+  "textBottom": 448,
+  "band": null,
+  "bandY": null,
+  "level": "clear",
+  "words": "the boats in the fog; the heron under the facts band"
+ },
+ {
+  "n": 284,
+  "hash": "ec24bcde25d92412deb6a7e7eddb0b0b657373c139a2cd8dc439b254b3dc25d9",
+  "anchor": 87,
+  "folder": "clear",
+  "size": "414x715",
+  "why": "near",
+  "lang": "st",
+  "line": "'Sundowner e le nngwe feela' — mantswe a ho qetela a tummeng, nako e nngwe le e nngwe.",
+  "px": 35.035,
+  "textTop": 254,
+  "textBottom": 402,
+  "band": [
+   58,
+   85
+  ],
+  "bandY": [
+   146.7399999999999,
+   339.78999999999996
+  ],
+  "level": "partly",
+  "words": "the braai and people on the stoep"
+ },
+ {
+  "n": 285,
+  "hash": "f49a362f2f87ac030ac907ddf6a5e2039fbf0e42f0d908c7ade2bd51ab0e5d2c",
+  "anchor": 96,
+  "folder": "cold",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "Umntu uqhuba esiya ekhaya ngoku ne-heater ivuliwe ngokupheleleyo ne-seat warmer njengebhonasi.",
+  "px": 35.035,
+  "textTop": 235,
+  "textBottom": 383,
+  "band": [
+   47,
+   88
+  ],
+  "bandY": [
+   22.129999999999995,
+   315.28000000000003
+  ],
+  "level": "partly",
+  "words": "risen: the walkers' heads"
+ },
+ {
+  "n": 286,
+  "hash": "f9af47cda240071865c3f7a7382fd8252621a86d6075582fe5a3658db7fbbe89",
+  "anchor": 43,
+  "folder": "storm",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "Sisenokwenzeka isaqhwithi, asikaqinisekiswa. Hlala uphaphile.",
+  "px": 35.035,
+  "textTop": 259,
+  "textBottom": 370,
+  "band": [
+   38,
+   80
+  ],
+  "bandY": [
+   125.49999999999997,
+   425.79999999999995
+  ],
+  "level": "partly",
+  "words": "the farmers loading hay (heads clear)"
+ },
+ {
+  "n": 287,
+  "hash": "fada902c14d5dfbe9d3760ef518c9758d9e02f762c995a70bb21d8129ee8eedd",
+  "anchor": 100,
+  "folder": "cloudy",
+  "size": "414x715",
+  "why": "open",
+  "lang": "xh",
+  "line": "Akukho zifoto zokutshona kwelanga ngokuhlwanje. Ii-privacy settings zesibhakabhaka zivuliwe.",
+  "px": 35.035,
+  "textTop": 235,
+  "textBottom": 383,
+  "band": null,
+  "bandY": null,
+  "level": "clear",
+  "words": "risen: the clouds above the rooftops"
+ },
+ {
+  "n": 288,
+  "hash": "fbba3dfe68594e108ddd289f746f86ae1a6e0fe918d5bd0f3cd9e0b3341432f7",
+  "anchor": 52,
+  "folder": "wind",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "Kunokuba nomoya onamandla ngamaxesha athile. Uqikelelo aluqinisekanga kule meko",
+  "px": 35.035,
+  "textTop": 259,
+  "textBottom": 370,
+  "band": [
+   40,
+   95
+  ],
+  "bandY": [
+   109.20000000000002,
+   502.44999999999993
+  ],
+  "level": "partly",
+  "words": "the couple on the windy beach (faces clear)"
+ },
+ {
+  "n": 289,
+  "hash": "fe5774dcc9216ef0deb008c2aca645d4c9e29e3bda7c767fa3791e2ff1b713cb",
+  "anchor": 66,
+  "folder": "fog",
+  "size": "414x715",
+  "why": "near",
+  "lang": "zu",
+  "line": "Wonke umgwaqo unuka njengesidlo sakusihlwa somunye umuntu futhi inkungu ayifuni ukusho ukuthi ngesikabani.",
+  "px": 35.035,
+  "textTop": 263,
+  "textBottom": 448,
+  "band": [
+   52,
+   68
+  ],
+  "bandY": [
+   198.88000000000002,
+   313.28
+  ],
+  "level": "covers",
+  "words": "the car's headlights in the fog"
+ },
+ {
+  "n": 290,
+  "hash": "1a7797cabfa960b9a4b8a8582acdac96884751e7b9f73b35ab6f3be5cc1b4153",
+  "anchor": 62,
+  "folder": "cold",
+  "size": "414x715",
+  "why": "near",
+  "lang": "st",
+  "line": "Hobaneng wena-wa-nakong-e-fetileng o entse merero? Wena-wa-nakong-e-fetileng o mobe.",
+  "px": 35.035,
+  "textTop": 274,
+  "textBottom": 422,
+  "band": [
+   45,
+   95
+  ],
+  "bandY": [
+   143.18999999999997,
+   500.68999999999994
+  ],
+  "level": "partly",
+  "words": "the vendor's hands and the car window (his face clear)"
+ },
+ {
+  "n": 291,
+  "hash": "2f56b7f02f5aac523930b09884384e691392b5151c8c6fbfc60cf2b85e3d43fd",
+  "anchor": 44,
+  "folder": "cold",
+  "size": "414x715",
+  "why": "near",
+  "lang": "st",
+  "line": "Hobaneng wena-wa-nakong-e-fetileng o entse merero? Wena-wa-nakong-e-fetileng o mobe.",
+  "px": 35.035,
+  "textTop": 274,
+  "textBottom": 422,
+  "band": [
+   45,
+   85
+  ],
+  "bandY": [
+   195.03,
+   481.03
+  ],
+  "level": "partly",
+  "words": "the middle of the rumpled duvet"
+ },
+ {
+  "n": 292,
+  "hash": "6c75084d23dbf03a524515716593a6338b5386869ecaaee822f8f8f6daafe4f1",
+  "anchor": 75,
+  "folder": "cold",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "Umntu uqhuba esiya ekhaya ngoku ne-heater ivuliwe ngokupheleleyo ne-seat warmer njengebhonasi.",
+  "px": 35.035,
+  "textTop": 235,
+  "textBottom": 383,
+  "band": [
+   55,
+   65
+  ],
+  "bandY": [
+   148.00000000000006,
+   219.5
+  ],
+  "level": "covers",
+  "words": "the car's lights on the mountain pass"
+ },
+ {
+  "n": 293,
+  "hash": "f20554e03039b5158b9906ea13eefcaae5b746a1f8d463d7aefe8adc7588f6a3",
+  "anchor": 100,
+  "folder": "cold",
+  "size": "414x715",
+  "why": "near",
+  "lang": "xh",
+  "line": "Umntu uqhuba esiya ekhaya ngoku ne-heater ivuliwe ngokupheleleyo ne-seat warmer njengebhonasi.",
+  "px": 35.035,
+  "textTop": 235,
+  "textBottom": 383,
+  "band": [
+   58,
+   88
+  ],
+  "bandY": [
+   87.69999999999999,
+   302.20000000000005
+  ],
+  "level": "partly",
+  "words": "the dog on its cushion"
+ },
+ {
+  "n": 1,
+  "hash": "ee562e8adf7312026fe28159b55c8bb72dfbf83a1a8e02eb20a648e19eaa7f6b",
+  "anchor": 44,
+  "folder": "cloudy",
+  "size": "360x688",
+  "why": "second",
+  "lang": "zu",
+  "line": "Awekho amaphiksha okushona kwelanga namuhla ebusuku. Ama-privacy settings ezulu avuliwe.",
+  "px": 32.712002,
+  "textTop": 234,
+  "textBottom": 409,
+  "band": null,
+  "bandY": null,
+  "level": "clear",
+  "words": "clouds and sky below the moon",
+  "reach": 0.066
+ },
+ {
+  "n": 5,
+  "hash": "3fbe216c40e0809485e1371daae089dfedaae71cf0439349f3fb7d1a14f66c3c",
+  "anchor": 64,
+  "folder": "fog",
+  "size": "360x688",
+  "why": "second",
+  "lang": "st",
+  "line": "Dikgomo di tseba hantle moo di leng teng. Ho fetang seo rona kaofela re ka se bolelang.",
+  "px": 33.712002,
+  "textTop": 206,
+  "textBottom": 350,
+  "band": null,
+  "bandY": null,
+  "level": "clear",
+  "words": "the grass between the golfer and the ball",
+  "reach": 0.034
+ },
+ {
+  "n": 25,
+  "hash": "13f86b7909396e0e9edd88783197f94bb9412c74a2ce266625862426e234ba76",
+  "anchor": 83,
+  "folder": "wind",
+  "size": "360x688",
+  "why": "second",
+  "lang": "st",
+  "line": "Ngaka ya Cape e ho di-round tsa hoseng. Ha ho hlokahale appointment, ka bomadimabe.",
+  "px": 33.712002,
+  "textTop": 206,
+  "textBottom": 350,
+  "band": [
+   32,
+   55
+  ],
+  "bandY": [
+   -22.43695652173909,
+   120.56304347826094
+  ],
+  "level": "partly",
+  "words": "risen: the crown of the nearest bending palm",
+  "reach": 0.068
+ },
+ {
+  "n": 36,
+  "hash": "39f844a99d163b928272d769496465c6d0c04a7c6028fa98af1dd953abacd86c",
+  "anchor": 50,
+  "folder": "storm",
+  "size": "360x688",
+  "why": "second",
+  "lang": "zu",
+  "line": "Amabhomu amancane eqhwa ayawa. Icebo linye kuphela: hlala ngaphakathi.",
+  "px": 33.712002,
+  "textTop": 245,
+  "textBottom": 389,
+  "band": null,
+  "bandY": null,
+  "level": "clear",
+  "words": "the fence below the tree",
+  "reach": 0.052
+ },
+ {
+  "n": 42,
+  "hash": "5d44b24259176cce356e97b116c34741eeb8a10f27cdd552d9a04678fe395463",
+  "anchor": 50,
+  "folder": "wind",
+  "size": "360x688",
+  "why": "second",
+  "lang": "st",
+  "line": "Ngaka ya Cape e ho di-round tsa hoseng. Ha ho hlokahale appointment, ka bomadimabe.",
+  "px": 33.712002,
+  "textTop": 206,
+  "textBottom": 350,
+  "band": [
+   46,
+   56
+  ],
+  "bandY": [
+   152.63043478260875,
+   214.804347826087
+  ],
+  "level": "covers",
+  "words": "the washing blowing on the line",
+  "reach": 0.053
+ },
+ {
+  "n": 46,
+  "hash": "840790135cf5a568b058c6eacda112e0226573f5c1308b1cc5fedfe8a459de1f",
+  "anchor": 45,
+  "folder": "rain",
+  "size": "360x688",
+  "why": "second",
+  "lang": "st",
+  "line": "Joburg e na metsotso e mashome a mabedi, ebe e penta lehodimo eka ha ho letho le etsahetseng.",
+  "px": 33.712002,
+  "textTop": 226,
+  "textBottom": 370,
+  "band": null,
+  "bandY": null,
+  "level": "clear",
+  "words": "the wet street",
+  "reach": 0.041
+ },
+ {
+  "n": 47,
+  "hash": "8afed8c579b8a61ac6fbbfd7839dfcdd5d5f0d3d2c7befcb4e171317fb4ce097",
+  "anchor": 93,
+  "folder": "cold",
+  "size": "360x688",
+  "why": "second",
+  "lang": "zu",
+  "line": "Ndawana ngaphansi kwalezo zinkanyezi, umuntu uhamba ngamazwane engagqokile eya endlini yangasese. Amandla.",
+  "px": 32.712002,
+  "textTop": 234,
+  "textBottom": 409,
+  "band": null,
+  "bandY": null,
+  "level": "clear",
+  "words": "the armchair's back; the cat lies below, under the facts band",
+  "reach": 0.065
+ },
+ {
+  "n": 54,
+  "hash": "9ad51600286ade33f8e1436eab7203672d3d4784692ae9e8705e686abea21dad",
+  "anchor": 50,
+  "folder": "storm",
+  "size": "360x688",
+  "why": "second",
+  "lang": "zu",
+  "line": "Amabhomu amancane eqhwa ayawa. Icebo linye kuphela: hlala ngaphakathi.",
+  "px": 33.712002,
+  "textTop": 245,
+  "textBottom": 389,
+  "band": null,
+  "bandY": null,
+  "level": "clear",
+  "words": "the garage doors below the lightning",
+  "reach": 0.052
+ },
+ {
+  "n": 55,
+  "hash": "a2510ecf3c92acadaeb955b19ccd8e88370dd55b54568db3928bcd6a5c3d3451",
+  "anchor": 50,
+  "folder": "rain",
+  "size": "360x688",
+  "why": "second",
+  "lang": "st",
+  "line": "Joburg e na metsotso e mashome a mabedi, ebe e penta lehodimo eka ha ho letho le etsahetseng.",
+  "px": 33.712002,
+  "textTop": 226,
+  "textBottom": 370,
+  "band": null,
+  "bandY": null,
+  "level": "clear",
+  "words": "the wall",
+  "reach": 0.037
+ },
+ {
+  "n": 56,
+  "hash": "a7e3f5461ad2e6711e370e4577008642f883ebd64beb0feeb67ff048749858bf",
+  "anchor": 23,
+  "folder": "storm",
+  "size": "320x488",
+  "why": "second",
+  "lang": "en",
+  "line": "Wait it out indoors. The mountains aren't going anywhere.",
+  "px": 23.912001,
+  "textTop": 121,
+  "textBottom": 196,
+  "band": null,
+  "bandY": null,
+  "level": "clear",
+  "words": "his shirt; the phone, his face and the lightning stay clear",
+  "reach": 0.102
+ },
+ {
+  "n": 57,
+  "hash": "a80a9bab25ffdfc255dd87731731c27b69394d49c3a97cf118985e41b561f9bd",
+  "anchor": 50,
+  "folder": "rain",
+  "size": "360x688",
+  "why": "second",
+  "lang": "st",
+  "line": "Joburg e na metsotso e mashome a mabedi, ebe e penta lehodimo eka ha ho letho le etsahetseng.",
+  "px": 33.712002,
+  "textTop": 226,
+  "textBottom": 370,
+  "band": null,
+  "bandY": null,
+  "level": "clear",
+  "words": "the running gutter",
+  "reach": 0.037
+ },
+ {
+  "n": 59,
+  "hash": "b207cb7f098385091a52773bc794ac2eb27b07643bdcd781b084915a9529592e",
+  "anchor": 50,
+  "folder": "storm",
+  "size": "360x688",
+  "why": "second",
+  "lang": "af",
+  "line": "Reën wat in een soliede laken van die dak afkom: die stoep het vanaand 'n gordyn.",
+  "px": 33.712002,
+  "textTop": 245,
+  "textBottom": 389,
+  "band": null,
+  "bandY": null,
+  "level": "clear",
+  "words": "the wall and the flooded stoep",
+  "reach": 0.052
+ },
+ {
+  "n": 62,
+  "hash": "bb0451e106356e26add3711b341d682072915d9f0134510814459b10608c970c",
+  "anchor": 29,
+  "folder": "storm",
+  "size": "320x488",
+  "why": "second",
+  "lang": "zu",
+  "line": "Amabhomu amancane eqhwa ayawa. Icebo linye kuphela: hlala ngaphakathi.",
+  "px": 23.912001,
+  "textTop": 121,
+  "textBottom": 196,
+  "band": null,
+  "bandY": null,
+  "level": "clear",
+  "words": "the window sill and blanket (his face stays clear)",
+  "reach": 0.092
+ },
+ {
+  "n": 65,
+  "hash": "ce5d0f16ddede9cc1e32f5052df2960ef6ad5740ab39f347efc318835c38a485",
+  "anchor": 50,
+  "folder": "storm",
+  "size": "360x688",
+  "why": "second",
+  "lang": "zu",
+  "line": "Amabhomu amancane eqhwa ayawa. Icebo linye kuphela: hlala ngaphakathi.",
+  "px": 33.712002,
+  "textTop": 245,
+  "textBottom": 389,
+  "band": null,
+  "bandY": null,
+  "level": "clear",
+  "words": "the wall below the lightning",
+  "reach": 0.052
+ },
+ {
+  "n": 72,
+  "hash": "e6a67f800f6bb84d369359fa5cdfa7f7decdc601794f9af667aa603d73acde20",
+  "anchor": 48,
+  "folder": "rain",
+  "size": "360x688",
+  "why": "second",
+  "lang": "st",
+  "line": "Joburg e na metsotso e mashome a mabedi, ebe e penta lehodimo eka ha ho letho le etsahetseng.",
+  "px": 33.712002,
+  "textTop": 226,
+  "textBottom": 370,
+  "band": null,
+  "bandY": null,
+  "level": "clear",
+  "words": "the pool",
+  "reach": 0.038
+ },
+ {
+  "n": 85,
+  "hash": "1c9e8b5c756140ed990f20c7c1d64abd4dcd4dbb7a14eb7f37bf73311039a2b6",
+  "anchor": 69,
+  "folder": "storm",
+  "size": "360x688",
+  "why": "second",
+  "lang": "zu",
+  "line": "Amabhomu amancane eqhwa ayawa. Icebo linye kuphela: hlala ngaphakathi.",
+  "px": 33.712002,
+  "textTop": 245,
+  "textBottom": 389,
+  "band": [
+   55,
+   68
+  ],
+  "bandY": [
+   184.8165217391305,
+   265.6426086956522
+  ],
+  "level": "covers",
+  "words": "the pitch cover blowing",
+  "reach": 0.042
+ },
+ {
+  "n": 92,
+  "hash": "32e5db4cd2f6fea1a9692db9673518a70420c88508aee5a83c7cfd8027a45281",
+  "anchor": 64,
+  "folder": "storm",
+  "size": "360x688",
+  "why": "second",
+  "lang": "zu",
+  "line": "Amabhomu amancane eqhwa ayawa. Icebo linye kuphela: hlala ngaphakathi.",
+  "px": 33.712002,
+  "textTop": 245,
+  "textBottom": 389,
+  "band": null,
+  "bandY": null,
+  "level": "clear",
+  "words": "the road",
+  "reach": 0.037
+ },
+ {
+  "n": 102,
+  "hash": "5306c0597333e511c03125bd43324c96fa22cea4337c45c1e718453f328bb890",
+  "anchor": 50,
+  "folder": "wind",
+  "size": "360x688",
+  "why": "second",
+  "lang": "st",
+  "line": "Ngaka ya Cape e ho di-round tsa hoseng. Ha ho hlokahale appointment, ka bomadimabe.",
+  "px": 33.712002,
+  "textTop": 206,
+  "textBottom": 350,
+  "band": [
+   38,
+   60
+  ],
+  "bandY": [
+   102.89130434782606,
+   239.67391304347825
+  ],
+  "level": "partly",
+  "words": "the blown-over trampoline",
+  "reach": 0.052
+ },
+ {
+  "n": 115,
+  "hash": "77077da42999c1f4e4d5d7527e73fd44b1d2f2c793faa24a52e2fb8073f319cc",
+  "anchor": 55,
+  "folder": "storm",
+  "size": "320x488",
+  "why": "second",
+  "lang": "en",
+  "line": "That grey column is someone’s afternoon getting cancelled. Ours is next in line.",
+  "px": 23.912001,
+  "textTop": 121,
+  "textBottom": 196,
+  "band": null,
+  "bandY": null,
+  "level": "clear",
+  "words": "the flooded road; the chair's backrest just touches the last line",
+  "reach": 0.05
+ },
+ {
+  "n": 135,
+  "hash": "afe79b6ded39280e27ad59f973b407e4ad35db75ca74c03788b9196ddabefdbf",
+  "anchor": 90,
+  "folder": "wind",
+  "size": "360x688",
+  "why": "second",
+  "lang": "st",
+  "line": "Ngaka ya Cape e ho di-round tsa hoseng. Ha ho hlokahale appointment, ka bomadimabe.",
+  "px": 33.712002,
+  "textTop": 206,
+  "textBottom": 350,
+  "band": [
+   56,
+   68
+  ],
+  "bandY": [
+   108.10869565217394,
+   182.71739130434787
+  ],
+  "level": "covers",
+  "words": "the three chasing the litter",
+  "reach": 0.071
+ },
+ {
+  "n": 141,
+  "hash": "d09eebb882b56eacaa44a04b2af3ed15f8e53f7c1bfba3611a0b4e323f5da2a0",
+  "anchor": 70,
+  "folder": "storm",
+  "size": "360x688",
+  "why": "second",
+  "lang": "zu",
+  "line": "Amabhomu amancane eqhwa ayawa. Icebo linye kuphela: hlala ngaphakathi.",
+  "px": 33.712002,
+  "textTop": 245,
+  "textBottom": 389,
+  "band": null,
+  "bandY": null,
+  "level": "clear",
+  "words": "the stadium stands",
+  "reach": 0.031
+ },
+ {
+  "n": 143,
+  "hash": "d5ba1f11fcceaa270ef0f254f8326753737af23179b05efb29f610638955ac39",
+  "anchor": 43,
+  "folder": "storm",
+  "size": "360x688",
+  "why": "second",
+  "lang": "zu",
+  "line": "Amabhomu amancane eqhwa ayawa. Icebo linye kuphela: hlala ngaphakathi.",
+  "px": 33.712002,
+  "textTop": 245,
+  "textBottom": 389,
+  "band": null,
+  "bandY": null,
+  "level": "clear",
+  "words": "the dashboard below the phone",
+  "reach": 0.059
+ },
+ {
+  "n": 163,
+  "hash": "544c1615ccb0a07111eb186cd30d144ef25e9534f00d53228ad7d117d935c25e",
+  "anchor": 89,
+  "folder": "cold",
+  "size": "360x688",
+  "why": "second",
+  "lang": "zu",
+  "line": "Ndawana ngaphansi kwalezo zinkanyezi, umuntu uhamba ngamazwane engagqokile eya endlini yangasese. Amandla.",
+  "px": 32.712002,
+  "textTop": 234,
+  "textBottom": 409,
+  "band": [
+   48,
+   72
+  ],
+  "bandY": [
+   113.54695652173913,
+   262.7643478260869
+  ],
+  "level": "covers",
+  "words": "the friends around the lantern",
+  "reach": 0.06
+ },
+ {
+  "n": 168,
+  "hash": "4f833d5c5db4bf89c68be1dce8f53b38e7652ddda5bcdcd4ea13df83a73371a6",
+  "anchor": 14,
+  "folder": "cloudy",
+  "size": "320x488",
+  "why": "second",
+  "lang": "en",
+  "line": "Flat grey light, no glare, no wind: perfect painting weather, and he knows it.",
+  "px": 23.912001,
+  "textTop": 121,
+  "textBottom": 196,
+  "band": null,
+  "bandY": null,
+  "level": "clear",
+  "words": "the ladder and his legs",
+  "reach": 0.127
+ },
+ {
+  "n": 173,
+  "hash": "03b8d3e5a890aab11369d8ffc337837091e80c8e332dc5e8b2169124db8ed486",
+  "anchor": 65,
+  "folder": "storm",
+  "size": "360x688",
+  "why": "second",
+  "lang": "zu",
+  "line": "Amabhomu amancane eqhwa ayawa. Icebo linye kuphela: hlala ngaphakathi.",
+  "px": 33.712002,
+  "textTop": 245,
+  "textBottom": 389,
+  "band": null,
+  "bandY": null,
+  "level": "clear",
+  "words": "the houses below the lightning",
+  "reach": 0.036
+ },
+ {
+  "n": 199,
+  "hash": "82ab32f7e25cc807f5730caebc989f682279caf5213d1f500e0cef0aa9f0a64e",
+  "anchor": 55,
+  "folder": "storm",
+  "size": "360x688",
+  "why": "second",
+  "lang": "zu",
+  "line": "Amabhomu amancane eqhwa ayawa. Icebo linye kuphela: hlala ngaphakathi.",
+  "px": 33.712002,
+  "textTop": 245,
+  "textBottom": 389,
+  "band": null,
+  "bandY": null,
+  "level": "clear",
+  "words": "the traffic",
+  "reach": 0.046
+ },
+ {
+  "n": 201,
+  "hash": "86e55c0d5dca0b19a7ed7ce3ed6307cef6ba253802b43f0dda0d894d295e4591",
+  "anchor": 47,
+  "folder": "storm",
+  "size": "360x688",
+  "why": "second",
+  "lang": "zu",
+  "line": "Amabhomu amancane eqhwa ayawa. Icebo linye kuphela: hlala ngaphakathi.",
+  "px": 33.712002,
+  "textTop": 245,
+  "textBottom": 389,
+  "band": null,
+  "bandY": null,
+  "level": "clear",
+  "words": "the windmill's base",
+  "reach": 0.055
+ },
+ {
+  "n": 202,
+  "hash": "88ab478a71b1137fbed523aa9fda3a9c4061f9d6977766a2b8b2c3586fcc051b",
+  "anchor": 58,
+  "folder": "rain",
+  "size": "360x688",
+  "why": "second",
+  "lang": "st",
+  "line": "Letamo le ne le tebile ho feta kamoo le neng le shebahala kateng. Le dula le tebile.",
+  "px": 33.712002,
+  "textTop": 226,
+  "textBottom": 370,
+  "band": null,
+  "bandY": null,
+  "level": "clear",
+  "words": "the traffic through the wiper",
+  "reach": 0.031
+ },
+ {
+  "n": 213,
+  "hash": "b57f33b40e016642fd464ba0ea6c7b40cdaa6ddcecb9f1e522a3ea8f13c7c67d",
+  "anchor": 56,
+  "folder": "fog",
+  "size": "360x688",
+  "why": "second",
+  "lang": "st",
+  "line": "Dikgomo di tseba hantle moo di leng teng. Ho fetang seo rona kaofela re ka se bolelang.",
+  "px": 33.712002,
+  "textTop": 206,
+  "textBottom": 350,
+  "band": [
+   48,
+   60
+  ],
+  "bandY": [
+   149.06086956521733,
+   223.66956521739127
+  ],
+  "level": "covers",
+  "words": "the Nguni cattle in the mist",
+  "reach": 0.036
+ },
+ {
+  "n": 222,
+  "hash": "d8d6e0e7fcf4fc1b962b722603f6881e324c2b80e41540d79717404f40138b1c",
+  "anchor": 55,
+  "folder": "rain",
+  "size": "360x688",
+  "why": "second",
+  "lang": "st",
+  "line": "Letamo le ne le tebile ho feta kamoo le neng le shebahala kateng. Le dula le tebile.",
+  "px": 33.712002,
+  "textTop": 226,
+  "textBottom": 370,
+  "band": null,
+  "bandY": null,
+  "level": "clear",
+  "words": "the farm gate and puddle",
+  "reach": 0.033
+ },
+ {
+  "n": 233,
+  "hash": "05a3ab4a3961e26cac7cf68156003ffe149cd4d6144cbe16033ccb1fca7b659c",
+  "anchor": 55,
+  "folder": "storm",
+  "size": "360x688",
+  "why": "second",
+  "lang": "zu",
+  "line": "Amabhomu amancane eqhwa ayawa. Icebo linye kuphela: hlala ngaphakathi.",
+  "px": 33.712002,
+  "textTop": 245,
+  "textBottom": 389,
+  "band": null,
+  "bandY": null,
+  "level": "clear",
+  "words": "the houses below the lightning",
+  "reach": 0.046
+ },
+ {
+  "n": 237,
+  "hash": "1bf137ccfaad57dbfcc1801342fe6ec401360ed50f7680df61ce0c1c48bf7e86",
+  "anchor": 41,
+  "folder": "storm",
+  "size": "320x488",
+  "why": "second",
+  "lang": "zu",
+  "line": "Amabhomu amancane eqhwa ayawa. Icebo linye kuphela: hlala ngaphakathi.",
+  "px": 23.912001,
+  "textTop": 121,
+  "textBottom": 196,
+  "band": null,
+  "bandY": null,
+  "level": "clear",
+  "words": "his back; phone and lightning clear",
+  "reach": 0.066
+ },
+ {
+  "n": 239,
+  "hash": "243eadef3d4887895250fa67e432b63253ddfc57169498919ed942bead508c96",
+  "anchor": 87,
+  "folder": "heat",
+  "size": "360x688",
+  "why": "second",
+  "lang": "zu",
+  "line": "Ngu-7 ntambama futhi kusengama-degree angama-30. IKaroo ayenzi amaphutha, izitatimende kuphela.",
+  "px": 30.712002,
+  "textTop": 218,
+  "textBottom": 383,
+  "band": [
+   52,
+   72
+  ],
+  "bandY": [
+   119.95130434782607,
+   244.29913043478257
+  ],
+  "level": "covers",
+  "words": "the woman on the stoep steps",
+  "reach": 0.047
+ },
+ {
+  "n": 263,
+  "hash": "8278f1fd2e1e369312dd78e685f5227e7901146f5712f5d00e0fa16a294df725",
+  "anchor": 47,
+  "folder": "storm",
+  "size": "360x688",
+  "why": "second",
+  "lang": "zu",
+  "line": "Amabhomu amancane eqhwa ayawa. Icebo linye kuphela: hlala ngaphakathi.",
+  "px": 33.712002,
+  "textTop": 245,
+  "textBottom": 389,
+  "band": null,
+  "bandY": null,
+  "level": "clear",
+  "words": "the flooded street",
+  "reach": 0.055
+ },
+ {
+  "n": 265,
+  "hash": "8cc0e2a4cb5284d07dad4ddeabe7776a0c10ae44b6de24b0204b130691d28b33",
+  "anchor": 67,
+  "folder": "cold",
+  "size": "360x688",
+  "why": "second",
+  "lang": "zu",
+  "line": "Umuntu ushayela eya ekhaya njengamanje ne-heater ivuliwe ngokugcwele ne-seat warmer njenge-bonus.",
+  "px": 32.712002,
+  "textTop": 234,
+  "textBottom": 409,
+  "band": null,
+  "bandY": null,
+  "level": "clear",
+  "words": "the wet sand and rocks",
+  "reach": 0.038
+ },
+ {
+  "n": 278,
+  "hash": "c892be6f44d78716392adbe0f0ade0a4f5638f52df562f0e02088a4c284ca8b3",
+  "anchor": 35,
+  "folder": "rain",
+  "size": "320x488",
+  "why": "second",
+  "lang": "en",
+  "line": "Two drops on a windscreen and the whole N1 forgets everything it ever learned.",
+  "px": 23.912001,
+  "textTop": 121,
+  "textBottom": 196,
+  "band": null,
+  "bandY": null,
+  "level": "clear",
+  "words": "the traffic in the rain",
+  "reach": 0.032
+ },
+ {
+  "n": 280,
+  "hash": "cb8642ad87a0a0809d2a492c7a4599263dc1725804f2d2f6de56d6de74e83ff4",
+  "anchor": 43,
+  "folder": "storm",
+  "size": "360x688",
+  "why": "second",
+  "lang": "zu",
+  "line": "Amabhomu amancane eqhwa ayawa. Icebo linye kuphela: hlala ngaphakathi.",
+  "px": 33.712002,
+  "textTop": 245,
+  "textBottom": 389,
+  "band": null,
+  "bandY": null,
+  "level": "clear",
+  "words": "the sea below the lightning",
+  "reach": 0.059
+ },
+ {
+  "n": 292,
+  "hash": "6c75084d23dbf03a524515716593a6338b5386869ecaaee822f8f8f6daafe4f1",
+  "anchor": 75,
+  "folder": "cold",
+  "size": "360x688",
+  "why": "second",
+  "lang": "zu",
+  "line": "Umuntu ushayela eya ekhaya njengamanje ne-heater ivuliwe ngokugcwele ne-seat warmer njenge-bonus.",
+  "px": 32.712002,
+  "textTop": 234,
+  "textBottom": 409,
+  "band": [
+   55,
+   65
+  ],
+  "bandY": [
+   186.1521739130435,
+   248.32608695652175
+  ],
+  "level": "covers",
+  "words": "the car's lights on the mountain pass",
+  "reach": 0.043
+ },
+ {
+  "n": 107,
+  "hash": "5a08fa13f99d2d2733aaaf4977ef131595df457eb0eacbfe396d8f8280543462",
+  "anchor": null,
+  "folder": "rain",
+  "size": "360x688",
+  "why": "third",
+  "lang": "zu",
+  "line": "Imvula iphendula wonke umshayeli waseNingizimu Afrika abe umfundi futhi. Ama-hazards avuliwe, isithunzi sicishiwe.",
+  "px": 30.712002,
+  "textTop": 224,
+  "textBottom": 389,
+  "band": [
+   45,
+   72
+  ],
+  "bandY": [
+   102.14608695652174,
+   270.015652173913
+  ],
+  "level": "covers",
+  "words": "the wave and the two people watching"
+ },
+ {
+  "n": 124,
+  "hash": "90566b9c8c8cbcf5e7693de288906baa06f09141f418c43b3114a1d46d87904d",
+  "anchor": 99,
+  "folder": "clear",
+  "size": "360x688",
+  "why": "third",
+  "lang": "zu",
+  "line": "Usuku olulodwa oluphelele lukhishiwe. Aludluliseleki. Lusebenzise ngokuhlakanipha.",
+  "px": 33.712002,
+  "textTop": 232,
+  "textBottom": 376,
+  "band": [
+   48,
+   90
+  ],
+  "bandY": [
+   60.10304347826087,
+   321.2334782608695
+  ],
+  "level": "partly",
+  "words": "risen: the raised arms at the revolving door"
+ },
+ {
+  "n": 293,
+  "hash": "f20554e03039b5158b9906ea13eefcaae5b746a1f8d463d7aefe8adc7588f6a3",
+  "anchor": 100,
+  "folder": "cold",
+  "size": "360x688",
+  "why": "third",
+  "lang": "zu",
+  "line": "Umuntu ushayela eya ekhaya njengamanje ne-heater ivuliwe ngokugcwele ne-seat warmer njenge-bonus.",
+  "px": 32.712002,
+  "textTop": 234,
+  "textBottom": 409,
+  "band": [
+   58,
+   88
+  ],
+  "bandY": [
+   152.8695652173913,
+   339.3913043478261
+  ],
+  "level": "partly",
+  "words": "the dog on its cushion"
+ }
+]

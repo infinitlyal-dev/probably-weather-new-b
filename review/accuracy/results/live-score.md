@@ -1,10 +1,10 @@
-# Live score — production vs the airports (2026-09-25T15:48Z)
+# Live score — production vs the airports (2026-09-28T09:13Z)
 
-114 records from 2 file(s), 0 failed reads skipped; 95 airport-hours with a usable report within 45 min of the forecast's own time (cloud by the app's buckets: CAVOK/FEW clear, SCT either, BKN/OVC cloudy; Bloemfontein's overnight AUTO reports observe nothing and are not scored).
+510 records from 5 file(s), 18 failed reads skipped; 389 airport-hours with a usable report within 45 min of the forecast's own time (cloud by the app's buckets: CAVOK/FEW clear, SCT either, BKN/OVC cloudy; Bloemfontein's overnight AUTO reports observe nothing and are not scored).
 
-- **Now condition agrees with the airport:** 46 of 95 (48%) — by airport: FACT 2/19, FAOR 13/19, FALE 12/19, FAGG 3/17, FAPE 7/11, FABL 9/10
-- **"Rain" shown:** 0 times, dry at the airport 0. Tomorrow.io radar override: 0; next-hour bump: 0.
-- **Rain chance vs rain in the next hour:** 0–9%: 0/81 · 10–19%: 0/14 · 20–29%: 0/2 · 30–39%: 0/1 · 60–69%: 0/1
+- **Now condition agrees with the airport:** 230 of 389 (59%) — by airport: FACT 35/68, FAOR 66/79, FALE 43/74, FAGG 27/70, FAPE 26/51, FABL 33/47
+- **"Rain" shown:** 27 times, dry at the airport 13. Tomorrow.io radar override: 27; next-hour bump: 8.
+- **Rain chance vs rain in the next hour:** 0–9%: 1/244 · 10–19%: 4/61 · 20–29%: 3/31 · 30–39%: 3/24 · 40–49%: 8/39 · 50–59%: 0/6 · 60–69%: 4/13 · 70–79%: 10/26 · 80–89%: 2/3
 
 ## Al's note (25 Sept 2026), per release
 
@@ -12,6 +12,17 @@
 
 - **ec7ae52** (52 airport-hours the airport could judge): fog shown 16, fog or mist at the airport 3 · "Rain's here" 0, rain that hour or the next 0 · "Showers nearby." 0, rain that hour or the next 0
 - **84fc691** (54 airport-hours the airport could judge): fog shown 2, fog or mist at the airport 0 · "Rain's here" 0, rain that hour or the next 0 · "Showers nearby." 0, rain that hour or the next 0 · Strand: fog 0, "Rain's here" 0, "Showers nearby." 0 of 2 h; Cape Town city: fog 0, "Rain's here" 0, "Showers nearby." 0 of 2 h
+- **7525fd2** (119 airport-hours the airport could judge): fog shown 4, fog or mist at the airport 0 · "Rain's here" 14, rain that hour or the next 9 · "Showers nearby." 5, rain that hour or the next 4 · Strand: fog 3, "Rain's here" 1, "Showers nearby." 0 of 21 h; Cape Town city: fog 0, "Rain's here" 0, "Showers nearby." 0 of 21 h
+- **274e5cf** (33 airport-hours the airport could judge): fog shown 0, fog or mist at the airport 0 · "Rain's here" 3, rain that hour or the next 3 · "Showers nearby." 1, rain that hour or the next 0 · Strand: fog 0, "Rain's here" 0, "Showers nearby." 0 of 6 h; Cape Town city: fog 0, "Rain's here" 0, "Showers nearby." 0 of 6 h
+- **e688913** (203 airport-hours the airport could judge): fog shown 3, fog or mist at the airport 2 · "Rain's here" 9, rain that hour or the next 7 · "Showers nearby." 6, rain that hour or the next 2 · Strand: fog 0, "Rain's here" 0, "Showers nearby." 0 of 36 h; Cape Town city: fog 0, "Rain's here" 0, "Showers nearby." 0 of 36 h
+
+## Wind, per release (served now-wind vs the airport; Strand vs its station 68911)
+
+- **ec7ae52**: airports 43 h, off by 4.5 km/h (bias -2.0) · Strand 0 reports, off by — km/h (bias —)
+- **84fc691**: airports 44 h, off by 5.3 km/h (bias -4.1) · Strand 0 reports, off by — km/h (bias —)
+- **7525fd2**: airports 100 h, off by 4.5 km/h (bias -1.8) · Strand 0 reports, off by — km/h (bias —)
+- **274e5cf**: airports 29 h, off by 6.7 km/h (bias -5.3) · Strand 0 reports, off by — km/h (bias —)
+- **e688913**: airports 175 h, off by 6.3 km/h (bias -1.7) · Strand 0 reports, off by — km/h (bias —)
 
 Mismatches:
 
@@ -64,3 +75,113 @@ Mismatches:
 - 2026-09-25T15:10 FACT served cloudy (overcast) · airport clear
 - 2026-09-25T15:10 FABL served cloudy (overcast) · airport clear
 - 2026-09-25T15:10 FAGG served rain-possible (rain-possible-prob) · airport clear
+- 2026-09-25T16:10 FACT served cloudy (mostly-cloudy) · airport clear
+- 2026-09-25T16:10 FABL served cloudy (overcast) · airport clear
+- 2026-09-25T16:10 FAGG served cloudy (overcast) · airport clear
+- 2026-09-25T17:10 FACT served cloudy (overcast) · airport clear
+- 2026-09-25T17:10 FALE served cloudy (overcast) · airport clear
+- 2026-09-25T17:10 FABL served cloudy (overcast) · airport clear
+- 2026-09-25T17:10 FAGG served rain-possible (desc-rain-unconfirmed) · airport mist
+- 2026-09-25T18:10 FABL served cloudy (overcast) · airport clear
+- 2026-09-25T18:10 FAGG served rain (tomorrow-io-radar-override) · airport clear
+- 2026-09-25T19:10 FAOR served cloudy (mostly-cloudy) · airport clear
+- 2026-09-25T19:10 FAGG served rain-possible (desc-rain-unconfirmed) · airport mist
+- 2026-09-25T20:10 FACT served thunder (two-source-consensus-thunder) · airport mist
+- 2026-09-25T20:10 FAOR served cloudy (mostly-cloudy) · airport clear
+- 2026-09-25T20:10 FAPE served cloudy (overcast) · airport clear
+- 2026-09-25T20:10 FAGG served rain-possible (rain-possible-prob) · airport mist
+- 2026-09-25T21:10 FALE served cloudy (mostly-cloudy) · airport clear
+- 2026-09-25T21:10 FAPE served rain-possible (rain-possible-prob) · airport clear
+- 2026-09-25T21:10 FAGG served rain-possible (rain-possible-prob) · airport mist
+- 2026-09-25T22:10 FALE served fog (visibility-humidity-fog-detector) · airport clear
+- 2026-09-25T22:10 FAPE served rain-possible (desc-rain-unconfirmed) · airport clear
+- 2026-09-25T22:10 FAGG served rain-possible (rain-possible-prob) · airport mist
+- 2026-09-25T23:10 FACT served thunder (two-source-consensus-thunder) · airport mist
+- 2026-09-25T23:10 FALE served fog (visibility-humidity-fog-detector) · airport clear
+- 2026-09-26T00:10 FALE served fog (visibility-humidity-fog-detector) · airport clear
+- 2026-09-26T00:10 FAGG served rain-possible (desc-rain-unconfirmed) · airport mist
+- 2026-09-26T01:10 FACT served rain-possible (desc-rain-unconfirmed) · airport mist
+- 2026-09-26T01:10 FALE served fog (visibility-humidity-fog-detector) · airport clear
+- 2026-09-26T02:10 FACT served rain-possible (desc-rain-unconfirmed) · airport mist
+- 2026-09-26T03:10 FALE served cloudy (overcast) · airport clear
+- 2026-09-26T03:10 FABL served cloudy (mostly-cloudy) · airport clear
+- 2026-09-26T03:10 FAGG served rain (tomorrow-io-radar-override) · airport mist
+- 2026-09-26T04:10 FACT served rain-possible (desc-rain-unconfirmed) · airport mist
+- 2026-09-26T04:10 FALE served cloudy (overcast) · airport clear
+- 2026-09-26T04:10 FAGG served rain (tomorrow-io-radar-override) · airport fog
+- 2026-09-26T05:10 FACT served rain-possible (desc-rain-unconfirmed) · airport mist
+- 2026-09-26T05:10 FALE served cloudy (overcast) · airport clear
+- 2026-09-26T05:10 FAPE served rain (tomorrow-io-radar-override) · airport clear
+- 2026-09-26T05:10 FABL served cloudy (overcast) · airport clear
+- 2026-09-26T05:10 FAGG served rain-possible (rain-possible-prob) · airport fog
+- 2026-09-26T06:10 FACT served rain-possible (rain-possible-prob) · airport mist
+- 2026-09-26T06:10 FABL served cloudy (overcast) · airport clear
+- 2026-09-26T07:10 FABL served cloudy (overcast) · airport clear
+- 2026-09-26T07:10 FAGG served rain-possible (rain-possible-prob) · airport mist
+- 2026-09-26T08:10 FACT served partly-cloudy (partly-cloudy) · airport cloudy
+- 2026-09-26T08:10 FAPE served rain-possible (showers-nearby) · airport clear
+- 2026-09-26T08:10 FABL served rain (tomorrow-io-radar-override) · airport clear
+- 2026-09-26T08:10 FAGG served rain-possible (desc-rain-unconfirmed) · airport mist
+- 2026-09-26T09:10 FACT served rain-possible (desc-rain-unconfirmed) · airport scattered
+- 2026-09-26T09:10 FAPE served rain (tomorrow-io-radar-override) · airport clear
+- 2026-09-26T09:10 FABL served cloudy (overcast) · airport clear
+- 2026-09-26T09:10 FAGG served rain-possible (desc-rain-unconfirmed) · airport mist
+- 2026-09-26T10:10 FALE served cloudy (overcast) · airport clear
+- 2026-09-26T10:10 FAPE served rain-possible (desc-rain-unconfirmed) · airport clear
+- 2026-09-26T10:10 FAGG served rain-possible (desc-rain-unconfirmed) · airport fog
+- 2026-09-26T11:10 FALE served cloudy (mostly-cloudy) · airport clear
+- 2026-09-26T11:10 FAPE served rain-possible (rain-possible-prob) · airport clear
+- 2026-09-26T11:10 FAGG served rain-possible (desc-rain-unconfirmed) · airport fog
+- 2026-09-26T12:10 FAPE served rain-possible (rain-possible-prob) · airport clear
+- 2026-09-26T13:10 FACT served partly-cloudy (partly-cloudy) · airport cloudy
+- 2026-09-26T13:10 FAPE served rain-possible (desc-rain-unconfirmed) · airport clear
+- 2026-09-26T13:10 FAGG served rain-possible (desc-rain-unconfirmed) · airport mist
+- 2026-09-26T14:10 FAGG served rain-possible (desc-rain-unconfirmed) · airport mist
+- 2026-09-26T15:10 FALE served cloudy (mostly-cloudy) · airport clear
+- 2026-09-26T15:10 FAPE served rain-possible (rain-possible-prob) · airport mist
+- 2026-09-26T15:10 FAGG served rain-possible (desc-rain-unconfirmed) · airport fog
+- 2026-09-26T16:10 FABL served rain (tomorrow-io-radar-override) · airport cloudy
+- 2026-09-26T16:10 FAGG served rain-possible (desc-rain-unconfirmed) · airport mist
+- 2026-09-26T18:10 FAPE served rain-possible (rain-possible-prob) · airport clear
+- 2026-09-26T20:10 FAOR served cloudy (overcast) · airport clear
+- 2026-09-26T23:10 FALE served rain-possible (rain-possible-prob) · airport scattered
+- 2026-09-27T00:10 FALE served cloudy (overcast) · airport clear
+- 2026-09-27T05:10 FACT served clear (majority-override-clear) · airport cloudy
+- 2026-09-27T06:10 FABL served fog (visibility-humidity-fog-detector) · airport clear
+- 2026-09-27T08:10 FABL served partly-cloudy (partly-cloudy) · airport cloudy
+- 2026-09-27T12:10 FAGG served rain-possible (desc-rain-unconfirmed) · airport scattered
+- 2026-09-27T13:11 FALE served rain (tomorrow-io-radar-override) · airport clear
+- 2026-09-27T13:11 FABL served clear (desc-clear-keyword) · airport cloudy
+- 2026-09-27T13:11 FAGG served rain-possible (desc-rain-unconfirmed) · airport scattered
+- 2026-09-27T14:10 FAGG served rain-possible (rain-possible-prob) · airport clear
+- 2026-09-27T15:10 FAGG served rain-possible (rain-possible-prob) · airport clear
+- 2026-09-27T17:10 FAGG served rain-possible (desc-rain-unconfirmed) · airport scattered
+- 2026-09-27T18:10 FALE served rain (tomorrow-io-radar-override) · airport clear
+- 2026-09-27T18:10 FAPE served rain-possible (rain-possible-prob) · airport clear
+- 2026-09-27T18:10 FAGG served rain-possible (desc-rain-unconfirmed) · airport scattered
+- 2026-09-27T19:10 FAPE served rain-possible (rain-possible-prob) · airport clear
+- 2026-09-27T20:10 FALE served cloudy (overcast) · airport clear
+- 2026-09-27T20:10 FAPE served rain-possible (rain-possible-prob) · airport scattered
+- 2026-09-27T21:10 FAPE served rain-possible (rain-possible-prob) · airport clear
+- 2026-09-27T22:09 FALE served cloudy (overcast) · airport rain
+- 2026-09-27T22:09 FAPE served rain-possible (desc-rain-unconfirmed) · airport scattered
+- 2026-09-27T23:10 FALE served rain (tomorrow-io-radar-override) · airport cloudy
+- 2026-09-27T23:10 FAPE served rain-possible (desc-rain-unconfirmed) · airport clear
+- 2026-09-28T00:09 FALE served rain (tomorrow-io-radar-override) · airport cloudy
+- 2026-09-28T01:10 FAPE served rain-possible (desc-rain-unconfirmed) · airport clear
+- 2026-09-28T02:09 FAOR served clear (desc-clear-keyword) · airport mist
+- 2026-09-28T03:10 FAOR served clear (desc-clear-keyword) · airport cloudy
+- 2026-09-28T03:09 FAGG served cold-clear (dry-cold-clear-sky) · airport rain
+- 2026-09-28T04:10 FAOR served clear (desc-clear-keyword) · airport mist
+- 2026-09-28T04:09 FAGG served partly-cloudy (partly-cloudy) · airport cloudy
+- 2026-09-28T05:10 FAOR served clear (desc-clear-keyword) · airport mist
+- 2026-09-28T05:09 FAPE served partly-cloudy (partly-cloudy) · airport rain
+- 2026-09-28T05:09 FAGG served partly-cloudy (partly-cloudy) · airport cloudy
+- 2026-09-28T06:10 FACT served cloudy (overcast) · airport clear
+- 2026-09-28T06:09 FALE served cloudy (overcast) · airport clear
+- 2026-09-28T07:10 FALE served cloudy (overcast) · airport clear
+- 2026-09-28T08:10 FACT served cloudy (overcast) · airport clear
+- 2026-09-28T08:10 FALE served cloudy (overcast) · airport clear
+- 2026-09-28T09:09 FACT served cloudy (overcast) · airport clear
+- 2026-09-28T09:09 FALE served cloudy (overcast) · airport clear
+- 2026-09-28T09:09 FAPE served rain-possible (desc-rain-unconfirmed) · airport scattered

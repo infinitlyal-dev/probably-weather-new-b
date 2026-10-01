@@ -1,0 +1,354 @@
+# My look at B's worst cases (b-judge.mjs turns this into b-judged.json).
+# n|size|verdict|note|band (px top-bottom on that screen, only for a subject D's bands do not mark)
+1|414|clear|dark clouds below the moon; the moon stays clear|
+2|414|clear|the pipe and the drip below the spout; the tap head and spout stay clear|
+3|414|partly|the kids' legs and the sprinkler (faces stay clear)|
+4|414|clear|the cage below the parrot; the parrot stays clear|
+5|414|covers|the golf ball in the grass, wholly under the joke (the golfer stays clear; D's joke sat between them)|288-355
+6|414|covers|the boy climbing into the bakkie, from his face down (the man above stays clear)|
+7|414|partly|the dog's body and paws (its face stays just clear; D's risen joke was above it)|155-395
+8|414|partly|the two women's backs and chairs (heads stay clear)|
+9|414|clear|the dashboard and the phone's foot; his face stays clear|
+10|414|partly|the toddler's hands and the porridge (faces stay clear)|
+11|414|clear|misty rooftops|
+12|414|covers|the dog in the paddling pool|
+13|414|clear|the misty field below the posts|
+14|414|partly|the man's legs and the car's bonnet (the pan and the kids' faces stay clear)|
+15|414|covers|the first line runs through the 38° reading|
+16|414|partly|their coats (faces and cups stay just clear)|
+17|414|partly|the cat's body and the wall (its face stays clear)|
+18|414|covers|the melting half of the chocolate and its puddle|
+19|414|partly|his back and the bin (his head stays clear)|
+20|414|partly|his shoulder and arms on the wall (his face stays clear)|
+20|320|partly|his shoulder, the only part of him left on the card (the joke runs up under the header)|
+21|414|partly|her legs (her face and jersey stay clear)|
+22|414|partly|the runners' bodies (faces stay clear)|
+23|414|covers|the sleepers on their mattresses, heads and all|
+24|414|covers|the jug of ice and the glasses on the table|
+25|414|clear|the promenade, lamps and sea below the palms|
+26|414|partly|the fire drum and their bodies (faces stay clear)|
+27|414|partly|the 2:00 clock and the bed (the sleeper's face stays clear)|
+28|414|partly|the frosted car's side (its roof stays clear)|
+29|414|partly|the couple's backs in their blanket (their heads sit on the joke's top edge)|
+30|414|clear|fog below the traffic light|
+31|414|covers|the table, and the face of the diner in front on the right (the others' faces stay clear)|
+32|414|covers|the dog walking between them, and their legs (their faces stay clear)|
+33|414|clear|the bed below the bucket; the bucket and their faces stay clear|
+33|320|partly|the bucket and their hands (faces stay clear)|
+34|414|partly|the aloe at the foot of the bending bush (the bush's crown stays clear)|
+35|414|clear|the street and walls below the palm|
+36|414|clear|the fence and ground below the tree|
+37|414|covers|the man in the front of the pool, head and shoulders (the women's faces stay clear)|
+38|414|partly|the cat's lower body (its face stays clear)|
+39|414|clear|the wet promenade below the railing; the wave stays clear|
+40|414|covers|the dog on its lead and the man's legs (his face stays clear)|
+41|414|clear|the aloe and the wall below the lamp; the lamp and the moth stay clear|
+41|320|partly|the lamp's lower half (the moth stays just clear)|
+42|414|clear|the wall below the washing; the washing stays clear|
+42|320|covers|the washing on the line (the joke also runs up under the header)|
+43|414|partly|his steaming mug and his body (his face stays clear)|
+44|414|partly|her body at the open fridge (her face stays clear)|
+45|414|clear|the house's lower storey and frosted fence; the frosted roof stays clear|
+46|414|clear|the wet street|
+47|414|covers|the cat curled up on the armchair, under the first line|218-272
+48|414|partly|his body and the bin (his face and breath stay clear)|237-400
+49|414|partly|their hands and the braai tongs (faces stay clear)|
+50|414|partly|the cat's body on the lawn (its face stays clear)|
+51|414|partly|their blankets and mugs (faces stay clear)|
+52|414|covers|the dog's head, lying lowest, under the first line (its body stays clear)|
+52|360|covers|the dog's head under the first line|
+53|414|clear|the wet tarmac below the taxis; the taxis stay clear|
+53|320|covers|the taxis in the fog (the joke also runs up under the header)|
+54|414|clear|the driveway below the garage doors; the lightning stays clear|
+55|414|clear|the wall and the wet pavement|
+56|414|clear|the lower window and his shirt; his face, the phone and the lightning stay clear|
+57|414|clear|the running gutter|
+58|414|partly|his legs and the road (his face and body stay clear)|
+59|414|clear|the flooded stoep|
+60|414|partly|the laptop, her mug and hands (her face stays clear)|
+61|414|clear|the mountain's silhouette and the horizon; the Milky Way stays clear|
+62|414|clear|the window sill and the blanket's hem (his face stays clear)|
+63|414|partly|his legs and the path (his face and body stay clear)|
+64|414|clear|the city lights under fog|
+65|414|clear|the wall and lawn below the lightning|
+66|414|partly|his hands on the wheel (his face stays clear)|
+67|414|clear|the wet promenade below the palms|
+68|414|partly|the hem of the long sheet blowing (the rest of the washing stays clear)|
+69|414|partly|her blanket and the railing (her face and mug stay clear)|
+70|414|covers|the man with the torch, head and all, under the first line|
+71|414|partly|the front of the lit café stoep and the wet street (the man and the café stay clear)|
+72|414|clear|the pool|
+73|414|clear|the city lights|
+74|414|covers|the people lying in the bakkie's back, arms up, under the joke (D's joke never reached them)|230-335
+75|414|partly|the broken umbrella's lower half in the flooded gutter (its top stays clear)|180-295
+76|414|covers|the couple lying in the bakkie, heads and all|
+77|414|covers|the bicycle and the glass of ice water|
+78|414|covers|the bakkie's front and its headlights|
+79|414|covers|the dog in the patch of sun, wholly under the joke (the family's faces stay clear)|
+80|414|clear|the wall and pavement below the flag|
+81|414|partly|the chairs' feet and the cool box (the umbrella and the chair backs stay clear)|
+82|414|partly|his legs and lower body (his face and the umbrella stay clear)|
+83|414|partly|the golfers' bags and feet (heads stay clear)|
+84|414|clear|the rugby field|
+85|414|clear|the pitch and the kit bags below the blowing cover; the cover stays clear|
+86|414|partly|her jacket (her face and phone stay clear)|
+87|414|partly|the worker's vest and trousers (his face stays clear)|
+88|414|partly|the lower grid (the meat and the hand with the tongs stay clear)|
+89|414|partly|the dog's body (its face stays clear)|
+90|414|partly|the frosted car's front and his legs (his head stays clear)|
+91|414|partly|her coat and the bench (her face and cup stay clear)|
+92|414|clear|the road and the verge|
+93|414|partly|her hands holding her skirt (her face stays clear)|
+94|414|partly|the lower half of the sheets on the line|
+95|414|partly|her legs and the puddle (she stays clear from the waist up)|
+96|414|partly|the blanket over the dog's body (its face stays clear)|
+96|320|partly|the blanket over the dog (its face at the card's top stays clear; the joke runs up under the header)|
+97|414|partly|the kids' legs and the lawn (faces stay clear)|
+98|414|clear|the grass below the sheep; the sheep stay clear|
+99|414|partly|the frosted table's ironwork (the sunglasses stay clear)|
+100|414|partly|her hand on the wheel and her shoulder (her head stays clear)|
+101|414|clear|the wall and road below the blowing shade cover|
+102|414|clear|the lawn below the blown-over trampoline; the trampoline stays clear|
+102|320|partly|the trampoline's lower half (the joke also runs up under the header)|
+103|414|clear|the grass under the cloud base|
+104|414|covers|the blown-over chair and its cushion on the grass|
+104|360|covers|the blown-over chair and its cushion|
+105|414|partly|the kids' legs and the pavement (faces stay clear)|
+106|414|clear|the street and the pavement|
+107|414|clear|the harbour wall and the boats below the watchers (D's band reaches the wall); the wave and the two watchers stay clear|
+108|414|partly|the dog's front paws under the first line (its head and body stay clear; D's joke never reached it)|175-295
+109|414|partly|the kids' gumboots and the puddle (faces stay clear)|
+110|414|clear|the garden below the washing|
+111|414|covers|dad's face under the first line (the kids' faces stay clear)|
+112|414|partly|the team's knees and boots (faces and chips stay clear)|
+113|414|partly|his legs and the dust (his face stays clear)|
+114|414|partly|his shorts, legs and the foot of his bag (his head stays clear)|
+115|414|covers|the blown-over chair in the flooded road, wholly under the joke (D's joke only touched its backrest)|285-370
+116|414|clear|the wall below the cat; its paws reach the first line's top|
+116|360|partly|the cat's lower body and the wall (its face stays clear)|
+117|414|partly|his body, his beer and his legs (his face stays clear)|
+118|414|partly|the tarp and the bakkie (his head stays clear)|
+119|414|partly|the socks' toes and the rug (the rest of the socks and the heater stay clear)|
+120|414|partly|his legs, the skis and the splash (his face stays clear)|
+121|414|partly|the kids' legs, boots and the puddle (faces stay clear)|
+122|414|clear|the rugby field|
+123|414|partly|the dogs' hind legs and the floor (their heads stay clear)|
+124|414|clear|the floor below the walkers (D's band reaches the floor); only their feet reach the first line's top|
+125|414|clear|the rainy windscreen and the tail lights|
+126|414|partly|his legs (his face stays clear)|
+127|414|partly|the chameleon's curled tail (its head and body stay clear)|225-305
+128|414|clear|the road below the jacaranda|
+129|414|clear|the duvet's edge and the rug below the child; the child's face stays clear|
+130|414|partly|her body, towel and the sunscreen (her face stays clear)|
+131|414|partly|their legs, the cool box and the floor (faces and laptops stay clear)|
+132|414|partly|his jeans and the solar panels (his face stays clear)|
+133|414|covers|the dog on the lawn, wholly under the first lines (D's risen joke was at the top)|225-295
+134|414|partly|the hadeda's feet and the soil (its head and body stay clear)|
+134|360|partly|the hadeda's legs, beak tip and the soil (its head stays clear)|
+135|414|clear|the path and the foot of the tipped bin; the three chasing the litter stay clear|
+136|414|partly|their legs and the trolleys (faces stay clear)|
+137|414|partly|his blanket, the mug and the heater's foot (his face stays clear)|
+138|414|partly|his jersey (his hands and face stay clear)|
+139|414|covers|the gumboots at the door|
+140|414|partly|his legs and the umbrella in his hand (his head and back stay clear)|
+141|414|clear|the pitch below the stands; the lightning stays clear|
+142|414|covers|the dog, wholly under the joke, and the man's legs (his face stays clear)|
+143|414|clear|the dashboard below the phone; the phone and the lightning stay clear|
+144|414|partly|the car door, the girl's legs and his legs (faces stay clear)|
+145|414|partly|her legs and the leaves on the road (her face stays clear)|
+146|414|partly|the dog's body and paws (its face stays just clear)|
+147|414|partly|the fern's pot, overflowing, under the first line (the fern stays clear; D's joke sat lower)|245-335
+148|414|partly|the sunglasses and the glass's foot (the glass stays clear)|
+149|414|partly|her legs, the lawn and the braai (her face and basket stay clear)|
+150|414|partly|the surfer's legs and the beach (his body and board stay clear)|
+151|414|partly|the cat's paws and lower body in the puddle (its face stays clear)|
+152|414|clear|the doormat below the dog; the dog stays clear|
+153|414|partly|the hadeda's legs and the lawn (its body and head stay clear)|
+154|414|partly|the kids' bodies and the mother's jacket (every face stays clear; the boy's just)|
+155|414|partly|their aprons, hands and the braai tongs (faces stay clear)|
+156|414|partly|the runner's legs (her face and body stay clear)|
+157|414|covers|the shoes on the mat and the foot of the wet jacket|
+158|414|clear|the ground below the dog; its chin and paws graze the first line's top (under D's 40 px)|
+159|414|partly|their bodies from the chest down (faces stay clear)|
+160|414|partly|his shorts, legs and the mower (his face stays clear)|
+161|414|partly|their hands, the flask and the cup, and their laps (faces stay clear)|
+162|414|partly|the torch, the book's foot and his legs (his face stays clear)|
+163|414|partly|the lantern, the table and their laps (faces stay clear)|224-350
+164|414|partly|his legs and the pot plant (his head stays clear)|
+165|414|partly|the cat's curled body and tail (its face stays clear; D's band stops above them)|
+165|360|partly|the cat's curled body (its face stays clear)|
+166|414|partly|his legs and the deck chair (his face stays clear)|
+167|414|partly|the braai fire, the table and the right man's legs (their heads stay clear)|
+168|414|clear|his legs and the ladder, as under D's joke (D judged these clear); his face and the brush stay clear|
+169|414|partly|the bicycle and his legs (his face and jersey stay clear)|
+170|414|partly|the sheep and the foot of the farmer's coat (his head stays clear)|
+171|414|covers|the nearest seagull, under the first line (the line of gulls behind stays clear)|
+172|414|clear|the roof below the hadeda; the hadeda stays clear|
+173|414|clear|the flooded street and the car below the lightning|
+174|414|clear|the windpump's legs and the veld, as under D's joke (the wheel stays clear)|
+175|414|partly|their hands and the rug, the dog under the bed at the top edge (faces stay clear)|
+176|414|clear|the lawn below the dog; its paws reach the top edge|
+177|414|covers|the nearest frosted wheelie bins|
+178|414|partly|the runner's legs and the street (her head stays clear; D's risen joke was on it)|250-400
+179|414|partly|the cow's legs and the grass (its face stays clear)|
+180|414|partly|the bicycle and the cyclist's legs (his head stays clear)|
+181|414|partly|the hadeda's legs, under the first line (its body and head stay clear)|
+182|414|clear|the houses and sunbeams below the palm|
+183|414|clear|the pool wall below the dog; the float and its paws graze the first line (under D's 40 px), the dog stays clear|
+184|414|partly|the kids' legs and the pavement (faces stay clear)|
+185|414|partly|the joggers' legs (faces stay clear)|
+186|414|partly|the kids' bodies and the frosted car (every face stays clear)|
+187|414|partly|his legs in the pool (his body and face stay clear)|
+188|414|partly|the boat's hull and the men's waders (faces stay clear)|
+189|414|partly|the frosted car's bonnet and front (its windscreen stays clear)|
+190|414|clear|the wet street; the far cyclist sits just above the first line|
+191|414|partly|his legs, the hose and the spray (his face stays clear)|
+192|414|partly|his legs and the blowing braai cover (his face stays clear)|
+193|414|clear|the stoep's balustrade and the houses below; the woman grazes the top edge (under D's 40 px)|
+194|414|clear|the coastal path below the runner; her shoes graze the top edge|
+195|414|clear|the fog below the window's beam|
+196|414|partly|the child's legs (his face, vest and bag stay clear)|
+197|414|partly|his shorts and hands on his hips (his face stays clear)|
+198|414|partly|the farmhouse's stoep and lower walls under the first line (its roof and the windmill stay clear)|
+199|414|clear|the traffic, as under D's joke (D judged it clear)|
+200|414|covers|the egg frying on the bonnet|
+201|414|clear|the field and the windmill's base, as under D's joke|
+202|414|clear|the wet road and the tail lights through the wiper, as under D's joke|
+203|414|partly|the runner's legs under the first two lines (seen from behind; D's risen joke was above her)|190-355
+204|414|partly|the boy's legs (his face and hands stay clear)|
+205|414|partly|his legs and the hillside (his head stays clear)|
+206|414|partly|her legs (her face stays clear)|
+207|414|clear|the wet sand below the surfer; his feet graze the top edge|
+208|414|partly|the dog's body and front paws under the first line (its face stays clear; D's risen joke was above it)|165-320
+209|414|partly|the cat's hind legs and tail on the sill (its face stays clear)|
+210|414|partly|the first line runs through the mug's lower half|
+210|360|partly|the first line runs through the mug|
+211|414|clear|the frosty verge below the guinea fowl; their feet graze the first line (under D's 40 px)|
+212|414|partly|the kids' legs and boots (faces and umbrella stay clear)|
+213|414|clear|the grass below the cattle|
+214|414|covers|the two steaming mugs on the wall, under the first line (D's band was the chimney smoke, where its risen joke sat)|272-322
+215|414|partly|her skirt and legs (her face and the washing stay clear)|
+216|414|partly|the mother's hands at the zip and the boy's jacket (both faces stay clear)|
+217|414|covers|the sprinkler and its spray|
+217|320|covers|the sprinkler: the joke covers all 27 px of photograph left below the header, and runs into it|
+218|414|clear|the road and the field below the gum trees|
+219|414|partly|the foot of her gown and the garden (her face and mug stay clear)|
+220|414|partly|the dust behind the bakkie; the bakkie itself sits just above the first line|
+221|414|clear|the road through the dunes|
+222|414|clear|the flooded yard and the windpump's reflection below the gate|
+223|414|partly|the SUV's front wheel, bumper and the paving (its frosted windscreen stays clear)|
+224|414|partly|their legs, skirts and the car's nose (faces stay clear)|
+225|414|partly|the runner's legs and the promenade (her face and body stay clear)|
+226|414|clear|the foggy street below the lamps|
+227|414|partly|the runners' legs and the promenade (faces stay clear)|
+228|414|partly|the runners' feet and the wet promenade (faces stay clear)|
+229|414|partly|the sleeping dog's muzzle and front legs (its eyes and body stay clear; D's risen joke was above it)|185-330
+230|414|partly|the dog's body (its head stays clear)|
+231|414|partly|her shoulders and the balcony (her head stays clear)|
+232|414|clear|the town's rooftops|
+233|414|clear|the wet street below the houses and the lightning|
+234|414|partly|his trousers and the wet jacket's hem (his face stays clear)|
+235|414|partly|the bride's dress, the bouquet and the kneeling photographer's legs (faces stay clear)|
+236|414|partly|the friends' legs and the promenade (faces and ice creams stay clear; D's risen joke was on the faces)|
+237|414|clear|the balcony and the city lights; his back, the phone and the lightning stay clear|
+238|414|partly|the heater under the cat (the cat stays clear)|
+239|414|clear|the stoep steps below the woman; her feet reach the first line's top edge|
+240|414|partly|the dog, faint in the fog, and her feet (the woman stays clear)|
+241|414|clear|the road below the car's lights in the fog|
+242|414|clear|the stoep floor below the chair, mug and shoes|
+243|414|partly|the lower half of the frozen washing|
+244|414|partly|his legs, the watering can and the steps (his face stays clear)|
+245|414|partly|their legs on the tidal pool wall (faces stay clear)|
+246|414|clear|the veld below the braai and the picnic table|
+247|414|partly|his legs, the umbrella's tip and the passing car (his face stays clear)|
+248|414|partly|their bodies and jeans (faces stay clear)|
+249|414|partly|his body from the chest down (his face and umbrella stay clear)|
+250|414|partly|the street cricket's wicket (a bin) and the boys' legs (faces stay clear)|
+251|414|partly|the mower and his legs (his head stays clear)|
+252|414|partly|the lower woman's dress and the garden (both faces and the washing stay clear)|
+253|414|covers|the bucket catching the leak|
+254|414|partly|the bicycle's front wheel (the cyclist stays clear)|
+254|360|partly|the bicycle's wheels (the cyclist stays clear)|
+255|414|partly|the bench's legs and the ball on the frosted grass (the seat and blanket stay clear)|
+256|414|partly|the plant's pot (its leaves and flowers stay clear)|
+257|414|partly|the sunflower's pot and the stoep (the flower head stays clear)|
+258|414|partly|the cyclist's body and handlebars, and the car (both faces stay clear, hers just)|
+259|414|partly|her hands, the glass and the water jug (her face stays clear)|
+260|414|partly|her body from the waist down (her face stays clear)|
+261|414|clear|the pool wall below the dog; the dog stays clear|
+262|414|partly|her body and hands on the wheel (her face stays clear)|
+263|414|clear|the flooded street below the police lights|
+264|414|clear|the dirt road below the birds on the wire|
+265|414|clear|the wet sand and the sea|
+266|414|clear|the gate and the road below the trees|
+267|414|partly|the girl's body from the chest down, and the house (her face and the ball stay clear)|
+268|414|partly|their legs and the bikes' wheels (faces stay clear)|
+269|414|partly|the bike and his legs (his face stays clear)|
+270|414|partly|their legs and jackets (faces and the phone stay clear)|
+271|414|clear|the table and the blanket below the hot chocolate; the mug's base sits on the top edge|
+271|360|covers|the hot chocolate the joke is about, under the first line|
+272|414|partly|the sprinkler the joke names and their feet (dad and the kid stay clear above)|
+273|414|partly|the fire pit, their mugs and laps (faces stay clear)|
+274|414|partly|the friends' backs and legs (heads stay clear)|
+275|414|partly|the horses' bodies and legs (their heads stay clear)|
+276|414|clear|the dunes below the figure and the mountain|
+277|414|covers|the washing blowing on the line, under the first line|
+278|414|clear|the traffic in the rain, as under D's joke|
+279|414|partly|the houses' lower storeys and the stoep|
+280|414|clear|the sea and rocks below the lightning|
+281|414|partly|her legs, the fruit boxes and the car (her face and the watermelon stay clear)|
+282|414|partly|the cat's body on the sill (its head stays clear)|
+283|414|clear|the jetty below the boats in the fog|
+284|414|partly|the braai fire and the men's bodies (faces stay just clear)|
+285|414|partly|the dog's legs and the walkers' feet (heads and the dog's face stay clear)|
+286|414|partly|the farmers' legs and the fallen bale (heads stay clear)|
+287|414|clear|the dark rooftops and lit windows|
+288|414|partly|the couple's legs and the sand (faces stay clear)|
+289|414|covers|the car's headlights in the fog, under the first line|
+290|414|partly|the vendor's legs and the car door (his face stays clear)|
+291|414|partly|the flat middle of the duvet (its rumpled heap stays clear)|
+292|414|clear|the road below the car on the pass; its lights stay clear|
+293|414|clear|the cushion's front edge and the floor (D's band takes in the cushion); the dog stays clear|
+# Second look (b-worst --other): the joke reaches further on a smaller phone.
+1|360|clear|clouds below the moon; the moon stays clear|
+5|360|covers|the golf ball in the grass|
+25|360|clear|the promenade and the palms' trunks; the crowns stay clear|
+36|360|clear|the fence and the wet road below the tree|
+42|360|clear|the fence below the washing; its hem grazes the first line|
+46|360|clear|the wet street|
+47|360|covers|the cat curled up on the armchair|
+54|360|clear|the garage doors and the driveway below the lightning|
+55|360|clear|the wall and the wet pavement|
+56|320|clear|his arm and shirt, and the lightning's foot; the phone and his face stay clear (as D judged his shirt)|
+57|360|clear|the running gutter|
+59|360|clear|the flooded stoep|
+62|320|clear|the blanket and the city lights, as D judged them clear; his face stays clear|
+65|360|clear|the wall and lawn below the lightning|
+72|360|clear|the pool|
+85|360|clear|the pitch, stumps and kit bags below the blowing cover; the cover stays clear|
+92|360|clear|the road and the verge|
+102|360|partly|the trampoline's lower frame under the first line (its net stays clear)|
+115|320|clear|the flooded road; the blown-over chair is cropped off this card|
+135|360|clear|the tipped bin and its litter; the three chasing it stay clear|
+141|360|clear|the pitch and the lower stands below the lightning|
+143|360|clear|the dashboard below the phone; the phone and the lightning stay clear|
+163|360|partly|the lantern, the table and their laps (faces stay clear)|
+168|320|partly|his paint-splashed jacket and the ladder (his face, under the header, stays clear)|60-190
+173|360|clear|the flooded street and the parked cars below the lightning|
+199|360|clear|the traffic, as D judged it clear|
+201|360|clear|the field and the windmill's base|
+202|360|clear|the wet road and the tail lights through the wiper|
+213|360|clear|the grass below the cattle; their legs graze the first line|
+222|360|clear|the flooded yard below the gate|
+233|360|clear|the wet street below the houses|
+237|320|clear|his back and the city lights, as D judged his back clear; the phone and the lightning stay clear|
+239|360|partly|her legs and feet on the steps, under the first line (her face and glass stay clear)|
+263|360|clear|the flooded street below the police lights|
+265|360|clear|the sea|
+278|320|clear|the traffic in the rain|
+280|360|clear|the sea and rocks below the lightning|
+292|360|clear|the road below the car on the pass; its lights stay clear|
+# Third look (b-worst --third): judged clear where I looked, but D's band is found on a smaller phone.
+107|360|clear|the harbour wall and the boats; the two watchers stand just above the first line|
+124|360|clear|the floor below the walkers; their feet reach the top edge|
+293|360|clear|the cushion (D's band takes it in); the dog's chin grazes the first line's top|
