@@ -22,7 +22,7 @@ const FLAGS = [
   { n: 79, level: 'likely', suggest: 'rain', wrong: 'Rain falling, an umbrella up, a "road closed due to rain" sign. In cold it can show rain on a dry cold day.' },
   { n: 195, level: 'likely', suggest: 'clear', wrong: 'Blue sky and a golden sunrise; only the street is wet. In rain it sits under "Rain\'s here." with the sun out.' },
   { n: 229, level: 'likely', suggest: 'cloudy', wrong: 'A clear sunset sky over a dusty farm road; the storm is only a distant cloud bank. No lightning, no rain.' },
-  { n: 40, level: 'possible', suggest: 'cold', wrong: 'Jacket, flat cap and a steaming mug; its own line says Joburg mornings under cloud start at about four degrees.' },
+  { n: 40, level: 'possible', suggest: 'cold', wrong: 'Jacket, flat cap and a steaming mug; its own line says Joburg mornings under cloud start properly cold (reworded 30 Sept 2026, no air temperature in a line).' },
   { n: 69, level: 'possible', suggest: 'cold', wrong: 'Friends in blankets and knitted jumpers around a lantern; one of its lines says the evening is cold.' },
   { n: 70, level: 'possible', suggest: 'cold', wrong: 'A man in a puffer jacket on a rooftop at night. Cloudy also serves warm summer nights.' },
   { n: 203, level: 'possible', suggest: 'wind', wrong: 'A wave breaking over the harbour wall, raincoats, no rain visibly falling. Reads as wind; its lines say it is raining.' },
