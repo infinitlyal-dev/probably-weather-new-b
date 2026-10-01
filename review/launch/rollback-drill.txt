@@ -1,1 +1,0 @@
-Rollback drill, 1 Oct 2026. This file marks the "bad release" commit on the rollback-drill branch; the next commit reverts it. Nothing in the app changes.
