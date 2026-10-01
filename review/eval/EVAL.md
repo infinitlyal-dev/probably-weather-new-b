@@ -1572,3 +1572,108 @@ desktop.
 (Gqeberha: "gusts 41" under an airport report with none) — a reader may take it as measured; Al's call whether to hide
 the models' gust while the line shows. (2) Johannesburg's "Rain's here" from Tomorrow.io's radar under a dry METAR
 (reported 23 Sept, still there). (3) The first-visit install banner over the photograph on Home D (known).
+
+## 17. The launch run: Sol's four fixes, the rollback drill, the loose ends (Fable 5.1 orchestrating and reviewing; Opus 5.5 built the saved places and the daily wind, Sonnet 5.5 the search labels and the location note; Sol gpt-5.6-sol second review — 1–2 Oct 2026)
+
+Al (1 Oct 23:32): "write a prompt to implement all the fixes that are needed so we can finally get this fucker up and
+going." Source: Sol 6.1's outside review of production `74f8991` (`C:\Users\27741\pw-eval-sol61\REPORT.md`, 30 Sept,
+23:17–23:35 SAST), sections 1, 3, 4 and 5. Built in worktrees off `351e487`; **live `37da761`** (items 1, 3, 5, 6 —
+2 Oct 00:48 SAST) then **`85ee034`** (a search-label follow-up from the live check, 00:59). Items 2 and 4 are built,
+gated and reviewed on branch `launch-hold` (`C:\Users\27741\pw-lr-a`, three commits over main) and wait for Al's words.
+
+### 17.1 Already settled, nothing changed
+- Al checked on his iPhone: the app opens offline with the last forecast, and Share works. Android not checked (Sol §2 stays a validation gap there).
+- Strand's "24° at 23:25" on 30 Sept (Sol §3/§6) was right: SAWS station 68911 read 17.7° at 20:00, **31.6° at 02:00**
+  (a hot north-easterly berg wind, dew point 9.5°) and 15.8° at 08:00. AccuWeather's 18° and the airport's 19° were
+  the cooler air west of the mountain, not Strand.
+
+### 17.2 Item 1 — saved places no longer show an old reading as current (live `37da761`)
+Sol §1: `ensureFavoriteMeta` returned early whenever a saved place had `tempC` and `conditionKey`, with no age check,
+so a saved Cape Town row showed 15° while live Cape Town was 23°. Now (`assets/saved-place-meta.js`, wired in
+`app.js`): each reading stores `metaAt`; entries without it count as stale; a reading older than **30 min** (the
+server's shared ensemble cache is 5 min; 30 min is the longest a "current" number may sit) refetches through the shared
+`fetchProbable` path, **one row at a time**, skipping rows in flight, only while Search shows; until it lands the row
+shows the old number **beside its age** ("{mins} min ago" / "{h} h ago", 12 px, dim); undated or day-old readings show
+"--°". Sol's second review added: the list re-renders by timer when its freshest reading turns 30 min old (a row opened
+at 29:59 used to stay "current" as long as Search stayed open), a `metaAt` in the future (clock moved back) is stale, a
+throwing `onError` strands no queued row. Tests `tests/saved-place-age.test.js` (21). **Live, 2 Oct 00:52 SAST:** a
+planted Cape Town favourite with `metaAt` 2 h old rendered "Cape Town, South Africa · 2 h ago · 15°" the instant Search
+opened, and 6 s later "15°" alone with `metaAt` fresh and `tempC` 14.6 from the live forecast (`pw_favorites` cleared
+afterwards).
+
+### 17.3 Item 3 — province on every search result, old names find the new city (live `37da761` + `85ee034`)
+Sol §3: "Witbank, South Africa" above "eMalahleni, South Africa", nothing to tell them apart. Measured on the live
+geocoder first (1 Oct): LocationIQ returns the real **Witbank, Northern Cape** (a town in Khâi-Ma) first, then
+eMalahleni (city, Mpumalanga); Pietersburg → Polokwane first, Nelspruit → Mbombela, Port Elizabeth → Gqeberha already.
+Now: `assets/search-label.js` — every row reads **Name, Province** (a suburb adds its town or city; "… Local
+Municipality" containers are dropped; outside South Africa the country stays; provinces localise through `PLACE_PARTS`);
+the stored name stays "City, Country" so favourites and `samePlace` are untouched; `api/geocode.js` carries a table of
+19 renamed places (Witbank → eMalahleni, Pietersburg → Polokwane, Nelspruit → Mbombela, Port Elizabeth → Gqeberha,
+Grahamstown → Makhanda, King William's Town → Qonce, Uitenhage → Kariega, Potgietersrus → Mokopane, Warmbaths →
+Bela-Bela, Nylstroom → Modimolle, Louis Trichardt → Makhado, Ellisras → Lephalale, Messina → Musina, Queenstown →
+Komani, Umtata → Mthatha, Stanger → KwaDukuza, Piet Retief → eMkhondo, Lydenburg → Mashishing, Bisho → Bhisho): when
+the whole query is an old name, the result carrying the new name moves to the front; nothing is added. Tests
+`tests/search-province.test.js` (20). **Live:** `/api/geocode?q=Witbank` → eMalahleni (Mpumalanga), Witbank (Northern
+Cape), Witsand…; in the app "Witbank" lists "eMalahleni, Mpumalanga", "Witbank, Northern Cape", "Witsand, Western
+Cape" ×2, "Witblok, Western Cape", "Witpan, North West". The two Witsands (the town near George, the suburb of
+Atlantis) read the same because the client mapping dropped the geocoder's `type`, so the suburb rule never fired —
+fixed in `85ee034` (the mapping keeps `type`; test pins it); live after it: "Witsand, Atlantis, Western Cape" (§17.7).
+
+### 17.4 Item 5 — a rollback that is proven (`scripts/rollback.md`, live `37da761`)
+Two ways back: Vercel's Instant Rollback (seconds; dashboard steps, and the Vercel connector's `list_deployments` +
+`request_rollback` with the project and team ids) and git revert + push (about two minutes; also fixes `main`).
+**Drill on a preview, never production:** branch `rollback-drill`, marker commit `abc3632` → preview
+`probably-weather-new-7dr7z2hy5` answering `abc3632…` at `/api/version`; `git revert` → `1dc0169`, pushed 21:48:45 UTC,
+Vercel building at 21:48:47, preview `probably-weather-new-mzjo3ih3p` answering `1dc0169…` by 21:51 — under three
+minutes. The connector was reachable the same night (`list_deployments` returned production with `isRollbackCandidate`).
+The last section of the file is the Claude Code prompt Al pastes; it needs no editing.
+
+### 17.5 Item 6 — the loose ends (live `37da761`)
+- Sesotho T1 "tjhesa jwalo" → "tjhesa tjena"; isiXhosa T5 "obokugqibela" → "bokugqibela" (`b513bac`). lang-check
+  triage, 1 Oct: st 1 line, 0 to triage; xh 1 line, 0 to triage. Copy splits regenerated (two strings move).
+- NITs (`663d344`): AL-0923-af-0949 restored to `af-al-decisions.json` as history (nothing applies it); the old T3
+  quote in `benched-photos.json:53` and `review/tools/build-bucket-check-page.mjs:25` now quotes the reworded line;
+  f80b314's message cited `targets.json` as the source of R53/R56 — the source is `last-fixes-decisions.json`
+  (recorded in the commit, since f80b314 is pushed).
+- Stray files (`f523c5b`): `live-score.{json,md}` (the recorder's scorer, previously committed) and
+  `forecast-candidates-days.json` (read by the tracked `sa-weather-check.mjs`) committed; `review/launch/home-b-check/`
+  committed as the record EVAL §7 cites, with its 4 MB of per-viewport measurements and shots `.gitignore`d.
+
+### 17.6 Items 2 and 4 — built, gated, held for Al's words (`launch-hold`: `8bd7866`, `8b90411`, `c80d5f6`)
+- **Wind on future days** (Sol §5). What each source's daily wind means (providers' docs, 1 Oct): Open-Meteo
+  `wind_speed_10m_max` = the day's maximum 10 m wind (max of hourly means), `wind_gusts_10m_max` = the day's maximum
+  gust; WeatherAPI `day.maxwind_kph` = "Maximum wind speed", no daily gust; **Pirate daily `windSpeed` is documented only
+  as "the current wind speed"** (mean or max undocumented; the GitHub source was not reachable from here) so it is NOT
+  used as a maximum, while Pirate daily `windGust` is the day's maximum (it comes with `windGustTime`). New display-only
+  fields per day: `windMaxKph` (OM + WA maxima, `dailyW` blend) and `gustMaxKph` (OM + Pirate gusts); `dailyWind` /
+  `windKph` that feed the condition are untouched (a test pins conditions identical with and without the fields;
+  temp-freeze unchanged). The day card (days 2+) adds **Wind "up to 35 km/h"** and **Gusts** via `formatWind`; six
+  stats, 2×3 on phones. Fit: `scripts/verify-day-detail-wind.mjs` 10/10 at 414×715 and 320×488 in five languages (the
+  wrapped zu/xh/st cells have 0 px to spare). **Cost:** `wind_gusts_10m_max` makes the Open-Meteo request 30 variables,
+  so the advisory counter moves 2.9 → 3.0 units per call (+3.4 %). Words: `weather.upTo` (EN "up to {value}" / AF "tot
+  {value}"; zu "kufika ku-{value}", xh "ukuya kwi-{value}", st "ho fihla ho {value}", lang-check 0 flagged). The zu
+  label for gusts, "kufika ku", was already doubtful before this (backlog).
+- **The honest note when location is refused** (Sol §4). After a failed location attempt (denied, timeout, no
+  geolocation) Home shows, under the place name: "Can't use your location, so this is your saved place." or "…so this is
+  a rough guess." with a **Pick a place** link that opens Search focused. In memory only (`assets/location-note.js`):
+  clears when any other place loads, when the user picks a place from Search (Sol's finding, the same place included),
+  when a later GPS fix succeeds, and on reload. Home D on a narrow phone steps the number down only while the note
+  shows (`body.home-d.has-location-note`); fold gate 140/140 with the note (`verify-home-fold.mjs --note`) and without.
+  Words: EN/AF as proposed; zu/xh 0 flagged; **Sesotho `fallbackSaved` was triage-high ('sebaka' vs 'seka') and stays
+  English until a native rules**; st `fallbackApprox` and `pickPlace` pass. Not covered: the first-open GPS-denied path
+  (`startFirstOpenLocation`'s approximate toast) sets no note — it was not in Al's item.
+- Al's page: `review/launch-words-for-al.html` (OneDrive copy) — six lines pre-marked OK (`weather.upTo`, the three
+  `home.*`, `misc.agoMins`, `misc.agoHours`; the last two are live already); export `launch-words-ruled.json`.
+
+### 17.7 Review, gates, shipped
+Fable reviewed both builders' diffs (no blocker; the Home D CSS changes are scoped to the note). Sol (gpt-5.6-sol; the
+configured gpt-6.1-sol is refused on the ChatGPT plan) on the combined code diff: **DO NOT SHIP** on one BLOCKER
+(freshness judged only at render) + 2 SHOULD-FIX + 1 NIT — all four applied (§17.2; the note one on `launch-hold`).
+Gates on the superset tree (all four items, `f6a550a`): serial **159 files / 21,498 tests**, image budget, build with the
+drift gate and import scan, day-card fit 10/10, fold 140/140 and 140/140 with the note, hero-lines / crop-offsets /
+crop-desktop / drift guard / seasonal / rotation / bespoke / precision table / wind table / wind weights / gust table /
+station map `--check`, desktop, Home D pairs check (40/40 photos; 36/40 lines — P09 en/af writes another line, the same
+on `351e487`, pre-existing), local smoke PASS ×5 languages — every step exit 0. On the push-now tree: 157 files /
+21,486 (then 21,487), build, local smoke PASS. `/api/version` → `37da761` at 22:50 UTC; **live smoke, five languages,
+phone (Strand a–e, Gqeberha a+e) and desktop (home, hourly, weekly, search, settings, share, share card, measured): PASS.**
+Then `85ee034` live at 23:02 UTC: live smoke, five languages, phone and desktop: PASS; "Witbank" in the app lists "Witsand, Western Cape" and "Witsand, Atlantis, Western Cape" apart.
