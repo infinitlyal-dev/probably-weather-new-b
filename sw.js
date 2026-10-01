@@ -117,6 +117,8 @@ const CORE_ASSETS = [
   '/assets/home-name.js',
   '/assets/weather-thresholds.js',
   '/assets/search-mini-weather.js',
+  // Saved places' dated readings (1 Oct 2026).
+  '/assets/saved-place-meta.js',
   '/assets/install-loader.js',
   // ADS-READINESS (Al's ruling 2026-09-15): the slot config app.js imports.
   '/assets/ads-config.js',

@@ -31,6 +31,7 @@ import { startFirstOpenLocation } from './first-open-location.js';
 import { isStoredHomeObject, shouldPersistHomeName } from './home-name.js';
 import { HEAT_EXTREME_C } from './weather-thresholds.js';
 import { SEARCH_MINI_VISIBLE_LIMIT, createSearchMiniPromiseCache } from './search-mini-weather.js';
+import { isStale, savedReadingView, formatAge, createSavedMetaRefresher } from './saved-place-meta.js';
 import { setupDeferredInstallLoad } from './install-loader.js';
 import { slotEnabled } from './ads-config.js';
 import { initHomeD } from './home-d.js';
@@ -699,6 +700,10 @@ document.addEventListener("DOMContentLoaded", () => {
         xh: "Kugqityelwe ukuhlaziywa kwimizuzu engu-{mins} edlulileyo",
         st: "Ho ntjhafaditswe metsotso e {mins} e fetileng"
       },
+      // A saved place's reading past 30 min shows its age beside the number (1 Oct 2026; EN/AF Al's).
+      // zu/xh/st follow lastUpdated above; lang-check triage 0 flagged.
+      agoMins: { en: "{mins} min ago", af: "{mins} min gelede", zu: "emizuzwini engu-{mins} edlule", xh: "kwimizuzu engu-{mins} edlulileyo", st: "metsotso e {mins} e fetileng" },
+      agoHours: { en: "{h} h ago", af: "{h} h gelede", zu: "emahoreni angu-{h} edlule", xh: "kwiiyure ezi-{h} ezidlulileyo", st: "dihora tse {h} tse fetileng" },
       shareLinkCopied: {
         en: "Share link copied",
         af: "Deelskakel gekopieer",
@@ -3964,10 +3969,25 @@ document.addEventListener("DOMContentLoaded", () => {
     await addFavorite(place);
     refreshSaveButtonState();
   }
-  async function ensureFavoriteMeta(place) {
-    if (!place || !isNum(place.lat) || !isNum(place.lon) || (isNum(place.tempC) && place.conditionKey)) return;
-    const key = favoriteKey(place); if (pendingFavMeta.has(key)) return; pendingFavMeta.add(key);
-    try { const norm = normalizePayload(await fetchProbable(place)); const list = loadFavorites(); const idx = list.findIndex(p => samePlace(p, place)); if (idx !== -1) { list[idx] = { ...list[idx], tempC: norm.nowTemp ?? null, conditionKey: norm.conditionKey ?? null }; saveFavorites(list); renderFavorites(); } } catch {} finally { pendingFavMeta.delete(key); }
+  // 1 Oct 2026: a saved reading is refetched once it is older than 30 min (SAVED_META_MAX_AGE_MS),
+  // one row at a time and only while Search is showing; the fetch is the shared fetchProbable path
+  // (snapped grid, server cache). metaAt dates the reading so the row can show its age meanwhile.
+  const refreshFavoriteMeta = createSavedMetaRefresher({
+    pending: pendingFavMeta,
+    isVisible: () => !!screenSearch && !screenSearch.classList.contains('hidden'),
+    load: async (place) => normalizePayload(await fetchProbable(place)),
+    onResult: (place, norm) => {
+      const list = loadFavorites(); const idx = list.findIndex(p => samePlace(p, place));
+      if (idx === -1) return;
+      list[idx] = { ...list[idx], tempC: norm.nowTemp ?? null, conditionKey: norm.conditionKey ?? null, metaAt: Date.now() };
+      debugLog('[saved-places] refreshed', favoriteKey(place), list[idx].tempC);
+      saveFavorites(list); renderFavorites();
+    },
+    onError: (place, err) => debugLog('[saved-places] refresh failed, keeping the dated reading', favoriteKey(place), err?.message),
+  });
+  function ensureFavoriteMeta(place) {
+    if (!place || !isNum(place.lat) || !isNum(place.lon) || !isStale(place, Date.now())) return;
+    refreshFavoriteMeta(favoriteKey(place), place);
   }
   function renderRecents() {
     if (!recentList) return; const list = loadRecents();
@@ -3997,10 +4017,14 @@ document.addEventListener("DOMContentLoaded", () => {
   function renderFavorites() {
     if (!favoritesList) return; const list = loadFavorites();
     const fl = document.getElementById('favLimit'); if (fl) fl.style.display = list.length >= 5 ? 'block' : 'none';
+    const now = Date.now();
     favoritesList.innerHTML = list.map(p => {
-      const temp = isNum(p.tempC) ? formatTemp(p.tempC) : '--°';
+      // A reading past 30 min shows only beside its age; undated or over a day old, no number (1 Oct 2026).
+      const view = savedReadingView(p, now);
+      const temp = isNum(view.tempC) ? formatTemp(view.tempC) : '--°';
+      const age = view.ageMs != null ? `<span class="fav-age">${escapeHtml(formatAge(view.ageMs, { mins: t('misc', 'agoMins'), hours: t('misc', 'agoHours') }))}</span>` : '';
       const rb = searchEditMode ? `<button class="remove-fav" aria-label="${escapeHtml(t('search', 'removeFavourite'))}" data-lat="${p.lat}" data-lon="${p.lon}">×</button>` : '';
-      return `<li class="favorite-item" data-lat="${p.lat}" data-lon="${p.lon}" data-name="${escapeHtml(p.name)}"><span class="fav-name" role="button" tabindex="0">${escapeHtml(displayPlaceName(p.name))}</span><span class="fav-temp">${temp}</span>${rb}</li>`;
+      return `<li class="favorite-item" data-lat="${p.lat}" data-lon="${p.lon}" data-name="${escapeHtml(p.name)}"><span class="fav-name" role="button" tabindex="0">${escapeHtml(displayPlaceName(p.name))}</span>${age}<span class="fav-temp">${temp}</span>${rb}</li>`;
     }).join('') || `<li class="list-empty">${t('search', 'noSaved')}</li>`;
     favoritesList.querySelectorAll('li[data-lat] .fav-name').forEach(span => {
       const activate = () => { const li = span.closest('li'); showScreen(screenHome); loadAndRender({ name: li.dataset.name, lat: parseFloat(li.dataset.lat), lon: parseFloat(li.dataset.lon), mode: PLACE_MODE_PINNED }); };
