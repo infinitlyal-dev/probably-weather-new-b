@@ -425,6 +425,9 @@ document.addEventListener("DOMContentLoaded", () => {
       // "imimoya evuthuzayo" is the same review's own word for gusts (witty.wind[49], HIGH) and Leipzig
       // xho #11427 lists it with floods and heavy rain — lang-check PASS, 0 doubts.
       gusts: { en: "gusts", af: "windstote", zu: "kufika ku", xh: "imimoya evuthuzayo", st: "Meya e fokang ka sefutho" },
+      // The Weekly day card's wind (1 Oct 2026): "up to" the day's blended maximum wind. EN/AF Al's;
+      // zu/xh/st lang-check triage 0 flagged.
+      upTo: { en: "up to {value}", af: "tot {value}", zu: "kufika ku-{value}", xh: "ukuya kwi-{value}", st: "ho fihla ho {value}" },
       // v8 (29 Sept 2026, Al: go — EN and AF his words): the line under the wind when an airport's report set the
       // numbers (api/_lib/station-now.js `measured`), one per live airport, {time} = the report's local time. isiZulu,
       // isiXhosa and Sesotho are one sentence per airport (the place takes a locative), through lang-check: 0 doubts
@@ -3807,6 +3810,15 @@ document.addEventListener("DOMContentLoaded", () => {
     };
     const sunrise = fmtTime(day.sunrise);
     const sunset  = fmtTime(day.sunset);
+    // Wind on far days (1 Oct 2026): a day card said "Gusty winds" with no number. windMaxKph /
+    // gustMaxKph are the server's daily maxima (api/weather.js aggregatedDaily); no stat when absent.
+    // The label's text-transform (.ds-stat-label, uppercase) shows the lower-case 'gusts' as a label.
+    const windStat = isNum(day.windMaxKph)
+      ? `<div class="ds-stat"><span class="ds-stat-label">${t('weather', 'wind') || 'Wind'}</span><span class="ds-stat-value">${escapeHtml((t('weather', 'upTo') || 'up to {value}').replace('{value}', formatWind(day.windMaxKph)))}</span></div>`
+      : '';
+    const gustStat = isNum(day.gustMaxKph)
+      ? `<div class="ds-stat"><span class="ds-stat-label">${t('weather', 'gusts') || 'gusts'}</span><span class="ds-stat-value">${formatWind(day.gustMaxKph)}</span></div>`
+      : '';
     const rainLabel = t('weather', 'rain') || 'Rain';
     const uvLabel = t('weather', 'uv') || 'UV';
     const sunriseLabel = t('weather', 'sunrise') || 'Sunrise';
@@ -3830,6 +3842,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <div class="ds-stat"><span class="ds-stat-label">${uvLabel}</span><span class="ds-stat-value ${uvClass}">${uvVal}</span></div>
         <div class="ds-stat"><span class="ds-stat-label">${sunriseLabel}</span><span class="ds-stat-value">${sunrise}</span></div>
         <div class="ds-stat"><span class="ds-stat-label">${sunsetLabel}</span><span class="ds-stat-value">${sunset}</span></div>
+        ${windStat}${gustStat}
       </div>
     `;
     container.appendChild(card);

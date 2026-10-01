@@ -1185,7 +1185,7 @@ export default async function handler(req, res) {
       // advection-fog detector can see low-visibility/saturated-air signals the
       // model-based condition vote ignores. Both fields are free on this endpoint.
       `&hourly=temperature_2m,apparent_temperature,precipitation_probability,precipitation,wind_speed_10m,wind_gusts_10m,wind_direction_10m,cloud_cover,relative_humidity_2m,uv_index,weather_code,visibility,dew_point_2m` +
-      `&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,uv_index_max,weather_code,wind_speed_10m_max,sunrise,sunset` +
+      `&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,uv_index_max,weather_code,wind_speed_10m_max,wind_gusts_10m_max,sunrise,sunset` +
       `&timezone=auto&forecast_days=7${openMeteoKeyParam}`
     ) : Promise.resolve(null);
     // Advisory monthly usage counter (API Standard has no hard cap — the 80%
@@ -1371,6 +1371,17 @@ export default async function handler(req, res) {
         // 48-slot hourly array) still have a real wind signal. OM daily has no
         // cloud mean, so clouds stays empty here (Pirate covers daily cloud).
         winds:    om.daily?.wind_speed_10m_max                          ?? [],
+        // What each source's DAILY wind means (from the providers' docs, 1 Oct 2026), for the
+        // Weekly day card's windMaxKph / gustMaxKph (aggregatedDaily below):
+        //  · Open-Meteo wind_speed_10m_max: the day's maximum 10 m wind speed (max of the hourly
+        //    means); wind_gusts_10m_max: the day's maximum gust.
+        //  · WeatherAPI day.maxwind_kph: "Maximum wind speed in kilometer per hour" (daily maximum
+        //    of the mean wind). Its day element has NO gust field.
+        //  · Pirate Weather daily windSpeed: documented only as "the current wind speed", derivation
+        //    (mean or max) undocumented, so NOT treated as a daily maximum. Its daily windGust IS the
+        //    day's maximum gust (it comes with windGustTime, when that maximum occurs).
+        //  · MET Norway, Tomorrow.io: no daily wind here.
+        gusts:    om.daily?.wind_gusts_10m_max                          ?? [],
         descs:    om.daily?.weather_code?.map(c => mapCode(openMeteoCodeMap, c)) ?? [],
         sunrises: om.daily?.sunrise?.map((s, i) => solarPair(s, om.daily?.sunset?.[i], utcOffsetSeconds, i).sunrise) ?? [],
         sunsets:  om.daily?.sunset?.map((s, i) => solarPair(om.daily?.sunrise?.[i], s, utcOffsetSeconds, i).sunset)  ?? [],
@@ -1603,6 +1614,8 @@ export default async function handler(req, res) {
           // cloud (0-1 fraction → %). It's the primary daily-cloud source for
           // days 2-6, so a windy/cloudy far-out day no longer defaults toward fog.
           winds:    dly.slice(0, 7).map(d => isNum(d.windSpeed)  ? toKph(d.windSpeed)  : null),
+          // The day's maximum gust (m/s → km/h), for gustMaxKph only (1 Oct 2026; see dailies[0]).
+          gusts:    dly.slice(0, 7).map(d => isNum(d.windGust)   ? toKph(d.windGust)   : null),
           clouds:   dly.slice(0, 7).map(d => isNum(d.cloudCover) ? toPct(d.cloudCover) : null),
           descs:    dly.slice(0, 7).map(d => pwDesc(d.icon)),
           sunrises: dly.slice(0, 7).map((d, i) => solarPair(unixToLocalIso(d.sunriseTime, utcOffsetSeconds), unixToLocalIso(d.sunsetTime, utcOffsetSeconds), utcOffsetSeconds, i).sunrise),
@@ -2261,6 +2274,15 @@ export default async function handler(req, res) {
       const dailyCloud   = wAvg(dailies, dailyW, d => d.clouds?.[i]);
       const windKph      = aggregatedHourly[noonIdx]?.windKph  ?? dailyWind;
       const cloudPct     = aggregatedHourly[noonIdx]?.cloudPct ?? dailyCloud;
+      // Display only (1 Oct 2026): the day card's "Wind up to" and "Gusts", which the condition never
+      // reads (dailyWind above still feeds it, unchanged). windMaxKph blends the daily MAXIMUM mean
+      // wind from Open-Meteo and WeatherAPI only (Pirate's daily windSpeed is not documented as a
+      // maximum); gustMaxKph blends Open-Meteo's and Pirate's daily maximum gust. Null when nobody offers one.
+      const maxWindSources = dailies.map((d, si) => (si === 0 || si === 1 ? d : null));
+      const windMaxRaw   = wAvg(maxWindSources, dailyW, d => d.winds?.[i]);
+      const gustMaxRaw   = wAvg(dailies, dailyW, d => d.gusts?.[i]);
+      const windMaxKph   = isNum(windMaxRaw) ? Math.round(windMaxRaw) : null;
+      const gustMaxKph   = isNum(gustMaxRaw) ? Math.round(gustMaxRaw) : null;
 
       const dailySourceDescs = dailies.map(dd => dd?.descs?.[i]).filter(Boolean);
       let { key: dailyConditionKey, reason: dailyConditionReason } = deriveCondition({
@@ -2359,6 +2381,8 @@ export default async function handler(req, res) {
         conditionLabel,
         conditionKey: dailyConditionKey,
         conditionReason: dailyConditionReason,
+        windMaxKph,
+        gustMaxKph,
         conditionSignals: {
           descWinner: conditionLabel,
           numeric: { rainChance, highC, uvIndex: uv, cloudPct, windKph },
@@ -3156,6 +3180,7 @@ const HOURLY_ARRAY_BOUNDS = {
 };
 const DAILY_ARRAY_BOUNDS = {
   highs: TEMP_BOUNDS, lows: TEMP_BOUNDS, rains: [0, 100], uvs: [0, 25], winds: [0, 400], clouds: [0, 100],
+  gusts: [0, 500], // 1 Oct 2026: daily max gust (Open-Meteo, Pirate), same bound as the hourly gusts
 };
 // norms index → hourlies index (Pirate Weather has no hourly slot).
 const HOURLY_SLOT_FOR_NORM = { 0: 0, 1: 1, 3: 2, 4: 3 };

@@ -177,12 +177,13 @@ const _UNSET = Symbol('redis-unset');
 //    weeks of data equals 3.0 API calls."
 //
 // ⇒ units = max(1, variables/10) × max(1, days/14).
-// PW's forecast request: 8 `current` + 13 `hourly` + 8 `daily` parameters = 29,
-// forecast_days=7 (days factor 1.0, since 7 < 14) ⇒ 29/10 = 2.9 units.
-// 2.9 is the CONSERVATIVE reading. If Open-Meteo de-duplicates variable names
-// across the three sections the count is 20 distinct names ⇒ 2.0 units. Which
+// PW's forecast request: 8 `current` + 13 `hourly` + 9 `daily` parameters = 30,
+// forecast_days=7 (days factor 1.0, since 7 < 14) ⇒ 30/10 = 3.0 units. (1 Oct 2026:
+// daily wind_gusts_10m_max joined for the Weekly day card's gusts; it was 29 / 2.9.)
+// 3.0 is the CONSERVATIVE reading. If Open-Meteo de-duplicates variable names
+// across the three sections the count is 21 distinct names ⇒ 2.1 units. Which
 // one they apply is not published and no response header reports the weight
-// (verified against the live endpoint), so we plan on 2.9 and the real spend is
+// (verified against the live endpoint), so we plan on 3.0 and the real spend is
 // read off the Open-Meteo customer dashboard.
 //
 // tests/open-meteo-commercial.test.js derives this number from the request URL
@@ -192,14 +193,14 @@ const _UNSET = Symbol('redis-unset');
 // hit rate, not a measured one: there was no /api/weather traffic in the last
 // 24 h of Vercel production logs on 2026-09-14 (prelaunch), so there was
 // nothing to measure. Re-derive it from real logs once traffic exists.
-export const OPEN_METEO_UNITS_PER_REQUEST = 2.9;
+export const OPEN_METEO_UNITS_PER_REQUEST = 3.0;
 
 // STORAGE: the Redis value is an integer count of TENTHS of a unit, incremented
 // with plain INCRBY. Deliberately not INCRBYFLOAT — integer arithmetic is exact
 // over the ~345k increments a full month takes, where repeated float addition
-// would drift, and it avoids parsing INCRBYFLOAT's string reply. 2.9 units =
-// 29 tenths per request; divide by 10 to read units back.
-const OPEN_METEO_UNIT_TENTHS = Math.round(OPEN_METEO_UNITS_PER_REQUEST * 10); // 29
+// would drift, and it avoids parsing INCRBYFLOAT's string reply. 3.0 units =
+// 30 tenths per request; divide by 10 to read units back.
+const OPEN_METEO_UNIT_TENTHS = Math.round(OPEN_METEO_UNITS_PER_REQUEST * 10); // 30
 // The precision request (api/_lib/precision.js): temperature for four models, 3 days → 4 model-variables,
 // under 2 weeks → 1.0 unit.
 export const OPEN_METEO_PRECISION_UNIT_TENTHS = 10;
@@ -208,10 +209,11 @@ const TENTHS = 10;
 const OPEN_METEO_MONTHLY_PLAN = 1_000_000;                       // units/month
 const OPEN_METEO_MONTHLY_ALERT_AT = 800_000;                     // 80% of the plan, in UNITS
 const OPEN_METEO_MONTHLY_ALERT_AT_TENTHS = OPEN_METEO_MONTHLY_ALERT_AT * TENTHS;
-// Log throttle: one routine line per 1,000 UNITS (≈ 345 requests at 2.9), so a
-// full 1,000,000-unit month emits ~1,000 lines rather than ~345,000. A modulo
-// test cannot be used here: the 29-tenth step is coprime with the 10,000-tenth
-// interval, so it would almost never land on an exact multiple. Instead detect
+// Log throttle: one routine line per 1,000 UNITS (≈ 333 requests at 3.0), so a
+// full 1,000,000-unit month emits ~1,000 lines rather than ~333,000. A modulo
+// test cannot be used here: a step need not divide the 10,000-tenth interval
+// (the 29-tenth step before 1 Oct 2026 was coprime with it), so it may never
+// land on an exact multiple. Instead detect
 // the BOUNDARY CROSSING between the pre- and post-increment values — exact once
 // per interval for any step size, and stateless (derived from the Redis reply,
 // so it survives cold starts and concurrent instances).
@@ -251,7 +253,7 @@ function warnAccountingFailed(detail, nowMs) {
 }
 
 /**
- * Record ONE actual Open-Meteo upstream call — 2.9 call units — against the
+ * Record ONE actual Open-Meteo upstream call — 3.0 call units — against the
  * monthly allowance. Never throws and never blocks: a failure to count is not a
  * reason to fail a weather request. Redis unavailable → count nothing, warn
  * once per instance.
@@ -280,7 +282,7 @@ export async function recordOpenMeteoCall(redis = _UNSET, nowMs = Date.now(), un
     if (tenths === unitTenths) await redis.expire(key, OPEN_METEO_MONTHLY_TTL_SECONDS);
     const units = tenths / TENTHS;
     const pct = ((units / OPEN_METEO_MONTHLY_PLAN) * 100).toFixed(1);
-    // At/over 80% of the plan IN UNITS (800,000 units ≈ 275,862 requests):
+    // At/over 80% of the plan IN UNITS (800,000 units ≈ 266,667 requests):
     // alert on EVERY call, so the signal cannot be missed between throttled
     // routine lines.
     if (tenths >= OPEN_METEO_MONTHLY_ALERT_AT_TENTHS) {
