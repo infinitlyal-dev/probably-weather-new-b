@@ -73,3 +73,11 @@ describe('the three strings', () => {
     }
   });
 });
+
+// Sol's second review (2 Oct 2026): choosing a place from Search, the same one included, clears the note.
+describe('Sol, 2 Oct 2026: a pinned pick clears the note', () => {
+  it('app.js clears the note on a PLACE_MODE_PINNED load and only drops it on other loads when the place changes', () => {
+    const src = readFileSync(new URL('../assets/app.js', import.meta.url), 'utf8');
+    expect(src).toMatch(/place\?\.mode === PLACE_MODE_PINNED \? locationNote\.clear\(\) : locationNote\.dropUnlessFor\(place, samePlace\)/);
+  });
+});

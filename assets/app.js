@@ -3935,7 +3935,9 @@ document.addEventListener("DOMContentLoaded", () => {
     activeWeatherController?.abort();
     const requestController = new AbortController();
     activeWeatherController = requestController;
-    if (locationNote.dropUnlessFor(place, samePlace)) renderLocationNote();
+    // A place the user picked (pinned) always clears the fallback note, the same place included: the choice is now theirs
+    // (Sol, 2 Oct 2026). Other loads drop it only when the place changes.
+    if (place?.mode === PLACE_MODE_PINNED ? locationNote.clear() : locationNote.dropUnlessFor(place, samePlace)) renderLocationNote();
     activePlace = place; renderLoading(place.name, place.name ? null : 'myLocation');
     refreshSaveButtonState();
     // Kick the network fetch FIRST and let it run while IndexedDB opens —
