@@ -1,6 +1,6 @@
 {
  "note": "One line per live photograph (keyed by the hash in review/set-001-draft.json), written once and kept; the pairs job compares every new idea with these. Rebuild after wiring: node review/pairs-job/catalogue.mjs --repo <tree>.",
- "generated": "2026-09-30T15:56:41.322Z",
+ "generated": "2026-10-01T07:32:47.343Z",
  "photos": {
   "dd736311b619": {
    "folder": "clear",
@@ -2272,22 +2272,6 @@
    "shot": "wide",
    "banned": []
   },
-  "818c078a2bda": {
-   "folder": "heat",
-   "time": "dawn",
-   "slots": [
-    "heat/week_1/dawn/5.webp",
-    "heat/week_2/dawn/5.webp",
-    "heat/week_3/dawn/5.webp",
-    "heat/week_4/dawn/5.webp"
-   ],
-   "pair": null,
-   "line": "Garden sprinkler waters a country lawn beside a stone house at sunrise; wide shot",
-   "subject": "place",
-   "setting": "garden or lawn",
-   "shot": "wide",
-   "banned": []
-  },
   "b81a91a1f851": {
    "folder": "heat",
    "time": "dawn",
@@ -2698,22 +2682,6 @@
    "line": "Sunlight breaks beneath storm clouds over a wet farmhouse and windmill; wide shot",
    "subject": "place",
    "setting": "farm or veld",
-   "shot": "wide",
-   "banned": []
-  },
-  "73567b0c612e": {
-   "folder": "rain",
-   "time": "dawn",
-   "slots": [
-    "rain/week_1/dawn/6.webp",
-    "rain/week_2/dawn/6.webp",
-    "rain/week_3/dawn/6.webp",
-    "rain/week_4/dawn/6.webp"
-   ],
-   "pair": null,
-   "line": "Lone runner crosses a rain-wet suburban street lined with flowering jacarandas; wide shot",
-   "subject": "one person",
-   "setting": "street or town",
    "shot": "wide",
    "banned": []
   },
@@ -4905,6 +4873,38 @@
    "line": "Bundled pedestrians queue at a pavement kiosk beneath a mountain; wide shot",
    "subject": "group",
    "setting": "street or town",
+   "shot": "wide",
+   "banned": []
+  },
+  "7d4fb2e85dbf": {
+   "folder": "heat",
+   "time": "dawn",
+   "slots": [
+    "heat/week_1/dawn/5.webp",
+    "heat/week_2/dawn/5.webp",
+    "heat/week_3/dawn/5.webp",
+    "heat/week_4/dawn/5.webp"
+   ],
+   "pair": "R53",
+   "line": "Farmworker rests on a pickup tailgate beside a vineyard at sunset; medium shot",
+   "subject": "one person",
+   "setting": "farm or veld",
+   "shot": "medium",
+   "banned": []
+  },
+  "60d5a3416f6b": {
+   "folder": "rain",
+   "time": "dawn",
+   "slots": [
+    "rain/week_1/dawn/6.webp",
+    "rain/week_2/dawn/6.webp",
+    "rain/week_3/dawn/6.webp",
+    "rain/week_4/dawn/6.webp"
+   ],
+   "pair": "R56",
+   "line": "Group runs through deep mud on a rainy mountain trail; wide shot",
+   "subject": "group",
+   "setting": "mountain or view",
    "shot": "wide",
    "banned": []
   }
