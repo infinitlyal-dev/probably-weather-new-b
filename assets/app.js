@@ -32,6 +32,7 @@ import { isStoredHomeObject, shouldPersistHomeName } from './home-name.js';
 import { HEAT_EXTREME_C } from './weather-thresholds.js';
 import { SEARCH_MINI_VISIBLE_LIMIT, createSearchMiniPromiseCache } from './search-mini-weather.js';
 import { isStale, savedReadingView, formatAge, createSavedMetaRefresher } from './saved-place-meta.js';
+import { searchResultName, searchLabelParts, dedupeSearchResults } from './search-label.js';
 import { setupDeferredInstallLoad } from './install-loader.js';
 import { slotEnabled } from './ads-config.js';
 import { initHomeD } from './home-d.js';
@@ -4066,10 +4067,7 @@ document.addEventListener("DOMContentLoaded", () => {
       // De-duplicate: drop a result if an earlier one renders an identical label
       // AND sits within ~1km of it — the "Bryn Mawr triplication" bug, where three
       // OSM objects sharing one container collapsed into three identical rows.
-      searchResults = mapped.filter((r, i) => !mapped.slice(0, i).some(prev =>
-        searchResultName(prev) === searchResultName(r) &&
-        haversineKm(prev, r) <= 1
-      ));
+      searchResults = dedupeSearchResults(mapped, haversineKm);
       renderSearchResults(searchResults, 'noResults');
     } catch (e) {
       if (e.name === 'AbortError') return;
@@ -4079,14 +4077,14 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   // Lead with the feature's OWN name (r.name = the actual searched place) so
   // "Bryn Mawr" shows as itself, not its container "Lower Merion Township".
-  // The RAW composed name — what gets stored and what dedupe compares, so
-  // neither depends on the display language.
-  function searchResultName(r) { const a = r.address || {}; const city = r.name || a.town || a.village || a.city || 'Unknown'; return a.country ? `${city}, ${a.country}` : city; }
+  // The RAW composed name ("City, Country") — what gets stored and what dedupe compares — lives in
+  // assets/search-label.js (searchResultName), so neither depends on the display language and
+  // favourites keep matching. Only the DISPLAY label below gains the province (1 Oct 2026).
   // The DISPLAY name. r.name itself can be the literal 'Unknown' placeholder the
   // server emits (cacheableLocationName in api/_lib/weather-cache.js), so the
-  // city part goes through the same translator as every other place name — and
-  // only the city part, or "Unknown, South Africa" would lose its country.
-  function formatSearchResult(r) { const a = r.address || {}; const city = displayPlaceName(r.name || a.town || a.village || a.city || ''); return a.country ? `${city}, ${localizePlaceParts(a.country)}` : city; }
+  // own-name part goes through the same translator as every other place name — and
+  // only that part; the province and country are localized as place parts (PLACE_PARTS).
+  function formatSearchResult(r) { const [name, ...rest] = searchLabelParts(r); return [displayPlaceName(name), ...rest.map(localizePlaceParts)].join(', '); }
   function miniFetchTemp(lat, lon) {
     return loadSearchMini(lat, lon, async () => {
       const norm = normalizePayload(await fetchProbable({ lat, lon, name: '' }));

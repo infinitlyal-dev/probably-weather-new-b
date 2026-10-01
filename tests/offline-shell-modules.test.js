@@ -83,7 +83,8 @@ describe('offline shell — every module app.js imports is in the SW cache', () 
     // ads-readiness (merged 2026-09-16): + assets/ads-config.js, the ad-slot config.
     // Home D (2026-09-26): + assets/home-d.js, the phone Home.
     // Saved places (1 Oct 2026): + assets/saved-place-meta.js, the dated readings.
-    expect(importedModules.length).toBe(20);
+    // 1 Oct 2026: + assets/search-label.js (province in search results).
+    expect(importedModules.length).toBe(21);
     expect(importedModules).not.toContain('/assets/hero-lines.js');
     for (const mod of [
       '/assets/saved-place-meta.js',

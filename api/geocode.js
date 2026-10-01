@@ -145,6 +145,41 @@ function buildReverseName(addr) {
   return parts.length ? parts.join(', ') : null;
 }
 
+// Well-known South African places that were renamed, old name → current name (1 Oct 2026). LocationIQ
+// ranks the exact name first, so "Witbank" lists the small Northern Cape town of that name above
+// eMalahleni, which is what most people typing it mean. A search for an old name puts the result that
+// carries the new name first; it never adds a result the geocoder did not return.
+const RENAMED_PLACES = {
+  'witbank': 'eMalahleni',
+  'pietersburg': 'Polokwane',
+  'nelspruit': 'Mbombela',
+  'port elizabeth': 'Gqeberha',
+  'grahamstown': 'Makhanda',
+  "king william's town": 'Qonce',
+  'uitenhage': 'Kariega',
+  'potgietersrus': 'Mokopane',
+  'warmbaths': 'Bela-Bela',
+  'nylstroom': 'Modimolle',
+  'louis trichardt': 'Makhado',
+  'ellisras': 'Lephalale',
+  'messina': 'Musina',
+  'queenstown': 'Komani',
+  'umtata': 'Mthatha',
+  'stanger': 'KwaDukuza',
+  'piet retief': 'eMkhondo',
+  'lydenburg': 'Mashishing',
+  'bisho': 'Bhisho',
+};
+
+// Move results named for the query's current name to the front; the order is otherwise untouched.
+function promoteRenamed(q, results) {
+  const key = q.trim().toLowerCase().replace(/[\u2018\u2019]/g, "'").replace(/\s+/g, ' ');
+  const current = Object.hasOwn(RENAMED_PLACES, key) ? RENAMED_PLACES[key].toLowerCase() : null;
+  if (!current) return results;
+  const isCurrent = (r) => String(r.name || '').trim().toLowerCase() === current;
+  return [...results.filter(isCurrent), ...results.filter((r) => !isCurrent(r))];
+}
+
 export default async function handler(req, res) {
   // Per-IP rate limit — fails open if Upstash is unreachable (never blocks).
   // results:[] keeps the 429 shape compatible with the search response the
@@ -211,7 +246,7 @@ export default async function handler(req, res) {
         raw = await locationIqSearch(base, 'search (unrestricted)');
       }
 
-      const results = raw
+      const results = promoteRenamed(q, raw
         .map(r => ({
           name: resolveResultName(r),
           display_name: r.display_name || null,
@@ -221,7 +256,7 @@ export default async function handler(req, res) {
           type: r.type || null,
           class: r.class || null,
         }))
-        .filter(r => Number.isFinite(r.lat) && Number.isFinite(r.lon));
+        .filter(r => Number.isFinite(r.lat) && Number.isFinite(r.lon)));
 
       // Search results are stable for a given query — safe to cache briefly.
       res.setHeader('Cache-Control', 's-maxage=300, stale-while-revalidate=600');

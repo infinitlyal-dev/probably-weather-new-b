@@ -39,6 +39,6 @@ describe('place-language', () => {
     expect(build('af')('My Location')).toBe('myLocation');
   });
   it('search results name the country in the reader\'s language too', () => {
-    expect(sliceFn('formatSearchResult')).toContain('${localizePlaceParts(a.country)}');
+    expect(sliceFn('formatSearchResult')).toContain('rest.map(localizePlaceParts)');   // province and country, from searchLabelParts (1 Oct 2026)
   });
 });

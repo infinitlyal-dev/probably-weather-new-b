@@ -3,6 +3,7 @@ import { beforeAll, describe, expect, it } from 'vitest';
 
 import { COPY_BANK, loadCopyBank } from '../assets/copy-loader.js';
 import { INSTALL_T } from '../assets/install.js';
+import { searchLabelParts, searchResultName } from '../assets/search-label.js';
 
 // Prelaunch P1-6 "Language leaks": with a non-English language selected the app
 // still showed the provider's English condition label on the day-detail screen,
@@ -1481,8 +1482,8 @@ describe('language leaks — switching language updates content already rendered
         const t = (c, k) => T[c]?.[k]?.[lang] || T[c]?.[k]?.en || k;
         const displayPlaceName = loadPlaceFn('displayPlaceName', t, { lang });
         const localizePlaceParts = loadPlaceFn('localizePlaceParts', t, { lang });
-        const format = loadWithEnv('formatSearchResult', sliceFunction('formatSearchResult'), { t, displayPlaceName, localizePlaceParts });
-        const raw = loadWithEnv('searchResultName', sliceFunction('searchResultName'), { t });
+        const format = loadWithEnv('formatSearchResult', sliceFunction('formatSearchResult'), { t, displayPlaceName, localizePlaceParts, searchLabelParts });
+        const raw = searchResultName;   // moved to assets/search-label.js (1 Oct 2026)
 
         // The server's placeholder, with and without a country.
         expect(format({ name: 'Unknown', address: { country: 'South Africa' } }))
@@ -1503,7 +1504,9 @@ describe('language leaks — switching language updates content already rendered
     it('stored search-result data and dedupe use the raw name, not the translated one', () => {
       const src = app();
       expect(src).toMatch(/data-name="\$\{escapeHtml\(searchResultName\(r\)\)\}"/);
-      expect(src).toMatch(/searchResultName\(prev\) === searchResultName\(r\)/);
+      // Dedupe compares the raw name too (assets/search-label.js, 1 Oct 2026).
+      expect(src).toMatch(/dedupeSearchResults\(mapped, haversineKm\)/);
+      expect(readFileSync(new URL('../assets/search-label.js', import.meta.url), 'utf8')).toMatch(/searchResultName\(prev\) === searchResultName\(r\)/);
       // And results already on screen follow a language switch.
       expect(updateUILanguageSrc()).toMatch(/if \(searchResults\.length\) renderSearchResults\(searchResults\)/);
     });
