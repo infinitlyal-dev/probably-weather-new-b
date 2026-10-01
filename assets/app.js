@@ -4068,6 +4068,9 @@ document.addEventListener("DOMContentLoaded", () => {
           lat: Number(r.lat),
           lon: Number(r.lon),
           address: r.address,
+          // The geocoder's place type (suburb, town, city): searchLabelParts needs it to give a suburb its town
+          // (live, 2 Oct 2026: two rows both read "Witsand, Western Cape" because the type was dropped here).
+          type: r.type,
         }))
         .filter(r => Number.isFinite(r.lat) && Number.isFinite(r.lon));
       // De-duplicate: drop a result if an earlier one renders an identical label

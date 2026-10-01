@@ -1,6 +1,8 @@
 // Province in search results (1 Oct 2026): the display label, the renamed-place ordering on the
 // server, and the dedupe that must never merge two different places that share a name.
 
+import { readFileSync } from 'node:fs';
+
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { dedupeSearchResults, searchLabelParts, searchResultName } from '../assets/search-label.js';
@@ -140,5 +142,13 @@ describe('/api/geocode search: curly apostrophes match too', () => {
   it("\"King William’s Town\" promotes Qonce", async () => {
     const reply = [rawRow("King William's Town", -1, 1, { state: 'Eastern Cape', country: 'South Africa' }), rawRow('Qonce', -32.88, 27.4, { state: 'Eastern Cape', country: 'South Africa' }, 'city')];
     expect(await search('King William’s Town', reply)).toEqual(['Qonce', "King William's Town"]);
+  });
+});
+
+// Live, 2 Oct 2026: the client mapping dropped the geocoder's type, so the suburb rule never fired on a phone.
+describe('the client keeps the result type for the label', () => {
+  it('app.js maps type: r.type into each search result', () => {
+    const src = readFileSync(new URL('../assets/app.js', import.meta.url), 'utf8');
+    expect(src).toMatch(/address: r\.address,[\s\S]{0,400}?type: r\.type,/);
   });
 });
