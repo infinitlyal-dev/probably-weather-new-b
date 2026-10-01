@@ -1,0 +1,342 @@
+{
+ "generated": "2026-08-19",
+ "ruledBy": "Al, bespoke line review",
+ "bucket": "humour test batch",
+ "images": [
+  {
+   "image": "wind/week_1/day/4.webp",
+   "hash": "f32e33e76e01",
+   "condition": "wind",
+   "time": "day",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "wind/week_1/day/4.webp"
+   ],
+   "kept": [
+    {
+     "text": "Everything on that line was dry ten minutes ago. The wind is just showing off now.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Two pegs a shirt today. Anything less is a donation to the neighbours.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": [
+    {
+     "text": "This wind will have the washing dry before the coals are even grey.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ]
+  },
+  {
+   "image": "wind/week_1/night/3.webp",
+   "hash": "0e5c84f6ab31",
+   "condition": "wind",
+   "time": "night",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "wind/week_1/night/3.webp",
+    "wind/week_3/night/3.webp"
+   ],
+   "kept": [
+    {
+     "text": "The Cape Doctor is on night shift. The whole street has an appointment.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "The palm is the only one still outside, and it regrets everything.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "The southeaster doesn’t knock. You’ll hear it under the door all night.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "cold/week_2/dusk/5.webp",
+   "hash": "917c4c0a6fac",
+   "condition": "cold",
+   "time": "dusk",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "cold/week_2/dusk/5.webp",
+    "cold/week_4/dusk/5.webp"
+   ],
+   "kept": [
+    {
+     "text": "Friday evening, snow on the Apostles, and the only queue is for the kettle.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Hot chocolate weather is self-diagnosing. The marshmallows are the second opinion.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Snow on the mountain. The kind of cold Cape Town frames and hangs on the wall.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "rain/week_1/night/5.webp",
+   "hash": "504e55301184",
+   "condition": "rain",
+   "time": "night",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "rain/week_1/night/5.webp",
+    "rain/week_3/night/5.webp"
+   ],
+   "kept": [
+    {
+     "text": "The pool is getting topped up for free tonight. Somewhere a water bill relaxes.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "The only one swimming tonight is the rain itself.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "The pool light is on for nobody. The rain appreciates the ambience.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "heat/week_2/dusk/7.webp",
+   "hash": "3e88aef1fb06",
+   "condition": "heat",
+   "time": "dusk",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "heat/week_2/dusk/7.webp",
+    "heat/week_4/dusk/7.webp"
+   ],
+   "kept": [
+    {
+     "text": "The sun left an hour ago and took none of the heat with it.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Supper can wait. At this temperature the sprinkler promotes itself to family pool.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Officially he’s watering the garden. The garden is third in the queue.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "storm/week_4/day/1.webp",
+   "hash": "ea95b93c8930",
+   "condition": "storm",
+   "time": "day",
+   "week": "B",
+   "day": "wed",
+   "paths": [
+    "storm/week_4/day/1.webp"
+   ],
+   "kept": [
+    {
+     "text": "That grey column is someone’s afternoon getting cancelled. Ours is next in line.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Highveld rain doesn’t arrive. It gets delivered — all at once, one farm at a time.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": [
+    {
+     "text": "The stoep chair made a run for it. It got as far as the puddle.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ]
+  },
+  {
+   "image": "fog/week_1/dawn/5.webp",
+   "hash": "23b1b4b2af6d",
+   "condition": "fog",
+   "time": "dawn",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "fog/week_1/dawn/5.webp",
+    "fog/week_3/dawn/5.webp"
+   ],
+   "kept": [
+    {
+     "text": "The fog swallowed the whole street and gave up at the hi-vis.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Those headlights have been ‘almost here’ for five minutes. Fog time runs slower.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Everything past the streetlight is a rumour until about nine.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "cloudy/week_1/dusk/2.webp",
+   "hash": "20e80f881707",
+   "condition": "cloudy",
+   "time": "dusk",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "cloudy/week_1/dusk/2.webp",
+    "cloudy/week_3/dusk/2.webp"
+   ],
+   "kept": [
+    {
+     "text": "The sky can’t decide between golden hour and going home early. Neither can anyone else.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": [
+    {
+     "text": "Everyone’s an amateur forecaster on a pass like this. The sky isn’t telling.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Those clouds aren’t carrying rain. They’re just here to catch the light.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ]
+  },
+  {
+   "image": "clear/week_2/dusk/4.webp",
+   "hash": "7d50ec606bfc",
+   "condition": "clear",
+   "time": "dusk",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "clear/week_2/dusk/4.webp",
+    "clear/week_4/dusk/4.webp"
+   ],
+   "kept": [
+    {
+     "text": "Golden hour turns even the dust into a special effect.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "An evening this clear pays out its last hour in gold. Spend all of it.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": [
+    {
+     "text": "Homework has extended office hours tonight. The sky said so.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ]
+  },
+  {
+   "image": "cold-clear/week_1/night/3.webp",
+   "hash": "05aeb3b79581",
+   "condition": "cold-clear",
+   "time": "night",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "cold-clear/week_1/night/3.webp",
+    "cold-clear/week_3/night/3.webp"
+   ],
+   "kept": [
+    {
+     "text": "Every star is out tonight, and the frost is the entry fee.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "The Southern Cross is out, and so is the frost. Package deal.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": [
+    {
+     "text": "By morning that grass will crunch. Beautiful night, expensive morning.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ]
+  }
+ ],
+ "keptCount": 24,
+ "imagesWithNone": []
+}
