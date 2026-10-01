@@ -31,7 +31,7 @@ import { startFirstOpenLocation } from './first-open-location.js';
 import { isStoredHomeObject, shouldPersistHomeName } from './home-name.js';
 import { HEAT_EXTREME_C } from './weather-thresholds.js';
 import { SEARCH_MINI_VISIBLE_LIMIT, createSearchMiniPromiseCache } from './search-mini-weather.js';
-import { isStale, savedReadingView, formatAge, createSavedMetaRefresher } from './saved-place-meta.js';
+import { isStale, savedReadingView, formatAge, createSavedMetaRefresher, nextExpiryMs } from './saved-place-meta.js';
 import { searchResultName, searchLabelParts, dedupeSearchResults } from './search-label.js';
 import { setupDeferredInstallLoad } from './install-loader.js';
 import { slotEnabled } from './ads-config.js';
@@ -4015,10 +4015,16 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
   }
+  // The saved list re-renders the moment its freshest reading turns 30 min old, while Search shows (Sol, 2 Oct 2026):
+  // without it a row opened at 29:59 stayed "current" for as long as the screen was open.
+  let favExpiryTimer = null;
   function renderFavorites() {
     if (!favoritesList) return; const list = loadFavorites();
     const fl = document.getElementById('favLimit'); if (fl) fl.style.display = list.length >= 5 ? 'block' : 'none';
     const now = Date.now();
+    clearTimeout(favExpiryTimer);
+    const untilExpiry = nextExpiryMs(list, now);
+    if (untilExpiry !== null) favExpiryTimer = setTimeout(() => { if (screenSearch && !screenSearch.classList.contains('hidden')) renderFavorites(); }, untilExpiry + 1000);
     favoritesList.innerHTML = list.map(p => {
       // A reading past 30 min shows only beside its age; undated or over a day old, no number (1 Oct 2026).
       const view = savedReadingView(p, now);

@@ -16,17 +16,32 @@ const isNum = (v) => typeof v === 'number' && Number.isFinite(v);
 // An entry without metaAt was saved before readings were dated, so its age is unknown: stale.
 export function isStale(entry, now) {
   if (!entry || !isNum(entry.tempC) || !entry.conditionKey || !isNum(entry.metaAt)) return true;
+  // A metaAt in the future (the device clock moved back) says nothing about the reading's age: stale (Sol, 2 Oct 2026).
+  if (entry.metaAt > now) return true;
   return now - entry.metaAt > SAVED_META_MAX_AGE_MS;
 }
 
 // What the row may show: { tempC, ageMs }. A fresh reading shows as current (ageMs null). A stale one
 // shows its number only beside its age; an undated or day-old one shows no number at all.
 export function savedReadingView(entry, now) {
-  if (!entry || !isNum(entry.tempC) || !isNum(entry.metaAt)) return { tempC: null, ageMs: null };
-  const ageMs = Math.max(0, now - entry.metaAt);
+  if (!entry || !isNum(entry.tempC) || !isNum(entry.metaAt) || entry.metaAt > now) return { tempC: null, ageMs: null };
+  const ageMs = now - entry.metaAt;
   if (ageMs > SAVED_META_DROP_AGE_MS) return { tempC: null, ageMs: null };
   if (ageMs <= SAVED_META_MAX_AGE_MS) return { tempC: entry.tempC, ageMs: null };
   return { tempC: entry.tempC, ageMs };
+}
+
+// How long until the first fresh reading in `list` turns 30 min old (null when none is fresh): the list
+// re-renders then, so a row opened at 29:59 does not sit as "current" for as long as Search stays open
+// (Sol, 2 Oct 2026). A fresh reading with metaAt in the future is not counted (it is stale already).
+export function nextExpiryMs(list, now) {
+  let soonest = null;
+  for (const e of list || []) {
+    if (!e || !isNum(e.metaAt) || e.metaAt > now) continue;
+    const left = e.metaAt + SAVED_META_MAX_AGE_MS - now;
+    if (left > 0 && (soonest === null || left < soonest)) soonest = left;
+  }
+  return soonest;
 }
 
 // templates: { mins: '{mins} min ago', hours: '{h} h ago' } in the reader's language.
@@ -49,7 +64,8 @@ export function createSavedMetaRefresher({ load, onResult, onError, isVisible, p
       while (queue.length) {
         if (!isVisible()) { queue.splice(0).forEach(({ key }) => pending.delete(key)); break; }
         const { key, place } = queue.shift();
-        try { onResult(place, await load(place)); } catch (err) { onError?.(place, err); } finally { pending.delete(key); }
+        // onError is contained too: a throwing callback must not strand the rows still queued (Sol, 2 Oct 2026).
+        try { onResult(place, await load(place)); } catch (err) { try { onError?.(place, err); } catch {} } finally { pending.delete(key); }
       }
     } finally {
       running = false;

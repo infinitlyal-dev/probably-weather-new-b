@@ -170,3 +170,40 @@ describe('app.js wiring', () => {
     expect(src).toMatch(/t\('misc', 'agoHours'\)/);
   });
 });
+
+// Sol's second review of the launch run (2 Oct 2026).
+describe('Sol, 2 Oct 2026: expiry while Search stays open, a clock that moved back, a throwing onError', async () => {
+  const mod = await import('../assets/saved-place-meta.js');
+  const { nextExpiryMs, isStale, savedReadingView, createSavedMetaRefresher, SAVED_META_MAX_AGE_MS } = mod;
+  const now = 1_700_000_000_000;
+  it('nextExpiryMs: the soonest fresh reading sets the re-render; none fresh → null', () => {
+    const list = [{ metaAt: now - 29 * 60000 }, { metaAt: now - 5 * 60000 }, { metaAt: now - 40 * 60000 }];
+    expect(nextExpiryMs(list, now)).toBe(60000);
+    expect(nextExpiryMs([{ metaAt: now - 40 * 60000 }], now)).toBeNull();
+    expect(nextExpiryMs([], now)).toBeNull();
+  });
+  it('a metaAt in the future is stale and shows no number', () => {
+    const e = { tempC: 15, conditionKey: 'clear', metaAt: now + 60000 };
+    expect(isStale(e, now)).toBe(true);
+    expect(savedReadingView(e, now)).toEqual({ tempC: null, ageMs: null });
+    expect(nextExpiryMs([e], now)).toBeNull();
+  });
+  it('a throwing onError does not strand the rows still queued', async () => {
+    const pending = new Set(); const seen = [];
+    const enqueue = createSavedMetaRefresher({
+      pending, isVisible: () => true,
+      load: async (p) => { if (p.id === 1) throw new Error('boom'); return { nowTemp: 20 }; },
+      onResult: (p) => seen.push(p.id), onError: () => { throw new Error('onError itself throws'); },
+    });
+    enqueue('a', { id: 1 }); enqueue('b', { id: 2 });
+    await new Promise((r) => setTimeout(r, 10));
+    expect(seen).toEqual([2]);
+    expect(pending.size).toBe(0);
+  });
+  it('app.js re-renders the saved list at the freshest reading\'s expiry and clears the note on a pinned pick', () => {
+    const src = readFileSync(new URL('../assets/app.js', import.meta.url), 'utf8');
+    expect(src).toMatch(/nextExpiryMs\(list, now\)/);
+    expect(src).toMatch(/favExpiryTimer = setTimeout/);
+    expect(SAVED_META_MAX_AGE_MS).toBe(30 * 60 * 1000);
+  });
+});
