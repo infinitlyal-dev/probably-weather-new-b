@@ -30,6 +30,24 @@
     }
   }
 
+  /* The fallback note (1 Oct 2026, assets/location-note.js) adds up to two lines under the place name. On a
+     narrow phone the number steps down a little and the fade below "Probably …" shortens to pay for them;
+     the fold gate's --note run holds this. */
+  @media (max-width: 400px) {
+    body.home-d.has-location-note {
+      --d-temp-fs: clamp(3.5rem, min(22vw, 13vh), 8.5rem);
+      --d-top-runway: clamp(6px, 1.5vh, 48px);
+    }
+  }
+  /* The 488 px screen (an iPhone SE 1st gen under Chrome's bars) with the longest isiZulu, isiXhosa or
+     Sesotho facts needs a little more: the number a notch smaller, the note at the 11 px floor, the
+     header's own padding gone. */
+  @media (max-width: 400px) and (max-height: 560px) {
+    body.home-d.has-location-note { --d-temp-fs: clamp(3rem, min(22vw, 11vh), 8.5rem); }
+    body.home-d.home-active.has-location-note .header { padding-bottom: 0; }
+    body.home-d.has-location-note .location-note { font-size: 11px; line-height: 1.15; }
+  }
+
   /* ---------- the frame: the photograph, edge to edge, top to bottom ---------- */
   body.home-d.home-active .hero-card {
     position: fixed;

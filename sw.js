@@ -120,6 +120,7 @@ const CORE_ASSETS = [
   // Saved places' dated readings (1 Oct 2026).
   '/assets/saved-place-meta.js',
   '/assets/search-label.js',
+  '/assets/location-note.js',
   '/assets/install-loader.js',
   // ADS-READINESS (Al's ruling 2026-09-15): the slot config app.js imports.
   '/assets/ads-config.js',

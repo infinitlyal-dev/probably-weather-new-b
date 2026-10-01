@@ -22,6 +22,9 @@
 //
 //   node scripts/verify-home-fold.mjs          -> assert the matrix
 //   node scripts/verify-home-fold.mjs --shots  -> also write screenshots
+//   node scripts/verify-home-fold.mjs --note   -> the same matrix with the "location refused, showing your saved
+//                                                place" note under the place name (1 Oct 2026), and the
+//                                                note must end above the temperature too
 //
 // Output: output/m8-fold/
 import { createServer } from 'node:http';
@@ -34,6 +37,7 @@ const root = fileURLToPath(new URL('..', import.meta.url));
 const dist = path.join(root, 'dist');
 const DATE = '2026-08-08';
 const SHOTS = process.argv.includes('--shots');
+const NOTE = process.argv.includes('--note');
 
 // Design-pass hook. Unset in every normal run, so the standing gate is byte-for-
 // byte the same matrix it was: with PW_FOLD_CSS pointing at a stylesheet the gate
@@ -42,7 +46,7 @@ const SHOTS = process.argv.includes('--shots');
 // each candidate's fold.json beside the baseline instead of on top of it.
 const EXTRA_CSS = process.env.PW_FOLD_CSS ? readFileSync(process.env.PW_FOLD_CSS, 'utf8') : null;
 const LABEL = process.env.PW_FOLD_LABEL || '';
-const output = path.join(root, 'output', LABEL ? `m8-fold-${LABEL}` : 'm8-fold');
+const output = path.join(root, 'output', LABEL ? `m8-fold-${LABEL}` : NOTE ? 'm8-fold-note' : 'm8-fold');
 
 // The real-device range, not one lucky phone. The last entry is Al's own device
 // class, which is what caught this — a viewport nothing in the matrix covered.
@@ -194,6 +198,7 @@ const REQUIRED = [
   ['.nav', 'bottom nav'],
 ];
 const UNDER_NAV_OK = new Set(['.nav', '#heroCard']);
+if (NOTE) REQUIRED.push(['#locationNote', 'fallback note under the place name']);
 
 const MEASURE = (required) => {
   const navEl = document.querySelector('.nav');
@@ -268,6 +273,8 @@ for (const vp of VIEWPORTS) {
         }, EXTRA_CSS);
       }
       await page.waitForTimeout(700);
+      // --note: the app's own hook puts the in-memory note on Home, in the page's language.
+      if (NOTE) { await page.evaluate(() => window.__PW_LOCATION_NOTE('saved')); await page.waitForTimeout(150); }
 
       // Pin the caption so the two heights are deterministic rather than
       // whatever the random witty pick happened to be.
@@ -282,6 +289,10 @@ for (const vp of VIEWPORTS) {
 
       if (m.missing.length) failures.push(`[${label}] MISSING: ${m.missing.join(', ')}`);
       if (m.maxScroll > 1) failures.push(`[${label}] page scrolls ${m.maxScroll.toFixed(0)}px — Home must fit`);
+      // The note floats on the header: it must clear the number it sits above.
+      const noteEl = m.elements.find((e) => e.sel === '#locationNote');
+      const numEl = m.elements.find((e) => e.sel === '#temp .hero-now');
+      if (noteEl && numEl && noteEl.bottom > numEl.top + 0.5) failures.push(`[${label}] the note runs ${(noteEl.bottom - numEl.top).toFixed(0)}px INTO THE TEMPERATURE`);
       // The handle sits on the nav, so everything else must also end above the handle.
       const handle = m.elements.find((e) => e.sel === '#dHandle');
       if (handle) {

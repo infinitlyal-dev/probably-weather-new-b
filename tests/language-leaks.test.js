@@ -681,7 +681,7 @@ function runUpdateUILanguage(lang) {
     searchEditMode: false, escapeHtml: (s) => s,
     weatherIconSvg: () => '<svg/>', voiceLine: () => '', VOICE: { week: {} },
     updateHourlySubtitle: noop, renderHourlyChart: noop, syncSettingsSegs: noop,
-    renderAgreeLine: noop, refreshSaveButtonState: noop,
+    renderAgreeLine: noop, renderLocationNote: noop, refreshSaveButtonState: noop,
     APP_VERSION: '1.5', BUILD_SHORT: 'abc1234', window: { __PW_LAST_NORM: null },
     // Cache-age line: not visible in this harness, so the re-render branch is
     // skipped. Its own behaviour is covered against the real showCacheAge.
@@ -1002,7 +1002,7 @@ describe('language leaks — switching language updates content already rendered
         screenHourly: { querySelector: () => null }, screenSources: { querySelector: () => null },
         searchEditMode: false, escapeHtml: (s) => s, weatherIconSvg: () => '<svg/>',
         voiceLine: () => '', VOICE: { week: {} }, updateHourlySubtitle: noop,
-        renderHourlyChart: noop, syncSettingsSegs: noop, renderAgreeLine: noop,
+        renderHourlyChart: noop, syncSettingsSegs: noop, renderAgreeLine: noop, renderLocationNote: noop,
         refreshSaveButtonState: noop, APP_VERSION: '1.5', BUILD_SHORT: 'abc1234',
         offlineEl: $('#offlineIndicator'), lastCacheTimestamp: null, showCacheAge: noop,
         searchResults: [], renderSearchResults: noop,
@@ -1091,6 +1091,7 @@ describe('language leaks — switching language updates content already rendered
       // Stubbed network + cache so the REAL loadAndRender can be driven: the
       // fetch outcome registered per place name decides success or failure.
       activePlace: null, activeLocationSeq: 0, activeWeatherController: null,
+      locationNote: { dropUnlessFor: () => false }, renderLocationNote: noop,
       lastFetchTime: null, AbortController,
       fetchProbable: (place) => {
         const outcome = fetchOutcomes.get(place?.name);

@@ -1515,6 +1515,36 @@ select option {
   text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
 }
 
+/* The note under the place name after location was refused and the app fell back (1 Oct 2026;
+   assets/location-note.js). Small (never under 11px), left-aligned with the name, wraps to two lines
+   at most; the button sits inline as a link. Hidden away from Home. */
+.location-note {
+  margin-top: 2px;
+  font-size: 12px;
+  line-height: 1.25;
+  color: var(--ink, #fff);
+  text-align: left;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+}
+.location-note[hidden],
+body:not(.home-active) .location-note { display: none; }
+.location-note-pick {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  padding: 0;
+  /* The global 44px button minimum would turn this inline link into a two-line block and push Home down
+     (the fold gate caught it); the tap area is widened with ::after instead, which takes no room. */
+  min-block-size: 0;
+  min-inline-size: 0;
+  position: relative;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+}
+.location-note-pick::after { content: ""; position: absolute; inset: -12px -8px; }
+
 .shared-location-indicator {
   margin-top: 2px;
   font-size: 0.72rem;

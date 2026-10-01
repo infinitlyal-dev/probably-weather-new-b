@@ -33,6 +33,7 @@ import { HEAT_EXTREME_C } from './weather-thresholds.js';
 import { SEARCH_MINI_VISIBLE_LIMIT, createSearchMiniPromiseCache } from './search-mini-weather.js';
 import { isStale, savedReadingView, formatAge, createSavedMetaRefresher, nextExpiryMs } from './saved-place-meta.js';
 import { searchResultName, searchLabelParts, dedupeSearchResults } from './search-label.js';
+import { NOTE_SAVED, NOTE_APPROX, noteTextKey, createLocationNote } from './location-note.js';
 import { setupDeferredInstallLoad } from './install-loader.js';
 import { slotEnabled } from './ads-config.js';
 import { initHomeD } from './home-d.js';
@@ -69,6 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // ========== DOM ELEMENTS ==========
   const locationEl = $('#location');
+  const locationNoteEl = $('#locationNote');
   const headlineEl = $('#headline');
   const tempEl = $('#temp');
   const descriptionEl = $('#description');
@@ -581,6 +583,26 @@ document.addEventListener("DOMContentLoaded", () => {
         st: "Ho batla sebaka ho nkile nako e telele. E sebedisa sebaka se ka bang sona."
       }
     },
+    // Home: the note under the place name after a location attempt failed and the app fell back
+    // (1 Oct 2026). EN/AF are Al's; zu/xh/st went through lang-check. Sesotho fallbackSaved was rated
+    // triage-high ('sebaka' vs 'seka'), so it stays English until a native rules.
+    home: {
+      fallbackSaved: {
+        en: "Can't use your location, so this is your saved place.",
+        af: "Kan nie jou ligging gebruik nie, so dit is jou gestoorde plek.",
+        zu: "Ayikwazi ukusebenzisa indawo yakho, ngakho le yindawo yakho egciniwe.",
+        xh: "Ayikwazi ukusebenzisa indawo yakho, ngoko le yindawo yakho egciniweyo.",
+        st: "Can't use your location, so this is your saved place."
+      },
+      fallbackApprox: {
+        en: "Can't use your location, so this is a rough guess.",
+        af: "Kan nie jou ligging gebruik nie, so dit is 'n skatting.",
+        zu: "Ayikwazi ukusebenzisa indawo yakho, ngakho le yindawo eseduze nje.",
+        xh: "Ayikwazi ukusebenzisa indawo yakho, ngoko le yindawo ekufuphi.",
+        st: "Ha e kgone ho sebedisa sebaka sa hao, ka hona ke sebaka se ka bang sona."
+      },
+      pickPlace: { en: "Pick a place", af: "Kies 'n plek", zu: "Khetha indawo", xh: "Khetha indawo", st: "Kgetha sebaka" }
+    },
     // ADS-READINESS (Al's ruling 2026-09-15): the slot label and the placeholder
     // card shown until a network is live (assets/ads-config.js). Checked with
     // scripts/lang-check/triage.mjs; zu/xh/st await a native speaker like every new string.
@@ -990,6 +1012,22 @@ document.addEventListener("DOMContentLoaded", () => {
     if (/^unknown\b/i.test(v)) return t('misc', 'unknownPlace');
     return localizePlaceParts(name);
   }
+  // The note under the place name after a failed location attempt fell back to a saved or rough place
+  // (1 Oct 2026; state and rules in assets/location-note.js). In memory only.
+  const locationNote = createLocationNote();
+  function renderLocationNote() {
+    if (!locationNoteEl) return;
+    const key = noteTextKey(locationNote.current());
+    locationNoteEl.hidden = !key;
+    document.body.classList.toggle('has-location-note', !!key);
+    if (!key) return;
+    locationNoteEl.querySelector('.location-note-text').textContent = t('home', key);
+    locationNoteEl.querySelector('.location-note-pick').textContent = t('home', 'pickPlace');
+  }
+  function showLocationNote(kind, place) { if (locationNote.show(kind, place)) { debugLog('[location] fallback note:', kind); renderLocationNote(); } }
+  function clearLocationNote() { if (locationNote.clear()) renderLocationNote(); }
+  // Gate hook (scripts/verify-home-fold.mjs --note): lets the fold check put the note on Home.
+  window.__PW_LOCATION_NOTE = (kind) => showLocationNote(kind, activePlace || homePlace);
   const escapeHtml = (s) => String(s ?? "").replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;').replaceAll("'", '&#039;');
   // Routed through pickConditionIconForTime so search/mini cards also respect
   // day/night. Callers that don't pass an isDay flag get the day icon; the
@@ -1680,6 +1718,7 @@ document.addEventListener("DOMContentLoaded", () => {
       myLocationHome.innerHTML = `${weatherIconSvg('pin', { size: 18 })} <span>${escapeHtml(t('misc', 'myLocation'))}</span>`;
       myLocationHome.setAttribute('aria-label', t('misc', 'myLocation'));
     }
+    renderLocationNote();
     // The search screen's GPS button was translated nowhere at all — label and
     // accessible name both stayed English in every language.
     if (useMyLocationBtn) {
@@ -3896,6 +3935,7 @@ document.addEventListener("DOMContentLoaded", () => {
     activeWeatherController?.abort();
     const requestController = new AbortController();
     activeWeatherController = requestController;
+    if (locationNote.dropUnlessFor(place, samePlace)) renderLocationNote();
     activePlace = place; renderLoading(place.name, place.name ? null : 'myLocation');
     refreshSaveButtonState();
     // Kick the network fetch FIRST and let it run while IndexedDB opens —
@@ -4138,6 +4178,8 @@ document.addEventListener("DOMContentLoaded", () => {
   navWeek?.addEventListener('click', () => showScreen(screenWeek));
   $('#dayDetailBack')?.addEventListener('click', () => showScreen(screenWeek));
   navSearch?.addEventListener('click', () => { showScreen(screenSearch); renderRecents(); renderFavorites(); });
+  // The fallback note's button: the same Search screen the nav opens, with the input ready to type in.
+  locationNoteEl?.querySelector('.location-note-pick')?.addEventListener('click', () => { showScreen(screenSearch); renderRecents(); renderFavorites(); searchInput?.focus(); });
   navSettings?.addEventListener('click', () => showScreen(screenSettings));
   const openSources = () => {
     // Re-render so the source list reflects the most recent payload.
@@ -4246,7 +4288,8 @@ document.addEventListener("DOMContentLoaded", () => {
     showToast(getGeolocationErrorMessage(err), 5000);
   }
 
-  function loadApproximateLocation() {
+  // note: a NOTE_* kind from a caller that got here because location was refused (Home shows the note).
+  function loadApproximateLocation(note) {
     return getIPLocation().then(place => {
       // Tagged 'gps' because it's auto-derived, not user-pinned. On next
       // launch/visibilitychange the auto-refresh path retries getCurrentPosition
@@ -4254,6 +4297,7 @@ document.addEventListener("DOMContentLoaded", () => {
       homePlace = { ...place, mode: PLACE_MODE_GPS };
       saveJSON(STORAGE.home, homePlace);
       loadAndRender(homePlace);
+      if (note) showLocationNote(note, homePlace);
     });
   }
 
@@ -4269,6 +4313,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // will not override this pick for MANUAL_OVERRIDE_GRACE_MS (30 min) —
         // the user's explicit choice wins over passive re-detection.
         manualLocationAt = Date.now();
+        clearLocationNote();
         try {
           const rev = await fetch(`/api/weather?reverse=1&lat=${encodeURIComponent(lat)}&lon=${encodeURIComponent(lon)}`, { headers: installHeaders() });
           // H2: a 429 (rate limiter) or 5xx here used to fall through .json()
@@ -4304,9 +4349,10 @@ document.addEventListener("DOMContentLoaded", () => {
           homePlace = { name: savedName, lat: savedGpsLoc.lat, lon: savedGpsLoc.lon, mode: PLACE_MODE_GPS };
           saveJSON(STORAGE.home, homePlace);
           loadAndRender(homePlace);
+          showLocationNote(NOTE_SAVED, homePlace);
         } else {
           // GPS blocked, no saved location - use IP geolocation
-          loadApproximateLocation();
+          loadApproximateLocation(NOTE_APPROX);
         }
       }, { enableHighAccuracy: true, timeout: 10000, maximumAge: 60000 });
     } else {
@@ -4317,10 +4363,11 @@ document.addEventListener("DOMContentLoaded", () => {
         homePlace = { name: savedName, lat: savedGpsLoc.lat, lon: savedGpsLoc.lon, mode: PLACE_MODE_GPS };
         saveJSON(STORAGE.home, homePlace);
         loadAndRender(homePlace);
+        showLocationNote(NOTE_SAVED, homePlace);
         showToast(t('toasts', 'usingSaved') || 'Using saved location', 3000, null, 'pin');
       } else {
         showToast(t('toasts', 'locationApprox'), 5000);
-        loadApproximateLocation();
+        loadApproximateLocation(NOTE_APPROX);
       }
     }
   }
@@ -4471,7 +4518,7 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
       // No geolocation support - use IP geolocation
       showToast(t('toasts', 'locationApprox'), 5000);
-      loadApproximateLocation();
+      loadApproximateLocation(NOTE_APPROX);
     }
   }
 
@@ -4517,6 +4564,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const newLon = Math.round(pos.coords.longitude * 10000) / 10000;
       const newGps = { lat: newLat, lon: newLon };
       saveJSON(STORAGE.lastGps, { lat: newLat, lon: newLon, ts: Date.now() });
+      clearLocationNote();   // a GPS fix worked: whatever the note said is no longer true
 
       if (shouldUpdateLocation({ activePlace: placeAtRequestTime, newGps })) {
         debugLog(`[Refresh] GPS moved ${haversineKm({ lat: placeAtRequestTime.lat, lon: placeAtRequestTime.lon }, newGps).toFixed(1)}km from ${placeAtRequestTime.name} (${source}) — re-detecting`);
