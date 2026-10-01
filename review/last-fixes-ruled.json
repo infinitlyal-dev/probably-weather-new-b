@@ -1,0 +1,104 @@
+{
+ "generated": "2026-10-01T07:27:08.686Z",
+ "ruledBy": "Al, review/last-fixes-for-al.html",
+ "photos": [
+  {
+   "id": "R53",
+   "pick": "USE",
+   "afPick": "OK",
+   "afFix": ""
+  },
+  {
+   "id": "R56",
+   "pick": "USE",
+   "afPick": "OK",
+   "afFix": ""
+  }
+ ],
+ "lines": [
+  {
+   "id": "T1",
+   "pick": "USE NEW",
+   "afPick": "OK",
+   "afFix": "",
+   "ownEn": ""
+  },
+  {
+   "id": "T2",
+   "pick": "USE NEW",
+   "afPick": "OK",
+   "afFix": "",
+   "ownEn": ""
+  },
+  {
+   "id": "T3",
+   "pick": "USE NEW",
+   "afPick": "OK",
+   "afFix": "",
+   "ownEn": ""
+  },
+  {
+   "id": "T4",
+   "pick": "USE NEW",
+   "afPick": "OK",
+   "afFix": "",
+   "ownEn": ""
+  },
+  {
+   "id": "T5",
+   "pick": "USE NEW",
+   "afPick": "OK",
+   "afFix": "",
+   "ownEn": ""
+  },
+  {
+   "id": "T6",
+   "pick": "USE NEW",
+   "afPick": "OK",
+   "afFix": "",
+   "ownEn": ""
+  },
+  {
+   "id": "T7",
+   "pick": "USE NEW",
+   "afPick": "OK",
+   "afFix": "",
+   "ownEn": ""
+  },
+  {
+   "id": "T8",
+   "pick": "USE NEW",
+   "afPick": "OK",
+   "afFix": "",
+   "ownEn": ""
+  },
+  {
+   "id": "T9",
+   "pick": "USE NEW",
+   "afPick": "OK",
+   "afFix": "",
+   "ownEn": ""
+  },
+  {
+   "id": "T10",
+   "pick": "USE NEW",
+   "afPick": "OK",
+   "afFix": "",
+   "ownEn": ""
+  },
+  {
+   "id": "T11",
+   "pick": "KEEP OLD",
+   "afPick": "OK",
+   "afFix": "",
+   "ownEn": ""
+  },
+  {
+   "id": "T12",
+   "pick": "KEEP OLD",
+   "afPick": "OK",
+   "afFix": "",
+   "ownEn": ""
+  }
+ ]
+}
