@@ -1677,3 +1677,22 @@ on `351e487`, pre-existing), local smoke PASS ×5 languages — every step exit 
 21,486 (then 21,487), build, local smoke PASS. `/api/version` → `37da761` at 22:50 UTC; **live smoke, five languages,
 phone (Strand a–e, Gqeberha a+e) and desktop (home, hourly, weekly, search, settings, share, share card, measured): PASS.**
 Then `85ee034` live at 23:02 UTC: live smoke, five languages, phone and desktop: PASS; "Witbank" in the app lists "Witsand, Western Cape" and "Witsand, Atlantis, Western Cape" apart.
+
+### 17.8 Al's words in, items 2 and 4 live (Sonnet 5.5 building, Fable 5.1 reviewing — 2 Oct 2026, 09:25 SAST)
+Al's export `review/launch-words-ruled.json` (02 Oct 06:59): all six words OK as pre-marked. One change agreed in chat
+afterwards and treated as his ruling (`review/launch-words-ruled-note.md`): Afrikaans `misc.agoHours` = "{h} uur gelede"
+("h" is not an Afrikaans short form). `launch-hold` rebased onto `1475a47` (clean), the ruling applied, pinned by
+`tests/launch-words-ruling.test.js` (the six keys against the export, agoHours' Afrikaans as the one stated exception;
+"1 h ago"/"3 h ago", "1 uur gelede"/"3 uur gelede"). isiZulu, isiXhosa and Sesotho for these words were already through
+the language skills and lang-check (§17.6); Sesotho `home.fallbackSaved` stays English until a native rules. Gates on
+`3655c0b`: serial **160 files / 21,512** (temp-freeze unchanged), build, day-card fit **10/10** (five languages, 414×715
+and 320×488), fold **140/140** and **140/140 with the note**, Home D pairs check 40/40 photos (36/40 lines, P09
+pre-existing), local smoke PASS. Fast-forwarded to main and pushed; `/api/version` → `3655c0b` at 07:25 UTC; **live
+smoke, five languages, phone and desktop: PASS.** Live at 375×812, English and Afrikaans: Monday's card "WIND up to 14
+km/h · GUSTS 32 km/h" / "WIND tot 14 km/h · WINDSTOTE 32 km/h"; saved rows "40 min ago · 15°", "3 h ago · 21°" / "40 min
+gelede", "3 uur gelede" (with the forecast fetch held back 6 s so the age is caught; without it the shared cache answers
+inside 120 ms and the row is already fresh), refreshed to the live numbers after; the note "Can't use your location, so
+this is your saved place. Pick a place" / "Kan nie jou ligging gebruik nie, so dit is 'n skatting. Kies 'n plek" under
+the place name (set through the fold gate's hook, since this browser cannot refuse geolocation on demand). **The app
+is launch-ready.** Open: Android install/offline/share on a real phone; the Sesotho note line; AfriGIS/SAWS for Strand;
+fog and the rain percentages (the recorder keeps scoring); the recurring image job Al plans with Anon next week.
