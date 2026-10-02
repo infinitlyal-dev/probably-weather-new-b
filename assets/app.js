@@ -726,10 +726,11 @@ document.addEventListener("DOMContentLoaded", () => {
         xh: "Kugqityelwe ukuhlaziywa kwimizuzu engu-{mins} edlulileyo",
         st: "Ho ntjhafaditswe metsotso e {mins} e fetileng"
       },
-      // A saved place's reading past 30 min shows its age beside the number (1 Oct 2026; EN/AF Al's).
+      // A saved place's reading past 30 min shows its age beside the number (1 Oct 2026). EN/AF are Al's ruling
+      // (review/launch-words-ruled.json, 2 Oct 2026, Afrikaans hours per his chat ruling).
       // zu/xh/st follow lastUpdated above; lang-check triage 0 flagged.
       agoMins: { en: "{mins} min ago", af: "{mins} min gelede", zu: "emizuzwini engu-{mins} edlule", xh: "kwimizuzu engu-{mins} edlulileyo", st: "metsotso e {mins} e fetileng" },
-      agoHours: { en: "{h} h ago", af: "{h} h gelede", zu: "emahoreni angu-{h} edlule", xh: "kwiiyure ezi-{h} ezidlulileyo", st: "dihora tse {h} tse fetileng" },
+      agoHours: { en: "{h} h ago", af: "{h} uur gelede", zu: "emahoreni angu-{h} edlule", xh: "kwiiyure ezi-{h} ezidlulileyo", st: "dihora tse {h} tse fetileng" },
       shareLinkCopied: {
         en: "Share link copied",
         af: "Deelskakel gekopieer",

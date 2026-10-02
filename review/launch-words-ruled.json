@@ -1,0 +1,48 @@
+{
+ "generated": "2026-10-02T06:59:52.343Z",
+ "ruledBy": "Al, launch words page (review/launch-words-for-al.html)",
+ "words": [
+  {
+   "key": "weather.upTo",
+   "en": "up to {value}",
+   "af": "tot {value}",
+   "verdict": "OK",
+   "text": ""
+  },
+  {
+   "key": "home.fallbackSaved",
+   "en": "Can't use your location, so this is your saved place.",
+   "af": "Kan nie jou ligging gebruik nie, so dit is jou gestoorde plek.",
+   "verdict": "OK",
+   "text": ""
+  },
+  {
+   "key": "home.fallbackApprox",
+   "en": "Can't use your location, so this is a rough guess.",
+   "af": "Kan nie jou ligging gebruik nie, so dit is 'n skatting.",
+   "verdict": "OK",
+   "text": ""
+  },
+  {
+   "key": "home.pickPlace",
+   "en": "Pick a place",
+   "af": "Kies 'n plek",
+   "verdict": "OK",
+   "text": ""
+  },
+  {
+   "key": "misc.agoMins",
+   "en": "{mins} min ago",
+   "af": "{mins} min gelede",
+   "verdict": "OK",
+   "text": ""
+  },
+  {
+   "key": "misc.agoHours",
+   "en": "{h} h ago",
+   "af": "{h} h gelede",
+   "verdict": "OK",
+   "text": ""
+  }
+ ]
+}
