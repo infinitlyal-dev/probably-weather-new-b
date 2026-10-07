@@ -2594,9 +2594,8 @@ export default async function handler(req, res) {
     // A source's CURRENT description saying rain — "Patchy rain possible" and
     // "Possible rain" are a maybe, not a report, and do not count.
     const nowRainVotes = sourceConditionVotes.filter(v => v.vote === 'rain' && !/possible/i.test(v.desc || '')).length;
-    // 7 Oct 2026: the cloud figure the hero reads — this hour's, with the sources' own verdict as well (skyCloudFor).
-    const currentSky = skyCloudFor({ cloudPct: currentCloudPct, omLowPct: hourlies[0]?.cloudsLow?.[localHour], omMidPct: hourlies[0]?.cloudsMid?.[localHour],
-      clearVotes: sourceConditionVotes.filter(v => v.vote === 'clear').length, activeSources: activeNorms.length });
+    // 7 Oct 2026: the cloud figure the hero reads for this hour (skyCloudFor).
+    const currentSky = skyCloudFor({ cloudPct: currentCloudPct, omLowPct: hourlies[0]?.cloudsLow?.[localHour], omMidPct: hourlies[0]?.cloudsMid?.[localHour] });
     if (currentSky.rule) debugLog(`[Sky cloud] ${currentCloudPct}% → ${currentSky.pct}% (${currentSky.rule})`);
     // The selector's exact inputs are kept (nowSelector) so a cache hit can
     // re-run the SAME call with only uv/isDay refreshed and compare against
@@ -2626,6 +2625,8 @@ export default async function handler(req, res) {
       uvIndex:    uvForCondition,
       // 7 Oct 2026: the sky figure, not the models' raw number — now.cloudPct still ships the raw one.
       cloudPct:   currentSky.pct,
+      // High UV keeps reading the models' own cover (Al, 7 Oct 2026).
+      uvCloudPct: currentCloudPct,
       maxWindKph,
       isDay,
       dailyHighC: aggregatedDaily?.[0]?.highC ?? null,
@@ -3659,7 +3660,7 @@ function calcFeelsLike(tempC, windKph, humidity) {
  * @param {number}  [params.gustKph]    - now: largest current gust any source reports
  * @returns {string} condition key
  */
-function deriveCondition({ desc, rainChance, tempC, feelsLikeC, windKph, uvIndex, cloudPct, maxWindKph, isDay = true, dailyHighC, dailyLowC, sourceDescs, now = false, precipMm, rainVotes, gustKph, windThresholdKph, gustLineKph, windSourcesAt25, windSourcesMin = 0 }) {
+function deriveCondition({ desc, rainChance, tempC, feelsLikeC, windKph, uvIndex, cloudPct, uvCloudPct, maxWindKph, isDay = true, dailyHighC, dailyLowC, sourceDescs, now = false, precipMm, rainVotes, gustKph, windThresholdKph, gustLineKph, windSourcesAt25, windSourcesMin = 0 }) {
   const d = String(desc || '').toLowerCase();
 
   // Use mean wind speed for condition thresholds. Gusts are displayed separately in the UI.
@@ -3785,7 +3786,11 @@ function deriveCondition({ desc, rainChance, tempC, feelsLikeC, windKph, uvIndex
   if (isNum(feelsLikeC) && feelsLikeC >= 38) return { key: 'heat', reason: 'extreme-heat-feels-like' };
 
   const descSaysRain = d.includes('rain') || d.includes('drizzle') || d.includes('shower') || d.includes('precip');
-  const highUv = isDay && isNum(uvIndex) && uvIndex >= 8 && !(isTrulyOvercast || isMostlyCloudy || overcastByDesc) && !uvBlockedByCold;
+  // High UV reads the models' own cover when the caller passes it (uvCloudPct, the hero since 7 Oct 2026): the
+  // thin-cloud cap in skyCloudFor decides the sky's word, not whether the sun is strong enough to headline.
+  const uvCloud = isNum(uvCloudPct) ? uvCloudPct : cloudPct;
+  const uvBlockedByCloud = isNum(uvCloud) ? uvCloud >= 55 : overcastByDesc;
+  const highUv = isDay && isNum(uvIndex) && uvIndex >= 8 && !uvBlockedByCloud && !uvBlockedByCold;
 
   if (now) {
     // ---- NOW ladder: the hero. Measured on 12,740 SA station-hours against METAR
@@ -3891,24 +3896,23 @@ function deriveCondition({ desc, rainChance, tempC, feelsLikeC, windKph, uvIndex
  * cirrus), and three of five sources described a clear sky (Open-Meteo "Mainly clear",
  * Pirate "Clear sky", MET "Partly cloudy" against WeatherAPI "Overcast", Tomorrow.io "Cloudy").
  *
- * Two rules, each caps the figure at 54 % — the top of the partly-cloudy band, so the cloud
- * rungs can say Partly cloudy at most, never Cloudy:
- *   1. Thin cloud only: Open-Meteo's low AND mid cloud are both under 20 % for the hour.
- *      What it sees is high cloud, which does not make a grey sky. At six SA airports
- *      (Jun–Sep 2026) hours like that reported broken or overcast cloud below 20,000 ft
- *      1–21 % of the time, against 31–75 % when Open-Meteo had low or mid cloud.
- *   2. The sources say so (the current hour only, ≥ 3 sources): at least half of them describe
- *      a clear-family sky (clear, mainly clear, partly cloudy, fair, sunny). A minority of two
- *      saying Overcast no longer holds Cloudy against three saying clear.
- * Strand 07:00: 71.88 → 54 by both rules → partly-cloudy.
- * The rain, storm, fog, wind, heat and cold rungs do not read this cap; they keep their own gates.
+ * The rule: when Open-Meteo's low AND mid cloud are both under 20 % for the hour, what it sees
+ * is high cloud, which does not make a grey sky — the figure is capped at 54 %, the top of the
+ * partly-cloudy band, so the cloud rungs can say Partly cloudy at most, never Cloudy. At six SA
+ * airports (Jun–Sep 2026) hours like that reported broken or overcast cloud below 20,000 ft
+ * 1–21 % of the time, against 31–75 % when Open-Meteo had low or mid cloud.
+ * Strand 07:00: 71.88 → 54 → partly-cloudy.
+ * Al's ruling, 7 Oct 2026 (review/cloud-call-2026-10-07.md): this rule only. A second rule —
+ * cap when half the sources say clear — scored close to a coin flip on the harness's stand-in
+ * sources and waits for a measurement on the real source words.
+ * The rain, storm, fog, wind, heat and cold rungs do not read this cap, and neither does High UV
+ * (deriveCondition's uvCloudPct); they keep their own gates.
  */
 export const SKY_OPAQUE_MAX_PCT = 20;
 export const SKY_PARTLY_CAP_PCT = 54;
-function skyCloudFor({ cloudPct, omLowPct, omMidPct, clearVotes, activeSources }) {
+function skyCloudFor({ cloudPct, omLowPct, omMidPct }) {
   if (!isNum(cloudPct) || cloudPct <= SKY_PARTLY_CAP_PCT) return { pct: isNum(cloudPct) ? cloudPct : null, rule: null };
   if (isNum(omLowPct) && isNum(omMidPct) && Math.max(omLowPct, omMidPct) < SKY_OPAQUE_MAX_PCT) return { pct: SKY_PARTLY_CAP_PCT, rule: 'high-cloud-only' };
-  if (isNum(clearVotes) && isNum(activeSources) && activeSources >= 3 && clearVotes * 2 >= activeSources) return { pct: SKY_PARTLY_CAP_PCT, rule: 'clear-majority' };
   return { pct: cloudPct, rule: null };
 }
 

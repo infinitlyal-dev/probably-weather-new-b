@@ -6,7 +6,7 @@
 //   hourly[7] condition 'clear' — hero and its own hour disagreed
 //   Open-Meteo 07:00: cloud_cover 67 = low 0 + mid 0 + high 67 (all cirrus), visibility 34 km
 // The fix (api/weather.js skyCloudFor): the cloud figure the condition reads is capped at the top of
-// the partly-cloudy band when Open-Meteo's cloud is all high, or when half the sources say clear.
+// the partly-cloudy band when Open-Meteo's cloud is all high (Al's ruling, 7 Oct 2026: this rule only).
 
 import { readFileSync } from 'node:fs';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
@@ -58,23 +58,30 @@ describe('Strand 07:00, 7 Oct 2026 — the numbers as the live API had them', ()
   });
 
   it('Open-Meteo low 0 / mid 0 / high 67: the figure the hero reads is capped at the partly-cloudy band', () => {
-    const sky = skyCloudFor({ cloudPct: 71.88, omLowPct: 0, omMidPct: 0, clearVotes: 3, activeSources: 5 });
+    const sky = skyCloudFor({ cloudPct: 71.88, omLowPct: 0, omMidPct: 0 });
     expect(sky).toEqual({ pct: SKY_PARTLY_CAP_PCT, rule: 'high-cloud-only' });
     expect(SKY_PARTLY_CAP_PCT).toBeLessThan(55); // below the mostly-cloudy rung
   });
 
   it('the hero now reads partly cloudy, and the vote consensus leaves it there', () => {
-    const sky = skyCloudFor({ cloudPct: 71.88, omLowPct: 0, omMidPct: 0, clearVotes: 3, activeSources: 5 });
+    const sky = skyCloudFor({ cloudPct: 71.88, omLowPct: 0, omMidPct: 0 });
     const base = deriveCondition(morningInputs(sky.pct));
     expect(['partly-cloudy', 'clear']).toContain(base.key);
     const after = applyVoteConsensus({ ...base, activeNorms, sourceVotes: MORNING_VOTES });
     expect(['partly-cloudy', 'clear']).toContain(after.key);
   });
 
-  it('without Open-Meteo\'s split, three clear votes of five still cap it (a minority of two cannot hold Cloudy)', () => {
+  // Rule 2 (cap when half the sources say clear) waits for a measurement on real source words — Al, 7 Oct 2026.
+  it.skip('without Open-Meteo\'s split, three clear votes of five still cap it (a minority of two cannot hold Cloudy)', () => {
     const sky = skyCloudFor({ cloudPct: 71.88, omLowPct: null, omMidPct: null, clearVotes: 3, activeSources: 5 });
     expect(sky).toEqual({ pct: SKY_PARTLY_CAP_PCT, rule: 'clear-majority' });
     expect(deriveCondition(morningInputs(sky.pct)).key).toBe('partly-cloudy');
+  });
+
+  it('High UV reads the models\' own cover, not the cap: 72 % raw blocks it, as before the fix', () => {
+    const inputs = { ...morningInputs(SKY_PARTLY_CAP_PCT), uvIndex: 9, dailyHighC: 28, tempC: 24, feelsLikeC: 24 };
+    expect(deriveCondition({ ...inputs, uvCloudPct: 71.88 }).key).not.toBe('uv');
+    expect(deriveCondition({ ...inputs, uvCloudPct: 30 })).toEqual({ key: 'uv', reason: 'high-uv-with-temp-gate' });
   });
 
   it('the label can no longer contradict the key', () => {
@@ -102,7 +109,7 @@ describe('the mirror: a real grey sky still says Cloudy', () => {
   ].map((v) => ({ ...v, vote: categorizeDesc(v.desc) }));
 
   it('Open-Meteo low 70 / mid 20, three sources Overcast → the figure is untouched and the key is cloudy', () => {
-    const sky = skyCloudFor({ cloudPct: 85, omLowPct: 70, omMidPct: 20, clearVotes: 2, activeSources: 5 });
+    const sky = skyCloudFor({ cloudPct: 85, omLowPct: 70, omMidPct: 20 });
     expect(sky).toEqual({ pct: 85, rule: null });
     const base = deriveCondition({ ...morningInputs(sky.pct), desc: 'Overcast', sourceDescs: greyVotes.map((v) => v.desc) });
     expect(base.key).toBe('cloudy');

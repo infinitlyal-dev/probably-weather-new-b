@@ -53,3 +53,10 @@ When Open-Meteo says there is almost no low or middle cloud (both under 20%), th
 2. The photograph question above, separately.
 
 Not checked on a phone.
+
+## Al's ruling (7 Oct 2026) — shipped
+
+- Rule 1 only. Rule 2 is out of the code; its test is kept, skipped, waiting for a measurement on real source words.
+- Partly cloudy borrows the **clear** photographs, in the app, on the share card and on the share link (`assets/weather-visuals.js`, `assets/share-url.js`). Rain-possible still borrows cloudy.
+- High UV reads the raw cloud number (`deriveCondition` `uvCloudPct`).
+- Harness on what shipped (`results/cloud-ruled.md`): phone Cloudy-with-no-grey 1,629 → 384, grey served light 390 → 566, 168 airport-days better / 34 worse, rain, wind and UV unchanged.

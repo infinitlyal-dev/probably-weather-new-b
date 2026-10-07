@@ -7,7 +7,8 @@ import { parseLocalIsoMinutes } from './weather-emoji.js';
 
 export const WEATHER_BACKGROUND_ALIASES = {
   'rain-possible': 'cloudy',
-  'partly-cloudy': 'cloudy',
+  // Al, 7 Oct 2026: partly cloudy borrows the clear photographs (thin cloud is not a grey sky).
+  'partly-cloudy': 'clear',
   uv: 'clear',
   hail: 'storm',
   thunder: 'storm',
@@ -89,7 +90,8 @@ export function getTimeOfDaySlot(payload, nowMs = Date.now()) {
  * build-og-images.mjs CONDITIONS or ALIASES), so they map to existing ones.
  */
 const OG_BACKGROUND_ALIASES = {
-  'partly-cloudy': 'cloudy',
+  'partly-cloudy': 'clear', // Al, 7 Oct 2026 — as the picker
+
   hail: 'storm',
   thunder: 'storm',
 };

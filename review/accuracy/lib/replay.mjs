@@ -196,9 +196,7 @@ export function decideAt(city, i) {
   const rainNowVotes = sourceVotes.filter((v) => v.vote === 'rain' && !/possible/i.test(v.desc || '')).length;
   // 7 Oct 2026 — api/weather.js currentSky: the cloud figure the hero reads.
   const omLow = hourlies[0]?.cloudsLow?.[localHour], omMid = hourlies[0]?.cloudsMid?.[localHour];
-  const currentSky = skyCloudFor({ cloudPct: currentCloudPct, omLowPct: omLow, omMidPct: omMid,
-    // SKY_RULE2=off (harness only): score rule 1 alone, for Al's ruling.
-    clearVotes: process.env.SKY_RULE2 === 'off' ? null : sourceVotes.filter((v) => v.vote === 'clear').length, activeSources: activeNorms.length });
+  const currentSky = skyCloudFor({ cloudPct: currentCloudPct, omLowPct: omLow, omMidPct: omMid });
 
   const selectorInputs = {
     desc: mostDesc,
@@ -208,6 +206,7 @@ export function decideAt(city, i) {
     windKph: medWindKph,
     uvIndex: isNum(nowHourUv) ? nowHourUv : null,
     cloudPct: currentSky.pct,
+    uvCloudPct: currentCloudPct,
     maxWindKph,
     isDay,
     dailyHighC: daily0.highC,

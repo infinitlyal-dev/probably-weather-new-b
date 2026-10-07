@@ -12,7 +12,7 @@ const SHARE_BG_ALLOWLIST = new Set([
 // Internal display-condition codes that don't have a dedicated OG slug
 // fold into the closest visual equivalent.
 const SHARE_BG_ALIASES = {
-  'partly-cloudy': 'cloudy',
+  'partly-cloudy': 'clear', // Al, 7 Oct 2026 — as the picker
   hail: 'storm',
   thunder: 'storm',
   night: 'clear',

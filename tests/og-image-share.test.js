@@ -368,7 +368,7 @@ describe('OG share card threads the sender condition (?c=) + respects the night-
     // Sender screen shows partly-cloudy even though the fresh fetch derived clear.
     const model = buildOgViewModel(payloadWith({ conditionKey: 'clear' }), { lang: 'en', conditionOverride: 'partly-cloudy' });
     expect(model.condition).toBe('partly-cloudy');
-    expect(model.backgroundPath).toBe('og/cloudy.jpg');   // OG alias folds partly-cloudy → cloudy
+    expect(model.backgroundPath).toBe('og/clear.jpg');    // OG alias folds partly-cloudy → clear (Al, 7 Oct 2026)
     expect(model.headline).toBe(WEATHER_COPY.headlines['partly-cloudy'].en);
   });
 
@@ -417,10 +417,10 @@ describe('coord-less legacy share (?bg=<cond>, no lat/lon) → condition-matched
     expect(model.headline).toBe(WEATHER_COPY.headlines.rain.af);
   });
 
-  it('folds a partly-cloudy override to the cloudy OG background', () => {
+  it('folds a partly-cloudy override to the clear OG background (Al, 7 Oct 2026)', () => {
     const model = buildFallbackViewModel('en', 'partly-cloudy');
     expect(model.condition).toBe('partly-cloudy');
-    expect(model.backgroundPath).toBe('og/cloudy.jpg');
+    expect(model.backgroundPath).toBe('og/clear.jpg');
   });
 
   it('no override → the generic clear brand card (unchanged behavior)', () => {

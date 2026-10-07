@@ -112,7 +112,7 @@ describe('getOgStaticBackgroundPath', () => {
 
   it('OG-specific aliases only collapse conditions WITHOUT a dedicated og file', () => {
     // partly-cloudy / hail / thunder have no dedicated og/*.jpg → must alias
-    expect(getOgStaticBackgroundPath('partly-cloudy')).toBe('og/cloudy.jpg');
+    expect(getOgStaticBackgroundPath('partly-cloudy')).toBe('og/clear.jpg'); // Al, 7 Oct 2026
     expect(getOgStaticBackgroundPath('hail')).toBe('og/storm.jpg');
     expect(getOgStaticBackgroundPath('thunder')).toBe('og/storm.jpg');
   });
@@ -172,9 +172,8 @@ describe('getOgStaticBackgroundFallbackChain', () => {
       'og/clear.jpg',
       'og/default.jpg',
     ]);
-    // partly-cloudy → cloudy
+    // partly-cloudy → clear (Al, 7 Oct 2026); the duplicate clear step collapses
     expect(getOgStaticBackgroundFallbackChain('partly-cloudy')).toEqual([
-      'og/cloudy.jpg',
       'og/clear.jpg',
       'og/default.jpg',
     ]);

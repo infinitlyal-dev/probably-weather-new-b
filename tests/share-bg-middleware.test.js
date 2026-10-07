@@ -34,7 +34,7 @@ describe('share URL builder (?bg= + ?city=)', () => {
   });
 
   it('folds aliases to their visual equivalent', () => {
-    expect(normalizeShareCondition('partly-cloudy')).toBe('cloudy');
+    expect(normalizeShareCondition('partly-cloudy')).toBe('clear'); // Al, 7 Oct 2026
     expect(normalizeShareCondition('hail')).toBe('storm');
     expect(normalizeShareCondition('thunder')).toBe('storm');
     expect(normalizeShareCondition('night')).toBe('clear');

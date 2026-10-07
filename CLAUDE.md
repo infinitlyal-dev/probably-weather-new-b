@@ -53,7 +53,7 @@ Console logs show the active weights for each API call for debugging.
 
 ## CONDITION & IMAGE SYSTEM
 Images live in: `assets/images/bg/[condition]/[filename].jpg`
-Condition folders (9, see KNOWN_FOLDERS in assets/image-picker.js): `clear`, `cloudy`, `rain`, `wind`, `storm`, `cold`, `cold-clear`, `fog`, `heat`. Aliased conditions with no own folder: `uv` → clear, `rain-possible`/`partly-cloudy` → cloudy, `hail`/`thunder` → storm. (The hot-weather condition/key is `heat`, not `hot` — there is no `hot` folder or emoji.)
+Condition folders (9, see KNOWN_FOLDERS in assets/image-picker.js): `clear`, `cloudy`, `rain`, `wind`, `storm`, `cold`, `cold-clear`, `fog`, `heat`. Aliased conditions with no own folder: `uv` → clear, `partly-cloudy` → clear (Al, 7 Oct 2026), `rain-possible` → cloudy, `hail`/`thunder` → storm. (The hot-weather condition/key is `heat`, not `hot` — there is no `hot` folder or emoji.)
 
 Time slots (used in filenames):
 - `dawn` — 05:00–08:00
@@ -96,6 +96,7 @@ Language strings live in `assets/app.js` in the `translations` object.
 - When in doubt, trust MET Norway (yr.no) — it is the most reliable source for SA coastal conditions
 - **The hero (now-path) never says "rain" from a probability** (2026-09-22, `review/CONDITION-LOGIC.md`): `rain` needs ≥2 sources describing rain for the current hour AND ≥90% blended chance AND ≥2 mm blended amount (the strict cell, every region — Al's ruling 2026-09-25, `review/rain-fog-frost-ruled.json`), or the Tomorrow.io radar override. The old cell (≥60%, ≥0.3 mm) that strict demotes is `rain-possible` with reason `showers-nearby` ("Showers nearby." / "Buie naby."); otherwise ≥30% is `rain-possible` ("Might rain."). The daily ladder keeps its probability rungs (measured as calibrated).
 - **Wind on the hero reads gusts**: `wind` when blended mean ≥ 25 km/h or the largest source gust (Open-Meteo, WeatherAPI, Pirate) ≥ 55 km/h; wind ranks above might-rain, cloud and UV, below rain that is actually falling. Thresholds derived in `review/accuracy/` — change them there first.
+- **Thin high cloud is not Cloudy** (Al, 7 Oct 2026, `review/cloud-call-2026-10-07.md`): when Open-Meteo's low and mid cloud are both under 20 %, the cloud figure the condition reads (`skyCloudFor`, `now.skyCloudPct`) is capped at 54 % — Partly cloudy at most. `now.cloudPct` keeps the models' number for display; High UV reads the raw number.
 - `tests/hero-stats-consistency.test.js` fails if the hero can say rain beside a rain stat that says Unlikely, or if a probability alone can reach `rain`.
 
 ## WORKING RULES FOR CLAUDE CODE
