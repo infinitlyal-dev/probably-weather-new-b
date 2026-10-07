@@ -37,6 +37,12 @@ if (A.all.display.saidCloudy != null && B.all.display.saidCloudy != null) {
     md.push(r('**All six**', A.all[layer], B.all[layer]), '');
   }
 }
+if (A.all.dayCard && B.all.dayCard) {
+  md.push('### Day card at noon (day 0)', '', '| city | day card Cloudy | Cloudy over no grey | grey served light-sky |', '|---|---|---|---|');
+  const r = (name, x, y) => `| ${name} | ${cell(x.saidCloudy, y.saidCloudy)} | ${cell(x.cloudyNoGrey, y.cloudyNoGrey)} (${x.cloudyNoGreyPct}% → ${y.cloudyNoGreyPct}%) | ${cell(x.greyMissed, y.greyMissed)} of ${x.obsGreyDays} (${x.greyMissedPct}% → ${y.greyMissedPct}%) |`;
+  for (const icao of Object.keys(A.cities)) md.push(r(A.cities[icao].name, A.cities[icao].dayCard, B.cities[icao].dayCard));
+  md.push(r('**All six**', A.all.dayCard, B.all.dayCard), '');
+}
 const out = md.join('\n') + '\n';
 writeFileSync(path.join(here, 'results', `compare-${a}-vs-${b}.md`), out);
 process.stdout.write(out);

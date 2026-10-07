@@ -232,6 +232,12 @@ describe('Strand 07:00 through the handler — five sources, this morning\'s wor
     // The phone, which used to re-derive Cloudy from the raw 71 %.
     const norm = normalizePayload(body);
     expect(['partly-cloudy', 'clear']).toContain(computeHomeDisplayCondition(norm));
+
+    // Part B item 1 (Al, 7 Oct 2026): the week strip reads the same sky figure at noon, so day 0's card
+    // cannot say Cloudy over the cirrus the hero calls partly cloudy. The raw number still ships.
+    expect(body.daily[0].conditionKey).not.toBe('cloudy');
+    expect(body.daily[0].conditionSignals.numeric.skyCloudPct).toBe(SKY_PARTLY_CAP_PCT);
+    expect(body.daily[0].conditionSignals.numeric.cloudPct).toBeGreaterThanOrEqual(55);
   });
 
   it('mirror: Open-Meteo low 70 / mid 20 and three sources Overcast still read Cloudy, hero, hour and phone', async () => {
@@ -249,5 +255,6 @@ describe('Strand 07:00 through the handler — five sources, this morning\'s wor
     expect(body.now.conditionSignals.numeric.skyCloudRule).toBeNull();
     expect(body.hourly[7].condition).toBe('cloudy');
     expect(computeHomeDisplayCondition(normalizePayload(body))).toBe('cloudy');
+    expect(body.daily[0].conditionSignals.numeric.skyCloudPct).toBe(body.daily[0].conditionSignals.numeric.cloudPct);
   });
 });

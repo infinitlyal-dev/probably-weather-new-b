@@ -122,6 +122,20 @@ function score(list, keyField) {
   };
 }
 
+// Day card (7 Oct 2026, Part B item 1): day 0's key as replayed at noon against the noon report.
+function dayCardCloud(list) {
+  const noon = list.filter((r) => r.localHour === 12 && r.obsSky);
+  const saidCloudy = noon.filter((r) => r.dailyKey === 'cloudy');
+  const grey = noon.filter((r) => r.obsSky === 'grey');
+  return {
+    noonDays: noon.length,
+    saidCloudy: saidCloudy.length, cloudyNoGrey: saidCloudy.filter((r) => r.obsSky === 'light').length,
+    cloudyNoGreyPct: pct(saidCloudy.filter((r) => r.obsSky === 'light').length, saidCloudy.length),
+    obsGreyDays: grey.length, greyMissed: grey.filter((r) => LIGHT_SKY.has(r.dailyKey)).length,
+    greyMissedPct: pct(grey.filter((r) => LIGHT_SKY.has(r.dailyKey)).length, grey.length),
+  };
+}
+
 function windSweep(list) {
   // Which forecast thresholds best reproduce the station's "fresh breeze or stronger"?
   const truth = list.map((r) => r.obsWindy);
@@ -190,9 +204,9 @@ function dailyCalibration(list) {
 const result = { tag: TAG, generatedAt: new Date().toISOString(), range: RANGE, obsWindy: OBS_WINDY, calm: CALM, coverage: perCity, cities: {}, all: {} };
 for (const icao of Object.keys(perCity)) {
   const list = rows.filter((r) => r.icao === icao);
-  result.cities[icao] = { name: CITIES[icao].name, display: score(list, 'display'), server: score(list, 'server'), windBias: windBias(list) };
+  result.cities[icao] = { name: CITIES[icao].name, display: score(list, 'display'), server: score(list, 'server'), dayCard: dayCardCloud(list), windBias: windBias(list) };
 }
-result.all = { display: score(rows, 'display'), server: score(rows, 'server'), windBias: windBias(rows), windSweepTop: windSweep(rows).slice(0, 12), dailyCalibration: dailyCalibration(rows) };
+result.all = { display: score(rows, 'display'), server: score(rows, 'server'), dayCard: dayCardCloud(rows), windBias: windBias(rows), windSweepTop: windSweep(rows).slice(0, 12), dailyCalibration: dailyCalibration(rows) };
 // The current rule, for reference: mean ≥ 30 (strong) / ≥ 25 (moderate), gusts unread.
 result.all.windSweepCurrentRule = windSweep(rows).filter((s) => s.gustField === 'fcGust' && s.gustKph === Infinity && (s.meanKph === 25 || s.meanKph === 30));
 
@@ -219,6 +233,10 @@ for (const layer of ['display', 'server']) {
   for (const icao of Object.keys(result.cities)) md.push(cl(result.cities[icao].name, result.cities[icao][layer]));
   md.push(cl('**All six**', result.all[layer]), '');
 }
+md.push('### Day card at noon (day 0)', '', '| city | noon days with a cloud report | day card Cloudy | Cloudy over no grey | grey at noon | grey served light-sky |', '|---|---|---|---|---|---|');
+{ const dc = (name, s) => `| ${name} | ${s.noonDays} | ${s.saidCloudy} | ${s.cloudyNoGrey} (${s.cloudyNoGreyPct}%) | ${s.obsGreyDays} | ${s.greyMissed} (${s.greyMissedPct}%) |`;
+  for (const icao of Object.keys(result.cities)) md.push(dc(result.cities[icao].name, result.cities[icao].dayCard));
+  md.push(dc('**All six**', result.all.dayCard), ''); }
 md.push('## Observed wind and model bias', '', '| city | obs sustained p50 / p90 / p95 km/h | hours ≥ 30 sustained | hours gust ≥ 45 | median obs ÷ forecast mean | median obs gust ÷ forecast gust |', '|---|---|---|---|---|---|');
 for (const icao of Object.keys(result.cities)) { const b = result.cities[icao].windBias; md.push(`| ${result.cities[icao].name} | ${b.obsSustainedP50} / ${b.obsSustainedP90} / ${b.obsSustainedP95} | ${b.hoursSustained30} | ${b.hoursGust45} | ${b.medianObsOverForecastMean} | ${b.medianObsGustOverForecastGust} |`); }
 md.push('', '## Wind rule sweep (all six; predicting observed windy from blended mean ≥ T1 or max gust ≥ T2)', '', '| gust source | mean ≥ | gust ≥ | precision | recall | F1 | hit | false alarm | miss |', '|---|---|---|---|---|---|---|---|---|');

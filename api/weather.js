@@ -2283,6 +2283,10 @@ export default async function handler(req, res) {
       const dailyCloud   = wAvg(dailies, dailyW, d => d.clouds?.[i]);
       const windKph      = aggregatedHourly[noonIdx]?.windKph  ?? dailyWind;
       const cloudPct     = aggregatedHourly[noonIdx]?.cloudPct ?? dailyCloud;
+      // 7 Oct 2026 (Al's ruling, Part B item 1): the day's sky is decided on the noon hour's sky figure — thin high
+      // cloud capped, as the hero (skyCloudFor) — so the week strip cannot say Cloudy over the cirrus the hero calls
+      // partly cloudy. cloudPct stays the models' number; High UV reads it (uvCloudPct), as on the hero.
+      const skyCloudPct  = aggregatedHourly[noonIdx]?.skyCloudPct ?? dailyCloud;
       // Display only (1 Oct 2026): the day card's "Wind up to" and "Gusts", which the condition never
       // reads (dailyWind above still feeds it, unchanged). windMaxKph blends the daily MAXIMUM mean
       // wind from Open-Meteo and WeatherAPI only (Pirate's daily windSpeed is not documented as a
@@ -2300,7 +2304,8 @@ export default async function handler(req, res) {
         tempC:     highC,
         windKph,
         uvIndex:   uv,
-        cloudPct,
+        cloudPct:  skyCloudPct,
+        uvCloudPct: cloudPct,
         isDay:     true,
         // Daily low for the cold-clear rung — lets a 4°C dawn on a 14°C clear
         // day route to cold-clear instead of being clobbered by tempC=highC.
@@ -2347,8 +2352,8 @@ export default async function handler(req, res) {
         const sourceNames = ['Open-Meteo', 'WeatherAPI', 'Pirate Weather', 'MET Norway', 'Tomorrow.io'];
         const dailyFogSources = dailies.map((d, si) => d && d.descs[i] && categorizeDesc(d.descs[i]) === 'fog' ? sourceNames[si] : null).filter(Boolean);
         if (dailyFogSources.length < 2) {
-          const demoteTo = isNum(cloudPct) && cloudPct >= 55 ? 'cloudy'
-                         : isNum(cloudPct) && cloudPct >= 30 ? 'partly-cloudy'
+          const demoteTo = isNum(skyCloudPct) && skyCloudPct >= 55 ? 'cloudy'
+                         : isNum(skyCloudPct) && skyCloudPct >= 30 ? 'partly-cloudy'
                          : 'clear';
           debugLog(`[ProbablyWeather] Fog under-corroborated (${dailyFogSources.length}/${descEntries.length}) — demote to ${demoteTo} via cloud ${cloudPct} (day ${i})`);
           dailyOverrides.push({ rule: 'fog-blocked-insufficient-corroboration', from: 'fog', to: demoteTo, reasonDetail: `only ${dailyFogSources.length}/${descEntries.length} source(s) voted fog; cloud ${isNum(cloudPct) ? Math.round(cloudPct) + '%' : 'n/a'}` });
@@ -2394,7 +2399,7 @@ export default async function handler(req, res) {
         gustMaxKph,
         conditionSignals: {
           descWinner: conditionLabel,
-          numeric: { rainChance, highC, uvIndex: uv, cloudPct, windKph },
+          numeric: { rainChance, highC, uvIndex: uv, cloudPct, skyCloudPct, windKph },
           sourceDescs: dailySourceDescs,
           overrides: dailyOverrides,
         },

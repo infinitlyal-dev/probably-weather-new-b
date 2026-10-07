@@ -128,8 +128,10 @@ function aggregateDaily0(dailies, dailyW, aggregatedHourly) {
   const noonIdx = 12;
   const windKph = aggregatedHourly[noonIdx]?.windKph ?? wAvg(dailies, dailyW, (d) => d.winds?.[i]);
   const cloudPct = aggregatedHourly[noonIdx]?.cloudPct ?? wAvg(dailies, dailyW, (d) => d.clouds?.[i]);
+  // 7 Oct 2026, Part B item 1 — api/weather.js: the day decides on the noon sky figure; High UV on the raw.
+  const skyCloudPct = aggregatedHourly[noonIdx]?.skyCloudPct ?? wAvg(dailies, dailyW, (d) => d.clouds?.[i]);
   const sourceDescs = dailies.map((dd) => dd?.descs?.[i]).filter(Boolean);
-  let { key, reason } = deriveCondition({ desc: conditionLabel, rainChance, tempC: highC, windKph, uvIndex: uv, cloudPct, isDay: true, dailyLowC: lowC, dailyHighC: highC, sourceDescs });
+  let { key, reason } = deriveCondition({ desc: conditionLabel, rainChance, tempC: highC, windKph, uvIndex: uv, cloudPct: skyCloudPct, uvCloudPct: cloudPct, isDay: true, dailyLowC: lowC, dailyHighC: highC, sourceDescs });
   const overrides = [];
   if ((key === 'rain-possible' || key === 'cloudy') && descEntries.length >= 3) {
     const votes = descEntries.map((e) => categorizeDesc(e.desc));
@@ -140,7 +142,7 @@ function aggregateDaily0(dailies, dailyW, aggregatedHourly) {
   }
   if (key === 'fog' && descEntries.length >= 2) {
     const fogN = dailies.filter((d) => d && d.descs[i] && categorizeDesc(d.descs[i]) === 'fog').length;
-    if (fogN < 2) { const to = isNum(cloudPct) && cloudPct >= 55 ? 'cloudy' : isNum(cloudPct) && cloudPct >= 30 ? 'partly-cloudy' : 'clear'; overrides.push('fog-blocked'); key = to; reason = 'fog-blocked-insufficient-corroboration'; }
+    if (fogN < 2) { const to = isNum(skyCloudPct) && skyCloudPct >= 55 ? 'cloudy' : isNum(skyCloudPct) && skyCloudPct >= 30 ? 'partly-cloudy' : 'clear'; overrides.push('fog-blocked'); key = to; reason = 'fog-blocked-insufficient-corroboration'; }
   }
   const preds = {
     storm: (d) => d && categorizeDesc(d.descs?.[i]) === 'storm',
