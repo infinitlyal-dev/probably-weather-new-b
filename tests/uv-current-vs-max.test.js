@@ -591,7 +591,8 @@ describe('item 3 — cache hits re-check the headline against the stored selecto
         const href = String(url);
         if (href.includes('open-meteo.com/')) return makeResponse(openMeteoPayload);
         if (href.startsWith('https://api.weatherapi.com/')) return makeResponse(makeWeatherApiPayload(2.1));
-        if (href.startsWith('https://api.met.no/')) return makeResponse(metPayload);
+        // MET describes rain: the radar's second signal (Al, 7 Oct 2026).
+        if (href.startsWith('https://api.met.no/')) return makeResponse({ properties: { timeseries: metPayload.properties.timeseries.map((p) => ({ ...p, data: { ...p.data, next_1_hours: { ...p.data.next_1_hours, summary: { symbol_code: 'lightrain' } } } })) } });
         if (href.startsWith('https://api.tomorrow.io/')) return makeResponse(radar);
         throw new Error(`Unexpected URL: ${href}`);
       }); vi.stubGlobal('fetch', fn); return fn; };

@@ -2677,8 +2677,20 @@ export default async function handler(req, res) {
     // =========================================================================
     const tiNow  = norms[4]?.tomorrowIoCurrentHour ?? null;
     const tiNext = norms[4]?.tomorrowIoNextHour ?? null;
+    // 7 Oct 2026 (Al's ruling, Part B item 3): the radar makes "Rain's here." only with one more signal — a rain
+    // description from a source OTHER than Tomorrow.io, "possible" not counting (the same test as nowRainVotes).
+    // Live airport calls 24 Sept – 7 Oct: 66 radar calls with a METAR, right 70 %; with this test 57, right 74 %
+    // (5 dry calls gone, 4 wet ones, 3 of which the ladder still called might-rain). Johannesburg 23 Sept: four
+    // sources clear, Tomorrow.io "Light rain" + 1 mm/h radar, a dry night. Its own word and its own millimetres
+    // feed the blend, so neither counts as the second signal. review/condition-fixes-2026-10-07.md.
+    const radarSecondSignal = sourceConditionVotes.some(v => v.source !== 'Tomorrow.io' && v.vote === 'rain' && !/possible/i.test(v.desc || ''));
+    let radarHeld = null;
     if (tiNow) {
-      if (isNum(tiNow.precipitationIntensity) && tiNow.precipitationIntensity > 0.5) {
+      if (isNum(tiNow.precipitationIntensity) && tiNow.precipitationIntensity > 0.5 && !radarSecondSignal) {
+        radarHeld = { intensity: tiNow.precipitationIntensity, key: nowConditionKey };
+        debugLog(`[Tomorrow.io radar] ${tiNow.precipitationIntensity} mm/h but no other source describes rain → not "Rain's here" (stays ${nowConditionKey})`);
+      }
+      if (isNum(tiNow.precipitationIntensity) && tiNow.precipitationIntensity > 0.5 && radarSecondSignal) {
         debugLog(`[Tomorrow.io radar override] precipIntensity=${tiNow.precipitationIntensity} mm/h > 0.5 → rain (was ${nowConditionKey})`);
         nowOverrides.push({
           rule: 'tomorrow-io-radar-override',
@@ -2886,6 +2898,8 @@ export default async function handler(req, res) {
       selector: nowSelector,
       // null unless Tomorrow.io's next-hour radar raised now.rainChance (see above).
       radarNextHourBump,
+      // null unless the radar read rain but no other source described it (7 Oct 2026), so it did not make "Rain's here".
+      radarHeld,
     };
 
     // 7 Oct 2026: the hour row for now carries the hero's own answer, so the strip and the hero cannot disagree

@@ -234,12 +234,14 @@ const callHandler = async () => {
   return { statusCode, body };
 };
 
-const makeFetchStub = (tomorrowIoHandler) => vi.fn(async (url, _opts) => {
+// MET describing rain — the second signal the radar needs since 7 Oct 2026 (Al, Part B item 3).
+const metRainPayload = { properties: { timeseries: metPayload.properties.timeseries.map((p) => ({ ...p, data: { ...p.data, next_1_hours: { ...p.data.next_1_hours, summary: { symbol_code: 'lightrain' } } } })) } };
+const makeFetchStub = (tomorrowIoHandler, met = metPayload) => vi.fn(async (url, _opts) => {
   const href = String(url);
   if (href.startsWith('https://api.open-meteo.com/'))   return makeResponse(openMeteoPayload);
   if (href.startsWith('https://api.weatherapi.com/'))   return makeResponse(weatherApiPayload);
   if (href.startsWith('https://api.pirateweather.net/')) return makeResponse(piratePayload);
-  if (href.startsWith('https://api.met.no/'))           return makeResponse(metPayload);
+  if (href.startsWith('https://api.met.no/'))           return makeResponse(met);
   if (href.startsWith('https://api.tomorrow.io/'))      return tomorrowIoHandler(href);
   throw new Error(`Unexpected URL: ${href}`);
 });
@@ -327,9 +329,20 @@ describe('Tomorrow.io fetcher — graceful fallback', () => {
 // ---------------------------------------------------------------------------
 
 describe('Tomorrow.io precipitation + thunder overrides', () => {
-  it('precipitation override fires when intensity > 0.5 mm/h (uses Phase-1 fixture)', async () => {
+  it('Strand 19 May radar alone (four sources clear): held, not rain, since 7 Oct 2026, recorded as radarHeld', async () => {
+    // The override's founding case. Al's ruling (7 Oct 2026) needs a second source describing rain; on the live
+    // airport record that is right more often (74 % vs 70 %), and this real wet morning is the case it gives up.
     process.env.TOMORROWIO_API_KEY = 'real-key';
     vi.stubGlobal('fetch', makeFetchStub(() => makeResponse(tomorrowIoActiveRainPayload)));
+    const { body } = await callHandler();
+    expect(body.now.conditionReason).not.toBe('tomorrow-io-radar-override');
+    expect(body.now.conditionKey).not.toBe('rain');
+    expect(body.now.conditionSignals.radarHeld).toEqual(expect.objectContaining({ intensity: expect.any(Number) }));
+  });
+
+  it('precipitation override fires when intensity > 0.5 mm/h and another source describes rain (Phase-1 fixture + MET rain)', async () => {
+    process.env.TOMORROWIO_API_KEY = 'real-key';
+    vi.stubGlobal('fetch', makeFetchStub(() => makeResponse(tomorrowIoActiveRainPayload), metRainPayload));
     const { statusCode, body } = await callHandler();
     expect(statusCode).toBe(200);
     expect(body.now.conditionKey).toBe('rain');

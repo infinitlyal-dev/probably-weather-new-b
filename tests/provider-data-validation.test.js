@@ -393,8 +393,9 @@ describe('item 5 — round 2: Tomorrow.io override records are bounded', () => {
     expect(body.now.rainChance).toBeLessThan(60);
   });
 
-  it('control: a real 2.25 mm/h current intensity still fires the override', async () => {
-    stubFetchWith({ openMeteo: () => makeResponse(validOpenMeteo()), met: () => makeResponse(validMet), tomorrow: () => makeResponse(tomorrowIoPayload(2.25, 0)) });
+  it('control: a real 2.25 mm/h current intensity still fires the override (MET describes rain — the second signal, 7 Oct 2026)', async () => {
+    const metRain = { properties: { timeseries: validMet.properties.timeseries.map((p) => ({ ...p, data: { ...p.data, next_1_hours: { ...p.data.next_1_hours, summary: { symbol_code: 'lightrain' } } } })) } };
+    stubFetchWith({ openMeteo: () => makeResponse(validOpenMeteo()), met: () => makeResponse(metRain), tomorrow: () => makeResponse(tomorrowIoPayload(2.25, 0)) });
     const { body } = await callHandler();
     expect(body.now.conditionReason).toBe('tomorrow-io-radar-override');
     expect(body.now.rainChance).toBeGreaterThanOrEqual(70);
