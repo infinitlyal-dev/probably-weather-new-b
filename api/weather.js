@@ -3730,7 +3730,10 @@ function deriveCondition({ desc, rainChance, tempC, feelsLikeC, windKph, uvIndex
       }
     }
 
-    const thunderIdx = lowered.findIndex(s => thunderRe.test(s));
+    // 7 Oct 2026 (Al's ruling, Part B item 4): a "possible" is not a thunder vote, as rain votes already exclude it.
+    // Live, 24 Sept – 7 Oct: all 7 two-word Thunder heroes at airports were WeatherAPI "Thundery outbreaks possible",
+    // none with thunder or rain at the airport (review/accuracy/results/thunder-possible.md).
+    const thunderIdx = lowered.findIndex(s => thunderRe.test(s) && !s.includes('possible'));
     if (thunderIdx !== -1) {
       const hasOtherCorroborator = lowered.some((s, i) => i !== thunderIdx && corroborateRe.test(s));
       if (hasOtherCorroborator) {
