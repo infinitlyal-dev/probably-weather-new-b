@@ -1,0 +1,42 @@
+clear/partly hours {"n":7844,"still":3431,"light":1540,"breezy":2749,"windy":124}
+mean≥ gust≥ | breezy calls | station ≥12 km/h (or gust ≥30) | station <8 km/h | recall of breezy+windy hours on a clear/partly hero | F1
+10 25 | 3159 | 72% | 11% | 79% | 76
+12 25 | 2593 | 80% | 8% | 72% | 76
+10 30 | 2942 | 75% | 10% | 76% | 75
+10 35 | 2901 | 75% | 10% | 76% | 75
+10 40 | 2892 | 75% | 10% | 76% | 75
+10 — | 2881 | 75% | 9% | 75% | 75
+14 25 | 2302 | 83% | 6% | 67% | 74
+12 30 | 2240 | 84% | 6% | 65% | 73
+15 25 | 2214 | 84% | 6% | 65% | 73
+12 35 | 2117 | 85% | 5% | 63% | 72
+12 40 | 2078 | 86% | 5% | 62% | 72
+12 — | 2068 | 86% | 4% | 62% | 72
+16 25 | 2142 | 85% | 5% | 63% | 72
+18 25 | 2024 | 86% | 5% | 60% | 71
+T15 25 2214 84 6 65 73
+T15 30 1702 89 4 53 66
+T15 35 1441 92 3 46 61
+T15 40 1316 93 2 43 59
+T15 — 1269 94 2 42 58
+== mean ≥ 15, gust ≥ 30
+  FACT clear/partly 1104, breezy 342 (31%), right 93%, still 2%, factor 1.6
+  FAOR clear/partly 1545, breezy 248 (16%), right 96%, still 1%, factor 1.078
+  FALE clear/partly 1461, breezy 329 (23%), right 89%, still 2%, factor 0.738
+  FAPE clear/partly 1236, breezy 477 (39%), right 84%, still 6%, factor 1.0542
+  FABL clear/partly 1435, breezy 160 (11%), right 94%, still 2%, factor 0.7
+  FAGG clear/partly 1063, breezy 146 (14%), right 82%, still 9%, factor 1.184
+== mean ≥ 12
+  FACT clear/partly 1104, breezy 437 (40%), right 91%, still 3%, factor 1.6
+  FAOR clear/partly 1545, breezy 287 (19%), right 95%, still 1%, factor 1.078
+  FALE clear/partly 1461, breezy 385 (26%), right 88%, still 1%, factor 0.738
+  FAPE clear/partly 1236, breezy 506 (41%), right 84%, still 6%, factor 1.0542
+  FABL clear/partly 1435, breezy 203 (14%), right 87%, still 2%, factor 0.7
+  FAGG clear/partly 1063, breezy 250 (24%), right 68%, still 14%, factor 1.184
+== mean ≥ 16, gust ≥ 25
+  FACT clear/partly 1104, breezy 373 (34%), right 91%, still 4%, factor 1.6
+  FAOR clear/partly 1545, breezy 363 (23%), right 93%, still 1%, factor 1.078
+  FALE clear/partly 1461, breezy 413 (28%), right 83%, still 4%, factor 0.738
+  FAPE clear/partly 1236, breezy 597 (48%), right 79%, still 9%, factor 1.0542
+  FABL clear/partly 1435, breezy 211 (15%), right 86%, still 4%, factor 0.7
+  FAGG clear/partly 1063, breezy 185 (17%), right 76%, still 11%, factor 1.184
