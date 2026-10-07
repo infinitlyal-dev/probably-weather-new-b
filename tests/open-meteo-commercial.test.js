@@ -10,7 +10,7 @@
 //   · that the free-tier 600/min + 10k/day ceilings apply ONLY without a key
 //     (under the commercial plan they would throttle traffic Open-Meteo
 //     itself does not throttle);
-//   · the advisory monthly counter, which is denominated in CALL UNITS (3.0
+//   · the advisory monthly counter, which is denominated in CALL UNITS (3.2
 //     per request) because the plan is — counting requests would put the 80%
 //     alert ~3x too late in billing terms.
 
@@ -252,7 +252,8 @@ describe('(e) the advisory monthly counter counts UNITS, and alerts at 80%', () 
   // Astra finding 5: derive the constant from the URL the handler actually
   // builds, so adding a variable to the request cannot silently invalidate it.
   // 1 Oct 2026: daily wind_gusts_10m_max joined (the Weekly day card's gusts), 29 → 30 variables.
-  it('derives 3.0 units from the REAL request URL (8 current + 13 hourly + 9 daily = 30, 7 days)', async () => {
+  // 7 Oct 2026: hourly cloud_cover_low and cloud_cover_mid joined (the cloud call), 30 → 32.
+  it('derives 3.2 units from the REAL request URL (8 current + 15 hourly + 9 daily = 32, 7 days)', async () => {
     process.env.OPEN_METEO_API_KEY = TEST_KEY;
     await callHandler();
     const params = new URL(openMeteoUrl()).searchParams;
@@ -262,44 +263,44 @@ describe('(e) the advisory monthly counter counts UNITS, and alerts at 80%', () 
       hourly: params.get('hourly').split(',').length,
       daily: params.get('daily').split(',').length,
     };
-    expect(counts).toEqual({ current: 8, hourly: 13, daily: 9 });
+    expect(counts).toEqual({ current: 8, hourly: 15, daily: 9 });
 
     const variables = counts.current + counts.hourly + counts.daily;
     const days = Number(params.get('forecast_days'));
-    expect(variables).toBe(30);
+    expect(variables).toBe(32);
     expect(days).toBe(7);
 
     // Open-Meteo: units = max(1, variables/10) x max(1, days/14).
     const units = Math.max(1, variables / 10) * Math.max(1, days / 14);
     expect(units).toBeCloseTo(OPEN_METEO_UNITS_PER_REQUEST, 10);
-    expect(OPEN_METEO_UNITS_PER_REQUEST).toBe(3.0);
+    expect(OPEN_METEO_UNITS_PER_REQUEST).toBe(3.2);
   });
 
-  it('increments by 3.0 units (30 tenths) and sets a ~40 day TTL on first write', async () => {
+  it('increments by 3.2 units (32 tenths) and sets a ~40 day TTL on first write', async () => {
     const redis = fakeRedis();
     captureConsole();
     const units = await recordOpenMeteoCall(redis, JUNE);
-    expect(units).toBe(3.0);
-    expect(redis.store.get(JUNE_KEY)).toBe(30); // tenths of a unit, not requests
+    expect(units).toBe(3.2);
+    expect(redis.store.get(JUNE_KEY)).toBe(32); // tenths of a unit, not requests
     expect(redis.expireCalls).toEqual([[JUNE_KEY, 40 * 86400]]);
 
     const second = await recordOpenMeteoCall(redis, JUNE);
-    expect(second).toBeCloseTo(6.0, 10);
-    expect(redis.store.get(JUNE_KEY)).toBe(60);
+    expect(second).toBeCloseTo(6.4, 10);
+    expect(redis.store.get(JUNE_KEY)).toBe(64);
     expect(redis.expireCalls).toHaveLength(1); // TTL set once, on creation only
   });
 
-  it('logs the routine usage line once per 1,000 UNITS (≈333 requests), not per call', async () => {
-    // 998.2 units: the next 3.0 lands on 1001.2, crossing the 1,000-unit mark.
+  it('logs the routine usage line once per 1,000 UNITS (≈313 requests), not per call', async () => {
+    // 998.2 units: the next 3.2 lands on 1001.4, crossing the 1,000-unit mark.
     const redis = fakeRedis(998.2);
     captureConsole();
     const lines = () => consoleOutput.filter((l) => l.includes('[pw-om-monthly]'));
 
-    await recordOpenMeteoCall(redis, JUNE); // 1001.2 — crosses 1,000 → logs
+    await recordOpenMeteoCall(redis, JUNE); // 1001.4 — crosses 1,000 → logs
     expect(lines()).toHaveLength(1);
-    expect(lines()[0]).toContain('1001.2/1000000 units');
+    expect(lines()[0]).toContain('1001.4/1000000 units');
     expect(lines()[0]).toContain('(0.1%)');
-    expect(lines()[0]).toContain('≈ 334 requests');
+    expect(lines()[0]).toContain('≈ 313 requests');
 
     // The next 100 calls stay inside the same 1,000-unit band → still one line.
     for (let i = 0; i < 100; i++) await recordOpenMeteoCall(redis, JUNE);
@@ -308,13 +309,13 @@ describe('(e) the advisory monthly counter counts UNITS, and alerts at 80%', () 
 
   it('does NOT alert at 799,999.9 units and DOES alert at 800,000 (80% of 1,000,000)', async () => {
     captureConsole();
-    // 799,996.9 + 3.0 = 799,999.9 — just under the threshold.
-    const under = await recordOpenMeteoCall(fakeRedis(799_996.9), JUNE);
+    // 799,996.7 + 3.2 = 799,999.9 — just under the threshold.
+    const under = await recordOpenMeteoCall(fakeRedis(799_996.7), JUNE);
     expect(under).toBeCloseTo(799_999.9, 6);
     expect(consoleOutput.filter((l) => l.includes('[pw-om-alert]'))).toHaveLength(0);
 
-    // 799,997.0 + 3.0 = 800,000.0 — exactly at the threshold.
-    const at = await recordOpenMeteoCall(fakeRedis(799_997.0), JUNE);
+    // 799,996.8 + 3.2 = 800,000.0 — exactly at the threshold.
+    const at = await recordOpenMeteoCall(fakeRedis(799_996.8), JUNE);
     expect(at).toBeCloseTo(800_000, 6);
     const alerts = consoleOutput.filter((l) => l.includes('[pw-om-alert]'));
     expect(alerts).toHaveLength(1);
@@ -336,8 +337,8 @@ describe('(e) the advisory monthly counter counts UNITS, and alerts at 80%', () 
     captureConsole();
     let units;
     for (let i = 0; i < 1000; i++) units = await recordOpenMeteoCall(redis, JUNE);
-    expect(redis.store.get(JUNE_KEY)).toBe(30_000); // exactly 1000 × 30 tenths
-    expect(units).toBe(3000);                        // exactly 1000 × 3.0 units
+    expect(redis.store.get(JUNE_KEY)).toBe(32_000); // exactly 1000 × 32 tenths
+    expect(units).toBe(3200);                        // exactly 1000 × 3.2 units
   });
 
   it('never blocks or throws: Redis absent counts nothing and warns once per instance', async () => {

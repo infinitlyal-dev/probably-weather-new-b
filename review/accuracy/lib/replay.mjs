@@ -19,7 +19,7 @@ import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import {
-  deriveCondition, applyVoteConsensus, categorizeDesc, pickWeightedMostCommon, pickModalCloud,
+  skyCloudFor, deriveCondition, applyVoteConsensus, categorizeDesc, pickWeightedMostCommon, pickModalCloud,
   detectAdvectionFog, corroboratedFogUpgrade, isTrueFogDesc, countsAsWeatherVote,
 } from '../../../api/weather.js';
 import { HEAT_WARM_C, HEAT_EXTREME_C } from '../../../assets/weather-thresholds.js';
@@ -106,6 +106,8 @@ function aggregateHourly(hourlies, hourlyW) {
       precipMm: wAvg(hourlies, hourlyW, (h) => h.precipMm?.[i]),
       windKph: wAvg(hourlies, hourlyW, (h) => h.winds[i]),
       cloudPct: modalCloud,
+      // 7 Oct 2026 — api/weather.js aggregatedHourly skyCloudPct
+      skyCloudPct: skyCloudFor({ cloudPct: modalCloud, omLowPct: hourlies[0]?.cloudsLow?.[i], omMidPct: hourlies[0]?.cloudsMid?.[i] }).pct,
       uv: isNum(uvVal) ? Math.round(uvVal * 10) / 10 : null,
       condition: winningDesc ? categorizeDesc(winningDesc) : null,
       descLabel: winningDesc,
@@ -192,6 +194,11 @@ export function decideAt(city, i) {
   const precipNowArr = activeNorms.map((n) => n.precipNowMm).filter(isNum);
   // api/weather.js nowRainVotes: a current description that is rain and not a "possible".
   const rainNowVotes = sourceVotes.filter((v) => v.vote === 'rain' && !/possible/i.test(v.desc || '')).length;
+  // 7 Oct 2026 — api/weather.js currentSky: the cloud figure the hero reads.
+  const omLow = hourlies[0]?.cloudsLow?.[localHour], omMid = hourlies[0]?.cloudsMid?.[localHour];
+  const currentSky = skyCloudFor({ cloudPct: currentCloudPct, omLowPct: omLow, omMidPct: omMid,
+    // SKY_RULE2=off (harness only): score rule 1 alone, for Al's ruling.
+    clearVotes: process.env.SKY_RULE2 === 'off' ? null : sourceVotes.filter((v) => v.vote === 'clear').length, activeSources: activeNorms.length });
 
   const selectorInputs = {
     desc: mostDesc,
@@ -200,7 +207,7 @@ export function decideAt(city, i) {
     feelsLikeC: medFeelsLike,
     windKph: medWindKph,
     uvIndex: isNum(nowHourUv) ? nowHourUv : null,
-    cloudPct: currentCloudPct,
+    cloudPct: currentSky.pct,
     maxWindKph,
     isDay,
     dailyHighC: daily0.highC,
@@ -245,7 +252,8 @@ export function decideAt(city, i) {
     isDay, localHour,
     windKph: medWindKph ?? 0, maxWindKph: maxWindKph > 0 ? maxWindKph : null,
     gustKph: isNum(maxGust) && maxGust > (medWindKph ?? 0) * 1.5 ? maxGust : null,
-    cloudPct: currentCloudPct,
+    // normalizePayload: now.skyCloudPct when present (7 Oct 2026).
+    cloudPct: currentSky.pct,
     conditionKey: key, conditionReason: reason,
     sourceConditions: sourceVotes,
     hourly: aggregatedHourly,
@@ -259,6 +267,6 @@ export function decideAt(city, i) {
     server: { key, reason, base, overrides, votes: sourceVotes.map((v) => v.vote), rainVotes: rainNowVotes, inputs: selectorInputs },
     frontend: { display, hero, rainPct, dailyRainPct, rainLater },
     daily0,
-    blends: { windKph: medWindKph, maxGust, maxGustAny, maxGust3, maxWindKph, cloudPct: currentCloudPct, rainChance: currentHourRainChance, precipMmHour: aggregatedHourly[localHour]?.precipMm ?? null, precipNowMax: selectorInputs.precipNowMm, hourCondition: aggregatedHourly[localHour]?.condition ?? null },
+    blends: { windKph: medWindKph, maxGust, maxGustAny, maxGust3, maxWindKph, cloudPct: currentCloudPct, skyCloudPct: currentSky.pct, skyCloudRule: currentSky.rule, omOpaque: isNum(omLow) && isNum(omMid) ? Math.max(omLow, omMid) : null, rainChance: currentHourRainChance, precipMmHour: aggregatedHourly[localHour]?.precipMm ?? null, precipNowMax: selectorInputs.precipNowMm, hourCondition: aggregatedHourly[localHour]?.condition ?? null },
   };
 }

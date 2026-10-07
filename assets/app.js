@@ -2597,7 +2597,9 @@ document.addEventListener("DOMContentLoaded", () => {
       rawWindKph: isNum(meta.wind?.rawKph) ? meta.wind.rawKph : null,
       maxWindKph: isNum(payload.maxWindKph) ? payload.maxWindKph : null,
       gustKph: isNum(payload.gustKph) ? payload.gustKph : null,
-      cloudPct: isNum(now.cloudPct) ? now.cloudPct : (Array.isArray(payload.hourly) && payload.hourly[0] ? payload.hourly[0].cloudPct ?? null : null),
+      // 7 Oct 2026: the sky rungs read the figure the server decided on (thin high cloud capped); a payload without
+      // it falls back to the raw cover as before. Nothing on screen prints norm.cloudPct.
+      cloudPct: isNum(now.skyCloudPct) ? now.skyCloudPct : isNum(now.cloudPct) ? now.cloudPct : (Array.isArray(payload.hourly) && payload.hourly[0] ? payload.hourly[0].cloudPct ?? null : null),
       conditionKey: legacyNowKey || today.conditionKey || null, conditionLabel: now.conditionLabel || today.conditionLabel || '', 
       confidenceKey: payload.consensus?.confidenceKey || 'mixed', 
       used: sources.filter(s => s.ok).map(s => s.name), failed: sources.filter(s => !s.ok).map(s => s.name),
@@ -3330,6 +3332,9 @@ document.addEventListener("DOMContentLoaded", () => {
   // `cond` is the per-hour categorised condition from the API — lets thunder
   // and fog hours render correctly (the numeric ladder has no weather code).
   // Returns SVG markup (M5); `opts` rides through to the icon family.
+  // 7 Oct 2026: an hour's icon reads the server's sky figure (high cirrus is not a grey cloud); the hour's own
+  // cloudPct stays the models' number. Older payloads carry no skyCloudPct and keep the raw cover.
+  function hourSkyCloud(h) { return isNum(h?.skyCloudPct) ? h.skyCloudPct : h?.cloudPct; }
   function getWeatherIcon(rp, cp, tc, isNight, cond, opts) {
     return withLabel(pickHourlyIcon({ rainPct: rp, cloudPct: cp, tempC: tc, isNight: !!isNight, condition: cond }), opts);
   }
@@ -3445,7 +3450,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const isNightHour = daylight === null ? (hourNum >= 20 || hourNum < 5) : !daylight;
       // labelled: in an hourly row the icon is the ONLY carrier of the
       // condition, so it keeps the name the emoji used to announce.
-      const icon = getWeatherIcon(h.rainChance, h.cloudPct, iconTemp, isNightHour, h.condition, { labelled: true });
+      const icon = getWeatherIcon(h.rainChance, hourSkyCloud(h), iconTemp, isNightHour, h.condition, { labelled: true });
       const rainPct = isNum(h.rainChance) ? round0(h.rainChance) + '%' : '--';
       const rawWind = h.windKmh ?? h.windKph ?? h.wind_kph ?? (i < 3 ? currentWind : null);
       const windSpeed = windValue(rawWind) ?? '--';
@@ -3681,7 +3686,7 @@ document.addEventListener("DOMContentLoaded", () => {
           const iconTemp = (isNum(h.feelsLikeC) && h.feelsLikeC < h.tempC) ? h.feelsLikeC : h.tempC;
           // The chart itself is role="img" with its own label, so its icons are
           // decoration inside it — aria-hidden, and markup rather than text.
-          sub.appendChild(iconCell(getWeatherIcon(h.rainChance, h.cloudPct, iconTemp, isNightHour, h.condition, { size: 16 }), 'chart-icon'));
+          sub.appendChild(iconCell(getWeatherIcon(h.rainChance, hourSkyCloud(h), iconTemp, isNightHour, h.condition, { size: 16 }), 'chart-icon'));
         }
       });
       frag.appendChild(sub);
@@ -3809,7 +3814,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const isNightHour = daylight === null ? (hourNum >= 20 || hourNum < 5) : !daylight;
       // labelled: in an hourly row the icon is the ONLY carrier of the
       // condition, so it keeps the name the emoji used to announce.
-      const icon = getWeatherIcon(h.rainChance, h.cloudPct, iconTemp, isNightHour, h.condition, { labelled: true });
+      const icon = getWeatherIcon(h.rainChance, hourSkyCloud(h), iconTemp, isNightHour, h.condition, { labelled: true });
       const rainPct = isNum(h.rainChance) ? round0(h.rainChance) + '%' : '--';
       const rawWind = h.windKmh ?? h.windKph ?? h.wind_kph ?? (i < 3 ? currentWind : null);
       const windSpeed = windValue(rawWind) ?? '--';

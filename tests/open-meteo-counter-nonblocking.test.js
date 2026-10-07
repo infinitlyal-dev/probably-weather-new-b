@@ -92,7 +92,7 @@ describe('a stalled monthly counter does not delay the forecast', () => {
     expect(body.ok).toBe(true);
     expect(body.now).toBeDefined();
     expect(body.daily).toHaveLength(7);
-    // The main request's 3.0 units, then the precision request's 1.0 (Strand is in SA and the key is
+    // The main request's 3.2 units, then the precision request's 1.0 (Strand is in SA and the key is
     // set: api/_lib/precision.js) — neither awaited.
     expect(recordOpenMeteoCallDeferred).toHaveBeenCalledTimes(2);
     expect(recordOpenMeteoCallDeferred.mock.calls[0][3]).toBeUndefined();

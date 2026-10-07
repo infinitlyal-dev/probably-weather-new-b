@@ -1184,7 +1184,9 @@ export default async function handler(req, res) {
       // Layer A (2026-05-21, Bug 1): visibility + dew_point_2m added so the
       // advection-fog detector can see low-visibility/saturated-air signals the
       // model-based condition vote ignores. Both fields are free on this endpoint.
-      `&hourly=temperature_2m,apparent_temperature,precipitation_probability,precipitation,wind_speed_10m,wind_gusts_10m,wind_direction_10m,cloud_cover,relative_humidity_2m,uv_index,weather_code,visibility,dew_point_2m` +
+      // 7 Oct 2026: low and mid cloud, so thin high cirrus is not read as a grey sky (skyCloudFor). High cloud is
+      // not requested: the rule never reads it, and every field costs 0.1 call unit (provider-budget.js).
+      `&hourly=temperature_2m,apparent_temperature,precipitation_probability,precipitation,wind_speed_10m,wind_gusts_10m,wind_direction_10m,cloud_cover,cloud_cover_low,cloud_cover_mid,relative_humidity_2m,uv_index,weather_code,visibility,dew_point_2m` +
       `&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,uv_index_max,weather_code,wind_speed_10m_max,wind_gusts_10m_max,sunrise,sunset` +
       `&timezone=auto&forecast_days=7${openMeteoKeyParam}`
     ) : Promise.resolve(null);
@@ -1342,6 +1344,9 @@ export default async function handler(req, res) {
         gusts:      om.hourly?.wind_gusts_10m?.slice(0, 48)            ?? [],
         windDirs:   om.hourly?.wind_direction_10m?.slice(0, 48)        ?? [],
         clouds:     om.hourly?.cloud_cover?.slice(0, 48)               ?? [],
+        // 7 Oct 2026: Open-Meteo's low and mid cloud — read by skyCloudFor only.
+        cloudsLow:  om.hourly?.cloud_cover_low?.slice(0, 48)           ?? [],
+        cloudsMid:  om.hourly?.cloud_cover_mid?.slice(0, 48)           ?? [],
         humidity:   om.hourly?.relative_humidity_2m?.slice(0, 48)      ?? [],
         uvs:        om.hourly?.uv_index?.slice(0, 48)                  ?? [],
         // Layer A (Bug 1): per-hour visibility (METRES) + dew point (°C) feed
@@ -2196,6 +2201,9 @@ export default async function handler(req, res) {
       // resolution at this scale). Renderer decides how many decimals to show.
       const precipMm = isNum(precipMmRaw) ? precipMmRaw : null;
 
+      // 7 Oct 2026: the cloud figure the condition reads for this hour (thin high cloud capped; see skyCloudFor).
+      const skyCloud = skyCloudFor({ cloudPct: modalCloud, omLowPct: hourlies[0]?.cloudsLow?.[i], omMidPct: hourlies[0]?.cloudsMid?.[i] });
+
       return {
         tempC:      wAvg(hourlies, hourlyW, h => h.temps[i]),
         feelsLikeC: wAvg(hourlies, hourlyW, h => h.feelsLikes?.[i]),
@@ -2205,6 +2213,7 @@ export default async function handler(req, res) {
         // Open-Meteo only — see the windDir note on the current block.
         windDir:    isNum(hourlies[0]?.windDirs?.[i]) ? hourlies[0].windDirs[i] : null,
         cloudPct:   modalCloud,  // Rec 5: use modal instead of averaged cloud cover
+        skyCloudPct: skyCloud.pct, // what the icon reads; cloudPct stays the models' number for display
         uv:         isNum(uvVal) ? Math.round(uvVal * 10) / 10 : null,
         // Phase B-1 Item 3: categorised hourly condition + winning desc label
         condition:  hourCondition,
@@ -2585,6 +2594,10 @@ export default async function handler(req, res) {
     // A source's CURRENT description saying rain — "Patchy rain possible" and
     // "Possible rain" are a maybe, not a report, and do not count.
     const nowRainVotes = sourceConditionVotes.filter(v => v.vote === 'rain' && !/possible/i.test(v.desc || '')).length;
+    // 7 Oct 2026: the cloud figure the hero reads — this hour's, with the sources' own verdict as well (skyCloudFor).
+    const currentSky = skyCloudFor({ cloudPct: currentCloudPct, omLowPct: hourlies[0]?.cloudsLow?.[localHour], omMidPct: hourlies[0]?.cloudsMid?.[localHour],
+      clearVotes: sourceConditionVotes.filter(v => v.vote === 'clear').length, activeSources: activeNorms.length });
+    if (currentSky.rule) debugLog(`[Sky cloud] ${currentCloudPct}% → ${currentSky.pct}% (${currentSky.rule})`);
     // The selector's exact inputs are kept (nowSelector) so a cache hit can
     // re-run the SAME call with only uv/isDay refreshed and compare against
     // the SAME base result — the overrides below rewrite currentHourRainChance
@@ -2611,7 +2624,8 @@ export default async function handler(req, res) {
       windKph:    windDecision.kph,
       windThresholdKph: windDecision.thresholdKph,
       uvIndex:    uvForCondition,
-      cloudPct:   currentCloudPct,
+      // 7 Oct 2026: the sky figure, not the models' raw number — now.cloudPct still ships the raw one.
+      cloudPct:   currentSky.pct,
       maxWindKph,
       isDay,
       dailyHighC: aggregatedDaily?.[0]?.highC ?? null,
@@ -2845,6 +2859,8 @@ export default async function handler(req, res) {
         windThresholdKph: windDecision.thresholdKph,
         uvIndex: uvForCondition,
         cloudPct: currentCloudPct,
+        skyCloudPct: currentSky.pct,
+        skyCloudRule: currentSky.rule,
         dailyHighC: aggregatedDaily?.[0]?.highC ?? null,
         isDay,
         // 2026-09-22: the now-ladder's evidence inputs, so a wrong hero can be
@@ -2865,6 +2881,13 @@ export default async function handler(req, res) {
       // null unless Tomorrow.io's next-hour radar raised now.rainChance (see above).
       radarNextHourBump,
     };
+
+    // 7 Oct 2026: the hour row for now carries the hero's own answer, so the strip and the hero cannot disagree
+    // about the same hour (Strand 07:00: hero 'cloudy', its own hourly row 'clear').
+    if (aggregatedHourly[localHour]) {
+      aggregatedHourly[localHour].condition = nowConditionKey;
+      aggregatedHourly[localHour].skyCloudPct = currentSky.pct;
+    }
 
     // Our own reading is never edge-cached either (its URL is its own, but a degraded copy sits nowhere).
     res.setHeader('Cache-Control', ownTraffic ? 'no-store' : edgeCacheControl(utcOffsetSeconds));
@@ -2890,8 +2913,11 @@ export default async function handler(req, res) {
         // after sunset and null when no hourly source supplied UV this hour.
         uv:               isDay ? nowHourUv : null,
         cloudPct:         currentCloudPct,
+        // 7 Oct 2026: the cloud figure the condition was decided on (skyCloudFor); the phone's own sky rungs read it.
+        skyCloudPct:      currentSky.pct,
         conditionKey:     nowConditionKey,
-        conditionLabel:   mostDesc,
+        // The sources' winning words when they agree with the key, the key's own word when they do not.
+        conditionLabel:   conditionLabelFor(nowConditionKey, mostDesc),
         // Phase B-1 Item 1: rule identifier (short string) and signals object
         // (per-source votes + numeric inputs + override trail). Debug-grade
         // fields — frontend consumes conditionKey/conditionLabel as before;
@@ -3176,6 +3202,7 @@ const UTC_OFFSET_BOUNDS = [-14 * 3600, 14 * 3600];
 const HOURLY_ARRAY_BOUNDS = {
   temps: TEMP_BOUNDS, feelsLikes: [-90, 70], rains: [0, 100], precipMm: [0, 500],
   winds: [0, 400], gusts: [0, 500], windDirs: [0, 360], clouds: [0, 100], humidity: [0, 100],
+  cloudsLow: [0, 100], cloudsMid: [0, 100],
   uvs: [0, 25], visibility: [0, 1e6] /* metres */, visibilityKm: [0, 1000], dewPoints: TEMP_BOUNDS,
 };
 const DAILY_ARRAY_BOUNDS = {
@@ -3856,6 +3883,49 @@ function deriveCondition({ desc, rainChance, tempC, feelsLikeC, windKph, uvIndex
 }
 
 /**
+ * The cloud figure the CONDITION reads (7 Oct 2026). now.cloudPct and every hourly cloudPct
+ * keep the models' own number for display; this one decides the sky.
+ *
+ * Strand, 7 Oct 2026, 07:00: the hero said Cloudy over a blue sky with thin high haze. The
+ * blended cover was 71.88 % — but Open-Meteo split its 67 % as low 0, mid 0, high 67 (all
+ * cirrus), and three of five sources described a clear sky (Open-Meteo "Mainly clear",
+ * Pirate "Clear sky", MET "Partly cloudy" against WeatherAPI "Overcast", Tomorrow.io "Cloudy").
+ *
+ * Two rules, each caps the figure at 54 % — the top of the partly-cloudy band, so the cloud
+ * rungs can say Partly cloudy at most, never Cloudy:
+ *   1. Thin cloud only: Open-Meteo's low AND mid cloud are both under 20 % for the hour.
+ *      What it sees is high cloud, which does not make a grey sky. At six SA airports
+ *      (Jun–Sep 2026) hours like that reported broken or overcast cloud below 20,000 ft
+ *      1–21 % of the time, against 31–75 % when Open-Meteo had low or mid cloud.
+ *   2. The sources say so (the current hour only, ≥ 3 sources): at least half of them describe
+ *      a clear-family sky (clear, mainly clear, partly cloudy, fair, sunny). A minority of two
+ *      saying Overcast no longer holds Cloudy against three saying clear.
+ * Strand 07:00: 71.88 → 54 by both rules → partly-cloudy.
+ * The rain, storm, fog, wind, heat and cold rungs do not read this cap; they keep their own gates.
+ */
+export const SKY_OPAQUE_MAX_PCT = 20;
+export const SKY_PARTLY_CAP_PCT = 54;
+function skyCloudFor({ cloudPct, omLowPct, omMidPct, clearVotes, activeSources }) {
+  if (!isNum(cloudPct) || cloudPct <= SKY_PARTLY_CAP_PCT) return { pct: isNum(cloudPct) ? cloudPct : null, rule: null };
+  if (isNum(omLowPct) && isNum(omMidPct) && Math.max(omLowPct, omMidPct) < SKY_OPAQUE_MAX_PCT) return { pct: SKY_PARTLY_CAP_PCT, rule: 'high-cloud-only' };
+  if (isNum(clearVotes) && isNum(activeSources) && activeSources >= 3 && clearVotes * 2 >= activeSources) return { pct: SKY_PARTLY_CAP_PCT, rule: 'clear-majority' };
+  return { pct: cloudPct, rule: null };
+}
+
+// now.conditionLabel (7 Oct 2026): it read "Mainly clear" beside conditionKey 'cloudy'. The sources'
+// winning words stand when they fall in the key's own family (categorizeDesc vs conditionKeyToVoteBucket);
+// otherwise the key's own word. English, like the provider words it replaces; the app does not show it.
+const KEY_LABELS = {
+  clear: 'Clear', 'partly-cloudy': 'Partly cloudy', cloudy: 'Cloudy', rain: 'Rain', 'rain-possible': 'Possible rain',
+  storm: 'Thunderstorm', thunder: 'Thunder', hail: 'Hail', fog: 'Fog', wind: 'Windy', heat: 'Hot', cold: 'Cold',
+  'cold-clear': 'Cold and clear', uv: 'High UV',
+};
+function conditionLabelFor(key, desc) {
+  if (desc && categorizeDesc(desc) === conditionKeyToVoteBucket(key)) return desc;
+  return KEY_LABELS[key] ?? desc ?? 'Unknown';
+}
+
+/**
  * Post-selector vote consensus for the NOW path, in production order:
  *   FIX-001  rain-possible / cloudy need ≥2 weather votes (rain/cloudy/storm/fog)
  *            unless Open-Meteo or MET Norway (most reliable for SA) voted rain.
@@ -4237,4 +4307,4 @@ function corroboratedFogUpgrade({ conditionKey, fogVoteCount, humidity, windKph 
 
 // Named exports for focused unit tests. The Vercel API runtime uses the default
 // export (the handler); these are test-only surface area.
-export { deriveCondition, applyVoteConsensus, categorizeDesc, pickWeightedMostCommon, pickModalCloud, detectAdvectionFog, conditionKeyToVoteBucket, agreementVoteBucket, countsAsWeatherVote, corroboratedFogUpgrade, isTrueFogDesc, sanitizeSources };
+export { skyCloudFor, conditionLabelFor, deriveCondition, applyVoteConsensus, categorizeDesc, pickWeightedMostCommon, pickModalCloud, detectAdvectionFog, conditionKeyToVoteBucket, agreementVoteBucket, countsAsWeatherVote, corroboratedFogUpgrade, isTrueFogDesc, sanitizeSources };

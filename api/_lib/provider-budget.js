@@ -177,13 +177,14 @@ const _UNSET = Symbol('redis-unset');
 //    weeks of data equals 3.0 API calls."
 //
 // ⇒ units = max(1, variables/10) × max(1, days/14).
-// PW's forecast request: 8 `current` + 13 `hourly` + 9 `daily` parameters = 30,
-// forecast_days=7 (days factor 1.0, since 7 < 14) ⇒ 30/10 = 3.0 units. (1 Oct 2026:
-// daily wind_gusts_10m_max joined for the Weekly day card's gusts; it was 29 / 2.9.)
-// 3.0 is the CONSERVATIVE reading. If Open-Meteo de-duplicates variable names
-// across the three sections the count is 21 distinct names ⇒ 2.1 units. Which
+// PW's forecast request: 8 `current` + 15 `hourly` + 9 `daily` parameters = 32,
+// forecast_days=7 (days factor 1.0, since 7 < 14) ⇒ 32/10 = 3.2 units. (1 Oct 2026:
+// daily wind_gusts_10m_max joined for the Weekly day card's gusts; it was 29 / 2.9.
+// 7 Oct 2026: hourly cloud_cover_low and cloud_cover_mid joined for the cloud call; it was 30 / 3.0.)
+// 3.2 is the CONSERVATIVE reading. If Open-Meteo de-duplicates variable names
+// across the three sections the count is 23 distinct names ⇒ 2.3 units. Which
 // one they apply is not published and no response header reports the weight
-// (verified against the live endpoint), so we plan on 3.0 and the real spend is
+// (verified against the live endpoint), so we plan on 3.2 and the real spend is
 // read off the Open-Meteo customer dashboard.
 //
 // tests/open-meteo-commercial.test.js derives this number from the request URL
@@ -193,14 +194,14 @@ const _UNSET = Symbol('redis-unset');
 // hit rate, not a measured one: there was no /api/weather traffic in the last
 // 24 h of Vercel production logs on 2026-09-14 (prelaunch), so there was
 // nothing to measure. Re-derive it from real logs once traffic exists.
-export const OPEN_METEO_UNITS_PER_REQUEST = 3.0;
+export const OPEN_METEO_UNITS_PER_REQUEST = 3.2;
 
 // STORAGE: the Redis value is an integer count of TENTHS of a unit, incremented
 // with plain INCRBY. Deliberately not INCRBYFLOAT — integer arithmetic is exact
 // over the ~345k increments a full month takes, where repeated float addition
-// would drift, and it avoids parsing INCRBYFLOAT's string reply. 3.0 units =
-// 30 tenths per request; divide by 10 to read units back.
-const OPEN_METEO_UNIT_TENTHS = Math.round(OPEN_METEO_UNITS_PER_REQUEST * 10); // 30
+// would drift, and it avoids parsing INCRBYFLOAT's string reply. 3.2 units =
+// 32 tenths per request; divide by 10 to read units back.
+const OPEN_METEO_UNIT_TENTHS = Math.round(OPEN_METEO_UNITS_PER_REQUEST * 10); // 32
 // The precision request (api/_lib/precision.js): temperature for four models, 3 days → 4 model-variables,
 // under 2 weeks → 1.0 unit.
 export const OPEN_METEO_PRECISION_UNIT_TENTHS = 10;
@@ -209,7 +210,7 @@ const TENTHS = 10;
 const OPEN_METEO_MONTHLY_PLAN = 1_000_000;                       // units/month
 const OPEN_METEO_MONTHLY_ALERT_AT = 800_000;                     // 80% of the plan, in UNITS
 const OPEN_METEO_MONTHLY_ALERT_AT_TENTHS = OPEN_METEO_MONTHLY_ALERT_AT * TENTHS;
-// Log throttle: one routine line per 1,000 UNITS (≈ 333 requests at 3.0), so a
+// Log throttle: one routine line per 1,000 UNITS (≈ 313 requests at 3.2), so a
 // full 1,000,000-unit month emits ~1,000 lines rather than ~333,000. A modulo
 // test cannot be used here: a step need not divide the 10,000-tenth interval
 // (the 29-tenth step before 1 Oct 2026 was coprime with it), so it may never
