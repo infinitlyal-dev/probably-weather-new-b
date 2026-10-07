@@ -219,6 +219,8 @@ export function decideAt(city, i) {
     precipMm: aggregatedHourly[localHour]?.precipMm ?? null,
     rainVotes: rainNowVotes,
     gustKph: maxGust,
+    // 7 Oct 2026 (new sets) — api/weather.js breezySourcesNow; the replay has no wind correction (factor 1, line 25).
+    breezySources: activeNorms.filter((n) => (isNum(n.windKph) && n.windKph >= 15) || (isNum(n.gustKph) && n.gustKph >= 30)).length,
     // Kept for the sweeps only (not read by production):
     precipNowMm: precipNowArr.length ? Math.max(...precipNowArr) : null,
   };

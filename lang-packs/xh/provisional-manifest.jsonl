@@ -402,3 +402,5 @@
 {"key":"witty.clear[92]","xh":"Abantu basezixekweni bahlawula imali eninzi ngesi silingi.","status":"provisional-pending-native-confirm","confidence":"MED"}
 {"key":"witty.clear[93]","xh":"Isibhakabhaka esicace kangaka sithetha ukuba ngomso kuza kutshisa. Hlala okwethutyana.","status":"provisional-pending-native-confirm","confidence":"HIGH"}
 {"key":"witty.clear[94]","xh":"Akukho mntu uthe malihambe. Ubusuku buyavuma.","status":"provisional-pending-native-confirm","confidence":"HIGH"}
+{"key": "heroLabels.breezy", "xh": "Umoya omncinci", "status": "provisional-pending-native-confirm", "confidence": "MED"}
+{"key": "headlines.breezy", "xh": "Kukho umoya omncinci.", "status": "provisional-pending-native-confirm", "confidence": "MED"}

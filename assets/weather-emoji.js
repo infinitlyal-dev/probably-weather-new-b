@@ -27,6 +27,8 @@ const CONDITION_ICON_MAP = {
   'partly-cloudy': { day: 'cloud-sun',  night: 'cloud'      },
   fog:             { day: 'fog',        night: 'fog'        },
   wind:            { day: 'wind',       night: 'wind'       },
+  // breezy (7 Oct 2026): the wind glyph until it has a drawing of its own.
+  breezy:          { day: 'wind',       night: 'wind'       },
   cold:            { day: 'cold',       night: 'cold'       },
   // cold-clear: Highveld dry-cold under blue sky. Sun AND snowflake — the
   // "deceptively beautiful" register the cold-face emoji used to carry. Kept
@@ -67,6 +69,8 @@ export function pickHourlyIcon({ rainPct, cloudPct, tempC, isNight, condition })
   // so every other key falls through to the cloud-cover ladder.
   if (cond === 'storm' || cond === 'thunder') return pickConditionIconForTime('storm', isDay);
   if (cond === 'fog') return pickConditionIconForTime('fog', isDay);
+  // The server marks an hour Breezy only under 30 % rain on a clear-family sky (api/weather.js aggregatedHourly).
+  if (cond === 'breezy') return pickConditionIconForTime('breezy', isDay);
 
   if (isNum(tempC) && tempC <= 0)        return pickConditionIconForTime('cold', isDay);
   if (isNum(rainPct) && rainPct >= 50)   return pickConditionIconForTime('rain', isDay);

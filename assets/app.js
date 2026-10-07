@@ -1954,6 +1954,9 @@ document.addEventListener("DOMContentLoaded", () => {
       debugLog(`[FIX-003] rainLater=true, escalating to rain-possible`);
       return 'rain-possible';
     }
+    // Breezy (7 Oct 2026, Al): the server's call on a clear or partly-cloudy sky with a noticeable wind. Rain, fog and
+    // the rest outrank it above; the phone never re-derives it from the number.
+    if (apiCondition === 'breezy') return 'breezy';
     if (isDay && apiCondition === 'uv' && !(isTrulyOvercast || isMostlyCloudy || isSignificantCloud) && !uvBlockedByCold) return 'uv';
     if (apiCondition === 'fog') return 'fog';
     // FIX-001: cloudy requires majority source agreement
@@ -3197,7 +3200,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const displayCondition = computeHomeDisplayCondition(norm), hero = computeTodaysHero(norm);
     // Body/CSS variant: partly-cloudy reuses cloudy; hail/thunder reuse storm.
     // No dedicated CSS for the new keys — they share storm imagery and theme.
-    const CSS_VARIANT_ALIAS = { 'partly-cloudy': 'cloudy', hail: 'storm', thunder: 'storm' };
+    const CSS_VARIANT_ALIAS = { 'partly-cloudy': 'cloudy', breezy: 'clear', hail: 'storm', thunder: 'storm' };
     const cssVariant = CSS_VARIANT_ALIAS[displayCondition] || displayCondition;
     document.body.classList.remove('weather-cold', 'weather-heat', 'weather-storm', 'weather-rain', 'weather-wind', 'weather-fog', 'weather-clear', 'weather-cloudy');
     document.body.classList.add(`weather-${cssVariant}`);
@@ -3310,7 +3313,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // line. Found 2026-08-10 while building the ink map.
     const hc = ['hero-storm', 'hero-rain', 'hero-rain-possible', 'hero-thunder', 'hero-hail',
       'hero-heat', 'hero-cold', 'hero-cold-clear', 'hero-wind', 'hero-uv', 'hero-clear',
-      'hero-cloudy', 'hero-fog'];
+      'hero-cloudy', 'hero-fog', 'hero-breezy'];
     // partly-cloudy reuses the cloudy hero colour — no dedicated CSS yet.
     const heroVariant = displayCondition === 'partly-cloudy' ? 'cloudy' : displayCondition;
     [headlineEl, tempEl].forEach(el => { if (el) { el.classList.remove(...hc); el.classList.add('hero-' + heroVariant); } });

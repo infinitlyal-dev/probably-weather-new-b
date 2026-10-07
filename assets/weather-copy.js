@@ -9,6 +9,8 @@ export const WEATHER_COPY = {
     rain: { en: "Wet conditions", af: "Nat toestande", zu: "Izimo ezimanzi", xh: "Iimeko ezimanzi", st: "Maemo a mongobo" },
     'rain-possible': { en: "Possible showers", af: "Moontlike buie", zu: "Imvula engase ine", xh: "Imvula enokubakho", st: "Dipula tse ka bang teng" },
     wind: { en: "Gusty winds", af: "Sterk wind", zu: "Umoya onamandla", xh: "Imimoya enamandla", st: "Meya e matla" },
+    // 7 Oct 2026 (Al): breezy — zu/xh/st are PROVISIONAL (lang-check pass, pending a native ruling: lang-packs/<lang>/provisional-manifest.jsonl).
+    breezy: { en: "Breezy", af: "Ligte briesie", zu: "Umoya omncane", xh: "Umoya omncinci", st: "Moya o monyane" },
     cold: { en: "Chilly", af: "Koud", zu: "Kuyabanda kancane", xh: "Kupholile", st: "ho phodile" },
     'cold-clear': { en: "Cold but clear", af: "Koud maar helder", zu: "Kubanda, izulu licwebile", xh: "Kubanda, kodwa kucacile", st: "Hwa bata, lehodimo le hlakile" },
     heat: { en: "Very hot", af: "Baie warm", zu: "Kushisa kakhulu", xh: "Kushushu kakhulu", st: "Ho tjhesa haholo" },
@@ -28,6 +30,7 @@ export const WEATHER_COPY = {
     cloudy: { en: "Cloudy vibes.", af: "Bewolk vandag.", zu: "Kunamafu.", xh: "Kunamafu.", st: "Ho na le maru." },
     'partly-cloudy': { en: "Partly cloudy.", af: "Effens bewolk.", zu: "Kunamafu kancane.", xh: "Kunamafu kancinci.", st: "Ho na le maru hanyane." },
     wind: { en: "Wind's up.", af: "Dit waai.", zu: "Umoya uyavunguza.", xh: "Umoya uphezulu.", st: "Moya o a foka." },
+    breezy: { en: "Bit of a breeze.", af: "'n Bietjie briesie.", zu: "Kunomoya omncane.", xh: "Kukho umoya omncinci.", st: "Ho na le moya o monyane." },
     cold: { en: "It's chilly.", af: "Dis koud.", zu: "Kuyabanda.", xh: "Kuyabanda.", st: "Ho a bata." },
     'cold-clear': { en: "Cold but stunning.", af: "Koud maar pragtig.", zu: "Kuyabanda, kodwa izulu licwebile.", xh: "Kubanda, kodwa mhle umhla.", st: "Hwa bata, empa lehodimo le letle." },
     heat: { en: "It's hot.", af: "Dis bloedig warm.", zu: "Kushisa.", xh: "Kushushu.", st: "Ho a tjhesa." },

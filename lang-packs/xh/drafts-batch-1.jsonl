@@ -474,3 +474,5 @@
 {"key":"witty.clear[92]","en":"City folk pay good money for this ceiling.","af":"Stadsmense betaal groot geld hiervoor. Hier's dit sommer verniet.","xh":"Abantu basezixekweni bahlawula imali eninzi ngesi silingi.","confidence":"MED","note":"isiling=ceiling loan"}
 {"key":"witty.clear[93]","en":"Sky this clear means tomorrow's a scorcher. Stay a while.","af":"Lug só helder beteken môre skroei. Sit gerus nog 'n rukkie.","xh":"Isibhakabhaka esicace kangaka sithetha ukuba ngomso kuza kutshisa. Hlala okwethutyana.","confidence":"HIGH"}
 {"key":"witty.clear[94]","en":"Nobody's called it a night. The night agrees.","af":"Niemand het 'huis toe' gesê nie. Niemand gaan ook nie.","xh":"Akukho mntu uthe malihambe. Ubusuku buyavuma.","confidence":"HIGH"}
+{"key": "heroLabels.breezy", "en": "Breezy", "af": "Ligte briesie", "xh": "Umoya omncinci", "confidence": "MED", "note": "PROVISIONAL draft 2026-10-07, not wired; native review"}
+{"key": "headlines.breezy", "en": "Bit of a breeze.", "af": "'n Bietjie briesie.", "xh": "Kukho umoya omncinci.", "confidence": "MED", "note": "PROVISIONAL draft 2026-10-07, not wired; native review"}

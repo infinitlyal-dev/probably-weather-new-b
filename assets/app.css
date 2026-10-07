@@ -1945,7 +1945,7 @@ main#home-screen.main #confidence {
    The classes are kept (renderHome stamps them, and the two breakpoints below
    and above key off them) — they now only carry the weight and the shadow. */
 .hero-storm, .hero-rain, .hero-heat, .hero-cold, .hero-wind,
-.hero-uv, .hero-clear, .hero-cloudy, .hero-fog {
+.hero-uv, .hero-clear, .hero-breezy, .hero-cloudy, .hero-fog {
   color: #fff;
   text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
   font-weight: 900;
@@ -2853,6 +2853,7 @@ main#home-screen.main #confidence {
   #temp.hero-wind,
   #temp.hero-uv,
   #temp.hero-clear,
+  #temp.hero-breezy,
   #temp.hero-cloudy,
   #temp.hero-fog {
     margin: 0;
@@ -4212,14 +4213,14 @@ body.install-modal-active .nav-hourly-pill { display: none !important; }
      rule (orange/red = real warnings only). Neutralised to white here; the
      condition line carries the meaning in words. */
   .temp.hero-storm, .temp.hero-rain, .temp.hero-heat, .temp.hero-cold,
-  .temp.hero-wind, .temp.hero-uv, .temp.hero-clear, .temp.hero-cloudy, .temp.hero-fog {
+  .temp.hero-wind, .temp.hero-uv, .temp.hero-clear, .temp.hero-breezy, .temp.hero-cloudy, .temp.hero-fog {
     color: var(--ink); text-shadow: none; font-weight: 800;
   }
   /* renderHome stamps a per-condition hero-* class on the caption. The gold is
      the ruled treatment, so those classes must not repaint it. */
   .hero-caption.hero-storm, .hero-caption.hero-rain, .hero-caption.hero-heat,
   .hero-caption.hero-cold, .hero-caption.hero-wind, .hero-caption.hero-uv,
-  .hero-caption.hero-clear, .hero-caption.hero-cloudy, .hero-caption.hero-fog {
+  .hero-caption.hero-clear, .hero-caption.hero-breezy, .hero-caption.hero-cloudy, .hero-caption.hero-fog {
     color: var(--brand-gold); text-shadow: none; font-weight: 700;
   }
 
@@ -5278,6 +5279,7 @@ body.install-modal-active .nav-hourly-pill { display: none !important; }
   main#home-screen.main > .hero-caption.hero-wind,
   main#home-screen.main > .hero-caption.hero-uv,
   main#home-screen.main > .hero-caption.hero-clear,
+  main#home-screen.main > .hero-caption.hero-breezy,
   main#home-screen.main > .hero-caption.hero-cloudy,
   main#home-screen.main > .hero-caption.hero-fog {
     color: var(--print-ink);
@@ -5828,7 +5830,8 @@ body.install-modal-active .nav-hourly-pill { display: none !important; }
   main#home-screen.main > #headline.hero-heat,
   main#home-screen.main > #headline.hero-uv { color: var(--ink-warm); }
 
-  main#home-screen.main > #headline.hero-clear { color: var(--ink-mild); }
+  main#home-screen.main > #headline.hero-clear,
+  main#home-screen.main > #headline.hero-breezy { color: var(--ink-mild); }
 
   main#home-screen.main > #headline.hero-cold,
   main#home-screen.main > #headline.hero-cold-clear { color: var(--ink-cold); }

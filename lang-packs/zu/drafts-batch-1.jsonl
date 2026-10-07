@@ -479,3 +479,5 @@
 {"key":"witty.clear[93]","en":"Sky this clear means tomorrow's a scorcher. Stay a while.","af":"Lug só helder beteken môre skroei. Sit gerus nog 'n rukkie.","zu":"Izulu elicwebe kangaka lisho ukuthi kusasa kuzoshisa. Hlala isikhashana.","confidence":"HIGH"}
 {"key":"witty.clear[94]","en":"Nobody's called it a night. The night agrees.","af":"Niemand het 'huis toe' gesê nie. Niemand gaan ook nie.","zu":"Akekho othe sekuphelile. Ubusuku buyavuma.","confidence":"HIGH"}
 {"key":"witty_low_confidence.clear[2]","en":"Clear, in theory. The Cape Doctor doesn't always RSVP.","af":"Helder, in teorie. Die Kaapse Dokter RSVP nie altyd nie.","zu":"Kucwebile, ngokombono. UDokotela waseKapa akahlali e-RSVP'a.","confidence":"HIGH"}
+{"key": "heroLabels.breezy", "en": "Breezy", "af": "Ligte briesie", "zu": "Umoya omncane", "confidence": "MED", "note": "PROVISIONAL draft 2026-10-07, not wired; native review"}
+{"key": "headlines.breezy", "en": "Bit of a breeze.", "af": "'n Bietjie briesie.", "zu": "Kunomoya omncane.", "confidence": "MED", "note": "PROVISIONAL draft 2026-10-07, not wired; native review"}

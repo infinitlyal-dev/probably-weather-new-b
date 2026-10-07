@@ -432,3 +432,5 @@
 {"key":"witty.clear[92]","st":"Batho ba toropong ba lefa tjhelete e ngata bakeng sa siling ena.","status":"provisional-pending-native-confirm","confidence":"HIGH"}
 {"key":"witty.clear[93]","st":"Lehodimo le hlakileng hakana le bolela hore hosane ho tla tjhesa. Dula nakwana.","status":"provisional-pending-native-confirm","confidence":"HIGH"}
 {"key":"witty_low_confidence.clear[2]","st":"Ho hlakile, ka kgopolo. Cape Doctor ha e dule e RSVP.","status":"provisional-pending-native-confirm","confidence":"HIGH"}
+{"key": "heroLabels.breezy", "st": "Moya o monyane", "status": "provisional-pending-native-confirm", "confidence": "MED"}
+{"key": "headlines.breezy", "st": "Ho na le moya o monyane.", "status": "provisional-pending-native-confirm", "confidence": "MED"}

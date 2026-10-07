@@ -45,7 +45,7 @@ const isNum = (v) => typeof v === 'number' && Number.isFinite(v);
 const WET = new Set(['rain', 'rain-possible', 'storm', 'thunder', 'hail']);
 const RAIN_STRICT = new Set(['rain', 'storm', 'thunder', 'hail']);
 const SKY_ONLY = new Set(['clear', 'partly-cloudy', 'cloudy', 'uv']);
-const LIGHT_SKY = new Set(['clear', 'partly-cloudy', 'uv', 'cold-clear', 'heat']);
+const LIGHT_SKY = new Set(['clear', 'partly-cloudy', 'uv', 'cold-clear', 'heat', 'breezy']);
 const pct = (n, d) => (d ? Math.round((n / d) * 1000) / 10 : null);
 const quantile = (arr, q) => { if (!arr.length) return null; const s = [...arr].sort((a, b) => a - b); return s[Math.min(s.length - 1, Math.floor(q * s.length))]; };
 

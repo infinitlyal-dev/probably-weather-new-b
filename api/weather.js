@@ -115,6 +115,14 @@ export const RAIN_POSSIBLE_NOW_MIN_PROB = 30; // % — the same line the stats r
 //   hours, versus 63% / 39% for the mean-only rule it replaces.
 export const WIND_NOW_MEAN_KPH = 25;
 export const WIND_NOW_GUST_KPH = 55;
+//   7 Oct 2026 (Al's ruling, new sets): Breezy — a clear or partly-cloudy sky with a wind people notice, under the
+//   Windy line. Picked on the harness (review/accuracy/breezy-sweep.mjs, results/breezy-sweep.txt): mean ≥ 15 km/h on
+//   the same corrected number the Windy rung reads, or a gust ≥ 30, with at least two sources' own wind at the line,
+//   was the only candidate where no airport fell below 80 % right (all six: 89 % of breezy calls had the station at
+//   12 km/h or more, 4 % in still air under 8).
+export const BREEZY_MEAN_KPH = 15;
+export const BREEZY_GUST_KPH = 30;
+export const BREEZY_MIN_SOURCES = 2;
 /** A gust this strong is always shown on Home (review/accuracy/v7/PLAN.md §5). */
 export const GUST_SHOW_KPH = 40;
 // Launch run (2026-09-25): the last local hour at which Tomorrow.io's
@@ -2162,7 +2170,13 @@ export default async function handler(req, res) {
       // day-part and season); today's blend elsewhere. Days 0–1's day cards read these hours (Fable, plan item 6).
       // 2026-09-28 (review/accuracy/v6, EVAL §13): where wind's own weights passed, each source's hour counts by its
       // record there — slots in their fixed places [OM, WA, MET, TI], null where a source did not answer.
-      const effectiveHourlyWind = shapeWind({ raw: avgWind, values: hourWindVals, slots: hourlies.map(h => (h && isNum(h.winds[i]) ? h.winds[i] : null)), kind: 'hour', lat, lon, month: hourMonths[i < 24 ? 0 : 1], hour: i % 24 }).kph;
+      const shapedHour = shapeWind({ raw: avgWind, values: hourWindVals, slots: hourlies.map(h => (h && isNum(h.winds[i]) ? h.winds[i] : null)), kind: 'hour', lat, lon, month: hourMonths[i < 24 ? 0 : 1], hour: i % 24 });
+      const effectiveHourlyWind = shapedHour.kph;
+      // 7 Oct 2026: how many sources' own wind for this hour (with the hour's correction) reach the breezy line, or
+      // Open-Meteo's gust its gust line — the two-source check behind Breezy on the day cards and the hourly row.
+      const hourRatio = isNum(shapedHour.ratio) ? shapedHour.ratio : 1;
+      const breezySources = hourlies.filter((h, si) => h && ((isNum(h.winds[i]) && h.winds[i] * hourRatio >= BREEZY_MEAN_KPH)
+        || (si === 0 && isNum(h.gusts?.[i]) && h.gusts[i] >= BREEZY_GUST_KPH))).length;
 
       // UV: blended across the hourly sources that publish it (Open-Meteo
       // uv_index, WeatherAPI hour.uv; MET compact and Tomorrow.io carry none).
@@ -2204,19 +2218,30 @@ export default async function handler(req, res) {
       // 7 Oct 2026: the cloud figure the condition reads for this hour (thin high cloud capped; see skyCloudFor).
       const skyCloud = skyCloudFor({ cloudPct: modalCloud, omLowPct: hourlies[0]?.cloudsLow?.[i], omMidPct: hourlies[0]?.cloudsMid?.[i] });
 
+      // The hour's row says Breezy on the same rule as the hero: a clear-family sky, under 30 % rain, the wind in the
+      // breezy band under the Windy line, two sources at the line. Windy hours are not marked here (as before).
+      const hourRainChance = wAvg(hourlies, hourlyW, h => h.rains[i]);
+      const hourWindyLine = windLine(shapedHour).thresholdKph;
+      const hourBreezy = (hourCondition === 'clear' || hourCondition === null)
+        && !(isNum(skyCloud.pct) && skyCloud.pct >= 55) && !(isNum(hourRainChance) && hourRainChance >= 30)
+        && isNum(effectiveHourlyWind) && effectiveHourlyWind < hourWindyLine
+        && (effectiveHourlyWind >= BREEZY_MEAN_KPH || (isNum(hourlies[0]?.gusts?.[i]) && hourlies[0].gusts[i] >= BREEZY_GUST_KPH))
+        && breezySources >= BREEZY_MIN_SOURCES;
+
       return {
         tempC:      wAvg(hourlies, hourlyW, h => h.temps[i]),
         feelsLikeC: wAvg(hourlies, hourlyW, h => h.feelsLikes?.[i]),
-        rainChance: wAvg(hourlies, hourlyW, h => h.rains[i]),
+        rainChance: hourRainChance,
         precipMm,
         windKph:    effectiveHourlyWind,
+        breezySources,
         // Open-Meteo only — see the windDir note on the current block.
         windDir:    isNum(hourlies[0]?.windDirs?.[i]) ? hourlies[0].windDirs[i] : null,
         cloudPct:   modalCloud,  // Rec 5: use modal instead of averaged cloud cover
         skyCloudPct: skyCloud.pct, // what the icon reads; cloudPct stays the models' number for display
         uv:         isNum(uvVal) ? Math.round(uvVal * 10) / 10 : null,
         // Phase B-1 Item 3: categorised hourly condition + winning desc label
-        condition:  hourCondition,
+        condition:  hourBreezy ? 'breezy' : hourCondition,
         descLabel:  hourWinningDesc,
       };
     });
@@ -2306,6 +2331,8 @@ export default async function handler(req, res) {
         uvIndex:   uv,
         cloudPct:  skyCloudPct,
         uvCloudPct: cloudPct,
+        // 7 Oct 2026: Breezy on days 0–1 reads the noon hour's two-source count; days 2–6 have no hour and no Breezy.
+        breezySources: aggregatedHourly[noonIdx]?.breezySources ?? null,
         isDay:     true,
         // Daily low for the cold-clear rung — lets a 4°C dawn on a 14°C clear
         // day route to cold-clear instead of being clobbered by tempC=highC.
@@ -2526,6 +2553,10 @@ export default async function handler(req, res) {
     const windNow = shapeWind({ raw: medWindKph, values: activeNorms.map(n => n.windKph), slots: norms.map(n => (n && isNum(n.windKph) ? n.windKph : null)), kind: 'now', lat, lon, month: hourMonths[0], hour: localHour });
     // What the hero's Windy rung reads: the corrected number at its own line where the headline gate passed.
     const windDecision = windLine(windNow);
+    // 7 Oct 2026: Breezy's two-source check — each source's own mean (with the hero's correction) at the breezy line,
+    // or its own gust (with the station correction the hero's gust took) at the breezy gust line.
+    const breezySourcesNow = activeNorms.filter(n => (isNum(n.windKph) && n.windKph * (windDecision.sourceFactor ?? 1) >= BREEZY_MEAN_KPH)
+      || (isNum(n.gustKph) && (gustHeadlineFactor !== 1 ? correctGust(n.gustKph, gustHeadlineFactor) : n.gustKph) >= BREEZY_GUST_KPH)).length;
     const effectiveDisplayWind = windNow.kph ?? 0;
     debugLog(`[Wind] raw blend ${medWindKph} km/h → ${windNow.kph} (${windNow.rule}, ×${windNow.ratio}, ${windNow.region ?? 'no region'}) · Windy line ${windDecision.thresholdKph} on ${windDecision.kph}`);
 
@@ -2619,6 +2650,7 @@ export default async function handler(req, res) {
       gustLineKph: gustRule.gustLineKph,
       windSourcesAt25,
       windSourcesMin: gustRule.sourcesAt25,
+      breezySources: breezySourcesNow,
       desc:       mostDesc,
       rainChance: currentHourRainChance,
       tempC:      medNowTemp,
@@ -2755,7 +2787,7 @@ export default async function handler(req, res) {
     const fogVisPair = `OM ${fogDetector.omVisM === null ? 'n/a' : `${fogDetector.omVisM}m`} / TIO ${fogDetector.tioVisM === null ? 'n/a' : `${fogDetector.tioVisM}m`} → using ${fogDetector.visKm === null ? 'n/a' : `${fogDetector.visKm}km`}${fogDetector.visSource ? ` (${fogDetector.visSource})` : ''}`;
     debugLog(`[Layer A fog detector] visibility reads: ${fogVisPair}`);
     let fogTrendIncoming = false;
-    if (fogDetector.currentFog && (nowConditionKey === 'clear' || nowConditionKey === 'partly-cloudy' || nowConditionKey === 'cloudy')) {
+    if (fogDetector.currentFog && (nowConditionKey === 'clear' || nowConditionKey === 'partly-cloudy' || nowConditionKey === 'cloudy' || nowConditionKey === 'breezy')) {
       debugLog(`[Layer A fog detector] visibility ${fogDetector.visKm}km (${fogVisPair}) humidity ${fogDetector.humidity}% dewSpread ${fogDetector.dewSpread}°C → fog (was ${nowConditionKey})`);
       nowOverrides.push({
         rule: 'visibility-humidity-fog-detector',
@@ -2890,6 +2922,7 @@ export default async function handler(req, res) {
         gustLineKph: gustRule.gustLineKph,
         windSourcesAt25,
         windSourcesMin: gustRule.sourcesAt25,
+        breezySources: breezySourcesNow,
       },
       sourceVotes: sourceConditionVotes,
       overrides: nowOverrides,
@@ -3679,7 +3712,7 @@ function calcFeelsLike(tempC, windKph, humidity) {
  * @param {number}  [params.gustKph]    - now: largest current gust any source reports
  * @returns {string} condition key
  */
-function deriveCondition({ desc, rainChance, tempC, feelsLikeC, windKph, uvIndex, cloudPct, uvCloudPct, maxWindKph, isDay = true, dailyHighC, dailyLowC, sourceDescs, now = false, precipMm, rainVotes, gustKph, windThresholdKph, gustLineKph, windSourcesAt25, windSourcesMin = 0 }) {
+function deriveCondition({ desc, rainChance, tempC, feelsLikeC, windKph, uvIndex, cloudPct, uvCloudPct, maxWindKph, isDay = true, dailyHighC, dailyLowC, sourceDescs, now = false, precipMm, rainVotes, gustKph, windThresholdKph, gustLineKph, windSourcesAt25, windSourcesMin = 0, breezySources }) {
   const d = String(desc || '').toLowerCase();
 
   // Use mean wind speed for condition thresholds. Gusts are displayed separately in the UI.
@@ -3892,6 +3925,17 @@ function deriveCondition({ desc, rainChance, tempC, feelsLikeC, windKph, uvIndex
   // 15. Hot (not extreme, but warm)
   if (isNum(tempC) && tempC >= HEAT_WARM_C)   return { key: 'heat', reason: 'warm-temp' };
 
+  // 15.5 Breezy (7 Oct 2026, Al) — a clear or partly-cloudy sky and a wind people notice that is not Windy: the mean
+  //   (the number the Windy rung reads) at BREEZY_MEAN_KPH or a gust at BREEZY_GUST_KPH, under the Windy line (the
+  //   hero's own; 25 on the day ladder), and at least two sources' own wind at the line. Rain, storm, fog, cold, heat
+  //   and Windy all sit above; High UV (7n / 6) does too. Only when the caller counts the sources.
+  {
+    const windyLine = now ? windNowLine : 25;
+    if (isNum(breezySources) && breezySources >= BREEZY_MIN_SOURCES && !(isMostlyCloudy || cloudyByDesc)
+        && isNum(effectiveWind) && effectiveWind < windyLine
+        && (effectiveWind >= BREEZY_MEAN_KPH || (now && isNum(gustKph) && gustKph >= BREEZY_GUST_KPH))) return { key: 'breezy', reason: 'breezy' };
+  }
+
   // 16. Moderate UV — daytime only, not significantly cloudy (40%+ blocks UV), not a cold day
   if (isDay && isNum(uvIndex) && uvIndex >= 6 && !(isSignificantCloud || isMostlyCloudy || cloudyByDesc) && !uvBlockedByCold) return { key: 'uv', reason: 'moderate-uv-with-temp-gate' };
 
@@ -3944,7 +3988,7 @@ function skyCloudFor({ cloudPct, omLowPct, omMidPct }) {
 const KEY_LABELS = {
   clear: 'Clear', 'partly-cloudy': 'Partly cloudy', cloudy: 'Cloudy', rain: 'Rain', 'rain-possible': 'Possible rain',
   storm: 'Thunderstorm', thunder: 'Thunder', hail: 'Hail', fog: 'Fog', wind: 'Windy', heat: 'Hot', cold: 'Cold',
-  'cold-clear': 'Cold and clear', uv: 'High UV',
+  'cold-clear': 'Cold and clear', uv: 'High UV', breezy: 'Breezy',
 };
 function conditionLabelFor(key, desc) {
   if (desc && categorizeDesc(desc) === conditionKeyToVoteBucket(key)) return desc;
@@ -4324,7 +4368,7 @@ function isTrueFogDesc(desc) {
  * The detector path and the fog-wins-plurality ≥2-vote path are unchanged.
  */
 function corroboratedFogUpgrade({ conditionKey, fogVoteCount, humidity, windKph }) {
-  if (conditionKey !== 'clear' && conditionKey !== 'partly-cloudy' && conditionKey !== 'cloudy') return false;
+  if (conditionKey !== 'clear' && conditionKey !== 'partly-cloudy' && conditionKey !== 'cloudy' && conditionKey !== 'breezy') return false;
   if (!(fogVoteCount >= 1)) return false;                                  // a fog VOTE is required
   if (!(isNum(humidity) && humidity >= FOG_VOTE_MIN_HUMIDITY)) return false;
   if (!(isNum(windKph) && windKph <= FOG_VOTE_MAX_WIND_KPH)) return false;

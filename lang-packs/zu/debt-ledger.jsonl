@@ -46,3 +46,5 @@
 {"key":"witty.wind[54]","en":"The Friendly City never asked to be the Windy City, and yet.","af":"Die Vriendelike Stad het nie gevra om die Winderige Stad te wees nie, en tog.","zu":"","status":"debt-empty","priority":null}
 {"key":"witty.wind[55]","en":"Jeffreys Bay: where the wind warms up before its Cape Town shift.","af":"Jeffreysbaai: waar die wind oefen voor sy Kaapse skof.","zu":"","status":"debt-empty","priority":null}
 {"key":"witty.wind[56]","en":"Gqeberha doesn't sleep, it just holds on.","af":"Gqeberha slaap nie, dit hou net vas.","zu":"","status":"debt-empty","priority":null}
+{"key": "heroLabels.breezy", "en": "Breezy", "af": "Ligte briesie", "zu": "", "status": "debt", "priority": null, "flag_reason": "new condition (Al, 7 Oct 2026); English shown until a native rules"}
+{"key": "headlines.breezy", "en": "Bit of a breeze.", "af": "'n Bietjie briesie.", "zu": "", "status": "debt", "priority": null, "flag_reason": "new condition (Al, 7 Oct 2026); English shown until a native rules"}

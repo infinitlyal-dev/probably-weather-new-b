@@ -41,6 +41,7 @@ export const COPY_BANK = {
     rain: { en: "Wet conditions", af: "Nat toestande", zu: "Izimo ezimanzi", xh: "Iimeko ezimanzi", st: "Maemo a mongobo" },
     'rain-possible': { en: "Possible showers", af: "Moontlike buie", zu: "Imvula engase ine", xh: "Imvula enokubakho", st: "Dipula tse ka bang teng" },
     wind: { en: "Gusty winds", af: "Sterk wind", zu: "Umoya onamandla", xh: "Imimoya enamandla", st: "Meya e matla" },
+    breezy: { en: "Breezy", af: "Ligte briesie", zu: "Umoya omncane", xh: "Umoya omncinci", st: "Moya o monyane" },
     cold: { en: "Chilly", af: "Koud", zu: "Kuyabanda kancane", xh: "Kupholile", st: "ho phodile" },
     'cold-clear': { en: "Cold but clear", af: "Koud maar helder", zu: "Kubanda, izulu licwebile", xh: "Kubanda, kodwa kucacile", st: "Hwa bata, lehodimo le hlakile" },
     heat: { en: "Very hot", af: "Baie warm", zu: "Kushisa kakhulu", xh: "Kushushu kakhulu", st: "Ho tjhesa haholo" },

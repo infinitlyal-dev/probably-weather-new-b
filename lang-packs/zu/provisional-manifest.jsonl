@@ -441,3 +441,5 @@
 {"key":"witty.clear[93]","zu":"Izulu elicwebe kangaka lisho ukuthi kusasa kuzoshisa. Hlala isikhashana.","status":"provisional-pending-native-confirm","confidence":"HIGH"}
 {"key":"witty.clear[94]","zu":"Akekho othe sekuphelile. Ubusuku buyavuma.","status":"provisional-pending-native-confirm","confidence":"HIGH"}
 {"key":"witty_low_confidence.clear[2]","zu":"Kucwebile, ngokombono. UDokotela waseKapa akahlali e-RSVP'a.","status":"provisional-pending-native-confirm","confidence":"HIGH"}
+{"key": "heroLabels.breezy", "zu": "Umoya omncane", "status": "provisional-pending-native-confirm", "confidence": "MED"}
+{"key": "headlines.breezy", "zu": "Kunomoya omncane.", "status": "provisional-pending-native-confirm", "confidence": "MED"}
