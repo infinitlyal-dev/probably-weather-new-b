@@ -19,6 +19,10 @@
 //                   gust ≥ 45 km/h) served as a sky-only key
 //                   (clear, partly-cloudy, cloudy, uv)
 //   false wind      served 'wind' while the station had < 20 km/h and no gust ≥ 30
+//   cloudy, no grey  served 'cloudy' while the station reported no broken/overcast
+//                   layer below 20,000 ft (lib/obs.mjs skyClass 'light') — 7 Oct 2026
+//   grey missed     station reported broken/overcast below 20,000 ft ('grey'),
+//                   served a light-sky key (clear, partly-cloudy, uv, cold-clear, heat)
 // Plus: observed wind distribution, model-vs-station wind bias, a threshold
 // sweep for the wind rule, and a day-level rain calibration table.
 //
@@ -41,6 +45,7 @@ const isNum = (v) => typeof v === 'number' && Number.isFinite(v);
 const WET = new Set(['rain', 'rain-possible', 'storm', 'thunder', 'hail']);
 const RAIN_STRICT = new Set(['rain', 'storm', 'thunder', 'hail']);
 const SKY_ONLY = new Set(['clear', 'partly-cloudy', 'cloudy', 'uv']);
+const LIGHT_SKY = new Set(['clear', 'partly-cloudy', 'uv', 'cold-clear', 'heat']);
 const pct = (n, d) => (d ? Math.round((n / d) * 1000) / 10 : null);
 const quantile = (arr, q) => { if (!arr.length) return null; const s = [...arr].sort((a, b) => a - b); return s[Math.min(s.length - 1, Math.floor(q * s.length))]; };
 
@@ -69,7 +74,8 @@ for (const icao of Object.keys(CITIES)) {
       fcWind: r.blends.windKph, fcGust: r.blends.maxGust, fcGustAny: r.blends.maxGustAny, fcGust3: r.blends.maxGust3, fcCloud: r.blends.cloudPct, fcPrecipMm: r.blends.precipMmHour, fcPrecipNowMax: r.blends.precipNowMax,
       dailyKey: r.daily0.key, dailyRain: r.daily0.rainChance,
       obsPrecip: o.precip || o.precipAnyReport, obsPrecipNear: precipNear(obs, key), obsThunder: o.thunder || o.thunderAnyReport, obsFog: o.fog, obsMist: o.mist,
-      obsWind: o.windKph, obsGust: o.gustKph, obsCloud: o.cloudPct, obsWindy, obsCalm, wx: o.wx, metar: o.metar,
+      obsWind: o.windKph, obsGust: o.gustKph, obsCloud: o.cloudPct, obsSky: o.sky, obsWindy, obsCalm, wx: o.wx, metar: o.metar,
+      fcSkyCloud: r.blends.skyCloudPct ?? r.blends.cloudPct, fcSkyRule: r.blends.skyCloudRule ?? '', fcOmOpaque: r.blends.omOpaque ?? null,
     });
   }
   perCity[icao] = { name: CITIES[icao].name, evaluated, noObs, hours: city.nHours };
@@ -91,6 +97,10 @@ function score(list, keyField) {
   const windyServedNotWind = windy.filter((r) => r[keyField] !== 'wind' && !RAIN_STRICT.has(r[keyField]));
   const saidWind = said('wind');
   const falseWind = saidWind.filter((r) => r.obsCalm);
+  const saidCloudy = said('cloudy').filter((r) => r.obsSky);
+  const cloudyNoGrey = saidCloudy.filter((r) => r.obsSky === 'light');
+  const grey = list.filter((r) => r.obsSky === 'grey');
+  const greyMissed = grey.filter((r) => LIGHT_SKY.has(r[keyField]));
   const keys = {};
   for (const r of list) keys[r[keyField]] = (keys[r[keyField]] || 0) + 1;
   return {
@@ -106,6 +116,8 @@ function score(list, keyField) {
     windyServedSky: windyServedSky.length, windyServedSkyPct: pct(windyServedSky.length, windy.length),
     windyServedNotWindOrRain: windyServedNotWind.length, windyServedNotWindOrRainPct: pct(windyServedNotWind.length, windy.length),
     saidWind: saidWind.length, falseWind: falseWind.length, falseWindPct: pct(falseWind.length, saidWind.length),
+    saidCloudy: saidCloudy.length, cloudyNoGrey: cloudyNoGrey.length, cloudyNoGreyPct: pct(cloudyNoGrey.length, saidCloudy.length),
+    obsGreyHours: grey.length, greyMissed: greyMissed.length, greyMissedPct: pct(greyMissed.length, grey.length),
     keys,
   };
 }
@@ -199,6 +211,13 @@ for (const layer of ['display', 'server']) {
   for (const icao of Object.keys(result.cities)) md.push(line(result.cities[icao].name, result.cities[icao][layer]));
   md.push(line('**All six**', result.all[layer]), '');
   md.push(`Keys served (all six): ${Object.entries(result.all[layer].keys).sort((a, b) => b[1] - a[1]).map(([k, v]) => `${k} ${v}`).join(' · ')}`, '');
+}
+md.push('## Cloud call (7 Oct 2026)', '', '"No grey" = the station reported no broken or overcast layer below 20,000 ft. SA airports do not report high cloud, so this cannot see cirrus: a cloudy call over "no grey" is a sky with no low or mid blanket, not proven blue.', '');
+for (const layer of ['display', 'server']) {
+  md.push(`### ${layer === 'display' ? 'Phone' : 'Server'}`, '', '| city | said cloudy (with cloud report) | cloudy over no grey | hours with grey cloud | grey served clear / partly / uv / cold-clear / heat |', '|---|---|---|---|---|');
+  const cl = (name, s) => `| ${name} | ${s.saidCloudy} | ${s.cloudyNoGrey} (${s.cloudyNoGreyPct}%) | ${s.obsGreyHours} | ${s.greyMissed} (${s.greyMissedPct}%) |`;
+  for (const icao of Object.keys(result.cities)) md.push(cl(result.cities[icao].name, result.cities[icao][layer]));
+  md.push(cl('**All six**', result.all[layer]), '');
 }
 md.push('## Observed wind and model bias', '', '| city | obs sustained p50 / p90 / p95 km/h | hours ≥ 30 sustained | hours gust ≥ 45 | median obs ÷ forecast mean | median obs gust ÷ forecast gust |', '|---|---|---|---|---|---|');
 for (const icao of Object.keys(result.cities)) { const b = result.cities[icao].windBias; md.push(`| ${result.cities[icao].name} | ${b.obsSustainedP50} / ${b.obsSustainedP90} / ${b.obsSustainedP95} | ${b.hoursSustained30} | ${b.hoursGust45} | ${b.medianObsOverForecastMean} | ${b.medianObsGustOverForecastGust} |`); }

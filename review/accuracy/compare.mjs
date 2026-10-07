@@ -27,6 +27,16 @@ for (const layer of ['display', 'server']) {
   md.push(`| ${a} | ` + keys.map((k) => ka[k] || 0).join(' | ') + ' |');
   md.push(`| ${b} | ` + keys.map((k) => kb[k] || 0).join(' | ') + ' |', '');
 }
+// Cloud call (7 Oct 2026) — present only when both runs scored it.
+if (A.all.display.saidCloudy != null && B.all.display.saidCloudy != null) {
+  md.push('## Cloud call', '', '"No grey" = no broken/overcast layer below 20,000 ft reported (SA airports do not report high cloud).', '');
+  for (const layer of ['display', 'server']) {
+    md.push(`### ${layer === 'display' ? 'Phone' : 'Server'}`, '', '| city | said cloudy | cloudy over no grey | grey served light-sky |', '|---|---|---|---|');
+    const r = (name, x, y) => `| ${name} | ${cell(x.saidCloudy, y.saidCloudy)} | ${cell(x.cloudyNoGrey, y.cloudyNoGrey)} (${x.cloudyNoGreyPct}% → ${y.cloudyNoGreyPct}%) | ${cell(x.greyMissed, y.greyMissed)} of ${x.obsGreyHours} (${x.greyMissedPct}% → ${y.greyMissedPct}%) |`;
+    for (const icao of Object.keys(A.cities)) md.push(r(A.cities[icao].name, A.cities[icao][layer], B.cities[icao][layer]));
+    md.push(r('**All six**', A.all[layer], B.all[layer]), '');
+  }
+}
 const out = md.join('\n') + '\n';
 writeFileSync(path.join(here, 'results', `compare-${a}-vs-${b}.md`), out);
 process.stdout.write(out);

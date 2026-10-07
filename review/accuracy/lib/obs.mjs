@@ -82,6 +82,29 @@ export function cloudPctFromLayers(row) {
   return Math.round((okta / 8) * 100);
 }
 
+/**
+ * The sky the report describes, for scoring the cloud call (7 Oct 2026):
+ *   'grey'  — a BKN / OVC / VV layer below 20,000 ft: real broken-or-overcast cloud.
+ *   'light' — CAVOK / NSC / SKC / CLR / NCD, or nothing above SCT: no broken low or mid cloud.
+ *   null    — no cloud information.
+ * SA airports almost never report cloud at or above 20,000 ft (15 such layers in ~12,700
+ * hours, Jun–Sep 2026) and CAVOK says nothing about it, so high cirrus is invisible here:
+ * 'light' means "no grey cloud reported", not "blue sky".
+ */
+export function skyClass(row) {
+  const metar = String(row.metar || '');
+  let grey = false, any = false;
+  for (const tok of metar.split(/\s+/)) {
+    const t = /^(FEW|SCT|BKN|OVC|VV)(\d{3})/.exec(tok);
+    if (!t) continue;
+    any = true;
+    if ((t[1] === 'BKN' || t[1] === 'OVC' || t[1] === 'VV') && Number(t[2]) * 100 < 20000) grey = true;
+  }
+  if (grey) return 'grey';
+  if (any || /\bCAVOK\b|\bSKC\b|\bNSC\b|\bCLR\b|\bNCD\b/.test(metar)) return 'light';
+  return null;
+}
+
 function toRecord(row) {
   const utc = new Date(row.valid.replace(' ', 'T') + 'Z');
   const local = new Date(utc.getTime() + SAST_OFFSET_HOURS * 3600e3);
@@ -103,6 +126,7 @@ function toRecord(row) {
     gustKt: gust,
     visKm: vsby == null ? null : Math.round(vsby * MILE_TO_KM * 10) / 10,
     cloudPct: cloudPctFromLayers(row),
+    sky: skyClass(row),
     precip: wx.precip,
     thunder: wx.thunder,
     fog: wx.fog,

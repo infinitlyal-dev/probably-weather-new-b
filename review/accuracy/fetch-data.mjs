@@ -23,17 +23,21 @@ const HOURLY_BM = 'temperature_2m,apparent_temperature,precipitation_probability
 const DAILY_BM = 'temperature_2m_max,temperature_2m_min,precipitation_probability_max,uv_index_max,weather_code,wind_speed_10m_max,sunrise,sunset';
 const HOURLY_MODELS = 'temperature_2m,apparent_temperature,precipitation_probability,precipitation,wind_speed_10m,wind_gusts_10m,cloud_cover,relative_humidity_2m,weather_code';
 const MODELS = 'gfs_seamless,ecmwf_ifs025,ukmo_seamless,icon_seamless';
+// 7 Oct 2026: Open-Meteo's low / mid / high cloud, in its own file so the archives above stay as they were.
+const HOURLY_LAYERS = 'cloud_cover,cloud_cover_low,cloud_cover_mid,cloud_cover_high';
 
 const [fy, fm, fd] = from.split('-'), [ty, tm, td] = to.split('-');
 mkdirSync(path.join(here, 'obs'), { recursive: true });
 mkdirSync(path.join(here, 'forecast', 'om'), { recursive: true });
 mkdirSync(path.join(here, 'forecast', 'om-models'), { recursive: true });
+mkdirSync(path.join(here, 'forecast', 'om-layers'), { recursive: true });
 
 for (const [icao, [lat, lon]] of Object.entries(CITIES)) {
   const metar = `https://mesonet.agron.iastate.edu/cgi-bin/request/asos.py?station=${icao}&data=all&year1=${fy}&month1=${+fm}&day1=${+fd}&year2=${ty}&month2=${+tm}&day2=${+td + 1}&tz=Etc/UTC&format=onlycomma&latlon=no&elev=no&missing=M&trace=T&direct=no&report_type=3&report_type=4`;
   const bm = `https://historical-forecast-api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&hourly=${HOURLY_BM}&daily=${DAILY_BM}&start_date=${from}&end_date=${to}&timezone=Africa/Johannesburg`;
   const models = `https://historical-forecast-api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&hourly=${HOURLY_MODELS}&daily=temperature_2m_max,temperature_2m_min&start_date=${from}&end_date=${to}&timezone=Africa/Johannesburg&models=${MODELS}`;
-  for (const [url, file] of [[metar, path.join('obs', `metar-${icao}-${tag}.csv`)], [bm, path.join('forecast', 'om', `om-${icao}-${tag}.json`)], [models, path.join('forecast', 'om-models', `models-${icao}-${tag}.json`)]]) {
+  const layers = `https://historical-forecast-api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&hourly=${HOURLY_LAYERS}&start_date=${from}&end_date=${to}&timezone=Africa/Johannesburg`;
+  for (const [url, file] of [[metar, path.join('obs', `metar-${icao}-${tag}.csv`)], [bm, path.join('forecast', 'om', `om-${icao}-${tag}.json`)], [models, path.join('forecast', 'om-models', `models-${icao}-${tag}.json`)], [layers, path.join('forecast', 'om-layers', `layers-${icao}-${tag}.json`)]]) {
     const r = await fetch(url);
     if (!r.ok) throw new Error(`${file}: HTTP ${r.status}`);
     writeFileSync(path.join(here, file), await r.text());

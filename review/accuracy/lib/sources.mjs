@@ -7,6 +7,8 @@
 //                                          (this IS what production's Open-Meteo call returned
 //                                          for those hours: same endpoint family, same fields)
 //   om-models/models-<ICAO>-<from>-<to>.json  the same archive for four other models
+//   om-layers/layers-<ICAO>-<from>-<to>.json  best_match low / mid / high cloud (7 Oct 2026; production
+//                                          requests the same three fields from Open-Meteo)
 //
 // Slot mapping — production source → archived stand-in, with the reason:
 //   [0] Open-Meteo     → best_match          identical provider and variables
@@ -26,7 +28,7 @@
 // "Patchy rain possible" habit has no stand-in either; the replay is, if anything,
 // kinder to the current rules than production is.
 
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -80,6 +82,9 @@ export function loadCity(icao) {
   const bm = JSON.parse(readFileSync(bmPath, 'utf8'));
   const md = JSON.parse(readFileSync(mdPath, 'utf8'));
   const times = bm.hourly.time;
+  const lyPath = path.join(ACCURACY_ROOT, 'forecast', 'om-layers', `layers-${icao}-${RANGE.from.replace(/-/g, '')}-${RANGE.to.replace(/-/g, '')}.json`);
+  const ly = existsSync(lyPath) ? JSON.parse(readFileSync(lyPath, 'utf8')).hourly : null;
+  if (ly && (ly.time.length !== times.length || ly.time[0] !== times[0])) throw new Error(`${icao}: cloud-layer archive hours do not align with best_match`);
   if (md.hourly.time.length !== times.length || md.hourly.time[0] !== times[0]) {
     throw new Error(`${icao}: model archive hours do not align with best_match`);
   }
@@ -91,6 +96,7 @@ export function loadCity(icao) {
       cloud: bm.hourly.cloud_cover, rh: bm.hourly.relative_humidity_2m,
       uv: bm.hourly.uv_index, code: bm.hourly.weather_code,
       vis: bm.hourly.visibility, dew: bm.hourly.dew_point_2m,
+      cloudLow: ly?.cloud_cover_low ?? null, cloudMid: ly?.cloud_cover_mid ?? null, cloudHigh: ly?.cloud_cover_high ?? null,
     },
   };
   for (const m of MODELS) {
@@ -194,6 +200,7 @@ export function ensembleAt(city, i) {
       winds: pick(s.wind),
       gusts: hs === 0 ? pick(s.gust) : Array(48).fill(null), // only OM's hourly gusts are read in production
       clouds: pick(s.cloud),
+      ...(hs === 0 ? { cloudsLow: pick(H.bm.cloudLow), cloudsMid: pick(H.bm.cloudMid), cloudsHigh: pick(H.bm.cloudHigh) } : {}),
       humidity: pick(s.rh),
       uvs: hs === 0 ? pick(H.bm.uv) : Array(48).fill(null),
       visibility: hs === 0 ? pick(H.bm.vis) : Array(48).fill(null),
