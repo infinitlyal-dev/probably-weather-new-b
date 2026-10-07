@@ -1,0 +1,12 @@
+Relative filename: breezy/night-5.png
+Model: GPT Image 2.5 expected; version not exposed by tool
+Generation: built-in image_gen; one generation; attempt count 1
+Original dimensions: 941x1672
+Final dimensions: 1008x1792
+Original preserved: C:\Users\27741\Documents\Codex\2026-10-07\task-4\breezy-night-5-original.png
+Original SHA256: 79e55d1ff8bddcd11683e4563240be9e5127f0e83eec28227ff4e425c2a7481b
+Processing: proportional Lanczos resize, centered source crop 940.500000x1672.000000; source removal left/right 0.250000px, top/bottom 0.000000px. No distortion.
+Prompt modifications: none to scene or quoted tail; weekday/location from brief heading included before scene.
+Retries: 0. Reasons: none.
+Inspection: usable documentary night scene; visible breeze cues and available light, no readable text, no blown-over/broken props, quiet lower area.
+Review caveat: small car badge and plate-like markings are visible in background; plate wording cannot be confidently read. Smoke rises diagonally more than horizontally and collar motion is subtle. First generation retained under restricted retry criteria.

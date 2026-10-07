@@ -1,0 +1,11 @@
+Relative filename: breezy/dusk-5.png
+Model: GPT Image 2.5 expected; version not exposed by tool
+Original dimensions: 941x1672
+Original preserved: C:\Users\27741\Documents\Codex\2026-10-07\task-3\breezy-dusk-5-original.png
+Final dimensions: 1008x1792
+Processing: proportional Lanczos resize to 1009x1792, minimal centered crop box (0, 0, 1008, 1792); no distortion.
+Prompt modifications: none; brief heading context, exact scene text and verbatim quoted tail.
+Attempts: 1
+Retries: 0; reasons: none.
+Review caveat: Sun is shown setting over the sea, geographically questionable for Durban North; foreground chair intrudes at lower left.
+Inspection: photographic scene; no readable text, render look, or blown-over props observed.

@@ -56,3 +56,7 @@ tools/
 # now serves dist/ (outputDirectory in vercel.json), and scripts/build.mjs
 # copies only STATIC_ENTRIES into it — tests/ is never served regardless.
 eval/
+
+# 7 Oct 2026: the source PNGs for the new photo sets (~200 MB). The app serves the converted WebPs under
+# assets/images/; these are review material only.
+review/new-sets-2026-10-07/

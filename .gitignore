@@ -45,3 +45,6 @@ review/accuracy/v2/data/
 review/launch/home-b-check/data/b-measure-*.json
 review/launch/home-b-check/data/b-worst.json
 review/launch/home-b-check/shots/
+
+# Source photographs for the 7 Oct 2026 sets (review/image-brief-2026-10-07.md): kept on disk for Al, not on GitHub.
+review/new-sets-2026-10-07/**/*.original.png

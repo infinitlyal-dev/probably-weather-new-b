@@ -1,0 +1,1 @@
+partly-cloudy/dawn-7.png | GPT Image 2.5 expected; version not exposed by tool | original 941x1672; final 1008x1792 PNG | proportional resize with centered source crop x=0.25 y=0 width=940.5 height=1672; original preserved: partly-cloudy/dawn-7.original.png | prompt modifications: none; scene and tail verbatim | attempts: 1; retries: 0; retry reasons: none | visually inspected

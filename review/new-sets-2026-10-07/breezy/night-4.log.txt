@@ -1,0 +1,12 @@
+Relative filename: breezy/night-4.png
+Model: GPT Image 2.5 expected; version not exposed by tool
+Generation: built-in image_gen; one generation; attempt count 1
+Original dimensions: 941x1672
+Final dimensions: 1008x1792
+Original preserved: C:\Users\27741\Documents\Codex\2026-10-07\task-4\breezy-night-4-original.png
+Original SHA256: dfe0dedafebc7ef3bbf6cf4a79cffd85fde225b6fb4f06fe577fefa8ec0b3d52
+Processing: proportional Lanczos resize, centered source crop 940.500000x1672.000000; source removal left/right 0.250000px, top/bottom 0.000000px. No distortion.
+Prompt modifications: none to scene or quoted tail; weekday/location from brief heading included before scene.
+Retries: 0. Reasons: none.
+Inspection: usable documentary night scene; visible breeze cues and available light, no readable text, no blown-over/broken props, quiet lower area.
+Review caveat: small low clouds appear despite clear-sky scene wording; dog, fence and textured grass occupy part of lower third. Wind-pump motion is subtle. First generation retained under restricted retry criteria.
