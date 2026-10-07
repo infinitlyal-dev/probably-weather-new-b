@@ -244,7 +244,9 @@ export function decideAt(city, i) {
   const imminentMax = imminent.length ? Math.max(...imminent) : null;
   const rainPct = isNum(imminentMax) ? imminentMax : (daily0.rainChance ?? currentHourRainChance ?? null);
   const dailyRainPct = daily0.rainChance ?? currentHourRainChance ?? null;
-  const rainLater = isNum(imminentMax) && imminentMax < 30 && isNum(dailyRainPct) && dailyRainPct >= 50;
+  // 7 Oct 2026, Part B item 2 — normalizePayload: an hour of 50 %+ in the 4 after the next 4.
+  const later = aggregatedHourly.slice(localHour + 4, localHour + 8).map((x) => x.rainChance).filter(isNum);
+  const rainLater = isNum(imminentMax) && imminentMax < 30 && later.length > 0 && Math.max(...later) >= 50;
   const norm = {
     nowTemp: medNowTemp, feelsLike: medFeelsLike, todayHigh: daily0.highC, todayLow: daily0.lowC,
     // normalizePayload: the server's evidenced routes to rain (radar cannot occur in a replay).
@@ -268,6 +270,6 @@ export function decideAt(city, i) {
     server: { key, reason, base, overrides, votes: sourceVotes.map((v) => v.vote), rainVotes: rainNowVotes, inputs: selectorInputs },
     frontend: { display, hero, rainPct, dailyRainPct, rainLater },
     daily0,
-    blends: { windKph: medWindKph, maxGust, maxGustAny, maxGust3, maxWindKph, cloudPct: currentCloudPct, skyCloudPct: currentSky.pct, skyCloudRule: currentSky.rule, omOpaque: isNum(omLow) && isNum(omMid) ? Math.max(omLow, omMid) : null, rainChance: currentHourRainChance, precipMmHour: aggregatedHourly[localHour]?.precipMm ?? null, precipNowMax: selectorInputs.precipNowMm, hourCondition: aggregatedHourly[localHour]?.condition ?? null },
+    blends: { windKph: medWindKph, maxGust, maxGustAny, maxGust3, maxWindKph, cloudPct: currentCloudPct, skyCloudPct: currentSky.pct, skyCloudRule: currentSky.rule, omOpaque: isNum(omLow) && isNum(omMid) ? Math.max(omLow, omMid) : null, rainChance: currentHourRainChance, precipMmHour: aggregatedHourly[localHour]?.precipMm ?? null, hourlyRain: aggregatedHourly.map((x) => x.rainChance), precipNowMax: selectorInputs.precipNowMm, hourCondition: aggregatedHourly[localHour]?.condition ?? null },
   };
 }

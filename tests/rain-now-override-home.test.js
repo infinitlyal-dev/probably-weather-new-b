@@ -118,6 +118,13 @@ const makeStatsRow = () => {
   return { el, render };
 };
 
+// Since 7 Oct 2026 (Al, Part B item 2) "later" is an hour of 50 %+ in hours 5–8 ahead, not the day's chance:
+// the control days put their rain there (12:00–15:00 at localHour 8).
+const rainInHoursFiveToEight = (payload) => {
+  payload.hourly = payload.hourly.map((h, i) => (i >= 12 && i <= 15 ? { ...h, rainChance: 66 } : h));
+  return payload;
+};
+
 describe('item 4 — an active radar override never reads "Later"', () => {
   it('daily 66%, 4h slice 10%, radar 70% now → stats row says "Rain 70% Likely", not "Later"', () => {
     const payload = serverOverridePayload();
@@ -134,6 +141,7 @@ describe('item 4 — an active radar override never reads "Later"', () => {
   it('control: without the override the same day still reads "Later" (dry now, wet later)', () => {
     const payload = serverOverridePayload({ rainChance: 25, conditionReason: 'heavy-rain-prob', conditionSignals: { overrides: [] } });
     payload.daily[0].rainChance = 66.2;
+    rainInHoursFiveToEight(payload);
     const norm = normalizePayload(payload);
     expect(norm.rainLater).toBe(true);
     const { el, render } = makeStatsRow();
@@ -173,6 +181,7 @@ describe('item 4 — the byline agrees with the stats row', () => {
 
   it('control: no override, same day → "Rain Later"', () => {
     const payload = serverOverridePayload({ rainChance: 25, conditionReason: 'heavy-rain-prob', conditionSignals: { overrides: [] } });
+    rainInHoursFiveToEight(payload);
     payload.daily[0].rainChance = 66.2;
     const { el, render } = makeByline();
     render(normalizePayload(payload));

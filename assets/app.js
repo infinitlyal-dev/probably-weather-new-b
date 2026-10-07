@@ -1947,7 +1947,9 @@ document.addEventListener("DOMContentLoaded", () => {
       if (hasMajorityRain || hasMajorityCloudy || !votes.length) return 'rain-possible';
       debugLog(`[FIX-001] Skipping rain-possible: rain=${imminentRain}% but only ${rainVotes} source(s) vote rain`);
     }
-    // FIX-003: rain is coming later today (daily ≥50% but not imminent) — show the possible-showers state
+    // The server's fog stands over a might-rain that is hours away (Al, 7 Oct 2026).
+    if (apiCondition === 'fog') return 'fog';
+    // FIX-003: rain is coming in the next 8 hours but not the next 4 — show the possible-showers state
     if (norm.rainLater) {
       debugLog(`[FIX-003] rainLater=true, escalating to rain-possible`);
       return 'rain-possible';
@@ -2559,7 +2561,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const dailyRainPct = today.rainChance ?? now.rainChance ?? null;
     // rainLater ("Later" wording) means dry now, wet later. Radar says it is
     // raining NOW, so the override suppresses it (Astra: "Rain 70% — Later").
-    const rainLater = !rainNowOverride && isNum(imminentRainMax) && imminentRainMax < 30 && isNum(dailyRainPct) && dailyRainPct >= 50;
+    // 7 Oct 2026 (Al's ruling, Part B item 2): "later" is the next 8 hours, not the whole day — the next 4 hours under
+    // 30 % and an hour of 50 % or more in the 4 after them. The day's chance read alone was followed by rain within
+    // 12 h 44 % of the time (1,131 airport-hours); this window by rain within 8 h 81 % (171), review/condition-fixes-2026-10-07.md.
+    const laterHours = localHour != null ? hourly.slice(localHour + 4, localHour + 8) : [];
+    const laterRainMax = laterHours.some(h => isNum(h?.rainChance)) ? Math.max(...laterHours.map(h => (isNum(h?.rainChance) ? h.rainChance : 0))) : null;
+    const rainLater = !rainNowOverride && isNum(imminentRainMax) && imminentRainMax < 30 && isNum(laterRainMax) && laterRainMax >= 50;
     // Item 3 (P1-1): meta.schema >= 2 payloads carry now.uv = the CURRENT hour
     // and daily[0].uvMax = the day's peak. A payload written before that deploy
     // (service-worker cache keeps weather up to 3 h) carried the PEAK in now.uv
