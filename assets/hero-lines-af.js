@@ -100,7 +100,7 @@ export const HERO_LINES_AF = {
  "Eskom wishes it had this power.": "Eskom wens hy het hierdie krag.",
  "Eskom-friendly weather. No solar today.": "Eskom-vriendelike weer. Geen solar vandag nie.",
  "Even Monday looks photogenic in this light.": "Oggendson wat só lyk maak selfs Maandag draaglik.",
- "Even the Capetonians are admitting it's cold.": "Selfs die Kapenaars erken dit is koud.",
+ "Even the people who swear it never gets cold are admitting it.": "Selfs dié wat sweer dit word nooit koud nie, erken dit nou.",
  "Even the dog's breath is showing. That's the reading.": "Die hond se asem wys ook. Dis hoe koud dit is.",
  "Even the hadedas are quiet.": "Selfs die hadedas is stil.",
  "Even the hadedas sound happy.": "Selfs die hadedas klink gelukkig.",

@@ -990,19 +990,19 @@
       "day": "mon",
       "candidates": [
         {
-          "en": "Leaves keep blowing through the security light. It keeps switching on for nobody.",
-          "af": "Blare waai aanhoudend deur die sekuriteitslig. Hy skakel aanhoudend aan vir niemand.",
+          "en": "The leaves keep setting off the security light. The dog's stopped getting up for them.",
+          "af": "Die blare laat die sekuriteitslig aanhoudend aanskakel. Die hond staan nie meer op daarvoor nie.",
           "afCheck": {
-            "action": "pass",
-            "confidence": 0.2,
+            "action": "triage",
+            "confidence": 0.4,
             "findings": [
-              "Blare (low): 'Blare' means 'plural of blaar; leaf (of a plant)' — nothing in the English source; the source's 'leaves' would normally be 'verlaat' / 'los' / 'laat' / 'vertrek', none present",
-              "aanhoudend (low): 'aanhoudend' means 'constant; constantly; continued' — nothing in the English source; the source's 'leaves' would normally be 'verlaat' / 'los' / 'laat' / 'vertrek', none present",
-              "deur (low): 'deur' means 'door; through; by (indicating an agent)' — nothing in the English source; the source's 'leaves' would normally be 'verlaat' / 'los' / 'laat' / 'vertrek', none present",
-              "aanhoudend (low): 'aanhoudend' means 'constant; constantly; continued' — nothing in the English source; the source's 'leaves' would normally be 'verlaat' / 'los' / 'laat' / 'vertrek', none present"
+              "staan (medium): 'staan' means 'to stand' — nothing in the English source; it is 1 letter from 'staak', the usual word for 'stopped'",
+              "blare (low): 'blare' means 'plural of blaar; leaf (of a plant)' — nothing in the English source; the source's 'keep' would normally be 'hou' / 'sluiter' / 'sluitstuk', none present",
+              "aanhoudend (low): 'aanhoudend' means 'constant; constantly; continued' — nothing in the English source; the source's 'keep' would normally be 'hou' / 'sluiter' / 'sluitstuk', none present",
+              "aanskakel (low): 'aanskakel' means 'to switch on, to turn on (to power up a device); to enable (to activate a function of an electronic or mechanical device); connect' — nothing in the English source; the source's 'keep' would normally be 'hou' / 'sluiter' / 'sluitstuk', none present"
             ]
           },
-          "by": "Maat (Fable 5.1), ruled by Al 7 Oct 2026"
+          "by": "Al, 8 Oct 2026 (replaces Maat's line: the new photograph has a dog under the light)"
         }
       ]
     },

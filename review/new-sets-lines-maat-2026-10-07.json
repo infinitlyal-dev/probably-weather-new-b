@@ -2,76 +2,293 @@
   "written_by": "Maat (Fable 5.1), 7 Oct 2026, for Al's ruling. Revised 16:30: no place names (Al's ruling — the photo rotates by weekday and hour, not by the user's town, so a line must never name one).",
   "rules": "review/HUMOUR-DOCTRINE.md and review/PAIRING-TASTE.md bind. One line per photo, two beats, second turns, 9-14 words, no captioning the frame, no town or landmark names. Afrikaans is written, not translated; run it through the lang gate as usual.",
   "lines": {
-    "partly-cloudy/dawn-1.png": { "en": "Sun's in, sun's out. Monday's doing a soft launch.", "af": "Son in, son uit. Maandag warm nog net op." },
-    "partly-cloudy/dawn-2.png": { "en": "The clouds gave the sun Tuesday off. Nobody told the humidity.", "af": "Die wolke het die son Dinsdag afgegee. Niemand het die klamheid laat weet nie." },
-    "partly-cloudy/dawn-3.png": { "en": "Those clouds are only passing through. Even the mealies know not to get excited.", "af": "Daai wolke is net op deurtog. Selfs die mielies raak nie opgewonde nie." },
-    "partly-cloudy/dawn-4.png": { "en": "The shade is working down the rows one at a time. It's inspecting.", "af": "Die skaduwee werk die rye een vir een af. Dis besig met inspeksie." },
-    "partly-cloudy/dawn-5.png": { "en": "Purple on the ground, white in the sky. Friday's colour scheme is approved.", "af": "Pers op die grond, wit in die lug. Vrydag se kleure is goedgekeur." },
-    "partly-cloudy/dawn-6.png": { "en": "A few clouds came along to watch. Also not running.", "af": "'n Paar wolke het kom kyk. Hulle hardloop ook nie." },
-    "partly-cloudy/dawn-7.png": { "en": "The clouds are drifting through slowly. It's Sunday; they're allowed.", "af": "Die wolke dryf stadig verby. Dis Sondag; hulle mag." },
-    "partly-cloudy/day-1.png": { "en": "The mountain's tablecloth is only half on. It's Monday, nobody's fully dressed.", "af": "Die berg se tafeldoek is net half op. Dis Maandag, niemand is heeltemal aangetrek nie." },
-    "partly-cloudy/day-2.png": { "en": "Cloud shadows crossing the outfield at a steady walk. Nobody's appealing.", "af": "Wolkskaduwees stap teen 'n rustige pas oor die veld. Niemand appelleer nie." },
-    "partly-cloudy/day-3.png": { "en": "Sun, then cloud, then sun. Even the monkeys can't plan around that.", "af": "Son, dan wolk, dan son. Selfs die apies kan nie daarvolgens beplan nie." },
-    "partly-cloudy/day-4.png": { "en": "The dog found the exact line between sun and shade. He's staying put.", "af": "Die hond het die presiese lyn tussen son en skadu gekry. Hy bly net daar." },
-    "partly-cloudy/day-5.png": { "en": "Sunglasses on, sunglasses off, sunglasses on. Friday afternoon is interval training.", "af": "Sonbril op, sonbril af, sonbril op. Vrydagmiddag is intervaloefening." },
-    "partly-cloudy/day-6.png": { "en": "One cloud over the mountain is not a weather event. The fire stays lit.", "af": "Een wolk oor die berg is nie weer nie. Die vuur bly aan." },
-    "partly-cloudy/day-7.png": { "en": "Cloud over the mountain, potjie under the lapa. Both need another hour.", "af": "Wolk oor die berg, potjie onder die lapa. Albei kort nog 'n uur." },
-    "partly-cloudy/dusk-1.png": { "en": "The clouds stayed late just for the colour. Monday owed everyone that much.", "af": "Die wolke het laat gebly net vir die kleur. Maandag skuld almal soveel." },
-    "partly-cloudy/dusk-2.png": { "en": "Clouds all afternoon, not a drop. The hose is back on duty.", "af": "Wolke die hele middag, nie 'n druppel nie. Die tuinslang is weer aan diens." },
-    "partly-cloudy/dusk-3.png": { "en": "The sky's putting on a show. The fish, as usual, are not.", "af": "Die lug hou 'n vertoning. Die vis, soos gewoonlik, nie." },
-    "partly-cloudy/dusk-4.png": { "en": "Clouds for the sunset, sprinklers for the vines. The farm arranges its own rain.", "af": "Wolke vir die sonsondergang, sproeiers vir die wingerd. Die plaas reël sy eie reën." },
-    "partly-cloudy/dusk-5.png": { "en": "The sun's clocked out. The clouds are still lit, and so is the balcony.", "af": "Die son het afgeteken. Die wolke gloei nog, en die balkon ook." },
-    "partly-cloudy/dusk-6.png": { "en": "The clouds turned pink right on packing-up time. Nobody packed up.", "af": "Die wolke het pienk geword net toe dit tyd was om op te pak. Niemand het opgepak nie." },
-    "partly-cloudy/dusk-7.png": { "en": "The cattle are home before the colour goes. Sunday ends exactly on schedule.", "af": "Die beeste is tuis voor die kleur weg is. Sondag eindig presies op tyd." },
-    "partly-cloudy/night-1.png": { "en": "The moon's on a dimmer tonight. The security light has no such setting.", "af": "Die maan is vanaand op 'n dimmer. Die sekuriteitslig het nie so 'n knoppie nie." },
-    "partly-cloudy/night-2.png": { "en": "Half moon, half cloud, full bin. Tuesday night, as advertised.", "af": "Halfmaan, halfwolk, vol drom. Dinsdagaand, soos geadverteer." },
-    "partly-cloudy/night-3.png": { "en": "The moon keeps popping out to check on the forecourt. Still nothing happening.", "af": "Die maan loer kort-kort uit om die vulstasie te check. Steeds niks aan die gang nie." },
-    "partly-cloudy/night-4.png": { "en": "The clouds are passing the moon around. The balcony is happy to wait.", "af": "Die wolke gee die maan vir mekaar aan. Die balkon wag graag." },
-    "partly-cloudy/night-5.png": { "en": "The moon drops in between clouds. It can smell the meat from up there.", "af": "Die maan kom tussen die wolke deur kuier. Hy ruik die vleis van daar bo af." },
-    "partly-cloudy/night-6.png": { "en": "Half the stars are behind cloud. The fairy lights are covering for them.", "af": "Die helfte van die sterre is agter wolke. Die liggies staan vir hulle in." },
-    "partly-cloudy/night-7.png": { "en": "Moon behind a cloud, dog on the stoep. Sunday's service is over.", "af": "Maan agter 'n wolk, hond op die stoep. Sondag se diens is verby." },
-
-    "breezy/dawn-1.png": { "en": "The flag's giving the forecast before the surfers do. It says: go.", "af": "Die vlag gee die voorspelling voor die branderplankryers. Dit sê: gaan." },
-    "breezy/dawn-2.png": { "en": "The jacaranda petals are taking the bus too. The breeze bought their tickets.", "af": "Die jakarandablomme ry ook bus. Die bries het hulle kaartjies gekoop." },
-    "breezy/dawn-3.png": { "en": "The windpump is doing the morning's work. The grass is just waving it on.", "af": "Die windpomp doen die oggend se werk. Die gras waai hom net aan." },
-    "breezy/dawn-4.png": { "en": "Hand on the cap, one stride at a time. The breeze is pacing her.", "af": "Hand op die pet, een tree op 'n slag. Die bries hou haar pas." },
-    "breezy/dawn-5.png": { "en": "The washing will be dry before first break. The breeze took the early shift.", "af": "Die wasgoed is droog voor eerste pouse. Die bries het vroeg begin werk." },
-    "breezy/dawn-6.png": { "en": "A little dust devil is riding ahead of him. It isn't even pedalling.", "af": "'n Klein stofduiweltjie ry voor hom uit. Dit trap nie eens nie." },
-    "breezy/dawn-7.png": { "en": "Her hair got to the bakery first. The breeze has its own Sunday plans.", "af": "Haar hare was eerste by die bakkery. Die bries het sy eie Sondagplanne." },
-    "breezy/day-1.png": { "en": "Break time, and the breeze is doing everyone's hair. Teachers included.", "af": "Pouse, en die bries doen almal se hare. Die juffrouens ook." },
-    "breezy/day-2.png": { "en": "The breeze is working the fruit stall today. Air-con included, no extra charge.", "af": "Die bries werk vandag by die vrugtestalletjie. Lugverkoeling ingesluit, geen ekstra koste nie." },
-    "breezy/day-3.png": { "en": "The breeze does all the work. The kite takes all the credit.", "af": "Die bries doen al die werk. Die vlieër kry al die eer." },
-    "breezy/day-4.png": { "en": "The corner flag is pointing out exactly where the conversions will drift.", "af": "Die hoekvlag wys presies waarheen die doelskoppe gaan trek." },
-    "breezy/day-5.png": { "en": "The sheets are dry already. Now the breeze is just showing off for the kid.", "af": "Die lakens is al droog. Nou spog die bries net vir die kind." },
-    "breezy/day-6.png": { "en": "The smoke has found the neighbours' yard. Saturday's braai is officially a community event.", "af": "Die rook het die bure se erf gekry. Saterdag se braai is amptelik 'n gemeenskapsgeleentheid." },
-    "breezy/day-7.png": { "en": "Shoes on the blanket corners. The breeze is welcome, the sand isn't.", "af": "Skoene op die kombers se hoeke. Die bries is welkom, die sand nie." },
-    "breezy/dusk-1.png": { "en": "Flags out straight, wine held tight. The deck's version of a calm Monday.", "af": "Vlae styf uit, wynglas styf vas. Die dek se weergawe van 'n kalm Maandag." },
-    "breezy/dusk-2.png": { "en": "The dust is going for gold in the low light. The match plays on through it.", "af": "Die stof gaan vir goud in die laaste lig. Die wedstryd speel daardeur voort." },
-    "breezy/dusk-3.png": { "en": "The hill is moving in waves. The cattle have decided not to notice.", "af": "Die heuwel beweeg in golwe. Die beeste het besluit om dit nie raak te sien nie." },
-    "breezy/dusk-4.png": { "en": "The breeze is moving the jacaranda one street over, petal by petal. The stoep approves.", "af": "Die bries skuif die jakaranda een straat aan, blommetjie vir blommetjie. Die stoep keur dit goed." },
-    "breezy/dusk-5.png": { "en": "The cat is unmoved. Everyone else is delighted, especially the sarong.", "af": "Die kat is onbewoë. Almal anders is in hul skik, veral die sarong." },
-    "breezy/dusk-6.png": { "en": "The washing should have come in hours ago. The breeze voted to leave it.", "af": "Die wasgoed moes ure gelede al in gewees het. Die bries het gestem om dit te los." },
-    "breezy/dusk-7.png": { "en": "The flags are still chatting. The boats have called it a week.", "af": "Die vlae gesels nog. Die bote het die week afgesluit." },
-    "breezy/night-1.png": { "en": "Leaves keep blowing through the security light. It keeps switching on for nobody.", "af": "Blare waai aanhoudend deur die sekuriteitslig. Hy skakel aanhoudend aan vir niemand." },
-    "breezy/night-2.png": { "en": "Somebody forgot the washing. The breeze didn't, and it's doing a lovely job.", "af": "Iemand het die wasgoed vergeet. Die bries nie, en dit doen 'n pragtige werk." },
-    "breezy/night-3.png": { "en": "The breeze is still warm at this hour. The sea leaves the heating on all night.", "af": "Die bries is nog warm op hierdie uur. Die see los die verwarming die hele nag aan." },
-    "breezy/night-4.png": { "en": "The windpump doesn't believe in knock-off time. Neither does the dog.", "af": "Die windpomp glo nie aan afklopstyd nie. Die hond ook nie." },
-    "breezy/night-5.png": { "en": "The breeze is taking the smoke down the block. The whole street knows what's for supper.", "af": "Die bries vat die rook met die straat af. Die hele buurt weet wat vir aandete is." },
-    "breezy/night-6.png": { "en": "Every light on the string is swaying. Saturday night has rhythm, barely.", "af": "Elke liggie aan die string swaai. Saterdagaand het ritme, net-net." },
-    "breezy/night-7.png": { "en": "The sand is crossing the road a grain at a time. Nobody here is in a hurry.", "af": "Die sand steek die pad oor, een korrel op 'n slag. Niemand hier het haas nie." },
-
-    "cloudy/dawn-1.png": { "en": "The sky's on mute and so is the queue. Monday hasn't found the volume.", "af": "Die lug is op stil en die ry ook. Maandag het nog nie sy volume gekry nie." },
-    "cloudy/dawn-3.png": { "en": "Sky and sea agreed on a colour this morning. Not an exciting one.", "af": "Lug en see het vanoggend oor 'n kleur ooreengekom. Nie 'n opwindende een nie." },
-    "cloudy/dawn-4.png": { "en": "Even the hadeda is keeping it down. The sky set the tone.", "af": "Selfs die hadida hou dit sag. Die lug het die toon aangegee." },
-    "cloudy/dawn-5.png": { "en": "The mountain pulled the duvet over its head. Fair enough, it's Friday.", "af": "Die berg het die duvet oor sy kop getrek. Verstaanbaar, dis Vrydag." },
-    "cloudy/day-1.png": { "en": "No shadows, no glare, no excuses. Monday under a Tupperware lid.", "af": "Geen skaduwees, geen skittering, geen verskonings nie. Maandag onder 'n Tupperware-deksel." },
-    "cloudy/day-2.png": { "en": "The sun won't be inspecting the shine today. The car is fine with that.", "af": "Die son gaan nie vandag die blink kom inspekteer nie. Die kar is tevrede." },
-    "cloudy/day-3-weekB.png": { "en": "The whole veld with the colour turned down. The sheep count the same either way.", "af": "Die hele veld met die kleur afgedraai. Die skape tel dieselfde, hoe ook al." },
-    "cloudy/day-4.png": { "en": "Not one shadow on the field all day. The umpire never had to squint.", "af": "Nie een skaduwee op die veld die hele dag nie. Die skeidsregter het nie een keer sy oë op skrefies getrek nie." },
-    "cloudy/day-5.png": { "en": "Grey sky, jerseys on, school's out. The weekend doesn't need the sun's permission.", "af": "Grys lug, truie aan, skool is uit. Die naweek vra nie die son se toestemming nie." },
-    "cloudy/dusk-1.png": { "en": "The sky went from light grey to dark grey. That was the whole show.", "af": "Die lug het van liggrys na donkergrys gegaan. Dit was die hele vertoning." },
-    "cloudy/dusk-3.png": { "en": "The security light came on early. The sun never properly clocked in.", "af": "Die sekuriteitslig het vroeg aangegaan. Die son het nooit behoorlik ingeklok nie." },
-    "cloudy/dusk-4.png": { "en": "Sea and sky in matching grey. Only the pier lights made an effort.", "af": "See en lug in bypassende grys. Net die pier se liggies het moeite gedoen." },
-    "cloudy/dusk-7.png": { "en": "The shed bulb is tonight's sunset. The cattle accept the downgrade.", "af": "Die skuur se gloeilamp is vanaand se sonsondergang. Die beeste aanvaar die afgradering." }
-  }
+    "partly-cloudy/dawn-1.png": {
+      "en": "Sun's in, sun's out. Monday's doing a soft launch.",
+      "af": "Son in, son uit. Maandag warm nog net op."
+    },
+    "partly-cloudy/dawn-2.png": {
+      "en": "The clouds gave the sun Tuesday off. Nobody told the humidity.",
+      "af": "Die wolke het die son Dinsdag afgegee. Niemand het die klamheid laat weet nie."
+    },
+    "partly-cloudy/dawn-3.png": {
+      "en": "Those clouds are only passing through. Even the mealies know not to get excited.",
+      "af": "Daai wolke is net op deurtog. Selfs die mielies raak nie opgewonde nie."
+    },
+    "partly-cloudy/dawn-4.png": {
+      "en": "The shade is working down the rows one at a time. It's inspecting.",
+      "af": "Die skaduwee werk die rye een vir een af. Dis besig met inspeksie."
+    },
+    "partly-cloudy/dawn-5.png": {
+      "en": "Purple on the ground, white in the sky. Friday's colour scheme is approved.",
+      "af": "Pers op die grond, wit in die lug. Vrydag se kleure is goedgekeur."
+    },
+    "partly-cloudy/dawn-6.png": {
+      "en": "A few clouds came along to watch. Also not running.",
+      "af": "'n Paar wolke het kom kyk. Hulle hardloop ook nie."
+    },
+    "partly-cloudy/dawn-7.png": {
+      "en": "The clouds are drifting through slowly. It's Sunday; they're allowed.",
+      "af": "Die wolke dryf stadig verby. Dis Sondag; hulle mag."
+    },
+    "partly-cloudy/day-1.png": {
+      "en": "The mountain's tablecloth is only half on. It's Monday, nobody's fully dressed.",
+      "af": "Die berg se tafeldoek is net half op. Dis Maandag, niemand is heeltemal aangetrek nie."
+    },
+    "partly-cloudy/day-2.png": {
+      "en": "Cloud shadows crossing the outfield at a steady walk. Nobody's appealing.",
+      "af": "Wolkskaduwees stap teen 'n rustige pas oor die veld. Niemand appelleer nie."
+    },
+    "partly-cloudy/day-3.png": {
+      "en": "Sun, then cloud, then sun. Even the monkeys can't plan around that.",
+      "af": "Son, dan wolk, dan son. Selfs die apies kan nie daarvolgens beplan nie."
+    },
+    "partly-cloudy/day-4.png": {
+      "en": "The dog found the exact line between sun and shade. He's staying put.",
+      "af": "Die hond het die presiese lyn tussen son en skadu gekry. Hy bly net daar."
+    },
+    "partly-cloudy/day-5.png": {
+      "en": "Sunglasses on, sunglasses off, sunglasses on. Friday afternoon is interval training.",
+      "af": "Sonbril op, sonbril af, sonbril op. Vrydagmiddag is intervaloefening."
+    },
+    "partly-cloudy/day-6.png": {
+      "en": "One cloud over the mountain is not a weather event. The fire stays lit.",
+      "af": "Een wolk oor die berg is nie weer nie. Die vuur bly aan."
+    },
+    "partly-cloudy/day-7.png": {
+      "en": "Cloud over the mountain, potjie under the lapa. Both need another hour.",
+      "af": "Wolk oor die berg, potjie onder die lapa. Albei kort nog 'n uur."
+    },
+    "partly-cloudy/dusk-1.png": {
+      "en": "The clouds stayed late just for the colour. Monday owed everyone that much.",
+      "af": "Die wolke het laat gebly net vir die kleur. Maandag skuld almal soveel."
+    },
+    "partly-cloudy/dusk-2.png": {
+      "en": "Clouds all afternoon, not a drop. The hose is back on duty.",
+      "af": "Wolke die hele middag, nie 'n druppel nie. Die tuinslang is weer aan diens."
+    },
+    "partly-cloudy/dusk-3.png": {
+      "en": "The sky's putting on a show. The fish, as usual, are not.",
+      "af": "Die lug hou 'n vertoning. Die vis, soos gewoonlik, nie."
+    },
+    "partly-cloudy/dusk-4.png": {
+      "en": "Clouds for the sunset, sprinklers for the vines. The farm arranges its own rain.",
+      "af": "Wolke vir die sonsondergang, sproeiers vir die wingerd. Die plaas reël sy eie reën."
+    },
+    "partly-cloudy/dusk-5.png": {
+      "en": "The sun's clocked out. The clouds are still lit, and so is the balcony.",
+      "af": "Die son het afgeteken. Die wolke gloei nog, en die balkon ook."
+    },
+    "partly-cloudy/dusk-6.png": {
+      "en": "The clouds turned pink right on packing-up time. Nobody packed up.",
+      "af": "Die wolke het pienk geword net toe dit tyd was om op te pak. Niemand het opgepak nie."
+    },
+    "partly-cloudy/dusk-7.png": {
+      "en": "The cattle are home before the colour goes. Sunday ends exactly on schedule.",
+      "af": "Die beeste is tuis voor die kleur weg is. Sondag eindig presies op tyd."
+    },
+    "partly-cloudy/night-1.png": {
+      "en": "The moon's on a dimmer tonight. The security light has no such setting.",
+      "af": "Die maan is vanaand op 'n dimmer. Die sekuriteitslig het nie so 'n knoppie nie."
+    },
+    "partly-cloudy/night-2.png": {
+      "en": "Half moon, half cloud, full bin. Tuesday night, as advertised.",
+      "af": "Halfmaan, halfwolk, vol drom. Dinsdagaand, soos geadverteer."
+    },
+    "partly-cloudy/night-3.png": {
+      "en": "The moon keeps popping out to check on the forecourt. Still nothing happening.",
+      "af": "Die maan loer kort-kort uit om die vulstasie te check. Steeds niks aan die gang nie."
+    },
+    "partly-cloudy/night-4.png": {
+      "en": "The clouds are passing the moon around. The balcony is happy to wait.",
+      "af": "Die wolke gee die maan vir mekaar aan. Die balkon wag graag."
+    },
+    "partly-cloudy/night-5.png": {
+      "en": "The moon drops in between clouds. It can smell the meat from up there.",
+      "af": "Die maan kom tussen die wolke deur kuier. Hy ruik die vleis van daar bo af."
+    },
+    "partly-cloudy/night-6.png": {
+      "en": "Half the stars are behind cloud. The fairy lights are covering for them.",
+      "af": "Die helfte van die sterre is agter wolke. Die liggies staan vir hulle in."
+    },
+    "partly-cloudy/night-7.png": {
+      "en": "Moon behind a cloud, dog on the stoep. Sunday's service is over.",
+      "af": "Maan agter 'n wolk, hond op die stoep. Sondag se diens is verby."
+    },
+    "breezy/dawn-1.png": {
+      "en": "The flag's giving the forecast before the surfers do. It says: go.",
+      "af": "Die vlag gee die voorspelling voor die branderplankryers. Dit sê: gaan."
+    },
+    "breezy/dawn-2.png": {
+      "en": "The jacaranda petals are taking the bus too. The breeze bought their tickets.",
+      "af": "Die jakarandablomme ry ook bus. Die bries het hulle kaartjies gekoop."
+    },
+    "breezy/dawn-3.png": {
+      "en": "The windpump is doing the morning's work. The grass is just waving it on.",
+      "af": "Die windpomp doen die oggend se werk. Die gras waai hom net aan."
+    },
+    "breezy/dawn-4.png": {
+      "en": "Hand on the cap, one stride at a time. The breeze is pacing her.",
+      "af": "Hand op die pet, een tree op 'n slag. Die bries hou haar pas."
+    },
+    "breezy/dawn-5.png": {
+      "en": "The washing will be dry before first break. The breeze took the early shift.",
+      "af": "Die wasgoed is droog voor eerste pouse. Die bries het vroeg begin werk."
+    },
+    "breezy/dawn-6.png": {
+      "en": "A little dust devil is riding ahead of him. It isn't even pedalling.",
+      "af": "'n Klein stofduiweltjie ry voor hom uit. Dit trap nie eens nie."
+    },
+    "breezy/dawn-7.png": {
+      "en": "Her hair got to the bakery first. The breeze has its own Sunday plans.",
+      "af": "Haar hare was eerste by die bakkery. Die bries het sy eie Sondagplanne."
+    },
+    "breezy/day-1.png": {
+      "en": "Break time, and the breeze is doing everyone's hair. Teachers included.",
+      "af": "Pouse, en die bries doen almal se hare. Die juffrouens ook."
+    },
+    "breezy/day-2.png": {
+      "en": "The breeze is working the fruit stall today. Air-con included, no extra charge.",
+      "af": "Die bries werk vandag by die vrugtestalletjie. Lugverkoeling ingesluit, geen ekstra koste nie."
+    },
+    "breezy/day-3.png": {
+      "en": "The breeze does all the work. The kite takes all the credit.",
+      "af": "Die bries doen al die werk. Die vlieër kry al die eer."
+    },
+    "breezy/day-4.png": {
+      "en": "The corner flag is pointing out exactly where the conversions will drift.",
+      "af": "Die hoekvlag wys presies waarheen die doelskoppe gaan trek."
+    },
+    "breezy/day-5.png": {
+      "en": "The sheets are dry already. Now the breeze is just showing off for the kid.",
+      "af": "Die lakens is al droog. Nou spog die bries net vir die kind."
+    },
+    "breezy/day-6.png": {
+      "en": "The smoke has found the neighbours' yard. Saturday's braai is officially a community event.",
+      "af": "Die rook het die bure se erf gekry. Saterdag se braai is amptelik 'n gemeenskapsgeleentheid."
+    },
+    "breezy/day-7.png": {
+      "en": "Shoes on the blanket corners. The breeze is welcome, the sand isn't.",
+      "af": "Skoene op die kombers se hoeke. Die bries is welkom, die sand nie."
+    },
+    "breezy/dusk-1.png": {
+      "en": "Flags out straight, wine held tight. The deck's version of a calm Monday.",
+      "af": "Vlae styf uit, wynglas styf vas. Die dek se weergawe van 'n kalm Maandag."
+    },
+    "breezy/dusk-2.png": {
+      "en": "The dust is going for gold in the low light. The match plays on through it.",
+      "af": "Die stof gaan vir goud in die laaste lig. Die wedstryd speel daardeur voort."
+    },
+    "breezy/dusk-3.png": {
+      "en": "The hill is moving in waves. The cattle have decided not to notice.",
+      "af": "Die heuwel beweeg in golwe. Die beeste het besluit om dit nie raak te sien nie."
+    },
+    "breezy/dusk-4.png": {
+      "en": "The breeze is moving the jacaranda one street over, petal by petal. The stoep approves.",
+      "af": "Die bries skuif die jakaranda een straat aan, blommetjie vir blommetjie. Die stoep keur dit goed."
+    },
+    "breezy/dusk-5.png": {
+      "en": "The cat is unmoved. Everyone else is delighted, especially the sarong.",
+      "af": "Die kat is onbewoë. Almal anders is in hul skik, veral die sarong."
+    },
+    "breezy/dusk-6.png": {
+      "en": "The washing should have come in hours ago. The breeze voted to leave it.",
+      "af": "Die wasgoed moes ure gelede al in gewees het. Die bries het gestem om dit te los."
+    },
+    "breezy/dusk-7.png": {
+      "en": "The flags are still chatting. The boats have called it a week.",
+      "af": "Die vlae gesels nog. Die bote het die week afgesluit."
+    },
+    "breezy/night-1.png": {
+      "en": "The leaves keep setting off the security light. The dog's stopped getting up for them.",
+      "af": "Die blare laat die sekuriteitslig aanhoudend aanskakel. Die hond staan nie meer op daarvoor nie."
+    },
+    "breezy/night-2.png": {
+      "en": "Somebody forgot the washing. The breeze didn't, and it's doing a lovely job.",
+      "af": "Iemand het die wasgoed vergeet. Die bries nie, en dit doen 'n pragtige werk."
+    },
+    "breezy/night-3.png": {
+      "en": "The breeze is still warm at this hour. The sea leaves the heating on all night.",
+      "af": "Die bries is nog warm op hierdie uur. Die see los die verwarming die hele nag aan."
+    },
+    "breezy/night-4.png": {
+      "en": "The windpump doesn't believe in knock-off time. Neither does the dog.",
+      "af": "Die windpomp glo nie aan afklopstyd nie. Die hond ook nie."
+    },
+    "breezy/night-5.png": {
+      "en": "The breeze is taking the smoke down the block. The whole street knows what's for supper.",
+      "af": "Die bries vat die rook met die straat af. Die hele buurt weet wat vir aandete is."
+    },
+    "breezy/night-6.png": {
+      "en": "Every light on the string is swaying. Saturday night has rhythm, barely.",
+      "af": "Elke liggie aan die string swaai. Saterdagaand het ritme, net-net."
+    },
+    "breezy/night-7.png": {
+      "en": "The sand is crossing the road a grain at a time. Nobody here is in a hurry.",
+      "af": "Die sand steek die pad oor, een korrel op 'n slag. Niemand hier het haas nie."
+    },
+    "cloudy/dawn-1.png": {
+      "en": "The sky's on mute and so is the queue. Monday hasn't found the volume.",
+      "af": "Die lug is op stil en die ry ook. Maandag het nog nie sy volume gekry nie."
+    },
+    "cloudy/dawn-3.png": {
+      "en": "Sky and sea agreed on a colour this morning. Not an exciting one.",
+      "af": "Lug en see het vanoggend oor 'n kleur ooreengekom. Nie 'n opwindende een nie."
+    },
+    "cloudy/dawn-4.png": {
+      "en": "Even the hadeda is keeping it down. The sky set the tone.",
+      "af": "Selfs die hadida hou dit sag. Die lug het die toon aangegee."
+    },
+    "cloudy/dawn-5.png": {
+      "en": "The mountain pulled the duvet over its head. Fair enough, it's Friday.",
+      "af": "Die berg het die duvet oor sy kop getrek. Verstaanbaar, dis Vrydag."
+    },
+    "cloudy/day-1.png": {
+      "en": "No shadows, no glare, no excuses. Monday under a Tupperware lid.",
+      "af": "Geen skaduwees, geen skittering, geen verskonings nie. Maandag onder 'n Tupperware-deksel."
+    },
+    "cloudy/day-2.png": {
+      "en": "The sun won't be inspecting the shine today. The car is fine with that.",
+      "af": "Die son gaan nie vandag die blink kom inspekteer nie. Die kar is tevrede."
+    },
+    "cloudy/day-3-weekB.png": {
+      "en": "The whole veld with the colour turned down. The sheep count the same either way.",
+      "af": "Die hele veld met die kleur afgedraai. Die skape tel dieselfde, hoe ook al."
+    },
+    "cloudy/day-4.png": {
+      "en": "Not one shadow on the field all day. The umpire never had to squint.",
+      "af": "Nie een skaduwee op die veld die hele dag nie. Die skeidsregter het nie een keer sy oë op skrefies getrek nie."
+    },
+    "cloudy/day-5.png": {
+      "en": "Grey sky, jerseys on, school's out. The weekend doesn't need the sun's permission.",
+      "af": "Grys lug, truie aan, skool is uit. Die naweek vra nie die son se toestemming nie."
+    },
+    "cloudy/dusk-1.png": {
+      "en": "The sky went from light grey to dark grey. That was the whole show.",
+      "af": "Die lug het van liggrys na donkergrys gegaan. Dit was die hele vertoning."
+    },
+    "cloudy/dusk-3.png": {
+      "en": "The security light came on early. The sun never properly clocked in.",
+      "af": "Die sekuriteitslig het vroeg aangegaan. Die son het nooit behoorlik ingeklok nie."
+    },
+    "cloudy/dusk-4.png": {
+      "en": "Sea and sky in matching grey. Only the pier lights made an effort.",
+      "af": "See en lug in bypassende grys. Net die pier se liggies het moeite gedoen."
+    },
+    "cloudy/dusk-7.png": {
+      "en": "The shed bulb is tonight's sunset. The cattle accept the downgrade.",
+      "af": "Die skuur se gloeilamp is vanaand se sonsondergang. Die beeste aanvaar die afgradering."
+    }
+  },
+  "rulings": [
+    {
+      "on": "2026-10-08",
+      "by": "Al",
+      "file": "breezy/night-1.png",
+      "replaced": {
+        "en": "Leaves keep blowing through the security light. It keeps switching on for nobody.",
+        "af": "Blare waai aanhoudend deur die sekuriteitslig. Hy skakel aanhoudend aan vir niemand."
+      },
+      "reason": "the regenerated photograph has a dog under the light"
+    }
+  ]
 }

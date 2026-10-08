@@ -3073,7 +3073,7 @@
     "cold/week_4/day/5.webp"
    ],
    "lines": [
-    "Even the Capetonians are admitting it's cold.",
+    "Even the people who swear it never gets cold are admitting it.",
     "The jersey got promoted to balaclava somewhere between the door and the gate.",
     "The air found the one gap in the outfit and he is closing it by hand."
    ],
@@ -7471,6 +7471,17 @@
     ],
     "bytes": 115086,
     "quality": 92
+   }
+  ]
+ },
+ "placeRuling2026_10_08": {
+  "on": "2026-10-08",
+  "by": "Al",
+  "source": "review/place-names-2026-10-08.md #26",
+  "changed": [
+   {
+    "from": "Even the Capetonians are admitting it's cold.",
+    "to": "Even the people who swear it never gets cold are admitting it."
    }
   ]
  }

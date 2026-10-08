@@ -2034,13 +2034,13 @@
   },
   {
    "id": "C203",
-   "group": "canon",
-   "verdict": "CANON",
+   "group": "place-rewrite",
+   "verdict": "AL",
    "slot": "cold/day",
-   "english": "Even the Capetonians are admitting it's cold.",
-   "afrikaans": "Selfs die Kapenaars erken dit is koud.",
+   "english": "Even the people who swear it never gets cold are admitting it.",
+   "afrikaans": "Selfs dié wat sweer dit word nooit koud nie, erken dit nou.",
    "score": null,
-   "reason": "Al's native condition-bank line, reused for this photograph"
+   "reason": "Al, 8 Oct 2026: place-free rewrite of \"Even the Capetonians are admitting it's cold.\" (review/place-names-2026-10-08.md #26)"
   },
   {
    "id": "C204",
