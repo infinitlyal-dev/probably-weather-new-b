@@ -34,6 +34,26 @@
    "ruling": "review/bucket-check-ruled.json"
   },
   {
+   "sha1": "c6d4061cbef2",
+   "sha256": "6e0d76c63cde82b91119b5f5853d9ada08f19557a8a5c8cce7a79c1d06331024",
+   "slots": [
+    "cloudy/week_1/night/7.webp",
+    "cloudy/week_2/night/7.webp",
+    "cloudy/week_3/night/7.webp",
+    "cloudy/week_4/night/7.webp"
+   ],
+   "fallback": "cloudy/week_1/night/1.webp",
+   "movedTo": [
+    "cold/week_2/night/7.webp",
+    "cold/week_4/night/7.webp"
+   ],
+   "reason": "A man in a puffer jacket on a rooftop at night. Cloudy also serves warm summer nights.",
+   "benchedOn": "2026-09-23",
+   "ruling": "review/bucket-check-ruled.json"
+  }
+ ],
+ "retired": [
+  {
    "sha1": "3bfd9b9470d6",
    "sha256": "1a7797cabfa960b9a4b8a8582acdac96884751e7b9f73b35ab6f3be5cc1b4153",
    "slots": [
@@ -52,25 +72,9 @@
    ],
    "reason": "Jacket, flat cap and a steaming mug; its own line says Joburg mornings under cloud start properly cold (reworded 30 Sept 2026, no air temperature in a line).",
    "benchedOn": "2026-09-23",
-   "ruling": "review/bucket-check-ruled.json"
-  },
-  {
-   "sha1": "c6d4061cbef2",
-   "sha256": "6e0d76c63cde82b91119b5f5853d9ada08f19557a8a5c8cce7a79c1d06331024",
-   "slots": [
-    "cloudy/week_1/night/7.webp",
-    "cloudy/week_2/night/7.webp",
-    "cloudy/week_3/night/7.webp",
-    "cloudy/week_4/night/7.webp"
-   ],
-   "fallback": "cloudy/week_1/night/1.webp",
-   "movedTo": [
-    "cold/week_2/night/7.webp",
-    "cold/week_4/night/7.webp"
-   ],
-   "reason": "A man in a puffer jacket on a rooftop at night. Cloudy also serves warm summer nights.",
-   "benchedOn": "2026-09-23",
-   "ruling": "review/bucket-check-ruled.json"
+   "ruling": "review/bucket-check-ruled.json",
+   "retiredOn": "2026-10-07",
+   "retiredBecause": "its cloudy slots hold d28a5c534bda from cloudy/dawn-5.png (Al's new sets)"
   }
  ]
 }

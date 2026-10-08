@@ -14,10 +14,11 @@ import { createHash } from 'node:crypto';
 import { readFileSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
+import { BG_IMAGE_SLOT_FOLDERS } from '../assets/image-picker.js';
 
 const root = fileURLToPath(new URL('..', import.meta.url));
 const CHECK = process.argv.includes('--check');
-const FOLDERS = ['clear', 'cloudy', 'cold', 'cold-clear', 'fog', 'heat', 'rain', 'storm', 'wind'];
+const FOLDERS = BG_IMAGE_SLOT_FOLDERS;
 const TIMES = ['dawn', 'day', 'dusk', 'night'];
 
 const anchors = JSON.parse(readFileSync(path.join(root, 'review', 'set-001-crop-anchors.json'), 'utf8')).anchors;

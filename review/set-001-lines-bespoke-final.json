@@ -1,7 +1,7 @@
 {
  "generated": "2026-08-19",
  "ruledBy": "Al, bespoke line review rounds 1 and 2",
- "note": "Every line here is Al-approved and written for its specific photograph. Keyed by image hash: one hash can occupy two rotation slots and the lines belong to the picture, not the slot. English only - AF is Al's to write, zu/xh/st go to the native-review backlog. Extended 2026-08-21: kept lines from the ruled wind, clear-v2 and heat-v2 exports wired (Al's rulings of 2026-08-19/20). | 2026-09-06: round-1 hand-matched bank lines and 156 rescued Astra lines merged in, capped at 3 per photograph from those two sources (round-1 first, rescues in export order). Pre-existing approved lines were left untouched and not counted against that cap. | 2026-09-06: Al's own lines for 14 photographs that had none, written after he rejected all 30 of Astra's candidates for them. | 2026-09-06: Al's own lines for 14 photographs that had none, written after he rejected all 30 of Astra's candidates for them. | 2026-09-06: Al's own lines for 14 photographs that had none, written after he rejected all 30 of Astra's candidates for them. | 2026-09-06 (pm): Al's rulings — no 3-line cap: the 30 rescues the cap dropped are restored; every ruled keep from clear-v3, cloudy-v3, the six Astra buckets and the test batch wired onto its own photograph by hash; the transposed wind pair swapped grid days (tue/wed) so each day-named line lands on its day. CULLED 2026-09-20 on review/provenance-cull-ruled.json: every line that reached its photograph on a bulk adoption or on no record at all is out. What remains is what Al placed or ticked himself.",
+ "note": "Every line here is Al-approved and written for its specific photograph. Keyed by image hash: one hash can occupy two rotation slots and the lines belong to the picture, not the slot. English only - AF is Al's to write, zu/xh/st go to the native-review backlog. Extended 2026-08-21: kept lines from the ruled wind, clear-v2 and heat-v2 exports wired (Al's rulings of 2026-08-19/20). | 2026-09-06: round-1 hand-matched bank lines and 156 rescued Astra lines merged in, capped at 3 per photograph from those two sources (round-1 first, rescues in export order). Pre-existing approved lines were left untouched and not counted against that cap. | 2026-09-06: Al's own lines for 14 photographs that had none, written after he rejected all 30 of Astra's candidates for them. | 2026-09-06: Al's own lines for 14 photographs that had none, written after he rejected all 30 of Astra's candidates for them. | 2026-09-06: Al's own lines for 14 photographs that had none, written after he rejected all 30 of Astra's candidates for them. | 2026-09-06 (pm): Al's rulings — no 3-line cap: the 30 rescues the cap dropped are restored; every ruled keep from clear-v3, cloudy-v3, the six Astra buckets and the test batch wired onto its own photograph by hash; the transposed wind pair swapped grid days (tue/wed) so each day-named line lands on its day. CULLED 2026-09-20 on review/provenance-cull-ruled.json: every line that reached its photograph on a bulk adoption or on no record at all is out. What remains is what Al placed or ticked himself. | 2026-10-08: the 7 Oct sets ingested (scripts/ingest-new-sets.mjs) — one line each, Maat's, ruled by Al; a replaced cloudy photograph keeps its old lines under retiredLines.",
  "method": "Round 1 wrote five per image and Al kept 171 of 196 (87%) once the two transposed briefs were excluded. Round 2 rewrote the 39 gaps under the swap test (PAIRING-TASTE rule 1a) and Al kept 39 of 39. Combined 210 of 235 = 89%. Wind, the weakest bucket in every earlier pass at 48%, ran 80% in round 1 and 100% in round 2.",
  "images": 315,
  "lineCount": 994,
@@ -2057,7 +2057,7 @@
   },
   {
    "image": "cloudy/week_1/dawn/1.webp",
-   "hash": "08134a1e356e",
+   "hash": "90fe2cf4d92b",
    "condition": "cloudy",
    "time": "dawn",
    "week": "A",
@@ -2069,16 +2069,21 @@
     "cloudy/week_4/dawn/1.webp"
    ],
    "lines": [
+    "The sky's on mute and so is the queue. Monday hasn't found the volume."
+   ],
+   "authoredFor": [
+    "cloudy/week_2/dawn/3.webp",
+    "cloudy/week_4/dawn/3.webp"
+   ],
+   "retiredLines": [
     "The sky's on mute. Nobody's complaining.",
     "Grey vibes. The sky matched my Monday.",
     "Grey sky, flat sea, visible breath: the exact morning the fish expect them.",
     "The cloud is sitting right on the mountains and the sea has gone pewter.",
     "No wind on the water this morning, which is worth more than sunshine out there."
    ],
-   "authoredFor": [
-    "cloudy/week_2/dawn/3.webp",
-    "cloudy/week_4/dawn/3.webp"
-   ]
+   "replacedHash": "08134a1e356e",
+   "source": "review/new-sets-2026-10-07/cloudy/dawn-1.png"
   },
   {
    "image": "cloudy/week_1/dawn/2.webp",
@@ -2107,7 +2112,7 @@
   },
   {
    "image": "cloudy/week_1/dawn/3.webp",
-   "hash": "03ff71985022",
+   "hash": "7607b502a13f",
    "condition": "cloudy",
    "time": "dawn",
    "week": "A",
@@ -2119,20 +2124,25 @@
     "cloudy/week_4/dawn/3.webp"
    ],
    "lines": [
+    "Sky and sea agreed on a colour this morning. Not an exciting one."
+   ],
+   "authoredFor": [
+    "cloudy/week_2/dawn/6.webp",
+    "cloudy/week_4/dawn/6.webp"
+   ],
+   "retiredLines": [
     "Not Instagram weather. Not the end of the world.",
     "Clouds rolling in like family — no phone call first.",
     "The sky brought its full weight this morning and the sea rose to meet it.",
     "One thin line of light at the horizon, and the whole sky leaning on it.",
     "Running weather, honestly: cool, grey, and the sea doing the soundtrack."
    ],
-   "authoredFor": [
-    "cloudy/week_2/dawn/6.webp",
-    "cloudy/week_4/dawn/6.webp"
-   ]
+   "replacedHash": "03ff71985022",
+   "source": "review/new-sets-2026-10-07/cloudy/dawn-3.png"
   },
   {
    "image": "cloudy/week_1/dawn/4.webp",
-   "hash": "4845b881f911",
+   "hash": "fced9eb66ab6",
    "condition": "cloudy",
    "time": "dawn",
    "week": "A",
@@ -2144,15 +2154,20 @@
     "cloudy/week_4/dawn/4.webp"
    ],
    "lines": [
+    "Even the hadeda is keeping it down. The sky set the tone."
+   ],
+   "authoredFor": [
+    "cloudy/week_2/dawn/7.webp",
+    "cloudy/week_4/dawn/7.webp"
+   ],
+   "retiredLines": [
     "Could be worse. Could also be better.",
     "The sun hit snooze again. Honestly? Same.",
     "The sun is trying its luck at the horizon and the cloud is unmoved.",
     "A grey start on the coast usually burns off by ten. Usually."
    ],
-   "authoredFor": [
-    "cloudy/week_2/dawn/7.webp",
-    "cloudy/week_4/dawn/7.webp"
-   ]
+   "replacedHash": "4845b881f911",
+   "source": "review/new-sets-2026-10-07/cloudy/dawn-4.png"
   },
   {
    "image": "cold/week_2/dawn/5.webp",
@@ -2226,7 +2241,7 @@
   },
   {
    "image": "cloudy/week_1/day/1.webp",
-   "hash": "d16ca804a592",
+   "hash": "bae38570c296",
    "condition": "cloudy",
    "time": "day",
    "week": "A",
@@ -2236,6 +2251,12 @@
     "cloudy/week_3/day/1.webp"
    ],
    "lines": [
+    "No shadows, no glare, no excuses. Monday under a Tupperware lid."
+   ],
+   "authoredFor": [
+    "cloudy/week_1/day/3.webp"
+   ],
+   "retiredLines": [
     "The sky is the colour of an old Tupperware lid.",
     "The sun's on airplane mode.",
     "Forecast says maybe. We say probably.",
@@ -2243,13 +2264,12 @@
     "The week's weather is changing hands right there, in one straight line.",
     "Blue on the left, business on the right, and the line is moving your way."
    ],
-   "authoredFor": [
-    "cloudy/week_1/day/3.webp"
-   ]
+   "replacedHash": "d16ca804a592",
+   "source": "review/new-sets-2026-10-07/cloudy/day-1.png"
   },
   {
    "image": "cloudy/week_1/day/2.webp",
-   "hash": "4727610ce8f9",
+   "hash": "fea9501b8608",
    "condition": "cloudy",
    "time": "day",
    "week": "A",
@@ -2259,6 +2279,12 @@
     "cloudy/week_3/day/2.webp"
    ],
    "lines": [
+    "The sun won't be inspecting the shine today. The car is fine with that."
+   ],
+   "authoredFor": [
+    "cloudy/week_4/day/4.webp"
+   ],
+   "retiredLines": [
     "Even the weather can't be bothered today.",
     "The sky's giving 'I'll try again tomorrow' energy.",
     "Perfect weather for existing without enthusiasm.",
@@ -2266,9 +2292,8 @@
     "The concrete is still damp and the sky looks like it isn't finished.",
     "Under a sky like this the whole garden runs at half-speed, dog included."
    ],
-   "authoredFor": [
-    "cloudy/week_4/day/4.webp"
-   ]
+   "replacedHash": "4727610ce8f9",
+   "source": "review/new-sets-2026-10-07/cloudy/day-2.png"
   },
   {
    "image": "cloudy/week_1/day/3.webp",
@@ -2293,7 +2318,7 @@
   },
   {
    "image": "cloudy/week_1/day/4.webp",
-   "hash": "5a72972b399b",
+   "hash": "52fa9e2e3b6b",
    "condition": "cloudy",
    "time": "day",
    "week": "A",
@@ -2303,6 +2328,12 @@
     "cloudy/week_3/day/4.webp"
    ],
    "lines": [
+    "Not one shadow on the field all day. The umpire never had to squint."
+   ],
+   "authoredFor": [
+    "cloudy/week_4/day/6.webp"
+   ],
+   "retiredLines": [
     "Take a brolly just in case, hey.",
     "50/50 on getting wet. Like a coin toss.",
     "Pack an umbrella. Or don't. We don't know either.",
@@ -2310,13 +2341,12 @@
     "That sky refuses to commit, so he came prepared for both of its moods.",
     "Bring a jacket. Or sunscreen. Or both."
    ],
-   "authoredFor": [
-    "cloudy/week_4/day/6.webp"
-   ]
+   "replacedHash": "5a72972b399b",
+   "source": "review/new-sets-2026-10-07/cloudy/day-4.png"
   },
   {
    "image": "cloudy/week_1/day/5.webp",
-   "hash": "dc71e7a692da",
+   "hash": "fe8f7c00561c",
    "condition": "cloudy",
    "time": "day",
    "week": "A",
@@ -2326,6 +2356,12 @@
     "cloudy/week_3/day/5.webp"
    ],
    "lines": [
+    "Grey sky, jerseys on, school's out. The weekend doesn't need the sun's permission."
+   ],
+   "authoredFor": [
+    "cloudy/week_2/day/6.webp"
+   ],
+   "retiredLines": [
     "Grey is also a colour, says my ma. Today I believe her.",
     "The sun is technically present. Spiritually elsewhere.",
     "This weather has 'meh' written all over it.",
@@ -2333,9 +2369,8 @@
     "Every leaf is holding still; the whole garden is waiting to see what the sky decides.",
     "The clouds are here but they're not doing anything."
    ],
-   "authoredFor": [
-    "cloudy/week_2/day/6.webp"
-   ]
+   "replacedHash": "dc71e7a692da",
+   "source": "review/new-sets-2026-10-07/cloudy/day-5.png"
   },
   {
    "image": "cloudy/week_1/day/6.webp",
@@ -2427,7 +2462,7 @@
   },
   {
    "image": "cloudy/week_2/day/3.webp",
-   "hash": "119e4a52f8a4",
+   "hash": "c1ce48322447",
    "condition": "cloudy",
    "time": "day",
    "week": "B",
@@ -2437,6 +2472,12 @@
     "cloudy/week_4/day/3.webp"
    ],
    "lines": [
+    "The whole veld with the colour turned down. The sheep count the same either way."
+   ],
+   "authoredFor": [
+    "cloudy/week_1/day/1.webp"
+   ],
+   "retiredLines": [
     "Cloud cover with a side of who-cares.",
     "The sky's giving mixed signals again.",
     "Sun, hide-and-seek champion of the day.",
@@ -2444,9 +2485,8 @@
     "The sheep bunched up an hour ago, which is the Karoo's own forecast.",
     "That grey is thinking about rain and the whole district is thinking with it."
    ],
-   "authoredFor": [
-    "cloudy/week_1/day/1.webp"
-   ]
+   "replacedHash": "119e4a52f8a4",
+   "source": "review/new-sets-2026-10-07/cloudy/day-3-weekB.png"
   },
   {
    "image": "cloudy/week_2/day/4.webp",
@@ -2609,7 +2649,7 @@
   },
   {
    "image": "cloudy/week_1/dusk/7.webp",
-   "hash": "6b5271665e34",
+   "hash": "74df807311b7",
    "condition": "cloudy",
    "time": "dusk",
    "week": "A",
@@ -2621,15 +2661,20 @@
     "cloudy/week_4/dusk/7.webp"
    ],
    "lines": [
+    "The shed bulb is tonight's sunset. The cattle accept the downgrade."
+   ],
+   "authoredFor": [
+    "cloudy/week_2/dusk/2.webp",
+    "cloudy/week_4/dusk/2.webp"
+   ],
+   "retiredLines": [
     "Sky's doing the most, but only a little.",
     "Cloud is what a sunset needs, and tonight the sky brought exactly enough.",
     "Table Mountain gets the silhouette; the clouds get the whole colour budget.",
     "Red sky at night, shepherd's delight — tomorrow just got a good reference."
    ],
-   "authoredFor": [
-    "cloudy/week_2/dusk/2.webp",
-    "cloudy/week_4/dusk/2.webp"
-   ]
+   "replacedHash": "6b5271665e34",
+   "source": "review/new-sets-2026-10-07/cloudy/dusk-7.png"
   },
   {
    "image": "cloudy/week_1/night/1.webp",
@@ -5623,7 +5668,7 @@
   },
   {
    "image": "cloudy/week_1/dusk/1.webp",
-   "hash": "20e80f881707",
+   "hash": "2854d864e0bd",
    "condition": "cloudy",
    "time": "dusk",
    "week": "A",
@@ -5635,6 +5680,14 @@
     "cloudy/week_4/dusk/1.webp"
    ],
    "lines": [
+    "The sky went from light grey to dark grey. That was the whole show."
+   ],
+   "source": "review/new-sets-2026-10-07/cloudy/dusk-1.png",
+   "authoredFor": [
+    "cloudy/week_1/dusk/2.webp",
+    "cloudy/week_3/dusk/2.webp"
+   ],
+   "retiredLines": [
     "Not rain. Just atmosphere with opinions.",
     "The sky’s overdressed. The weather’s still fine.",
     "The sky saved its best ten minutes for the top of the climb.",
@@ -5642,15 +5695,11 @@
     "That gap in the cloud is worth more than the whole clear day it replaced.",
     "The sky can’t decide between golden hour and going home early. Neither can anyone else."
    ],
-   "source": "al-2026-09-06",
-   "authoredFor": [
-    "cloudy/week_1/dusk/2.webp",
-    "cloudy/week_3/dusk/2.webp"
-   ]
+   "replacedHash": "20e80f881707"
   },
   {
    "image": "cloudy/week_1/dusk/3.webp",
-   "hash": "444490756b06",
+   "hash": "32f69c5844fd",
    "condition": "cloudy",
    "time": "dusk",
    "week": "A",
@@ -5662,21 +5711,25 @@
     "cloudy/week_4/dusk/3.webp"
    ],
    "lines": [
+    "The security light came on early. The sun never properly clocked in."
+   ],
+   "source": "review/new-sets-2026-10-07/cloudy/dusk-3.png",
+   "authoredFor": [
+    "cloudy/week_2/dusk/5.webp",
+    "cloudy/week_4/dusk/5.webp"
+   ],
+   "retiredLines": [
     "Cloudy dusk. Pretty, not promising.",
     "The sky did extras. The forecast didn’t.",
     "The sky left a two-finger gap for the sunset and the sunset took it.",
     "All that cloud, and the sun still found the letterbox at the bottom.",
     "The suburb is going to bed under a lid, with one orange nightlight left on."
    ],
-   "source": "al-2026-09-06",
-   "authoredFor": [
-    "cloudy/week_2/dusk/5.webp",
-    "cloudy/week_4/dusk/5.webp"
-   ]
+   "replacedHash": "444490756b06"
   },
   {
    "image": "cloudy/week_1/dusk/4.webp",
-   "hash": "0ebee4d85540",
+   "hash": "757e7d6ae192",
    "condition": "cloudy",
    "time": "dusk",
    "week": "A",
@@ -5688,17 +5741,21 @@
     "cloudy/week_4/dusk/4.webp"
    ],
    "lines": [
+    "Sea and sky in matching grey. Only the pier lights made an effort."
+   ],
+   "source": "review/new-sets-2026-10-07/cloudy/dusk-4.png",
+   "authoredFor": [
+    "cloudy/week_2/dusk/6.webp",
+    "cloudy/week_4/dusk/6.webp"
+   ],
+   "retiredLines": [
     "Cloud cover. The night shift starts early.",
     "Cloudy. Stay in if you were looking for a reason.",
     "The clouds took the sunset and left the suburb the pink change.",
     "The aerials have the best view of a sky doing its quiet closing number.",
     "A grey dusk brings the evening forward, and the windows have already agreed."
    ],
-   "source": "al-2026-09-06",
-   "authoredFor": [
-    "cloudy/week_2/dusk/6.webp",
-    "cloudy/week_4/dusk/6.webp"
-   ]
+   "replacedHash": "0ebee4d85540"
   },
   {
    "image": "cold/week_2/night/3.webp",
@@ -6822,6 +6879,962 @@
    ],
    "pair": "R56",
    "ruledBy": "Al: R53 and R56 re-rolls passed, review/last-fixes-decisions.json, 30 Sept 2026"
+  },
+  {
+   "image": "breezy/week_1/dawn/1.webp",
+   "hash": "35db8dc9bed7",
+   "condition": "breezy",
+   "time": "dawn",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "breezy/week_1/dawn/1.webp",
+    "breezy/week_2/dawn/1.webp",
+    "breezy/week_3/dawn/1.webp",
+    "breezy/week_4/dawn/1.webp"
+   ],
+   "lines": [
+    "The flag's giving the forecast before the surfers do. It says: go."
+   ]
+  },
+  {
+   "image": "breezy/week_1/dawn/2.webp",
+   "hash": "8db6041b06ea",
+   "condition": "breezy",
+   "time": "dawn",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "breezy/week_1/dawn/2.webp",
+    "breezy/week_2/dawn/2.webp",
+    "breezy/week_3/dawn/2.webp",
+    "breezy/week_4/dawn/2.webp"
+   ],
+   "lines": [
+    "The jacaranda petals are taking the bus too. The breeze bought their tickets."
+   ]
+  },
+  {
+   "image": "breezy/week_1/dawn/3.webp",
+   "hash": "8d960369fd27",
+   "condition": "breezy",
+   "time": "dawn",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "breezy/week_1/dawn/3.webp",
+    "breezy/week_2/dawn/3.webp",
+    "breezy/week_3/dawn/3.webp",
+    "breezy/week_4/dawn/3.webp"
+   ],
+   "lines": [
+    "The windpump is doing the morning's work. The grass is just waving it on."
+   ]
+  },
+  {
+   "image": "breezy/week_1/dawn/4.webp",
+   "hash": "25beac6c1c50",
+   "condition": "breezy",
+   "time": "dawn",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "breezy/week_1/dawn/4.webp",
+    "breezy/week_2/dawn/4.webp",
+    "breezy/week_3/dawn/4.webp",
+    "breezy/week_4/dawn/4.webp"
+   ],
+   "lines": [
+    "Hand on the cap, one stride at a time. The breeze is pacing her."
+   ]
+  },
+  {
+   "image": "breezy/week_1/dawn/5.webp",
+   "hash": "052cd437e1af",
+   "condition": "breezy",
+   "time": "dawn",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "breezy/week_1/dawn/5.webp",
+    "breezy/week_2/dawn/5.webp",
+    "breezy/week_3/dawn/5.webp",
+    "breezy/week_4/dawn/5.webp"
+   ],
+   "lines": [
+    "The washing will be dry before first break. The breeze took the early shift."
+   ]
+  },
+  {
+   "image": "breezy/week_1/dawn/6.webp",
+   "hash": "2071c8a37d11",
+   "condition": "breezy",
+   "time": "dawn",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "breezy/week_1/dawn/6.webp",
+    "breezy/week_2/dawn/6.webp",
+    "breezy/week_3/dawn/6.webp",
+    "breezy/week_4/dawn/6.webp"
+   ],
+   "lines": [
+    "A little dust devil is riding ahead of him. It isn't even pedalling."
+   ]
+  },
+  {
+   "image": "breezy/week_1/dawn/7.webp",
+   "hash": "1d8c84ac2fde",
+   "condition": "breezy",
+   "time": "dawn",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "breezy/week_1/dawn/7.webp",
+    "breezy/week_2/dawn/7.webp",
+    "breezy/week_3/dawn/7.webp",
+    "breezy/week_4/dawn/7.webp"
+   ],
+   "lines": [
+    "Her hair got to the bakery first. The breeze has its own Sunday plans."
+   ]
+  },
+  {
+   "image": "breezy/week_1/day/1.webp",
+   "hash": "1e5e636b6273",
+   "condition": "breezy",
+   "time": "day",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "breezy/week_1/day/1.webp",
+    "breezy/week_2/day/1.webp",
+    "breezy/week_3/day/1.webp",
+    "breezy/week_4/day/1.webp"
+   ],
+   "lines": [
+    "Break time, and the breeze is doing everyone's hair. Teachers included."
+   ]
+  },
+  {
+   "image": "breezy/week_1/day/2.webp",
+   "hash": "7d42afbbd427",
+   "condition": "breezy",
+   "time": "day",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "breezy/week_1/day/2.webp",
+    "breezy/week_2/day/2.webp",
+    "breezy/week_3/day/2.webp",
+    "breezy/week_4/day/2.webp"
+   ],
+   "lines": [
+    "The breeze is working the fruit stall today. Air-con included, no extra charge."
+   ]
+  },
+  {
+   "image": "breezy/week_1/day/3.webp",
+   "hash": "e751a9e376bf",
+   "condition": "breezy",
+   "time": "day",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "breezy/week_1/day/3.webp",
+    "breezy/week_2/day/3.webp",
+    "breezy/week_3/day/3.webp",
+    "breezy/week_4/day/3.webp"
+   ],
+   "lines": [
+    "The breeze does all the work. The kite takes all the credit."
+   ]
+  },
+  {
+   "image": "breezy/week_1/day/4.webp",
+   "hash": "2ee611032a66",
+   "condition": "breezy",
+   "time": "day",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "breezy/week_1/day/4.webp",
+    "breezy/week_2/day/4.webp",
+    "breezy/week_3/day/4.webp",
+    "breezy/week_4/day/4.webp"
+   ],
+   "lines": [
+    "The corner flag is pointing out exactly where the conversions will drift."
+   ]
+  },
+  {
+   "image": "breezy/week_1/day/5.webp",
+   "hash": "12463d59eca0",
+   "condition": "breezy",
+   "time": "day",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "breezy/week_1/day/5.webp",
+    "breezy/week_2/day/5.webp",
+    "breezy/week_3/day/5.webp",
+    "breezy/week_4/day/5.webp"
+   ],
+   "lines": [
+    "The sheets are dry already. Now the breeze is just showing off for the kid."
+   ]
+  },
+  {
+   "image": "breezy/week_1/day/6.webp",
+   "hash": "6c0c0fcbfc50",
+   "condition": "breezy",
+   "time": "day",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "breezy/week_1/day/6.webp",
+    "breezy/week_2/day/6.webp",
+    "breezy/week_3/day/6.webp",
+    "breezy/week_4/day/6.webp"
+   ],
+   "lines": [
+    "The smoke has found the neighbours' yard. Saturday's braai is officially a community event."
+   ]
+  },
+  {
+   "image": "breezy/week_1/day/7.webp",
+   "hash": "1d6a21cfb9e4",
+   "condition": "breezy",
+   "time": "day",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "breezy/week_1/day/7.webp",
+    "breezy/week_2/day/7.webp",
+    "breezy/week_3/day/7.webp",
+    "breezy/week_4/day/7.webp"
+   ],
+   "lines": [
+    "Shoes on the blanket corners. The breeze is welcome, the sand isn't."
+   ]
+  },
+  {
+   "image": "breezy/week_1/dusk/1.webp",
+   "hash": "65940314e696",
+   "condition": "breezy",
+   "time": "dusk",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "breezy/week_1/dusk/1.webp",
+    "breezy/week_2/dusk/1.webp",
+    "breezy/week_3/dusk/1.webp",
+    "breezy/week_4/dusk/1.webp"
+   ],
+   "lines": [
+    "Flags out straight, wine held tight. The deck's version of a calm Monday."
+   ]
+  },
+  {
+   "image": "breezy/week_1/dusk/2.webp",
+   "hash": "2b898e3bf961",
+   "condition": "breezy",
+   "time": "dusk",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "breezy/week_1/dusk/2.webp",
+    "breezy/week_2/dusk/2.webp",
+    "breezy/week_3/dusk/2.webp",
+    "breezy/week_4/dusk/2.webp",
+    "breezy/week_1/dusk/5.webp",
+    "breezy/week_2/dusk/5.webp",
+    "breezy/week_3/dusk/5.webp",
+    "breezy/week_4/dusk/5.webp"
+   ],
+   "lines": [
+    "The dust is going for gold in the low light. The match plays on through it."
+   ]
+  },
+  {
+   "image": "breezy/week_1/dusk/3.webp",
+   "hash": "dd3ddc3ad613",
+   "condition": "breezy",
+   "time": "dusk",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "breezy/week_1/dusk/3.webp",
+    "breezy/week_2/dusk/3.webp",
+    "breezy/week_3/dusk/3.webp",
+    "breezy/week_4/dusk/3.webp"
+   ],
+   "lines": [
+    "The hill is moving in waves. The cattle have decided not to notice."
+   ]
+  },
+  {
+   "image": "breezy/week_1/dusk/4.webp",
+   "hash": "6cbf0aa77a83",
+   "condition": "breezy",
+   "time": "dusk",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "breezy/week_1/dusk/4.webp",
+    "breezy/week_2/dusk/4.webp",
+    "breezy/week_3/dusk/4.webp",
+    "breezy/week_4/dusk/4.webp"
+   ],
+   "lines": [
+    "The breeze is moving the jacaranda one street over, petal by petal. The stoep approves."
+   ]
+  },
+  {
+   "image": "breezy/week_1/dusk/6.webp",
+   "hash": "148cfc7f68b6",
+   "condition": "breezy",
+   "time": "dusk",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "breezy/week_1/dusk/6.webp",
+    "breezy/week_2/dusk/6.webp",
+    "breezy/week_3/dusk/6.webp",
+    "breezy/week_4/dusk/6.webp"
+   ],
+   "lines": [
+    "The washing should have come in hours ago. The breeze voted to leave it."
+   ]
+  },
+  {
+   "image": "breezy/week_1/dusk/7.webp",
+   "hash": "9f33503bb2be",
+   "condition": "breezy",
+   "time": "dusk",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "breezy/week_1/dusk/7.webp",
+    "breezy/week_2/dusk/7.webp",
+    "breezy/week_3/dusk/7.webp",
+    "breezy/week_4/dusk/7.webp"
+   ],
+   "lines": [
+    "The flags are still chatting. The boats have called it a week."
+   ]
+  },
+  {
+   "image": "breezy/week_1/night/1.webp",
+   "hash": "5649361ed22c",
+   "condition": "breezy",
+   "time": "night",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "breezy/week_1/night/1.webp",
+    "breezy/week_2/night/1.webp",
+    "breezy/week_3/night/1.webp",
+    "breezy/week_4/night/1.webp"
+   ],
+   "lines": [
+    "The leaves keep setting off the security light. The dog's stopped getting up for them."
+   ]
+  },
+  {
+   "image": "breezy/week_1/night/2.webp",
+   "hash": "15326afa073e",
+   "condition": "breezy",
+   "time": "night",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "breezy/week_1/night/2.webp",
+    "breezy/week_2/night/2.webp",
+    "breezy/week_3/night/2.webp",
+    "breezy/week_4/night/2.webp"
+   ],
+   "lines": [
+    "Somebody forgot the washing. The breeze didn't, and it's doing a lovely job."
+   ]
+  },
+  {
+   "image": "breezy/week_1/night/3.webp",
+   "hash": "e13550eec88a",
+   "condition": "breezy",
+   "time": "night",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "breezy/week_1/night/3.webp",
+    "breezy/week_2/night/3.webp",
+    "breezy/week_3/night/3.webp",
+    "breezy/week_4/night/3.webp"
+   ],
+   "lines": [
+    "The breeze is still warm at this hour. The sea leaves the heating on all night."
+   ]
+  },
+  {
+   "image": "breezy/week_1/night/4.webp",
+   "hash": "693625baa70e",
+   "condition": "breezy",
+   "time": "night",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "breezy/week_1/night/4.webp",
+    "breezy/week_2/night/4.webp",
+    "breezy/week_3/night/4.webp",
+    "breezy/week_4/night/4.webp"
+   ],
+   "lines": [
+    "The windpump doesn't believe in knock-off time. Neither does the dog."
+   ]
+  },
+  {
+   "image": "breezy/week_1/night/5.webp",
+   "hash": "2ea929cc10b0",
+   "condition": "breezy",
+   "time": "night",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "breezy/week_1/night/5.webp",
+    "breezy/week_2/night/5.webp",
+    "breezy/week_3/night/5.webp",
+    "breezy/week_4/night/5.webp"
+   ],
+   "lines": [
+    "The breeze is taking the smoke down the block. The whole street knows what's for supper."
+   ]
+  },
+  {
+   "image": "breezy/week_1/night/6.webp",
+   "hash": "ac9855f2fec7",
+   "condition": "breezy",
+   "time": "night",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "breezy/week_1/night/6.webp",
+    "breezy/week_2/night/6.webp",
+    "breezy/week_3/night/6.webp",
+    "breezy/week_4/night/6.webp"
+   ],
+   "lines": [
+    "Every light on the string is swaying. Saturday night has rhythm, barely."
+   ]
+  },
+  {
+   "image": "breezy/week_1/night/7.webp",
+   "hash": "b8e6f92e8e84",
+   "condition": "breezy",
+   "time": "night",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "breezy/week_1/night/7.webp",
+    "breezy/week_2/night/7.webp",
+    "breezy/week_3/night/7.webp",
+    "breezy/week_4/night/7.webp"
+   ],
+   "lines": [
+    "The sand is crossing the road a grain at a time. Nobody here is in a hurry."
+   ]
+  },
+  {
+   "image": "cloudy/week_1/dawn/5.webp",
+   "hash": "d28a5c534bda",
+   "condition": "cloudy",
+   "time": "dawn",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "cloudy/week_1/dawn/5.webp",
+    "cloudy/week_2/dawn/5.webp",
+    "cloudy/week_3/dawn/5.webp",
+    "cloudy/week_4/dawn/5.webp"
+   ],
+   "lines": [
+    "The mountain pulled the duvet over its head. Fair enough, it's Friday."
+   ]
+  },
+  {
+   "image": "partly-cloudy/week_1/dawn/1.webp",
+   "hash": "340ad671125a",
+   "condition": "partly-cloudy",
+   "time": "dawn",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "partly-cloudy/week_1/dawn/1.webp",
+    "partly-cloudy/week_2/dawn/1.webp",
+    "partly-cloudy/week_3/dawn/1.webp",
+    "partly-cloudy/week_4/dawn/1.webp"
+   ],
+   "lines": [
+    "Sun's in, sun's out. Monday's doing a soft launch."
+   ]
+  },
+  {
+   "image": "partly-cloudy/week_1/dawn/2.webp",
+   "hash": "bcf2e3521f6a",
+   "condition": "partly-cloudy",
+   "time": "dawn",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "partly-cloudy/week_1/dawn/2.webp",
+    "partly-cloudy/week_2/dawn/2.webp",
+    "partly-cloudy/week_3/dawn/2.webp",
+    "partly-cloudy/week_4/dawn/2.webp"
+   ],
+   "lines": [
+    "The clouds gave the sun Tuesday off. Nobody told the humidity."
+   ]
+  },
+  {
+   "image": "partly-cloudy/week_1/dawn/3.webp",
+   "hash": "8e7b11775e04",
+   "condition": "partly-cloudy",
+   "time": "dawn",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "partly-cloudy/week_1/dawn/3.webp",
+    "partly-cloudy/week_2/dawn/3.webp",
+    "partly-cloudy/week_3/dawn/3.webp",
+    "partly-cloudy/week_4/dawn/3.webp"
+   ],
+   "lines": [
+    "Those clouds are only passing through. Even the mealies know not to get excited."
+   ]
+  },
+  {
+   "image": "partly-cloudy/week_1/dawn/4.webp",
+   "hash": "0423b0d11d29",
+   "condition": "partly-cloudy",
+   "time": "dawn",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "partly-cloudy/week_1/dawn/4.webp",
+    "partly-cloudy/week_2/dawn/4.webp",
+    "partly-cloudy/week_3/dawn/4.webp",
+    "partly-cloudy/week_4/dawn/4.webp"
+   ],
+   "lines": [
+    "The shade is working down the rows one at a time. It's inspecting."
+   ]
+  },
+  {
+   "image": "partly-cloudy/week_1/dawn/5.webp",
+   "hash": "967a77a46dcc",
+   "condition": "partly-cloudy",
+   "time": "dawn",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "partly-cloudy/week_1/dawn/5.webp",
+    "partly-cloudy/week_2/dawn/5.webp",
+    "partly-cloudy/week_3/dawn/5.webp",
+    "partly-cloudy/week_4/dawn/5.webp"
+   ],
+   "lines": [
+    "Purple on the ground, white in the sky. Friday's colour scheme is approved."
+   ]
+  },
+  {
+   "image": "partly-cloudy/week_1/dawn/6.webp",
+   "hash": "a8dc12a0d491",
+   "condition": "partly-cloudy",
+   "time": "dawn",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "partly-cloudy/week_1/dawn/6.webp",
+    "partly-cloudy/week_2/dawn/6.webp",
+    "partly-cloudy/week_3/dawn/6.webp",
+    "partly-cloudy/week_4/dawn/6.webp"
+   ],
+   "lines": [
+    "A few clouds came along to watch. Also not running."
+   ]
+  },
+  {
+   "image": "partly-cloudy/week_1/dawn/7.webp",
+   "hash": "d20cb10e620f",
+   "condition": "partly-cloudy",
+   "time": "dawn",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "partly-cloudy/week_1/dawn/7.webp",
+    "partly-cloudy/week_2/dawn/7.webp",
+    "partly-cloudy/week_3/dawn/7.webp",
+    "partly-cloudy/week_4/dawn/7.webp"
+   ],
+   "lines": [
+    "The clouds are drifting through slowly. It's Sunday; they're allowed."
+   ]
+  },
+  {
+   "image": "partly-cloudy/week_1/day/1.webp",
+   "hash": "763ab069ce5f",
+   "condition": "partly-cloudy",
+   "time": "day",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "partly-cloudy/week_1/day/1.webp",
+    "partly-cloudy/week_2/day/1.webp",
+    "partly-cloudy/week_3/day/1.webp",
+    "partly-cloudy/week_4/day/1.webp"
+   ],
+   "lines": [
+    "The mountain's tablecloth is only half on. It's Monday, nobody's fully dressed."
+   ]
+  },
+  {
+   "image": "partly-cloudy/week_1/day/2.webp",
+   "hash": "72637f2e8156",
+   "condition": "partly-cloudy",
+   "time": "day",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "partly-cloudy/week_1/day/2.webp",
+    "partly-cloudy/week_2/day/2.webp",
+    "partly-cloudy/week_3/day/2.webp",
+    "partly-cloudy/week_4/day/2.webp"
+   ],
+   "lines": [
+    "Cloud shadows crossing the outfield at a steady walk. Nobody's appealing."
+   ]
+  },
+  {
+   "image": "partly-cloudy/week_1/day/3.webp",
+   "hash": "82d7022c8ba8",
+   "condition": "partly-cloudy",
+   "time": "day",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "partly-cloudy/week_1/day/3.webp",
+    "partly-cloudy/week_2/day/3.webp",
+    "partly-cloudy/week_3/day/3.webp",
+    "partly-cloudy/week_4/day/3.webp"
+   ],
+   "lines": [
+    "Sun, then cloud, then sun. Even the monkeys can't plan around that."
+   ]
+  },
+  {
+   "image": "partly-cloudy/week_1/day/4.webp",
+   "hash": "cbb3c781bd07",
+   "condition": "partly-cloudy",
+   "time": "day",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "partly-cloudy/week_1/day/4.webp",
+    "partly-cloudy/week_2/day/4.webp",
+    "partly-cloudy/week_3/day/4.webp",
+    "partly-cloudy/week_4/day/4.webp"
+   ],
+   "lines": [
+    "The dog found the exact line between sun and shade. He's staying put."
+   ]
+  },
+  {
+   "image": "partly-cloudy/week_1/day/5.webp",
+   "hash": "80745efed5f3",
+   "condition": "partly-cloudy",
+   "time": "day",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "partly-cloudy/week_1/day/5.webp",
+    "partly-cloudy/week_2/day/5.webp",
+    "partly-cloudy/week_3/day/5.webp",
+    "partly-cloudy/week_4/day/5.webp"
+   ],
+   "lines": [
+    "Sunglasses on, sunglasses off, sunglasses on. Friday afternoon is interval training."
+   ]
+  },
+  {
+   "image": "partly-cloudy/week_1/day/6.webp",
+   "hash": "2c1a57fdd503",
+   "condition": "partly-cloudy",
+   "time": "day",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "partly-cloudy/week_1/day/6.webp",
+    "partly-cloudy/week_2/day/6.webp",
+    "partly-cloudy/week_3/day/6.webp",
+    "partly-cloudy/week_4/day/6.webp"
+   ],
+   "lines": [
+    "One cloud over the mountain is not a weather event. The fire stays lit."
+   ]
+  },
+  {
+   "image": "partly-cloudy/week_1/day/7.webp",
+   "hash": "f7d3c5235454",
+   "condition": "partly-cloudy",
+   "time": "day",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "partly-cloudy/week_1/day/7.webp",
+    "partly-cloudy/week_2/day/7.webp",
+    "partly-cloudy/week_3/day/7.webp",
+    "partly-cloudy/week_4/day/7.webp"
+   ],
+   "lines": [
+    "Cloud over the mountain, potjie under the lapa. Both need another hour."
+   ]
+  },
+  {
+   "image": "partly-cloudy/week_1/dusk/1.webp",
+   "hash": "54b501779293",
+   "condition": "partly-cloudy",
+   "time": "dusk",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "partly-cloudy/week_1/dusk/1.webp",
+    "partly-cloudy/week_2/dusk/1.webp",
+    "partly-cloudy/week_3/dusk/1.webp",
+    "partly-cloudy/week_4/dusk/1.webp"
+   ],
+   "lines": [
+    "The clouds stayed late just for the colour. Monday owed everyone that much."
+   ]
+  },
+  {
+   "image": "partly-cloudy/week_1/dusk/2.webp",
+   "hash": "0f2d38d86d44",
+   "condition": "partly-cloudy",
+   "time": "dusk",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "partly-cloudy/week_1/dusk/2.webp",
+    "partly-cloudy/week_2/dusk/2.webp",
+    "partly-cloudy/week_3/dusk/2.webp",
+    "partly-cloudy/week_4/dusk/2.webp"
+   ],
+   "lines": [
+    "Clouds all afternoon, not a drop. The hose is back on duty."
+   ]
+  },
+  {
+   "image": "partly-cloudy/week_1/dusk/3.webp",
+   "hash": "55d3187335f2",
+   "condition": "partly-cloudy",
+   "time": "dusk",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "partly-cloudy/week_1/dusk/3.webp",
+    "partly-cloudy/week_2/dusk/3.webp",
+    "partly-cloudy/week_3/dusk/3.webp",
+    "partly-cloudy/week_4/dusk/3.webp"
+   ],
+   "lines": [
+    "The sky's putting on a show. The fish, as usual, are not."
+   ]
+  },
+  {
+   "image": "partly-cloudy/week_1/dusk/4.webp",
+   "hash": "b1410fa385e0",
+   "condition": "partly-cloudy",
+   "time": "dusk",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "partly-cloudy/week_1/dusk/4.webp",
+    "partly-cloudy/week_2/dusk/4.webp",
+    "partly-cloudy/week_3/dusk/4.webp",
+    "partly-cloudy/week_4/dusk/4.webp"
+   ],
+   "lines": [
+    "Clouds for the sunset, sprinklers for the vines. The farm arranges its own rain."
+   ]
+  },
+  {
+   "image": "partly-cloudy/week_1/dusk/5.webp",
+   "hash": "5ba811cb2946",
+   "condition": "partly-cloudy",
+   "time": "dusk",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "partly-cloudy/week_1/dusk/5.webp",
+    "partly-cloudy/week_2/dusk/5.webp",
+    "partly-cloudy/week_3/dusk/5.webp",
+    "partly-cloudy/week_4/dusk/5.webp"
+   ],
+   "lines": [
+    "The sun's clocked out. The clouds are still lit, and so is the balcony."
+   ]
+  },
+  {
+   "image": "partly-cloudy/week_1/dusk/6.webp",
+   "hash": "dd431148f58b",
+   "condition": "partly-cloudy",
+   "time": "dusk",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "partly-cloudy/week_1/dusk/6.webp",
+    "partly-cloudy/week_2/dusk/6.webp",
+    "partly-cloudy/week_3/dusk/6.webp",
+    "partly-cloudy/week_4/dusk/6.webp"
+   ],
+   "lines": [
+    "The clouds turned pink right on packing-up time. Nobody packed up."
+   ]
+  },
+  {
+   "image": "partly-cloudy/week_1/dusk/7.webp",
+   "hash": "6aa922bb24c8",
+   "condition": "partly-cloudy",
+   "time": "dusk",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "partly-cloudy/week_1/dusk/7.webp",
+    "partly-cloudy/week_2/dusk/7.webp",
+    "partly-cloudy/week_3/dusk/7.webp",
+    "partly-cloudy/week_4/dusk/7.webp"
+   ],
+   "lines": [
+    "The cattle are home before the colour goes. Sunday ends exactly on schedule."
+   ]
+  },
+  {
+   "image": "partly-cloudy/week_1/night/1.webp",
+   "hash": "cc8c9847fa04",
+   "condition": "partly-cloudy",
+   "time": "night",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "partly-cloudy/week_1/night/1.webp",
+    "partly-cloudy/week_2/night/1.webp",
+    "partly-cloudy/week_3/night/1.webp",
+    "partly-cloudy/week_4/night/1.webp"
+   ],
+   "lines": [
+    "The moon's on a dimmer tonight. The security light has no such setting."
+   ]
+  },
+  {
+   "image": "partly-cloudy/week_1/night/2.webp",
+   "hash": "e5455833b948",
+   "condition": "partly-cloudy",
+   "time": "night",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "partly-cloudy/week_1/night/2.webp",
+    "partly-cloudy/week_2/night/2.webp",
+    "partly-cloudy/week_3/night/2.webp",
+    "partly-cloudy/week_4/night/2.webp"
+   ],
+   "lines": [
+    "Half moon, half cloud, full bin. Tuesday night, as advertised."
+   ]
+  },
+  {
+   "image": "partly-cloudy/week_1/night/3.webp",
+   "hash": "3ed1be041201",
+   "condition": "partly-cloudy",
+   "time": "night",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "partly-cloudy/week_1/night/3.webp",
+    "partly-cloudy/week_2/night/3.webp",
+    "partly-cloudy/week_3/night/3.webp",
+    "partly-cloudy/week_4/night/3.webp"
+   ],
+   "lines": [
+    "The moon keeps popping out to check on the forecourt. Still nothing happening."
+   ]
+  },
+  {
+   "image": "partly-cloudy/week_1/night/4.webp",
+   "hash": "3908d5812ded",
+   "condition": "partly-cloudy",
+   "time": "night",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "partly-cloudy/week_1/night/4.webp",
+    "partly-cloudy/week_2/night/4.webp",
+    "partly-cloudy/week_3/night/4.webp",
+    "partly-cloudy/week_4/night/4.webp"
+   ],
+   "lines": [
+    "The clouds are passing the moon around. The balcony is happy to wait."
+   ]
+  },
+  {
+   "image": "partly-cloudy/week_1/night/5.webp",
+   "hash": "2ae8db32f086",
+   "condition": "partly-cloudy",
+   "time": "night",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "partly-cloudy/week_1/night/5.webp",
+    "partly-cloudy/week_2/night/5.webp",
+    "partly-cloudy/week_3/night/5.webp",
+    "partly-cloudy/week_4/night/5.webp"
+   ],
+   "lines": [
+    "The moon drops in between clouds. It can smell the meat from up there."
+   ]
+  },
+  {
+   "image": "partly-cloudy/week_1/night/6.webp",
+   "hash": "3bc0c957a3eb",
+   "condition": "partly-cloudy",
+   "time": "night",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "partly-cloudy/week_1/night/6.webp",
+    "partly-cloudy/week_2/night/6.webp",
+    "partly-cloudy/week_3/night/6.webp",
+    "partly-cloudy/week_4/night/6.webp"
+   ],
+   "lines": [
+    "Half the stars are behind cloud. The fairy lights are covering for them."
+   ]
+  },
+  {
+   "image": "partly-cloudy/week_1/night/7.webp",
+   "hash": "f14387acb77e",
+   "condition": "partly-cloudy",
+   "time": "night",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "partly-cloudy/week_1/night/7.webp",
+    "partly-cloudy/week_2/night/7.webp",
+    "partly-cloudy/week_3/night/7.webp",
+    "partly-cloudy/week_4/night/7.webp"
+   ],
+   "lines": [
+    "Moon behind a cloud, dog on the stoep. Sunday's service is over."
+   ]
   }
  ],
  "culled": {

@@ -3,10 +3,10 @@
  "ruledBy": "Al, curation tool (meme hero) + 2026-08-18 reshoot",
  "generated": "2026-08-18",
  "counts": {
-  "offsets": 300,
+  "offsets": 296,
   "replaced": 15,
   "reAnchored": 134,
-  "wired": 300,
+  "wired": 296,
   "pilotPairs": 61
  },
  "offsets": {
@@ -161,27 +161,12 @@
     "reason": "a face hidden at the previous anchor on 414x715"
    }
   },
-  "08134a1e356e": {
-   "verdict": "FIXABLE",
-   "bucket": "cloudy-dawn",
-   "slot": "A/mon",
-   "image": "cloudy/week_2/dawn/3.webp",
-   "anchorY": 50
-  },
   "de1df07bf268": {
    "verdict": "FIXABLE",
    "bucket": "cloudy-dawn",
    "slot": "A/tue",
    "image": "cloudy/week_1/dawn/4.webp",
    "anchorY": 14
-  },
-  "03ff71985022": {
-   "verdict": "FIXABLE",
-   "bucket": "cloudy-dawn",
-   "slot": "A/wed",
-   "image": "cloudy/week_2/dawn/6.webp",
-   "anchorY": 100,
-   "ink": "white"
   },
   "3bfd9b9470d6": {
    "verdict": "FIXABLE",
@@ -218,14 +203,6 @@
    "slot": "A/wed",
    "image": "cloudy/week_2/day/5.webp",
    "anchorY": 47
-  },
-  "5a72972b399b": {
-   "verdict": "FIXABLE",
-   "bucket": "cloudy-day",
-   "slot": "A/thu",
-   "image": "cloudy/week_4/day/6.webp",
-   "anchorY": 63,
-   "ink": "white"
   },
   "c16f8303d56e": {
    "verdict": "FIXABLE",
@@ -264,14 +241,6 @@
    "slot": "B/sun",
    "image": "cloudy/week_3/day/3.webp",
    "anchorY": 88,
-   "ink": "white"
-  },
-  "20e80f881707": {
-   "verdict": "FIXABLE",
-   "bucket": "cloudy-dusk",
-   "slot": "A/mon",
-   "image": "cloudy/week_1/dusk/2.webp",
-   "anchorY": 77,
    "ink": "white"
   },
   "3ba329d5cea3": {
@@ -1771,31 +1740,10 @@
    "anchorY": 82,
    "ink": "white"
   },
-  "4727610ce8f9": {
-   "verdict": "FIXABLE",
-   "bucket": "cloudy-day",
-   "image": "cloudy/week_4/day/4.webp",
-   "anchorY": 100,
-   "ink": "white"
-  },
-  "119e4a52f8a4": {
-   "verdict": "FIXABLE",
-   "bucket": "cloudy-day",
-   "image": "cloudy/week_1/day/1.webp",
-   "anchorY": 94,
-   "ink": "white"
-  },
   "018a0573e433": {
    "verdict": "FIXABLE",
    "bucket": "cloudy-dusk",
    "image": "cloudy/week_2/dusk/3.webp",
-   "anchorY": 100,
-   "ink": "white"
-  },
-  "0ebee4d85540": {
-   "verdict": "FIXABLE",
-   "bucket": "cloudy-dusk",
-   "image": "cloudy/week_2/dusk/6.webp",
    "anchorY": 100,
    "ink": "white"
   },
@@ -1804,13 +1752,6 @@
    "bucket": "cloudy-dusk",
    "image": "cloudy/week_2/dusk/7.webp",
    "anchorY": 100,
-   "ink": "white"
-  },
-  "6b5271665e34": {
-   "verdict": "FIXABLE",
-   "bucket": "cloudy-dusk",
-   "image": "cloudy/week_2/dusk/2.webp",
-   "anchorY": 93,
    "ink": "white"
   },
   "3e60dabd7ef7": {
@@ -2383,11 +2324,60 @@
    "image": "rain/week_1/dawn/6.webp",
    "anchorY": 28,
    "pair": "R56"
+  },
+  "8db6041b06ea": {
+   "verdict": "FACE",
+   "bucket": "breezy-dawn",
+   "image": "breezy/week_1/dawn/2.webp",
+   "anchorY": 6,
+   "faceAnchor": {
+    "on": "2026-10-08",
+    "by": "scripts/anchor-faces.mjs",
+    "reason": "a face under the number or the joke at the default on 414x715"
+   }
+  },
+  "1e5e636b6273": {
+   "verdict": "FACE",
+   "bucket": "breezy-day",
+   "image": "breezy/week_1/day/1.webp",
+   "anchorY": 26,
+   "faceAnchor": {
+    "on": "2026-10-08",
+    "by": "scripts/anchor-faces.mjs",
+    "reason": "a face under the number or the joke at the default on 414x715"
+   }
+  },
+  "90fe2cf4d92b": {
+   "verdict": "FACE",
+   "bucket": "cloudy-dawn",
+   "image": "cloudy/week_1/dawn/1.webp",
+   "anchorY": 67,
+   "faceAnchor": {
+    "on": "2026-10-08",
+    "by": "scripts/anchor-faces.mjs",
+    "reason": "a face under the number or the joke at the default on 414x715"
+   }
+  },
+  "72637f2e8156": {
+   "verdict": "FACE",
+   "bucket": "partly-cloudy-day",
+   "image": "partly-cloudy/week_1/day/2.webp",
+   "anchorY": 81,
+   "faceAnchor": {
+    "on": "2026-10-08",
+    "by": "scripts/anchor-faces.mjs",
+    "reason": "a face under the number or the joke at the default on 414x715"
+   }
   }
  },
  "faceAnchors": {
   "on": "2026-10-08",
   "moved": 16,
   "audit": "review/crop-audit-2026-10-08.md"
+ },
+ "newSets": {
+  "on": "2026-10-08",
+  "anchored": 4,
+  "from": "review/new-sets-crop-2026-10-08.json"
  }
 }

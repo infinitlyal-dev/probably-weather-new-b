@@ -6,10 +6,11 @@ import { execFileSync } from 'node:child_process';
 import { readFileSync } from 'node:fs';
 import { beforeAll, describe, expect, it } from 'vitest';
 import { heroCropFor, heroCropDesktopFor, applyHeroCropDesktop, HERO_CROP_DESKTOP_OVERRIDES } from '../assets/hero-crop.js';
+import { BG_IMAGE_SLOT_FOLDERS } from '../assets/image-picker.js';
 
 const root = new URL('..', import.meta.url);
 const anchors = JSON.parse(readFileSync(new URL('review/set-001-crop-anchors.json', root), 'utf8')).anchors;
-const FOLDERS = ['clear', 'cloudy', 'cold', 'cold-clear', 'fog', 'heat', 'rain', 'storm', 'wind'];
+const FOLDERS = BG_IMAGE_SLOT_FOLDERS;
 const TIMES = ['dawn', 'day', 'dusk', 'night'];
 let photos;
 
@@ -36,12 +37,14 @@ describe('desktop polaroid reads Al\'s ruled anchor for every photograph', () =>
     // leave the old photo in its other slots — review/photo-batch-3-plan.json)
     // 322 still after Al's last fixes (30 Sept 2026, review/last-fixes-decisions.json): the re-rolls R53 and R56 each took all
     // four slots of one old photograph, so two new photographs in, two old ones retired — review/last-fixes-plan.json
-    expect(photos.size).toBe(322);
+    // 378 since the 7 Oct sets (8 Oct 2026, scripts/ingest-new-sets.mjs): 28 partly-cloudy, 27 breezy, and the cloudy dawn-5
+    // that fills a benched slot; the other twelve new cloudy photographs each retired one.
+    expect(photos.size).toBe(378);
     let ruled = 0;
     for (const [sha1, p] of photos) {
       const want = anchors[sha1] ? anchors[sha1].anchorY : null;
       if (want !== null) ruled++;
-      expect(heroCropDesktopFor(`assets/images/bg-canonical/${p.sha256}.webp?v=20260906-grid`), `canonical ${sha1}`).toBe(want);
+      expect(heroCropDesktopFor(`assets/images/bg-canonical/${p.sha256}.webp?v=20261008-sets`), `canonical ${sha1}`).toBe(want);
       for (const rel of p.paths) expect(heroCropDesktopFor(`assets/images/bg/${rel}`), `${rel}`).toBe(want);
     }
     expect(ruled).toBeGreaterThanOrEqual(270);

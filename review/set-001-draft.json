@@ -5,7 +5,7 @@
  "complete": false,
  "filled": 322,
  "total": 504,
- "note": "Curation artifact only — not app-consumed. hash = sha1-12 of image bytes; image = canonical path under assets/images/bg/; paths = every duplicate file with those bytes. | 2026-09-06: 532 uncurated slots overwritten with copies of curated photographs from the same condition and time-of-day, so the app serves set-001 only. `paths` now includes those copies. set-002 replaces them with new curated photographs. | 2026-09-06: grid laid out on disk by scripts/layout-set-001-grid.mjs — week A = week_1+week_3, week B = week_2+week_4, day = slot index (Mon=1..Sun=7); an empty grid position takes the same-day photograph from the other week. `image` and `paths` name the slots holding each photograph; `previousImage` is the pre-layout canonical path. | 2026-09-06 (pm): wind pair 9bada961b0a7 -> tue and 330bfae094d5 -> wed (Al's swap ruling). | 2026-09-06: grid laid out on disk by scripts/layout-set-001-grid.mjs — week A = week_1+week_3, week B = week_2+week_4, day = slot index (Mon=1..Sun=7); an empty grid position takes the same-day photograph from the other week. `image` and `paths` name the slots holding each photograph; `previousImage` is the pre-layout canonical path. | 2026-09-16: rain/week_2/day/3.webp rerolled — 3bd49d0acf2b (Subaru badge, Australian-looking plate and streetscape) replaced by fec85aba3f48, GPT Image 2 via Higgsfield, Al chose candidate 2 of 3. Both slot copies (week_2 and week_4) rewritten; the bespoke lines were re-keyed to the new hash. | 2026-09-23: 6 photographs moved by Al's rulings (review/cold-move-ruled.json, review/bucket-check-ruled.json) — each takes weeks 2+4 of its own weekday in the new bucket, the photograph there keeps weeks 1+3; `movedFrom` names the slots it left, which are benched (review/benched-photos.json) and still hold its bytes on disk.",
+ "note": "Curation artifact only — not app-consumed. hash = sha1-12 of image bytes; image = canonical path under assets/images/bg/; paths = every duplicate file with those bytes. | 2026-09-06: 532 uncurated slots overwritten with copies of curated photographs from the same condition and time-of-day, so the app serves set-001 only. `paths` now includes those copies. set-002 replaces them with new curated photographs. | 2026-09-06: grid laid out on disk by scripts/layout-set-001-grid.mjs — week A = week_1+week_3, week B = week_2+week_4, day = slot index (Mon=1..Sun=7); an empty grid position takes the same-day photograph from the other week. `image` and `paths` name the slots holding each photograph; `previousImage` is the pre-layout canonical path. | 2026-09-06 (pm): wind pair 9bada961b0a7 -> tue and 330bfae094d5 -> wed (Al's swap ruling). | 2026-09-06: grid laid out on disk by scripts/layout-set-001-grid.mjs — week A = week_1+week_3, week B = week_2+week_4, day = slot index (Mon=1..Sun=7); an empty grid position takes the same-day photograph from the other week. `image` and `paths` name the slots holding each photograph; `previousImage` is the pre-layout canonical path. | 2026-09-16: rain/week_2/day/3.webp rerolled — 3bd49d0acf2b (Subaru badge, Australian-looking plate and streetscape) replaced by fec85aba3f48, GPT Image 2 via Higgsfield, Al chose candidate 2 of 3. Both slot copies (week_2 and week_4) rewritten; the bespoke lines were re-keyed to the new hash. | 2026-09-23: 6 photographs moved by Al's rulings (review/cold-move-ruled.json, review/bucket-check-ruled.json) — each takes weeks 2+4 of its own weekday in the new bucket, the photograph there keeps weeks 1+3; `movedFrom` names the slots it left, which are benched (review/benched-photos.json) and still hold its bytes on disk. | 2026-10-07: new sets ingested by scripts/ingest-new-sets.mjs (review/image-brief-2026-10-07.md) — 55 new partly-cloudy/breezy photographs at week A, 12 cloudy photographs replaced by hash (replacedHash keeps the retired one).",
  "assignments": [
   {
    "condition": "clear",
@@ -386,7 +386,7 @@
    "time": "dawn",
    "week": "A",
    "day": "mon",
-   "hash": "08134a1e356e",
+   "hash": "90fe2cf4d92b",
    "image": "cloudy/week_1/dawn/1.webp",
    "paths": [
     "cloudy/week_1/dawn/1.webp",
@@ -394,7 +394,9 @@
     "cloudy/week_3/dawn/1.webp",
     "cloudy/week_4/dawn/1.webp"
    ],
-   "previousImage": "cloudy/week_2/dawn/3.webp"
+   "previousImage": "cloudy/week_2/dawn/3.webp",
+   "replacedHash": "08134a1e356e",
+   "source": "review/new-sets-2026-10-07/cloudy/dawn-1.png"
   },
   {
    "condition": "cloudy",
@@ -416,7 +418,7 @@
    "time": "dawn",
    "week": "A",
    "day": "wed",
-   "hash": "03ff71985022",
+   "hash": "7607b502a13f",
    "image": "cloudy/week_1/dawn/3.webp",
    "paths": [
     "cloudy/week_1/dawn/3.webp",
@@ -424,14 +426,16 @@
     "cloudy/week_3/dawn/3.webp",
     "cloudy/week_4/dawn/3.webp"
    ],
-   "previousImage": "cloudy/week_2/dawn/6.webp"
+   "previousImage": "cloudy/week_2/dawn/6.webp",
+   "replacedHash": "03ff71985022",
+   "source": "review/new-sets-2026-10-07/cloudy/dawn-3.png"
   },
   {
    "condition": "cloudy",
    "time": "dawn",
    "week": "A",
    "day": "thu",
-   "hash": "4845b881f911",
+   "hash": "fced9eb66ab6",
    "image": "cloudy/week_1/dawn/4.webp",
    "paths": [
     "cloudy/week_1/dawn/4.webp",
@@ -439,7 +443,9 @@
     "cloudy/week_3/dawn/4.webp",
     "cloudy/week_4/dawn/4.webp"
    ],
-   "previousImage": "cloudy/week_2/dawn/7.webp"
+   "previousImage": "cloudy/week_2/dawn/7.webp",
+   "replacedHash": "4845b881f911",
+   "source": "review/new-sets-2026-10-07/cloudy/dawn-4.png"
   },
   {
    "condition": "cold",
@@ -496,26 +502,30 @@
    "time": "day",
    "week": "A",
    "day": "mon",
-   "hash": "d16ca804a592",
+   "hash": "bae38570c296",
    "image": "cloudy/week_1/day/1.webp",
    "paths": [
     "cloudy/week_1/day/1.webp",
     "cloudy/week_3/day/1.webp"
    ],
-   "previousImage": "cloudy/week_1/day/3.webp"
+   "previousImage": "cloudy/week_1/day/3.webp",
+   "replacedHash": "d16ca804a592",
+   "source": "review/new-sets-2026-10-07/cloudy/day-1.png"
   },
   {
    "condition": "cloudy",
    "time": "day",
    "week": "A",
    "day": "tue",
-   "hash": "4727610ce8f9",
+   "hash": "fea9501b8608",
    "image": "cloudy/week_1/day/2.webp",
    "paths": [
     "cloudy/week_1/day/2.webp",
     "cloudy/week_3/day/2.webp"
    ],
-   "previousImage": "cloudy/week_4/day/4.webp"
+   "previousImage": "cloudy/week_4/day/4.webp",
+   "replacedHash": "4727610ce8f9",
+   "source": "review/new-sets-2026-10-07/cloudy/day-2.png"
   },
   {
    "condition": "cloudy",
@@ -535,26 +545,30 @@
    "time": "day",
    "week": "A",
    "day": "thu",
-   "hash": "5a72972b399b",
+   "hash": "52fa9e2e3b6b",
    "image": "cloudy/week_1/day/4.webp",
    "paths": [
     "cloudy/week_1/day/4.webp",
     "cloudy/week_3/day/4.webp"
    ],
-   "previousImage": "cloudy/week_4/day/6.webp"
+   "previousImage": "cloudy/week_4/day/6.webp",
+   "replacedHash": "5a72972b399b",
+   "source": "review/new-sets-2026-10-07/cloudy/day-4.png"
   },
   {
    "condition": "cloudy",
    "time": "day",
    "week": "A",
    "day": "fri",
-   "hash": "dc71e7a692da",
+   "hash": "fe8f7c00561c",
    "image": "cloudy/week_1/day/5.webp",
    "paths": [
     "cloudy/week_1/day/5.webp",
     "cloudy/week_3/day/5.webp"
    ],
-   "previousImage": "cloudy/week_2/day/6.webp"
+   "previousImage": "cloudy/week_2/day/6.webp",
+   "replacedHash": "dc71e7a692da",
+   "source": "review/new-sets-2026-10-07/cloudy/day-5.png"
   },
   {
    "condition": "cloudy",
@@ -613,13 +627,15 @@
    "time": "day",
    "week": "B",
    "day": "wed",
-   "hash": "119e4a52f8a4",
+   "hash": "c1ce48322447",
    "image": "cloudy/week_2/day/3.webp",
    "paths": [
     "cloudy/week_2/day/3.webp",
     "cloudy/week_4/day/3.webp"
    ],
-   "previousImage": "cloudy/week_1/day/1.webp"
+   "previousImage": "cloudy/week_1/day/1.webp",
+   "replacedHash": "119e4a52f8a4",
+   "source": "review/new-sets-2026-10-07/cloudy/day-3-weekB.png"
   },
   {
    "condition": "cloudy",
@@ -677,7 +693,7 @@
    "time": "dusk",
    "week": "A",
    "day": "mon",
-   "hash": "20e80f881707",
+   "hash": "2854d864e0bd",
    "image": "cloudy/week_1/dusk/1.webp",
    "paths": [
     "cloudy/week_1/dusk/1.webp",
@@ -685,7 +701,9 @@
     "cloudy/week_3/dusk/1.webp",
     "cloudy/week_4/dusk/1.webp"
    ],
-   "previousImage": "cloudy/week_1/dusk/2.webp"
+   "previousImage": "cloudy/week_1/dusk/2.webp",
+   "replacedHash": "20e80f881707",
+   "source": "review/new-sets-2026-10-07/cloudy/dusk-1.png"
   },
   {
    "condition": "cold",
@@ -713,7 +731,7 @@
    "time": "dusk",
    "week": "A",
    "day": "wed",
-   "hash": "444490756b06",
+   "hash": "32f69c5844fd",
    "image": "cloudy/week_1/dusk/3.webp",
    "paths": [
     "cloudy/week_1/dusk/3.webp",
@@ -721,14 +739,16 @@
     "cloudy/week_3/dusk/3.webp",
     "cloudy/week_4/dusk/3.webp"
    ],
-   "previousImage": "cloudy/week_2/dusk/5.webp"
+   "previousImage": "cloudy/week_2/dusk/5.webp",
+   "replacedHash": "444490756b06",
+   "source": "review/new-sets-2026-10-07/cloudy/dusk-3.png"
   },
   {
    "condition": "cloudy",
    "time": "dusk",
    "week": "A",
    "day": "thu",
-   "hash": "0ebee4d85540",
+   "hash": "757e7d6ae192",
    "image": "cloudy/week_1/dusk/4.webp",
    "paths": [
     "cloudy/week_1/dusk/4.webp",
@@ -736,7 +756,9 @@
     "cloudy/week_3/dusk/4.webp",
     "cloudy/week_4/dusk/4.webp"
    ],
-   "previousImage": "cloudy/week_2/dusk/6.webp"
+   "previousImage": "cloudy/week_2/dusk/6.webp",
+   "replacedHash": "0ebee4d85540",
+   "source": "review/new-sets-2026-10-07/cloudy/dusk-4.png"
   },
   {
    "condition": "cloudy",
@@ -773,7 +795,7 @@
    "time": "dusk",
    "week": "A",
    "day": "sun",
-   "hash": "6b5271665e34",
+   "hash": "74df807311b7",
    "image": "cloudy/week_1/dusk/7.webp",
    "paths": [
     "cloudy/week_1/dusk/7.webp",
@@ -781,7 +803,9 @@
     "cloudy/week_3/dusk/7.webp",
     "cloudy/week_4/dusk/7.webp"
    ],
-   "previousImage": "cloudy/week_2/dusk/2.webp"
+   "previousImage": "cloudy/week_2/dusk/2.webp",
+   "replacedHash": "6b5271665e34",
+   "source": "review/new-sets-2026-10-07/cloudy/dusk-7.png"
   },
   {
    "condition": "cloudy",
@@ -4565,6 +4589,850 @@
     "rain/week_4/dawn/6.webp"
    ],
    "pair": "R56"
+  },
+  {
+   "condition": "breezy",
+   "time": "dawn",
+   "week": "A",
+   "day": "mon",
+   "hash": "35db8dc9bed7",
+   "image": "breezy/week_1/dawn/1.webp",
+   "paths": [
+    "breezy/week_1/dawn/1.webp",
+    "breezy/week_2/dawn/1.webp",
+    "breezy/week_3/dawn/1.webp",
+    "breezy/week_4/dawn/1.webp"
+   ],
+   "source": "review/new-sets-2026-10-07/breezy/dawn-1.png"
+  },
+  {
+   "condition": "breezy",
+   "time": "dawn",
+   "week": "A",
+   "day": "tue",
+   "hash": "8db6041b06ea",
+   "image": "breezy/week_1/dawn/2.webp",
+   "paths": [
+    "breezy/week_1/dawn/2.webp",
+    "breezy/week_2/dawn/2.webp",
+    "breezy/week_3/dawn/2.webp",
+    "breezy/week_4/dawn/2.webp"
+   ],
+   "source": "review/new-sets-2026-10-07/breezy/dawn-2.png"
+  },
+  {
+   "condition": "breezy",
+   "time": "dawn",
+   "week": "A",
+   "day": "wed",
+   "hash": "8d960369fd27",
+   "image": "breezy/week_1/dawn/3.webp",
+   "paths": [
+    "breezy/week_1/dawn/3.webp",
+    "breezy/week_2/dawn/3.webp",
+    "breezy/week_3/dawn/3.webp",
+    "breezy/week_4/dawn/3.webp"
+   ],
+   "source": "review/new-sets-2026-10-07/breezy/dawn-3.png"
+  },
+  {
+   "condition": "breezy",
+   "time": "dawn",
+   "week": "A",
+   "day": "thu",
+   "hash": "25beac6c1c50",
+   "image": "breezy/week_1/dawn/4.webp",
+   "paths": [
+    "breezy/week_1/dawn/4.webp",
+    "breezy/week_2/dawn/4.webp",
+    "breezy/week_3/dawn/4.webp",
+    "breezy/week_4/dawn/4.webp"
+   ],
+   "source": "review/new-sets-2026-10-07/breezy/dawn-4.png"
+  },
+  {
+   "condition": "breezy",
+   "time": "dawn",
+   "week": "A",
+   "day": "fri",
+   "hash": "052cd437e1af",
+   "image": "breezy/week_1/dawn/5.webp",
+   "paths": [
+    "breezy/week_1/dawn/5.webp",
+    "breezy/week_2/dawn/5.webp",
+    "breezy/week_3/dawn/5.webp",
+    "breezy/week_4/dawn/5.webp"
+   ],
+   "source": "review/new-sets-2026-10-07/breezy/dawn-5.png"
+  },
+  {
+   "condition": "breezy",
+   "time": "dawn",
+   "week": "A",
+   "day": "sat",
+   "hash": "2071c8a37d11",
+   "image": "breezy/week_1/dawn/6.webp",
+   "paths": [
+    "breezy/week_1/dawn/6.webp",
+    "breezy/week_2/dawn/6.webp",
+    "breezy/week_3/dawn/6.webp",
+    "breezy/week_4/dawn/6.webp"
+   ],
+   "source": "review/new-sets-2026-10-07/breezy/dawn-6.png"
+  },
+  {
+   "condition": "breezy",
+   "time": "dawn",
+   "week": "A",
+   "day": "sun",
+   "hash": "1d8c84ac2fde",
+   "image": "breezy/week_1/dawn/7.webp",
+   "paths": [
+    "breezy/week_1/dawn/7.webp",
+    "breezy/week_2/dawn/7.webp",
+    "breezy/week_3/dawn/7.webp",
+    "breezy/week_4/dawn/7.webp"
+   ],
+   "source": "review/new-sets-2026-10-07/breezy/dawn-7.png"
+  },
+  {
+   "condition": "breezy",
+   "time": "day",
+   "week": "A",
+   "day": "mon",
+   "hash": "1e5e636b6273",
+   "image": "breezy/week_1/day/1.webp",
+   "paths": [
+    "breezy/week_1/day/1.webp",
+    "breezy/week_2/day/1.webp",
+    "breezy/week_3/day/1.webp",
+    "breezy/week_4/day/1.webp"
+   ],
+   "source": "review/new-sets-2026-10-07/breezy/day-1.png"
+  },
+  {
+   "condition": "breezy",
+   "time": "day",
+   "week": "A",
+   "day": "tue",
+   "hash": "7d42afbbd427",
+   "image": "breezy/week_1/day/2.webp",
+   "paths": [
+    "breezy/week_1/day/2.webp",
+    "breezy/week_2/day/2.webp",
+    "breezy/week_3/day/2.webp",
+    "breezy/week_4/day/2.webp"
+   ],
+   "source": "review/new-sets-2026-10-07/breezy/day-2.png"
+  },
+  {
+   "condition": "breezy",
+   "time": "day",
+   "week": "A",
+   "day": "wed",
+   "hash": "e751a9e376bf",
+   "image": "breezy/week_1/day/3.webp",
+   "paths": [
+    "breezy/week_1/day/3.webp",
+    "breezy/week_2/day/3.webp",
+    "breezy/week_3/day/3.webp",
+    "breezy/week_4/day/3.webp"
+   ],
+   "source": "review/new-sets-2026-10-07/breezy/day-3.png"
+  },
+  {
+   "condition": "breezy",
+   "time": "day",
+   "week": "A",
+   "day": "thu",
+   "hash": "2ee611032a66",
+   "image": "breezy/week_1/day/4.webp",
+   "paths": [
+    "breezy/week_1/day/4.webp",
+    "breezy/week_2/day/4.webp",
+    "breezy/week_3/day/4.webp",
+    "breezy/week_4/day/4.webp"
+   ],
+   "source": "review/new-sets-2026-10-07/breezy/day-4.png"
+  },
+  {
+   "condition": "breezy",
+   "time": "day",
+   "week": "A",
+   "day": "fri",
+   "hash": "12463d59eca0",
+   "image": "breezy/week_1/day/5.webp",
+   "paths": [
+    "breezy/week_1/day/5.webp",
+    "breezy/week_2/day/5.webp",
+    "breezy/week_3/day/5.webp",
+    "breezy/week_4/day/5.webp"
+   ],
+   "source": "review/new-sets-2026-10-07/breezy/day-5.png"
+  },
+  {
+   "condition": "breezy",
+   "time": "day",
+   "week": "A",
+   "day": "sat",
+   "hash": "6c0c0fcbfc50",
+   "image": "breezy/week_1/day/6.webp",
+   "paths": [
+    "breezy/week_1/day/6.webp",
+    "breezy/week_2/day/6.webp",
+    "breezy/week_3/day/6.webp",
+    "breezy/week_4/day/6.webp"
+   ],
+   "source": "review/new-sets-2026-10-07/breezy/day-6.png"
+  },
+  {
+   "condition": "breezy",
+   "time": "day",
+   "week": "A",
+   "day": "sun",
+   "hash": "1d6a21cfb9e4",
+   "image": "breezy/week_1/day/7.webp",
+   "paths": [
+    "breezy/week_1/day/7.webp",
+    "breezy/week_2/day/7.webp",
+    "breezy/week_3/day/7.webp",
+    "breezy/week_4/day/7.webp"
+   ],
+   "source": "review/new-sets-2026-10-07/breezy/day-7.png"
+  },
+  {
+   "condition": "breezy",
+   "time": "dusk",
+   "week": "A",
+   "day": "mon",
+   "hash": "65940314e696",
+   "image": "breezy/week_1/dusk/1.webp",
+   "paths": [
+    "breezy/week_1/dusk/1.webp",
+    "breezy/week_2/dusk/1.webp",
+    "breezy/week_3/dusk/1.webp",
+    "breezy/week_4/dusk/1.webp"
+   ],
+   "source": "review/new-sets-2026-10-07/breezy/dusk-1.png"
+  },
+  {
+   "condition": "breezy",
+   "time": "dusk",
+   "week": "A",
+   "day": "tue",
+   "hash": "2b898e3bf961",
+   "image": "breezy/week_1/dusk/2.webp",
+   "paths": [
+    "breezy/week_1/dusk/2.webp",
+    "breezy/week_2/dusk/2.webp",
+    "breezy/week_3/dusk/2.webp",
+    "breezy/week_4/dusk/2.webp",
+    "breezy/week_1/dusk/5.webp",
+    "breezy/week_2/dusk/5.webp",
+    "breezy/week_3/dusk/5.webp",
+    "breezy/week_4/dusk/5.webp"
+   ],
+   "source": "review/new-sets-2026-10-07/breezy/dusk-2.png"
+  },
+  {
+   "condition": "breezy",
+   "time": "dusk",
+   "week": "A",
+   "day": "wed",
+   "hash": "dd3ddc3ad613",
+   "image": "breezy/week_1/dusk/3.webp",
+   "paths": [
+    "breezy/week_1/dusk/3.webp",
+    "breezy/week_2/dusk/3.webp",
+    "breezy/week_3/dusk/3.webp",
+    "breezy/week_4/dusk/3.webp"
+   ],
+   "source": "review/new-sets-2026-10-07/breezy/dusk-3.png"
+  },
+  {
+   "condition": "breezy",
+   "time": "dusk",
+   "week": "A",
+   "day": "thu",
+   "hash": "6cbf0aa77a83",
+   "image": "breezy/week_1/dusk/4.webp",
+   "paths": [
+    "breezy/week_1/dusk/4.webp",
+    "breezy/week_2/dusk/4.webp",
+    "breezy/week_3/dusk/4.webp",
+    "breezy/week_4/dusk/4.webp"
+   ],
+   "source": "review/new-sets-2026-10-07/breezy/dusk-4.png"
+  },
+  {
+   "condition": "breezy",
+   "time": "dusk",
+   "week": "A",
+   "day": "sat",
+   "hash": "148cfc7f68b6",
+   "image": "breezy/week_1/dusk/6.webp",
+   "paths": [
+    "breezy/week_1/dusk/6.webp",
+    "breezy/week_2/dusk/6.webp",
+    "breezy/week_3/dusk/6.webp",
+    "breezy/week_4/dusk/6.webp"
+   ],
+   "source": "review/new-sets-2026-10-07/breezy/dusk-6.png"
+  },
+  {
+   "condition": "breezy",
+   "time": "dusk",
+   "week": "A",
+   "day": "sun",
+   "hash": "9f33503bb2be",
+   "image": "breezy/week_1/dusk/7.webp",
+   "paths": [
+    "breezy/week_1/dusk/7.webp",
+    "breezy/week_2/dusk/7.webp",
+    "breezy/week_3/dusk/7.webp",
+    "breezy/week_4/dusk/7.webp"
+   ],
+   "source": "review/new-sets-2026-10-07/breezy/dusk-7.png"
+  },
+  {
+   "condition": "breezy",
+   "time": "night",
+   "week": "A",
+   "day": "mon",
+   "hash": "5649361ed22c",
+   "image": "breezy/week_1/night/1.webp",
+   "paths": [
+    "breezy/week_1/night/1.webp",
+    "breezy/week_2/night/1.webp",
+    "breezy/week_3/night/1.webp",
+    "breezy/week_4/night/1.webp"
+   ],
+   "source": "review/new-sets-2026-10-07/breezy/night-1.png"
+  },
+  {
+   "condition": "breezy",
+   "time": "night",
+   "week": "A",
+   "day": "tue",
+   "hash": "15326afa073e",
+   "image": "breezy/week_1/night/2.webp",
+   "paths": [
+    "breezy/week_1/night/2.webp",
+    "breezy/week_2/night/2.webp",
+    "breezy/week_3/night/2.webp",
+    "breezy/week_4/night/2.webp"
+   ],
+   "source": "review/new-sets-2026-10-07/breezy/night-2.png"
+  },
+  {
+   "condition": "breezy",
+   "time": "night",
+   "week": "A",
+   "day": "wed",
+   "hash": "e13550eec88a",
+   "image": "breezy/week_1/night/3.webp",
+   "paths": [
+    "breezy/week_1/night/3.webp",
+    "breezy/week_2/night/3.webp",
+    "breezy/week_3/night/3.webp",
+    "breezy/week_4/night/3.webp"
+   ],
+   "source": "review/new-sets-2026-10-07/breezy/night-3.png"
+  },
+  {
+   "condition": "breezy",
+   "time": "night",
+   "week": "A",
+   "day": "thu",
+   "hash": "693625baa70e",
+   "image": "breezy/week_1/night/4.webp",
+   "paths": [
+    "breezy/week_1/night/4.webp",
+    "breezy/week_2/night/4.webp",
+    "breezy/week_3/night/4.webp",
+    "breezy/week_4/night/4.webp"
+   ],
+   "source": "review/new-sets-2026-10-07/breezy/night-4.png"
+  },
+  {
+   "condition": "breezy",
+   "time": "night",
+   "week": "A",
+   "day": "fri",
+   "hash": "2ea929cc10b0",
+   "image": "breezy/week_1/night/5.webp",
+   "paths": [
+    "breezy/week_1/night/5.webp",
+    "breezy/week_2/night/5.webp",
+    "breezy/week_3/night/5.webp",
+    "breezy/week_4/night/5.webp"
+   ],
+   "source": "review/new-sets-2026-10-07/breezy/night-5.png"
+  },
+  {
+   "condition": "breezy",
+   "time": "night",
+   "week": "A",
+   "day": "sat",
+   "hash": "ac9855f2fec7",
+   "image": "breezy/week_1/night/6.webp",
+   "paths": [
+    "breezy/week_1/night/6.webp",
+    "breezy/week_2/night/6.webp",
+    "breezy/week_3/night/6.webp",
+    "breezy/week_4/night/6.webp"
+   ],
+   "source": "review/new-sets-2026-10-07/breezy/night-6.png"
+  },
+  {
+   "condition": "breezy",
+   "time": "night",
+   "week": "A",
+   "day": "sun",
+   "hash": "b8e6f92e8e84",
+   "image": "breezy/week_1/night/7.webp",
+   "paths": [
+    "breezy/week_1/night/7.webp",
+    "breezy/week_2/night/7.webp",
+    "breezy/week_3/night/7.webp",
+    "breezy/week_4/night/7.webp"
+   ],
+   "source": "review/new-sets-2026-10-07/breezy/night-7.png"
+  },
+  {
+   "condition": "cloudy",
+   "time": "dawn",
+   "week": "A",
+   "day": "fri",
+   "hash": "d28a5c534bda",
+   "image": "cloudy/week_1/dawn/5.webp",
+   "paths": [
+    "cloudy/week_1/dawn/5.webp",
+    "cloudy/week_2/dawn/5.webp",
+    "cloudy/week_3/dawn/5.webp",
+    "cloudy/week_4/dawn/5.webp"
+   ],
+   "source": "review/new-sets-2026-10-07/cloudy/dawn-5.png"
+  },
+  {
+   "condition": "partly-cloudy",
+   "time": "dawn",
+   "week": "A",
+   "day": "mon",
+   "hash": "340ad671125a",
+   "image": "partly-cloudy/week_1/dawn/1.webp",
+   "paths": [
+    "partly-cloudy/week_1/dawn/1.webp",
+    "partly-cloudy/week_2/dawn/1.webp",
+    "partly-cloudy/week_3/dawn/1.webp",
+    "partly-cloudy/week_4/dawn/1.webp"
+   ],
+   "source": "review/new-sets-2026-10-07/partly-cloudy/dawn-1.png"
+  },
+  {
+   "condition": "partly-cloudy",
+   "time": "dawn",
+   "week": "A",
+   "day": "tue",
+   "hash": "bcf2e3521f6a",
+   "image": "partly-cloudy/week_1/dawn/2.webp",
+   "paths": [
+    "partly-cloudy/week_1/dawn/2.webp",
+    "partly-cloudy/week_2/dawn/2.webp",
+    "partly-cloudy/week_3/dawn/2.webp",
+    "partly-cloudy/week_4/dawn/2.webp"
+   ],
+   "source": "review/new-sets-2026-10-07/partly-cloudy/dawn-2.png"
+  },
+  {
+   "condition": "partly-cloudy",
+   "time": "dawn",
+   "week": "A",
+   "day": "wed",
+   "hash": "8e7b11775e04",
+   "image": "partly-cloudy/week_1/dawn/3.webp",
+   "paths": [
+    "partly-cloudy/week_1/dawn/3.webp",
+    "partly-cloudy/week_2/dawn/3.webp",
+    "partly-cloudy/week_3/dawn/3.webp",
+    "partly-cloudy/week_4/dawn/3.webp"
+   ],
+   "source": "review/new-sets-2026-10-07/partly-cloudy/dawn-3.png"
+  },
+  {
+   "condition": "partly-cloudy",
+   "time": "dawn",
+   "week": "A",
+   "day": "thu",
+   "hash": "0423b0d11d29",
+   "image": "partly-cloudy/week_1/dawn/4.webp",
+   "paths": [
+    "partly-cloudy/week_1/dawn/4.webp",
+    "partly-cloudy/week_2/dawn/4.webp",
+    "partly-cloudy/week_3/dawn/4.webp",
+    "partly-cloudy/week_4/dawn/4.webp"
+   ],
+   "source": "review/new-sets-2026-10-07/partly-cloudy/dawn-4.png"
+  },
+  {
+   "condition": "partly-cloudy",
+   "time": "dawn",
+   "week": "A",
+   "day": "fri",
+   "hash": "967a77a46dcc",
+   "image": "partly-cloudy/week_1/dawn/5.webp",
+   "paths": [
+    "partly-cloudy/week_1/dawn/5.webp",
+    "partly-cloudy/week_2/dawn/5.webp",
+    "partly-cloudy/week_3/dawn/5.webp",
+    "partly-cloudy/week_4/dawn/5.webp"
+   ],
+   "source": "review/new-sets-2026-10-07/partly-cloudy/dawn-5.png"
+  },
+  {
+   "condition": "partly-cloudy",
+   "time": "dawn",
+   "week": "A",
+   "day": "sat",
+   "hash": "a8dc12a0d491",
+   "image": "partly-cloudy/week_1/dawn/6.webp",
+   "paths": [
+    "partly-cloudy/week_1/dawn/6.webp",
+    "partly-cloudy/week_2/dawn/6.webp",
+    "partly-cloudy/week_3/dawn/6.webp",
+    "partly-cloudy/week_4/dawn/6.webp"
+   ],
+   "source": "review/new-sets-2026-10-07/partly-cloudy/dawn-6.png"
+  },
+  {
+   "condition": "partly-cloudy",
+   "time": "dawn",
+   "week": "A",
+   "day": "sun",
+   "hash": "d20cb10e620f",
+   "image": "partly-cloudy/week_1/dawn/7.webp",
+   "paths": [
+    "partly-cloudy/week_1/dawn/7.webp",
+    "partly-cloudy/week_2/dawn/7.webp",
+    "partly-cloudy/week_3/dawn/7.webp",
+    "partly-cloudy/week_4/dawn/7.webp"
+   ],
+   "source": "review/new-sets-2026-10-07/partly-cloudy/dawn-7.png"
+  },
+  {
+   "condition": "partly-cloudy",
+   "time": "day",
+   "week": "A",
+   "day": "mon",
+   "hash": "763ab069ce5f",
+   "image": "partly-cloudy/week_1/day/1.webp",
+   "paths": [
+    "partly-cloudy/week_1/day/1.webp",
+    "partly-cloudy/week_2/day/1.webp",
+    "partly-cloudy/week_3/day/1.webp",
+    "partly-cloudy/week_4/day/1.webp"
+   ],
+   "source": "review/new-sets-2026-10-07/partly-cloudy/day-1.png"
+  },
+  {
+   "condition": "partly-cloudy",
+   "time": "day",
+   "week": "A",
+   "day": "tue",
+   "hash": "72637f2e8156",
+   "image": "partly-cloudy/week_1/day/2.webp",
+   "paths": [
+    "partly-cloudy/week_1/day/2.webp",
+    "partly-cloudy/week_2/day/2.webp",
+    "partly-cloudy/week_3/day/2.webp",
+    "partly-cloudy/week_4/day/2.webp"
+   ],
+   "source": "review/new-sets-2026-10-07/partly-cloudy/day-2.png"
+  },
+  {
+   "condition": "partly-cloudy",
+   "time": "day",
+   "week": "A",
+   "day": "wed",
+   "hash": "82d7022c8ba8",
+   "image": "partly-cloudy/week_1/day/3.webp",
+   "paths": [
+    "partly-cloudy/week_1/day/3.webp",
+    "partly-cloudy/week_2/day/3.webp",
+    "partly-cloudy/week_3/day/3.webp",
+    "partly-cloudy/week_4/day/3.webp"
+   ],
+   "source": "review/new-sets-2026-10-07/partly-cloudy/day-3.png"
+  },
+  {
+   "condition": "partly-cloudy",
+   "time": "day",
+   "week": "A",
+   "day": "thu",
+   "hash": "cbb3c781bd07",
+   "image": "partly-cloudy/week_1/day/4.webp",
+   "paths": [
+    "partly-cloudy/week_1/day/4.webp",
+    "partly-cloudy/week_2/day/4.webp",
+    "partly-cloudy/week_3/day/4.webp",
+    "partly-cloudy/week_4/day/4.webp"
+   ],
+   "source": "review/new-sets-2026-10-07/partly-cloudy/day-4.png"
+  },
+  {
+   "condition": "partly-cloudy",
+   "time": "day",
+   "week": "A",
+   "day": "fri",
+   "hash": "80745efed5f3",
+   "image": "partly-cloudy/week_1/day/5.webp",
+   "paths": [
+    "partly-cloudy/week_1/day/5.webp",
+    "partly-cloudy/week_2/day/5.webp",
+    "partly-cloudy/week_3/day/5.webp",
+    "partly-cloudy/week_4/day/5.webp"
+   ],
+   "source": "review/new-sets-2026-10-07/partly-cloudy/day-5.png"
+  },
+  {
+   "condition": "partly-cloudy",
+   "time": "day",
+   "week": "A",
+   "day": "sat",
+   "hash": "2c1a57fdd503",
+   "image": "partly-cloudy/week_1/day/6.webp",
+   "paths": [
+    "partly-cloudy/week_1/day/6.webp",
+    "partly-cloudy/week_2/day/6.webp",
+    "partly-cloudy/week_3/day/6.webp",
+    "partly-cloudy/week_4/day/6.webp"
+   ],
+   "source": "review/new-sets-2026-10-07/partly-cloudy/day-6.png"
+  },
+  {
+   "condition": "partly-cloudy",
+   "time": "day",
+   "week": "A",
+   "day": "sun",
+   "hash": "f7d3c5235454",
+   "image": "partly-cloudy/week_1/day/7.webp",
+   "paths": [
+    "partly-cloudy/week_1/day/7.webp",
+    "partly-cloudy/week_2/day/7.webp",
+    "partly-cloudy/week_3/day/7.webp",
+    "partly-cloudy/week_4/day/7.webp"
+   ],
+   "source": "review/new-sets-2026-10-07/partly-cloudy/day-7.png"
+  },
+  {
+   "condition": "partly-cloudy",
+   "time": "dusk",
+   "week": "A",
+   "day": "mon",
+   "hash": "54b501779293",
+   "image": "partly-cloudy/week_1/dusk/1.webp",
+   "paths": [
+    "partly-cloudy/week_1/dusk/1.webp",
+    "partly-cloudy/week_2/dusk/1.webp",
+    "partly-cloudy/week_3/dusk/1.webp",
+    "partly-cloudy/week_4/dusk/1.webp"
+   ],
+   "source": "review/new-sets-2026-10-07/partly-cloudy/dusk-1.png"
+  },
+  {
+   "condition": "partly-cloudy",
+   "time": "dusk",
+   "week": "A",
+   "day": "tue",
+   "hash": "0f2d38d86d44",
+   "image": "partly-cloudy/week_1/dusk/2.webp",
+   "paths": [
+    "partly-cloudy/week_1/dusk/2.webp",
+    "partly-cloudy/week_2/dusk/2.webp",
+    "partly-cloudy/week_3/dusk/2.webp",
+    "partly-cloudy/week_4/dusk/2.webp"
+   ],
+   "source": "review/new-sets-2026-10-07/partly-cloudy/dusk-2.png"
+  },
+  {
+   "condition": "partly-cloudy",
+   "time": "dusk",
+   "week": "A",
+   "day": "wed",
+   "hash": "55d3187335f2",
+   "image": "partly-cloudy/week_1/dusk/3.webp",
+   "paths": [
+    "partly-cloudy/week_1/dusk/3.webp",
+    "partly-cloudy/week_2/dusk/3.webp",
+    "partly-cloudy/week_3/dusk/3.webp",
+    "partly-cloudy/week_4/dusk/3.webp"
+   ],
+   "source": "review/new-sets-2026-10-07/partly-cloudy/dusk-3.png"
+  },
+  {
+   "condition": "partly-cloudy",
+   "time": "dusk",
+   "week": "A",
+   "day": "thu",
+   "hash": "b1410fa385e0",
+   "image": "partly-cloudy/week_1/dusk/4.webp",
+   "paths": [
+    "partly-cloudy/week_1/dusk/4.webp",
+    "partly-cloudy/week_2/dusk/4.webp",
+    "partly-cloudy/week_3/dusk/4.webp",
+    "partly-cloudy/week_4/dusk/4.webp"
+   ],
+   "source": "review/new-sets-2026-10-07/partly-cloudy/dusk-4.png"
+  },
+  {
+   "condition": "partly-cloudy",
+   "time": "dusk",
+   "week": "A",
+   "day": "fri",
+   "hash": "5ba811cb2946",
+   "image": "partly-cloudy/week_1/dusk/5.webp",
+   "paths": [
+    "partly-cloudy/week_1/dusk/5.webp",
+    "partly-cloudy/week_2/dusk/5.webp",
+    "partly-cloudy/week_3/dusk/5.webp",
+    "partly-cloudy/week_4/dusk/5.webp"
+   ],
+   "source": "review/new-sets-2026-10-07/partly-cloudy/dusk-5.png"
+  },
+  {
+   "condition": "partly-cloudy",
+   "time": "dusk",
+   "week": "A",
+   "day": "sat",
+   "hash": "dd431148f58b",
+   "image": "partly-cloudy/week_1/dusk/6.webp",
+   "paths": [
+    "partly-cloudy/week_1/dusk/6.webp",
+    "partly-cloudy/week_2/dusk/6.webp",
+    "partly-cloudy/week_3/dusk/6.webp",
+    "partly-cloudy/week_4/dusk/6.webp"
+   ],
+   "source": "review/new-sets-2026-10-07/partly-cloudy/dusk-6.png"
+  },
+  {
+   "condition": "partly-cloudy",
+   "time": "dusk",
+   "week": "A",
+   "day": "sun",
+   "hash": "6aa922bb24c8",
+   "image": "partly-cloudy/week_1/dusk/7.webp",
+   "paths": [
+    "partly-cloudy/week_1/dusk/7.webp",
+    "partly-cloudy/week_2/dusk/7.webp",
+    "partly-cloudy/week_3/dusk/7.webp",
+    "partly-cloudy/week_4/dusk/7.webp"
+   ],
+   "source": "review/new-sets-2026-10-07/partly-cloudy/dusk-7.png"
+  },
+  {
+   "condition": "partly-cloudy",
+   "time": "night",
+   "week": "A",
+   "day": "mon",
+   "hash": "cc8c9847fa04",
+   "image": "partly-cloudy/week_1/night/1.webp",
+   "paths": [
+    "partly-cloudy/week_1/night/1.webp",
+    "partly-cloudy/week_2/night/1.webp",
+    "partly-cloudy/week_3/night/1.webp",
+    "partly-cloudy/week_4/night/1.webp"
+   ],
+   "source": "review/new-sets-2026-10-07/partly-cloudy/night-1.png"
+  },
+  {
+   "condition": "partly-cloudy",
+   "time": "night",
+   "week": "A",
+   "day": "tue",
+   "hash": "e5455833b948",
+   "image": "partly-cloudy/week_1/night/2.webp",
+   "paths": [
+    "partly-cloudy/week_1/night/2.webp",
+    "partly-cloudy/week_2/night/2.webp",
+    "partly-cloudy/week_3/night/2.webp",
+    "partly-cloudy/week_4/night/2.webp"
+   ],
+   "source": "review/new-sets-2026-10-07/partly-cloudy/night-2.png"
+  },
+  {
+   "condition": "partly-cloudy",
+   "time": "night",
+   "week": "A",
+   "day": "wed",
+   "hash": "3ed1be041201",
+   "image": "partly-cloudy/week_1/night/3.webp",
+   "paths": [
+    "partly-cloudy/week_1/night/3.webp",
+    "partly-cloudy/week_2/night/3.webp",
+    "partly-cloudy/week_3/night/3.webp",
+    "partly-cloudy/week_4/night/3.webp"
+   ],
+   "source": "review/new-sets-2026-10-07/partly-cloudy/night-3.png"
+  },
+  {
+   "condition": "partly-cloudy",
+   "time": "night",
+   "week": "A",
+   "day": "thu",
+   "hash": "3908d5812ded",
+   "image": "partly-cloudy/week_1/night/4.webp",
+   "paths": [
+    "partly-cloudy/week_1/night/4.webp",
+    "partly-cloudy/week_2/night/4.webp",
+    "partly-cloudy/week_3/night/4.webp",
+    "partly-cloudy/week_4/night/4.webp"
+   ],
+   "source": "review/new-sets-2026-10-07/partly-cloudy/night-4.png"
+  },
+  {
+   "condition": "partly-cloudy",
+   "time": "night",
+   "week": "A",
+   "day": "fri",
+   "hash": "2ae8db32f086",
+   "image": "partly-cloudy/week_1/night/5.webp",
+   "paths": [
+    "partly-cloudy/week_1/night/5.webp",
+    "partly-cloudy/week_2/night/5.webp",
+    "partly-cloudy/week_3/night/5.webp",
+    "partly-cloudy/week_4/night/5.webp"
+   ],
+   "source": "review/new-sets-2026-10-07/partly-cloudy/night-5.png"
+  },
+  {
+   "condition": "partly-cloudy",
+   "time": "night",
+   "week": "A",
+   "day": "sat",
+   "hash": "3bc0c957a3eb",
+   "image": "partly-cloudy/week_1/night/6.webp",
+   "paths": [
+    "partly-cloudy/week_1/night/6.webp",
+    "partly-cloudy/week_2/night/6.webp",
+    "partly-cloudy/week_3/night/6.webp",
+    "partly-cloudy/week_4/night/6.webp"
+   ],
+   "source": "review/new-sets-2026-10-07/partly-cloudy/night-6.png"
+  },
+  {
+   "condition": "partly-cloudy",
+   "time": "night",
+   "week": "A",
+   "day": "sun",
+   "hash": "f14387acb77e",
+   "image": "partly-cloudy/week_1/night/7.webp",
+   "paths": [
+    "partly-cloudy/week_1/night/7.webp",
+    "partly-cloudy/week_2/night/7.webp",
+    "partly-cloudy/week_3/night/7.webp",
+    "partly-cloudy/week_4/night/7.webp"
+   ],
+   "source": "review/new-sets-2026-10-07/partly-cloudy/night-7.png"
   }
  ]
 }

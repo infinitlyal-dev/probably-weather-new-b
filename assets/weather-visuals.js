@@ -7,8 +7,7 @@ import { parseLocalIsoMinutes } from './weather-emoji.js';
 
 export const WEATHER_BACKGROUND_ALIASES = {
   'rain-possible': 'cloudy',
-  // Al, 7 Oct 2026: partly cloudy borrows the clear photographs (thin cloud is not a grey sky).
-  'partly-cloudy': 'clear',
+  // partly-cloudy has its own folder since the 7 Oct 2026 sets (8 Oct ingest); it borrowed clear's before.
   uv: 'clear',
   hail: 'storm',
   thunder: 'storm',

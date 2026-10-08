@@ -29,14 +29,16 @@ export const WEEK_ANCHOR_MS = Date.UTC(2026, 4, 24, 22, 0, 0, 0);
 // Backgrounds are CDN-cached immutable for one year. Bump this whenever any
 // rotating WebP bytes change so returning clients request a fresh URL instead
 // of retaining the old body at the stable filesystem path.
-export const BG_IMAGE_URL_VERSION = '20260906-grid';
+export const BG_IMAGE_URL_VERSION = '20261008-sets';
 
+// Order is load-bearing: the built manifest indexes slots by folder position (rotatingImagePath), so new folders go
+// on the END. partly-cloudy and breezy: Al's 7 Oct 2026 sets (review/image-brief-2026-10-07.md).
 export const BG_IMAGE_SLOT_FOLDERS = [
-  'clear', 'cloudy', 'cold', 'cold-clear', 'fog', 'heat', 'rain', 'storm', 'wind',
+  'clear', 'cloudy', 'cold', 'cold-clear', 'fog', 'heat', 'rain', 'storm', 'wind', 'partly-cloudy', 'breezy',
 ];
 export const BG_IMAGE_SLOT_TIMES = ['dawn', 'day', 'dusk', 'night'];
 const VALID_TIMES = new Set(BG_IMAGE_SLOT_TIMES);
-// The 9 promoted folders. Folder names outside this set are *not* rejected —
+// The 11 promoted folders. Folder names outside this set are *not* rejected —
 // the picker is downstream and stays permissive — but a one-line console.warn
 // surfaces typos that would otherwise silently 404 through the whole chain.
 const KNOWN_FOLDERS = new Set(BG_IMAGE_SLOT_FOLDERS);

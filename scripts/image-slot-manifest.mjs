@@ -19,8 +19,11 @@ function filesystemPath(value) {
   return value instanceof URL ? fileURLToPath(value) : path.resolve(value);
 }
 
-/** 322 curated photographs since 2026-09-30 (the pairs, review/last-fixes-plan.json; see verifyBackgroundImageArtifact). */
-export const CURATED_BODIES = 322;
+/** 378 curated photographs since 2026-10-08: 322 (the pairs, review/last-fixes-plan.json) + 28 partly-cloudy + 27 breezy
+ * + the cloudy dawn-5 that fills a benched slot (the other 12 new cloudy photographs replace one each). */
+export const CURATED_BODIES = 378;
+/** Every slot the picker can ask for: folders x 4 weeks x 4 times x 7 days. */
+export const SLOT_COUNT = BG_IMAGE_SLOT_FOLDERS.length * 4 * BG_IMAGE_SLOT_TIMES.length * 7;
 
 /**
  * Photographs benched by ruling (review/benched-photos.json): out of rotation
@@ -51,7 +54,7 @@ export function loadBenchedHashes(file) {
 }
 
 /**
- * Scan the fixed 9 × 4 × 4 × 7 rotation and assign equal bytes one ID.
+ * Scan the fixed 11 × 4 × 4 × 7 rotation and assign equal bytes one ID.
  *
  * A benched slot is served its entry's `fallback` slot, or else the picker's own
  * week-collapse fallback (same folder and time of day, week_1 slot 1 — step 2 of
@@ -220,8 +223,8 @@ export function verifyBackgroundImageArtifact({ sourceImageRoot, distRoot, picke
   // (review/benched-photos.json). A moved photograph is benched from its old slots
   // and still served in its new ones, so it is not subtracted.
   const expectedUnique = CURATED_BODIES - scan.servedNowhere.size;
-  if (checked !== 1008 || resolved.size !== expectedUnique) {
-    throw new Error(`P9 resolution mismatch: ${checked}/1008 slots, ${resolved.size}/${expectedUnique} unique files (${CURATED_BODIES} curated − ${scan.servedNowhere.size} served nowhere)`);
+  if (checked !== SLOT_COUNT || resolved.size !== expectedUnique) {
+    throw new Error(`P9 resolution mismatch: ${checked}/${SLOT_COUNT} slots, ${resolved.size}/${expectedUnique} unique files (${CURATED_BODIES} curated − ${scan.servedNowhere.size} served nowhere)`);
   }
   return { checked, uniqueFiles: resolved.size };
 }

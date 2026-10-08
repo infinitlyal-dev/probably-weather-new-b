@@ -407,6 +407,8 @@ if (!DRY) {
     offsetsDoc.offsets[p.hash] = { ...(prev || { verdict: 'FACE', image: p.label }), anchorY: p.next,
       faceAnchor: { on: DATE, previous: p.current, by: 'scripts/anchor-faces.mjs', reason: 'a face hidden at the previous anchor on 414x715' } };
   }
+  offsetsDoc.counts.wired = Object.values(offsetsDoc.offsets).filter((o) => typeof o.anchorY === 'number').length;
+  offsetsDoc.counts.offsets = Object.keys(offsetsDoc.offsets).length;
   offsetsDoc.faceAnchors = { on: DATE, moved: moved.filter((x) => x.kind === 'grid').length, audit: `review/crop-audit-${DATE}.md` };
   writeFileSync(R('review', 'set-001-crop-offsets.json'), JSON.stringify(offsetsDoc, null, 1) + '\n');
   execFileSync(process.execPath, [R('scripts', 'build-hero-crop-offsets.mjs')], { stdio: 'inherit' });

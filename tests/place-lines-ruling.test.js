@@ -165,11 +165,14 @@ describe('Al\'s place ruling is what is wired', () => {
     // A line that left with a photograph retired on record (the pilot pairs, 2026-09-25: P43 "The
     // Helderberg is clear…" was on the still wind yard P03 replaced) is history the same way. 43 since the
     // rolling page's ruling (2026-09-27): P19 "Nobody on this side of Gqeberha…" was on the flag and palm R48 replaced.
-    const RETIRED = new Set((read('../review/set-001-lines-bespoke-final.json').pilotPairs?.retired || []).flatMap((r) => r.lines));
+    const FINAL = read('../review/set-001-lines-bespoke-final.json');
+    // …and so is a line that left with a cloudy photograph the 7 Oct sets replaced (8 Oct 2026: P27 and P32, `retiredLines`).
+    const RETIRED = new Set([...(FINAL.pilotPairs?.retired || []).flatMap((r) => r.lines), ...FINAL.set.flatMap((e) => e.retiredLines || [])]);
     const stillTagged = tagged.filter((r) => !SEASON_CUT.has(r.en) && !RETIRED.has(r.en));
     // 42 since Al's photo-batches ruling (2026-09-30, review/photo-batches-ruled.json): one place-tagged line left
     // with the nine photographs the "use" pairs replaced.
-    expect(stillTagged.length).toBe(42);
+    // 40 since the 7 Oct sets (8 Oct 2026): P27 and P32 left with the two cloudy photographs they captioned.
+    expect(stillTagged.length).toBe(40);
     for (const r of stillTagged) {
       expect(live.has(r.en), r.key).toBe(true);
       expect(heroLines.HERO_LINE_TAGS[r.en]?.region, r.key).toEqual(r.region);
@@ -204,10 +207,18 @@ describe('Al\'s place ruling is what is wired', () => {
   });
 
   it('P15, P25 and P55 are exactly as they were: two untagged, P55 on its karoo tag', () => {
+    // P15 "Even the Capetonians…" was the one ungated place line; Al, 8 Oct 2026 (review/place-names-2026-10-08.md #26):
+    // its photograph now carries the place-free rewrite, in English and Afrikaans. Its bank copy is not a photograph line.
+    const p15 = byKey.get('P15');
+    const rewrite = 'Even the people who swear it never gets cold are admitting it.';
+    expect(live.has(p15.en)).toBe(false);
+    expect(live.has(rewrite)).toBe(true);
+    expect(heroLines.HERO_LINE_TAGS[rewrite]).toBeUndefined();
+    expect(heroLinesAf.heroLineAf(rewrite)).toBe('Selfs dié wat sweer dit word nooit koud nie, erken dit nou.');
     for (const k of ['P15', 'P25']) {
       const r = byKey.get(k);
       expect(r.verdict).toBe('KEEP');
-      expect(live.has(r.en), k).toBe(true);
+      if (k !== 'P15') expect(live.has(r.en), k).toBe(true);
       expect(heroLines.HERO_LINE_TAGS[r.en], k).toBeUndefined();
       for (const b of PAGE.get(k).alsoBank) expect(bankRow(b.key, r.en).tag?.region, k).toBeUndefined();
     }

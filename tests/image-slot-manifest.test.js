@@ -2,7 +2,7 @@ import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
 import { beforeAll, describe, expect, it } from 'vitest';
 
-import { CURATED_BODIES, loadBench, scanBackgroundSlots } from '../scripts/image-slot-manifest.mjs';
+import { CURATED_BODIES, SLOT_COUNT, loadBench, scanBackgroundSlots } from '../scripts/image-slot-manifest.mjs';
 
 const imageRoot = new URL('../assets/images/bg/', import.meta.url);
 let manifest;
@@ -19,13 +19,15 @@ describe('P9 background slot manifest', () => {
   // 532 slots that held uncurated photographs (and therefore could never carry a bespoke
   // line) now hold copies of curated ones from the same condition and time-of-day. set-002
   // raises this again as new curated photographs replace those repeats.
-  it('P9 the source tree still holds the 294 curated bodies in 1008 slots', () => {
-    expect(manifest.entries).toHaveLength(1008);
+  // 8 Oct 2026: 1232 slots (partly-cloudy and breezy, 112 each) and 378 bodies (scripts/image-slot-manifest.mjs).
+  it('P9 the source tree holds the curated bodies in every slot', () => {
+    expect(SLOT_COUNT).toBe(1232);
+    expect(manifest.entries).toHaveLength(SLOT_COUNT);
     expect(new Set(sourceHashes).size).toBe(CURATED_BODIES);
   });
 
-  it('P9 represents all 1008 picker slots with the curated bodies minus those the bench leaves served nowhere, exactly once', () => {
-    expect(manifest.slots).toHaveLength(1008);
+  it('P9 represents all picker slots with the curated bodies minus those the bench leaves served nowhere, exactly once', () => {
+    expect(manifest.slots).toHaveLength(SLOT_COUNT);
     expect(manifest.hashes).toHaveLength(CURATED_BODIES - manifest.servedNowhere.size);
     expect(new Set(manifest.slots).size).toBe(CURATED_BODIES - manifest.servedNowhere.size);
   });

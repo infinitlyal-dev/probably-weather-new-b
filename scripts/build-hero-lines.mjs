@@ -150,7 +150,9 @@ const drifted = new Map();   // ruledHash -> {slot, ruled, actual, files, lines}
 // its slots on Al's brief) is gone on purpose, not by a reroll. Its ruling is history as long as
 // every line from it that is still live is ALSO backed by a ruling on a photograph in the set —
 // then that other ruling, not this one, is why the line is live. Anything less still fails.
-const retiredOnRecord = new Set((approved.pilotPairs?.retired || []).map((r) => r.hash));
+// The 7 Oct sets' cloudy replacements (scripts/ingest-new-sets.mjs, 8 Oct 2026) are retired on record the same way:
+// the entry that took the photograph's place keeps its hash as `replacedHash`.
+const retiredOnRecord = new Set([...(approved.pilotPairs?.retired || []).map((r) => r.hash), ...(approved.set || []).map((e) => e.replacedHash).filter(Boolean)]);
 const backedLive = new Set();
 for (const [, , hash, lines] of rulings()) if (livePhotographs.has(hash)) for (const t of lines) backedLive.add(t);
 for (const [file, slot, hash, lines] of rulings()) {
@@ -277,7 +279,8 @@ const SEASON_EXPORT = path.join(root, 'review', 'seasonal-ruled.json');
 let fromPlace = 0;
 let placeOnSeasonCut = 0;
 // A line that left with a photograph retired on record (final.json pilotPairs.retired) is history too.
-const retiredLines = new Set((approved.pilotPairs?.retired || []).flatMap((r) => r.lines || []));
+// …and so is one that left with a cloudy photograph the 7 Oct sets replaced (`retiredLines` on the entry, 8 Oct 2026).
+const retiredLines = new Set([...(approved.pilotPairs?.retired || []).flatMap((r) => r.lines || []), ...(approved.set || []).flatMap((e) => e.retiredLines || [])]);
 let placeOnRetired = 0;
 if (existsSync(PLACE_RULED)) {
   const held = new Set((approved.heldBack || []).map((h) => h.line));

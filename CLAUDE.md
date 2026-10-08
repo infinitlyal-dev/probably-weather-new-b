@@ -53,7 +53,7 @@ Console logs show the active weights for each API call for debugging.
 
 ## CONDITION & IMAGE SYSTEM
 Images live in: `assets/images/bg/[condition]/[filename].jpg`
-Condition folders (9, see KNOWN_FOLDERS in assets/image-picker.js): `clear`, `cloudy`, `rain`, `wind`, `storm`, `cold`, `cold-clear`, `fog`, `heat`. Aliased conditions with no own folder: `uv` → clear, `partly-cloudy` → clear (Al, 7 Oct 2026), `rain-possible` → cloudy, `hail`/`thunder` → storm. (The hot-weather condition/key is `heat`, not `hot` — there is no `hot` folder or emoji.)
+Condition folders (11, see BG_IMAGE_SLOT_FOLDERS in assets/image-picker.js — new folders go on the END, the built manifest indexes by position): `clear`, `cloudy`, `rain`, `wind`, `storm`, `cold`, `cold-clear`, `fog`, `heat`, `partly-cloudy`, `breezy` (the last two from Al's 7 Oct 2026 sets, ingested 8 Oct). Aliased conditions with no own folder: `uv` → clear, `rain-possible` → cloudy, `hail`/`thunder` → storm. (Share/OG cards still fold partly-cloudy into clear until their own cards exist.) (The hot-weather condition/key is `heat`, not `hot` — there is no `hot` folder or emoji.)
 
 Time slots (used in filenames):
 - `dawn` — 05:00–08:00

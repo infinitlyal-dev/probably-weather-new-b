@@ -24,7 +24,7 @@ import esbuild from 'esbuild';
 
 import { findStaleCopyBanks } from './copy-bank-sync.mjs';
 import { emitClientBundle } from './client-bundle.mjs';
-import { emitBackgroundImageArtifact, verifyBackgroundImageArtifact } from './image-slot-manifest.mjs';
+import { emitBackgroundImageArtifact, verifyBackgroundImageArtifact, SLOT_COUNT } from './image-slot-manifest.mjs';
 import { importsModule } from './import-scan.mjs';
 
 const root = fileURLToPath(new URL('..', import.meta.url));
@@ -85,7 +85,7 @@ for (const entry of STATIC_ENTRIES) {
 // of the served output.
 rmSync(path.join(dist, 'assets', 'weather-copy.js'), { force: true });
 
-// P9: all 1,008 rotation slots remain addressable, but equal WebP bodies ship
+// P9: all rotation slots (1,232 since the 8 Oct 2026 sets) remain addressable, but equal WebP bodies ship
 // once at a content-addressed URL. The compact manifest is embedded into the
 // built picker; source paths remain intact for unbuilt local previews.
 const imageArtifact = emitBackgroundImageArtifact({
@@ -93,8 +93,8 @@ const imageArtifact = emitBackgroundImageArtifact({
   distRoot: dist,
   pickerFile: path.join(dist, 'assets', 'image-picker.js'),
 });
-if (imageArtifact.slots !== 1008) {
-  console.error(`[build] FATAL: background manifest has ${imageArtifact.slots}/1008 slots.`);
+if (imageArtifact.slots !== SLOT_COUNT) {
+  console.error(`[build] FATAL: background manifest has ${imageArtifact.slots}/${SLOT_COUNT} slots.`);
   process.exit(1);
 }
 console.log(

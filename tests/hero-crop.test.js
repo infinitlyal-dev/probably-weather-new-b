@@ -184,8 +184,10 @@ describe('the shipped table + the wiring', () => {
     const cssDefault = Number(/var\(--hero-crop,\s*([\d.]+)%\)/.exec(css)[1]);
     const ruling = JSON.parse(readFileSync(new URL('../review/set-001-crop-anchors.json', import.meta.url), 'utf8')).anchors;
     const wired = JSON.parse(readFileSync(new URL('../review/set-001-crop-offsets.json', import.meta.url), 'utf8')).offsets;
+    // A photograph that left the set (a replacement retired it, e.g. the 7 Oct cloudy set) has no slots to crop.
+    const inSet = new Set(JSON.parse(readFileSync(new URL('../review/set-001-draft.json', import.meta.url), 'utf8')).assignments.map((a) => a.hash));
     const omitted = Object.entries(ruling)
-      .filter(([hash, e]) => e.verdict !== 'FAILS' && !wired[hash]);
+      .filter(([hash, e]) => e.verdict !== 'FAILS' && !wired[hash] && inSet.has(hash));
     expect(omitted.length).toBeGreaterThan(0);
     for (const [hash, e] of omitted) {
       expect(e.anchorY, `${hash} (${e.image}) was ruled ${e.anchorY}% but is not wired, and that is only safe at the ${cssDefault}% default`)

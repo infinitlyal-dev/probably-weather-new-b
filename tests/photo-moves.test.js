@@ -34,7 +34,11 @@ const appliedRuns = pairRecords.flatMap((rec) => [...(rec.appliedRuns || []), ..
 const superseded = new Map(appliedRuns.flatMap((a) => (a.benchChanges || []).filter((c) => c.removed).map((c) => [c.sha1, c.entry])));
 const pairHashAt = new Map(appliedRuns.flatMap((a) => (a.applied || []).flatMap((x) => x.slots.map((s) => [s, x.hash]))));
 const retired = new Set((final.pilotPairs?.retired || []).map((r) => r.hash));
-const benchOf = new Map([...superseded, ...bench.map((b) => [b.sha1, b])]);
+// A bench entry the 7 Oct sets retired (scripts/ingest-new-sets.mjs, 8 Oct 2026: #40's old cloudy slots now hold the new
+// cloudy dawn-5) moved to `retired`; it is still that move's record, and its old slots hold the photograph named there.
+const benchRetired = read('../review/benched-photos.json').retired || [];
+const retiredBench = new Map(benchRetired.map((b) => [b.sha1, /hold ([0-9a-f]{12})/.exec(b.retiredBecause)?.[1]]));
+const benchOf = new Map([...superseded, ...bench.map((b) => [b.sha1, b]), ...benchRetired.map((b) => [b.sha1, b])]);
 const BG = (rel) => new URL(`../assets/images/bg/${rel}`, import.meta.url);
 const sha1Of = (rel) => createHash('sha1').update(readFileSync(BG(rel))).digest('hex').slice(0, 12);
 const sha256Of = (rel) => createHash('sha256').update(readFileSync(BG(rel))).digest('hex');
@@ -56,6 +60,7 @@ describe('photo moves — Al\'s rulings of 2026-09-23', () => {
       expect(b.slots).toEqual(r.slots);
       for (const s of r.slots) {
         if (pairHashAt.has(s)) expect(sha1Of(s), `#${r.n} ${s} holds its pilot pair`).toBe(pairHashAt.get(s));
+        else if (retiredBench.has(r.sha1)) expect(sha1Of(s), `#${r.n} ${s} holds the new photograph`).toBe(retiredBench.get(r.sha1));
         else expect(servedAt.get(s), `#${r.n} ${s}`).toBe(b.fallback);
       }
     }
