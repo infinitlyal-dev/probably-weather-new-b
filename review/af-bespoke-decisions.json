@@ -2124,13 +2124,13 @@
   },
   {
    "id": "C212",
-   "group": "canon",
-   "verdict": "CANON",
+   "group": "al-2026-10-08",
+   "verdict": "AL",
    "slot": "cold-clear/dawn",
-   "english": "Welkom-cold today. The kind that goes through three jerseys like they aren't there.",
-   "afrikaans": "Welkom-koud vandag. Die soort wat deur drie truie gaan asof hulle nie daar is nie.",
+   "english": "Properly cold today. The kind that goes through three jerseys like they aren't there.",
+   "afrikaans": "Behoorlik koud vandag. Die soort wat deur drie truie gaan asof hulle nie daar is nie.",
    "score": null,
-   "reason": "Al's native condition-bank line, reused for this photograph"
+   "reason": "Al, 8 Oct 2026: replaces \"Welkom-cold today. The kind that goes through three jerseys like they aren't there.\" (place-free rewrite of P25 (review/place-names-2026-10-08.md addendum: missed by the sweep)); Afrikaans by Claude to match, Al's English"
   },
   {
    "id": "C213",
@@ -4582,13 +4582,13 @@
   },
   {
    "id": "B105",
-   "group": "blue",
-   "verdict": "KEEP",
+   "group": "al-2026-10-08",
+   "verdict": "AL",
    "slot": "wind/day",
-   "english": "That walk was somebody else's idea and the dog is registering a complaint.",
-   "afrikaans": "Daardie stap was iemand anders se idee en die hond lê 'n klag in.",
+   "english": "The dog is loving this wind. He's got the only hairstyle built for it.",
+   "afrikaans": "Die hond geniet hierdie wind. Hy het die enigste haarstyl wat daarvoor gebou is.",
    "score": null,
-   "reason": ""
+   "reason": "Al, 8 Oct 2026: replaces \"That walk was somebody else's idea and the dog is registering a complaint.\" (reframe 92ef82c2d34a -> 430bc0e3d41c: the new dog trots along happily)"
   },
   {
    "id": "B106",
@@ -15566,13 +15566,13 @@
   },
   {
    "id": "PR09b",
-   "group": "new",
-   "verdict": "NEW",
+   "group": "al-2026-10-08",
+   "verdict": "AL",
    "slot": "heat/dawn",
-   "english": "It's so hot even the ice tray looks nervous.",
-   "afrikaans": "Dis so warm, selfs die ysbakkie lyk benoud.",
-   "score": 5,
-   "reason": "Al's ruling of 27 Sept 2026: R08c in his own Afrikaans, R22b as proposed; R06c, R09b and R04c proposed by Maat (Fable 5.1) for the lines Al rewrote, lang-check pass, waiting for his OK or Fix on review/pairs-rolling.html"
+   "english": "It's 6am and the fridge is already the most popular room in the house.",
+   "afrikaans": "Dis 6 uur en die yskas is nou al die gewildste vertrek in die huis.",
+   "score": null,
+   "reason": "Al, 8 Oct 2026: replaces \"It's so hot even the ice tray looks nervous.\" (reframe fc06880aeadb -> 07134d7dde78: the ice tray is now small, mid-frame)"
   },
   {
    "id": "PR04c",

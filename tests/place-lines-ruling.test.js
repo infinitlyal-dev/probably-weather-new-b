@@ -206,20 +206,22 @@ describe('Al\'s place ruling is what is wired', () => {
     }
   });
 
-  it('P15, P25 and P55 are exactly as they were: two untagged, P55 on its karoo tag', () => {
+  it('P15 and P25 carry their place-free rewrites, untagged; P55 stays on its karoo tag', () => {
     // P15 "Even the Capetonians…" was the one ungated place line; Al, 8 Oct 2026 (review/place-names-2026-10-08.md #26):
     // its photograph now carries the place-free rewrite, in English and Afrikaans. Its bank copy is not a photograph line.
-    const p15 = byKey.get('P15');
-    const rewrite = 'Even the people who swear it never gets cold are admitting it.';
-    expect(live.has(p15.en)).toBe(false);
-    expect(live.has(rewrite)).toBe(true);
-    expect(heroLines.HERO_LINE_TAGS[rewrite]).toBeUndefined();
-    expect(heroLinesAf.heroLineAf(rewrite)).toBe('Selfs dié wat sweer dit word nooit koud nie, erken dit nou.');
-    for (const k of ['P15', 'P25']) {
+    // P25 "Welkom-cold today…" was missed by the sweep; Al, 8 Oct 2026 (second note): "Properly cold today…", EN + AF.
+    const rewrites = [
+      ['P15', 'Even the people who swear it never gets cold are admitting it.', 'Selfs dié wat sweer dit word nooit koud nie, erken dit nou.'],
+      ['P25', "Properly cold today. The kind that goes through three jerseys like they aren't there.", 'Behoorlik koud vandag. Die soort wat deur drie truie gaan asof hulle nie daar is nie.'],
+    ];
+    for (const [k, en, af] of rewrites) {
       const r = byKey.get(k);
       expect(r.verdict).toBe('KEEP');
-      if (k !== 'P15') expect(live.has(r.en), k).toBe(true);
-      expect(heroLines.HERO_LINE_TAGS[r.en], k).toBeUndefined();
+      expect(live.has(r.en), k).toBe(false);
+      expect(heroLinesAf.heroLineAf(r.en), k).toBeFalsy();
+      expect(live.has(en), k).toBe(true);
+      expect(heroLines.HERO_LINE_TAGS[en], k).toBeUndefined();
+      expect(heroLinesAf.heroLineAf(en), k).toBe(af);
       for (const b of PAGE.get(k).alsoBank) expect(bankRow(b.key, r.en).tag?.region, k).toBeUndefined();
     }
     const p55 = byKey.get('P55');

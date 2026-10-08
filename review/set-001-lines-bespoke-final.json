@@ -571,7 +571,7 @@
     "wind/week_3/day/7.webp"
    ],
    "lines": [
-    "That walk was somebody else's idea and the dog is registering a complaint.",
+    "The dog is loving this wind. He's got the only hairstyle built for it.",
     "Sunday, and this is about as far as either of them is going.",
     "The lead is doing considerably more work than it was designed for.",
     "He is going to shake all that sand out on the lounge carpet later.",
@@ -3277,7 +3277,7 @@
    ],
    "lines": [
     "The sun has arrived. It has not yet started working.",
-    "Welkom-cold today. The kind that goes through three jerseys like they aren't there.",
+    "Properly cold today. The kind that goes through three jerseys like they aren't there.",
     "Bin day, and the frost got to them before the truck did.",
     "The municipality collects at seven; the frost delivered at four."
    ],
@@ -6304,7 +6304,7 @@
     "heat/week_4/dawn/3.webp"
    ],
    "lines": [
-    "It's so hot even the ice tray looks nervous."
+    "It's 6am and the fridge is already the most popular room in the house."
    ],
    "pair": "R09b",
    "ruledBy": "Al: USE, the rolling page (review/pairs-rolling-ruled-2026-09-27b.json) and his brief, 27 Sept 2026; the line in his own words where he changed it",
@@ -8641,6 +8641,31 @@
    {
     "from": "Even the Capetonians are admitting it's cold.",
     "to": "Even the people who swear it never gets cold are admitting it."
+   }
+  ]
+ },
+ "lineRuling2026_10_08b": {
+  "on": "2026-10-08",
+  "by": "Al",
+  "source": "Al's note after the go on sets-partly-breezy (26e442a)",
+  "changed": [
+   {
+    "hash": "07134d7dde78",
+    "from": "It's so hot even the ice tray looks nervous.",
+    "to": "It's 6am and the fridge is already the most popular room in the house.",
+    "why": "reframe fc06880aeadb -> 07134d7dde78: the ice tray is now small, mid-frame"
+   },
+   {
+    "hash": "430bc0e3d41c",
+    "from": "That walk was somebody else's idea and the dog is registering a complaint.",
+    "to": "The dog is loving this wind. He's got the only hairstyle built for it.",
+    "why": "reframe 92ef82c2d34a -> 430bc0e3d41c: the new dog trots along happily"
+   },
+   {
+    "hash": "3e60dabd7ef7",
+    "from": "Welkom-cold today. The kind that goes through three jerseys like they aren't there.",
+    "to": "Properly cold today. The kind that goes through three jerseys like they aren't there.",
+    "why": "place-free rewrite of P25 (review/place-names-2026-10-08.md addendum: missed by the sweep)"
    }
   ]
  }
