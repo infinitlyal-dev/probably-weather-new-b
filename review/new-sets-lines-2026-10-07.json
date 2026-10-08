@@ -1,7 +1,7 @@
 {
   "generated": "2026-10-07",
   "brief": "review/image-brief-2026-10-07.md",
-  "note": "Two candidate lines per photograph for Al to pick, written to review/HUMOUR-DOCTRINE.md and review/PAIRING-TASTE.md under today's registers (partly-cloudy: the half-and-half sky is the app's own 'probably'; breezy: useful or cheeky, never destructive; cloudy: honest mediocrity). Keyed by the brief's filename until ingestion, when scripts/ingest-new-sets.mjs converts each key to the image hash. Afrikaans drafts sit beside every English line; each went through lang-check (af) and its verdict is recorded. AF is Al's to rule; zu/xh/st go to the native-review backlog. Braai is named only on Saturday and Sunday frames; a named weekday always matches the photograph's slot.",
+  "note": "One line per photograph: Maat's (Fable 5.1) lines from review/new-sets-lines-maat-2026-10-07.json, ruled by Al (7-8 Oct 2026) — they replace Vonk's two candidates. No town or landmark names (Al: the photograph rotates by weekday and hour, not by the user's town). Keyed by the brief's filename; a regenerated photograph keeps its filename's line. Each Afrikaans line went through lang-check (af) and its verdict is recorded; a flag is reported with the word, never rewritten. zu/xh/st go to the native-review backlog.",
   "set": [
     {
       "file": "partly-cloudy/dawn-1.png",
@@ -10,22 +10,16 @@
       "day": "mon",
       "candidates": [
         {
-          "en": "Monday's sky is half blue, half undecided. Same as the spaza's shutter.",
-          "af": "Maandag se lug is half blou, half onbeslis. Net soos die spaza se rolluik.",
+          "en": "Sun's in, sun's out. Monday's doing a soft launch.",
+          "af": "Son in, son uit. Maandag warm nog net op.",
           "afCheck": {
             "action": "pass",
             "confidence": 0.05,
-            "findings": []
-          }
-        },
-        {
-          "en": "Clouds and sun are sharing the Monday shift. Nobody's properly clocked in yet.",
-          "af": "Wolke en son deel die Maandagskof. Niemand het nog regtig ingeklok nie.",
-          "afCheck": {
-            "action": "pass",
-            "confidence": 0.15,
-            "findings": []
-          }
+            "findings": [
+              "warm (low): 'warm' means 'warm' — nothing in the English source; the source's 'soft' would normally be 'sag', none present"
+            ]
+          },
+          "by": "Maat (Fable 5.1), ruled by Al 7 Oct 2026"
         }
       ]
     },
@@ -36,22 +30,17 @@
       "day": "tue",
       "candidates": [
         {
-          "en": "The sun keeps ducking behind a cloud. The joggers aren't waiting for it.",
-          "af": "Die son duik heeltyd agter 'n wolk in. Die drawwers wag nie daarvoor nie.",
+          "en": "The clouds gave the sun Tuesday off. Nobody told the humidity.",
+          "af": "Die wolke het die son Dinsdag afgegee. Niemand het die klamheid laat weet nie.",
           "afCheck": {
             "action": "pass",
             "confidence": 0.1,
-            "findings": []
-          }
-        },
-        {
-          "en": "Probably sunny, probably cloudy, definitely humid. Durban runs on all three.",
-          "af": "Waarskynlik sonnig, waarskynlik bewolk, beslis klam. Durban draf op al drie.",
-          "afCheck": {
-            "action": "pass",
-            "confidence": 0.05,
-            "findings": []
-          }
+            "findings": [
+              "laat (low): 'laat' means 'to cause to, to make; forms a causative phrase.; to let; forms a cohortative phrase.; to may, to let; forms an optative phrase.' — nothing in the English source; the source's 'told' would normally be 'vertelde', none present — but it does co-occur in corpus with 'weet'",
+              "weet (low): 'weet' means 'to know; to be aware of; know' — nothing in the English source; the source's 'told' would normally be 'vertelde', none present — but it does co-occur in corpus with 'laat'"
+            ]
+          },
+          "by": "Maat (Fable 5.1), ruled by Al 7 Oct 2026"
         }
       ]
     },
@@ -62,22 +51,17 @@
       "day": "wed",
       "candidates": [
         {
-          "en": "Enough cloud to make the farmer look up. Not enough to make him hope.",
-          "af": "Genoeg wolke dat die boer opkyk. Nie genoeg dat hy begin hoop nie.",
+          "en": "Those clouds are only passing through. Even the mealies know not to get excited.",
+          "af": "Daai wolke is net op deurtog. Selfs die mielies raak nie opgewonde nie.",
           "afCheck": {
             "action": "pass",
-            "confidence": 0.05,
-            "findings": []
-          }
-        },
-        {
-          "en": "Wednesday dawn on the farm: clouds passing through, not one stopping to water anything.",
-          "af": "Woensdagoggend op die plaas: die wolke trek verby, en nie een gee iets water nie.",
-          "afCheck": {
-            "action": "pass",
-            "confidence": 0.05,
-            "findings": []
-          }
+            "confidence": 0.1,
+            "findings": [
+              "mielies (low): 'mielies' means 'plural of mielie; maize; corn' — nothing in the English source; the source's 'passing' would normally be 'passeerdraad', none present",
+              "raak (low): 'raak' means 'to become; to get; to grow' — nothing in the English source; the source's 'passing' would normally be 'passeerdraad', none present — but it does co-occur in corpus with 'opgewonde'"
+            ]
+          },
+          "by": "Maat (Fable 5.1), ruled by Al 7 Oct 2026"
         }
       ]
     },
@@ -88,22 +72,14 @@
       "day": "thu",
       "candidates": [
         {
-          "en": "A cloud shadow works the vines row by row. So does the tractor.",
-          "af": "'n Wolkskadu werk die wingerd ry vir ry deur. Die trekker ook.",
-          "afCheck": {
-            "action": "pass",
-            "confidence": 0.05,
-            "findings": []
-          }
-        },
-        {
-          "en": "Sun on this row, shade on the next. The vines are taking turns.",
-          "af": "Son op hierdie ry, skadu op die volgende. Die wingerdstokke vat beurte.",
+          "en": "The shade is working down the rows one at a time. It's inspecting.",
+          "af": "Die skaduwee werk die rye een vir een af. Dis besig met inspeksie.",
           "afCheck": {
             "action": "pass",
             "confidence": 0,
             "findings": []
-          }
+          },
+          "by": "Maat (Fable 5.1), ruled by Al 7 Oct 2026"
         }
       ]
     },
@@ -114,22 +90,16 @@
       "day": "fri",
       "candidates": [
         {
-          "en": "Friday's clouds are just for decoration. Pretoria hired them to match the jacarandas.",
-          "af": "Vrydag se wolke is net vir versiering. Pretoria het hulle gehuur om by die jakarandas te pas.",
+          "en": "Purple on the ground, white in the sky. Friday's colour scheme is approved.",
+          "af": "Pers op die grond, wit in die lug. Vrydag se kleure is goedgekeur.",
           "afCheck": {
             "action": "pass",
-            "confidence": 0,
-            "findings": []
-          }
-        },
-        {
-          "en": "Sun's out for the paper run. No promises about the rest of Friday.",
-          "af": "Die son is uit vir die koerant. Geen beloftes oor die res van Vrydag nie.",
-          "afCheck": {
-            "action": "pass",
-            "confidence": 0,
-            "findings": []
-          }
+            "confidence": 0.05,
+            "findings": [
+              "lug (low): 'lug' means 'air' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present"
+            ]
+          },
+          "by": "Maat (Fable 5.1), ruled by Al 7 Oct 2026"
         }
       ]
     },
@@ -140,25 +110,17 @@
       "day": "sat",
       "candidates": [
         {
-          "en": "A cloud or two for shade on the way back. That's Saturday's plan.",
-          "af": "'n Wolk of twee vir skaduwee op pad terug. Dis Saterdag se plan.",
+          "en": "A few clouds came along to watch. Also not running.",
+          "af": "'n Paar wolke het kom kyk. Hulle hardloop ook nie.",
           "afCheck": {
             "action": "pass",
-            "confidence": 0.15,
-            "findings": []
-          }
-        },
-        {
-          "en": "Saturday's sky left a few clouds out over the sea. Nobody running is complaining.",
-          "af": "Saterdag se lug het 'n paar wolke oor die see gelos. Niemand wat draf kla nie.",
-          "afCheck": {
-            "action": "triage",
-            "confidence": 0.35,
+            "confidence": 0.1,
             "findings": [
-              "'paar' means 'pair; to pair, to couple; couple' — nothing in the English source; it is 1 letter from 'vaar', the usual word for 'running'"
-            ],
-            "note": "false alarm: 'n paar = a few"
-          }
+              "Paar (low): mid-sentence capital on common noun 'Paar' (attested lowercase 2898×)",
+              "Paar (low): 'Paar' means 'pair; to pair, to couple; couple' — nothing in the English source; the source's 'along' would normally be 'langs' / 'met' / 'al langs' / 'in', none present"
+            ]
+          },
+          "by": "Maat (Fable 5.1), ruled by Al 7 Oct 2026"
         }
       ]
     },
@@ -169,22 +131,17 @@
       "day": "sun",
       "candidates": [
         {
-          "en": "Sunday clouds drift past the baobab, slow as the morning. Nobody's rushing them.",
-          "af": "Sondagwolke dryf by die kremetart verby, so stadig soos die oggend. Niemand jaag hulle nie.",
+          "en": "The clouds are drifting through slowly. It's Sunday; they're allowed.",
+          "af": "Die wolke dryf stadig verby. Dis Sondag; hulle mag.",
           "afCheck": {
             "action": "pass",
-            "confidence": 0,
-            "findings": []
-          }
-        },
-        {
-          "en": "The smoke goes straight up, the clouds go sideways. Sunday has room for both.",
-          "af": "Die rook trek reguit op, die wolke skuif sywaarts. Sondag het plek vir albei.",
-          "afCheck": {
-            "action": "pass",
-            "confidence": 0.15,
-            "findings": []
-          }
+            "confidence": 0.1,
+            "findings": [
+              "dryf (low): 'dryf' means 'To float.; To drive; to push.; To drive; to motivate.' — nothing in the English source; the source's 'allowed' would normally be 'gehandhaafde' / 'toegekende' / 'toegelate' / 'toeken', none present",
+              "verby (low): 'verby' means 'over, past, gone by; past' — nothing in the English source; the source's 'allowed' would normally be 'gehandhaafde' / 'toegekende' / 'toegelate' / 'toeken', none present"
+            ]
+          },
+          "by": "Maat (Fable 5.1), ruled by Al 7 Oct 2026"
         }
       ]
     },
@@ -195,22 +152,14 @@
       "day": "mon",
       "candidates": [
         {
-          "en": "Table Mountain's tablecloth is only half on. It's Monday, nobody's fully dressed for it.",
-          "af": "Tafelberg se tafeldoek is net half op. Dis Maandag, niemand is heeltemal reg aangetrek nie.",
-          "afCheck": {
-            "action": "pass",
-            "confidence": 0.05,
-            "findings": []
-          }
-        },
-        {
-          "en": "Sun on one side of the street, cloud on the other. Monday couldn't commit.",
-          "af": "Son aan die een kant van die straat, wolk aan die ander. Maandag kon nie besluit nie.",
+          "en": "The mountain's tablecloth is only half on. It's Monday, nobody's fully dressed.",
+          "af": "Die berg se tafeldoek is net half op. Dis Maandag, niemand is heeltemal aangetrek nie.",
           "afCheck": {
             "action": "pass",
             "confidence": 0,
             "findings": []
-          }
+          },
+          "by": "Maat (Fable 5.1), ruled by Al 7 Oct 2026"
         }
       ]
     },
@@ -221,22 +170,14 @@
       "day": "tue",
       "candidates": [
         {
-          "en": "Cloud shadows keep walking across the outfield. The umpire hasn't given them out yet.",
-          "af": "Wolkskaduwees stap heeltyd oor die buiteveld. Die skeidsregter het hulle nog nie uitgegee nie.",
+          "en": "Cloud shadows crossing the outfield at a steady walk. Nobody's appealing.",
+          "af": "Wolkskaduwees stap teen 'n rustige pas oor die veld. Niemand appelleer nie.",
           "afCheck": {
             "action": "pass",
-            "confidence": 0.1,
+            "confidence": 0,
             "findings": []
-          }
-        },
-        {
-          "en": "Enough cloud to rest the outfield. Not enough to call off the match.",
-          "af": "Genoeg wolke om die buiteveld te laat rus. Nie genoeg om die wedstryd af te gelas nie.",
-          "afCheck": {
-            "action": "pass",
-            "confidence": 0.1,
-            "findings": []
-          }
+          },
+          "by": "Maat (Fable 5.1), ruled by Al 7 Oct 2026"
         }
       ]
     },
@@ -247,22 +188,14 @@
       "day": "wed",
       "candidates": [
         {
-          "en": "Sun, cloud, sun again. The monkeys on the wall wait for the good bits.",
-          "af": "Son, wolk, en weer son. Die ape op die muur wag vir die lekker stukke.",
+          "en": "Sun, then cloud, then sun. Even the monkeys can't plan around that.",
+          "af": "Son, dan wolk, dan son. Selfs die apies kan nie daarvolgens beplan nie.",
           "afCheck": {
             "action": "pass",
             "confidence": 0,
             "findings": []
-          }
-        },
-        {
-          "en": "Wednesday afternoon in Durban: clouds over the ridge, humidity over everything else.",
-          "af": "Woensdagmiddag in Durban: wolke oor die rant, vogtigheid oor alles anders.",
-          "afCheck": {
-            "action": "pass",
-            "confidence": 0,
-            "findings": []
-          }
+          },
+          "by": "Maat (Fable 5.1), ruled by Al 7 Oct 2026"
         }
       ]
     },
@@ -273,22 +206,18 @@
       "day": "thu",
       "candidates": [
         {
-          "en": "The dog found the exact line between sun and cloud. He's staying on it.",
-          "af": "Die hond het die presiese lyn tussen son en wolk gekry. Hy bly net daar.",
+          "en": "The dog found the exact line between sun and shade. He's staying put.",
+          "af": "Die hond het die presiese lyn tussen son en skadu gekry. Hy bly net daar.",
           "afCheck": {
             "action": "pass",
-            "confidence": 0.1,
-            "findings": []
-          }
-        },
-        {
-          "en": "Karoo noon with clouds, for once. The town treats the shade like a holiday.",
-          "af": "Karoo-middag met wolke, vir 'n slag. Die dorp behandel die skaduwee soos 'n vakansie.",
-          "afCheck": {
-            "action": "pass",
-            "confidence": 0.1,
-            "findings": []
-          }
+            "confidence": 0.15,
+            "findings": [
+              "tussen (low): 'tussen' means 'between; among, amidst; among' — nothing in the English source; the source's 'found' would normally be 'vestig' / 'fondeer', none present — but it does co-occur in corpus with 'lyn'",
+              "skadu (low): 'skadu' means 'alternative form of skaduwee (“shadow”); shadow' — nothing in the English source; the source's 'found' would normally be 'vestig' / 'fondeer', none present",
+              "gekry (low): 'gekry' means 'past participle of kry; got; to get, receive, obtain' — nothing in the English source; the source's 'found' would normally be 'vestig' / 'fondeer', none present"
+            ]
+          },
+          "by": "Maat (Fable 5.1), ruled by Al 7 Oct 2026"
         }
       ]
     },
@@ -299,22 +228,14 @@
       "day": "fri",
       "candidates": [
         {
-          "en": "Sunglasses on, a cloud comes. Sunglasses off, the sun's back. Friday has a rhythm.",
-          "af": "Sonbril op, 'n wolk kom. Sonbril af, die son is terug. Vrydag het 'n ritme.",
+          "en": "Sunglasses on, sunglasses off, sunglasses on. Friday afternoon is interval training.",
+          "af": "Sonbril op, sonbril af, sonbril op. Vrydagmiddag is intervaloefening.",
           "afCheck": {
             "action": "pass",
-            "confidence": 0.05,
+            "confidence": 0,
             "findings": []
-          }
-        },
-        {
-          "en": "The clouds keep stealing the sun. This table isn't letting them steal Friday.",
-          "af": "Die wolke steel heeltyd die son. Hierdie tafel laat hulle nie Vrydag steel nie.",
-          "afCheck": {
-            "action": "pass",
-            "confidence": 0.05,
-            "findings": []
-          }
+          },
+          "by": "Maat (Fable 5.1), ruled by Al 7 Oct 2026"
         }
       ]
     },
@@ -325,22 +246,14 @@
       "day": "sat",
       "candidates": [
         {
-          "en": "The braai's lit, a cloud is passing, and nobody is changing Saturday's plans.",
-          "af": "Die braai brand, 'n wolk trek verby, en niemand verander Saterdag se planne nie.",
+          "en": "One cloud over the mountain is not a weather event. The fire stays lit.",
+          "af": "Een wolk oor die berg is nie weer nie. Die vuur bly aan.",
           "afCheck": {
             "action": "pass",
-            "confidence": 0.15,
+            "confidence": 0,
             "findings": []
-          }
-        },
-        {
-          "en": "A cloud over Paarl Rock, a fire in the braai. Both staying for lunch.",
-          "af": "'n Wolk oor die Paarlrots, 'n vuur in die braai. Albei bly vir middagete.",
-          "afCheck": {
-            "action": "pass",
-            "confidence": 0.1,
-            "findings": []
-          }
+          },
+          "by": "Maat (Fable 5.1), ruled by Al 7 Oct 2026"
         }
       ]
     },
@@ -351,22 +264,17 @@
       "day": "sun",
       "candidates": [
         {
-          "en": "A cloud crosses the sun; gran doesn't even look up. The potjie's nearly done.",
-          "af": "'n Wolk skuif voor die son en ouma kyk nie eers op nie. Die potjie is amper gaar.",
+          "en": "Cloud over the mountain, potjie under the lapa. Both need another hour.",
+          "af": "Wolk oor die berg, potjie onder die lapa. Albei kort nog 'n uur.",
           "afCheck": {
             "action": "pass",
-            "confidence": 0.2,
-            "findings": []
-          }
-        },
-        {
-          "en": "Under the lapa: sun on the lawn, cloud on the Magaliesberg, potjie for everyone.",
-          "af": "Onder die lapa: son op die grasperk, wolk op die Magaliesberg, potjie vir almal.",
-          "afCheck": {
-            "action": "pass",
-            "confidence": 0,
-            "findings": []
-          }
+            "confidence": 0.1,
+            "findings": [
+              "onder (low): 'onder' means 'under; under, below, beneath, underneath; among' — nothing in the English source; the source's 'both' would normally be 'beide', none present",
+              "kort (low): 'kort' means 'short (in extent, physical length); short (in time); short' — nothing in the English source; the source's 'both' would normally be 'beide', none present"
+            ]
+          },
+          "by": "Maat (Fable 5.1), ruled by Al 7 Oct 2026"
         }
       ]
     },
@@ -377,22 +285,14 @@
       "day": "mon",
       "candidates": [
         {
-          "en": "The clouds stayed just to catch the colour. Monday ends better than it began.",
-          "af": "Die wolke het net gebly om die kleur te vang. Maandag eindig beter as wat dit begin het.",
+          "en": "The clouds stayed late just for the colour. Monday owed everyone that much.",
+          "af": "Die wolke het laat gebly net vir die kleur. Maandag skuld almal soveel.",
           "afCheck": {
             "action": "pass",
             "confidence": 0,
             "findings": []
-          }
-        },
-        {
-          "en": "No clouds, no colour. Sea Point got the full sunset on a Monday.",
-          "af": "Geen wolke, geen kleur nie. Seepunt kry die volle sonsondergang op 'n Maandag.",
-          "afCheck": {
-            "action": "pass",
-            "confidence": 0,
-            "findings": []
-          }
+          },
+          "by": "Maat (Fable 5.1), ruled by Al 7 Oct 2026"
         }
       ]
     },
@@ -403,22 +303,14 @@
       "day": "tue",
       "candidates": [
         {
-          "en": "The clouds walked past without a drop. The hose is doing their job again.",
-          "af": "Die wolke het sonder 'n druppel verbygestap. Die tuinslang doen weer hulle werk.",
+          "en": "Clouds all afternoon, not a drop. The hose is back on duty.",
+          "af": "Wolke die hele middag, nie 'n druppel nie. Die tuinslang is weer aan diens.",
           "afCheck": {
             "action": "pass",
             "confidence": 0,
             "findings": []
-          }
-        },
-        {
-          "en": "Clouds all afternoon and not one drop. Tuesday's watering is still his department.",
-          "af": "Wolke die hele middag en nie een druppel nie. Dinsdag se natlei is steeds sy departement.",
-          "afCheck": {
-            "action": "pass",
-            "confidence": 0.05,
-            "findings": []
-          }
+          },
+          "by": "Maat (Fable 5.1), ruled by Al 7 Oct 2026"
         }
       ]
     },
@@ -429,22 +321,17 @@
       "day": "wed",
       "candidates": [
         {
-          "en": "The clouds are putting on a show at Nahoon. The fish are not.",
-          "af": "Die wolke hou 'n vertoning by Nahoon. Die visse nie.",
+          "en": "The sky's putting on a show. The fish, as usual, are not.",
+          "af": "Die lug hou 'n vertoning. Die vis, soos gewoonlik, nie.",
           "afCheck": {
             "action": "pass",
-            "confidence": 0.05,
-            "findings": []
-          }
-        },
-        {
-          "en": "Every cloud at Nahoon went pink on cue. The fish missed theirs entirely.",
-          "af": "Elke wolk by Nahoon het op die regte oomblik pienk geword. Die visse het hulle s'n heeltemal gemis.",
-          "afCheck": {
-            "action": "pass",
-            "confidence": 0.2,
-            "findings": []
-          }
+            "confidence": 0.1,
+            "findings": [
+              "lug (low): 'lug' means 'air' — nothing in the English source; the source's 'sky's' would normally be 'hemel', none present",
+              "hou (low): 'hou' means 'to hold; to keep; hit' — nothing in the English source; the source's 'sky's' would normally be 'hemel', none present"
+            ]
+          },
+          "by": "Maat (Fable 5.1), ruled by Al 7 Oct 2026"
         }
       ]
     },
@@ -455,22 +342,17 @@
       "day": "thu",
       "candidates": [
         {
-          "en": "Clouds over Upington, and none of them carry rain. The sprinklers know the drill.",
-          "af": "Wolke oor Upington, en nie een dra reën nie. Die sprinkelaars ken die storie.",
-          "afCheck": {
-            "action": "pass",
-            "confidence": 0.05,
-            "findings": []
-          }
-        },
-        {
-          "en": "A few clouds for the sunset, none for the vines. The sprinklers stay on.",
-          "af": "'n Paar wolke vir die sonsondergang, geen vir die wingerd nie. Die sprinkelaars bly aan.",
+          "en": "Clouds for the sunset, sprinklers for the vines. The farm arranges its own rain.",
+          "af": "Wolke vir die sonsondergang, sproeiers vir die wingerd. Die plaas reël sy eie reën.",
           "afCheck": {
             "action": "pass",
             "confidence": 0.1,
-            "findings": []
-          }
+            "findings": [
+              "reël (low): 'reël' means 'rule; control; law' — nothing in the English source; the source's 'arranges' would normally be 'verwerk' / 'rangskik' / 'orden', none present",
+              "eie (low): 'eie' means 'own (belonging to oneself); own; respective' — nothing in the English source; the source's 'arranges' would normally be 'verwerk' / 'rangskik' / 'orden', none present"
+            ]
+          },
+          "by": "Maat (Fable 5.1), ruled by Al 7 Oct 2026"
         }
       ]
     },
@@ -481,22 +363,16 @@
       "day": "fri",
       "candidates": [
         {
-          "en": "Sun's gone, clouds still lit. Friday in Hatfield is only warming up.",
-          "af": "Die son is weg, die wolke brand nog. Vrydag in Hatfield word eers warm.",
+          "en": "The sun's clocked out. The clouds are still lit, and so is the balcony.",
+          "af": "Die son het afgeteken. Die wolke gloei nog, en die balkon ook.",
           "afCheck": {
             "action": "pass",
-            "confidence": 0.1,
-            "findings": []
-          }
-        },
-        {
-          "en": "The clouds hold the last of the light. The balcony holds everything else.",
-          "af": "Die wolke hou die laaste lig vas. Die balkon sorg vir die res.",
-          "afCheck": {
-            "action": "pass",
-            "confidence": 0.2,
-            "findings": []
-          }
+            "confidence": 0.05,
+            "findings": [
+              "afgeteken (low): 'afgeteken' means 'outlined' — nothing in the English source; the source's 'clocked' would normally be 'klok', none present"
+            ]
+          },
+          "by": "Maat (Fable 5.1), ruled by Al 7 Oct 2026"
         }
       ]
     },
@@ -507,25 +383,16 @@
       "day": "sat",
       "candidates": [
         {
-          "en": "Saturday's clouds turned pink right on time for packing up. Nobody's packing up.",
-          "af": "Saterdag se wolke het presies betyds pienk geword vir inpak. Niemand pak in nie.",
+          "en": "The clouds turned pink right on packing-up time. Nobody packed up.",
+          "af": "Die wolke het pienk geword net toe dit tyd was om op te pak. Niemand het opgepak nie.",
           "afCheck": {
             "action": "pass",
             "confidence": 0.05,
-            "findings": []
-          }
-        },
-        {
-          "en": "The clouds kept the sun soft all afternoon. Now they're just showing off.",
-          "af": "Die wolke het die son die hele middag sag gehou. Nou pronk hulle net.",
-          "afCheck": {
-            "action": "triage",
-            "confidence": 0.25,
             "findings": [
-              "'gehou' means 'to hold; to keep; hit' — nothing in the English source; it is 1 letter from 'behou', the usual word for 'kept'"
-            ],
-            "note": "false alarm: sag gehou = kept soft"
-          }
+              "geword (low): 'geword' means 'past participle of word; to become; to get (to change one’s state); Forms the present passive voice when followed by a past participle' — nothing in the English source; the source's 'turned' would normally be 'omgedraaide' / 'omgeslane' / 'omgekeerde' / 'omgewerkte', none present — but it does co-occur in corpus with 'tyd'"
+            ]
+          },
+          "by": "Maat (Fable 5.1), ruled by Al 7 Oct 2026"
         }
       ]
     },
@@ -536,22 +403,19 @@
       "day": "sun",
       "candidates": [
         {
-          "en": "The cattle are home before the clouds lose their colour. Sunday ends on time.",
-          "af": "Die beeste is tuis voor die wolke hulle kleur verloor. Sondag eindig betyds.",
+          "en": "The cattle are home before the colour goes. Sunday ends exactly on schedule.",
+          "af": "Die beeste is tuis voor die kleur weg is. Sondag eindig presies op tyd.",
           "afCheck": {
             "action": "pass",
-            "confidence": 0,
-            "findings": []
-          }
-        },
-        {
-          "en": "The Berg holds the light, the clouds hold the pink. The cattle keep walking.",
-          "af": "Die Berg hou die lig vas, die wolke hou die pienk. Die beeste stap net aan.",
-          "afCheck": {
-            "action": "pass",
-            "confidence": 0,
-            "findings": []
-          }
+            "confidence": 0.2,
+            "findings": [
+              "voor (low): 'voor' means 'before; in front of; furrow' — nothing in the English source; the source's 'schedule' would normally be 'skedule' / 'vraelys' / 'lys' / 'bylae', none present",
+              "weg (low): 'weg' means 'way; path; away; path' — nothing in the English source; the source's 'schedule' would normally be 'skedule' / 'vraelys' / 'lys' / 'bylae', none present",
+              "eindig (low): 'eindig' means 'cease; ceases; end' — nothing in the English source; the source's 'schedule' would normally be 'skedule' / 'vraelys' / 'lys' / 'bylae', none present",
+              "tyd (low): 'tyd' means 'time; tense' — nothing in the English source; the source's 'schedule' would normally be 'skedule' / 'vraelys' / 'lys' / 'bylae', none present"
+            ]
+          },
+          "by": "Maat (Fable 5.1), ruled by Al 7 Oct 2026"
         }
       ]
     },
@@ -562,22 +426,14 @@
       "day": "mon",
       "candidates": [
         {
-          "en": "The moon keeps ducking behind the clouds. The security light has no such option.",
-          "af": "Die maan duik heeltyd agter die wolke in. Die sekuriteitslig het nie daai keuse nie.",
+          "en": "The moon's on a dimmer tonight. The security light has no such setting.",
+          "af": "Die maan is vanaand op 'n dimmer. Die sekuriteitslig het nie so 'n knoppie nie.",
           "afCheck": {
             "action": "pass",
-            "confidence": 0.15,
+            "confidence": 0,
             "findings": []
-          }
-        },
-        {
-          "en": "Moon out, moon in, moon out again. Monday night can't settle either.",
-          "af": "Maan uit, maan in, maan weer uit. Maandagaand kan ook nie tot rus kom nie.",
-          "afCheck": {
-            "action": "pass",
-            "confidence": 0.05,
-            "findings": []
-          }
+          },
+          "by": "Maat (Fable 5.1), ruled by Al 7 Oct 2026"
         }
       ]
     },
@@ -588,22 +444,16 @@
       "day": "tue",
       "candidates": [
         {
-          "en": "Moonlit clouds over Devil's Peak, and the bin is going out. Tuesday's highlight.",
-          "af": "Maanlig-wolke oor Duiwelspiek, en die asblik gaan uit. Dinsdag se hoogtepunt.",
+          "en": "Half moon, half cloud, full bin. Tuesday night, as advertised.",
+          "af": "Halfmaan, halfwolk, vol drom. Dinsdagaand, soos geadverteer.",
           "afCheck": {
             "action": "pass",
             "confidence": 0.05,
-            "findings": []
-          }
-        },
-        {
-          "en": "The clouds keep borrowing the moon. He'll find the gate without it.",
-          "af": "Die wolke leen heeltyd die maan. Hy sal die hek sonder die maan kry.",
-          "afCheck": {
-            "action": "pass",
-            "confidence": 0.05,
-            "findings": []
-          }
+            "findings": [
+              "drom (low): 'drom' means 'drum' — nothing in the English source; the source's 'moon' would normally be 'maan', none present"
+            ]
+          },
+          "by": "Maat (Fable 5.1), ruled by Al 7 Oct 2026"
         }
       ]
     },
@@ -614,22 +464,18 @@
       "day": "wed",
       "candidates": [
         {
-          "en": "The moon comes and goes. The forecourt mast light has never once left.",
-          "af": "Die maan kom en gaan. Die masligte by die vulstasie het nog nooit eers weggegaan nie.",
+          "en": "The moon keeps popping out to check on the forecourt. Still nothing happening.",
+          "af": "Die maan loer kort-kort uit om die vulstasie te check. Steeds niks aan die gang nie.",
           "afCheck": {
             "action": "pass",
             "confidence": 0.15,
-            "findings": []
-          }
-        },
-        {
-          "en": "Half a sky of stars, half of cloud. Bloem is fine with half.",
-          "af": "Half 'n lug vol sterre, half vol wolke. Bloem is tevrede met half.",
-          "afCheck": {
-            "action": "pass",
-            "confidence": 0.2,
-            "findings": []
-          }
+            "findings": [
+              "vulstasie (low): 'vulstasie' means 'service station, petrol station, filling station' — nothing in the English source; the source's 'keeps' would normally be 'hou' / 'sluiter' / 'sluitstuk', none present",
+              "Steeds (low): 'Steeds' means 'always; constantly' — nothing in the English source; the source's 'keeps' would normally be 'hou' / 'sluiter' / 'sluitstuk', none present",
+              "gang (low): 'gang' means 'a passageway, alley; course; gallery' — nothing in the English source; the source's 'keeps' would normally be 'hou' / 'sluiter' / 'sluitstuk', none present"
+            ]
+          },
+          "by": "Maat (Fable 5.1), ruled by Al 7 Oct 2026"
         }
       ]
     },
@@ -640,22 +486,16 @@
       "day": "thu",
       "candidates": [
         {
-          "en": "The clouds have the moon on a dimmer. The balcony isn't complaining.",
-          "af": "Die wolke hou die maan op 'n dimskakelaar. Die balkon kla nie.",
+          "en": "The clouds are passing the moon around. The balcony is happy to wait.",
+          "af": "Die wolke gee die maan vir mekaar aan. Die balkon wag graag.",
           "afCheck": {
             "action": "pass",
-            "confidence": 0,
-            "findings": []
-          }
-        },
-        {
-          "en": "Warm night, broken cloud, a moon that keeps coming back. Thursday's working out fine.",
-          "af": "Warm nag, gebreekte wolke, 'n maan wat aanhou terugkom. Donderdag werk mooi uit.",
-          "afCheck": {
-            "action": "pass",
-            "confidence": 0.1,
-            "findings": []
-          }
+            "confidence": 0.05,
+            "findings": [
+              "graag (low): 'graag' means 'gladly, eagerly (meaning that the subject is eager to perform the action of the verb)' — nothing in the English source; the source's 'passing' would normally be 'passeerdraad', none present"
+            ]
+          },
+          "by": "Maat (Fable 5.1), ruled by Al 7 Oct 2026"
         }
       ]
     },
@@ -666,22 +506,18 @@
       "day": "fri",
       "candidates": [
         {
-          "en": "The moon shows up between clouds now and then. The fire stays all night.",
-          "af": "Die maan wys nou en dan tussen die wolke deur. Die vuur bly die hele nag.",
+          "en": "The moon drops in between clouds. It can smell the meat from up there.",
+          "af": "Die maan kom tussen die wolke deur kuier. Hy ruik die vleis van daar bo af.",
           "afCheck": {
             "action": "pass",
-            "confidence": 0,
-            "findings": []
-          }
-        },
-        {
-          "en": "The clouds are keeping half the moon for later. Friday doesn't wait for later.",
-          "af": "Die wolke hou die helfte van die maan vir later. Vrydag wag nie vir later nie.",
-          "afCheck": {
-            "action": "pass",
-            "confidence": 0,
-            "findings": []
-          }
+            "confidence": 0.15,
+            "findings": [
+              "tussen (low): 'tussen' means 'between; among, amidst; among' — nothing in the English source; the source's 'drops' would normally be 'ontbind' / 'drup' / 'sak' / 'uitlaat', none present",
+              "deur (low): 'deur' means 'door; through; by (indicating an agent)' — nothing in the English source; the source's 'drops' would normally be 'ontbind' / 'drup' / 'sak' / 'uitlaat', none present",
+              "kuier (low): 'kuier' means 'to walk leisurely, to gallivant; to visit; see' — nothing in the English source; the source's 'drops' would normally be 'ontbind' / 'drup' / 'sak' / 'uitlaat', none present"
+            ]
+          },
+          "by": "Maat (Fable 5.1), ruled by Al 7 Oct 2026"
         }
       ]
     },
@@ -692,22 +528,17 @@
       "day": "sat",
       "candidates": [
         {
-          "en": "Moonlit clouds over the mountains, coals still glowing. Saturday has no reason to end.",
-          "af": "Maanlig-wolke oor die berge, die kole gloei nog. Saterdag het geen rede om te eindig nie.",
+          "en": "Half the stars are behind cloud. The fairy lights are covering for them.",
+          "af": "Die helfte van die sterre is agter wolke. Die liggies staan vir hulle in.",
           "afCheck": {
             "action": "pass",
-            "confidence": 0,
-            "findings": []
-          }
-        },
-        {
-          "en": "The clouds are covering half the stars. The fairy lights are covering the rest.",
-          "af": "Die wolke bedek die helfte van die sterre. Die liggies in die boom doen die res.",
-          "afCheck": {
-            "action": "pass",
-            "confidence": 0.05,
-            "findings": []
-          }
+            "confidence": 0.1,
+            "findings": [
+              "agter (low): 'agter' means 'behind; back' — nothing in the English source; the source's 'fairy' would normally be 'fee', none present",
+              "staan (low): 'staan' means 'to stand' — nothing in the English source; the source's 'fairy' would normally be 'fee', none present"
+            ]
+          },
+          "by": "Maat (Fable 5.1), ruled by Al 7 Oct 2026"
         }
       ]
     },
@@ -718,22 +549,14 @@
       "day": "sun",
       "candidates": [
         {
-          "en": "Moon behind a cloud, stoep light on duty. The dog approves.",
-          "af": "Maan agter 'n wolk, stoeplig aan diens. Die hond keur dit goed.",
+          "en": "Moon behind a cloud, dog on the stoep. Sunday's service is over.",
+          "af": "Maan agter 'n wolk, hond op die stoep. Sondag se diens is verby.",
           "afCheck": {
             "action": "pass",
-            "confidence": 0.15,
+            "confidence": 0,
             "findings": []
-          }
-        },
-        {
-          "en": "Karoo Sunday night: one moon, a few clouds, and absolutely nothing else happening.",
-          "af": "Karoo-Sondagaand: een maan, 'n paar wolke, en verder gebeur daar absoluut niks nie.",
-          "afCheck": {
-            "action": "pass",
-            "confidence": 0.15,
-            "findings": []
-          }
+          },
+          "by": "Maat (Fable 5.1), ruled by Al 7 Oct 2026"
         }
       ]
     },
@@ -744,22 +567,16 @@
       "day": "mon",
       "candidates": [
         {
-          "en": "The breeze was up before the surfers. The flag's already giving the forecast.",
-          "af": "Die briesie was voor die branderplankryers op. Die vlag gee al klaar die voorspelling.",
+          "en": "The flag's giving the forecast before the surfers do. It says: go.",
+          "af": "Die vlag gee die voorspelling voor die branderplankryers. Dit sê: gaan.",
           "afCheck": {
             "action": "pass",
             "confidence": 0.05,
-            "findings": []
-          }
-        },
-        {
-          "en": "Monday at Muizenberg: the wind's tidying the whitecaps and untidying everyone's hair.",
-          "af": "Maandag by Muizenberg: die wind maak die skuimkoppe netjies en almal se hare deurmekaar.",
-          "afCheck": {
-            "action": "pass",
-            "confidence": 0,
-            "findings": []
-          }
+            "findings": [
+              "voor (low): 'voor' means 'before; in front of; furrow' — nothing in the English source; the source's 'giving' would normally be 'meegee', none present"
+            ]
+          },
+          "by": "Maat (Fable 5.1), ruled by Al 7 Oct 2026"
         }
       ]
     },
@@ -770,22 +587,18 @@
       "day": "tue",
       "candidates": [
         {
-          "en": "The breeze wants that scarf more than she does. She's winning, for now.",
-          "af": "Die briesie wil daai serp meer hê as sy. Sy wen, vir nou.",
+          "en": "The jacaranda petals are taking the bus too. The breeze bought their tickets.",
+          "af": "Die jakarandablomme ry ook bus. Die bries het hulle kaartjies gekoop.",
           "afCheck": {
             "action": "pass",
-            "confidence": 0,
-            "findings": []
-          }
-        },
-        {
-          "en": "Jacaranda petals are taking the bus too. The breeze bought them all tickets.",
-          "af": "Die jakarandablommetjies ry ook bus. Die briesie het vir almal kaartjies gekoop.",
-          "afCheck": {
-            "action": "pass",
-            "confidence": 0.2,
-            "findings": []
-          }
+            "confidence": 0.15,
+            "findings": [
+              "jakarandablomme (low): 'jakarandablomme' means 'plural of blom; flower' — nothing in the English source; the source's 'bought' would normally be 'aangekoopte', none present",
+              "ry (low): 'ry' means 'row; to ride; to drive' — nothing in the English source; the source's 'bought' would normally be 'aangekoopte', none present",
+              "gekoop (low): 'gekoop' means 'past participle of koop; To buy.; buy' — nothing in the English source; the source's 'bought' would normally be 'aangekoopte', none present — but it does co-occur in corpus with 'kaartjies'"
+            ]
+          },
+          "by": "Maat (Fable 5.1), ruled by Al 7 Oct 2026"
         }
       ]
     },
@@ -796,22 +609,14 @@
       "day": "wed",
       "candidates": [
         {
-          "en": "The windpump has work today. The grass is just showing off about it.",
-          "af": "Die windpomp het vandag werk. Die gras spog net daaroor.",
+          "en": "The windpump is doing the morning's work. The grass is just waving it on.",
+          "af": "Die windpomp doen die oggend se werk. Die gras waai hom net aan.",
           "afCheck": {
             "action": "pass",
             "confidence": 0,
             "findings": []
-          }
-        },
-        {
-          "en": "Steady breeze, steady windpump. Wednesday's water is taking care of itself.",
-          "af": "Bestendige briesie, bestendige windpomp. Woensdag se water sorg vir homself.",
-          "afCheck": {
-            "action": "pass",
-            "confidence": 0,
-            "findings": []
-          }
+          },
+          "by": "Maat (Fable 5.1), ruled by Al 7 Oct 2026"
         }
       ]
     },
@@ -822,22 +627,14 @@
       "day": "thu",
       "candidates": [
         {
-          "en": "Hand on the cap, one stride at a time. The breeze sets her pace.",
-          "af": "Hand op die pet, een tree op 'n slag. Die briesie bepaal haar pas.",
+          "en": "Hand on the cap, one stride at a time. The breeze is pacing her.",
+          "af": "Hand op die pet, een tree op 'n slag. Die bries hou haar pas.",
           "afCheck": {
             "action": "pass",
-            "confidence": 0.1,
+            "confidence": 0,
             "findings": []
-          }
-        },
-        {
-          "en": "Palms swaying, umbrella flapping, Durban sunrise. The breeze is the only one not sweating.",
-          "af": "Palmbome swaai, sambreel klap, Durbanse sonsopkoms. Die briesie is die enigste een wat nie sweet nie.",
-          "afCheck": {
-            "action": "pass",
-            "confidence": 0.15,
-            "findings": []
-          }
+          },
+          "by": "Maat (Fable 5.1), ruled by Al 7 Oct 2026"
         }
       ]
     },
@@ -848,22 +645,19 @@
       "day": "fri",
       "candidates": [
         {
-          "en": "The washing will be dry before school is out. The breeze clocked in early.",
-          "af": "Die wasgoed sal droog wees voor die skool uitkom. Die briesie het vroeg ingeklok.",
+          "en": "The washing will be dry before first break. The breeze took the early shift.",
+          "af": "Die wasgoed is droog voor eerste pouse. Die bries het vroeg begin werk.",
           "afCheck": {
             "action": "pass",
-            "confidence": 0.1,
-            "findings": []
-          }
-        },
-        {
-          "en": "Friday breeze, full washing line. Gqeberha's free tumble dryer is on.",
-          "af": "Vrydagbriesie, vol wasgoeddraad. Gqeberha se gratis tuimeldroër is aan.",
-          "afCheck": {
-            "action": "pass",
-            "confidence": 0.05,
-            "findings": []
-          }
+            "confidence": 0.2,
+            "findings": [
+              "voor (low): 'voor' means 'before; in front of; furrow' — nothing in the English source; the source's 'washing' would normally be 'was', none present",
+              "eerste (low): 'eerste' means 'first; forefront; front' — nothing in the English source; the source's 'washing' would normally be 'was', none present",
+              "begin (low): 'begin' means 'advent; beginning; begins' — nothing in the English source; the source's 'washing' would normally be 'was', none present — but it does co-occur in corpus with 'werk'",
+              "werk (low): 'werk' means 'work; to work; employment' — nothing in the English source; the source's 'washing' would normally be 'was', none present — but it does co-occur in corpus with 'begin'"
+            ]
+          },
+          "by": "Maat (Fable 5.1), ruled by Al 7 Oct 2026"
         }
       ]
     },
@@ -875,21 +669,15 @@
       "candidates": [
         {
           "en": "A little dust devil is riding ahead of him. It isn't even pedalling.",
-          "af": "'n Klein stofduiweltjie ry voor hom uit. Dit trap nie eers nie.",
+          "af": "'n Klein stofduiweltjie ry voor hom uit. Dit trap nie eens nie.",
           "afCheck": {
             "action": "pass",
             "confidence": 0.05,
-            "findings": []
-          }
-        },
-        {
-          "en": "Saturday in the Karoo: light breeze, one dust devil out for a training ride.",
-          "af": "Saterdag in die Karoo: ligte briesie, een stofduiwel uit vir 'n oefenrit.",
-          "afCheck": {
-            "action": "pass",
-            "confidence": 0.05,
-            "findings": []
-          }
+            "findings": [
+              "Klein (low): mid-sentence capital on common noun 'Klein' (attested lowercase 2222×)"
+            ]
+          },
+          "by": "Maat (Fable 5.1), ruled by Al 7 Oct 2026"
         }
       ]
     },
@@ -900,22 +688,18 @@
       "day": "sun",
       "candidates": [
         {
-          "en": "Sunday breeze through the pines. Her hair got to the bakery before she did.",
-          "af": "Sondagbriesie deur die dennebome. Haar hare was voor haar by die bakkery.",
+          "en": "Her hair got to the bakery first. The breeze has its own Sunday plans.",
+          "af": "Haar hare was eerste by die bakkery. Die bries het sy eie Sondagplanne.",
           "afCheck": {
             "action": "pass",
-            "confidence": 0.1,
-            "findings": []
-          }
-        },
-        {
-          "en": "A soft breeze down the main road. Even the pines are taking it easy.",
-          "af": "'n Sagte briesie in die hoofstraat af. Selfs die dennebome vat dit rustig.",
-          "afCheck": {
-            "action": "pass",
-            "confidence": 0.1,
-            "findings": []
-          }
+            "confidence": 0.15,
+            "findings": [
+              "Sondagplanne (low): mid-sentence capital on common noun 'Sondagplanne' (a compound of attested words)",
+              "eerste (low): 'eerste' means 'first; forefront; front' — nothing in the English source; the source's 'plans' would normally be 'plan' / 'beplan' / 'plan beraam', none present",
+              "eie (low): 'eie' means 'own (belonging to oneself); own; respective' — nothing in the English source; the source's 'plans' would normally be 'plan' / 'beplan' / 'plan beraam', none present"
+            ]
+          },
+          "by": "Maat (Fable 5.1), ruled by Al 7 Oct 2026"
         }
       ]
     },
@@ -926,22 +710,14 @@
       "day": "mon",
       "candidates": [
         {
-          "en": "Monday break-time, and the breeze is in charge of everyone's hair. Teachers included.",
-          "af": "Maandagpouse, en die briesie is in beheer van almal se hare. Onderwysers ingesluit.",
+          "en": "Break time, and the breeze is doing everyone's hair. Teachers included.",
+          "af": "Pouse, en die bries doen almal se hare. Die juffrouens ook.",
           "afCheck": {
             "action": "pass",
-            "confidence": 0.05,
+            "confidence": 0,
             "findings": []
-          }
-        },
-        {
-          "en": "The papers are staying put. The leaves and the ponytails have other plans.",
-          "af": "Die papiere bly waar hulle is. Die blare en die poniesterte het ander planne.",
-          "afCheck": {
-            "action": "pass",
-            "confidence": 0.15,
-            "findings": []
-          }
+          },
+          "by": "Maat (Fable 5.1), ruled by Al 7 Oct 2026"
         }
       ]
     },
@@ -952,22 +728,14 @@
       "day": "tue",
       "candidates": [
         {
-          "en": "The awning's flapping, the palms are swaying, and the pineapples aren't going anywhere.",
-          "af": "Die afdak klap, die palmbome swaai, en die pynappels gaan nêrens heen nie.",
+          "en": "The breeze is working the fruit stall today. Air-con included, no extra charge.",
+          "af": "Die bries werk vandag by die vrugtestalletjie. Lugverkoeling ingesluit, geen ekstra koste nie.",
           "afCheck": {
             "action": "pass",
             "confidence": 0,
             "findings": []
-          }
-        },
-        {
-          "en": "A Durban breeze at the fruit stall: free air conditioning with every pineapple.",
-          "af": "'n Durbanse briesie by die vrugtestalletjie: gratis lugversorging by elke pynappel.",
-          "afCheck": {
-            "action": "pass",
-            "confidence": 0.05,
-            "findings": []
-          }
+          },
+          "by": "Maat (Fable 5.1), ruled by Al 7 Oct 2026"
         }
       ]
     },
@@ -978,22 +746,17 @@
       "day": "wed",
       "candidates": [
         {
-          "en": "Perfect kite wind. The willows are cheering and the dog's ears agree.",
-          "af": "Perfekte vlieërwind. Die treurwilgers juig en die hond se ore stem saam.",
-          "afCheck": {
-            "action": "pass",
-            "confidence": 0.15,
-            "findings": []
-          }
-        },
-        {
-          "en": "The breeze does all the hard work. The kite takes all the credit.",
-          "af": "Die briesie doen al die harde werk. Die vlieër vat al die eer.",
+          "en": "The breeze does all the work. The kite takes all the credit.",
+          "af": "Die bries doen al die werk. Die vlieër kry al die eer.",
           "afCheck": {
             "action": "pass",
             "confidence": 0.1,
-            "findings": []
-          }
+            "findings": [
+              "kry (low): 'kry' means 'to get, receive, obtain; get; gets' — nothing in the English source; the source's 'credit' would normally be 'krediteer' / 'krediet' / 'rolverdeling', none present",
+              "eer (low): 'eer' means 'Part of the root derived mainly from French and Latin, e.g. informeer from French to inform, originally the infinitive ending of such French verbs.; honour; honouring' — nothing in the English source; the source's 'credit' would normally be 'krediteer' / 'krediet' / 'rolverdeling', none present"
+            ]
+          },
+          "by": "Maat (Fable 5.1), ruled by Al 7 Oct 2026"
         }
       ]
     },
@@ -1004,22 +767,17 @@
       "day": "thu",
       "candidates": [
         {
-          "en": "The corner flag is pointing out exactly where the conversions are going to drift.",
-          "af": "Die hoekvlag wys presies waarheen die doelskoppe gaan dryf.",
+          "en": "The corner flag is pointing out exactly where the conversions will drift.",
+          "af": "Die hoekvlag wys presies waarheen die doelskoppe gaan trek.",
           "afCheck": {
             "action": "pass",
             "confidence": 0.1,
-            "findings": []
-          }
-        },
-        {
-          "en": "Steady breeze across the field. Every kick at goal comes with a weather lesson.",
-          "af": "Bestendige briesie oor die veld. Elke skop na die pale kom met 'n weerles.",
-          "afCheck": {
-            "action": "pass",
-            "confidence": 0.05,
-            "findings": []
-          }
+            "findings": [
+              "waarheen (low): 'waarheen' means 'whither, where to' — nothing in the English source; the source's 'corner' would normally be 'hoek' / 'hoek van materiaal' / 'hoekstuk' / 'draai vat', none present",
+              "trek (low): 'trek' means 'to haul; to move (moving house); to pull' — nothing in the English source; the source's 'corner' would normally be 'hoek' / 'hoek van materiaal' / 'hoekstuk' / 'draai vat', none present"
+            ]
+          },
+          "by": "Maat (Fable 5.1), ruled by Al 7 Oct 2026"
         }
       ]
     },
@@ -1030,22 +788,14 @@
       "day": "fri",
       "candidates": [
         {
-          "en": "The sheets will be dry by lunch. The shopping-bag kite is a bonus.",
-          "af": "Die lakens sal teen middagete droog wees. Die winkelsakvlieër is 'n bonus.",
+          "en": "The sheets are dry already. Now the breeze is just showing off for the kid.",
+          "af": "Die lakens is al droog. Nou spog die bries net vir die kind.",
           "afCheck": {
             "action": "pass",
             "confidence": 0,
             "findings": []
-          }
-        },
-        {
-          "en": "Full washing lines and a shopping-bag kite. Gqeberha wastes none of its wind.",
-          "af": "Vol wasgoeddrade en 'n winkelsakvlieër. Gqeberha mors niks van sy wind nie.",
-          "afCheck": {
-            "action": "pass",
-            "confidence": 0.1,
-            "findings": []
-          }
+          },
+          "by": "Maat (Fable 5.1), ruled by Al 7 Oct 2026"
         }
       ]
     },
@@ -1061,17 +811,12 @@
           "afCheck": {
             "action": "pass",
             "confidence": 0.1,
-            "findings": []
-          }
-        },
-        {
-          "en": "Tablecloth lifting, pool rippling, smoke going sideways. The breeze accepted the braai invitation.",
-          "af": "Die tafeldoek lig, die swembad rimpel, die rook trek dwars. Die briesie het die braai-uitnodiging aanvaar.",
-          "afCheck": {
-            "action": "pass",
-            "confidence": 0,
-            "findings": []
-          }
+            "findings": [
+              "bure (low): 'bure' means 'plural of buur; neighbor' — nothing in the English source; the source's 'found' would normally be 'vestig' / 'fondeer', none present",
+              "gekry (low): 'gekry' means 'past participle of kry; got; to get, receive, obtain' — nothing in the English source; the source's 'found' would normally be 'vestig' / 'fondeer', none present"
+            ]
+          },
+          "by": "Maat (Fable 5.1), ruled by Al 7 Oct 2026"
         }
       ]
     },
@@ -1082,22 +827,14 @@
       "day": "sun",
       "candidates": [
         {
-          "en": "The blanket is held down with shoes. The windsurfers got the better deal.",
-          "af": "Die kombers word met skoene vasgehou. Die seilplankryers het die beter deal gekry.",
-          "afCheck": {
-            "action": "pass",
-            "confidence": 0.05,
-            "findings": []
-          }
-        },
-        {
-          "en": "Enough breeze for the windsurfers, not quite enough to steal lunch. Langebaan delivers.",
-          "af": "Genoeg briesie vir die seilplankryers, net nie genoeg om die middagete te steel nie. Langebaan lewer.",
+          "en": "Shoes on the blanket corners. The breeze is welcome, the sand isn't.",
+          "af": "Skoene op die kombers se hoeke. Die bries is welkom, die sand nie.",
           "afCheck": {
             "action": "pass",
             "confidence": 0,
             "findings": []
-          }
+          },
+          "by": "Maat (Fable 5.1), ruled by Al 7 Oct 2026"
         }
       ]
     },
@@ -1108,22 +845,16 @@
       "day": "mon",
       "candidates": [
         {
-          "en": "The flags are standing at attention. The wine glass is held a little tighter.",
-          "af": "Die vlae staan op aandag. Die wynglas word 'n bietjie stywer vasgehou.",
+          "en": "Flags out straight, wine held tight. The deck's version of a calm Monday.",
+          "af": "Vlae styf uit, wynglas styf vas. Die dek se weergawe van 'n kalm Maandag.",
           "afCheck": {
             "action": "pass",
             "confidence": 0.05,
-            "findings": []
-          }
-        },
-        {
-          "en": "Table Mountain in gold, a breeze off the bay, hair everywhere. Monday's going well.",
-          "af": "Tafelberg in goud, 'n briesie van die baai af, hare oral. Maandag gaan goed.",
-          "afCheck": {
-            "action": "pass",
-            "confidence": 0.05,
-            "findings": []
-          }
+            "findings": [
+              "dek (low): 'dek' means 'cover; covers; lay' — nothing in the English source; the source's 'straight' would normally be 'reguit' / 'skoon', none present"
+            ]
+          },
+          "by": "Maat (Fable 5.1), ruled by Al 7 Oct 2026"
         }
       ]
     },
@@ -1134,22 +865,18 @@
       "day": "tue",
       "candidates": [
         {
-          "en": "The breeze lifts the dust into the gold light. The match carries on.",
-          "af": "Die briesie lig die stof op in die goue lig. Die wedstryd gaan aan.",
+          "en": "The dust is going for gold in the low light. The match plays on through it.",
+          "af": "Die stof gaan vir goud in die laaste lig. Die wedstryd speel daardeur voort.",
           "afCheck": {
             "action": "pass",
-            "confidence": 0,
-            "findings": []
-          }
-        },
-        {
-          "en": "The tyre swing is moving on its own. The breeze wants a turn too.",
-          "af": "Die bandswaai beweeg vanself. Die briesie wil ook 'n beurt hê.",
-          "afCheck": {
-            "action": "pass",
-            "confidence": 0,
-            "findings": []
-          }
+            "confidence": 0.15,
+            "findings": [
+              "laaste (low): 'laaste' means 'last; to cause to, to make; forms a causative phrase.; to let; forms a cohortative phrase.' — nothing in the English source; the source's 'low' would normally be 'laag' / 'laagtepunt', none present",
+              "daardeur (low): 'daardeur' means 'thereby' — nothing in the English source; the source's 'low' would normally be 'laag' / 'laagtepunt', none present",
+              "voort (low): 'voort' means 'along; away; forth' — nothing in the English source; the source's 'low' would normally be 'laag' / 'laagtepunt', none present"
+            ]
+          },
+          "by": "Maat (Fable 5.1), ruled by Al 7 Oct 2026"
         }
       ]
     },
@@ -1160,22 +887,17 @@
       "day": "wed",
       "candidates": [
         {
-          "en": "The grass is moving in waves across the hill. The cattle haven't noticed.",
-          "af": "Die gras golf oor die heuwel. Die beeste het niks agtergekom nie.",
+          "en": "The hill is moving in waves. The cattle have decided not to notice.",
+          "af": "Die heuwel beweeg in golwe. Die beeste het besluit om dit nie raak te sien nie.",
           "afCheck": {
             "action": "pass",
-            "confidence": 0,
-            "findings": []
-          }
-        },
-        {
-          "en": "The gums are swaying, the grass is rolling. The cattle carry on with supper.",
-          "af": "Die bloekoms swaai, die gras rol. Die beeste eet maar aan.",
-          "afCheck": {
-            "action": "pass",
-            "confidence": 0.15,
-            "findings": []
-          }
+            "confidence": 0.1,
+            "findings": [
+              "raak (low): 'raak' means 'to become; to get; to grow' — nothing in the English source; the source's 'waves' would normally be 'waai', none present",
+              "sien (low): 'sien' means 'to see; see; seeing' — nothing in the English source; the source's 'waves' would normally be 'waai', none present"
+            ]
+          },
+          "by": "Maat (Fable 5.1), ruled by Al 7 Oct 2026"
         }
       ]
     },
@@ -1186,22 +908,19 @@
       "day": "thu",
       "candidates": [
         {
-          "en": "The breeze is moving the jacaranda one street over. The wind chime is narrating.",
-          "af": "Die briesie skuif die jakaranda een straat verder. Die windklokkie vertel die storie.",
+          "en": "The breeze is moving the jacaranda one street over, petal by petal. The stoep approves.",
+          "af": "Die bries skuif die jakaranda een straat aan, blommetjie vir blommetjie. Die stoep keur dit goed.",
           "afCheck": {
             "action": "pass",
-            "confidence": 0,
-            "findings": []
-          }
-        },
-        {
-          "en": "Purple petals blowing across the road. The stoep has the best seats in Pretoria.",
-          "af": "Pers blommetjies waai oor die pad. Die stoep het die beste sitplekke in Pretoria.",
-          "afCheck": {
-            "action": "pass",
-            "confidence": 0.05,
-            "findings": []
-          }
+            "confidence": 0.2,
+            "findings": [
+              "blommetjie (low): 'blommetjie' means 'diminutive of blom; flower' — nothing in the English source; the source's 'approves' would normally be 'goedkeur', none present",
+              "blommetjie (low): 'blommetjie' means 'diminutive of blom; flower' — nothing in the English source; the source's 'approves' would normally be 'goedkeur', none present",
+              "keur (low): 'keur' means 'inspect; screen; select' — nothing in the English source; the source's 'approves' would normally be 'goedkeur', none present",
+              "goed (low): 'goed' means 'good; bona; fairly' — nothing in the English source; the source's 'approves' would normally be 'goedkeur', none present"
+            ]
+          },
+          "by": "Maat (Fable 5.1), ruled by Al 7 Oct 2026"
         }
       ]
     },
@@ -1212,22 +931,16 @@
       "day": "fri",
       "candidates": [
         {
-          "en": "The cat on the rail is unimpressed by the breeze. Everyone else is delighted.",
-          "af": "Die kat op die reling is nie beïndruk met die briesie nie. Almal anders is in hulle noppies.",
+          "en": "The cat is unmoved. Everyone else is delighted, especially the sarong.",
+          "af": "Die kat is onbewoë. Almal anders is in hul skik, veral die sarong.",
           "afCheck": {
             "action": "pass",
-            "confidence": 0,
-            "findings": []
-          }
-        },
-        {
-          "en": "Friday sundowners with a sea breeze. The palms and the sarong are both dancing.",
-          "af": "Vrydag-sundowners met 'n seebriesie. Die palmbome en die sarong dans albei.",
-          "afCheck": {
-            "action": "pass",
-            "confidence": 0,
-            "findings": []
-          }
+            "confidence": 0.05,
+            "findings": [
+              "skik (low): 'skik' means 'array; compromise; lease' — nothing in the English source; the source's 'delighted' would normally be 'behaaglikhede' / 'behae' / 'behaaglikheid', none present"
+            ]
+          },
+          "by": "Maat (Fable 5.1), ruled by Al 7 Oct 2026"
         }
       ]
     },
@@ -1238,22 +951,17 @@
       "day": "sat",
       "candidates": [
         {
-          "en": "Smoke sideways, washing still out, windpump turning. The Karoo breeze is multitasking.",
-          "af": "Rook dwars, wasgoed nog uit, windpomp draai. Die Karoo-briesie doen alles gelyk.",
+          "en": "The washing should have come in hours ago. The breeze voted to leave it.",
+          "af": "Die wasgoed moes ure gelede al in gewees het. Die bries het gestem om dit te los.",
           "afCheck": {
             "action": "pass",
             "confidence": 0.1,
-            "findings": []
-          }
-        },
-        {
-          "en": "The washing should have come in hours ago. The breeze voted to leave it.",
-          "af": "Die wasgoed moes ure gelede ingekom het. Die briesie het gestem om dit te los.",
-          "afCheck": {
-            "action": "pass",
-            "confidence": 0.05,
-            "findings": []
-          }
+            "findings": [
+              "moes (low): 'moes' means 'preterite of moet; had to; must; a must' — nothing in the English source; the source's 'washing' would normally be 'was', none present — but it does co-occur in corpus with 'gewees'",
+              "gewees (low): 'gewees' means 'past participle of wees; been; To be.; Used to form the perfect tense in certain cases; compare hê.' — nothing in the English source; the source's 'washing' would normally be 'was', none present — but it does co-occur in corpus with 'moes'"
+            ]
+          },
+          "by": "Maat (Fable 5.1), ruled by Al 7 Oct 2026"
         }
       ]
     },
@@ -1264,22 +972,14 @@
       "day": "sun",
       "candidates": [
         {
-          "en": "Flags on the masts still talking. The boats are done for the week.",
-          "af": "Vlae op die maste praat nog. Die bote is klaar vir die week.",
+          "en": "The flags are still chatting. The boats have called it a week.",
+          "af": "Die vlae gesels nog. Die bote het die week afgesluit.",
           "afCheck": {
             "action": "pass",
             "confidence": 0,
             "findings": []
-          }
-        },
-        {
-          "en": "Sunday evening, a breeze through the rigging. The harbour's version of a lullaby.",
-          "af": "Sondagaand, 'n briesie deur die tuig. Die hawe se weergawe van 'n slaapliedjie.",
-          "afCheck": {
-            "action": "pass",
-            "confidence": 0,
-            "findings": []
-          }
+          },
+          "by": "Maat (Fable 5.1), ruled by Al 7 Oct 2026"
         }
       ]
     },
@@ -1291,21 +991,18 @@
       "candidates": [
         {
           "en": "Leaves keep blowing through the security light. It keeps switching on for nobody.",
-          "af": "Blare waai heeltyd deur die sekuriteitslig. Dit skakel aan vir niemand nie.",
+          "af": "Blare waai aanhoudend deur die sekuriteitslig. Hy skakel aanhoudend aan vir niemand.",
           "afCheck": {
             "action": "pass",
-            "confidence": 0.1,
-            "findings": []
-          }
-        },
-        {
-          "en": "Stars out, palm moving, and a breeze with Monday night all to itself.",
-          "af": "Sterre uit, die palmboom beweeg, en 'n briesie met Maandagaand heeltemal vir homself.",
-          "afCheck": {
-            "action": "pass",
-            "confidence": 0.05,
-            "findings": []
-          }
+            "confidence": 0.2,
+            "findings": [
+              "Blare (low): 'Blare' means 'plural of blaar; leaf (of a plant)' — nothing in the English source; the source's 'leaves' would normally be 'verlaat' / 'los' / 'laat' / 'vertrek', none present",
+              "aanhoudend (low): 'aanhoudend' means 'constant; constantly; continued' — nothing in the English source; the source's 'leaves' would normally be 'verlaat' / 'los' / 'laat' / 'vertrek', none present",
+              "deur (low): 'deur' means 'door; through; by (indicating an agent)' — nothing in the English source; the source's 'leaves' would normally be 'verlaat' / 'los' / 'laat' / 'vertrek', none present",
+              "aanhoudend (low): 'aanhoudend' means 'constant; constantly; continued' — nothing in the English source; the source's 'leaves' would normally be 'verlaat' / 'los' / 'laat' / 'vertrek', none present"
+            ]
+          },
+          "by": "Maat (Fable 5.1), ruled by Al 7 Oct 2026"
         }
       ]
     },
@@ -1316,22 +1013,16 @@
       "day": "tue",
       "candidates": [
         {
-          "en": "The washing stayed out overnight. The breeze is finishing the job.",
-          "af": "Die wasgoed het oornag buite gebly. Die briesie maak die werk klaar.",
-          "afCheck": {
-            "action": "pass",
-            "confidence": 0.1,
-            "findings": []
-          }
-        },
-        {
-          "en": "Somebody forgot the washing. The breeze didn't, and it's drying beautifully.",
-          "af": "Iemand het die wasgoed vergeet. Die briesie nie, en dit droog pragtig.",
+          "en": "Somebody forgot the washing. The breeze didn't, and it's doing a lovely job.",
+          "af": "Iemand het die wasgoed vergeet. Die bries nie, en dit doen 'n pragtige werk.",
           "afCheck": {
             "action": "pass",
             "confidence": 0.05,
-            "findings": []
-          }
+            "findings": [
+              "vergeet (low): 'vergeet' means 'to forget; forget' — nothing in the English source; the source's 'washing' would normally be 'was', none present"
+            ]
+          },
+          "by": "Maat (Fable 5.1), ruled by Al 7 Oct 2026"
         }
       ]
     },
@@ -1342,22 +1033,14 @@
       "day": "wed",
       "candidates": [
         {
-          "en": "A warm breeze off the sea, palms swaying along. Wednesday night, sorted.",
-          "af": "'n Warm briesie van die see af, palmbome wat saamswaai. Woensdagaand, gesorteer.",
+          "en": "The breeze is still warm at this hour. The sea leaves the heating on all night.",
+          "af": "Die bries is nog warm op hierdie uur. Die see los die verwarming die hele nag aan.",
           "afCheck": {
             "action": "pass",
-            "confidence": 0.05,
+            "confidence": 0,
             "findings": []
-          }
-        },
-        {
-          "en": "Clear sky, white surf, a breeze that's just enough. Durban's night shift is easy.",
-          "af": "Helder lug, wit branders, 'n briesie wat net genoeg is. Durban se nagskof is maklik.",
-          "afCheck": {
-            "action": "pass",
-            "confidence": 0.1,
-            "findings": []
-          }
+          },
+          "by": "Maat (Fable 5.1), ruled by Al 7 Oct 2026"
         }
       ]
     },
@@ -1368,22 +1051,14 @@
       "day": "thu",
       "candidates": [
         {
-          "en": "The windpump keeps working by moonlight. The breeze doesn't believe in knock-off time.",
-          "af": "Die windpomp werk aan in die maanlig. Die briesie glo nie in uitkloktyd nie.",
+          "en": "The windpump doesn't believe in knock-off time. Neither does the dog.",
+          "af": "Die windpomp glo nie aan afklopstyd nie. Die hond ook nie.",
           "afCheck": {
             "action": "pass",
             "confidence": 0,
             "findings": []
-          }
-        },
-        {
-          "en": "Moon up, grass silver, windpump turning. The dog guards all three.",
-          "af": "Maan op, gras silwer, windpomp draai. Die hond bewaak al drie.",
-          "afCheck": {
-            "action": "pass",
-            "confidence": 0,
-            "findings": []
-          }
+          },
+          "by": "Maat (Fable 5.1), ruled by Al 7 Oct 2026"
         }
       ]
     },
@@ -1394,22 +1069,17 @@
       "day": "fri",
       "candidates": [
         {
-          "en": "The smoke's going sideways, the collars are up, the plates are full. Friday's fine.",
-          "af": "Die rook trek dwars, die krae is op, die borde is vol. Vrydag is reg.",
+          "en": "The breeze is taking the smoke down the block. The whole street knows what's for supper.",
+          "af": "Die bries vat die rook met die straat af. Die hele buurt weet wat vir aandete is.",
           "afCheck": {
             "action": "pass",
-            "confidence": 0.2,
-            "findings": []
-          }
-        },
-        {
-          "en": "The breeze is taking the smoke down the block. Everyone knows what's for supper.",
-          "af": "Die briesie neem die rook die blok af. Almal weet wat vir aandete is.",
-          "afCheck": {
-            "action": "pass",
-            "confidence": 0,
-            "findings": []
-          }
+            "confidence": 0.1,
+            "findings": [
+              "vat (low): 'vat' means 'to take; to grasp; barrel' — nothing in the English source; the source's 'block' would normally be 'takelblok' / 'blokkering' / 'katrol' / 'blokbandstempel', none present",
+              "buurt (low): 'buurt' means 'precinct' — nothing in the English source; the source's 'block' would normally be 'takelblok' / 'blokkering' / 'katrol' / 'blokbandstempel', none present"
+            ]
+          },
+          "by": "Maat (Fable 5.1), ruled by Al 7 Oct 2026"
         }
       ]
     },
@@ -1420,22 +1090,16 @@
       "day": "sat",
       "candidates": [
         {
-          "en": "The tablecloth is clipped down and the fairy lights are swinging. Saturday came prepared.",
-          "af": "Die tafeldoek is vasgeknip en die liggies swaai. Saterdag het voorbereid opgedaag.",
+          "en": "Every light on the string is swaying. Saturday night has rhythm, barely.",
+          "af": "Elke liggie aan die string swaai. Saterdagaand het ritme, net-net.",
           "afCheck": {
             "action": "pass",
             "confidence": 0.05,
-            "findings": []
-          }
-        },
-        {
-          "en": "A breeze through the garden, and every light on the string dances a little.",
-          "af": "'n Briesie deur die tuin, en elke liggie aan die string dans 'n bietjie.",
-          "afCheck": {
-            "action": "pass",
-            "confidence": 0.15,
-            "findings": []
-          }
+            "findings": [
+              "swaai (low): 'swaai' means 'swing; to swing; offset' — nothing in the English source; the source's 'light' would normally be 'lig' / 'verlig' / 'vuurtoring' / 'opsteek', none present"
+            ]
+          },
+          "by": "Maat (Fable 5.1), ruled by Al 7 Oct 2026"
         }
       ]
     },
@@ -1446,22 +1110,14 @@
       "day": "sun",
       "candidates": [
         {
-          "en": "Sand drifts across the road grain by grain. Paternoster isn't in a hurry.",
-          "af": "Sand dryf korrel vir korrel oor die pad. Paternoster is nie haastig nie.",
-          "afCheck": {
-            "action": "pass",
-            "confidence": 0.2,
-            "findings": []
-          }
-        },
-        {
-          "en": "Sea breeze, stars over the cottages. The dog is the only traffic tonight.",
-          "af": "Seebriesie, sterre oor die huisies. Die hond is die enigste verkeer vanaand.",
+          "en": "The sand is crossing the road a grain at a time. Nobody here is in a hurry.",
+          "af": "Die sand steek die pad oor, een korrel op 'n slag. Niemand hier het haas nie.",
           "afCheck": {
             "action": "pass",
             "confidence": 0,
             "findings": []
-          }
+          },
+          "by": "Maat (Fable 5.1), ruled by Al 7 Oct 2026"
         }
       ]
     },
@@ -1475,22 +1131,19 @@
       ],
       "candidates": [
         {
-          "en": "Monday under a grey lid at the rank. Brightest thing here: the coffee.",
-          "af": "Maandag onder 'n grys deksel by die staanplek. Die helderste ding hier: die koffie.",
+          "en": "The sky's on mute and so is the queue. Monday hasn't found the volume.",
+          "af": "Die lug is op stil en die ry ook. Maandag het nog nie sy volume gekry nie.",
           "afCheck": {
             "action": "pass",
-            "confidence": 0.1,
-            "findings": []
-          }
-        },
-        {
-          "en": "The sky's on mute and so is the queue. Monday hasn't found its volume.",
-          "af": "Die lug is op mute en die tou ook. Maandag het nie sy volume gekry nie.",
-          "afCheck": {
-            "action": "pass",
-            "confidence": 0.15,
-            "findings": []
-          }
+            "confidence": 0.2,
+            "findings": [
+              "lug (low): 'lug' means 'air' — nothing in the English source; the source's 'sky's' would normally be 'hemel', none present",
+              "stil (low): 'stil' means 'satisfies; satisfy' — nothing in the English source; the source's 'sky's' would normally be 'hemel', none present",
+              "ry (low): 'ry' means 'row; to ride; to drive' — nothing in the English source; the source's 'sky's' would normally be 'hemel', none present",
+              "gekry (low): 'gekry' means 'past participle of kry; got; to get, receive, obtain' — nothing in the English source; the source's 'sky's' would normally be 'hemel', none present"
+            ]
+          },
+          "by": "Maat (Fable 5.1), ruled by Al 7 Oct 2026"
         }
       ]
     },
@@ -1504,22 +1157,16 @@
       ],
       "candidates": [
         {
-          "en": "Grey sky, grey sea, and one swimmer who doesn't need the sun's permission.",
-          "af": "Grys lug, grys see, en een swemmer wat nie die son se toestemming nodig het nie.",
-          "afCheck": {
-            "action": "pass",
-            "confidence": 0.1,
-            "findings": []
-          }
-        },
-        {
-          "en": "The sky and the sea agreed on a colour. Not an exciting one.",
-          "af": "Die lug en die see het op 'n kleur ooreengekom. Nie 'n opwindende een nie.",
+          "en": "Sky and sea agreed on a colour this morning. Not an exciting one.",
+          "af": "Lug en see het vanoggend oor 'n kleur ooreengekom. Nie 'n opwindende een nie.",
           "afCheck": {
             "action": "pass",
             "confidence": 0.05,
-            "findings": []
-          }
+            "findings": [
+              "Lug (low): 'Lug' means 'air' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present"
+            ]
+          },
+          "by": "Maat (Fable 5.1), ruled by Al 7 Oct 2026"
         }
       ]
     },
@@ -1533,22 +1180,18 @@
       ],
       "candidates": [
         {
-          "en": "Even the hadeda isn't saying much this morning. The sky set the tone.",
-          "af": "Selfs die hadeda sê nie veel vanoggend nie. Die lug het die toon gestel.",
+          "en": "Even the hadeda is keeping it down. The sky set the tone.",
+          "af": "Selfs die hadida hou dit sag. Die lug het die toon aangegee.",
           "afCheck": {
             "action": "pass",
-            "confidence": 0.1,
-            "findings": []
-          }
-        },
-        {
-          "en": "Thursday under a grey lid. The dog's walk is the day's main event.",
-          "af": "Donderdag onder 'n grys deksel. Die hond se stappie is die dag se hoofgebeurtenis.",
-          "afCheck": {
-            "action": "pass",
-            "confidence": 0.05,
-            "findings": []
-          }
+            "confidence": 0.15,
+            "findings": [
+              "sag (low): 'sag' means 'soft; kindly; piano' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present",
+              "lug (low): 'lug' means 'air' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present",
+              "aangegee (low): 'aangegee' means 'passed' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present"
+            ]
+          },
+          "by": "Maat (Fable 5.1), ruled by Al 7 Oct 2026"
         }
       ]
     },
@@ -1562,22 +1205,14 @@
       ],
       "candidates": [
         {
-          "en": "Table Mountain pulled the grey blanket right over its head. Friday, same.",
-          "af": "Tafelberg het die grys kombers tot oor sy kop getrek. Vrydag, dieselfde.",
+          "en": "The mountain pulled the duvet over its head. Fair enough, it's Friday.",
+          "af": "Die berg het die duvet oor sy kop getrek. Verstaanbaar, dis Vrydag.",
           "afCheck": {
             "action": "pass",
-            "confidence": 0.05,
+            "confidence": 0,
             "findings": []
-          }
-        },
-        {
-          "en": "Mountain under a lid, light on red, Friday moving at half speed.",
-          "af": "Berg onder 'n deksel, lig op rooi, Vrydag teen halwe spoed.",
-          "afCheck": {
-            "action": "pass",
-            "confidence": 0.05,
-            "findings": []
-          }
+          },
+          "by": "Maat (Fable 5.1), ruled by Al 7 Oct 2026"
         }
       ]
     },
@@ -1591,22 +1226,14 @@
       ],
       "candidates": [
         {
-          "en": "A grey sky over the office park. Monday looks exactly how it feels.",
-          "af": "'n Grys lug oor die kantoorpark. Maandag lyk presies soos dit voel.",
-          "afCheck": {
-            "action": "pass",
-            "confidence": 0.15,
-            "findings": []
-          }
-        },
-        {
           "en": "No shadows, no glare, no excuses. Monday under a Tupperware lid.",
-          "af": "Geen skaduwees, geen glans, geen verskonings nie. Maandag onder 'n Tupperware-deksel.",
+          "af": "Geen skaduwees, geen skittering, geen verskonings nie. Maandag onder 'n Tupperware-deksel.",
           "afCheck": {
             "action": "pass",
             "confidence": 0,
             "findings": []
-          }
+          },
+          "by": "Maat (Fable 5.1), ruled by Al 7 Oct 2026"
         }
       ]
     },
@@ -1620,22 +1247,14 @@
       ],
       "candidates": [
         {
-          "en": "Flat grey sky, no sun to leave streaks. Best car-washing weather all week.",
-          "af": "Plat grys lug, geen son om strepe te los nie. Die beste weer om die kar te was, die hele week.",
-          "afCheck": {
-            "action": "pass",
-            "confidence": 0.1,
-            "findings": []
-          }
-        },
-        {
           "en": "The sun won't be inspecting the shine today. The car is fine with that.",
-          "af": "Die son kom nie vandag die glans inspekteer nie. Die kar is tevrede daarmee.",
+          "af": "Die son gaan nie vandag die blink kom inspekteer nie. Die kar is tevrede.",
           "afCheck": {
             "action": "pass",
             "confidence": 0,
             "findings": []
-          }
+          },
+          "by": "Maat (Fable 5.1), ruled by Al 7 Oct 2026"
         }
       ]
     },
@@ -1649,22 +1268,16 @@
       ],
       "candidates": [
         {
-          "en": "Grey to the horizon. The sheep don't mind; the count's the same either way.",
-          "af": "Grys tot by die horison. Die skape gee nie om nie; die telling is in elk geval dieselfde.",
+          "en": "The whole veld with the colour turned down. The sheep count the same either way.",
+          "af": "Die hele veld met die kleur afgedraai. Die skape tel dieselfde, hoe ook al.",
           "afCheck": {
             "action": "pass",
-            "confidence": 0.15,
-            "findings": []
-          }
-        },
-        {
-          "en": "The Karoo with the colour turned down. The windpump is the day's excitement.",
-          "af": "Die Karoo met die kleur afgedraai. Die windpomp is die dag se opwinding.",
-          "afCheck": {
-            "action": "pass",
-            "confidence": 0,
-            "findings": []
-          }
+            "confidence": 0.05,
+            "findings": [
+              "dieselfde (low): 'dieselfde' means 'same; similarly' — nothing in the English source; the source's 'whole' would normally be 'gaaf' / 'geheel' / 'heel', none present"
+            ]
+          },
+          "by": "Maat (Fable 5.1), ruled by Al 7 Oct 2026"
         }
       ]
     },
@@ -1678,22 +1291,14 @@
       ],
       "candidates": [
         {
-          "en": "Grey sky, grey hills, steady runs. Thursday is happening at exactly the expected speed.",
-          "af": "Grys lug, grys heuwels, bestendige lopies. Donderdag gebeur presies teen die verwagte spoed.",
-          "afCheck": {
-            "action": "pass",
-            "confidence": 0.05,
-            "findings": []
-          }
-        },
-        {
-          "en": "Not one shadow on the field all day. The umpire never has to squint.",
-          "af": "Nie een skaduwee op die veld die hele dag nie. Die skeidsregter hoef nooit sy oë te knyp nie.",
+          "en": "Not one shadow on the field all day. The umpire never had to squint.",
+          "af": "Nie een skaduwee op die veld die hele dag nie. Die skeidsregter het nie een keer sy oë op skrefies getrek nie.",
           "afCheck": {
             "action": "pass",
             "confidence": 0,
             "findings": []
-          }
+          },
+          "by": "Maat (Fable 5.1), ruled by Al 7 Oct 2026"
         }
       ]
     },
@@ -1707,22 +1312,17 @@
       ],
       "candidates": [
         {
-          "en": "Grey sky, jerseys on, school's out. The weekend starts without the sun's help.",
-          "af": "Grys lug, truie aan, skool is uit. Die naweek begin sonder die son se hulp.",
+          "en": "Grey sky, jerseys on, school's out. The weekend doesn't need the sun's permission.",
+          "af": "Grys lug, truie aan, skool is uit. Die naweek vra nie die son se toestemming nie.",
           "afCheck": {
             "action": "pass",
-            "confidence": 0.05,
-            "findings": []
-          }
-        },
-        {
-          "en": "The sky is on mute. The school gate is not.",
-          "af": "Die lug is op mute. Die skoolhek is nie.",
-          "afCheck": {
-            "action": "pass",
-            "confidence": 0.05,
-            "findings": []
-          }
+            "confidence": 0.1,
+            "findings": [
+              "lug (low): 'lug' means 'air' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present",
+              "vra (low): 'vra' means 'ask; asks' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present"
+            ]
+          },
+          "by": "Maat (Fable 5.1), ruled by Al 7 Oct 2026"
         }
       ]
     },
@@ -1736,25 +1336,17 @@
       ],
       "candidates": [
         {
-          "en": "No sunset tonight, just the promenade lights doing their best. Monday, signing off.",
-          "af": "Geen sonsondergang vanaand nie, net die promenadeligte wat hulle bes doen. Maandag teken af.",
-          "afCheck": {
-            "action": "pass",
-            "confidence": 0,
-            "findings": []
-          }
-        },
-        {
           "en": "The sky went from light grey to dark grey. That was the whole show.",
           "af": "Die lug het van liggrys na donkergrys gegaan. Dit was die hele vertoning.",
           "afCheck": {
             "action": "triage",
             "confidence": 0.3,
             "findings": [
-              "'lug' means 'air' — nothing in the English source; it is 1 letter from 'lig', the usual word for 'light'"
-            ],
-            "note": "false alarm: lug = sky"
-          }
+              "lug (medium): 'lug' means 'air' — nothing in the English source; it is 1 letter from 'lig', the usual word for 'light'",
+              "gegaan (low): 'gegaan' means 'past participle of gaan; to go; Used to express the future tense, often while implying nearness in time or certainty, like English going to.' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present"
+            ]
+          },
+          "by": "Maat (Fable 5.1), ruled by Al 7 Oct 2026"
         }
       ]
     },
@@ -1768,22 +1360,16 @@
       ],
       "candidates": [
         {
-          "en": "The security light came on before sunset. The sun never really clocked in today.",
-          "af": "Die sekuriteitslig het voor sononder aangeskakel. Die son het vandag nooit regtig ingeklok nie.",
+          "en": "The security light came on early. The sun never properly clocked in.",
+          "af": "Die sekuriteitslig het vroeg aangegaan. Die son het nooit behoorlik ingeklok nie.",
           "afCheck": {
             "action": "pass",
-            "confidence": 0.1,
-            "findings": []
-          }
-        },
-        {
-          "en": "Gate closed, light on, sky grey. Wednesday ends the way it started.",
-          "af": "Hek toe, lig aan, lug grys. Woensdag eindig soos wat dit begin het.",
-          "afCheck": {
-            "action": "pass",
-            "confidence": 0.1,
-            "findings": []
-          }
+            "confidence": 0.05,
+            "findings": [
+              "aangegaan (low): 'aangegaan' means 'to concern; to be a concern to; to be someone’s business; to start; to turn on; to continue; to go on' — nothing in the English source; the source's 'light' would normally be 'lig' / 'verlig' / 'vuurtoring' / 'opsteek', none present"
+            ]
+          },
+          "by": "Maat (Fable 5.1), ruled by Al 7 Oct 2026"
         }
       ]
     },
@@ -1797,22 +1383,17 @@
       ],
       "candidates": [
         {
-          "en": "Sea and sky in matching grey. Only the pier lights got dressed up.",
-          "af": "See en lug in bypassende grys. Net die pierligte het uitgevat.",
+          "en": "Sea and sky in matching grey. Only the pier lights made an effort.",
+          "af": "See en lug in bypassende grys. Net die pier se liggies het moeite gedoen.",
           "afCheck": {
-            "action": "pass",
-            "confidence": 0.05,
-            "findings": []
-          }
-        },
-        {
-          "en": "Humid, grey and still. Durban's Thursday evening, at a steady six out of ten.",
-          "af": "Klam, grys en stil. Durban se Donderdagaand, op 'n bestendige ses uit tien.",
-          "afCheck": {
-            "action": "pass",
-            "confidence": 0.05,
-            "findings": []
-          }
+            "action": "triage",
+            "confidence": 0.3,
+            "findings": [
+              "lug (medium): 'lug' means 'air' — nothing in the English source; it is 1 letter from 'lig', the usual word for 'lights'",
+              "gedoen (low): 'gedoen' means 'past participle of doen; to do; does' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present — but it does co-occur in corpus with 'moeite'"
+            ]
+          },
+          "by": "Maat (Fable 5.1), ruled by Al 7 Oct 2026"
         }
       ]
     },
@@ -1826,24 +1407,17 @@
       ],
       "candidates": [
         {
-          "en": "The shed light is the sunset tonight. The cattle seem fine with the downgrade.",
-          "af": "Die skuurlig is vanaand die sonsondergang. Die beeste lyk tevrede met die afgradering.",
+          "en": "The shed bulb is tonight's sunset. The cattle accept the downgrade.",
+          "af": "Die skuur se gloeilamp is vanaand se sonsondergang. Die beeste aanvaar die afgradering.",
           "afCheck": {
             "action": "pass",
             "confidence": 0,
             "findings": []
-          }
-        },
-        {
-          "en": "Sunday ends under a grey lid. The kraal gate shuts; the week can begin.",
-          "af": "Sondag eindig onder 'n grys deksel. Die kraalhek gaan toe; die week kan begin.",
-          "afCheck": {
-            "action": "pass",
-            "confidence": 0,
-            "findings": []
-          }
+          },
+          "by": "Maat (Fable 5.1), ruled by Al 7 Oct 2026"
         }
       ]
     }
-  ]
+  ],
+  "lines": "maat"
 }
