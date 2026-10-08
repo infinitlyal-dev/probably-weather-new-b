@@ -108,6 +108,16 @@ export const RAIN_NOW_MIN_MM    = 2;      // mm blended precipitation for the cu
 export const SHOWERS_NEARBY_MIN_PROB = 60;
 export const SHOWERS_NEARBY_MIN_MM   = 0.3;
 export const RAIN_POSSIBLE_NOW_MIN_PROB = 30; // % — the same line the stats row words "Possible"
+//   Part B item 6 (8 Oct 2026): Open-Meteo and WeatherAPI are the same ECMWF forecast, so when only those two are at
+//   30 % for the hour, one forecast is holding "Might rain." twice. The hero's probability might-rain needs at least
+//   one other source at 30 % too (review/accuracy/results/might-rain-twins*.md: twins-only hours wet 30 % on the
+//   harness, 18 % live; with another source 47 %). The stats row keeps the blended number.
+export const ECMWF_TWINS = new Set(['Open-Meteo', 'WeatherAPI']);
+/** How many sources other than the ECMWF twins put this hour's rain chance at the might-rain line or above. */
+export function rainOthersAtLine(hourlies, hour, line = RAIN_POSSIBLE_NOW_MIN_PROB) {
+  return (hourlies || []).filter((h) => h && !ECMWF_TWINS.has(h.source)
+    && typeof h.rains?.[hour] === 'number' && Number.isFinite(h.rains[hour]) && h.rains[hour] >= line).length;
+}
 //   Wind: the models' MEAN wind reads ~40% under the airport anemometer at Cape
 //   Town and Johannesburg; their GUST does not. A forecast gust ≥ 55 km/h had the
 //   station at Beaufort 5 or more in half the hours and calm in 9%; mean ≥ 25 or
@@ -2243,6 +2253,9 @@ export default async function handler(req, res) {
         // Phase B-1 Item 3: categorised hourly condition + winning desc label
         condition:  hourBreezy ? 'breezy' : hourCondition,
         descLabel:  hourWinningDesc,
+        // Part B item 6 (8 Oct 2026): sources other than the ECMWF twins at 30 % this hour; the phone's "Might rain."
+        // over the next four hours reads only hours where this is at least 1. rainChance (the stats row) is unchanged.
+        rainOthersAt30: rainOthersAtLine(hourlies, i),
       };
     });
 
@@ -2651,6 +2664,8 @@ export default async function handler(req, res) {
       windSourcesAt25,
       windSourcesMin: gustRule.sourcesAt25,
       breezySources: breezySourcesNow,
+      // Part B item 6: sources other than Open-Meteo and WeatherAPI (one ECMWF forecast) at 30 % for this hour.
+      rainOthersAt30: rainOthersAtLine(hourlies, localHour),
       desc:       mostDesc,
       rainChance: currentHourRainChance,
       tempC:      medNowTemp,
@@ -3712,7 +3727,7 @@ function calcFeelsLike(tempC, windKph, humidity) {
  * @param {number}  [params.gustKph]    - now: largest current gust any source reports
  * @returns {string} condition key
  */
-function deriveCondition({ desc, rainChance, tempC, feelsLikeC, windKph, uvIndex, cloudPct, uvCloudPct, maxWindKph, isDay = true, dailyHighC, dailyLowC, sourceDescs, now = false, precipMm, rainVotes, gustKph, windThresholdKph, gustLineKph, windSourcesAt25, windSourcesMin = 0, breezySources }) {
+function deriveCondition({ desc, rainChance, tempC, feelsLikeC, windKph, uvIndex, cloudPct, uvCloudPct, maxWindKph, isDay = true, dailyHighC, dailyLowC, sourceDescs, now = false, precipMm, rainVotes, gustKph, windThresholdKph, gustLineKph, windSourcesAt25, windSourcesMin = 0, breezySources, rainOthersAt30 }) {
   const d = String(desc || '').toLowerCase();
 
   // Use mean wind speed for condition thresholds. Gusts are displayed separately in the UI.
@@ -3879,7 +3894,12 @@ function deriveCondition({ desc, rainChance, tempC, feelsLikeC, windKph, uvIndex
     //     overcast, as the probability rung it replaces was: under a grey sky a
     //     45% hour is "Might rain.", not "Cloudy" (30–60% hours were wet within
     //     the hour either side 40–57% of the time).
-    if (isNum(rainChance) && rainChance >= RAIN_POSSIBLE_NOW_MIN_PROB) return { key: 'rain-possible', reason: 'rain-possible-prob' };
+    //     Part B item 6 (8 Oct 2026): and at least one source other than the ECMWF twins is at the line too
+    //     (rainOthersAt30; absent on inputs cached before it existed, which keep the old rule).
+    if (isNum(rainChance) && rainChance >= RAIN_POSSIBLE_NOW_MIN_PROB) {
+      if (!isNum(rainOthersAt30) || rainOthersAt30 >= 1) return { key: 'rain-possible', reason: 'rain-possible-prob' };
+      debugLog(`[Might rain] ${rainChance}% held by the ECMWF twins alone (no other source at ${RAIN_POSSIBLE_NOW_MIN_PROB}%) → not "Might rain."`);
+    }
     // 10n. Overcast
     if (isTrulyOvercast || overcastByDesc)      return { key: 'cloudy', reason: 'overcast' };
   } else {

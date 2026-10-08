@@ -1943,7 +1943,9 @@ document.addEventListener("DOMContentLoaded", () => {
     // 2026-09-28 (review/accuracy/v5, Fable plan item 7): with a server key, no numeric wind rung — see computeTodaysHero.
     if (!apiCondition && isNum(effectiveWind) && effectiveWind >= 30) return 'wind';
     // FIX-001: rain-possible requires either strong rain signal (≥30%) OR majority source agreement
-    if (isNum(imminentRain) && imminentRain >= 30) {
+    // Part B item 6: the next-4-hours figure without the hours only the ECMWF twins hold (normalizePayload).
+    const mightRain = isNum(norm.mightRainPct) ? norm.mightRainPct : imminentRain;
+    if (isNum(mightRain) && mightRain >= 30) {
       if (hasMajorityRain || hasMajorityCloudy || !votes.length) return 'rain-possible';
       debugLog(`[FIX-001] Skipping rain-possible: rain=${imminentRain}% but only ${rainVotes} source(s) vote rain`);
     }
@@ -2544,6 +2546,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const imminentHours = localHour != null ? hourly.slice(localHour, localHour + 4) : [];
     const imminentRainMax = imminentHours.length > 0 ? Math.max(...imminentHours.map(h => h.rainChance ?? 0)) : null;
     debugLog(`[Imminent slice] localHour=${localHour} → next 4 hours rain max: ${imminentRainMax}%`);
+    // Part B item 6 (8 Oct 2026): the hero's "Might rain." reads only hours some source other than Open-Meteo and
+    // WeatherAPI (one ECMWF forecast) also puts at 30 %. A payload without the count (older cache) reads every hour.
+    const mightRainHours = imminentHours.filter(h => !isNum(h.rainOthersAt30) || h.rainOthersAt30 >= 1);
+    const mightRainMax = imminentHours.length > 0 ? (mightRainHours.length ? Math.max(...mightRainHours.map(h => h.rainChance ?? 0)) : 0) : null;
+    if (mightRainMax !== imminentRainMax) debugLog(`[Might rain] next 4 hours ${imminentRainMax}% held by the ECMWF twins alone → ${mightRainMax}% for the hero`);
     // Item 4 (prelaunch P1-3): the server's Tomorrow.io radar override is
     // nowcast truth (precipitationIntensity > 0.5 mm/h RIGHT NOW). It set
     // now.rainChance to >= 70 and now.conditionKey to 'rain'; the 4-hour model
@@ -2588,6 +2595,7 @@ document.addEventListener("DOMContentLoaded", () => {
     return {
       nowTemp: now.tempC ?? null, feelsLike: now.feelsLikeC ?? null, todayHigh: today.highC ?? null, todayLow: today.lowC ?? null, 
       rainPct: displayRainPct, dailyRainPct: dailyRainPct, rainLater: rainLater,
+      mightRainPct: isNum(mightRainMax) ? mightRainMax : displayRainPct,
       rainNowOverride: rainNowOverride, // item 4: server radar override — computeHomeDisplayCondition honours it
       // 2026-09-25 (Al's ruling): the server's might-rain that the old rain-now rung would have called
       // "Rain's here" — the hero words it "Showers nearby." instead of "Might rain." Not when the phone's own

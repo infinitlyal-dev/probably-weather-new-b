@@ -20,7 +20,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import {
   skyCloudFor, deriveCondition, applyVoteConsensus, categorizeDesc, pickWeightedMostCommon, pickModalCloud,
-  detectAdvectionFog, corroboratedFogUpgrade, isTrueFogDesc, countsAsWeatherVote,
+  detectAdvectionFog, corroboratedFogUpgrade, isTrueFogDesc, countsAsWeatherVote, rainOthersAtLine,
 } from '../../../api/weather.js';
 import { HEAT_WARM_C, HEAT_EXTREME_C } from '../../../assets/weather-thresholds.js';
 import { ensembleAt } from './sources.mjs';
@@ -221,6 +221,8 @@ export function decideAt(city, i) {
     gustKph: maxGust,
     // 7 Oct 2026 (new sets) — api/weather.js breezySourcesNow; the replay has no wind correction (factor 1, line 25).
     breezySources: activeNorms.filter((n) => (isNum(n.windKph) && n.windKph >= 15) || (isNum(n.gustKph) && n.gustKph >= 30)).length,
+    // Part B item 6 — api/weather.js rainOthersAtLine, the same function.
+    rainOthersAt30: rainOthersAtLine(hourlies, localHour),
     // Kept for the sweeps only (not read by production):
     precipNowMm: precipNowArr.length ? Math.max(...precipNowArr) : null,
   };
@@ -245,6 +247,9 @@ export function decideAt(city, i) {
   const imminent = aggregatedHourly.slice(localHour, localHour + 4).map((x) => x.rainChance ?? 0);
   const imminentMax = imminent.length ? Math.max(...imminent) : null;
   const rainPct = isNum(imminentMax) ? imminentMax : (daily0.rainChance ?? currentHourRainChance ?? null);
+  // Part B item 6 — normalizePayload mightRainMax: the next 4 hours without the ones only the ECMWF twins hold.
+  const mightHours = aggregatedHourly.slice(localHour, localHour + 4).map((x, k) => ({ pct: x.rainChance ?? 0, others: rainOthersAtLine(hourlies, localHour + k) })).filter((x) => x.others >= 1);
+  const mightRainPct = imminent.length ? (mightHours.length ? Math.max(...mightHours.map((x) => x.pct)) : 0) : rainPct;
   const dailyRainPct = daily0.rainChance ?? currentHourRainChance ?? null;
   // 7 Oct 2026, Part B item 2 — normalizePayload: an hour of 50 %+ in the 4 after the next 4.
   const later = aggregatedHourly.slice(localHour + 4, localHour + 8).map((x) => x.rainChance).filter(isNum);
@@ -252,7 +257,7 @@ export function decideAt(city, i) {
   const norm = {
     nowTemp: medNowTemp, feelsLike: medFeelsLike, todayHigh: daily0.highC, todayLow: daily0.lowC,
     // normalizePayload: the server's evidenced routes to rain (radar cannot occur in a replay).
-    rainPct, dailyRainPct, rainLater, rainNowOverride: reason === 'rain-now',
+    rainPct, mightRainPct, dailyRainPct, rainLater, rainNowOverride: reason === 'rain-now',
     uv: isDay ? nowHourUv : null, uvMax: norms[0]?.todayUv ?? null, uvDaily: norms[0]?.todayUv ?? null,
     isDay, localHour,
     windKph: medWindKph ?? 0, maxWindKph: maxWindKph > 0 ? maxWindKph : null,

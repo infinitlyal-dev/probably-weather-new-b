@@ -904,7 +904,9 @@ describe('item 5 — round 5: WeatherAPI missing amounts are not dry weather', (
     expect(statusCode).toBe(200);
     expect(body.hourly[10].rainChance).toBe(60);
     expect(body.daily[0].rainChance).toBe(60);
-    expect(body.now.conditionKey).not.toBe('clear');
+    // Part B item 6 (8 Oct 2026): WeatherAPI alone at 60 % is one ECMWF forecast, so the hero does not say "Might rain."
+    // on it (tests/might-rain-twins.test.js); the probability itself stands for the hour and the day, as asserted above.
+    expect(body.hourly[10].rainOthersAt30).toBe(0);
     const written = weatherCacheSetDeferred.mock.calls[0]?.[1];
     expect(written.daily[0].rainChance).toBe(60);
   });
