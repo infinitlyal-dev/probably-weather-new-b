@@ -6,6 +6,8 @@
 //   npm run build && node scripts/new-sets-phone-sheets.mjs
 //   node scripts/new-sets-phone-sheets.mjs --reframes   the library reframes of 8 Oct 2026, one sheet, from the built grid
 //                                                      (each photograph with its first line, its folder's weather)
+//   node scripts/new-sets-phone-sheets.mjs --landmarks  the landmark-creep re-takes (review/landmark-creep-2026-10-08/<hash>.png),
+//                                                      one sheet, with the line and anchor the live photograph has
 // Output: review/new-sets-phone-2026-10-08/{partly-cloudy,breezy,cloudy}.jpg (+ one render per photograph)
 import { createServer } from 'node:http';
 import { existsSync, mkdirSync, readdirSync, readFileSync } from 'node:fs';
@@ -37,7 +39,9 @@ const WEATHER = {
   storm: { key: 'storm', label: 'Storm', tempC: 16, cloudPct: 100, windKph: 35 },
   wind: { key: 'wind', label: 'Windy', tempC: 18, cloudPct: 30, windKph: 45 },
 };
-const REFRAMES = process.argv.includes('--reframes');
+const LANDMARKS = process.argv.includes('--landmarks');
+const REFRAMES = process.argv.includes('--reframes') || LANDMARKS;
+const LANDMARK_DIR = 'review/landmark-creep-2026-10-08';
 const HOUR = { dawn: 7, day: 13, dusk: 18, night: 22 };
 let now = { set: 'cloudy', time: 'day' };
 function payload() {
@@ -87,14 +91,19 @@ if (REFRAMES) {
   const { WEATHER_COPY } = await import(new URL('../assets/weather-copy.js', import.meta.url).href);
   const draft = JSON.parse(readFileSync(R('review', 'set-001-draft.json'), 'utf8'));
   const seen = new Set();
-  reframeItems = draft.assignments.filter((a) => /library-reframe-2026-10-08/.test(a.source || '') && !seen.has(a.hash) && seen.add(a.hash)).map((a) => {
+  const retaken = LANDMARKS ? new Set(readdirSync(R(LANDMARK_DIR)).filter((f) => /^[0-9a-f]{12}\.png$/.test(f)).map((f) => f.slice(0, 12))) : null;
+  reframeItems = draft.assignments.filter((a) => /library-reframe-2026-10-08/.test(a.source || '') && !seen.has(a.hash) && seen.add(a.hash))
+    .filter((a) => !retaken || retaken.has(a.replacedHash)).map((a) => {
     const [cond, , time] = a.image.split('/');
     const bank = WEATHER_COPY.witty?.[cond]?.en || [];
     const line = (HERO_LINES[`bg/${a.image}`] || [])[0] || bank[0] || fin.set.find((e) => e.hash === a.hash)?.lines?.[0] || '';
-    return { rel: `${a.image} · ${a.replacedHash}`, url: `/assets/images/bg/${a.image}`, set: cond, time, line, crop: heroCropFor(`assets/images/bg/${a.image}`) };
+    const url = retaken ? `/${LANDMARK_DIR}/${a.replacedHash}.png` : `/assets/images/bg/${a.image}`;
+    return { rel: `${a.image} · ${a.replacedHash}`, url, set: cond, time, line, crop: heroCropFor(`assets/images/bg/${a.image}`) };
   }).sort((a, b) => a.set.localeCompare(b.set) || ORDER.indexOf(a.time) - ORDER.indexOf(b.time));
 }
-for (const set of REFRAMES ? ['library-reframes'] : ['partly-cloudy', 'breezy', 'cloudy']) {
+const SHEET_DIR = LANDMARKS ? R(LANDMARK_DIR, 'phone') : OUT;
+mkdirSync(SHEET_DIR, { recursive: true });
+for (const set of LANDMARKS ? ['landmark-replacements'] : REFRAMES ? ['library-reframes'] : ['partly-cloudy', 'breezy', 'cloudy']) {
   const files = REFRAMES ? reframeItems.map((x) => x.rel) : readdirSync(R('review', 'new-sets-2026-10-07', set)).filter((f) => /^(dawn|day|dusk|night)-[1-7](-weekB)?\.png$/.test(f))
     .sort((a, b) => ORDER.indexOf(a.split('-')[0]) - ORDER.indexOf(b.split('-')[0]) || a.localeCompare(b, undefined, { numeric: true }));
   const shots = [];
@@ -129,7 +138,7 @@ for (const set of REFRAMES ? ['library-reframes'] : ['partly-cloudy', 'breezy', 
         && document.getElementById('dScrim')?.classList.contains('is-on');
     }, null, { timeout: 12000 }).catch(() => {});
     await page.waitForTimeout(300);
-    const file = path.join(OUT, item ? `reframe-${f.split(' · ')[1]}.jpg` : `${set}-${f.replace('.png', '.jpg')}`);
+    const file = path.join(SHEET_DIR, item ? `reframe-${f.split(' · ')[1]}.jpg` : `${set}-${f.replace('.png', '.jpg')}`);
     await page.screenshot({ path: file, type: 'jpeg', quality: 84 });
     await ctx.close();
     shots.push({ file, label: item ? f.split(' · ')[0].replace('/week_', ' w').replace('.webp', '') : rel, verdict: item ? f.split(' · ')[1] : qc[rel] || '' });
@@ -143,8 +152,8 @@ for (const set of REFRAMES ? ['library-reframes'] : ['partly-cloudy', 'breezy', 
     comps.push({ input: await sharp(shots[i].file).resize(TW, TH).toBuffer(), left: x, top: y });
     comps.push({ input: Buffer.from(`<svg width="${TW}" height="${LAB}"><text x="0" y="16" font-family="Segoe UI, Arial" font-size="14" fill="#ffd700">${shots[i].label}</text><text x="${TW}" y="16" text-anchor="end" font-family="Segoe UI, Arial" font-size="13" fill="#b5ab9d">${shots[i].verdict}</text></svg>`), left: x, top: y + TH + 2 });
   }
-  await sharp({ create: { width: W, height: H, channels: 3, background: '#14110d' } }).composite(comps).jpeg({ quality: 86 }).toFile(path.join(OUT, `${set}.jpg`));
-  console.log(`${set}: ${shots.length} -> review/new-sets-phone-2026-10-08/${set}.jpg`);
+  await sharp({ create: { width: W, height: H, channels: 3, background: '#14110d' } }).composite(comps).jpeg({ quality: 86 }).toFile(path.join(SHEET_DIR, `${set}.jpg`));
+  console.log(`${set}: ${shots.length} -> ${path.relative(root, path.join(SHEET_DIR, `${set}.jpg`))}`);
 }
 await browser.close();
 server.close();

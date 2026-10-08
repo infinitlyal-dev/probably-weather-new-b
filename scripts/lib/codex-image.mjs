@@ -16,8 +16,12 @@ import sharp from 'sharp';
 const CODEX_JS = path.join(process.env.APPDATA || '', 'npm', 'node_modules', '@openai', 'codex', 'bin', 'codex.js');
 const GEN_ROOT = path.join(os.homedir(), '.codex', 'generated_images');
 
+/** The token usage of the last codexImage run, as Codex's own `turn.completed` event reports it (null when it reported none). */
+export const lastUsage = { value: null };
+
 /** Make one image from `prompt`; returns the path of Codex's own PNG. `take` skips generation (finish an existing take). */
 export function codexImage(prompt, { model = 'gpt-6-astra', take = null } = {}) {
+  lastUsage.value = null;
   if (take) return take;
   const work = path.join(os.tmpdir(), `pw-regen-${Date.now()}-${process.pid}`);
   mkdirSync(work, { recursive: true });
@@ -25,6 +29,9 @@ export function codexImage(prompt, { model = 'gpt-6-astra', take = null } = {}) 
   writeFileSync(path.join(work, 'brief.txt'), instruction);
   const res = spawnSync(process.execPath, [CODEX_JS, 'exec', '--skip-git-repo-check', '--json', '-s', 'read-only', '-m', model, '-c', 'model_reasoning_effort="low"', '-'],
     { cwd: work, input: instruction, encoding: 'utf8', timeout: 15 * 60 * 1000, maxBuffer: 64 * 1024 * 1024 });
+  lastUsage.value = (res.stdout || '').split('\n')
+    .map((l) => { try { return JSON.parse(l); } catch { return null; } })
+    .filter((e) => e?.type === 'turn.completed' && e.usage).map((e) => e.usage).pop() ?? null;
   const thread = /"thread_id":"([^"]+)"/.exec(res.stdout || '')?.[1];
   const dir = thread ? path.join(GEN_ROOT, thread) : null;
   const pngs = dir && existsSync(dir)

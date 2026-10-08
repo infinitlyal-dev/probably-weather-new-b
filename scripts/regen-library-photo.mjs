@@ -12,10 +12,12 @@
 // Output: review/library-reframe-2026-10-08/<hash>.png (the current take, 1008x1792) and <hash>.r<N>-original.png (each
 // raw take), one line per take in that folder's log.md. Nothing in assets/ changes here: scripts/ingest-library-reframes.mjs
 // does that, by hash.
+// --dir <folder under review/> writes the takes and the log line there instead (a later pass that must not touch the live takes,
+// e.g. review/landmark-creep-2026-10-08). Each log line ends with Codex's own token count for the run.
 import { appendFileSync, copyFileSync, existsSync, mkdirSync, readFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { codexImage, finishTake, TAIL, DRY, HEAD, TIME } from './lib/codex-image.mjs';
+import { codexImage, finishTake, lastUsage, TAIL, DRY, HEAD, TIME } from './lib/codex-image.mjs';
 
 const root = fileURLToPath(new URL('..', import.meta.url));
 const args = process.argv.slice(2);
@@ -23,13 +25,15 @@ const hash = args[0];
 const arg = (k, d) => { const i = args.indexOf(k); return i >= 0 ? args[i + 1] : d; };
 const round = Number(arg('--round', '1'));
 const model = arg('--model', 'gpt-5.6-sol');
-const DIR = path.join(root, 'review', 'library-reframe-2026-10-08');
+const SCENES_DIR = path.join(root, 'review', 'library-reframe-2026-10-08');
+const DIR = arg('--dir', null) ? path.join(root, 'review', arg('--dir', null)) : SCENES_DIR;
 if (!/^[0-9a-f]{12}$/.test(hash || '')) throw new Error('usage: <sha1-12> --round N');
 
 const draft = JSON.parse(readFileSync(path.join(root, 'review', 'set-001-draft.json'), 'utf8'));
-const a = draft.assignments.find((x) => x.hash === hash);
+// after the reframes went in, a photograph is found by the hash it replaced (the scenes are keyed by that one)
+const a = draft.assignments.find((x) => x.hash === hash) ?? draft.assignments.find((x) => x.replacedHash === hash);
 if (!a) throw new Error(`${hash}: not in review/set-001-draft.json`);
-const scenes = JSON.parse(readFileSync(path.join(DIR, 'scenes.json'), 'utf8'));
+const scenes = JSON.parse(readFileSync(path.join(SCENES_DIR, 'scenes.json'), 'utf8'));
 const scene = arg('--scene', null) || scenes[hash]?.scene;
 if (!scene) throw new Error(`${hash}: no scene in scenes.json`);
 
@@ -57,6 +61,6 @@ const t0 = Date.now();
 const take = codexImage(prompt, { model, take: arg('--take', null) });
 copyFileSync(take, raw);
 const meta = await finishTake(take, path.join(DIR, `${hash}.png`));
-const line = `- round ${round} | ${hash} | ${a.image} (${a.condition} ${a.time} ${a.day}) | Codex ${model} image tool | ${meta.width}x${meta.height} -> 1008x1792 | ${Math.round((Date.now() - t0) / 1000)} s | scene: ${scenes[hash]?.src || 'override'}${arg('--scene', null) ? ' (overridden)' : ''} | dry sentence: ${wet ? 'left out (rain/storm)' : 'yes'}\n`;
+const line = `- round ${round} | ${hash} | ${a.image} (${a.condition} ${a.time} ${a.day}) | Codex ${model} image tool | ${meta.width}x${meta.height} -> 1008x1792 | ${Math.round((Date.now() - t0) / 1000)} s | scene: ${scenes[hash]?.src || 'override'}${arg('--scene', null) ? ' (overridden)' : ''} | dry sentence: ${wet ? 'left out (rain/storm)' : 'yes'} | tokens: ${lastUsage.value ? `${lastUsage.value.input_tokens} in (${lastUsage.value.cached_input_tokens ?? 0} cached), ${lastUsage.value.output_tokens} out` : 'not reported'}\n`;
 appendFileSync(path.join(DIR, 'log.md'), line);
 console.log(line.trim());
