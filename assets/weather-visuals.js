@@ -85,12 +85,11 @@ export function getTimeOfDaySlot(payload, nowMs = Date.now()) {
  * regressing the marketing-specific OG cards. So we maintain a separate
  * OG alias map that only collapses conditions WITHOUT a dedicated og file.
  *
- * partly-cloudy / hail / thunder do NOT have dedicated og files (not in
- * build-og-images.mjs CONDITIONS or ALIASES), so they map to existing ones.
+ * hail / thunder do NOT have dedicated og files (not in build-og-images.mjs
+ * CONDITIONS or ALIASES), so they map to existing ones. partly-cloudy and
+ * breezy have their own cards since 8 Oct 2026 (Al: the 7 Oct sets' folders).
  */
 const OG_BACKGROUND_ALIASES = {
-  'partly-cloudy': 'clear', // Al, 7 Oct 2026 — as the picker
-
   hail: 'storm',
   thunder: 'storm',
 };

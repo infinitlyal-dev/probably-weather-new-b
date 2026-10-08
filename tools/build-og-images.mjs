@@ -2,6 +2,7 @@
 // Build static per-condition OG share images (1200x630 JPEG, <300KB).
 // Source: assets/images/bg/<condition>/week_1/day/1.webp → og/<condition>.jpg
 // Run with: node tools/build-og-images.mjs
+//           node tools/build-og-images.mjs --only partly-cloudy,breezy   (only those cards; the others keep their bytes)
 //
 // Why week_1/day/1.webp: matches the canonical OG source convention used by
 // the /api/og dynamic renderer (see assets/weather-visuals.js getOgBackgroundPath).
@@ -29,6 +30,10 @@ const CONDITIONS = [
   { name: 'rain',           source: 'assets/images/bg/rain/week_1/day/1.webp' },
   { name: 'storm',          source: 'assets/images/bg/storm/week_1/day/1.webp' },
   { name: 'wind',           source: 'assets/images/bg/wind/week_1/day/1.webp' },
+  // Al, 8 Oct 2026: their own cards since the 7 Oct sets gave them their own folders.
+  // week_1/day/1 is Table Mountain (Al: no landmark on a countrywide picture); day/2 has the partly-cloudy sky and suits any day.
+  { name: 'partly-cloudy',  source: 'assets/images/bg/partly-cloudy/week_1/day/2.webp' },
+  { name: 'breezy',         source: 'assets/images/bg/breezy/week_1/day/1.webp' },
   { name: 'default',        source: 'assets/images/bg/clear/week_1/day/1.webp' },
 ];
 
@@ -70,9 +75,12 @@ async function copyAlias({ from, to }) {
   return { name: to, bytes: stat.size, alias: from };
 }
 
+const onlyArg = process.argv.includes('--only') ? process.argv[process.argv.indexOf('--only') + 1] : null;
+const ONLY = onlyArg ? new Set(onlyArg.split(',')) : null;
+
 (async () => {
   const built = [];
-  for (const c of CONDITIONS) {
+  for (const c of CONDITIONS.filter((x) => !ONLY || ONLY.has(x.name))) {
     try {
       built.push(await buildOne(c));
     } catch (err) {
@@ -80,7 +88,7 @@ async function copyAlias({ from, to }) {
       process.exitCode = 1;
     }
   }
-  for (const a of ALIASES) {
+  for (const a of ALIASES.filter((x) => !ONLY || ONLY.has(x.to))) {
     try {
       built.push(await copyAlias(a));
     } catch (err) {

@@ -6,6 +6,7 @@
 // and tested but never called in production.
 
 import { describe, expect, it } from 'vitest';
+import { existsSync } from 'node:fs';
 import {
   WEATHER_BACKGROUND_ALIASES,
   getOgStaticBackgroundFallbackChain,
@@ -111,8 +112,7 @@ describe('getOgStaticBackgroundPath', () => {
   });
 
   it('OG-specific aliases only collapse conditions WITHOUT a dedicated og file', () => {
-    // partly-cloudy / hail / thunder have no dedicated og/*.jpg → must alias
-    expect(getOgStaticBackgroundPath('partly-cloudy')).toBe('og/clear.jpg'); // Al, 7 Oct 2026
+    // hail / thunder have no dedicated og/*.jpg → must alias
     expect(getOgStaticBackgroundPath('hail')).toBe('og/storm.jpg');
     expect(getOgStaticBackgroundPath('thunder')).toBe('og/storm.jpg');
   });
@@ -127,6 +127,12 @@ describe('getOgStaticBackgroundPath', () => {
 
   it('cold-clear is NOT aliased (has its own og/cold-clear.jpg)', () => {
     expect(getOgStaticBackgroundPath('cold-clear')).toBe('og/cold-clear.jpg');
+  });
+
+  it('partly-cloudy and breezy have their own cards (Al, 8 Oct 2026), and the files exist', () => {
+    expect(getOgStaticBackgroundPath('partly-cloudy')).toBe('og/partly-cloudy.jpg');
+    expect(getOgStaticBackgroundPath('breezy')).toBe('og/breezy.jpg');
+    for (const f of ['og/partly-cloudy.jpg', 'og/breezy.jpg']) expect(existsSync(new URL(`../${f}`, import.meta.url))).toBe(true);
   });
 
   it('falls through to og/clear.jpg for empty / null / undefined condition', () => {
@@ -172,8 +178,9 @@ describe('getOgStaticBackgroundFallbackChain', () => {
       'og/clear.jpg',
       'og/default.jpg',
     ]);
-    // partly-cloudy → clear (Al, 7 Oct 2026); the duplicate clear step collapses
+    // partly-cloudy has its own card since 8 Oct 2026
     expect(getOgStaticBackgroundFallbackChain('partly-cloudy')).toEqual([
+      'og/partly-cloudy.jpg',
       'og/clear.jpg',
       'og/default.jpg',
     ]);
