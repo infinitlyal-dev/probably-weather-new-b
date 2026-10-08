@@ -75,15 +75,27 @@
    "bucket": "clear-day",
    "slot": "B/sat",
    "image": "clear/week_4/day/5.webp",
-   "anchorY": 55,
-   "ink": "white"
+   "anchorY": 73,
+   "ink": "white",
+   "faceAnchor": {
+    "on": "2026-10-08",
+    "previous": 55,
+    "by": "scripts/anchor-faces.mjs",
+    "reason": "a face hidden at the previous anchor on 414x715"
+   }
   },
   "1bd6b90924a1": {
    "verdict": "FIXABLE",
    "bucket": "clear-dusk",
    "slot": "A/tue",
    "image": "clear/week_2/dusk/6.webp",
-   "anchorY": 77
+   "anchorY": 81,
+   "faceAnchor": {
+    "on": "2026-10-08",
+    "previous": 77,
+    "by": "scripts/anchor-faces.mjs",
+    "reason": "a face hidden at the previous anchor on 414x715"
+   }
   },
   "7d50ec606bfc": {
    "verdict": "FIXABLE",
@@ -112,8 +124,14 @@
    "bucket": "clear-dusk",
    "slot": "A/sat",
    "image": "clear/week_1/dusk/3.webp",
-   "anchorY": 87,
-   "ink": "white"
+   "anchorY": 88,
+   "ink": "white",
+   "faceAnchor": {
+    "on": "2026-10-08",
+    "previous": 87,
+    "by": "scripts/anchor-faces.mjs",
+    "reason": "a face hidden at the previous anchor on 414x715"
+   }
   },
   "970707aba87c": {
    "verdict": "FIXABLE",
@@ -134,8 +152,14 @@
    "bucket": "clear-night",
    "slot": "A/thu",
    "image": "clear/week_2/night/5.webp",
-   "anchorY": 58,
-   "ink": "white"
+   "anchorY": 6,
+   "ink": "white",
+   "faceAnchor": {
+    "on": "2026-10-08",
+    "previous": 58,
+    "by": "scripts/anchor-faces.mjs",
+    "reason": "a face hidden at the previous anchor on 414x715"
+   }
   },
   "08134a1e356e": {
    "verdict": "FIXABLE",
@@ -172,8 +196,14 @@
    "bucket": "cloudy-dawn",
    "slot": "A/sat",
    "image": "cloudy/week_1/dawn/3.webp",
-   "anchorY": 90,
-   "ink": "white"
+   "anchorY": 77,
+   "ink": "white",
+   "faceAnchor": {
+    "on": "2026-10-08",
+    "previous": 90,
+    "by": "scripts/anchor-faces.mjs",
+    "reason": "a face hidden at the previous anchor on 414x715"
+   }
   },
   "e0e2d1182253": {
    "verdict": "FIXABLE",
@@ -279,7 +309,13 @@
    "bucket": "cloudy-night",
    "slot": "A/thu",
    "image": "cloudy/week_2/night/6.webp",
-   "anchorY": 68
+   "anchorY": 71,
+   "faceAnchor": {
+    "on": "2026-10-08",
+    "previous": 68,
+    "by": "scripts/anchor-faces.mjs",
+    "reason": "a face hidden at the previous anchor on 414x715"
+   }
   },
   "c6d4061cbef2": {
    "verdict": "FIXABLE",
@@ -341,7 +377,13 @@
    "bucket": "cold-clear-day",
    "slot": "A/thu",
    "image": "cold-clear/week_3/day/5.webp",
-   "anchorY": 41
+   "anchorY": 54,
+   "faceAnchor": {
+    "on": "2026-10-08",
+    "previous": 41,
+    "by": "scripts/anchor-faces.mjs",
+    "reason": "a face hidden at the previous anchor on 414x715"
+   }
   },
   "decff597fe6c": {
    "verdict": "FIXABLE",
@@ -399,7 +441,13 @@
    "bucket": "cold-clear-night",
    "slot": "A/wed",
    "image": "cold-clear/week_2/night/4.webp",
-   "anchorY": 55
+   "anchorY": 67,
+   "faceAnchor": {
+    "on": "2026-10-08",
+    "previous": 55,
+    "by": "scripts/anchor-faces.mjs",
+    "reason": "a face hidden at the previous anchor on 414x715"
+   }
   },
   "05aeb3b79581": {
    "verdict": "FIXABLE",
@@ -427,7 +475,13 @@
    "bucket": "cold-clear-night",
    "slot": "A/sun",
    "image": "cold-clear/week_1/night/4.webp",
-   "anchorY": 61
+   "anchorY": 77,
+   "faceAnchor": {
+    "on": "2026-10-08",
+    "previous": 61,
+    "by": "scripts/anchor-faces.mjs",
+    "reason": "a face hidden at the previous anchor on 414x715"
+   }
   },
   "ea6e65a6bc63": {
    "verdict": "FIXABLE",
@@ -523,8 +577,14 @@
    "bucket": "cold-day",
    "slot": "B/mon",
    "image": "cold/week_2/day/3.webp",
-   "anchorY": 86,
-   "ink": "white"
+   "anchorY": 77,
+   "ink": "white",
+   "faceAnchor": {
+    "on": "2026-10-08",
+    "previous": 86,
+    "by": "scripts/anchor-faces.mjs",
+    "reason": "a face hidden at the previous anchor on 414x715"
+   }
   },
   "d970e657c4d2": {
    "verdict": "FIXABLE",
@@ -586,8 +646,14 @@
    "bucket": "cold-dusk",
    "slot": "A/sat",
    "image": "cold/week_4/dusk/2.webp",
-   "anchorY": 96,
-   "ink": "white"
+   "anchorY": 74,
+   "ink": "white",
+   "faceAnchor": {
+    "on": "2026-10-08",
+    "previous": 96,
+    "by": "scripts/anchor-faces.mjs",
+    "reason": "a face hidden at the previous anchor on 414x715"
+   }
   },
   "6ab73d31bad6": {
    "verdict": "FIXABLE",
@@ -905,16 +971,28 @@
    "bucket": "heat-dusk",
    "slot": "A/thu",
    "image": "heat/week_2/dusk/7.webp",
-   "anchorY": 81,
-   "ink": "white"
+   "anchorY": 77,
+   "ink": "white",
+   "faceAnchor": {
+    "on": "2026-10-08",
+    "previous": 81,
+    "by": "scripts/anchor-faces.mjs",
+    "reason": "a face hidden at the previous anchor on 414x715"
+   }
   },
   "93f4a43551af": {
    "verdict": "FIXABLE",
    "bucket": "heat-dusk",
    "slot": "A/fri",
    "image": "heat/week_2/dusk/1.webp",
-   "anchorY": 89,
-   "ink": "white"
+   "anchorY": 77,
+   "ink": "white",
+   "faceAnchor": {
+    "on": "2026-10-08",
+    "previous": 89,
+    "by": "scripts/anchor-faces.mjs",
+    "reason": "a face hidden at the previous anchor on 414x715"
+   }
   },
   "9728bed72ec6": {
    "verdict": "FIXABLE",
@@ -1214,7 +1292,13 @@
    "bucket": "storm-day",
    "slot": "B/thu",
    "image": "storm/week_4/day/5.webp",
-   "anchorY": 71
+   "anchorY": 75,
+   "faceAnchor": {
+    "on": "2026-10-08",
+    "previous": 71,
+    "by": "scripts/anchor-faces.mjs",
+    "reason": "a face hidden at the previous anchor on 414x715"
+   }
   },
   "10cac134f9d9": {
    "verdict": "FIXABLE",
@@ -1416,8 +1500,14 @@
    "bucket": "wind-dusk",
    "slot": "A/tue",
    "image": "wind/week_1/dusk/4.webp",
-   "anchorY": 91,
-   "ink": "white"
+   "anchorY": 77,
+   "ink": "white",
+   "faceAnchor": {
+    "on": "2026-10-08",
+    "previous": 91,
+    "by": "scripts/anchor-faces.mjs",
+    "reason": "a face hidden at the previous anchor on 414x715"
+   }
   },
   "12cd74b592e8": {
    "verdict": "FIXABLE",
@@ -2109,8 +2199,14 @@
    "bucket": "heat-day",
    "slot": "A/tue",
    "image": "heat/week_3/day/2.webp",
-   "anchorY": 35,
-   "pair": "R43"
+   "anchorY": 14,
+   "pair": "R43",
+   "faceAnchor": {
+    "on": "2026-10-08",
+    "previous": 35,
+    "by": "scripts/anchor-faces.mjs",
+    "reason": "a face hidden at the previous anchor on 414x715"
+   }
   },
   "3c8fb431fafe": {
    "verdict": "PAIR",
@@ -2288,5 +2384,10 @@
    "anchorY": 28,
    "pair": "R56"
   }
+ },
+ "faceAnchors": {
+  "on": "2026-10-08",
+  "moved": 16,
+  "audit": "review/crop-audit-2026-10-08.md"
  }
 }

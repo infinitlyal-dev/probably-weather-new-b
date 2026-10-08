@@ -1,0 +1,282 @@
+{
+ "generated": "2026-10-08",
+ "note": "Face anchors for the new sets by filename (scripts/anchor-faces.mjs). The ingest keys them by the WebP hash; null = no entry (CSS default).",
+ "anchors": {
+  "partly-cloudy/dawn-1.png": {
+   "anchorY": null,
+   "verdict": "pass"
+  },
+  "partly-cloudy/dawn-2.png": {
+   "anchorY": null,
+   "verdict": "pass"
+  },
+  "partly-cloudy/dawn-3.png": {
+   "anchorY": null,
+   "verdict": "pass"
+  },
+  "partly-cloudy/dawn-4.png": {
+   "anchorY": null,
+   "verdict": "pass"
+  },
+  "partly-cloudy/dawn-5.png": {
+   "anchorY": null,
+   "verdict": "pass"
+  },
+  "partly-cloudy/dawn-6.png": {
+   "anchorY": null,
+   "verdict": "pass"
+  },
+  "partly-cloudy/dawn-7.png": {
+   "anchorY": null,
+   "verdict": "pass"
+  },
+  "partly-cloudy/day-1.png": {
+   "anchorY": null,
+   "verdict": "pass"
+  },
+  "partly-cloudy/day-2.png": {
+   "anchorY": 81,
+   "verdict": "moved"
+  },
+  "partly-cloudy/day-3.png": {
+   "anchorY": null,
+   "verdict": "pass"
+  },
+  "partly-cloudy/day-4.png": {
+   "anchorY": null,
+   "verdict": "pass"
+  },
+  "partly-cloudy/day-5.png": {
+   "anchorY": null,
+   "verdict": "pass"
+  },
+  "partly-cloudy/day-6.png": {
+   "anchorY": null,
+   "verdict": "pass"
+  },
+  "partly-cloudy/day-7.png": {
+   "anchorY": null,
+   "verdict": "pass"
+  },
+  "partly-cloudy/dusk-1.png": {
+   "anchorY": null,
+   "verdict": "pass"
+  },
+  "partly-cloudy/dusk-2.png": {
+   "anchorY": null,
+   "verdict": "pass"
+  },
+  "partly-cloudy/dusk-3.png": {
+   "anchorY": null,
+   "verdict": "pass"
+  },
+  "partly-cloudy/dusk-4.png": {
+   "anchorY": null,
+   "verdict": "pass"
+  },
+  "partly-cloudy/dusk-5.png": {
+   "anchorY": null,
+   "verdict": "pass"
+  },
+  "partly-cloudy/dusk-6.png": {
+   "anchorY": null,
+   "verdict": "pass"
+  },
+  "partly-cloudy/dusk-7.png": {
+   "anchorY": null,
+   "verdict": "pass"
+  },
+  "partly-cloudy/night-1.png": {
+   "anchorY": null,
+   "verdict": "pass"
+  },
+  "partly-cloudy/night-2.png": {
+   "anchorY": null,
+   "verdict": "pass"
+  },
+  "partly-cloudy/night-3.png": {
+   "anchorY": null,
+   "verdict": "pass"
+  },
+  "partly-cloudy/night-4.png": {
+   "anchorY": null,
+   "verdict": "pass"
+  },
+  "partly-cloudy/night-5.png": {
+   "anchorY": null,
+   "verdict": "pass"
+  },
+  "partly-cloudy/night-6.png": {
+   "anchorY": null,
+   "verdict": "pass"
+  },
+  "partly-cloudy/night-7.png": {
+   "anchorY": null,
+   "verdict": "pass"
+  },
+  "breezy/dawn-1.png": {
+   "anchorY": null,
+   "verdict": "pass"
+  },
+  "breezy/dawn-2.png": {
+   "anchorY": 6,
+   "verdict": "moved"
+  },
+  "breezy/dawn-3.png": {
+   "anchorY": null,
+   "verdict": "pass"
+  },
+  "breezy/dawn-4.png": {
+   "anchorY": null,
+   "verdict": "pass"
+  },
+  "breezy/dawn-5.png": {
+   "anchorY": null,
+   "verdict": "pass"
+  },
+  "breezy/dawn-6.png": {
+   "anchorY": null,
+   "verdict": "pass"
+  },
+  "breezy/dawn-7.png": {
+   "anchorY": null,
+   "verdict": "pass"
+  },
+  "breezy/day-1.png": {
+   "anchorY": 26,
+   "verdict": "moved"
+  },
+  "breezy/day-2.png": {
+   "anchorY": null,
+   "verdict": "pass"
+  },
+  "breezy/day-3.png": {
+   "anchorY": null,
+   "verdict": "pass"
+  },
+  "breezy/day-4.png": {
+   "anchorY": null,
+   "verdict": "pass"
+  },
+  "breezy/day-5.png": {
+   "anchorY": null,
+   "verdict": "pass"
+  },
+  "breezy/day-6.png": {
+   "anchorY": null,
+   "verdict": "pass"
+  },
+  "breezy/day-7.png": {
+   "anchorY": null,
+   "verdict": "pass"
+  },
+  "breezy/dusk-1.png": {
+   "anchorY": null,
+   "verdict": "pass"
+  },
+  "breezy/dusk-2.png": {
+   "anchorY": null,
+   "verdict": "pass"
+  },
+  "breezy/dusk-3.png": {
+   "anchorY": null,
+   "verdict": "pass"
+  },
+  "breezy/dusk-4.png": {
+   "anchorY": null,
+   "verdict": "pass"
+  },
+  "breezy/dusk-5.png": {
+   "anchorY": null,
+   "verdict": "cannot be saved"
+  },
+  "breezy/dusk-6.png": {
+   "anchorY": null,
+   "verdict": "pass"
+  },
+  "breezy/dusk-7.png": {
+   "anchorY": null,
+   "verdict": "pass"
+  },
+  "breezy/night-1.png": {
+   "anchorY": null,
+   "verdict": "pass"
+  },
+  "breezy/night-2.png": {
+   "anchorY": null,
+   "verdict": "pass"
+  },
+  "breezy/night-3.png": {
+   "anchorY": null,
+   "verdict": "pass"
+  },
+  "breezy/night-4.png": {
+   "anchorY": null,
+   "verdict": "pass"
+  },
+  "breezy/night-5.png": {
+   "anchorY": null,
+   "verdict": "pass"
+  },
+  "breezy/night-6.png": {
+   "anchorY": null,
+   "verdict": "pass"
+  },
+  "breezy/night-7.png": {
+   "anchorY": null,
+   "verdict": "pass"
+  },
+  "cloudy/dawn-1.png": {
+   "anchorY": 67,
+   "verdict": "moved"
+  },
+  "cloudy/dawn-3.png": {
+   "anchorY": null,
+   "verdict": "pass"
+  },
+  "cloudy/dawn-4.png": {
+   "anchorY": null,
+   "verdict": "pass"
+  },
+  "cloudy/dawn-5.png": {
+   "anchorY": null,
+   "verdict": "pass"
+  },
+  "cloudy/day-1.png": {
+   "anchorY": null,
+   "verdict": "pass"
+  },
+  "cloudy/day-2.png": {
+   "anchorY": null,
+   "verdict": "pass"
+  },
+  "cloudy/day-3-weekB.png": {
+   "anchorY": null,
+   "verdict": "pass"
+  },
+  "cloudy/day-4.png": {
+   "anchorY": null,
+   "verdict": "pass"
+  },
+  "cloudy/day-5.png": {
+   "anchorY": null,
+   "verdict": "pass"
+  },
+  "cloudy/dusk-1.png": {
+   "anchorY": null,
+   "verdict": "pass"
+  },
+  "cloudy/dusk-3.png": {
+   "anchorY": null,
+   "verdict": "pass"
+  },
+  "cloudy/dusk-4.png": {
+   "anchorY": null,
+   "verdict": "pass"
+  },
+  "cloudy/dusk-7.png": {
+   "anchorY": null,
+   "verdict": "pass"
+  }
+ }
+}

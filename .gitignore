@@ -48,3 +48,20 @@ review/launch/home-b-check/shots/
 
 # Source photographs for the 7 Oct 2026 sets (review/image-brief-2026-10-07.md): kept on disk for Al, not on GitHub.
 review/new-sets-2026-10-07/**/*.original.png
+# 8 Oct 2026: what each regeneration replaced, and each raw take, stay on disk beside the photograph (log.md names them).
+review/new-sets-2026-10-07/**/*.before-dry-ground.png
+review/new-sets-2026-10-07/**/*.dry-ground-original.png
+review/new-sets-2026-10-07/**/*.before-qc-r*.png
+review/new-sets-2026-10-07/**/*.qc-r*-original.png
+
+# The face detector's models (tools/face/detect.mjs copies them from node_modules and fetches MultiPose once).
+tools/face/models/
+
+# 8 Oct 2026: the per-photograph phone renders behind the crop-audit and new-sets sheets (the scripts make them again).
+review/crop-audit-2026-10-08/*-before.jpg
+review/crop-audit-2026-10-08/*-after.jpg
+review/crop-audit-2026-10-08/*-now.jpg
+review/new-sets-phone-2026-10-08/*-dawn-*.jpg
+review/new-sets-phone-2026-10-08/*-day-*.jpg
+review/new-sets-phone-2026-10-08/*-dusk-*.jpg
+review/new-sets-phone-2026-10-08/*-night-*.jpg

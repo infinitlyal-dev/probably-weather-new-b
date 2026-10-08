@@ -1,0 +1,10 @@
+{
+  "name": "pw-face-detector",
+  "private": true,
+  "description": "Local people/face detector for scripts/anchor-faces.mjs (Human 3.3 on the TensorFlow.js WASM backend; tfjs-node does not build on Node 24/Windows). Never deployed: tools/ is in .vercelignore.",
+  "dependencies": {
+    "@tensorflow/tfjs": "4.22.0",
+    "@tensorflow/tfjs-backend-wasm": "4.22.0",
+    "@vladmandic/human": "3.3.6"
+  }
+}
