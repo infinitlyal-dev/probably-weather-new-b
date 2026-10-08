@@ -31,11 +31,10 @@
 // The dry run prints the table of what moves where and writes nothing. A real run writes the WebPs and the draft;
 // then: register the folders (BG_IMAGE_SLOT_FOLDERS, layout CONDITIONS), node scripts/layout-set-001-grid.mjs,
 // node scripts/build-hero-lines.mjs, node scripts/build-hero-crop-offsets.mjs, npx vitest run, npm run build.
-import { createHash } from 'node:crypto';
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import sharp from 'sharp';
+import { encodeBg, sha12 } from './lib/encode-bg.mjs';
 
 const root = fileURLToPath(new URL('..', import.meta.url));
 const SRC = path.join(root, 'review', 'new-sets-2026-10-07');
@@ -49,12 +48,8 @@ const all = (k) => args.flatMap((a, i) => (a === k ? [args[i + 1]] : []));
 const CUT = new Set(all('--cut'));
 const FILL = new Map(all('--fill').map((f) => f.split('=')));
 
-// The recompress rules (scripts/recompress-bg-images.mjs).
-const TARGET_BYTES = 290 * 1024, MIN_Q = 60, MAX_Q = 82, WIDTHS = [null, 1280, 1200, 1080, 960];
-const W = 1008, H = 1792;
 const DAYS = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
 const SETS = ['partly-cloudy', 'breezy', 'cloudy'];
-const sha12 = (b) => createHash('sha1').update(b).digest('hex').slice(0, 12);
 
 function keptFiles() {
   if (arg('--files')) return arg('--files').split(',').map((s) => s.trim()).filter(Boolean);
@@ -71,21 +66,7 @@ function position(file) {
   return { set: m[1], time: m[2], index: Number(m[3]), day: DAYS[Number(m[3]) - 1], week: m[4] ? 'B' : 'A' };
 }
 
-async function encode(file) {
-  const input = await sharp(path.join(SRC, file)).resize(W, H, { fit: 'cover' }).png().toBuffer();
-  for (const width of WIDTHS) {
-    let lo = MIN_Q, hi = MAX_Q, best = null;
-    while (lo <= hi) {
-      const q = Math.floor((lo + hi) / 2);
-      let p = sharp(input);
-      if (width) p = p.resize({ width, withoutEnlargement: true });
-      const buf = await p.webp({ quality: q, effort: 6, smartSubsample: true }).toBuffer();
-      if (buf.length <= TARGET_BYTES) { best = { buf, q, width }; lo = q + 1; } else hi = q - 1;
-    }
-    if (best) return best;
-  }
-  throw new Error(`${file}: cannot reach ${TARGET_BYTES} bytes at quality ${MIN_Q}`);
-}
+const encode = (file) => encodeBg(path.join(SRC, file));
 
 const files = keptFiles();
 for (const f of files) if (!existsSync(path.join(SRC, f))) throw new Error(`${f}: not in review/new-sets-2026-10-07/`);

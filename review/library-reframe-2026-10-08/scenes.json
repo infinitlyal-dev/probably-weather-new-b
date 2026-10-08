@@ -1,0 +1,402 @@
+{
+ "7d50ec606bfc": {
+  "label": "clear/week_1/dusk/3.webp",
+  "src": "set-001-lines-bespoke-clear-v3.json:seen",
+  "scene": "A teenager railing a mountain-bike berm on a dirt trail at sunset, golden dust hanging in the air behind him, hills to the horizon, clear gradient sky."
+ },
+ "de1df07bf268": {
+  "label": "cloudy/week_1/dawn/2.webp",
+  "src": "set-001-lines-bespoke-cloudy-v3.json:seen",
+  "scene": "A painter up a ladder painting a Bo-Kaap house turquoise under a flat overcast sky, coffee mug and paint tin on the windowsill."
+ },
+ "c16f8303d56e": {
+  "label": "cloudy/week_1/day/6.webp",
+  "src": "set-001-lines-bespoke-cloudy-v3.json:seen",
+  "scene": "A man in slops standing beside his mower on a half-mowed lawn, looking up at a heavy grey sky over the mountain, beer waiting on the patio table."
+ },
+ "47550fce6c98": {
+  "label": "cloudy/week_2/day/2.webp",
+  "src": "set-001-lines-bespoke-cloudy-v3.json:seen",
+  "scene": "A man standing on his tiled roof beside new solar panels, hands on hips, giving a fully grey sky a skeptical look."
+ },
+ "68317318c85d": {
+  "label": "cloudy/week_1/night/2.webp",
+  "src": "set-001-lines-bespoke-cloudy-v3.json:seen",
+  "scene": "A farmer with a torch walking towards a windpomp at night, full moon glowing through a mackerel sky of broken cloud, Karoo scrub."
+ },
+ "1c5f757ee79a": {
+  "label": "cold/week_1/dawn/3.webp",
+  "src": "set-001-lines-bespoke-cold-v3.json:seen",
+  "scene": "A mother kneeling at the front door zipping her son's puffer jacket over his school uniform and beanie, cold blue dawn and wet street outside."
+ },
+ "36ffe52cf7ec": {
+  "label": "cold/week_1/day/7.webp",
+  "src": "set-001-lines-bespoke-cold-v3.json:seen",
+  "scene": "A family of four squashed on the couch under one big brown blanket, arms folded, while the dog lies stretched out in the single patch of sunlight on the tiles."
+ },
+ "a373f1d83e2f": {
+  "label": "cold/week_2/day/5.webp",
+  "src": "set-001-lines-bespoke-cold-v3.json:seen",
+  "scene": "A man walking to work with his roll-neck jersey pulled up over his nose, satchel on his shoulder, wet paving and a bare tree under a grey sky."
+ },
+ "13efc9191981": {
+  "label": "cold/week_1/night/6.webp",
+  "src": "set-001-lines-bespoke-cold-v3.json:seen",
+  "scene": "Two men in beanies and puffer jackets braaiing at night on frost-dusted grass, Cape Dutch farmhouse and string lights behind, wine in hand."
+ },
+ "5a6dd26eb7db": {
+  "label": "cold-clear/week_1/dawn/3.webp",
+  "src": "set-001-lines-bespoke-cold-clear-v3.json:seen",
+  "scene": "A mother scraping frost off the windscreen at deep blue dawn while two boys in beanies wait with their school bags, breath clouds, frosted grasses, modern house."
+ },
+ "042ba0a95388": {
+  "label": "cold-clear/week_1/day/3.webp",
+  "src": "set-001-lines-bespoke-cold-clear-v3.json:seen",
+  "scene": "A father and son in school uniform getting into a white Hilux on a frosty morning, frosted windows, breath clouds, frost-grey lawn and bare trees, clear blue sky."
+ },
+ "decff597fe6c": {
+  "label": "cold-clear/week_1/day/5.webp",
+  "src": "set-001-lines-bespoke-cold-clear-v3.json:seen",
+  "scene": "Two colleagues in coats and scarves chatting over takeaway coffees in a sunlit city plaza, brilliant blue sky between the glass towers."
+ },
+ "32dec9fbdcaa": {
+  "label": "cold-clear/week_1/day/7.webp",
+  "src": "set-001-lines-bespoke-cold-clear-v3.json:seen",
+  "scene": "A parkrun start on frosty grass — runners in beanies and gloves, breath clouds everywhere, marshals in hi-vis, brick clubhouse behind, clear pale sky."
+ },
+ "da90853b2ccb": {
+  "label": "cold-clear/week_1/night/2.webp",
+  "src": "set-001-lines-bespoke-cold-clear-v3.json:seen",
+  "scene": "A man in a puffer and beanie wheeling the bin down the driveway at night, breath clouding under the porch light, frosty lawn, stars overhead."
+ },
+ "8fd1944f303b": {
+  "label": "cold-clear/week_1/night/6.webp",
+  "src": "set-001-lines-bespoke-cold-clear-v3.json:seen",
+  "scene": "Three men in beanies and puffers around a kettle braai on a frosty patio at night, steam and smoke rising, town lights and stars beyond."
+ },
+ "6591bd91d1fc": {
+  "label": "heat/week_1/day/3.webp",
+  "src": "set-001-lines-bespoke-heat-v2.json:seen",
+  "scene": "A back garden in hard midday sun. A pink and blue plastic clamshell paddling pool on the lawn, completely filled by a golden retriever lying flat out in it with his chin on the rim, eyes shut, tongue out. Behind him a girl in a mint shirt and a boy in a yellow shirt sit cross-legged on the grass with their chins in their hands, watching, visibly excluded. White house with sliding doors, precast wall, blue sky."
+ },
+ "9728bed72ec6": {
+  "label": "heat/week_1/dusk/7.webp",
+  "src": "set-001-lines-bespoke-heat-v3.json:seen",
+  "scene": "A woman with a glass of white wine on the stone stoep steps of a Karoo farmhouse at a blazing orange sunset, windpomp silhouetted on the plain."
+ },
+ "2a3a60226c30": {
+  "label": "heat/week_1/night/2.webp",
+  "src": "set-001-lines-bespoke-heat-v2.json:seen",
+  "scene": "A dark kitchen at night. A woman in a white vest and sleep shorts standing barefoot in front of an open fridge, head tipped back and eyes closed, face lit blue-white by the fridge light, one hand on the door. Behind her a passage with warm lamp light and a dining area with a lit pendant cluster, tiled floor, brick wall."
+ },
+ "87546db18e01": {
+  "label": "heat/week_1/night/6.webp",
+  "src": "set-001-lines-bespoke-heat-v3.json:seen",
+  "scene": "Friends in the pool at night with drinks under string lights, one more watching from the deck, the house glowing warm behind."
+ },
+ "d878b96a3f71": {
+  "label": "rain/week_2/day/2.webp",
+  "src": "set-001-lines-bespoke-rain-v3.json:seen",
+  "scene": "A mother fighting an inside-out umbrella in the rain while three school kids splash laughing through the puddles behind her, township street."
+ },
+ "d86d4f5699c2": {
+  "label": "rain/week_2/day/4.webp",
+  "src": "set-001-lines-bespoke-rain-v3.json:seen",
+  "scene": "A school crossing marshal in hi-vis spreading his arms over six laughing kids at the edge of a giant puddle outside Oakview Primary School, raindrop rings everywhere."
+ },
+ "71fdebcd3deb": {
+  "label": "rain/week_1/dusk/1.webp",
+  "src": "set-001-lines-bespoke-rain-v3.json:seen",
+  "scene": "A cyclist grimacing in torrential rain at a red traffic light, water streaming off his helmet, while a driver laughs out of her car window beside him, jacaranda sunset behind."
+ },
+ "b4ee9d16720e": {
+  "label": "rain/week_1/dusk/5.webp",
+  "src": "set-001-lines-bespoke-rain-v3.json:seen",
+  "scene": "A businessman just inside his front door at dusk, peeling off a soaked jacket, water pooling on the tiles, the wet street visible through the open door."
+ },
+ "99d0821cdd98": {
+  "label": "storm/week_1/day/1.webp",
+  "src": "set-001-lines-bespoke-storm-v3.json:seen",
+  "scene": "A woman grimacing over a completely skeletonised umbrella in a wind-blasted street, leaves flying, palms bending, dark storm sky."
+ },
+ "20f3d07d3c47": {
+  "label": "storm/week_1/day/5.webp",
+  "src": "set-001-lines-bespoke-storm-v3.json:seen",
+  "scene": "A big dog with wide eyes lying flat under the dining table, lightning forking outside the patio doors behind the chairs."
+ },
+ "faaf0b2003be": {
+  "label": "storm/week_1/night/3.webp",
+  "src": "set-001-lines-bespoke-storm-v3.json:seen",
+  "scene": "A boy wrapped in a fleece blanket at the bedroom window, watching a lightning bolt come down over the suburb at night."
+ },
+ "14c56f85c353": {
+  "label": "storm/week_1/night/7.webp",
+  "src": "set-001-lines-bespoke-storm-v3.json:seen",
+  "scene": "A grinning man filming a giant lightning strike on his phone from the bedroom window, the suburb lit below."
+ },
+ "4d3a786acf48": {
+  "label": "wind/week_1/day/2.webp",
+  "src": "set-001-lines-bespoke-wind.json:seen",
+  "scene": "A woman standing in the middle of a tarred city road with Table Mountain large and clear behind her. Her hair is blown completely across her face, her floral skirt is lifted and she is holding it down with both hands, one flat shoe is coming off her heel, dry leaves are flying through the frame."
+ },
+ "92ef82c2d34a": {
+  "label": "wind/week_1/day/7.webp",
+  "src": "set-001-lines-bespoke-round2.json:seen",
+  "scene": "A small scruffy terrier being walked along a beachfront promenade, ears and coat blown flat, whitecaps all the way out, Table Mountain hazy behind."
+ },
+ "ca6d821f7c9b": {
+  "label": "clear/week_1/day/5.webp",
+  "src": "written from the photograph by Vonk, 8 Oct 2026",
+  "scene": "Office workers spilling out of a glass office building's revolving door onto a sunny plaza at lunchtime, one of them throwing both arms up at the blue sky, the others laughing; seen from behind and the side at a little distance."
+ },
+ "aa3420ca4da1": {
+  "label": "clear/week_2/day/2.webp",
+  "src": "written from the photograph by Vonk, 8 Oct 2026",
+  "scene": "Friends on a city rooftop in bright sun: two women sitting on beach towels, one pouring coffee from a flask, four friends standing behind them chatting with takeaway cups, city towers beyond."
+ },
+ "04bdf14c306b": {
+  "label": "cloudy/week_2/day/7.webp",
+  "src": "written from the photograph by Vonk, 8 Oct 2026",
+  "scene": "A woman jogging along a seaside promenade under a flat grey overcast sky, a pier with curved white arches behind her, the railing beside her, the sea grey and calm."
+ },
+ "c50ba2c591aa": {
+  "label": "cold/week_1/night/7.webp",
+  "src": "written from the photograph by Vonk, 8 Oct 2026",
+  "scene": "A child in a puffer jacket, beanie and scarf pulled up to the nose, sitting cross-legged in a wooden wendy house at night reading a big book by the light of a camping lantern, soft toys on the shelf behind."
+ },
+ "d6593f52fb76": {
+  "label": "heat/week_1/day/2.webp",
+  "src": "written from the photograph by Vonk, 8 Oct 2026",
+  "scene": "Two women in an open-plan office on a hot afternoon, at their desks with small desk fans blowing, papers fluttering, one fanning herself with a folder; bright windows behind."
+ },
+ "4e474a9a4873": {
+  "label": "storm/week_1/dawn/6.webp",
+  "src": "written from the photograph by Vonk, 8 Oct 2026",
+  "scene": "A man in a T-shirt and running shorts standing on a quiet country road at dawn, hands on hips, looking up at a dark storm sky gathering over a stone farmhouse."
+ },
+ "002f0c1d5187": {
+  "label": "wind/week_1/dusk/1.webp",
+  "src": "written from the photograph by Vonk, 8 Oct 2026",
+  "scene": "Two women laughing and holding on to each other as a strong wind pushes them along a seaside promenade at sunset, hair whipping, palm trees bending, a mountain behind."
+ },
+ "be8276f7384b": {
+  "label": "wind/week_1/night/6.webp",
+  "src": "written from the photograph by Vonk, 8 Oct 2026",
+  "scene": "Two men in puffer jackets laughing at a stainless-steel braai on a windy Saturday night, sparks streaming sideways from the coals, trees tossing behind them, a flat-topped mountain and city lights in the distance."
+ },
+ "4e7c3b6e7580": {
+  "label": "heat/week_2/day/2.webp",
+  "src": "written from the photograph by Vonk, 8 Oct 2026",
+  "scene": "An old man in a straw hat sitting on a crate in the shade of a pepper tree in front of a small pink farmhouse, feet in a basin of water, wiping his neck with a cloth; a hot, empty dirt road shimmering in the foreground."
+ },
+ "2c5a9b3813f4": {
+  "label": "rain/week_2/day/5.webp",
+  "src": "written from the photograph by Vonk, 8 Oct 2026",
+  "scene": "A young woman in office clothes dashing along a city pavement in heavy rain with a plastic shopping bag held over her hair, a white minibus taxi with headlights on coming up the street behind her."
+ },
+ "614ba5459c4a": {
+  "label": "fog/week_2/dawn/3.webp",
+  "src": "written from the photograph by Vonk, 8 Oct 2026",
+  "scene": "A man in a beanie and work jacket leaning on a wooden farm gate at dawn with a mug of coffee, thick fog swallowing the bluegums and the field beyond the gate."
+ },
+ "34890f7d9e5c": {
+  "label": "cold-clear/week_2/dawn/6.webp",
+  "src": "written from the photograph by Vonk, 8 Oct 2026",
+  "scene": "A man in a warm jacket scraping frost off the windscreen of a small silver car parked on white frosted grass outside an old stone farmhouse at sunrise, his breath steaming."
+ },
+ "e499768237ef": {
+  "label": "cold/week_2/dusk/6.webp",
+  "src": "written from the photograph by Vonk, 8 Oct 2026",
+  "scene": "A family huddled on a couch around a small oil-heater at dusk: a mother in a dressing gown, a child wrapped in a hooded blanket, a father in a beanie, all holding their hands to the heater, the dog curled on the rug, rain on the window behind."
+ },
+ "cd4bd5c64c5d": {
+  "label": "cold/week_2/night/6.webp",
+  "src": "written from the photograph by Vonk, 8 Oct 2026",
+  "scene": "A woman in a jersey and slippers stepping out of warmly lit glass doors onto a patio at night, hugging herself against the cold, a book under her arm; garden beyond, cold misty air."
+ },
+ "aa3ccab85b60": {
+  "label": "cloudy/week_1/night/6.webp",
+  "src": "written from the photograph by Vonk, 8 Oct 2026",
+  "scene": "A young woman in a hoodie bent over a telescope on a back lawn at night, squinting up at a sky completely covered by flat grey cloud, the house lit behind her."
+ },
+ "1108cfd1192f": {
+  "label": "clear/week_1/dawn/7.webp",
+  "src": "written from the photograph by Vonk, 8 Oct 2026",
+  "scene": "An older woman in a nightdress with a mug of tea waving across her sunny garden at dawn, long golden light across the lawn, flowering shrubs around her."
+ },
+ "844f8b7f5b89": {
+  "label": "clear/week_1/dawn/2.webp",
+  "src": "written from the photograph by Vonk, 8 Oct 2026",
+  "scene": "A woman in office clothes with a handbag stepping out of her front gate into early morning sun, squinting at the low sun, aloes and a neat garden beside the path."
+ },
+ "15e8f0aa4baa": {
+  "label": "heat/week_2/dusk/5.webp",
+  "src": "written from the photograph by Vonk, 8 Oct 2026",
+  "scene": "A man in office clothes standing in front of a garden sprinkler at sunset on purpose, eyes closed, letting the spray cool him, the sky orange behind the house."
+ },
+ "e400ca864a50": {
+  "label": "storm/week_1/dawn/7.webp",
+  "src": "written from the photograph by Vonk, 8 Oct 2026",
+  "scene": "A woman rushing to pull cushions off the outdoor furniture on a covered stoep as a thunderstorm breaks at dawn, lightning over the garden, rain pouring off the roof."
+ },
+ "6bb604217e96": {
+  "label": "wind/week_1/night/1.webp",
+  "src": "written from the photograph by Vonk, 8 Oct 2026",
+  "scene": "A woman in a coat pushing her front gate shut against a strong wind at night, her hair whipped across her face, leaves flying past the gate light."
+ },
+ "e8500f5dfaee": {
+  "label": "wind/week_2/day/4.webp",
+  "src": "written from the photograph by Vonk, 8 Oct 2026",
+  "scene": "A woman in a business suit walking fast along a suburban pavement in a strong wind, her coat flying open and her hair blown straight back, trees bending behind her."
+ },
+ "fc06880aeadb": {
+  "label": "heat/week_1/dawn/3.webp",
+  "src": "written from the photograph by Vonk, 8 Oct 2026",
+  "scene": "A mother and her son in school uniform at the kitchen counter early on a hot morning, filling a water bottle with ice cubes from a tray, sun streaming in the window."
+ },
+ "5976dea068f8": {
+  "label": "clear/week_2/day/3.webp",
+  "src": "written from the photograph by Vonk, 8 Oct 2026",
+  "scene": "A man in a business shirt flinching as he sits down into his car that has been parked in the sun, the door open, a jacaranda in flower behind the office car park."
+ },
+ "bbf6b6ef796a": {
+  "label": "wind/week_1/dawn/6.webp",
+  "src": "written from the photograph by Vonk, 8 Oct 2026",
+  "scene": "A man in a dressing gown chasing his wheelie bin down the street at sunrise in a strong wind, the lid flapping, a few papers blowing along the road, trees bending, a mountain behind."
+ },
+ "775f4f1b47b4": {
+  "label": "wind/week_2/dawn/1.webp",
+  "src": "written from the photograph by Vonk, 8 Oct 2026",
+  "scene": "A mother walking two children in school uniform to school on a windy morning, all three leaning into the wind and laughing, her scarf streaming, the girl's hat blowing off, the sun rising over the sea behind."
+ },
+ "d68ae3f7c914": {
+  "label": "wind/week_2/dusk/1.webp",
+  "src": "written from the photograph by Vonk, 8 Oct 2026",
+  "scene": "A rugby coach in a tracksuit diving after training cones blowing across the field at dusk while his team stands laughing behind him, trees bending in the wind, an orange sky."
+ },
+ "4cbd692804c1": {
+  "label": "wind/week_2/night/6.webp",
+  "src": "written from the photograph by Vonk, 8 Oct 2026",
+  "scene": "A father kneeling on the lawn at night tying a trampoline down with a rope in a strong wind, his daughter in pyjamas holding a torch for him from the stoep, palms tossing above."
+ },
+ "7d459440d824": {
+  "label": "cold/week_2/dusk/5.webp",
+  "src": "written from the photograph by Vonk, 8 Oct 2026",
+  "scene": "Five friends in beanies and blankets standing round a brick braai on a cold evening, holding their hands over the glowing coals, laughing, warm house lights behind."
+ },
+ "4b77f610c3f8": {
+  "label": "fog/week_1/night/5.webp",
+  "src": "written from the photograph by Vonk, 8 Oct 2026",
+  "scene": "A waiter carrying two plates through thick fog on a restaurant terrace at night, patio heaters glowing, three diners at a candlelit table laughing as he appears out of the mist."
+ },
+ "744643e152b8": {
+  "label": "clear/week_4/day/7.webp",
+  "src": "written from the photograph by Vonk, 8 Oct 2026",
+  "scene": "A Sunday family gathering on the steps of a Victorian stoep with white wrought-iron trim in bright sun: relatives chatting and laughing, a man standing with a coffee mug, a dog in a camp chair."
+ },
+ "508a39ca3436": {
+  "label": "clear/week_4/day/6.webp",
+  "src": "written from the photograph by Vonk, 8 Oct 2026",
+  "scene": "A father washing the car in the driveway on a hot Saturday getting sprayed by his two laughing children with the hose, sunlight sparkling in the spray."
+ },
+ "f9f55b1dcfeb": {
+  "label": "clear/week_3/day/3.webp",
+  "src": "written from the photograph by Vonk, 8 Oct 2026",
+  "scene": "A man running out of the cold sea onto the beach with his arms wrapped round himself, mouth open in shock, his friends laughing at the water's edge, mountains along the coast behind."
+ },
+ "3c8fb431fafe": {
+  "label": "cloudy/week_4/day/7.webp",
+  "src": "written from the photograph by Vonk, 8 Oct 2026",
+  "scene": "A woman in a summer dress in a shopping-centre car park under a flat grey overcast sky, rubbing her bare arm and reaching into the boot of her car for a jersey."
+ },
+ "fbaca052756a": {
+  "label": "rain/week_1/day/2.webp",
+  "src": "written from the photograph by Vonk, 8 Oct 2026",
+  "scene": "A father in a jersey and pyjama pants carrying two mugs of hot chocolate across a lounge to a blanket fort where two children and a dog peek out, rain streaming down the big window."
+ },
+ "504caee429a0": {
+  "label": "storm/week_1/night/6.webp",
+  "src": "written from the photograph by Vonk, 8 Oct 2026",
+  "scene": "A man kneeling on a kitchen floor at night offering a biscuit to his dog hiding in the open cupboard under the sink, lightning outside the rain-streaked window."
+ },
+ "454c5a6995aa": {
+  "label": "wind/week_2/day/6.webp",
+  "src": "written from the photograph by Vonk, 8 Oct 2026",
+  "scene": "A market stallholder in an apron hanging on to the pole of her gazebo in a strong wind while another trader chases a basket of lemons rolling across the paving, other stalls flapping, mountains behind."
+ },
+ "a300495d4526": {
+  "label": "clear/week_2/dawn/6.webp",
+  "src": "written from the photograph by Vonk, 8 Oct 2026",
+  "scene": "Cyclists in helmets stopped at a farm-stall coffee stand at sunrise, one wheeling his bike in, others with cups, long shadows across the cobbles, mountains and the rising sun behind."
+ },
+ "0d7c5c34c6a0": {
+  "label": "clear/week_1/day/4.webp",
+  "src": "written from the photograph by Vonk, 8 Oct 2026",
+  "scene": "A father walking back across a sunny park lawn carrying ice-cream cones, his small daughter running to meet him with her arms out, an ice-cream van with a queue of children behind."
+ },
+ "636c4074f988": {
+  "label": "cold/week_2/night/5.webp",
+  "src": "written from the photograph by Vonk, 8 Oct 2026",
+  "scene": "A man in pyjamas and thick socks climbing into bed on a cold night, pulling the duvet up, a bedside lamp on, rain on the dark window."
+ },
+ "3bb43b4437ad": {
+  "label": "cold-clear/week_1/dusk/5.webp",
+  "src": "written from the photograph by Vonk, 8 Oct 2026",
+  "scene": "A man in a puffer jacket and beanie throwing an old blanket over his car's windscreen in the driveway at dusk to stop frost, the sky orange and clear, breath steaming."
+ },
+ "13f616637843": {
+  "label": "fog/week_1/dusk/3.webp",
+  "src": "written from the photograph by Vonk, 8 Oct 2026",
+  "scene": "An estate agent showing a buyer the view from a modern house's glass balcony at dusk; the view is nothing but thick grey fog, the agent gesturing at it hopefully."
+ },
+ "4191f6a7d49f": {
+  "label": "fog/week_1/dusk/7.webp",
+  "src": "written from the photograph by Vonk, 8 Oct 2026",
+  "scene": "A lifeguard in a red and yellow jacket on a wooden lookout tower at dusk peering through binoculars into thick fog that hides the sea, an empty beach below."
+ },
+ "1c3c5a763f13": {
+  "label": "clear/week_3/day/1.webp",
+  "src": "written from the photograph by Vonk, 8 Oct 2026",
+  "scene": "A father in a business shirt and school shoes sprinting in the fathers' race at a school sports day on a sunny field, other dads running beside him, children cheering at the rope."
+ },
+ "7d13aaa156f4": {
+  "label": "clear/week_4/day/1.webp",
+  "src": "written from the photograph by Vonk, 8 Oct 2026",
+  "scene": "An outdoor gym in a park on a blue-sky day: a newcomer stuck halfway up a pull-up, straining, while an older regular on the next bar glances across at him, caught mid-moment; nobody looks at the camera."
+ },
+ "c0246be3744d": {
+  "label": "clear/week_2/dawn/4.webp",
+  "src": "written from the photograph by Vonk, 8 Oct 2026",
+  "scene": "An old fisherman on the rocks at sunrise holding up a tiny fish with a proud grin, his mates laughing nearby, rods and tackle around them, the sea calm and gold."
+ },
+ "1d12b604469e": {
+  "label": "heat/week_1/night/4.webp",
+  "src": "written from the photograph by Vonk, 8 Oct 2026",
+  "scene": "A man asleep in an empty bathtub at night on a hot night, wrapped in a thin sheet, a pedestal fan aimed at him, a candle on the ledge."
+ },
+ "1914aa132481": {
+  "label": "rain/week_1/dawn/4.webp",
+  "src": "written from the photograph by Vonk, 8 Oct 2026",
+  "scene": "A swimming coach under a black umbrella on the deck of an outdoor pool at dawn in the rain while his squad swims laps, rain pocking the water, palms behind."
+ },
+ "5542dfc7215d": {
+  "label": "rain/week_2/dusk/3.webp",
+  "src": "written from the photograph by Vonk, 8 Oct 2026",
+  "scene": "Office workers crowded inside a glass lobby at dusk staring out at a heavy downpour, a woman checking her phone, a man holding a broken umbrella."
+ },
+ "8d215e14d9ba": {
+  "label": "cold/week_1/dusk/2.webp",
+  "src": "written from the photograph by Vonk, 8 Oct 2026",
+  "scene": "A long queue of people in beanies and scarves at a coffee kiosk on a cold evening, cupping their drinks, a mountain and a cloudy dusk sky behind."
+ },
+ "7d4fb2e85dbf": {
+  "label": "heat/week_1/dawn/5.webp",
+  "src": "written from the photograph by Vonk, 8 Oct 2026",
+  "scene": "A farmer in a bush hat sitting on his bakkie's tailgate at sunrise wiping his face with a cloth, a water bottle beside him, vineyards and mountains behind, already hot."
+ },
+ "60d5a3416f6b": {
+  "label": "rain/week_1/dawn/6.webp",
+  "src": "written from the photograph by Vonk, 8 Oct 2026",
+  "scene": "Trail runners splashing through mud on a mountain path in the rain at dawn, a woman in front laughing, mud up her legs, the sea below."
+ }
+}

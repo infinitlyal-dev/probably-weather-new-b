@@ -58,6 +58,9 @@ const args = process.argv.slice(2);
 const DRY = args.includes('--dry-run');
 const BAND_ONLY = args.includes('--band');
 const NEW_ONLY = args.includes('--new-only'); // the quality loop: judge the new sets only, print, write nothing
+// --reframes: the library reframe loop (8 Oct 2026) — judge each take in review/library-reframe-2026-10-08/<hash>.png with
+// that photograph's own lines; print, write nothing.
+const REFRAMES = args.includes('--reframes');
 const R = (...p) => path.join(root, ...p);
 const json = (rel) => JSON.parse(readFileSync(R(rel), 'utf8'));
 const sha12 = (b) => createHash('sha1').update(b).digest('hex').slice(0, 12);
@@ -113,6 +116,19 @@ for (const set of ['partly-cloudy', 'breezy', 'cloudy']) {
   }
 }
 if (NEW_ONLY) photos.splice(0, photos.length, ...photos.filter((p) => p.kind === 'new'));
+if (REFRAMES) {
+  const dir = R('review', 'library-reframe-2026-10-08');
+  const takes = readdirSync(dir).filter((f) => /^[0-9a-f]{12}\.png$/.test(f)).map((f) => f.slice(0, 12));
+  const keep = [];
+  for (const h of takes) {
+    const p = photos.find((x) => x.hash === h);
+    if (!p) continue;
+    const file = path.join(dir, `${h}.png`);
+    keep.push({ ...p, kind: 'new', newFile: `reframe ${h} ${p.label}`, file, url: `/review/library-reframe-2026-10-08/${h}.png`,
+      hash: sha12(readFileSync(file)), current: null });
+  }
+  photos.splice(0, photos.length, ...keep);
+}
 for (const p of photos) {
   // Al's phone is in English: the photograph's longest English line decides (an Afrikaans joke is often a line taller).
   p.line = p.en.length ? p.en.reduce((a, b) => (b.length > a.length ? b : a)) : SAMPLE_LINE;
@@ -301,7 +317,7 @@ for (const p of photos) {
   p.after = { [KEY]: judge(p.heads, p.vp[KEY].L, p.next), [KEY2]: judge(p.heads, p.vp[KEY2].L, p.next) };
 }
 
-if (NEW_ONLY) {
+if (NEW_ONLY || REFRAMES) {
   for (const p of photos) console.log(`${p.verdict.padEnd(16)} ${p.newFile}${p.verdict === 'moved' ? ` -> ${p.next}` : ''} ${p.vp[KEY].current.hidden.map((h) => `${h.under} ${h.screen.join('-')}`).join('; ')}`);
   await browser.close(); server.close(); process.exit(0);
 }

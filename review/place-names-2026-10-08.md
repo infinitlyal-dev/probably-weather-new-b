@@ -86,3 +86,14 @@ town, and both lines stay gated to the Western Cape); use both Afrikaans fixes i
 |---|---|---|---|---|---|---|
 | 1 | `6ca4d027da38` · cold-clear/week_1/dawn/7.webp (+3 slots) · Sun dawn | Looks like a tourism ad. Feels like the inside of a fridge.<br>*Joburg lyk soos 'n advertensie en voel soos 'n yskas.* | Joburg (AF only) | gauteng (months 5,6,7,8,9) | (English unchanged)<br>*Lyk soos 'n toerisme-advertensie en voel soos die binnekant van 'n yskas.* | pass |
 | 2 | `898c05f233a6` · cold-clear/week_1/dawn/2.webp (+3 slots) · Tue dawn | Somebody left the freezer door open overnight.<br>*Die Karoo het die yskas oornag oopgelos.* | Karoo (AF only) | karoo (months 5,6,7,8,9) | (English unchanged)<br>*Iemand het die vrieskas oornag oopgelos.* | pass |
+
+## Addendum, 8 Oct 2026 (after Al's ruling)
+
+- **Applied:** #26 "Even the Capetonians are admitting it's cold." → "Even the people who swear it never gets cold are
+  admitting it." (EN + AF) on its photograph (`a373f1d83e2f`). The other 46 stay, as ruled.
+- **Missed by the sweep, found by the tests:** P25 "Welkom-cold today. The kind that goes through three jerseys like they
+  aren't there." (photograph `3e60dabd7ef7`). The hyphen hid "Welkom" from the name match. It is live and, like #26, not
+  place-gated. Not changed — Al ruled one line. Proposed: "Proper cold today. The kind that goes through three jerseys
+  like they aren't there." / AF to be drafted on his word.
+- **Also still live, not a photograph line:** "Even the Capetonians are admitting it's cold." remains in the condition
+  bank (`witty:cold#7`, untagged), which serves any cold photograph without a bespoke line. Not changed.
