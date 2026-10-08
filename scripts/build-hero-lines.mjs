@@ -104,6 +104,9 @@ const liveLines = new Set((approved.set || []).flatMap((e) => e.lines));
 // history, and treating it as vanished fired on the first season ruling that
 // emptied a photograph whose sentences also live on another one (2026-09-22).
 const livePhotographs = new Set(pathsByHash.keys());
+// A photograph reframed in place (scripts/ingest-library-reframes.mjs, Al 8 Oct 2026) keeps its lines: the rulings made on
+// its old frame travel with it, so its old hash counts as live.
+for (const e of approved.set || []) if (e.reframed && e.replacedHash && livePhotographs.has(e.hash)) livePhotographs.add(e.replacedHash);
 // A photograph FIXED on record (final.json `photoFixes`, scripts/apply-photo-fixes.mjs, 2026-09-30) is the same
 // photograph with one thing removed: it keeps its lines and its rulings, only its bytes (so its hash) changed.
 // A ruling made on its old hash still describes it, so the old hash counts as live while the new one is.

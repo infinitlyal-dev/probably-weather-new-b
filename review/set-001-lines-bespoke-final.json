@@ -57,7 +57,7 @@
   },
   {
    "image": "heat/week_1/dusk/7.webp",
-   "hash": "9728bed72ec6",
+   "hash": "c522fe1e6bc8",
    "condition": "heat",
    "time": "dusk",
    "week": "A",
@@ -78,7 +78,9 @@
    "authoredFor": [
     "heat/week_1/dusk/6.webp",
     "heat/week_3/dusk/6.webp"
-   ]
+   ],
+   "replacedHash": "9728bed72ec6",
+   "reframed": true
   },
   {
    "image": "heat/week_1/dusk/5.webp",
@@ -559,7 +561,7 @@
   },
   {
    "image": "wind/week_1/day/7.webp",
-   "hash": "92ef82c2d34a",
+   "hash": "430bc0e3d41c",
    "condition": "wind",
    "time": "day",
    "week": "A",
@@ -577,11 +579,13 @@
    ],
    "authoredFor": [
     "wind/week_3/day/3.webp"
-   ]
+   ],
+   "replacedHash": "92ef82c2d34a",
+   "reframed": true
   },
   {
    "image": "wind/week_1/dusk/1.webp",
-   "hash": "002f0c1d5187",
+   "hash": "662416d2616f",
    "condition": "wind",
    "time": "dusk",
    "week": "A",
@@ -600,7 +604,9 @@
    "authoredFor": [
     "wind/week_1/dusk/1.webp",
     "wind/week_3/dusk/1.webp"
-   ]
+   ],
+   "replacedHash": "002f0c1d5187",
+   "reframed": true
   },
   {
    "image": "wind/week_1/dusk/2.webp",
@@ -729,7 +735,7 @@
   },
   {
    "image": "wind/week_1/night/6.webp",
-   "hash": "be8276f7384b",
+   "hash": "f2d463be492c",
    "condition": "wind",
    "time": "night",
    "week": "A",
@@ -748,7 +754,9 @@
    "authoredFor": [
     "wind/week_1/night/2.webp",
     "wind/week_3/night/2.webp"
-   ]
+   ],
+   "replacedHash": "be8276f7384b",
+   "reframed": true
   },
   {
    "image": "wind/week_1/night/3.webp",
@@ -1028,7 +1036,7 @@
   },
   {
    "image": "wind/week_1/day/2.webp",
-   "hash": "4d3a786acf48",
+   "hash": "f66c7621c29c",
    "condition": "wind",
    "time": "day",
    "week": "A",
@@ -1047,7 +1055,9 @@
    ],
    "authoredFor": [
     "wind/week_2/day/1.webp"
-   ]
+   ],
+   "replacedHash": "4d3a786acf48",
+   "reframed": true
   },
   {
    "image": "wind/week_1/dawn/5.webp",
@@ -1272,7 +1282,7 @@
   },
   {
    "image": "clear/week_2/day/2.webp",
-   "hash": "aa3420ca4da1",
+   "hash": "9a2af24c29e0",
    "condition": "clear",
    "time": "day",
    "week": "B",
@@ -1290,7 +1300,9 @@
    ],
    "authoredFor": [
     "clear/week_2/day/1.webp"
-   ]
+   ],
+   "replacedHash": "aa3420ca4da1",
+   "reframed": true
   },
   {
    "image": "clear/week_1/day/6.webp",
@@ -1316,7 +1328,7 @@
   },
   {
    "image": "clear/week_1/day/5.webp",
-   "hash": "ca6d821f7c9b",
+   "hash": "61c5b91771e8",
    "condition": "clear",
    "time": "day",
    "week": "A",
@@ -1332,7 +1344,9 @@
    ],
    "authoredFor": [
     "clear/week_2/day/5.webp"
-   ]
+   ],
+   "replacedHash": "ca6d821f7c9b",
+   "reframed": true
   },
   {
    "image": "clear/week_2/day/5.webp",
@@ -1566,7 +1580,7 @@
   },
   {
    "image": "heat/week_1/day/2.webp",
-   "hash": "d6593f52fb76",
+   "hash": "25d67e168752",
    "condition": "heat",
    "time": "day",
    "week": "A",
@@ -1585,7 +1599,9 @@
    ],
    "authoredFor": [
     "heat/week_2/day/2.webp"
-   ]
+   ],
+   "replacedHash": "d6593f52fb76",
+   "reframed": true
   },
   {
    "image": "heat/week_1/day/4.webp",
@@ -1688,7 +1704,7 @@
   },
   {
    "image": "heat/week_1/night/2.webp",
-   "hash": "2a3a60226c30",
+   "hash": "3cd876a7abd9",
    "condition": "heat",
    "time": "night",
    "week": "A",
@@ -1711,11 +1727,13 @@
    "authoredFor": [
     "heat/week_2/night/7.webp",
     "heat/week_4/night/7.webp"
-   ]
+   ],
+   "replacedHash": "2a3a60226c30",
+   "reframed": true
   },
   {
    "image": "heat/week_1/day/3.webp",
-   "hash": "6591bd91d1fc",
+   "hash": "445b3ba3d63d",
    "condition": "heat",
    "time": "day",
    "week": "A",
@@ -1736,7 +1754,9 @@
    ],
    "authoredFor": [
     "heat/week_3/day/1.webp"
-   ]
+   ],
+   "replacedHash": "6591bd91d1fc",
+   "reframed": true
   },
   {
    "image": "heat/week_1/day/5.webp",
@@ -2087,7 +2107,7 @@
   },
   {
    "image": "cloudy/week_1/dawn/2.webp",
-   "hash": "de1df07bf268",
+   "hash": "7cf3b4855d01",
    "condition": "cloudy",
    "time": "dawn",
    "week": "A",
@@ -2108,7 +2128,9 @@
    "authoredFor": [
     "cloudy/week_1/dawn/4.webp",
     "cloudy/week_3/dawn/4.webp"
-   ]
+   ],
+   "replacedHash": "de1df07bf268",
+   "reframed": true
   },
   {
    "image": "cloudy/week_1/dawn/3.webp",
@@ -2374,7 +2396,7 @@
   },
   {
    "image": "cloudy/week_1/day/6.webp",
-   "hash": "c16f8303d56e",
+   "hash": "affa6944aeb6",
    "condition": "cloudy",
    "time": "day",
    "week": "A",
@@ -2391,7 +2413,9 @@
    ],
    "authoredFor": [
     "cloudy/week_3/day/1.webp"
-   ]
+   ],
+   "replacedHash": "c16f8303d56e",
+   "reframed": true
   },
   {
    "image": "cloudy/week_1/day/7.webp",
@@ -2439,7 +2463,7 @@
   },
   {
    "image": "cloudy/week_2/day/2.webp",
-   "hash": "47550fce6c98",
+   "hash": "dea898fa4fee",
    "condition": "cloudy",
    "time": "day",
    "week": "B",
@@ -2458,7 +2482,9 @@
    ],
    "authoredFor": [
     "cloudy/week_3/day/4.webp"
-   ]
+   ],
+   "replacedHash": "47550fce6c98",
+   "reframed": true
   },
   {
    "image": "cloudy/week_2/day/3.webp",
@@ -2556,7 +2582,7 @@
   },
   {
    "image": "cloudy/week_2/day/7.webp",
-   "hash": "04bdf14c306b",
+   "hash": "21f5fa9c142b",
    "condition": "cloudy",
    "time": "day",
    "week": "B",
@@ -2572,7 +2598,9 @@
    ],
    "authoredFor": [
     "cloudy/week_3/day/3.webp"
-   ]
+   ],
+   "replacedHash": "04bdf14c306b",
+   "reframed": true
   },
   {
    "image": "cold/week_2/dusk/2.webp",
@@ -2702,7 +2730,7 @@
   },
   {
    "image": "cloudy/week_1/night/2.webp",
-   "hash": "68317318c85d",
+   "hash": "9303c4484c0a",
    "condition": "cloudy",
    "time": "night",
    "week": "A",
@@ -2722,7 +2750,9 @@
    "authoredFor": [
     "cloudy/week_1/night/7.webp",
     "cloudy/week_3/night/7.webp"
-   ]
+   ],
+   "replacedHash": "68317318c85d",
+   "reframed": true
   },
   {
    "image": "cloudy/week_1/night/4.webp",
@@ -2841,7 +2871,7 @@
   },
   {
    "image": "cold/week_1/dawn/3.webp",
-   "hash": "1c5f757ee79a",
+   "hash": "627b15e8ad3b",
    "condition": "cold",
    "time": "dawn",
    "week": "A",
@@ -2860,7 +2890,9 @@
    "authoredFor": [
     "cold/week_1/dawn/3.webp",
     "cold/week_3/dawn/3.webp"
-   ]
+   ],
+   "replacedHash": "1c5f757ee79a",
+   "reframed": true
   },
   {
    "image": "cold/week_1/dawn/4.webp",
@@ -3051,7 +3083,7 @@
   },
   {
    "image": "cold/week_1/day/7.webp",
-   "hash": "36ffe52cf7ec",
+   "hash": "a3bf3df24516",
    "condition": "cold",
    "time": "day",
    "week": "A",
@@ -3066,7 +3098,9 @@
    ],
    "authoredFor": [
     "cold/week_2/day/4.webp"
-   ]
+   ],
+   "replacedHash": "36ffe52cf7ec",
+   "reframed": true
   },
   {
    "image": "cold/week_2/day/3.webp",
@@ -3108,7 +3142,7 @@
   },
   {
    "image": "cold/week_2/day/5.webp",
-   "hash": "a373f1d83e2f",
+   "hash": "ae1ddd4aa45b",
    "condition": "cold",
    "time": "day",
    "week": "B",
@@ -3124,7 +3158,9 @@
    ],
    "authoredFor": [
     "cold/week_4/day/1.webp"
-   ]
+   ],
+   "replacedHash": "a373f1d83e2f",
+   "reframed": true
   },
   {
    "image": "cold-clear/week_2/day/6.webp",
@@ -3276,7 +3312,7 @@
   },
   {
    "image": "cold-clear/week_1/dawn/3.webp",
-   "hash": "5a6dd26eb7db",
+   "hash": "f584e04899ee",
    "condition": "cold-clear",
    "time": "dawn",
    "week": "A",
@@ -3296,7 +3332,9 @@
    "authoredFor": [
     "cold-clear/week_2/dawn/6.webp",
     "cold-clear/week_4/dawn/6.webp"
-   ]
+   ],
+   "replacedHash": "5a6dd26eb7db",
+   "reframed": true
   },
   {
    "image": "cold-clear/week_1/dawn/4.webp",
@@ -3457,7 +3495,7 @@
   },
   {
    "image": "cold-clear/week_1/day/7.webp",
-   "hash": "32dec9fbdcaa",
+   "hash": "bb69d0bf426a",
    "condition": "cold-clear",
    "time": "day",
    "week": "A",
@@ -3474,7 +3512,9 @@
    ],
    "authoredFor": [
     "cold-clear/week_2/day/2.webp"
-   ]
+   ],
+   "replacedHash": "32dec9fbdcaa",
+   "reframed": true
   },
   {
    "image": "cold-clear/week_1/dusk/1.webp",
@@ -3613,7 +3653,7 @@
   },
   {
    "image": "cold-clear/week_1/night/2.webp",
-   "hash": "da90853b2ccb",
+   "hash": "ba580c1b22f6",
    "condition": "cold-clear",
    "time": "night",
    "week": "A",
@@ -3632,7 +3672,9 @@
    "authoredFor": [
     "cold-clear/week_2/night/2.webp",
     "cold-clear/week_4/night/2.webp"
-   ]
+   ],
+   "replacedHash": "da90853b2ccb",
+   "reframed": true
   },
   {
    "image": "cold-clear/week_1/night/3.webp",
@@ -4239,7 +4281,7 @@
   },
   {
    "image": "rain/week_2/day/2.webp",
-   "hash": "d878b96a3f71",
+   "hash": "5968109fcab9",
    "condition": "rain",
    "time": "day",
    "week": "B",
@@ -4255,7 +4297,9 @@
    ],
    "authoredFor": [
     "rain/week_1/day/1.webp"
-   ]
+   ],
+   "replacedHash": "d878b96a3f71",
+   "reframed": true
   },
   {
    "image": "rain/week_2/day/6.webp",
@@ -4296,7 +4340,7 @@
   },
   {
    "image": "rain/week_1/dusk/1.webp",
-   "hash": "71fdebcd3deb",
+   "hash": "68f63b198ea7",
    "condition": "rain",
    "time": "dusk",
    "week": "A",
@@ -4313,7 +4357,9 @@
    "authoredFor": [
     "rain/week_1/dusk/1.webp",
     "rain/week_3/dusk/1.webp"
-   ]
+   ],
+   "replacedHash": "71fdebcd3deb",
+   "reframed": true
   },
   {
    "image": "rain/week_1/dusk/2.webp",
@@ -4379,7 +4425,7 @@
   },
   {
    "image": "rain/week_1/dusk/5.webp",
-   "hash": "b4ee9d16720e",
+   "hash": "3b6c8808dc5e",
    "condition": "rain",
    "time": "dusk",
    "week": "A",
@@ -4396,7 +4442,9 @@
    "authoredFor": [
     "rain/week_2/dusk/4.webp",
     "rain/week_4/dusk/4.webp"
-   ]
+   ],
+   "replacedHash": "b4ee9d16720e",
+   "reframed": true
   },
   {
    "image": "rain/week_1/night/4.webp",
@@ -4506,7 +4554,7 @@
   },
   {
    "image": "storm/week_1/dawn/6.webp",
-   "hash": "4e474a9a4873",
+   "hash": "de0391a5031f",
    "condition": "storm",
    "time": "dawn",
    "week": "A",
@@ -4524,11 +4572,13 @@
    "authoredFor": [
     "storm/week_2/dawn/2.webp",
     "storm/week_4/dawn/2.webp"
-   ]
+   ],
+   "replacedHash": "4e474a9a4873",
+   "reframed": true
   },
   {
    "image": "storm/week_1/day/1.webp",
-   "hash": "99d0821cdd98",
+   "hash": "5c01cb0b7179",
    "condition": "storm",
    "time": "day",
    "week": "A",
@@ -4543,7 +4593,9 @@
    ],
    "authoredFor": [
     "storm/week_1/day/5.webp"
-   ]
+   ],
+   "replacedHash": "99d0821cdd98",
+   "reframed": true
   },
   {
    "image": "storm/week_1/day/3.webp",
@@ -4821,7 +4873,7 @@
   },
   {
    "image": "storm/week_1/night/3.webp",
-   "hash": "faaf0b2003be",
+   "hash": "9c2cd5b76064",
    "condition": "storm",
    "time": "night",
    "week": "A",
@@ -4839,11 +4891,13 @@
    "authoredFor": [
     "storm/week_2/night/1.webp",
     "storm/week_4/night/1.webp"
-   ]
+   ],
+   "replacedHash": "faaf0b2003be",
+   "reframed": true
   },
   {
    "image": "storm/week_1/night/7.webp",
-   "hash": "14c56f85c353",
+   "hash": "f6c5ce087817",
    "condition": "storm",
    "time": "night",
    "week": "A",
@@ -4860,7 +4914,9 @@
    "authoredFor": [
     "storm/week_1/night/7.webp",
     "storm/week_3/night/7.webp"
-   ]
+   ],
+   "replacedHash": "14c56f85c353",
+   "reframed": true
   },
   {
    "image": "cold/week_1/dusk/7.webp",
@@ -4987,7 +5043,7 @@
   },
   {
    "image": "cold-clear/week_1/day/3.webp",
-   "hash": "042ba0a95388",
+   "hash": "686dbce6f903",
    "condition": "cold-clear",
    "time": "day",
    "week": "A",
@@ -5004,7 +5060,9 @@
    ],
    "authoredFor": [
     "cold-clear/week_1/day/4.webp"
-   ]
+   ],
+   "replacedHash": "042ba0a95388",
+   "reframed": true
   },
   {
    "image": "cold-clear/week_1/dusk/6.webp",
@@ -5269,7 +5327,7 @@
   },
   {
    "image": "rain/week_2/day/4.webp",
-   "hash": "d86d4f5699c2",
+   "hash": "e306e812d307",
    "condition": "rain",
    "time": "day",
    "week": "B",
@@ -5283,7 +5341,9 @@
    ],
    "authoredFor": [
     "rain/week_3/day/1.webp"
-   ]
+   ],
+   "replacedHash": "d86d4f5699c2",
+   "reframed": true
   },
   {
    "image": "storm/week_1/dusk/5.webp",
@@ -5640,7 +5700,7 @@
   },
   {
    "image": "clear/week_1/dusk/3.webp",
-   "hash": "7d50ec606bfc",
+   "hash": "b20be24d4aaf",
    "condition": "clear",
    "time": "dusk",
    "week": "A",
@@ -5664,7 +5724,9 @@
    "authoredFor": [
     "clear/week_2/dusk/4.webp",
     "clear/week_4/dusk/4.webp"
-   ]
+   ],
+   "replacedHash": "7d50ec606bfc",
+   "reframed": true
   },
   {
    "image": "cloudy/week_1/dusk/1.webp",
@@ -5810,7 +5872,7 @@
   },
   {
    "image": "heat/week_2/day/2.webp",
-   "hash": "4e7c3b6e7580",
+   "hash": "264eb3f1ed31",
    "condition": "heat",
    "time": "day",
    "week": "B",
@@ -5823,7 +5885,9 @@
     "The tar's gone soft. So have we."
    ],
    "pair": "P02",
-   "ruledBy": "Al: LOVE on the taste page (all ten pilot pairs), 25 Sept 2026; line placed on its photo pending review/pairs-ruled.json"
+   "ruledBy": "Al: LOVE on the taste page (all ten pilot pairs), 25 Sept 2026; line placed on its photo pending review/pairs-ruled.json",
+   "replacedHash": "4e7c3b6e7580",
+   "reframed": true
   },
   {
    "image": "wind/week_2/day/7.webp",
@@ -5844,7 +5908,7 @@
   },
   {
    "image": "rain/week_2/day/5.webp",
-   "hash": "2c5a9b3813f4",
+   "hash": "bb008f83ac69",
    "condition": "rain",
    "time": "day",
    "week": "B",
@@ -5857,7 +5921,9 @@
     "Rain this hard, even the taxis start indicating."
    ],
    "pair": "P04",
-   "ruledBy": "Al: LOVE on the taste page (all ten pilot pairs), 25 Sept 2026; line placed on its photo pending review/pairs-ruled.json"
+   "ruledBy": "Al: LOVE on the taste page (all ten pilot pairs), 25 Sept 2026; line placed on its photo pending review/pairs-ruled.json",
+   "replacedHash": "2c5a9b3813f4",
+   "reframed": true
   },
   {
    "image": "cloudy/week_1/dusk/2.webp",
@@ -5897,7 +5963,7 @@
   },
   {
    "image": "fog/week_2/dawn/3.webp",
-   "hash": "614ba5459c4a",
+   "hash": "15f344f270c2",
    "condition": "fog",
    "time": "dawn",
    "week": "B",
@@ -5910,7 +5976,9 @@
     "The fog cancelled the Drakensberg. No refunds."
    ],
    "pair": "P07",
-   "ruledBy": "Al: LOVE on the taste page (all ten pilot pairs), 25 Sept 2026; line placed on its photo pending review/pairs-ruled.json"
+   "ruledBy": "Al: LOVE on the taste page (all ten pilot pairs), 25 Sept 2026; line placed on its photo pending review/pairs-ruled.json",
+   "replacedHash": "614ba5459c4a",
+   "reframed": true
   },
   {
    "image": "cold/week_2/day/6.webp",
@@ -5931,7 +5999,7 @@
   },
   {
    "image": "cold-clear/week_2/dawn/6.webp",
-   "hash": "34890f7d9e5c",
+   "hash": "94a29876fb2a",
    "condition": "cold-clear",
    "time": "dawn",
    "week": "B",
@@ -5944,7 +6012,9 @@
     "Blue sky, proper frost. The sun's just here to watch."
    ],
    "pair": "P09",
-   "ruledBy": "Al: LOVE on the taste page (all ten pilot pairs), 25 Sept 2026; line placed on its photo pending review/pairs-ruled.json"
+   "ruledBy": "Al: LOVE on the taste page (all ten pilot pairs), 25 Sept 2026; line placed on its photo pending review/pairs-ruled.json",
+   "replacedHash": "34890f7d9e5c",
+   "reframed": true
   },
   {
    "image": "clear/week_1/night/5.webp",
@@ -5984,7 +6054,7 @@
   },
   {
    "image": "cold/week_2/dusk/6.webp",
-   "hash": "e499768237ef",
+   "hash": "afefa4bfce14",
    "condition": "cold",
    "time": "dusk",
    "week": "B",
@@ -5997,11 +6067,13 @@
     "Cold enough that the heater has a waiting list."
    ],
    "pair": "M04",
-   "ruledBy": "Al: USE, pairs batch 1 (review/pairs-batch-1-ruled.json), 26 Sept 2026; line LOVE"
+   "ruledBy": "Al: USE, pairs batch 1 (review/pairs-batch-1-ruled.json), 26 Sept 2026; line LOVE",
+   "replacedHash": "e499768237ef",
+   "reframed": true
   },
   {
    "image": "cold/week_2/night/6.webp",
-   "hash": "cd4bd5c64c5d",
+   "hash": "d1b9fe13af2e",
    "condition": "cold",
    "time": "night",
    "week": "B",
@@ -6014,11 +6086,13 @@
     "The cold knows exactly where your blanket has a gap."
    ],
    "pair": "R01",
-   "ruledBy": "Al: USE, the rolling page (review/pairs-rolling-ruled-2026-09-27.json), 27 Sept 2026; his brief names this pair's take"
+   "ruledBy": "Al: USE, the rolling page (review/pairs-rolling-ruled-2026-09-27.json), 27 Sept 2026; his brief names this pair's take",
+   "replacedHash": "cd4bd5c64c5d",
+   "reframed": true
   },
   {
    "image": "cloudy/week_1/night/6.webp",
-   "hash": "aa3ccab85b60",
+   "hash": "f733a3c46589",
    "condition": "cloudy",
    "time": "night",
    "week": "A",
@@ -6033,11 +6107,13 @@
     "The sky's keeping tonight to itself."
    ],
    "pair": "R02",
-   "ruledBy": "Al: USE, the rolling page (review/pairs-rolling-ruled-2026-09-27.json), 27 Sept 2026; his brief names this pair's take"
+   "ruledBy": "Al: USE, the rolling page (review/pairs-rolling-ruled-2026-09-27.json), 27 Sept 2026; his brief names this pair's take",
+   "replacedHash": "aa3ccab85b60",
+   "reframed": true
   },
   {
    "image": "clear/week_1/dawn/7.webp",
-   "hash": "1108cfd1192f",
+   "hash": "28438356788a",
    "condition": "clear",
    "time": "dawn",
    "week": "A",
@@ -6052,11 +6128,13 @@
     "The sun got here early. You don't have to."
    ],
    "pair": "R03",
-   "ruledBy": "Al: USE, the rolling page (review/pairs-rolling-ruled-2026-09-27.json), 27 Sept 2026; his brief names this pair's take"
+   "ruledBy": "Al: USE, the rolling page (review/pairs-rolling-ruled-2026-09-27.json), 27 Sept 2026; his brief names this pair's take",
+   "replacedHash": "1108cfd1192f",
+   "reframed": true
   },
   {
    "image": "clear/week_1/dawn/2.webp",
-   "hash": "844f8b7f5b89",
+   "hash": "6f184ded336b",
    "condition": "clear",
    "time": "dawn",
    "week": "A",
@@ -6071,11 +6149,13 @@
     "The sun's awake. You're still negotiating."
    ],
    "pair": "R05",
-   "ruledBy": "Al: USE, the rolling page (review/pairs-rolling-ruled-2026-09-27.json), 27 Sept 2026; his brief names this pair's take"
+   "ruledBy": "Al: USE, the rolling page (review/pairs-rolling-ruled-2026-09-27.json), 27 Sept 2026; his brief names this pair's take",
+   "replacedHash": "844f8b7f5b89",
+   "reframed": true
   },
   {
    "image": "heat/week_2/dusk/5.webp",
-   "hash": "15e8f0aa4baa",
+   "hash": "f0b88f3e50db",
    "condition": "heat",
    "time": "dusk",
    "week": "B",
@@ -6088,11 +6168,13 @@
     "The heat has no plans to go home."
    ],
    "pair": "R10",
-   "ruledBy": "Al: USE, the rolling page (review/pairs-rolling-ruled-2026-09-27.json), 27 Sept 2026; his brief names this pair's take"
+   "ruledBy": "Al: USE, the rolling page (review/pairs-rolling-ruled-2026-09-27.json), 27 Sept 2026; his brief names this pair's take",
+   "replacedHash": "15e8f0aa4baa",
+   "reframed": true
   },
   {
    "image": "storm/week_1/dawn/7.webp",
-   "hash": "e400ca864a50",
+   "hash": "63d53beeeadc",
    "condition": "storm",
    "time": "dawn",
    "week": "A",
@@ -6107,11 +6189,13 @@
     "The storm was up before you. Looking for trouble."
    ],
    "pair": "R18",
-   "ruledBy": "Al: USE, the rolling page (review/pairs-rolling-ruled-2026-09-27.json), 27 Sept 2026; his brief names this pair's take"
+   "ruledBy": "Al: USE, the rolling page (review/pairs-rolling-ruled-2026-09-27.json), 27 Sept 2026; his brief names this pair's take",
+   "replacedHash": "e400ca864a50",
+   "reframed": true
   },
   {
    "image": "wind/week_1/night/1.webp",
-   "hash": "6bb604217e96",
+   "hash": "6d670d148ed4",
    "condition": "wind",
    "time": "night",
    "week": "A",
@@ -6126,11 +6210,13 @@
     "The wind knows where you live. Good luck."
    ],
    "pair": "R24",
-   "ruledBy": "Al: USE, the rolling page (review/pairs-rolling-ruled-2026-09-27.json), 27 Sept 2026; his brief names this pair's take"
+   "ruledBy": "Al: USE, the rolling page (review/pairs-rolling-ruled-2026-09-27.json), 27 Sept 2026; his brief names this pair's take",
+   "replacedHash": "6bb604217e96",
+   "reframed": true
   },
   {
    "image": "wind/week_2/day/4.webp",
-   "hash": "e8500f5dfaee",
+   "hash": "71db5bd2e853",
    "condition": "wind",
    "time": "day",
    "week": "B",
@@ -6143,7 +6229,9 @@
     "The wind’s arguing with everyone. You’re next."
    ],
    "pair": "R48",
-   "ruledBy": "Al: USE, the rolling page (review/pairs-rolling-ruled-2026-09-27.json), 27 Sept 2026; his brief names this pair's take"
+   "ruledBy": "Al: USE, the rolling page (review/pairs-rolling-ruled-2026-09-27.json), 27 Sept 2026; his brief names this pair's take",
+   "replacedHash": "e8500f5dfaee",
+   "reframed": true
   },
   {
    "image": "clear/week_1/dusk/7.webp",
@@ -6204,7 +6292,7 @@
   },
   {
    "image": "heat/week_1/dawn/3.webp",
-   "hash": "fc06880aeadb",
+   "hash": "07134d7dde78",
    "condition": "heat",
    "time": "dawn",
    "week": "A",
@@ -6219,11 +6307,13 @@
     "It's so hot even the ice tray looks nervous."
    ],
    "pair": "R09b",
-   "ruledBy": "Al: USE, the rolling page (review/pairs-rolling-ruled-2026-09-27b.json) and his brief, 27 Sept 2026; the line in his own words where he changed it"
+   "ruledBy": "Al: USE, the rolling page (review/pairs-rolling-ruled-2026-09-27b.json) and his brief, 27 Sept 2026; the line in his own words where he changed it",
+   "replacedHash": "fc06880aeadb",
+   "reframed": true
   },
   {
    "image": "clear/week_2/day/3.webp",
-   "hash": "5976dea068f8",
+   "hash": "ef09644d9669",
    "condition": "clear",
    "time": "day",
    "week": "B",
@@ -6236,7 +6326,9 @@
     "The sun is turning your car seat into a snackwich machine."
    ],
    "pair": "R04c",
-   "ruledBy": "Al: USE, the rolling page (review/pairs-rolling-ruled-2026-09-27b.json) and his brief, 27 Sept 2026; the line in his own words where he changed it"
+   "ruledBy": "Al: USE, the rolling page (review/pairs-rolling-ruled-2026-09-27b.json) and his brief, 27 Sept 2026; the line in his own words where he changed it",
+   "replacedHash": "5976dea068f8",
+   "reframed": true
   },
   {
    "image": "storm/week_2/dawn/4.webp",
@@ -6257,7 +6349,7 @@
   },
   {
    "image": "wind/week_1/dawn/6.webp",
-   "hash": "bbf6b6ef796a",
+   "hash": "0aa6f0dc51d4",
    "condition": "wind",
    "time": "dawn",
    "week": "A",
@@ -6272,11 +6364,13 @@
     "The wind's been up since five, rearranging everyone's bins."
    ],
    "pair": "R19",
-   "ruledBy": "Al: his marks on the photo-batches page, review/photo-batches-ruled.json, 30 Sept 2026"
+   "ruledBy": "Al: his marks on the photo-batches page, review/photo-batches-ruled.json, 30 Sept 2026",
+   "replacedHash": "bbf6b6ef796a",
+   "reframed": true
   },
   {
    "image": "wind/week_2/dawn/1.webp",
-   "hash": "775f4f1b47b4",
+   "hash": "38b862d7d61d",
    "condition": "wind",
    "time": "dawn",
    "week": "B",
@@ -6289,11 +6383,13 @@
     "School-run wind: every backpack is now a sail."
    ],
    "pair": "R20",
-   "ruledBy": "Al: his marks on the photo-batches page, review/photo-batches-ruled.json, 30 Sept 2026"
+   "ruledBy": "Al: his marks on the photo-batches page, review/photo-batches-ruled.json, 30 Sept 2026",
+   "replacedHash": "775f4f1b47b4",
+   "reframed": true
   },
   {
    "image": "wind/week_2/dusk/1.webp",
-   "hash": "d68ae3f7c914",
+   "hash": "a5dcb910cb0d",
    "condition": "wind",
    "time": "dusk",
    "week": "B",
@@ -6306,7 +6402,9 @@
     "Wind this strong, rugby practice is mostly chasing cones."
    ],
    "pair": "R21",
-   "ruledBy": "Al: his marks on the photo-batches page, review/photo-batches-ruled.json, 30 Sept 2026"
+   "ruledBy": "Al: his marks on the photo-batches page, review/photo-batches-ruled.json, 30 Sept 2026",
+   "replacedHash": "d68ae3f7c914",
+   "reframed": true
   },
   {
    "image": "wind/week_1/dusk/7.webp",
@@ -6329,7 +6427,7 @@
   },
   {
    "image": "wind/week_2/night/6.webp",
-   "hash": "4cbd692804c1",
+   "hash": "55bb6b48141f",
    "condition": "wind",
    "time": "night",
    "week": "B",
@@ -6342,11 +6440,13 @@
     "Wind like this, the trampoline starts making travel plans."
    ],
    "pair": "R27",
-   "ruledBy": "Al: his marks on the photo-batches page, review/photo-batches-ruled.json, 30 Sept 2026"
+   "ruledBy": "Al: his marks on the photo-batches page, review/photo-batches-ruled.json, 30 Sept 2026",
+   "replacedHash": "4cbd692804c1",
+   "reframed": true
   },
   {
    "image": "cold/week_2/dusk/5.webp",
-   "hash": "7d459440d824",
+   "hash": "88cfd7e971e0",
    "condition": "cold",
    "time": "dusk",
    "week": "B",
@@ -6359,7 +6459,9 @@
     "It's so cold the braai has become a very expensive heater."
    ],
    "pair": "R28",
-   "ruledBy": "Al: his marks on the photo-batches page, review/photo-batches-ruled.json, 30 Sept 2026"
+   "ruledBy": "Al: his marks on the photo-batches page, review/photo-batches-ruled.json, 30 Sept 2026",
+   "replacedHash": "7d459440d824",
+   "reframed": true
   },
   {
    "image": "fog/week_2/day/1.webp",
@@ -6380,7 +6482,7 @@
   },
   {
    "image": "fog/week_1/night/5.webp",
-   "hash": "4b77f610c3f8",
+   "hash": "395ad8d85838",
    "condition": "fog",
    "time": "night",
    "week": "A",
@@ -6395,11 +6497,13 @@
     "Fog tonight: the waiter arrives like a magic trick."
    ],
    "pair": "R35",
-   "ruledBy": "Al: his marks on the photo-batches page, review/photo-batches-ruled.json, 30 Sept 2026"
+   "ruledBy": "Al: his marks on the photo-batches page, review/photo-batches-ruled.json, 30 Sept 2026",
+   "replacedHash": "4b77f610c3f8",
+   "reframed": true
   },
   {
    "image": "clear/week_4/day/7.webp",
-   "hash": "744643e152b8",
+   "hash": "0a159cc2ace1",
    "condition": "clear",
    "time": "day",
    "week": "B",
@@ -6411,11 +6515,13 @@
     "Not a cloud in sight, and every stoep in town is fully booked."
    ],
    "pair": "R36",
-   "ruledBy": "Al: his marks on the photo-batches page, review/photo-batches-ruled.json, 30 Sept 2026"
+   "ruledBy": "Al: his marks on the photo-batches page, review/photo-batches-ruled.json, 30 Sept 2026",
+   "replacedHash": "744643e152b8",
+   "reframed": true
   },
   {
    "image": "clear/week_4/day/6.webp",
-   "hash": "508a39ca3436",
+   "hash": "69cf33d36063",
    "condition": "clear",
    "time": "day",
    "week": "B",
@@ -6427,7 +6533,9 @@
     "Blue sky, full sun: the car gets washed, and so does Dad."
    ],
    "pair": "R37",
-   "ruledBy": "Al: his marks on the photo-batches page, review/photo-batches-ruled.json, 30 Sept 2026"
+   "ruledBy": "Al: his marks on the photo-batches page, review/photo-batches-ruled.json, 30 Sept 2026",
+   "replacedHash": "508a39ca3436",
+   "reframed": true
   },
   {
    "image": "clear/week_3/day/5.webp",
@@ -6463,7 +6571,7 @@
   },
   {
    "image": "clear/week_3/day/3.webp",
-   "hash": "f9f55b1dcfeb",
+   "hash": "d595c5abbbc9",
    "condition": "clear",
    "time": "day",
    "week": "A",
@@ -6475,7 +6583,9 @@
     "Not a cloud in the sky, and the sea is still 14 degrees."
    ],
    "pair": "R42",
-   "ruledBy": "Al: his marks on the photo-batches page, review/photo-batches-ruled.json, 30 Sept 2026"
+   "ruledBy": "Al: his marks on the photo-batches page, review/photo-batches-ruled.json, 30 Sept 2026",
+   "replacedHash": "f9f55b1dcfeb",
+   "reframed": true
   },
   {
    "image": "heat/week_3/day/2.webp",
@@ -6495,7 +6605,7 @@
   },
   {
    "image": "cloudy/week_4/day/7.webp",
-   "hash": "3c8fb431fafe",
+   "hash": "f70235ea3239",
    "condition": "cloudy",
    "time": "day",
    "week": "B",
@@ -6507,7 +6617,9 @@
     "Grey and chilly: suddenly everyone remembers their jersey is in the car."
    ],
    "pair": "R44",
-   "ruledBy": "Al: his marks on the photo-batches page, review/photo-batches-ruled.json, 30 Sept 2026"
+   "ruledBy": "Al: his marks on the photo-batches page, review/photo-batches-ruled.json, 30 Sept 2026",
+   "replacedHash": "3c8fb431fafe",
+   "reframed": true
   },
   {
    "image": "rain/week_1/day/2.webp",
@@ -6528,7 +6640,7 @@
   },
   {
    "image": "storm/week_1/night/6.webp",
-   "hash": "504caee429a0",
+   "hash": "e369a2fb706e",
    "condition": "storm",
    "time": "night",
    "week": "A",
@@ -6541,7 +6653,9 @@
     "Storm tonight, and the dog has chosen the smallest cupboard in the house."
    ],
    "pair": "R46",
-   "ruledBy": "Al: his marks on the photo-batches page, review/photo-batches-ruled.json, 30 Sept 2026"
+   "ruledBy": "Al: his marks on the photo-batches page, review/photo-batches-ruled.json, 30 Sept 2026",
+   "replacedHash": "504caee429a0",
+   "reframed": true
   },
   {
    "image": "wind/week_2/day/2.webp",
@@ -6579,7 +6693,7 @@
   },
   {
    "image": "wind/week_2/day/6.webp",
-   "hash": "454c5a6995aa",
+   "hash": "ba0c0e838ef3",
    "condition": "wind",
    "time": "day",
    "week": "B",
@@ -6592,11 +6706,13 @@
     "Market day in a gale: every stallholder is holding down a gazebo."
    ],
    "pair": "R50",
-   "ruledBy": "Al: his marks on the photo-batches page, review/photo-batches-ruled.json, 30 Sept 2026"
+   "ruledBy": "Al: his marks on the photo-batches page, review/photo-batches-ruled.json, 30 Sept 2026",
+   "replacedHash": "454c5a6995aa",
+   "reframed": true
   },
   {
    "image": "clear/week_2/dawn/6.webp",
-   "hash": "a300495d4526",
+   "hash": "3b5babdebfa1",
    "condition": "clear",
    "time": "dawn",
    "week": "B",
@@ -6609,11 +6725,13 @@
     "Clear sunrise: the cycling club is out and the coffee stop is already planned."
    ],
    "pair": "R52",
-   "ruledBy": "Al: his marks on the photo-batches page, review/photo-batches-ruled.json, 30 Sept 2026"
+   "ruledBy": "Al: his marks on the photo-batches page, review/photo-batches-ruled.json, 30 Sept 2026",
+   "replacedHash": "a300495d4526",
+   "reframed": true
   },
   {
    "image": "clear/week_1/day/4.webp",
-   "hash": "0d7c5c34c6a0",
+   "hash": "18fdc648ed5f",
    "condition": "clear",
    "time": "day",
    "week": "A",
@@ -6626,11 +6744,13 @@
     "Clear sky and proper sunshine: the ice-cream van has never been this popular."
    ],
    "pair": "R59",
-   "ruledBy": "Al: his marks on the photo-batches page, review/photo-batches-ruled.json, 30 Sept 2026"
+   "ruledBy": "Al: his marks on the photo-batches page, review/photo-batches-ruled.json, 30 Sept 2026",
+   "replacedHash": "0d7c5c34c6a0",
+   "reframed": true
   },
   {
    "image": "cold/week_2/night/5.webp",
-   "hash": "636c4074f988",
+   "hash": "74918c9daa5b",
    "condition": "cold",
    "time": "night",
    "week": "B",
@@ -6643,11 +6763,13 @@
     "Cold tonight: getting into bed is now an act of courage."
    ],
    "pair": "R29",
-   "ruledBy": "Al: his marks on the batch-3 page, review/photo-batch-3-ruled.json, 30 Sept 2026"
+   "ruledBy": "Al: his marks on the batch-3 page, review/photo-batch-3-ruled.json, 30 Sept 2026",
+   "replacedHash": "636c4074f988",
+   "reframed": true
   },
   {
    "image": "cold-clear/week_1/dusk/5.webp",
-   "hash": "3bb43b4437ad",
+   "hash": "33670cf75642",
    "condition": "cold-clear",
    "time": "dusk",
    "week": "A",
@@ -6662,11 +6784,13 @@
     "Clear sky at sunset: time to tuck the car in before the frost does."
    ],
    "pair": "R31",
-   "ruledBy": "Al: his marks on the batch-3 page, review/photo-batch-3-ruled.json, 30 Sept 2026"
+   "ruledBy": "Al: his marks on the batch-3 page, review/photo-batch-3-ruled.json, 30 Sept 2026",
+   "replacedHash": "3bb43b4437ad",
+   "reframed": true
   },
   {
    "image": "fog/week_1/dusk/3.webp",
-   "hash": "13f616637843",
+   "hash": "96583bc75518",
    "condition": "fog",
    "time": "dusk",
    "week": "A",
@@ -6681,11 +6805,13 @@
     "Fog tonight: the house with the sea view is just a house."
    ],
    "pair": "R33",
-   "ruledBy": "Al: his marks on the batch-3 page, review/photo-batch-3-ruled.json, 30 Sept 2026"
+   "ruledBy": "Al: his marks on the batch-3 page, review/photo-batch-3-ruled.json, 30 Sept 2026",
+   "replacedHash": "13f616637843",
+   "reframed": true
   },
   {
    "image": "fog/week_1/dusk/7.webp",
-   "hash": "4191f6a7d49f",
+   "hash": "4c306b0743ae",
    "condition": "fog",
    "time": "dusk",
    "week": "A",
@@ -6700,11 +6826,13 @@
     "Fog's rolled in, and the lifeguard has officially lost the sea."
    ],
    "pair": "R34",
-   "ruledBy": "Al: his marks on the batch-3 page, review/photo-batch-3-ruled.json, 30 Sept 2026"
+   "ruledBy": "Al: his marks on the batch-3 page, review/photo-batch-3-ruled.json, 30 Sept 2026",
+   "replacedHash": "4191f6a7d49f",
+   "reframed": true
   },
   {
    "image": "clear/week_3/day/1.webp",
-   "hash": "1c3c5a763f13",
+   "hash": "263d2fd72df1",
    "condition": "clear",
    "time": "day",
    "week": "A",
@@ -6716,11 +6844,13 @@
     "Not a cloud in sight: perfect for sports day, less perfect for the dads' race."
    ],
    "pair": "R36b",
-   "ruledBy": "Al: his marks on the batch-3 page, review/photo-batch-3-ruled.json, 30 Sept 2026"
+   "ruledBy": "Al: his marks on the batch-3 page, review/photo-batch-3-ruled.json, 30 Sept 2026",
+   "replacedHash": "1c3c5a763f13",
+   "reframed": true
   },
   {
    "image": "clear/week_4/day/1.webp",
-   "hash": "7d13aaa156f4",
+   "hash": "c423ac36650f",
    "condition": "clear",
    "time": "day",
    "week": "B",
@@ -6732,11 +6862,13 @@
     "Blue sky: the outdoor gym has suddenly found new members."
    ],
    "pair": "R41",
-   "ruledBy": "Al: his marks on the batch-3 page, review/photo-batch-3-ruled.json, 30 Sept 2026"
+   "ruledBy": "Al: his marks on the batch-3 page, review/photo-batch-3-ruled.json, 30 Sept 2026",
+   "replacedHash": "7d13aaa156f4",
+   "reframed": true
   },
   {
    "image": "clear/week_2/dawn/4.webp",
-   "hash": "c0246be3744d",
+   "hash": "8ee01c935b1d",
    "condition": "clear",
    "time": "dawn",
    "week": "B",
@@ -6749,11 +6881,13 @@
     "Clear sunrise, flat sea: every fisherman in town is already on the rocks."
    ],
    "pair": "R52b",
-   "ruledBy": "Al: his marks on the batch-3 page, review/photo-batch-3-ruled.json, 30 Sept 2026"
+   "ruledBy": "Al: his marks on the batch-3 page, review/photo-batch-3-ruled.json, 30 Sept 2026",
+   "replacedHash": "c0246be3744d",
+   "reframed": true
   },
   {
    "image": "heat/week_1/night/4.webp",
-   "hash": "1d12b604469e",
+   "hash": "fbc82d23d064",
    "condition": "heat",
    "time": "night",
    "week": "A",
@@ -6768,11 +6902,13 @@
     "Too hot to sleep: the bath is now the coolest bed in the house."
    ],
    "pair": "R54",
-   "ruledBy": "Al: his marks on the batch-3 page, review/photo-batch-3-ruled.json, 30 Sept 2026"
+   "ruledBy": "Al: his marks on the batch-3 page, review/photo-batch-3-ruled.json, 30 Sept 2026",
+   "replacedHash": "1d12b604469e",
+   "reframed": true
   },
   {
    "image": "rain/week_1/dawn/4.webp",
-   "hash": "1914aa132481",
+   "hash": "6e5870ded321",
    "condition": "rain",
    "time": "dawn",
    "week": "A",
@@ -6787,11 +6923,13 @@
     "Rain at sunrise, and the swim squad doesn't care. Wet is wet."
    ],
    "pair": "R55",
-   "ruledBy": "Al: his marks on the batch-3 page, review/photo-batch-3-ruled.json, 30 Sept 2026"
+   "ruledBy": "Al: his marks on the batch-3 page, review/photo-batch-3-ruled.json, 30 Sept 2026",
+   "replacedHash": "1914aa132481",
+   "reframed": true
   },
   {
    "image": "rain/week_2/dusk/3.webp",
-   "hash": "5542dfc7215d",
+   "hash": "0e37d6239e5c",
    "condition": "rain",
    "time": "dusk",
    "week": "B",
@@ -6804,7 +6942,9 @@
     "Rain at home time: the whole office is waiting it out in the lobby."
    ],
    "pair": "R57",
-   "ruledBy": "Al: his marks on the batch-3 page, review/photo-batch-3-ruled.json, 30 Sept 2026"
+   "ruledBy": "Al: his marks on the batch-3 page, review/photo-batch-3-ruled.json, 30 Sept 2026",
+   "replacedHash": "5542dfc7215d",
+   "reframed": true
   },
   {
    "image": "storm/week_1/dawn/3.webp",
@@ -6827,7 +6967,7 @@
   },
   {
    "image": "cold/week_1/dusk/2.webp",
-   "hash": "8d215e14d9ba",
+   "hash": "d8c45c88a27b",
    "condition": "cold",
    "time": "dusk",
    "week": "A",
@@ -6840,11 +6980,13 @@
     "Cold enough that the coffee queue goes round the block."
    ],
    "pair": "R60",
-   "ruledBy": "Al: his marks on the batch-3 page, review/photo-batch-3-ruled.json, 30 Sept 2026"
+   "ruledBy": "Al: his marks on the batch-3 page, review/photo-batch-3-ruled.json, 30 Sept 2026",
+   "replacedHash": "8d215e14d9ba",
+   "reframed": true
   },
   {
    "image": "heat/week_1/dawn/5.webp",
-   "hash": "7d4fb2e85dbf",
+   "hash": "f33fb544b3e0",
    "condition": "heat",
    "time": "dawn",
    "week": "A",
@@ -6859,11 +7001,13 @@
     "Hot already at sunrise: the farmer's day starts at four and ends by ten."
    ],
    "pair": "R53",
-   "ruledBy": "Al: R53 and R56 re-rolls passed, review/last-fixes-decisions.json, 30 Sept 2026"
+   "ruledBy": "Al: R53 and R56 re-rolls passed, review/last-fixes-decisions.json, 30 Sept 2026",
+   "replacedHash": "7d4fb2e85dbf",
+   "reframed": true
   },
   {
    "image": "rain/week_1/dawn/6.webp",
-   "hash": "60d5a3416f6b",
+   "hash": "91920d6f2b61",
    "condition": "rain",
    "time": "dawn",
    "week": "A",
@@ -6878,7 +7022,9 @@
     "Rain at sunrise: this morning's run has become a mud run."
    ],
    "pair": "R56",
-   "ruledBy": "Al: R53 and R56 re-rolls passed, review/last-fixes-decisions.json, 30 Sept 2026"
+   "ruledBy": "Al: R53 and R56 re-rolls passed, review/last-fixes-decisions.json, 30 Sept 2026",
+   "replacedHash": "60d5a3416f6b",
+   "reframed": true
   },
   {
    "image": "breezy/week_1/dawn/1.webp",

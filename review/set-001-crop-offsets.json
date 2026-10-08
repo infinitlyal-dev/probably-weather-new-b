@@ -3,10 +3,10 @@
  "ruledBy": "Al, curation tool (meme hero) + 2026-08-18 reshoot",
  "generated": "2026-08-18",
  "counts": {
-  "offsets": 296,
+  "offsets": 232,
   "replaced": 15,
   "reAnchored": 134,
-  "wired": 296,
+  "wired": 232,
   "pilotPairs": 61
  },
  "offsets": {
@@ -47,14 +47,6 @@
    "image": "clear/week_3/day/7.webp",
    "anchorY": 58
   },
-  "ca6d821f7c9b": {
-   "verdict": "FIXABLE",
-   "bucket": "clear-day",
-   "slot": "A/fri",
-   "image": "clear/week_2/day/5.webp",
-   "anchorY": 99,
-   "ink": "white"
-  },
   "e9616cb7c61c": {
    "verdict": "FIXABLE",
    "bucket": "clear-day",
@@ -62,13 +54,6 @@
    "image": "clear/week_2/day/4.webp",
    "anchorY": 44,
    "ink": "white"
-  },
-  "aa3420ca4da1": {
-   "verdict": "FIXABLE",
-   "bucket": "clear-day",
-   "slot": "B/tue",
-   "image": "clear/week_2/day/1.webp",
-   "anchorY": 60
   },
   "6e598ae56c12": {
    "verdict": "FIXABLE",
@@ -96,13 +81,6 @@
     "by": "scripts/anchor-faces.mjs",
     "reason": "a face hidden at the previous anchor on 414x715"
    }
-  },
-  "7d50ec606bfc": {
-   "verdict": "FIXABLE",
-   "bucket": "clear-dusk",
-   "slot": "A/wed",
-   "image": "clear/week_2/dusk/4.webp",
-   "anchorY": 37
   },
   "cc951efb5d19": {
    "verdict": "FIXABLE",
@@ -161,13 +139,6 @@
     "reason": "a face hidden at the previous anchor on 414x715"
    }
   },
-  "de1df07bf268": {
-   "verdict": "FIXABLE",
-   "bucket": "cloudy-dawn",
-   "slot": "A/tue",
-   "image": "cloudy/week_1/dawn/4.webp",
-   "anchorY": 14
-  },
   "3bfd9b9470d6": {
    "verdict": "FIXABLE",
    "bucket": "cloudy-dawn",
@@ -204,22 +175,6 @@
    "image": "cloudy/week_2/day/5.webp",
    "anchorY": 47
   },
-  "c16f8303d56e": {
-   "verdict": "FIXABLE",
-   "bucket": "cloudy-day",
-   "slot": "A/sat",
-   "image": "cloudy/week_3/day/1.webp",
-   "anchorY": 51,
-   "ink": "white"
-  },
-  "47550fce6c98": {
-   "verdict": "FIXABLE",
-   "bucket": "cloudy-day",
-   "slot": "B/tue",
-   "image": "cloudy/week_3/day/4.webp",
-   "anchorY": 51,
-   "ink": "white"
-  },
   "5668c9f2edcb": {
    "verdict": "FIXABLE",
    "bucket": "cloudy-day",
@@ -233,14 +188,6 @@
    "slot": "B/sat",
    "image": "cloudy/week_2/day/1.webp",
    "anchorY": 61,
-   "ink": "white"
-  },
-  "04bdf14c306b": {
-   "verdict": "FIXABLE",
-   "bucket": "cloudy-day",
-   "slot": "B/sun",
-   "image": "cloudy/week_3/day/3.webp",
-   "anchorY": 88,
    "ink": "white"
   },
   "3ba329d5cea3": {
@@ -257,14 +204,6 @@
    "slot": "A/mon",
    "image": "cloudy/week_1/night/1.webp",
    "anchorY": 44
-  },
-  "68317318c85d": {
-   "verdict": "FIXABLE",
-   "bucket": "cloudy-night",
-   "slot": "A/tue",
-   "image": "cloudy/week_1/night/7.webp",
-   "anchorY": 53,
-   "ink": "white"
   },
   "76070c299a0b": {
    "verdict": "FIXABLE",
@@ -302,14 +241,6 @@
    "anchorY": 66,
    "ink": "white"
   },
-  "5a6dd26eb7db": {
-   "verdict": "FIXABLE",
-   "bucket": "cold-clear-dawn",
-   "slot": "A/wed",
-   "image": "cold-clear/week_2/dawn/6.webp",
-   "anchorY": 87,
-   "ink": "white"
-  },
   "28129477b706": {
    "verdict": "FIXABLE",
    "bucket": "cold-clear-dawn",
@@ -334,13 +265,6 @@
    "anchorY": 54,
    "ink": "white"
   },
-  "042ba0a95388": {
-   "verdict": "FIXABLE",
-   "bucket": "cold-clear-day",
-   "slot": "A/wed",
-   "image": "cold-clear/week_1/day/4.webp",
-   "anchorY": 50
-  },
   "bbb3d8348b00": {
    "verdict": "FIXABLE",
    "bucket": "cold-clear-day",
@@ -354,27 +278,12 @@
     "reason": "a face hidden at the previous anchor on 414x715"
    }
   },
-  "decff597fe6c": {
-   "verdict": "FIXABLE",
-   "bucket": "cold-clear-day",
-   "slot": "A/fri",
-   "image": "cold-clear/week_3/day/1.webp",
-   "anchorY": 74,
-   "ink": "white"
-  },
   "bbad2500c852": {
    "verdict": "FIXABLE",
    "bucket": "cold-clear-day",
    "slot": "A/sat",
    "image": "cold-clear/week_4/day/3.webp",
    "anchorY": 74
-  },
-  "32dec9fbdcaa": {
-   "verdict": "FIXABLE",
-   "bucket": "cold-clear-day",
-   "slot": "A/sun",
-   "image": "cold-clear/week_2/day/2.webp",
-   "anchorY": 63
   },
   "fbdf528f41c8": {
    "verdict": "FIXABLE",
@@ -397,13 +306,6 @@
    "slot": "A/thu",
    "image": "cold-clear/week_2/dusk/6.webp",
    "anchorY": 33
-  },
-  "da90853b2ccb": {
-   "verdict": "FIXABLE",
-   "bucket": "cold-clear-night",
-   "slot": "A/tue",
-   "image": "cold-clear/week_2/night/2.webp",
-   "anchorY": 68
   },
   "d298c8c1f224": {
    "verdict": "FIXABLE",
@@ -432,13 +334,6 @@
    "image": "cold-clear/week_2/night/6.webp",
    "anchorY": 57
   },
-  "8fd1944f303b": {
-   "verdict": "FIXABLE",
-   "bucket": "cold-clear-night",
-   "slot": "A/sat",
-   "image": "cold-clear/week_1/night/7.webp",
-   "anchorY": 72
-  },
   "da60a92cafd2": {
    "verdict": "FIXABLE",
    "bucket": "cold-clear-night",
@@ -459,13 +354,6 @@
    "image": "cold/week_1/dawn/1.webp",
    "anchorY": 84,
    "ink": "white"
-  },
-  "1c5f757ee79a": {
-   "verdict": "FIXABLE",
-   "bucket": "cold-dawn",
-   "slot": "A/wed",
-   "image": "cold/week_1/dawn/3.webp",
-   "anchorY": 33
   },
   "41c9f776e0fb": {
    "verdict": "FIXABLE",
@@ -533,14 +421,6 @@
    "image": "cold/week_3/day/6.webp",
    "anchorY": 56
   },
-  "36ffe52cf7ec": {
-   "verdict": "FIXABLE",
-   "bucket": "cold-day",
-   "slot": "A/sun",
-   "image": "cold/week_2/day/4.webp",
-   "anchorY": 55,
-   "ink": "white"
-  },
   "999e68c47bfc": {
    "verdict": "FIXABLE",
    "bucket": "cold-day",
@@ -569,14 +449,6 @@
    "slot": "B/thu",
    "image": "cold/week_1/day/7.webp",
    "anchorY": 58,
-   "ink": "white"
-  },
-  "a373f1d83e2f": {
-   "verdict": "FIXABLE",
-   "bucket": "cold-day",
-   "slot": "B/fri",
-   "image": "cold/week_4/day/1.webp",
-   "anchorY": 30,
    "ink": "white"
   },
   "3fd7aa0aae2e": {
@@ -659,21 +531,6 @@
    "slot": "A/fri",
    "image": "cold/week_2/night/5.webp",
    "anchorY": 55
-  },
-  "13efc9191981": {
-   "verdict": "FIXABLE",
-   "bucket": "cold-night",
-   "slot": "A/sat",
-   "image": "cold/week_4/night/1.webp",
-   "anchorY": 100,
-   "ink": "white"
-  },
-  "c50ba2c591aa": {
-   "verdict": "FIXABLE",
-   "bucket": "cold-night",
-   "slot": "A/sun",
-   "image": "cold/week_1/night/7.webp",
-   "anchorY": 36
   },
   "23b1b4b2af6d": {
    "verdict": "FIXABLE",
@@ -880,21 +737,6 @@
    "anchorY": 68,
    "ink": "white"
   },
-  "d6593f52fb76": {
-   "verdict": "FIXABLE",
-   "bucket": "heat-day",
-   "slot": "A/tue",
-   "image": "heat/week_2/day/2.webp",
-   "anchorY": 59
-  },
-  "6591bd91d1fc": {
-   "verdict": "FIXABLE",
-   "bucket": "heat-day",
-   "slot": "A/wed",
-   "image": "heat/week_3/day/1.webp",
-   "anchorY": 53,
-   "ink": "white"
-  },
   "afd3c9db83bd": {
    "verdict": "FIXABLE",
    "bucket": "heat-day",
@@ -963,27 +805,12 @@
     "reason": "a face hidden at the previous anchor on 414x715"
    }
   },
-  "9728bed72ec6": {
-   "verdict": "FIXABLE",
-   "bucket": "heat-dusk",
-   "slot": "A/sun",
-   "image": "heat/week_1/dusk/6.webp",
-   "anchorY": 87,
-   "ink": "white"
-  },
   "f2e76528eca3": {
    "verdict": "FIXABLE",
    "bucket": "heat-night",
    "slot": "A/mon",
    "image": "heat/week_1/night/4.webp",
    "anchorY": 51
-  },
-  "2a3a60226c30": {
-   "verdict": "FIXABLE",
-   "bucket": "heat-night",
-   "slot": "A/tue",
-   "image": "heat/week_2/night/7.webp",
-   "anchorY": 31
   },
   "e62c00a72fb4": {
    "verdict": "FIXABLE",
@@ -1065,20 +892,6 @@
    "image": "rain/week_2/day/1.webp",
    "anchorY": 44
   },
-  "d878b96a3f71": {
-   "verdict": "FIXABLE",
-   "bucket": "rain-day",
-   "slot": "B/tue",
-   "image": "rain/week_1/day/1.webp",
-   "anchorY": 26
-  },
-  "d86d4f5699c2": {
-   "verdict": "FIXABLE",
-   "bucket": "rain-day",
-   "slot": "B/thu",
-   "image": "rain/week_3/day/1.webp",
-   "anchorY": 25
-  },
   "c9c6fd784b69": {
    "verdict": "FIXABLE",
    "bucket": "rain-day",
@@ -1092,13 +905,6 @@
    "slot": "B/sun",
    "image": "rain/week_4/day/3.webp",
    "anchorY": 52
-  },
-  "71fdebcd3deb": {
-   "verdict": "FIXABLE",
-   "bucket": "rain-dusk",
-   "slot": "A/mon",
-   "image": "rain/week_1/dusk/1.webp",
-   "anchorY": 38
   },
   "09641df1432a": {
    "verdict": "FIXABLE",
@@ -1121,13 +927,6 @@
    "slot": "A/thu",
    "image": "rain/week_2/dusk/6.webp",
    "anchorY": 42
-  },
-  "b4ee9d16720e": {
-   "verdict": "FIXABLE",
-   "bucket": "rain-dusk",
-   "slot": "A/fri",
-   "image": "rain/week_2/dusk/4.webp",
-   "anchorY": 32
   },
   "5f935cb18f17": {
    "verdict": "FIXABLE",
@@ -1184,21 +983,6 @@
    "slot": "A/fri",
    "image": "storm/week_2/dawn/7.webp",
    "anchorY": 62
-  },
-  "4e474a9a4873": {
-   "verdict": "FIXABLE",
-   "bucket": "storm-dawn",
-   "slot": "A/sat",
-   "image": "storm/week_2/dawn/2.webp",
-   "anchorY": 31
-  },
-  "99d0821cdd98": {
-   "verdict": "FIXABLE",
-   "bucket": "storm-day",
-   "slot": "A/mon",
-   "image": "storm/week_1/day/5.webp",
-   "anchorY": 71,
-   "ink": "white"
   },
   "41e6c19016c1": {
    "verdict": "FIXABLE",
@@ -1339,20 +1123,6 @@
    "image": "storm/week_1/dusk/5.webp",
    "anchorY": 43
   },
-  "faaf0b2003be": {
-   "verdict": "FIXABLE",
-   "bucket": "storm-night",
-   "slot": "A/wed",
-   "image": "storm/week_2/night/1.webp",
-   "anchorY": 29
-  },
-  "14c56f85c353": {
-   "verdict": "FIXABLE",
-   "bucket": "storm-night",
-   "slot": "A/sun",
-   "image": "storm/week_1/night/7.webp",
-   "anchorY": 23
-  },
   "c121631aca0a": {
    "verdict": "FIXABLE",
    "bucket": "wind-dawn",
@@ -1405,13 +1175,6 @@
    "image": "wind/week_1/day/5.webp",
    "anchorY": 46
   },
-  "4d3a786acf48": {
-   "verdict": "FIXABLE",
-   "bucket": "wind-day",
-   "slot": "A/tue",
-   "image": "wind/week_2/day/1.webp",
-   "anchorY": 16
-  },
   "eb217457f58d": {
    "verdict": "FIXABLE",
    "bucket": "wind-day",
@@ -1435,13 +1198,6 @@
    "anchorY": 82,
    "ink": "white"
   },
-  "92ef82c2d34a": {
-   "verdict": "FIXABLE",
-   "bucket": "wind-day",
-   "slot": "A/sun",
-   "image": "wind/week_3/day/3.webp",
-   "anchorY": 61
-  },
   "05cea2b8788d": {
    "verdict": "FIXABLE",
    "bucket": "wind-day",
@@ -1455,14 +1211,6 @@
    "slot": "B/tue",
    "image": "wind/week_2/day/6.webp",
    "anchorY": 44
-  },
-  "002f0c1d5187": {
-   "verdict": "FIXABLE",
-   "bucket": "wind-dusk",
-   "slot": "A/mon",
-   "image": "wind/week_1/dusk/1.webp",
-   "anchorY": 75,
-   "ink": "white"
   },
   "bdc6900c5689": {
    "verdict": "FIXABLE",
@@ -1498,14 +1246,6 @@
    "slot": "A/tue",
    "image": "wind/week_2/night/5.webp",
    "anchorY": 56
-  },
-  "be8276f7384b": {
-   "verdict": "FIXABLE",
-   "bucket": "wind-night",
-   "slot": "A/sat",
-   "image": "wind/week_1/night/2.webp",
-   "anchorY": 64,
-   "ink": "white"
   },
   "948736af4859": {
    "verdict": "FIXABLE",
@@ -1831,14 +1571,6 @@
    "anchorY": 82,
    "ink": "white"
   },
-  "4e7c3b6e7580": {
-   "verdict": "PAIR",
-   "bucket": "heat-day",
-   "slot": "B/tue",
-   "image": "heat/week_2/day/2.webp",
-   "anchorY": 40,
-   "pair": "P02"
-  },
   "24dc52fb32b8": {
    "verdict": "PAIR",
    "bucket": "wind-day",
@@ -1846,14 +1578,6 @@
    "image": "wind/week_2/day/7.webp",
    "anchorY": 22,
    "pair": "P03"
-  },
-  "2c5a9b3813f4": {
-   "verdict": "PAIR",
-   "bucket": "rain-day",
-   "slot": "B/fri",
-   "image": "rain/week_2/day/5.webp",
-   "anchorY": 30,
-   "pair": "P04"
   },
   "87955eb3b925": {
    "verdict": "PAIR",
@@ -1871,14 +1595,6 @@
    "anchorY": 30,
    "pair": "P06"
   },
-  "614ba5459c4a": {
-   "verdict": "PAIR",
-   "bucket": "fog-dawn",
-   "slot": "B/wed",
-   "image": "fog/week_2/dawn/3.webp",
-   "anchorY": 42,
-   "pair": "P07"
-  },
   "b0c6ecc4866f": {
    "verdict": "PAIR",
    "bucket": "cold-day",
@@ -1886,14 +1602,6 @@
    "image": "cold/week_2/day/6.webp",
    "anchorY": 40,
    "pair": "P08"
-  },
-  "34890f7d9e5c": {
-   "verdict": "PAIR",
-   "bucket": "cold-clear-dawn",
-   "slot": "B/sat",
-   "image": "cold-clear/week_2/dawn/6.webp",
-   "anchorY": 50,
-   "pair": "P09"
   },
   "2b3ce7ca33eb": {
    "verdict": "PAIR",
@@ -1910,78 +1618,6 @@
    "image": "storm/week_2/night/5.webp",
    "anchorY": 29,
    "pair": "M02"
-  },
-  "e499768237ef": {
-   "verdict": "PAIR",
-   "bucket": "cold-dusk",
-   "slot": "B/sat",
-   "image": "cold/week_2/dusk/6.webp",
-   "anchorY": 25,
-   "pair": "M04"
-  },
-  "cd4bd5c64c5d": {
-   "verdict": "PAIR",
-   "bucket": "cold-night",
-   "slot": "B/sat",
-   "image": "cold/week_2/night/6.webp",
-   "anchorY": 15,
-   "pair": "R01"
-  },
-  "aa3ccab85b60": {
-   "verdict": "PAIR",
-   "bucket": "cloudy-night",
-   "slot": "A/sat",
-   "image": "cloudy/week_1/night/6.webp",
-   "anchorY": 23,
-   "pair": "R02"
-  },
-  "1108cfd1192f": {
-   "verdict": "PAIR",
-   "bucket": "clear-dawn",
-   "slot": "A/sun",
-   "image": "clear/week_1/dawn/7.webp",
-   "anchorY": 18,
-   "pair": "R03"
-  },
-  "844f8b7f5b89": {
-   "verdict": "PAIR",
-   "bucket": "clear-dawn",
-   "slot": "A/tue",
-   "image": "clear/week_1/dawn/2.webp",
-   "anchorY": 26,
-   "pair": "R05"
-  },
-  "15e8f0aa4baa": {
-   "verdict": "PAIR",
-   "bucket": "heat-dusk",
-   "slot": "B/fri",
-   "image": "heat/week_2/dusk/5.webp",
-   "anchorY": 20,
-   "pair": "R10"
-  },
-  "e400ca864a50": {
-   "verdict": "PAIR",
-   "bucket": "storm-dawn",
-   "slot": "A/sun",
-   "image": "storm/week_1/dawn/7.webp",
-   "anchorY": 20,
-   "pair": "R18"
-  },
-  "6bb604217e96": {
-   "verdict": "PAIR",
-   "bucket": "wind-night",
-   "slot": "A/mon",
-   "image": "wind/week_1/night/1.webp",
-   "anchorY": 28,
-   "pair": "R24"
-  },
-  "e8500f5dfaee": {
-   "verdict": "PAIR",
-   "bucket": "wind-day",
-   "slot": "B/thu",
-   "image": "wind/week_2/day/4.webp",
-   "anchorY": 18,
-   "pair": "R48"
   },
   "1cfb52ede877": {
    "verdict": "PAIR",
@@ -2007,22 +1643,6 @@
    "anchorY": 27,
    "pair": "R06c"
   },
-  "fc06880aeadb": {
-   "verdict": "PAIR",
-   "bucket": "heat-dawn",
-   "slot": "A/wed",
-   "image": "heat/week_1/dawn/3.webp",
-   "anchorY": 19,
-   "pair": "R09b"
-  },
-  "5976dea068f8": {
-   "verdict": "PAIR",
-   "bucket": "clear-day",
-   "slot": "B/wed",
-   "image": "clear/week_2/day/3.webp",
-   "anchorY": 20,
-   "pair": "R04c"
-  },
   "46c3fe4d1244": {
    "verdict": "PAIR",
    "bucket": "storm-dawn",
@@ -2030,30 +1650,6 @@
    "image": "storm/week_2/dawn/4.webp",
    "anchorY": 33,
    "pair": "R16"
-  },
-  "bbf6b6ef796a": {
-   "verdict": "PAIR",
-   "bucket": "wind-dawn",
-   "slot": "A/sat",
-   "image": "wind/week_1/dawn/6.webp",
-   "anchorY": 30,
-   "pair": "R19"
-  },
-  "775f4f1b47b4": {
-   "verdict": "PAIR",
-   "bucket": "wind-dawn",
-   "slot": "B/mon",
-   "image": "wind/week_2/dawn/1.webp",
-   "anchorY": 38,
-   "pair": "R20"
-  },
-  "d68ae3f7c914": {
-   "verdict": "PAIR",
-   "bucket": "wind-dusk",
-   "slot": "B/mon",
-   "image": "wind/week_2/dusk/1.webp",
-   "anchorY": 38,
-   "pair": "R21"
   },
   "60b776676824": {
    "verdict": "PAIR",
@@ -2063,22 +1659,6 @@
    "anchorY": 30,
    "pair": "R23"
   },
-  "4cbd692804c1": {
-   "verdict": "PAIR",
-   "bucket": "wind-night",
-   "slot": "B/sat",
-   "image": "wind/week_2/night/6.webp",
-   "anchorY": 40,
-   "pair": "R27"
-  },
-  "7d459440d824": {
-   "verdict": "PAIR",
-   "bucket": "cold-dusk",
-   "slot": "B/fri",
-   "image": "cold/week_2/dusk/5.webp",
-   "anchorY": 33,
-   "pair": "R28"
-  },
   "01c4ac751dea": {
    "verdict": "PAIR",
    "bucket": "fog-day",
@@ -2086,30 +1666,6 @@
    "image": "fog/week_2/day/1.webp",
    "anchorY": 38,
    "pair": "R32"
-  },
-  "4b77f610c3f8": {
-   "verdict": "PAIR",
-   "bucket": "fog-night",
-   "slot": "A/fri",
-   "image": "fog/week_1/night/5.webp",
-   "anchorY": 33,
-   "pair": "R35"
-  },
-  "744643e152b8": {
-   "verdict": "PAIR",
-   "bucket": "clear-day",
-   "slot": "B/sun",
-   "image": "clear/week_4/day/7.webp",
-   "anchorY": 35,
-   "pair": "R36"
-  },
-  "508a39ca3436": {
-   "verdict": "PAIR",
-   "bucket": "clear-day",
-   "slot": "B/sat",
-   "image": "clear/week_4/day/6.webp",
-   "anchorY": 33,
-   "pair": "R37"
   },
   "42df59c8ac8a": {
    "verdict": "PAIR",
@@ -2127,14 +1683,6 @@
    "anchorY": 35,
    "pair": "R40"
   },
-  "f9f55b1dcfeb": {
-   "verdict": "PAIR",
-   "bucket": "clear-day",
-   "slot": "A/wed",
-   "image": "clear/week_3/day/3.webp",
-   "anchorY": 35,
-   "pair": "R42"
-  },
   "0fe1f7c40461": {
    "verdict": "PAIR",
    "bucket": "heat-day",
@@ -2149,14 +1697,6 @@
     "reason": "a face hidden at the previous anchor on 414x715"
    }
   },
-  "3c8fb431fafe": {
-   "verdict": "PAIR",
-   "bucket": "cloudy-day",
-   "slot": "B/sun",
-   "image": "cloudy/week_4/day/7.webp",
-   "anchorY": 30,
-   "pair": "R44"
-  },
   "fbaca052756a": {
    "verdict": "PAIR",
    "bucket": "rain-day",
@@ -2164,14 +1704,6 @@
    "image": "rain/week_1/day/2.webp",
    "anchorY": 33,
    "pair": "R45"
-  },
-  "504caee429a0": {
-   "verdict": "PAIR",
-   "bucket": "storm-night",
-   "slot": "A/sat",
-   "image": "storm/week_1/night/6.webp",
-   "anchorY": 35,
-   "pair": "R46"
   },
   "00f62db773d8": {
    "verdict": "PAIR",
@@ -2189,110 +1721,6 @@
    "anchorY": 35,
    "pair": "R49"
   },
-  "454c5a6995aa": {
-   "verdict": "PAIR",
-   "bucket": "wind-day",
-   "slot": "B/sat",
-   "image": "wind/week_2/day/6.webp",
-   "anchorY": 33,
-   "pair": "R50"
-  },
-  "a300495d4526": {
-   "verdict": "PAIR",
-   "bucket": "clear-dawn",
-   "slot": "B/sat",
-   "image": "clear/week_2/dawn/6.webp",
-   "anchorY": 30,
-   "pair": "R52"
-  },
-  "0d7c5c34c6a0": {
-   "verdict": "PAIR",
-   "bucket": "clear-day",
-   "slot": "A/thu",
-   "image": "clear/week_1/day/4.webp",
-   "anchorY": 30,
-   "pair": "R59"
-  },
-  "636c4074f988": {
-   "verdict": "PAIR",
-   "bucket": "cold-night",
-   "slot": "B/fri",
-   "image": "cold/week_2/night/5.webp",
-   "anchorY": 30,
-   "pair": "R29"
-  },
-  "3bb43b4437ad": {
-   "verdict": "PAIR",
-   "bucket": "cold-clear-dusk",
-   "slot": "A/fri",
-   "image": "cold-clear/week_1/dusk/5.webp",
-   "anchorY": 30,
-   "pair": "R31"
-  },
-  "13f616637843": {
-   "verdict": "PAIR",
-   "bucket": "fog-dusk",
-   "slot": "A/wed",
-   "image": "fog/week_1/dusk/3.webp",
-   "anchorY": 30,
-   "pair": "R33"
-  },
-  "4191f6a7d49f": {
-   "verdict": "PAIR",
-   "bucket": "fog-dusk",
-   "slot": "A/sun",
-   "image": "fog/week_1/dusk/7.webp",
-   "anchorY": 22,
-   "pair": "R34"
-  },
-  "1c3c5a763f13": {
-   "verdict": "PAIR",
-   "bucket": "clear-day",
-   "slot": "A/mon",
-   "image": "clear/week_3/day/1.webp",
-   "anchorY": 30,
-   "pair": "R36b"
-  },
-  "7d13aaa156f4": {
-   "verdict": "PAIR",
-   "bucket": "clear-day",
-   "slot": "B/mon",
-   "image": "clear/week_4/day/1.webp",
-   "anchorY": 25,
-   "pair": "R41"
-  },
-  "c0246be3744d": {
-   "verdict": "PAIR",
-   "bucket": "clear-dawn",
-   "slot": "B/thu",
-   "image": "clear/week_2/dawn/4.webp",
-   "anchorY": 28,
-   "pair": "R52b"
-  },
-  "1d12b604469e": {
-   "verdict": "PAIR",
-   "bucket": "heat-night",
-   "slot": "A/thu",
-   "image": "heat/week_1/night/4.webp",
-   "anchorY": 22,
-   "pair": "R54"
-  },
-  "1914aa132481": {
-   "verdict": "PAIR",
-   "bucket": "rain-dawn",
-   "slot": "A/thu",
-   "image": "rain/week_1/dawn/4.webp",
-   "anchorY": 30,
-   "pair": "R55"
-  },
-  "5542dfc7215d": {
-   "verdict": "PAIR",
-   "bucket": "rain-dusk",
-   "slot": "B/wed",
-   "image": "rain/week_2/dusk/3.webp",
-   "anchorY": 30,
-   "pair": "R57"
-  },
   "b0496e09ee35": {
    "verdict": "PAIR",
    "bucket": "storm-dawn",
@@ -2300,30 +1728,6 @@
    "image": "storm/week_1/dawn/3.webp",
    "anchorY": 25,
    "pair": "R58"
-  },
-  "8d215e14d9ba": {
-   "verdict": "PAIR",
-   "bucket": "cold-dusk",
-   "slot": "A/tue",
-   "image": "cold/week_1/dusk/2.webp",
-   "anchorY": 30,
-   "pair": "R60"
-  },
-  "7d4fb2e85dbf": {
-   "verdict": "PAIR",
-   "bucket": "heat-dawn",
-   "slot": "A/fri",
-   "image": "heat/week_1/dawn/5.webp",
-   "anchorY": 28,
-   "pair": "R53"
-  },
-  "60d5a3416f6b": {
-   "verdict": "PAIR",
-   "bucket": "rain-dawn",
-   "slot": "A/sat",
-   "image": "rain/week_1/dawn/6.webp",
-   "anchorY": 28,
-   "pair": "R56"
   },
   "8db6041b06ea": {
    "verdict": "FACE",
@@ -2368,6 +1772,149 @@
     "by": "scripts/anchor-faces.mjs",
     "reason": "a face under the number or the joke at the default on 414x715"
    }
+  },
+  "686dbce6f903": {
+   "verdict": "FACE",
+   "bucket": "cold-clear-day",
+   "image": "cold-clear/week_1/day/3.webp",
+   "anchorY": 26,
+   "faceAnchor": {
+    "on": "2026-10-08",
+    "by": "scripts/anchor-faces.mjs --reframes",
+    "reason": "reframed photograph (Al, 8 Oct 2026)"
+   }
+  },
+  "21f5fa9c142b": {
+   "verdict": "FACE",
+   "bucket": "cloudy-day",
+   "image": "cloudy/week_2/day/7.webp",
+   "anchorY": 77,
+   "faceAnchor": {
+    "on": "2026-10-08",
+    "by": "scripts/anchor-faces.mjs --reframes",
+    "reason": "reframed photograph (Al, 8 Oct 2026)"
+   }
+  },
+  "18fdc648ed5f": {
+   "verdict": "FACE",
+   "bucket": "clear-day",
+   "image": "clear/week_1/day/4.webp",
+   "anchorY": 6,
+   "faceAnchor": {
+    "on": "2026-10-08",
+    "by": "scripts/anchor-faces.mjs --reframes",
+    "reason": "reframed photograph (Al, 8 Oct 2026)"
+   }
+  },
+  "f7ca873cf943": {
+   "verdict": "FACE",
+   "bucket": "cold-night",
+   "image": "cold/week_1/night/6.webp",
+   "anchorY": 77,
+   "faceAnchor": {
+    "on": "2026-10-08",
+    "by": "scripts/anchor-faces.mjs --reframes",
+    "reason": "reframed photograph (Al, 8 Oct 2026)"
+   }
+  },
+  "6e5870ded321": {
+   "verdict": "FACE",
+   "bucket": "rain-dawn",
+   "image": "rain/week_1/dawn/4.webp",
+   "anchorY": 20,
+   "faceAnchor": {
+    "on": "2026-10-08",
+    "by": "scripts/anchor-faces.mjs --reframes",
+    "reason": "reframed photograph (Al, 8 Oct 2026)"
+   }
+  },
+  "627b15e8ad3b": {
+   "verdict": "FACE",
+   "bucket": "cold-dawn",
+   "image": "cold/week_1/dawn/3.webp",
+   "anchorY": 30,
+   "faceAnchor": {
+    "on": "2026-10-08",
+    "by": "scripts/anchor-faces.mjs --reframes",
+    "reason": "reframed photograph (Al, 8 Oct 2026)"
+   }
+  },
+  "4c306b0743ae": {
+   "verdict": "FACE",
+   "bucket": "fog-dusk",
+   "image": "fog/week_1/dusk/7.webp",
+   "anchorY": 12,
+   "faceAnchor": {
+    "on": "2026-10-08",
+    "by": "scripts/anchor-faces.mjs --reframes",
+    "reason": "reframed photograph (Al, 8 Oct 2026)"
+   }
+  },
+  "f584e04899ee": {
+   "verdict": "FACE",
+   "bucket": "cold-clear-dawn",
+   "image": "cold-clear/week_1/dawn/3.webp",
+   "anchorY": 77,
+   "faceAnchor": {
+    "on": "2026-10-08",
+    "by": "scripts/anchor-faces.mjs --reframes",
+    "reason": "reframed photograph (Al, 8 Oct 2026)"
+   }
+  },
+  "9303c4484c0a": {
+   "verdict": "FACE",
+   "bucket": "cloudy-night",
+   "image": "cloudy/week_1/night/2.webp",
+   "anchorY": 74,
+   "faceAnchor": {
+    "on": "2026-10-08",
+    "by": "scripts/anchor-faces.mjs --reframes",
+    "reason": "reframed photograph (Al, 8 Oct 2026)"
+   }
+  },
+  "c522fe1e6bc8": {
+   "verdict": "FACE",
+   "bucket": "heat-dusk",
+   "image": "heat/week_1/dusk/7.webp",
+   "anchorY": 77,
+   "faceAnchor": {
+    "on": "2026-10-08",
+    "by": "scripts/anchor-faces.mjs --reframes",
+    "reason": "reframed photograph (Al, 8 Oct 2026)"
+   }
+  },
+  "61c5b91771e8": {
+   "verdict": "FACE",
+   "bucket": "clear-day",
+   "image": "clear/week_1/day/5.webp",
+   "anchorY": 77,
+   "faceAnchor": {
+    "on": "2026-10-08",
+    "by": "scripts/anchor-faces.mjs --reframes",
+    "reason": "reframed photograph (Al, 8 Oct 2026)"
+   }
+  },
+  "5968109fcab9": {
+   "verdict": "FACE",
+   "bucket": "rain-day",
+   "image": "rain/week_2/day/2.webp",
+   "anchorY": 14,
+   "faceAnchor": {
+    "on": "2026-10-08",
+    "by": "scripts/anchor-faces.mjs --reframes",
+    "reason": "reframed photograph (Al, 8 Oct 2026)"
+   }
+  },
+  "07134d7dde78": {
+   "verdict": "FACE",
+   "bucket": "heat-dawn",
+   "image": "heat/week_1/dawn/3.webp",
+   "anchorY": 10,
+   "faceAnchor": {
+    "on": "2026-10-08",
+    "by": "scripts/anchor-faces.mjs --reframes",
+    "reason": "reframed photograph (Al, 8 Oct 2026)"
+   }
   }
  },
  "faceAnchors": {
@@ -2379,5 +1926,10 @@
   "on": "2026-10-08",
   "anchored": 4,
   "from": "review/new-sets-crop-2026-10-08.json"
+ },
+ "reframes": {
+  "on": "2026-10-08",
+  "photographs": 77,
+  "from": "review/library-reframe-2026-10-08.md"
  }
 }

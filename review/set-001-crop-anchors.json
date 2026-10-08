@@ -51,13 +51,6 @@
    "bucket": "clear-day",
    "image": "clear/week_3/day/7.webp"
   },
-  "ca6d821f7c9b": {
-   "verdict": "FIXABLE",
-   "anchorY": 99,
-   "ink": "white",
-   "bucket": "clear-day",
-   "image": "clear/week_2/day/5.webp"
-  },
   "e9616cb7c61c": {
    "verdict": "FIXABLE",
    "anchorY": 44,
@@ -71,13 +64,6 @@
    "ink": "white",
    "bucket": "clear-day",
    "image": "clear/week_3/day/3.webp"
-  },
-  "aa3420ca4da1": {
-   "verdict": "FIXABLE",
-   "anchorY": 60,
-   "ink": "white",
-   "bucket": "clear-day",
-   "image": "clear/week_2/day/1.webp"
   },
   "3d001539dcb5": {
    "verdict": "FIXABLE",
@@ -120,13 +106,6 @@
    "ink": "white",
    "bucket": "clear-dusk",
    "image": "clear/week_2/dusk/6.webp"
-  },
-  "7d50ec606bfc": {
-   "verdict": "FIXABLE",
-   "anchorY": 37,
-   "ink": "white",
-   "bucket": "clear-dusk",
-   "image": "clear/week_2/dusk/4.webp"
   },
   "cc951efb5d19": {
    "verdict": "FIXABLE",
@@ -198,13 +177,6 @@
    "bucket": "cloudy-dawn",
    "image": "cloudy/week_2/dawn/3.webp"
   },
-  "de1df07bf268": {
-   "verdict": "FIXABLE",
-   "anchorY": 14,
-   "ink": "white",
-   "bucket": "cloudy-dawn",
-   "image": "cloudy/week_1/dawn/4.webp"
-  },
   "03ff71985022": {
    "verdict": "FIXABLE",
    "anchorY": 100,
@@ -275,13 +247,6 @@
    "bucket": "cloudy-day",
    "image": "cloudy/week_2/day/6.webp"
   },
-  "c16f8303d56e": {
-   "verdict": "FIXABLE",
-   "anchorY": 51,
-   "ink": "white",
-   "bucket": "cloudy-day",
-   "image": "cloudy/week_3/day/1.webp"
-  },
   "094ec6ba034c": {
    "verdict": "FIXABLE",
    "anchorY": 78,
@@ -295,13 +260,6 @@
    "ink": "white",
    "bucket": "cloudy-day",
    "image": "cloudy/week_4/day/7.webp"
-  },
-  "47550fce6c98": {
-   "verdict": "FIXABLE",
-   "anchorY": 51,
-   "ink": "white",
-   "bucket": "cloudy-day",
-   "image": "cloudy/week_3/day/4.webp"
   },
   "119e4a52f8a4": {
    "verdict": "FIXABLE",
@@ -330,13 +288,6 @@
    "ink": "white",
    "bucket": "cloudy-day",
    "image": "cloudy/week_2/day/1.webp"
-  },
-  "04bdf14c306b": {
-   "verdict": "FIXABLE",
-   "anchorY": 88,
-   "ink": "white",
-   "bucket": "cloudy-day",
-   "image": "cloudy/week_3/day/3.webp"
   },
   "20e80f881707": {
    "verdict": "FIXABLE",
@@ -394,13 +345,6 @@
    "bucket": "cloudy-night",
    "image": "cloudy/week_1/night/1.webp"
   },
-  "68317318c85d": {
-   "verdict": "FIXABLE",
-   "anchorY": 53,
-   "ink": "white",
-   "bucket": "cloudy-night",
-   "image": "cloudy/week_1/night/7.webp"
-  },
   "76070c299a0b": {
    "verdict": "FIXABLE",
    "anchorY": 71,
@@ -442,13 +386,6 @@
    "ink": "white",
    "bucket": "cold-clear-dawn",
    "image": "cold-clear/week_1/dawn/7.webp"
-  },
-  "5a6dd26eb7db": {
-   "verdict": "FIXABLE",
-   "anchorY": 87,
-   "ink": "white",
-   "bucket": "cold-clear-dawn",
-   "image": "cold-clear/week_2/dawn/6.webp"
   },
   "caaa1c42d70a": {
    "verdict": "FIXABLE",
@@ -492,13 +429,6 @@
    "bucket": "cold-clear-day",
    "image": "cold-clear/week_1/day/1.webp"
   },
-  "042ba0a95388": {
-   "verdict": "FIXABLE",
-   "anchorY": 50,
-   "ink": "white",
-   "bucket": "cold-clear-day",
-   "image": "cold-clear/week_1/day/4.webp"
-  },
   "bbb3d8348b00": {
    "verdict": "FIXABLE",
    "anchorY": 41,
@@ -506,26 +436,12 @@
    "bucket": "cold-clear-day",
    "image": "cold-clear/week_3/day/5.webp"
   },
-  "decff597fe6c": {
-   "verdict": "FIXABLE",
-   "anchorY": 74,
-   "ink": "white",
-   "bucket": "cold-clear-day",
-   "image": "cold-clear/week_3/day/1.webp"
-  },
   "bbad2500c852": {
    "verdict": "FIXABLE",
    "anchorY": 74,
    "ink": "white",
    "bucket": "cold-clear-day",
    "image": "cold-clear/week_4/day/3.webp"
-  },
-  "32dec9fbdcaa": {
-   "verdict": "FIXABLE",
-   "anchorY": 63,
-   "ink": "white",
-   "bucket": "cold-clear-day",
-   "image": "cold-clear/week_2/day/2.webp"
   },
   "fbdf528f41c8": {
    "verdict": "FIXABLE",
@@ -576,13 +492,6 @@
    "bucket": "cold-clear-night",
    "image": "cold-clear/week_2/night/3.webp"
   },
-  "da90853b2ccb": {
-   "verdict": "FIXABLE",
-   "anchorY": 68,
-   "ink": "white",
-   "bucket": "cold-clear-night",
-   "image": "cold-clear/week_2/night/2.webp"
-  },
   "d298c8c1f224": {
    "verdict": "FIXABLE",
    "anchorY": 55,
@@ -604,13 +513,6 @@
    "bucket": "cold-clear-night",
    "image": "cold-clear/week_2/night/6.webp"
   },
-  "8fd1944f303b": {
-   "verdict": "FIXABLE",
-   "anchorY": 72,
-   "ink": "white",
-   "bucket": "cold-clear-night",
-   "image": "cold-clear/week_1/night/7.webp"
-  },
   "da60a92cafd2": {
    "verdict": "FIXABLE",
    "anchorY": 61,
@@ -631,13 +533,6 @@
    "ink": "white",
    "bucket": "cold-dawn",
    "image": "cold/week_1/dawn/7.webp"
-  },
-  "1c5f757ee79a": {
-   "verdict": "FIXABLE",
-   "anchorY": 33,
-   "ink": "white",
-   "bucket": "cold-dawn",
-   "image": "cold/week_1/dawn/3.webp"
   },
   "41c9f776e0fb": {
    "verdict": "FIXABLE",
@@ -709,13 +604,6 @@
    "bucket": "cold-day",
    "image": "cold/week_3/day/6.webp"
   },
-  "36ffe52cf7ec": {
-   "verdict": "FIXABLE",
-   "anchorY": 55,
-   "ink": "white",
-   "bucket": "cold-day",
-   "image": "cold/week_2/day/4.webp"
-  },
   "999e68c47bfc": {
    "verdict": "FIXABLE",
    "anchorY": 86,
@@ -743,13 +631,6 @@
    "ink": "white",
    "bucket": "cold-day",
    "image": "cold/week_1/day/7.webp"
-  },
-  "a373f1d83e2f": {
-   "verdict": "FIXABLE",
-   "anchorY": 30,
-   "ink": "white",
-   "bucket": "cold-day",
-   "image": "cold/week_4/day/1.webp"
   },
   "d003110fec9f": {
    "verdict": "FIXABLE",
@@ -841,20 +722,6 @@
    "ink": "white",
    "bucket": "cold-night",
    "image": "cold/week_2/night/5.webp"
-  },
-  "13efc9191981": {
-   "verdict": "FIXABLE",
-   "anchorY": 100,
-   "ink": "white",
-   "bucket": "cold-night",
-   "image": "cold/week_4/night/1.webp"
-  },
-  "c50ba2c591aa": {
-   "verdict": "FIXABLE",
-   "anchorY": 36,
-   "ink": "white",
-   "bucket": "cold-night",
-   "image": "cold/week_1/night/7.webp"
   },
   "23b1b4b2af6d": {
    "verdict": "FIXABLE",
@@ -1073,20 +940,6 @@
    "bucket": "heat-day",
    "image": "heat/week_1/day/4.webp"
   },
-  "d6593f52fb76": {
-   "verdict": "FIXABLE",
-   "anchorY": 59,
-   "ink": "white",
-   "bucket": "heat-day",
-   "image": "heat/week_2/day/2.webp"
-  },
-  "6591bd91d1fc": {
-   "verdict": "FIXABLE",
-   "anchorY": 53,
-   "ink": "white",
-   "bucket": "heat-day",
-   "image": "heat/week_3/day/1.webp"
-  },
   "afd3c9db83bd": {
    "verdict": "FIXABLE",
    "anchorY": 76,
@@ -1157,26 +1010,12 @@
    "bucket": "heat-dusk",
    "image": "heat/week_2/dusk/3.webp"
   },
-  "9728bed72ec6": {
-   "verdict": "FIXABLE",
-   "anchorY": 87,
-   "ink": "white",
-   "bucket": "heat-dusk",
-   "image": "heat/week_1/dusk/6.webp"
-  },
   "f2e76528eca3": {
    "verdict": "FIXABLE",
    "anchorY": 51,
    "ink": "white",
    "bucket": "heat-night",
    "image": "heat/week_1/night/4.webp"
-  },
-  "2a3a60226c30": {
-   "verdict": "FIXABLE",
-   "anchorY": 31,
-   "ink": "white",
-   "bucket": "heat-night",
-   "image": "heat/week_2/night/7.webp"
   },
   "e62c00a72fb4": {
    "verdict": "FIXABLE",
@@ -1290,26 +1129,12 @@
    "bucket": "rain-day",
    "image": "rain/week_2/day/1.webp"
   },
-  "d878b96a3f71": {
-   "verdict": "FIXABLE",
-   "anchorY": 26,
-   "ink": "white",
-   "bucket": "rain-day",
-   "image": "rain/week_1/day/1.webp"
-  },
   "3bd49d0acf2b": {
    "verdict": "FIXABLE",
    "anchorY": 78,
    "ink": "white",
    "bucket": "rain-day",
    "image": "rain/week_2/day/5.webp"
-  },
-  "d86d4f5699c2": {
-   "verdict": "FIXABLE",
-   "anchorY": 25,
-   "ink": "white",
-   "bucket": "rain-day",
-   "image": "rain/week_3/day/1.webp"
   },
   "c9c6fd784b69": {
    "verdict": "FIXABLE",
@@ -1324,13 +1149,6 @@
    "ink": "white",
    "bucket": "rain-day",
    "image": "rain/week_4/day/3.webp"
-  },
-  "71fdebcd3deb": {
-   "verdict": "FIXABLE",
-   "anchorY": 38,
-   "ink": "white",
-   "bucket": "rain-dusk",
-   "image": "rain/week_1/dusk/1.webp"
   },
   "09641df1432a": {
    "verdict": "FIXABLE",
@@ -1352,13 +1170,6 @@
    "ink": "white",
    "bucket": "rain-dusk",
    "image": "rain/week_2/dusk/6.webp"
-  },
-  "b4ee9d16720e": {
-   "verdict": "FIXABLE",
-   "anchorY": 32,
-   "ink": "white",
-   "bucket": "rain-dusk",
-   "image": "rain/week_2/dusk/4.webp"
   },
   "f7f51acb22c9": {
    "verdict": "FIXABLE",
@@ -1436,20 +1247,6 @@
    "ink": "white",
    "bucket": "storm-dawn",
    "image": "storm/week_2/dawn/7.webp"
-  },
-  "4e474a9a4873": {
-   "verdict": "FIXABLE",
-   "anchorY": 31,
-   "ink": "white",
-   "bucket": "storm-dawn",
-   "image": "storm/week_2/dawn/2.webp"
-  },
-  "99d0821cdd98": {
-   "verdict": "FIXABLE",
-   "anchorY": 71,
-   "ink": "white",
-   "bucket": "storm-day",
-   "image": "storm/week_1/day/5.webp"
   },
   "41e6c19016c1": {
    "verdict": "FIXABLE",
@@ -1591,20 +1388,6 @@
    "bucket": "storm-dusk",
    "image": "storm/week_1/dusk/5.webp"
   },
-  "faaf0b2003be": {
-   "verdict": "FIXABLE",
-   "anchorY": 29,
-   "ink": "white",
-   "bucket": "storm-night",
-   "image": "storm/week_2/night/1.webp"
-  },
-  "14c56f85c353": {
-   "verdict": "FIXABLE",
-   "anchorY": 23,
-   "ink": "white",
-   "bucket": "storm-night",
-   "image": "storm/week_1/night/7.webp"
-  },
   "c121631aca0a": {
    "verdict": "FIXABLE",
    "anchorY": 60,
@@ -1654,13 +1437,6 @@
    "bucket": "wind-day",
    "image": "wind/week_1/day/5.webp"
   },
-  "4d3a786acf48": {
-   "verdict": "FIXABLE",
-   "anchorY": 16,
-   "ink": "white",
-   "bucket": "wind-day",
-   "image": "wind/week_2/day/1.webp"
-  },
   "eb217457f58d": {
    "verdict": "FIXABLE",
    "anchorY": 39,
@@ -1689,13 +1465,6 @@
    "bucket": "wind-day",
    "image": "wind/week_1/day/4.webp"
   },
-  "92ef82c2d34a": {
-   "verdict": "FIXABLE",
-   "anchorY": 61,
-   "ink": "white",
-   "bucket": "wind-day",
-   "image": "wind/week_3/day/3.webp"
-  },
   "05cea2b8788d": {
    "verdict": "FIXABLE",
    "anchorY": 50,
@@ -1709,13 +1478,6 @@
    "ink": "white",
    "bucket": "wind-day",
    "image": "wind/week_2/day/6.webp"
-  },
-  "002f0c1d5187": {
-   "verdict": "FIXABLE",
-   "anchorY": 75,
-   "ink": "white",
-   "bucket": "wind-dusk",
-   "image": "wind/week_1/dusk/1.webp"
   },
   "bdc6900c5689": {
    "verdict": "FIXABLE",
@@ -1752,35 +1514,12 @@
    "bucket": "wind-night",
    "image": "wind/week_2/night/5.webp"
   },
-  "be8276f7384b": {
-   "verdict": "FIXABLE",
-   "anchorY": 64,
-   "ink": "white",
-   "bucket": "wind-night",
-   "image": "wind/week_1/night/2.webp"
-  },
-  "4e7c3b6e7580": {
-   "verdict": "PAIR",
-   "anchorY": 40,
-   "bucket": "heat-day",
-   "image": "heat/week_2/day/2.webp",
-   "pair": "P02",
-   "note": "composed for Home with the subject in the upper part; anchor set by eye on the made photo"
-  },
   "24dc52fb32b8": {
    "verdict": "PAIR",
    "anchorY": 22,
    "bucket": "wind-day",
    "image": "wind/week_2/day/7.webp",
    "pair": "P03",
-   "note": "composed for Home with the subject in the upper part; anchor set by eye on the made photo"
-  },
-  "2c5a9b3813f4": {
-   "verdict": "PAIR",
-   "anchorY": 30,
-   "bucket": "rain-day",
-   "image": "rain/week_2/day/5.webp",
-   "pair": "P04",
    "note": "composed for Home with the subject in the upper part; anchor set by eye on the made photo"
   },
   "87955eb3b925": {
@@ -1799,28 +1538,12 @@
    "pair": "P06",
    "note": "composed for Home with the subject in the upper part; anchor set by eye on the made photo"
   },
-  "614ba5459c4a": {
-   "verdict": "PAIR",
-   "anchorY": 42,
-   "bucket": "fog-dawn",
-   "image": "fog/week_2/dawn/3.webp",
-   "pair": "P07",
-   "note": "composed for Home with the subject in the upper part; anchor set by eye on the made photo"
-  },
   "b0c6ecc4866f": {
    "verdict": "PAIR",
    "anchorY": 40,
    "bucket": "cold-day",
    "image": "cold/week_2/day/6.webp",
    "pair": "P08",
-   "note": "composed for Home with the subject in the upper part; anchor set by eye on the made photo"
-  },
-  "34890f7d9e5c": {
-   "verdict": "PAIR",
-   "anchorY": 50,
-   "bucket": "cold-clear-dawn",
-   "image": "cold-clear/week_2/dawn/6.webp",
-   "pair": "P09",
    "note": "composed for Home with the subject in the upper part; anchor set by eye on the made photo"
   },
   "2b3ce7ca33eb": {
@@ -1837,78 +1560,6 @@
    "bucket": "storm-night",
    "image": "storm/week_2/night/5.webp",
    "pair": "M02",
-   "note": "composed for Home with the subject in the upper part; anchor set by eye on the made photo"
-  },
-  "e499768237ef": {
-   "verdict": "PAIR",
-   "anchorY": 25,
-   "bucket": "cold-dusk",
-   "image": "cold/week_2/dusk/6.webp",
-   "pair": "M04",
-   "note": "composed for Home with the subject in the upper part; anchor set by eye on the made photo"
-  },
-  "cd4bd5c64c5d": {
-   "verdict": "PAIR",
-   "anchorY": 15,
-   "bucket": "cold-night",
-   "image": "cold/week_2/night/6.webp",
-   "pair": "R01",
-   "note": "composed for Home with the subject in the upper part; anchor set by eye on the made photo"
-  },
-  "aa3ccab85b60": {
-   "verdict": "PAIR",
-   "anchorY": 23,
-   "bucket": "cloudy-night",
-   "image": "cloudy/week_1/night/6.webp",
-   "pair": "R02",
-   "note": "composed for Home with the subject in the upper part; anchor set by eye on the made photo"
-  },
-  "1108cfd1192f": {
-   "verdict": "PAIR",
-   "anchorY": 18,
-   "bucket": "clear-dawn",
-   "image": "clear/week_1/dawn/7.webp",
-   "pair": "R03",
-   "note": "composed for Home with the subject in the upper part; anchor set by eye on the made photo"
-  },
-  "844f8b7f5b89": {
-   "verdict": "PAIR",
-   "anchorY": 26,
-   "bucket": "clear-dawn",
-   "image": "clear/week_1/dawn/2.webp",
-   "pair": "R05",
-   "note": "composed for Home with the subject in the upper part; anchor set by eye on the made photo"
-  },
-  "15e8f0aa4baa": {
-   "verdict": "PAIR",
-   "anchorY": 20,
-   "bucket": "heat-dusk",
-   "image": "heat/week_2/dusk/5.webp",
-   "pair": "R10",
-   "note": "composed for Home with the subject in the upper part; anchor set by eye on the made photo"
-  },
-  "e400ca864a50": {
-   "verdict": "PAIR",
-   "anchorY": 20,
-   "bucket": "storm-dawn",
-   "image": "storm/week_1/dawn/7.webp",
-   "pair": "R18",
-   "note": "composed for Home with the subject in the upper part; anchor set by eye on the made photo"
-  },
-  "6bb604217e96": {
-   "verdict": "PAIR",
-   "anchorY": 28,
-   "bucket": "wind-night",
-   "image": "wind/week_1/night/1.webp",
-   "pair": "R24",
-   "note": "composed for Home with the subject in the upper part; anchor set by eye on the made photo"
-  },
-  "e8500f5dfaee": {
-   "verdict": "PAIR",
-   "anchorY": 18,
-   "bucket": "wind-day",
-   "image": "wind/week_2/day/4.webp",
-   "pair": "R48",
    "note": "composed for Home with the subject in the upper part; anchor set by eye on the made photo"
   },
   "1cfb52ede877": {
@@ -1935,52 +1586,12 @@
    "pair": "R06c",
    "note": "composed for Home with the subject in the upper part; anchor set by eye on the made photo"
   },
-  "fc06880aeadb": {
-   "verdict": "PAIR",
-   "anchorY": 19,
-   "bucket": "heat-dawn",
-   "image": "heat/week_1/dawn/3.webp",
-   "pair": "R09b",
-   "note": "composed for Home with the subject in the upper part; anchor set by eye on the made photo"
-  },
-  "5976dea068f8": {
-   "verdict": "PAIR",
-   "anchorY": 20,
-   "bucket": "clear-day",
-   "image": "clear/week_2/day/3.webp",
-   "pair": "R04c",
-   "note": "composed for Home with the subject in the upper part; anchor set by eye on the made photo"
-  },
   "46c3fe4d1244": {
    "verdict": "PAIR",
    "anchorY": 33,
    "bucket": "storm-dawn",
    "image": "storm/week_2/dawn/4.webp",
    "pair": "R16",
-   "note": "composed for Home with the subject in the upper part; anchor set by eye on the made photo"
-  },
-  "bbf6b6ef796a": {
-   "verdict": "PAIR",
-   "anchorY": 30,
-   "bucket": "wind-dawn",
-   "image": "wind/week_1/dawn/6.webp",
-   "pair": "R19",
-   "note": "composed for Home with the subject in the upper part; anchor set by eye on the made photo"
-  },
-  "775f4f1b47b4": {
-   "verdict": "PAIR",
-   "anchorY": 38,
-   "bucket": "wind-dawn",
-   "image": "wind/week_2/dawn/1.webp",
-   "pair": "R20",
-   "note": "composed for Home with the subject in the upper part; anchor set by eye on the made photo"
-  },
-  "d68ae3f7c914": {
-   "verdict": "PAIR",
-   "anchorY": 38,
-   "bucket": "wind-dusk",
-   "image": "wind/week_2/dusk/1.webp",
-   "pair": "R21",
    "note": "composed for Home with the subject in the upper part; anchor set by eye on the made photo"
   },
   "60b776676824": {
@@ -1991,52 +1602,12 @@
    "pair": "R23",
    "note": "composed for Home with the subject in the upper part; anchor set by eye on the made photo"
   },
-  "4cbd692804c1": {
-   "verdict": "PAIR",
-   "anchorY": 40,
-   "bucket": "wind-night",
-   "image": "wind/week_2/night/6.webp",
-   "pair": "R27",
-   "note": "composed for Home with the subject in the upper part; anchor set by eye on the made photo"
-  },
-  "7d459440d824": {
-   "verdict": "PAIR",
-   "anchorY": 33,
-   "bucket": "cold-dusk",
-   "image": "cold/week_2/dusk/5.webp",
-   "pair": "R28",
-   "note": "composed for Home with the subject in the upper part; anchor set by eye on the made photo"
-  },
   "01c4ac751dea": {
    "verdict": "PAIR",
    "anchorY": 38,
    "bucket": "fog-day",
    "image": "fog/week_2/day/1.webp",
    "pair": "R32",
-   "note": "composed for Home with the subject in the upper part; anchor set by eye on the made photo"
-  },
-  "4b77f610c3f8": {
-   "verdict": "PAIR",
-   "anchorY": 33,
-   "bucket": "fog-night",
-   "image": "fog/week_1/night/5.webp",
-   "pair": "R35",
-   "note": "composed for Home with the subject in the upper part; anchor set by eye on the made photo"
-  },
-  "744643e152b8": {
-   "verdict": "PAIR",
-   "anchorY": 35,
-   "bucket": "clear-day",
-   "image": "clear/week_4/day/7.webp",
-   "pair": "R36",
-   "note": "composed for Home with the subject in the upper part; anchor set by eye on the made photo"
-  },
-  "508a39ca3436": {
-   "verdict": "PAIR",
-   "anchorY": 33,
-   "bucket": "clear-day",
-   "image": "clear/week_4/day/6.webp",
-   "pair": "R37",
    "note": "composed for Home with the subject in the upper part; anchor set by eye on the made photo"
   },
   "42df59c8ac8a": {
@@ -2055,14 +1626,6 @@
    "pair": "R40",
    "note": "composed for Home with the subject in the upper part; anchor set by eye on the made photo"
   },
-  "f9f55b1dcfeb": {
-   "verdict": "PAIR",
-   "anchorY": 35,
-   "bucket": "clear-day",
-   "image": "clear/week_3/day/3.webp",
-   "pair": "R42",
-   "note": "composed for Home with the subject in the upper part; anchor set by eye on the made photo"
-  },
   "0fe1f7c40461": {
    "verdict": "PAIR",
    "anchorY": 35,
@@ -2071,28 +1634,12 @@
    "pair": "R43",
    "note": "composed for Home with the subject in the upper part; anchor set by eye on the made photo"
   },
-  "3c8fb431fafe": {
-   "verdict": "PAIR",
-   "anchorY": 30,
-   "bucket": "cloudy-day",
-   "image": "cloudy/week_4/day/7.webp",
-   "pair": "R44",
-   "note": "composed for Home with the subject in the upper part; anchor set by eye on the made photo"
-  },
   "fbaca052756a": {
    "verdict": "PAIR",
    "anchorY": 33,
    "bucket": "rain-day",
    "image": "rain/week_1/day/2.webp",
    "pair": "R45",
-   "note": "composed for Home with the subject in the upper part; anchor set by eye on the made photo"
-  },
-  "504caee429a0": {
-   "verdict": "PAIR",
-   "anchorY": 35,
-   "bucket": "storm-night",
-   "image": "storm/week_1/night/6.webp",
-   "pair": "R46",
    "note": "composed for Home with the subject in the upper part; anchor set by eye on the made photo"
   },
   "00f62db773d8": {
@@ -2111,140 +1658,12 @@
    "pair": "R49",
    "note": "composed for Home with the subject in the upper part; anchor set by eye on the made photo"
   },
-  "454c5a6995aa": {
-   "verdict": "PAIR",
-   "anchorY": 33,
-   "bucket": "wind-day",
-   "image": "wind/week_2/day/6.webp",
-   "pair": "R50",
-   "note": "composed for Home with the subject in the upper part; anchor set by eye on the made photo"
-  },
-  "a300495d4526": {
-   "verdict": "PAIR",
-   "anchorY": 30,
-   "bucket": "clear-dawn",
-   "image": "clear/week_2/dawn/6.webp",
-   "pair": "R52",
-   "note": "composed for Home with the subject in the upper part; anchor set by eye on the made photo"
-  },
-  "0d7c5c34c6a0": {
-   "verdict": "PAIR",
-   "anchorY": 30,
-   "bucket": "clear-day",
-   "image": "clear/week_1/day/4.webp",
-   "pair": "R59",
-   "note": "composed for Home with the subject in the upper part; anchor set by eye on the made photo"
-  },
-  "636c4074f988": {
-   "verdict": "PAIR",
-   "anchorY": 30,
-   "bucket": "cold-night",
-   "image": "cold/week_2/night/5.webp",
-   "pair": "R29",
-   "note": "composed for Home with the subject in the upper part; anchor set by eye on the made photo"
-  },
-  "3bb43b4437ad": {
-   "verdict": "PAIR",
-   "anchorY": 30,
-   "bucket": "cold-clear-dusk",
-   "image": "cold-clear/week_1/dusk/5.webp",
-   "pair": "R31",
-   "note": "composed for Home with the subject in the upper part; anchor set by eye on the made photo"
-  },
-  "13f616637843": {
-   "verdict": "PAIR",
-   "anchorY": 30,
-   "bucket": "fog-dusk",
-   "image": "fog/week_1/dusk/3.webp",
-   "pair": "R33",
-   "note": "composed for Home with the subject in the upper part; anchor set by eye on the made photo"
-  },
-  "4191f6a7d49f": {
-   "verdict": "PAIR",
-   "anchorY": 22,
-   "bucket": "fog-dusk",
-   "image": "fog/week_1/dusk/7.webp",
-   "pair": "R34",
-   "note": "composed for Home with the subject in the upper part; anchor set by eye on the made photo"
-  },
-  "1c3c5a763f13": {
-   "verdict": "PAIR",
-   "anchorY": 30,
-   "bucket": "clear-day",
-   "image": "clear/week_3/day/1.webp",
-   "pair": "R36b",
-   "note": "composed for Home with the subject in the upper part; anchor set by eye on the made photo"
-  },
-  "7d13aaa156f4": {
-   "verdict": "PAIR",
-   "anchorY": 25,
-   "bucket": "clear-day",
-   "image": "clear/week_4/day/1.webp",
-   "pair": "R41",
-   "note": "composed for Home with the subject in the upper part; anchor set by eye on the made photo"
-  },
-  "c0246be3744d": {
-   "verdict": "PAIR",
-   "anchorY": 28,
-   "bucket": "clear-dawn",
-   "image": "clear/week_2/dawn/4.webp",
-   "pair": "R52b",
-   "note": "composed for Home with the subject in the upper part; anchor set by eye on the made photo"
-  },
-  "1d12b604469e": {
-   "verdict": "PAIR",
-   "anchorY": 22,
-   "bucket": "heat-night",
-   "image": "heat/week_1/night/4.webp",
-   "pair": "R54",
-   "note": "composed for Home with the subject in the upper part; anchor set by eye on the made photo"
-  },
-  "1914aa132481": {
-   "verdict": "PAIR",
-   "anchorY": 30,
-   "bucket": "rain-dawn",
-   "image": "rain/week_1/dawn/4.webp",
-   "pair": "R55",
-   "note": "composed for Home with the subject in the upper part; anchor set by eye on the made photo"
-  },
-  "5542dfc7215d": {
-   "verdict": "PAIR",
-   "anchorY": 30,
-   "bucket": "rain-dusk",
-   "image": "rain/week_2/dusk/3.webp",
-   "pair": "R57",
-   "note": "composed for Home with the subject in the upper part; anchor set by eye on the made photo"
-  },
   "b0496e09ee35": {
    "verdict": "PAIR",
    "anchorY": 25,
    "bucket": "storm-dawn",
    "image": "storm/week_1/dawn/3.webp",
    "pair": "R58",
-   "note": "composed for Home with the subject in the upper part; anchor set by eye on the made photo"
-  },
-  "8d215e14d9ba": {
-   "verdict": "PAIR",
-   "anchorY": 30,
-   "bucket": "cold-dusk",
-   "image": "cold/week_1/dusk/2.webp",
-   "pair": "R60",
-   "note": "composed for Home with the subject in the upper part; anchor set by eye on the made photo"
-  },
-  "7d4fb2e85dbf": {
-   "verdict": "PAIR",
-   "anchorY": 28,
-   "bucket": "heat-dawn",
-   "image": "heat/week_1/dawn/5.webp",
-   "pair": "R53",
-   "note": "composed for Home with the subject in the upper part; anchor set by eye on the made photo"
-  },
-  "60d5a3416f6b": {
-   "verdict": "PAIR",
-   "anchorY": 28,
-   "bucket": "rain-dawn",
-   "image": "rain/week_1/dawn/6.webp",
-   "pair": "R56",
    "note": "composed for Home with the subject in the upper part; anchor set by eye on the made photo"
   }
  },

@@ -47,7 +47,9 @@ describe('desktop polaroid reads Al\'s ruled anchor for every photograph', () =>
       expect(heroCropDesktopFor(`assets/images/bg-canonical/${p.sha256}.webp?v=20261008-sets`), `canonical ${sha1}`).toBe(want);
       for (const rel of p.paths) expect(heroCropDesktopFor(`assets/images/bg/${rel}`), `${rel}`).toBe(want);
     }
-    expect(ruled).toBeGreaterThanOrEqual(270);
+    // 222 since the library reframes (8 Oct 2026): 77 photographs got new frames, and the anchors Al ruled on the old
+    // frames were dropped with them (scripts/ingest-library-reframes.mjs).
+    expect(ruled).toBeGreaterThanOrEqual(222);
   });
 
   it('the dog in the grey jumper: ruled 100% (bottom of the frame), was cut off at 25%', () => {

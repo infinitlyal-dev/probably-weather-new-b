@@ -4,6 +4,8 @@
 // One contact sheet per set, for Al to rule keep / cut by filename.
 //
 //   npm run build && node scripts/new-sets-phone-sheets.mjs
+//   node scripts/new-sets-phone-sheets.mjs --reframes   the library reframes of 8 Oct 2026, one sheet, from the built grid
+//                                                      (each photograph with its first line, its folder's weather)
 // Output: review/new-sets-phone-2026-10-08/{partly-cloudy,breezy,cloudy}.jpg (+ one render per photograph)
 import { createServer } from 'node:http';
 import { existsSync, mkdirSync, readdirSync, readFileSync } from 'node:fs';
@@ -26,7 +28,16 @@ const WEATHER = {
   'partly-cloudy': { key: 'clear', label: 'Partly cloudy', tempC: 22, cloudPct: 45, windKph: 12 },
   breezy: { key: 'breezy', label: 'Breezy', tempC: 20, cloudPct: 20, windKph: 22 },
   cloudy: { key: 'cloudy', label: 'Cloudy', tempC: 16, cloudPct: 95, windKph: 8 },
+  clear: { key: 'clear', label: 'Clear', tempC: 24, cloudPct: 5, windKph: 10 },
+  cold: { key: 'cold', label: 'Cold', tempC: 9, cloudPct: 80, windKph: 12 },
+  'cold-clear': { key: 'cold-clear', label: 'Cold and clear', tempC: 7, cloudPct: 5, windKph: 6 },
+  fog: { key: 'fog', label: 'Fog', tempC: 13, cloudPct: 100, windKph: 4 },
+  heat: { key: 'heat', label: 'Hot', tempC: 33, cloudPct: 5, windKph: 8 },
+  rain: { key: 'rain', label: 'Rain', tempC: 14, cloudPct: 100, windKph: 18 },
+  storm: { key: 'storm', label: 'Storm', tempC: 16, cloudPct: 100, windKph: 35 },
+  wind: { key: 'wind', label: 'Windy', tempC: 18, cloudPct: 30, windKph: 45 },
 };
+const REFRAMES = process.argv.includes('--reframes');
 const HOUR = { dawn: 7, day: 13, dusk: 18, night: 22 };
 let now = { set: 'cloudy', time: 'day' };
 function payload() {
@@ -54,7 +65,7 @@ const server = createServer((req, res) => {
     return res.writeHead(200, { 'Content-Type': 'application/json' }).end(JSON.stringify(body));
   }
   if (pathname.startsWith('/_vercel/')) return res.writeHead(204).end();
-  const base = pathname.startsWith('/review/') ? root : R('dist');
+  const base = pathname.startsWith('/review/') || pathname.startsWith('/assets/images/bg/') ? root : R('dist');
   const file = path.resolve(base, pathname === '/' ? 'index.html' : pathname.slice(1));
   let buf; try { buf = readFileSync(file); } catch { return res.writeHead(404).end(); }
   res.writeHead(200, { 'Content-Type': MIME[path.extname(file)] || 'application/octet-stream' }).end(buf);
@@ -65,13 +76,32 @@ const browser = await chromium.launch();
 mkdirSync(OUT, { recursive: true });
 
 const ORDER = ['dawn', 'day', 'dusk', 'night'];
-for (const set of ['partly-cloudy', 'breezy', 'cloudy']) {
-  const files = readdirSync(R('review', 'new-sets-2026-10-07', set)).filter((f) => /^(dawn|day|dusk|night)-[1-7](-weekB)?\.png$/.test(f))
+// --reframes: one "set" of the reframed library photographs, read from the grid (their first line, their own anchor).
+let reframeItems = null;
+if (REFRAMES) {
+  const { HERO_LINES } = await import(new URL('../assets/hero-lines.js', import.meta.url).href);
+  const { heroCropFor } = await import(new URL('../assets/hero-crop.js', import.meta.url).href);
+  const fin = JSON.parse(readFileSync(R('review', 'set-001-lines-bespoke-final.json'), 'utf8'));
+  // From the grid record (review/set-001-draft.json), so a photograph with no bespoke line (it serves the condition bank)
+  // is on the sheet too, with a bank line of its condition.
+  const { WEATHER_COPY } = await import(new URL('../assets/weather-copy.js', import.meta.url).href);
+  const draft = JSON.parse(readFileSync(R('review', 'set-001-draft.json'), 'utf8'));
+  const seen = new Set();
+  reframeItems = draft.assignments.filter((a) => /library-reframe-2026-10-08/.test(a.source || '') && !seen.has(a.hash) && seen.add(a.hash)).map((a) => {
+    const [cond, , time] = a.image.split('/');
+    const bank = WEATHER_COPY.witty?.[cond]?.en || [];
+    const line = (HERO_LINES[`bg/${a.image}`] || [])[0] || bank[0] || fin.set.find((e) => e.hash === a.hash)?.lines?.[0] || '';
+    return { rel: `${a.image} · ${a.replacedHash}`, url: `/assets/images/bg/${a.image}`, set: cond, time, line, crop: heroCropFor(`assets/images/bg/${a.image}`) };
+  }).sort((a, b) => a.set.localeCompare(b.set) || ORDER.indexOf(a.time) - ORDER.indexOf(b.time));
+}
+for (const set of REFRAMES ? ['library-reframes'] : ['partly-cloudy', 'breezy', 'cloudy']) {
+  const files = REFRAMES ? reframeItems.map((x) => x.rel) : readdirSync(R('review', 'new-sets-2026-10-07', set)).filter((f) => /^(dawn|day|dusk|night)-[1-7](-weekB)?\.png$/.test(f))
     .sort((a, b) => ORDER.indexOf(a.split('-')[0]) - ORDER.indexOf(b.split('-')[0]) || a.localeCompare(b, undefined, { numeric: true }));
   const shots = [];
   for (const f of files) {
-    const rel = `${set}/${f}`;
-    now = { set, time: f.split('-')[0] };
+    const item = REFRAMES ? reframeItems.find((x) => x.rel === f) : null;
+    const rel = item ? item.rel : `${set}/${f}`;
+    now = item ? { set: item.set, time: item.time } : { set, time: f.split('-')[0] };
     // A fresh page per photograph: the payload (weather, hour) is read at load, and the joke is written once.
     const ctx = await browser.newContext({ viewport: { width: VP.w, height: VP.h }, deviceScaleFactor: 2, isMobile: true, hasTouch: true });
     const page = await ctx.newPage();
@@ -84,7 +114,7 @@ for (const set of ['partly-cloudy', 'breezy', 'cloudy']) {
     });
     await page.goto(base, { waitUntil: 'networkidle' });
     await page.waitForFunction(() => { const s = document.getElementById('pwSplash'); return !s || s.classList.contains('splash-done'); }, null, { timeout: 20000 });
-    const crop = crops[rel]?.anchorY ?? null;
+    const crop = item ? item.crop : crops[rel]?.anchorY ?? null;
     await page.evaluate(async ({ url, line, crop }) => {
       const root = document.documentElement; const img = document.getElementById('bgImg');
       img.onload = null; img.onerror = null;
@@ -92,17 +122,17 @@ for (const set of ['partly-cloudy', 'breezy', 'cloudy']) {
       root.style.setProperty('--hero-url', `url("${url}")`);
       if (crop == null) root.style.removeProperty('--hero-crop'); else root.style.setProperty('--hero-crop', `${crop}%`);
       document.getElementById('headline').textContent = line;
-    }, { url: `/review/new-sets-2026-10-07/${rel}`, line: maat[rel].en, crop });
+    }, item ? { url: item.url, line: item.line, crop } : { url: `/review/new-sets-2026-10-07/${rel}`, line: maat[rel].en, crop });
     await page.waitForFunction(() => {
       const h = document.getElementById('headline');
       return h.style.opacity === '1' && !h.style.getPropertyValue('mask-image') && !h.style.getPropertyValue('-webkit-mask-image')
         && document.getElementById('dScrim')?.classList.contains('is-on');
     }, null, { timeout: 12000 }).catch(() => {});
     await page.waitForTimeout(300);
-    const file = path.join(OUT, `${set}-${f.replace('.png', '.jpg')}`);
+    const file = path.join(OUT, item ? `reframe-${f.split(' · ')[1]}.jpg` : `${set}-${f.replace('.png', '.jpg')}`);
     await page.screenshot({ path: file, type: 'jpeg', quality: 84 });
     await ctx.close();
-    shots.push({ file, label: rel, verdict: qc[rel] || '' });
+    shots.push({ file, label: item ? f.split(' · ')[0].replace('/week_', ' w').replace('.webp', '') : rel, verdict: item ? f.split(' · ')[1] : qc[rel] || '' });
   }
   const TW = 276, TH = 477, PAD = 12, LAB = 22, cols = 7;
   const rows = Math.ceil(shots.length / cols);

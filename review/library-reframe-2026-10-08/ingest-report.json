@@ -1,0 +1,829 @@
+[
+ {
+  "old": "002f0c1d5187",
+  "hash": "662416d2616f",
+  "slots": [
+   "wind/week_1/dusk/1.webp",
+   "wind/week_3/dusk/1.webp"
+  ],
+  "kb": 185,
+  "q": 82
+ },
+ {
+  "old": "042ba0a95388",
+  "hash": "686dbce6f903",
+  "slots": [
+   "cold-clear/week_1/day/3.webp",
+   "cold-clear/week_2/day/3.webp",
+   "cold-clear/week_3/day/3.webp",
+   "cold-clear/week_4/day/3.webp"
+  ],
+  "kb": 208,
+  "q": 82
+ },
+ {
+  "old": "04bdf14c306b",
+  "hash": "21f5fa9c142b",
+  "slots": [
+   "cloudy/week_2/day/7.webp"
+  ],
+  "kb": 92,
+  "q": 82
+ },
+ {
+  "old": "0d7c5c34c6a0",
+  "hash": "18fdc648ed5f",
+  "slots": [
+   "clear/week_1/day/4.webp",
+   "clear/week_3/day/4.webp"
+  ],
+  "kb": 246,
+  "q": 82
+ },
+ {
+  "old": "1108cfd1192f",
+  "hash": "28438356788a",
+  "slots": [
+   "clear/week_1/dawn/7.webp",
+   "clear/week_2/dawn/7.webp",
+   "clear/week_3/dawn/7.webp",
+   "clear/week_4/dawn/7.webp"
+  ],
+  "kb": 242,
+  "q": 82
+ },
+ {
+  "old": "13efc9191981",
+  "hash": "f7ca873cf943",
+  "slots": [
+   "cold/week_1/night/6.webp",
+   "cold/week_3/night/6.webp"
+  ],
+  "kb": 145,
+  "q": 82
+ },
+ {
+  "old": "13f616637843",
+  "hash": "96583bc75518",
+  "slots": [
+   "fog/week_1/dusk/3.webp",
+   "fog/week_2/dusk/3.webp",
+   "fog/week_3/dusk/3.webp",
+   "fog/week_4/dusk/3.webp"
+  ],
+  "kb": 58,
+  "q": 82
+ },
+ {
+  "old": "14c56f85c353",
+  "hash": "f6c5ce087817",
+  "slots": [
+   "storm/week_1/night/7.webp",
+   "storm/week_2/night/7.webp",
+   "storm/week_3/night/7.webp",
+   "storm/week_4/night/7.webp"
+  ],
+  "kb": 93,
+  "q": 82
+ },
+ {
+  "old": "15e8f0aa4baa",
+  "hash": "f0b88f3e50db",
+  "slots": [
+   "heat/week_2/dusk/5.webp",
+   "heat/week_4/dusk/5.webp"
+  ],
+  "kb": 204,
+  "q": 82
+ },
+ {
+  "old": "1914aa132481",
+  "hash": "6e5870ded321",
+  "slots": [
+   "rain/week_1/dawn/4.webp",
+   "rain/week_2/dawn/4.webp",
+   "rain/week_3/dawn/4.webp",
+   "rain/week_4/dawn/4.webp"
+  ],
+  "kb": 223,
+  "q": 82
+ },
+ {
+  "old": "1c3c5a763f13",
+  "hash": "263d2fd72df1",
+  "slots": [
+   "clear/week_3/day/1.webp"
+  ],
+  "kb": 177,
+  "q": 82
+ },
+ {
+  "old": "1c5f757ee79a",
+  "hash": "627b15e8ad3b",
+  "slots": [
+   "cold/week_1/dawn/3.webp",
+   "cold/week_2/dawn/3.webp",
+   "cold/week_3/dawn/3.webp",
+   "cold/week_4/dawn/3.webp"
+  ],
+  "kb": 153,
+  "q": 82
+ },
+ {
+  "old": "1d12b604469e",
+  "hash": "fbc82d23d064",
+  "slots": [
+   "heat/week_1/night/4.webp",
+   "heat/week_2/night/4.webp",
+   "heat/week_3/night/4.webp",
+   "heat/week_4/night/4.webp"
+  ],
+  "kb": 96,
+  "q": 82
+ },
+ {
+  "old": "2a3a60226c30",
+  "hash": "3cd876a7abd9",
+  "slots": [
+   "heat/week_1/night/2.webp",
+   "heat/week_2/night/2.webp",
+   "heat/week_3/night/2.webp",
+   "heat/week_4/night/2.webp"
+  ],
+  "kb": 54,
+  "q": 82
+ },
+ {
+  "old": "2c5a9b3813f4",
+  "hash": "bb008f83ac69",
+  "slots": [
+   "rain/week_2/day/5.webp",
+   "rain/week_4/day/5.webp"
+  ],
+  "kb": 180,
+  "q": 82
+ },
+ {
+  "old": "32dec9fbdcaa",
+  "hash": "bb69d0bf426a",
+  "slots": [
+   "cold-clear/week_1/day/7.webp",
+   "cold-clear/week_2/day/7.webp",
+   "cold-clear/week_3/day/7.webp",
+   "cold-clear/week_4/day/7.webp"
+  ],
+  "kb": 135,
+  "q": 82
+ },
+ {
+  "old": "34890f7d9e5c",
+  "hash": "94a29876fb2a",
+  "slots": [
+   "cold-clear/week_2/dawn/6.webp",
+   "cold-clear/week_4/dawn/6.webp"
+  ],
+  "kb": 166,
+  "q": 82
+ },
+ {
+  "old": "36ffe52cf7ec",
+  "hash": "a3bf3df24516",
+  "slots": [
+   "cold/week_1/day/7.webp",
+   "cold/week_3/day/7.webp"
+  ],
+  "kb": 134,
+  "q": 82
+ },
+ {
+  "old": "3bb43b4437ad",
+  "hash": "33670cf75642",
+  "slots": [
+   "cold-clear/week_1/dusk/5.webp",
+   "cold-clear/week_2/dusk/5.webp",
+   "cold-clear/week_3/dusk/5.webp",
+   "cold-clear/week_4/dusk/5.webp"
+  ],
+  "kb": 90,
+  "q": 82
+ },
+ {
+  "old": "3c8fb431fafe",
+  "hash": "f70235ea3239",
+  "slots": [
+   "cloudy/week_4/day/7.webp"
+  ],
+  "kb": 108,
+  "q": 82
+ },
+ {
+  "old": "4191f6a7d49f",
+  "hash": "4c306b0743ae",
+  "slots": [
+   "fog/week_1/dusk/7.webp",
+   "fog/week_2/dusk/7.webp",
+   "fog/week_3/dusk/7.webp",
+   "fog/week_4/dusk/7.webp"
+  ],
+  "kb": 59,
+  "q": 82
+ },
+ {
+  "old": "454c5a6995aa",
+  "hash": "ba0c0e838ef3",
+  "slots": [
+   "wind/week_2/day/6.webp",
+   "wind/week_4/day/6.webp"
+  ],
+  "kb": 205,
+  "q": 82
+ },
+ {
+  "old": "47550fce6c98",
+  "hash": "dea898fa4fee",
+  "slots": [
+   "cloudy/week_2/day/2.webp",
+   "cloudy/week_4/day/2.webp"
+  ],
+  "kb": 162,
+  "q": 82
+ },
+ {
+  "old": "4b77f610c3f8",
+  "hash": "395ad8d85838",
+  "slots": [
+   "fog/week_1/night/5.webp",
+   "fog/week_2/night/5.webp",
+   "fog/week_3/night/5.webp",
+   "fog/week_4/night/5.webp"
+  ],
+  "kb": 77,
+  "q": 82
+ },
+ {
+  "old": "4cbd692804c1",
+  "hash": "55bb6b48141f",
+  "slots": [
+   "wind/week_2/night/6.webp",
+   "wind/week_4/night/6.webp"
+  ],
+  "kb": 165,
+  "q": 82
+ },
+ {
+  "old": "4d3a786acf48",
+  "hash": "f66c7621c29c",
+  "slots": [
+   "wind/week_1/day/2.webp",
+   "wind/week_3/day/2.webp"
+  ],
+  "kb": 239,
+  "q": 82
+ },
+ {
+  "old": "4e474a9a4873",
+  "hash": "de0391a5031f",
+  "slots": [
+   "storm/week_1/dawn/6.webp",
+   "storm/week_2/dawn/6.webp",
+   "storm/week_3/dawn/6.webp",
+   "storm/week_4/dawn/6.webp"
+  ],
+  "kb": 179,
+  "q": 82
+ },
+ {
+  "old": "4e7c3b6e7580",
+  "hash": "264eb3f1ed31",
+  "slots": [
+   "heat/week_2/day/2.webp",
+   "heat/week_4/day/2.webp"
+  ],
+  "kb": 267,
+  "q": 82
+ },
+ {
+  "old": "504caee429a0",
+  "hash": "e369a2fb706e",
+  "slots": [
+   "storm/week_1/night/6.webp",
+   "storm/week_3/night/6.webp"
+  ],
+  "kb": 101,
+  "q": 82
+ },
+ {
+  "old": "508a39ca3436",
+  "hash": "69cf33d36063",
+  "slots": [
+   "clear/week_4/day/6.webp"
+  ],
+  "kb": 178,
+  "q": 82
+ },
+ {
+  "old": "5542dfc7215d",
+  "hash": "0e37d6239e5c",
+  "slots": [
+   "rain/week_2/dusk/3.webp",
+   "rain/week_4/dusk/3.webp"
+  ],
+  "kb": 136,
+  "q": 82
+ },
+ {
+  "old": "5976dea068f8",
+  "hash": "ef09644d9669",
+  "slots": [
+   "clear/week_2/day/3.webp",
+   "clear/week_4/day/3.webp"
+  ],
+  "kb": 170,
+  "q": 82
+ },
+ {
+  "old": "5a6dd26eb7db",
+  "hash": "f584e04899ee",
+  "slots": [
+   "cold-clear/week_1/dawn/3.webp",
+   "cold-clear/week_2/dawn/3.webp",
+   "cold-clear/week_3/dawn/3.webp",
+   "cold-clear/week_4/dawn/3.webp"
+  ],
+  "kb": 192,
+  "q": 82
+ },
+ {
+  "old": "60d5a3416f6b",
+  "hash": "91920d6f2b61",
+  "slots": [
+   "rain/week_1/dawn/6.webp",
+   "rain/week_2/dawn/6.webp",
+   "rain/week_3/dawn/6.webp",
+   "rain/week_4/dawn/6.webp"
+  ],
+  "kb": 188,
+  "q": 82
+ },
+ {
+  "old": "614ba5459c4a",
+  "hash": "15f344f270c2",
+  "slots": [
+   "fog/week_2/dawn/3.webp",
+   "fog/week_4/dawn/3.webp"
+  ],
+  "kb": 103,
+  "q": 82
+ },
+ {
+  "old": "636c4074f988",
+  "hash": "74918c9daa5b",
+  "slots": [
+   "cold/week_2/night/5.webp",
+   "cold/week_4/night/5.webp"
+  ],
+  "kb": 63,
+  "q": 82
+ },
+ {
+  "old": "6591bd91d1fc",
+  "hash": "445b3ba3d63d",
+  "slots": [
+   "heat/week_1/day/3.webp",
+   "heat/week_2/day/3.webp",
+   "heat/week_3/day/3.webp",
+   "heat/week_4/day/3.webp"
+  ],
+  "kb": 283,
+  "q": 81
+ },
+ {
+  "old": "68317318c85d",
+  "hash": "9303c4484c0a",
+  "slots": [
+   "cloudy/week_1/night/2.webp",
+   "cloudy/week_2/night/2.webp",
+   "cloudy/week_3/night/2.webp",
+   "cloudy/week_4/night/2.webp"
+  ],
+  "kb": 144,
+  "q": 82
+ },
+ {
+  "old": "6bb604217e96",
+  "hash": "6d670d148ed4",
+  "slots": [
+   "wind/week_1/night/1.webp",
+   "wind/week_2/night/1.webp",
+   "wind/week_3/night/1.webp",
+   "wind/week_4/night/1.webp"
+  ],
+  "kb": 128,
+  "q": 82
+ },
+ {
+  "old": "71fdebcd3deb",
+  "hash": "68f63b198ea7",
+  "slots": [
+   "rain/week_1/dusk/1.webp",
+   "rain/week_2/dusk/1.webp",
+   "rain/week_3/dusk/1.webp",
+   "rain/week_4/dusk/1.webp"
+  ],
+  "kb": 167,
+  "q": 82
+ },
+ {
+  "old": "744643e152b8",
+  "hash": "0a159cc2ace1",
+  "slots": [
+   "clear/week_4/day/7.webp"
+  ],
+  "kb": 276,
+  "q": 82
+ },
+ {
+  "old": "775f4f1b47b4",
+  "hash": "38b862d7d61d",
+  "slots": [
+   "wind/week_2/dawn/1.webp",
+   "wind/week_4/dawn/1.webp"
+  ],
+  "kb": 189,
+  "q": 82
+ },
+ {
+  "old": "7d13aaa156f4",
+  "hash": "c423ac36650f",
+  "slots": [
+   "clear/week_4/day/1.webp"
+  ],
+  "kb": 159,
+  "q": 82
+ },
+ {
+  "old": "7d459440d824",
+  "hash": "88cfd7e971e0",
+  "slots": [
+   "cold/week_2/dusk/5.webp",
+   "cold/week_4/dusk/5.webp"
+  ],
+  "kb": 161,
+  "q": 82
+ },
+ {
+  "old": "7d4fb2e85dbf",
+  "hash": "f33fb544b3e0",
+  "slots": [
+   "heat/week_1/dawn/5.webp",
+   "heat/week_2/dawn/5.webp",
+   "heat/week_3/dawn/5.webp",
+   "heat/week_4/dawn/5.webp"
+  ],
+  "kb": 176,
+  "q": 82
+ },
+ {
+  "old": "7d50ec606bfc",
+  "hash": "b20be24d4aaf",
+  "slots": [
+   "clear/week_1/dusk/3.webp",
+   "clear/week_2/dusk/3.webp",
+   "clear/week_3/dusk/3.webp",
+   "clear/week_4/dusk/3.webp"
+  ],
+  "kb": 209,
+  "q": 82
+ },
+ {
+  "old": "844f8b7f5b89",
+  "hash": "6f184ded336b",
+  "slots": [
+   "clear/week_1/dawn/2.webp",
+   "clear/week_2/dawn/2.webp",
+   "clear/week_3/dawn/2.webp",
+   "clear/week_4/dawn/2.webp"
+  ],
+  "kb": 287,
+  "q": 82
+ },
+ {
+  "old": "8d215e14d9ba",
+  "hash": "d8c45c88a27b",
+  "slots": [
+   "cold/week_1/dusk/2.webp",
+   "cold/week_3/dusk/2.webp"
+  ],
+  "kb": 140,
+  "q": 82
+ },
+ {
+  "old": "8fd1944f303b",
+  "hash": "c611a4090ff0",
+  "slots": [
+   "cold-clear/week_1/night/6.webp",
+   "cold-clear/week_2/night/6.webp",
+   "cold-clear/week_3/night/6.webp",
+   "cold-clear/week_4/night/6.webp"
+  ],
+  "kb": 130,
+  "q": 82
+ },
+ {
+  "old": "92ef82c2d34a",
+  "hash": "430bc0e3d41c",
+  "slots": [
+   "wind/week_1/day/7.webp",
+   "wind/week_3/day/7.webp"
+  ],
+  "kb": 147,
+  "q": 82
+ },
+ {
+  "old": "9728bed72ec6",
+  "hash": "c522fe1e6bc8",
+  "slots": [
+   "heat/week_1/dusk/7.webp",
+   "heat/week_2/dusk/7.webp",
+   "heat/week_3/dusk/7.webp",
+   "heat/week_4/dusk/7.webp"
+  ],
+  "kb": 177,
+  "q": 82
+ },
+ {
+  "old": "99d0821cdd98",
+  "hash": "5c01cb0b7179",
+  "slots": [
+   "storm/week_1/day/1.webp",
+   "storm/week_3/day/1.webp"
+  ],
+  "kb": 152,
+  "q": 82
+ },
+ {
+  "old": "a300495d4526",
+  "hash": "3b5babdebfa1",
+  "slots": [
+   "clear/week_2/dawn/6.webp",
+   "clear/week_4/dawn/6.webp"
+  ],
+  "kb": 288,
+  "q": 82
+ },
+ {
+  "old": "a373f1d83e2f",
+  "hash": "ae1ddd4aa45b",
+  "slots": [
+   "cold/week_2/day/5.webp",
+   "cold/week_4/day/5.webp"
+  ],
+  "kb": 143,
+  "q": 82
+ },
+ {
+  "old": "aa3420ca4da1",
+  "hash": "9a2af24c29e0",
+  "slots": [
+   "clear/week_2/day/2.webp",
+   "clear/week_4/day/2.webp"
+  ],
+  "kb": 185,
+  "q": 82
+ },
+ {
+  "old": "aa3ccab85b60",
+  "hash": "f733a3c46589",
+  "slots": [
+   "cloudy/week_1/night/6.webp",
+   "cloudy/week_2/night/6.webp",
+   "cloudy/week_3/night/6.webp",
+   "cloudy/week_4/night/6.webp"
+  ],
+  "kb": 53,
+  "q": 82
+ },
+ {
+  "old": "b4ee9d16720e",
+  "hash": "3b6c8808dc5e",
+  "slots": [
+   "rain/week_1/dusk/5.webp",
+   "rain/week_2/dusk/5.webp",
+   "rain/week_3/dusk/5.webp",
+   "rain/week_4/dusk/5.webp"
+  ],
+  "kb": 109,
+  "q": 82
+ },
+ {
+  "old": "bbf6b6ef796a",
+  "hash": "0aa6f0dc51d4",
+  "slots": [
+   "wind/week_1/dawn/6.webp",
+   "wind/week_2/dawn/6.webp",
+   "wind/week_3/dawn/6.webp",
+   "wind/week_4/dawn/6.webp"
+  ],
+  "kb": 182,
+  "q": 82
+ },
+ {
+  "old": "be8276f7384b",
+  "hash": "f2d463be492c",
+  "slots": [
+   "wind/week_1/night/6.webp",
+   "wind/week_3/night/6.webp"
+  ],
+  "kb": 172,
+  "q": 82
+ },
+ {
+  "old": "c0246be3744d",
+  "hash": "8ee01c935b1d",
+  "slots": [
+   "clear/week_2/dawn/4.webp",
+   "clear/week_4/dawn/4.webp"
+  ],
+  "kb": 185,
+  "q": 82
+ },
+ {
+  "old": "c16f8303d56e",
+  "hash": "affa6944aeb6",
+  "slots": [
+   "cloudy/week_1/day/6.webp",
+   "cloudy/week_3/day/6.webp"
+  ],
+  "kb": 199,
+  "q": 82
+ },
+ {
+  "old": "c50ba2c591aa",
+  "hash": "f613a92f234d",
+  "slots": [
+   "cold/week_1/night/7.webp",
+   "cold/week_3/night/7.webp"
+  ],
+  "kb": 141,
+  "q": 82
+ },
+ {
+  "old": "ca6d821f7c9b",
+  "hash": "61c5b91771e8",
+  "slots": [
+   "clear/week_1/day/5.webp"
+  ],
+  "kb": 171,
+  "q": 82
+ },
+ {
+  "old": "cd4bd5c64c5d",
+  "hash": "d1b9fe13af2e",
+  "slots": [
+   "cold/week_2/night/6.webp",
+   "cold/week_4/night/6.webp"
+  ],
+  "kb": 103,
+  "q": 82
+ },
+ {
+  "old": "d6593f52fb76",
+  "hash": "25d67e168752",
+  "slots": [
+   "heat/week_1/day/2.webp"
+  ],
+  "kb": 97,
+  "q": 82
+ },
+ {
+  "old": "d68ae3f7c914",
+  "hash": "a5dcb910cb0d",
+  "slots": [
+   "wind/week_2/dusk/1.webp",
+   "wind/week_4/dusk/1.webp"
+  ],
+  "kb": 153,
+  "q": 82
+ },
+ {
+  "old": "d86d4f5699c2",
+  "hash": "e306e812d307",
+  "slots": [
+   "rain/week_2/day/4.webp",
+   "rain/week_4/day/4.webp"
+  ],
+  "kb": 242,
+  "q": 82
+ },
+ {
+  "old": "d878b96a3f71",
+  "hash": "5968109fcab9",
+  "slots": [
+   "rain/week_2/day/2.webp",
+   "rain/week_4/day/2.webp"
+  ],
+  "kb": 267,
+  "q": 82
+ },
+ {
+  "old": "da90853b2ccb",
+  "hash": "ba580c1b22f6",
+  "slots": [
+   "cold-clear/week_1/night/2.webp",
+   "cold-clear/week_2/night/2.webp",
+   "cold-clear/week_3/night/2.webp",
+   "cold-clear/week_4/night/2.webp"
+  ],
+  "kb": 133,
+  "q": 82
+ },
+ {
+  "old": "de1df07bf268",
+  "hash": "7cf3b4855d01",
+  "slots": [
+   "cloudy/week_1/dawn/2.webp",
+   "cloudy/week_2/dawn/2.webp",
+   "cloudy/week_3/dawn/2.webp",
+   "cloudy/week_4/dawn/2.webp"
+  ],
+  "kb": 126,
+  "q": 82
+ },
+ {
+  "old": "decff597fe6c",
+  "hash": "15a779ccb271",
+  "slots": [
+   "cold-clear/week_1/day/5.webp",
+   "cold-clear/week_2/day/5.webp",
+   "cold-clear/week_3/day/5.webp",
+   "cold-clear/week_4/day/5.webp"
+  ],
+  "kb": 113,
+  "q": 82
+ },
+ {
+  "old": "e400ca864a50",
+  "hash": "63d53beeeadc",
+  "slots": [
+   "storm/week_1/dawn/7.webp",
+   "storm/week_2/dawn/7.webp",
+   "storm/week_3/dawn/7.webp",
+   "storm/week_4/dawn/7.webp"
+  ],
+  "kb": 152,
+  "q": 82
+ },
+ {
+  "old": "e499768237ef",
+  "hash": "afefa4bfce14",
+  "slots": [
+   "cold/week_2/dusk/6.webp",
+   "cold/week_4/dusk/6.webp"
+  ],
+  "kb": 105,
+  "q": 82
+ },
+ {
+  "old": "e8500f5dfaee",
+  "hash": "71db5bd2e853",
+  "slots": [
+   "wind/week_2/day/4.webp",
+   "wind/week_4/day/4.webp"
+  ],
+  "kb": 185,
+  "q": 82
+ },
+ {
+  "old": "f9f55b1dcfeb",
+  "hash": "d595c5abbbc9",
+  "slots": [
+   "clear/week_3/day/3.webp"
+  ],
+  "kb": 168,
+  "q": 82
+ },
+ {
+  "old": "faaf0b2003be",
+  "hash": "9c2cd5b76064",
+  "slots": [
+   "storm/week_1/night/3.webp",
+   "storm/week_2/night/3.webp",
+   "storm/week_3/night/3.webp",
+   "storm/week_4/night/3.webp"
+  ],
+  "kb": 75,
+  "q": 82
+ },
+ {
+  "old": "fc06880aeadb",
+  "hash": "07134d7dde78",
+  "slots": [
+   "heat/week_1/dawn/3.webp",
+   "heat/week_2/dawn/3.webp",
+   "heat/week_3/dawn/3.webp",
+   "heat/week_4/dawn/3.webp"
+  ],
+  "kb": 86,
+  "q": 82
+ }
+]

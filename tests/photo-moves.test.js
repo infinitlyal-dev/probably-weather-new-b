@@ -32,7 +32,10 @@ const moves = bucket.rows.filter((r) => r.verdict === 'MOVE');
 const pairRecords = (final.pilotPairs?.records || ['review/pilot-pairs.json']).map((r) => read(`../${r}`));
 const appliedRuns = pairRecords.flatMap((rec) => [...(rec.appliedRuns || []), ...(rec.applied ? [rec.applied] : [])]);
 const superseded = new Map(appliedRuns.flatMap((a) => (a.benchChanges || []).filter((c) => c.removed).map((c) => [c.sha1, c.entry])));
-const pairHashAt = new Map(appliedRuns.flatMap((a) => (a.applied || []).flatMap((x) => x.slots.map((s) => [s, x.hash]))));
+// A photograph reframed in place (8 Oct 2026, scripts/ingest-library-reframes.mjs) holds new bytes under a new hash.
+const reframedTo = new Map(final.set.filter((e) => e.reframed).map((e) => [e.replacedHash, e.hash]));
+const now = (h) => reframedTo.get(h) || h;
+const pairHashAt = new Map(appliedRuns.flatMap((a) => (a.applied || []).flatMap((x) => x.slots.map((s) => [s, now(x.hash)]))));
 const retired = new Set((final.pilotPairs?.retired || []).map((r) => r.hash));
 // A bench entry the 7 Oct sets retired (scripts/ingest-new-sets.mjs, 8 Oct 2026: #40's old cloudy slots now hold the new
 // cloudy dawn-5) moved to `retired`; it is still that move's record, and its old slots hold the photograph named there.
@@ -73,7 +76,7 @@ describe('photo moves — Al\'s rulings of 2026-09-23', () => {
       // 2026-09-30 (Al, review/last-fixes-decisions.json: the re-roll R56 took all four of its slots, review/last-fixes-plan.json),
       // so it retired on record; its slots are checked as holding the pair that replaced it.
       for (const s of r.slots) {
-        expect(sha1Of(s)).toBe(retired.has(r.sha1) ? pairHashAt.get(s) : r.sha1);
+        expect(sha1Of(s)).toBe(retired.has(r.sha1) ? pairHashAt.get(s) : now(r.sha1));
         expect(servedAt.get(s)).toBe(s);
       }
     }
@@ -108,13 +111,13 @@ describe('photo moves — Al\'s rulings of 2026-09-23', () => {
       for (const s of dest) {
         expect(taken.has(s), `two moved photographs on ${s}`).toBe(false);
         taken.add(s);
-        expect(sha1Of(s)).toBe(r.sha1);
+        expect(sha1Of(s)).toBe(now(r.sha1));
         expect(servedAt.get(s)).toBe(s);
       }
       // the photograph already there keeps weeks 1 and 3
       const w1 = dest[0].replace('week_2', 'week_1'), w3 = dest[0].replace('week_2', 'week_3');
       expect(sha1Of(w1)).toBe(sha1Of(w3));
-      expect(sha1Of(w1)).not.toBe(r.sha1);
+      expect(sha1Of(w1)).not.toBe(now(r.sha1));
       expect(servedAt.get(w1)).toBe(w1);
     }
   });
