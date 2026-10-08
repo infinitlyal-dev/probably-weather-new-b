@@ -29,7 +29,8 @@ const esc = file.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 const m = new RegExp(`\\*\\*${esc} · ([^*]+)\\*\\*\\n([\\s\\S]*?)(?:\\n\\n|\\n###|$)`).exec(brief);
 if (!m) throw new Error(`${file}: not found in the brief`);
 const heading = m[1].trim();
-const scene = m[2].replace(/\s*\n\s*/g, ' ').trim();
+// --scene replaces the brief's scene (Al's ruling for breezy/dusk-5, 8 Oct 2026); the heading stays.
+const scene = arg('--scene', null) || m[2].replace(/\s*\n\s*/g, ' ').trim();
 const set = file.split('/')[0];
 const setRule = /\*\*(PARTLY CLOUDY|BREEZY|CLOUDY \(replacements\))\*\* — ([\s\S]*?)\n\n/g;
 const rules = {};
