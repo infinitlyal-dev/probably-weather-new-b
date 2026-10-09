@@ -29,8 +29,10 @@ export function gateLines(lang, lines) {
   for (const line of lines) {
     const v = (v2 ? checkV2 : check)({ lang, en: line.en || '', text: line.text, key: line.key });
     const doubts = v.findings.filter((f) => f.severity !== 'low').map((f) => `${f.severity} ${f.check}: ${f.message}`);
+    // the rebuilt checker's trust rests on the back-translation: a line without one is held (Sol, 9 Oct 2026)
+    if (v2 && !v.back) doubts.push('no back-translation record for this line and its English (scripts/lang-check/bt.mjs) — held until one exists');
     const out = { ...line, confidence: v.confidence, action: v.action, doubts, checker: v2 ? 'v2' : 'v1' };
-    if (v.action === 'triage-high') held.push(out);
+    if (v.action === 'triage-high' || (v2 && !v.back)) held.push(out);
     else if (v.action === 'triage') noted.push(out);
     else passed.push(out);
   }

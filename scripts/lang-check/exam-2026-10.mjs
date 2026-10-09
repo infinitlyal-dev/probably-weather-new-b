@@ -71,8 +71,10 @@ for (const lang of LANGS) {
   const hl = HEADLINE.map((c) => cls[c] || { before: 0, after: 0, n: 0 });
   const up = hl.map((h) => (h.before >= 1 ? h.after >= 1 : h.after > h.before));
   const ceiling = hl.map((h) => h.before >= 1 && h.after >= 1);
-  const precisionHeld = A.precision >= B.precision - 0.005;
-  const pass = up.every(Boolean) && precisionHeld;
+  const precisionHeld = A.precision >= B.precision; // strict: "precision not down" (Sol, 9 Oct 2026: no tolerance)
+  // Afrikaans also has to flag FEWER of Al's accepted lines (the brief's own test for the Afrikaans proof)
+  const alFewer = lang !== 'af' || alRows.filter((r) => r.after).length < alRows.filter((r) => r.before).length;
+  const pass = up.every(Boolean) && precisionHeld && alFewer;
   const btCover = L.filter((r) => r.btRun).length;
   result.perLanguage[lang] = { before: B, after: A, afterNoBt: N, classes: cls, btCoverage: `${btCover}/${L.length}` };
   result.pass[lang] = { pass, precisionHeld, recallUp: up, ceiling };

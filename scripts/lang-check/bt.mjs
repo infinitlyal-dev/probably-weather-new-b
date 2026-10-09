@@ -12,7 +12,7 @@
 
 import fs from 'node:fs';
 import path from 'node:path';
-import { BT_CACHE } from './lib/checker-v2.mjs';
+import { BT_CACHE, btKey } from './lib/checker-v2.mjs';
 
 export const BT_BRIEF = (blind, src, bt, out) => `You are a careful translator of South African languages (isiZulu "zu", isiXhosa "xh", Sesotho "st" in South African orthography, Afrikaans "af"). You are the back-translation pass of a translation checker for a weather app's short witty lines. Work only with the files named below; do not edit anything else.
 
@@ -53,27 +53,35 @@ if (cmd === 'export') {
 } else if (cmd === 'merge') {
   const dir = fs.existsSync(target) && fs.statSync(target).isDirectory() ? target : path.dirname(target);
   const cache = new Map();
-  if (fs.existsSync(BT_CACHE)) for (const l of fs.readFileSync(BT_CACHE, 'utf8').split('\n')) if (l.trim()) { const r = JSON.parse(l); cache.set(`${r.lang}\u0000${r.text}`, r); }
+  if (fs.existsSync(BT_CACHE)) for (const l of fs.readFileSync(BT_CACHE, 'utf8').split('\n')) if (l.trim()) { const r = JSON.parse(l); cache.set(btKey(r.lang, r.text, r.en), r); }
   // maps: <prefix>-map.json (id → {lang,text,en}); the gold-set run of 9 Oct keeps map.json (id → gold ref) beside blind/src
   const maps = {};
   for (const f of fs.readdirSync(dir).filter((f) => /map\.json$/.test(f))) Object.assign(maps, JSON.parse(fs.readFileSync(path.join(dir, f), 'utf8')));
-  let added = 0, missing = 0, bad = 0;
+  let added = 0, missing = 0, bad = 0, invalid = 0;
+  const VERDICTS = new Set(['same', 'loose', 'drift', 'wrong-language', 'untranslated', 'garbled']);
   for (const f of fs.readdirSync(dir).filter((f) => /-out\.json$/.test(f))) {
     let out;
     try { out = JSON.parse(fs.readFileSync(path.join(dir, f), 'utf8')); } catch { console.log(`  ${f}: not valid JSON — skipped`); bad++; continue; }
     const blind = JSON.parse(fs.readFileSync(path.join(dir, f.replace('-out.json', '-blind.json')), 'utf8'));
     const src = JSON.parse(fs.readFileSync(path.join(dir, f.replace('-out.json', '-src.json')), 'utf8'));
-    const byId = new Map(out.map((o) => [o.id, o]));
+    // Every answer must be well formed and given once (Sol, 9 Oct 2026); anything else is not cached, so the gate
+    // treats that line as never back-translated and holds it.
+    const count = new Map(); for (const o of out) count.set(o?.id, (count.get(o?.id) || 0) + 1);
+    const valid = (o) => o && count.get(o.id) === 1 && VERDICTS.has(o.verdict) && typeof o.bt === 'string' && o.bt.trim() !== ''
+      && o.confidence !== null && o.confidence !== '' && Number.isFinite(Number(o.confidence)) && Number(o.confidence) >= 0 && Number(o.confidence) <= 1;
+    const byId = new Map(out.filter(valid).map((o) => [o.id, o]));
+    invalid += out.length - byId.size;
     const enOf = new Map(src.map((s) => [s.id, s.en]));
     for (const x of blind) {
       const o = byId.get(x.id);
       if (!o) { missing++; continue; }
-      cache.set(`${x.lang}\u0000${x.text}`, { lang: x.lang, text: x.text, en: enOf.get(x.id) || '', bt: o.bt, langSeen: o.langSeen, verdict: o.verdict, confidence: Number(o.confidence) || 0, note: o.note || '', model: 'claude-sonnet-5-5', run: path.basename(f, '-out.json'), at: new Date().toISOString().slice(0, 10) });
+      const en = enOf.get(x.id) || '';
+      cache.set(btKey(x.lang, x.text, en), { lang: x.lang, text: x.text, en, bt: o.bt, langSeen: o.langSeen, verdict: o.verdict, confidence: Number(o.confidence), note: o.note || '', model: 'claude-sonnet-5-5', run: path.basename(f, '-out.json'), at: new Date().toISOString().slice(0, 10) });
       added++;
     }
   }
   fs.writeFileSync(BT_CACHE, [...cache.values()].map((r) => JSON.stringify(r)).join('\n') + '\n');
-  console.log(`bt-cache: ${cache.size} records (${added} from this merge, ${missing} ids without an answer, ${bad} unreadable files)`);
+  console.log(`bt-cache: ${cache.size} records (${added} from this merge, ${missing} ids without a valid answer, ${invalid} malformed or duplicate answers dropped, ${bad} unreadable files)`);
 } else {
   console.log('usage: bt.mjs export <set.json> [--out prefix] | bt.mjs merge <dir>');
 }

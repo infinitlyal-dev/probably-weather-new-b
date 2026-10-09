@@ -34,17 +34,32 @@ export const WEB_SOURCES = [
 ];
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
-const lastHit = new Map();
-async function politeFetch(url) {
-  const host = new URL(url).host;
-  const wait = (lastHit.get(host) || 0) + 1500 - Date.now();
+// One queue per host: each request reserves the next 1.5 s slot before it waits, so harvests running side by side on
+// the same host (the four gov.za sections) cannot wake together and burst (Sol, 9 Oct 2026).
+const nextSlot = new Map();
+async function hostTurn(host) {
+  const at = Math.max(Date.now(), nextSlot.get(host) || 0);
+  nextSlot.set(host, at + 1500);
+  const wait = at - Date.now();
   if (wait > 0) await sleep(wait);
-  lastHit.set(host, Date.now());
-  try {
-    const r = await fetch(url, { headers: { 'User-Agent': UA, Accept: 'text/html,application/xml;q=0.9,*/*;q=0.5' }, redirect: 'follow', signal: AbortSignal.timeout(20000) });
-    if (!r.ok) return { status: r.status, body: '' };
-    return { status: r.status, body: await r.text(), url: r.url };
-  } catch (e) { return { status: 0, body: '', error: e.message }; }
+}
+// Redirects are followed by hand, at most three, same origin only, and each hop only if `allow` (robots) permits it.
+async function politeFetch(url, allow = () => true) {
+  let u = url;
+  for (let hop = 0; hop < 4; hop++) {
+    await hostTurn(new URL(u).host);
+    try {
+      const r = await fetch(u, { headers: { 'User-Agent': UA, Accept: 'text/html,application/xml;q=0.9,*/*;q=0.5' }, redirect: 'manual', signal: AbortSignal.timeout(20000) });
+      if (r.status >= 300 && r.status < 400 && r.headers.get('location')) {
+        const next = new URL(r.headers.get('location'), u).href;
+        if (new URL(next).origin !== new URL(url).origin || !allow(next)) return { status: r.status, body: '', note: `redirect to ${next} not followed` };
+        u = next; continue;
+      }
+      if (!r.ok) return { status: r.status, body: '' };
+      return { status: r.status, body: await r.text(), url: u };
+    } catch (e) { return { status: 0, body: '', error: e.message }; }
+  }
+  return { status: 0, body: '', error: 'too many redirects' };
 }
 
 // ---------- robots.txt (the `*` group) ----------
@@ -127,18 +142,19 @@ export async function harvest(src, { idx, enIdx, log = console.log } = {}) {
   const robots = await politeFetch(`${src.host}/robots.txt`);
   const rules = robots.status === 200 ? parseRobots(robots.body) : [];
   report.robots = robots.status === 200 ? `read (${rules.length} rules for *)` : `HTTP ${robots.status || robots.error} — treated as no rules`;
-  const ok = (u) => { const p = new URL(u).pathname; const a = robotsAllows(rules, p); if (!a) report.skippedByRobots++; return a; };
+  const ok = (u) => { const x = new URL(u); const a = robotsAllows(rules, x.pathname + x.search); // the query counts (Disallow: /search?q=*)
+    if (!a) report.skippedByRobots++; return a; };
   let urls = [];
   if (src.sitemapIndex) {
-    const ix = await politeFetch(src.host + src.sitemapIndex);
+    const ix = ok(src.host + src.sitemapIndex) ? await politeFetch(src.host + src.sitemapIndex, ok) : { body: '' };
     const maps = locs(ix.body).filter((u) => src.sitemapMatch.test(u)).sort((a, b) => Number((/(\d+)\.xml/.exec(b) || [0, 0])[1]) - Number((/(\d+)\.xml/.exec(a) || [0, 0])[1])).slice(0, src.newestSitemaps || 1);
-    for (const m of maps) if (ok(m)) urls.push(...locs((await politeFetch(m)).body));
+    for (const m of maps) if (ok(m)) urls.push(...locs((await politeFetch(m, ok)).body));
   }
   // a sitemap may list further sitemaps (I'solezwe lesiXhosa: /sitemap.xml → /sitemap/iindaba/ → articles): follow two levels
   const isMap = (u) => /\.xml$|\/sitemap(\/|$)/.test(new URL(u).pathname);
   const expand = async (u, depth) => {
     if (!ok(u)) return;
-    for (const l of locs((await politeFetch(u)).body)) {
+    for (const l of locs((await politeFetch(u, ok)).body)) {
       if (isMap(l)) { if (depth < 2 && urls.length < src.max * 3) await expand(l, depth + 1); } else urls.push(l);
     }
   };
@@ -151,7 +167,7 @@ export async function harvest(src, { idx, enIdx, log = console.log } = {}) {
   const take = async (u) => {
     if (seen.has(u) || !ok(u)) return null;
     seen.add(u);
-    const r = await politeFetch(u);
+    const r = await politeFetch(u, ok);
     if (!r.body) { report.failed++; return null; }
     report.pages++;
     if (report.pages % 25 === 0) log(`    ${src.id}: ${report.pages} pages…`);

@@ -202,4 +202,4 @@ Back-translation records for 1064 of 1064 scored items.
 - "Die swembad word vanaand deur hoofkantoor vol gemaak, gratis." — medium:semantic:vol
 - "Hierdie weer het 'n 'meh' houding." — medium:contamination:meh
 
-(17.4 s)
+(19.9 s)

@@ -14,12 +14,13 @@ description: isiXhosa (xh) translation quality checker for Probably Weather, bac
 
 
 
+
 ## Drafting and checking a line (October 2026)
 
 What the checker does now, in order (`scripts/lang-check/lib/checker-v2.mjs`, run with `--v2`):
 
 1. **The corpus checker of 6 Sept, unchanged** (lexical, morphology, semantic glosses, contamination — below).
-2. **Concord** (`lib/concord.mjs`, zu/xh/st): a clause-initial noun and the first subject or possessive concord after it
+2. **Concord** (`lib/concord.mjs`, zu/xh/st): a clause-initial noun and the first subject concord after it (and, in isiZulu and isiXhosa, a possessive in -ase/-aka)
    must share a noun class. Rule-based, measured on native text before any gold item was scored: 0–1 false alarms per
    ~510 confirmed lines, 0.1–0.5 % of Leipzig sentences. A finding is MEDIUM: check the noun's class, then the concord.
 3. **Attestation in context** (`lib/ngram-attest.mjs`): a word flagged as unknown, as a sense that misses the English, or as

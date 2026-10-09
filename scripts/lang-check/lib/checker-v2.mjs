@@ -23,15 +23,18 @@ import { ROOT } from './build-index.mjs';
 
 export const BT_CACHE = path.join(ROOT, 'scripts', 'lang-check', 'data', 'bt-cache.jsonl');
 let btIndex = null;
-export function btRecord(lang, text) {
+// Keyed by language, text AND the English it was compared with (Sol, 9 Oct 2026): the same wording under a different
+// English line has not been checked against that line.
+export const btKey = (lang, text, en) => `${lang}\u0000${text}\u0000${en || ''}`;
+export function btRecord(lang, text, en = '') {
   if (!btIndex) {
     btIndex = new Map();
     if (fs.existsSync(BT_CACHE)) for (const l of fs.readFileSync(BT_CACHE, 'utf8').split('\n')) {
       if (!l.trim()) continue;
-      const r = JSON.parse(l); btIndex.set(`${r.lang}\u0000${r.text}`, r);
+      const r = JSON.parse(l); btIndex.set(btKey(r.lang, r.text, r.en), r);
     }
   }
-  return btIndex.get(`${lang}\u0000${text}`) || null;
+  return btIndex.get(btKey(lang, text, en)) || null;
 }
 export function resetBtCache() { btIndex = null; }
 
@@ -119,7 +122,7 @@ export function checkV2(item, { bt = 'cache' } = {}) {
   // (b) back-translation through a second model
   let back = null;
   if (bt) {
-    const r = bt === 'cache' ? btRecord(lang, text) : bt;
+    const r = bt === 'cache' ? btRecord(lang, text, item.en || '') : bt;
     if (r) {
       back = { bt: r.bt, verdict: r.verdict, confidence: r.confidence, note: r.note, langSeen: r.langSeen, model: r.model || 'claude-sonnet-5-5' };
       const strong = (r.confidence ?? 0) >= 0.6;

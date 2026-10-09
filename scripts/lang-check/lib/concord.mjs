@@ -13,8 +13,8 @@
 //   Sesotho (disjunctive): the subject concord is its own word, so "pula e a na", "letsatsi le a chesa". It is read
 //     only when a tense/aspect marker follows it (a, tla, tlo, ne, ntse, sa, ka, se) — 'le' is also "and", 'e' also
 //     "it is", 'a' also a question particle, so without that marker the word is not taken as a concord.
-//     Possessives: wa/oa (1,3) ba (2,14) ya/ea (4,9) la (5) a (6) sa (7) tsa (8,10) ha (15) — read only when the next
-//     word is not a function word.
+//     Sesotho possessives (wa/oa ya/ea la sa tsa ha …) are NOT judged: they only end the look-ahead, because the head
+//     of a possessive is too often not the clause's first word ("Dibomo tse nyenyane tsa leqhwa"). Measured, not assumed.
 //
 // A clause boundary (any punctuation) ends the look-ahead. Proper names (capitalised mid-sentence), loans with a
 // hyphen (i-Toyota) and the words the pack's lexicon protects are never judged.
@@ -160,6 +160,4 @@ export function concordFindings(text, lang, opts = {}) {
 }
 
 const ST_SC_OF = { 1: 'o', 3: 'o', 2: 'ba', 4: 'e', 9: 'e', 5: 'le', 6: 'a', 7: 'se', 8: 'di', 10: 'di', 14: 'bo', 15: 'ho' };
-const ST_POSS_OF = { 1: 'wa', 3: 'wa', 2: 'ba', 4: 'ya', 9: 'ya', 5: 'la', 6: 'a', 7: 'sa', 8: 'tsa', 10: 'tsa', 14: 'ba', 15: 'ha' };
 const expectSotho = (cls) => [...new Set(cls.map((c) => ST_SC_OF[c]).filter(Boolean))].map((s) => `'${s}'`).join(' or ');
-const expectSothoPoss = (cls) => [...new Set(cls.map((c) => ST_POSS_OF[c]).filter(Boolean))].map((s) => `'${s}'`).join(' or ');
