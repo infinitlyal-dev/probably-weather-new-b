@@ -51,7 +51,11 @@ const WEATHER = {
 };
 const wet = a.condition === 'rain' || a.condition === 'storm';
 const note = arg('--note', "Every person's face sits between 40% and 55% of the frame height: none higher, none lower; the sky and the setting fill the top of the frame.");
-const prompt = `${DAY[a.day]}, South Africa. ${TIME[a.time]} ${scene} The weather: ${WEATHER[a.condition]} ${note} ${TAIL} ${wet ? '' : DRY} ${HEAD}`.replace(/\s+/g, ' ').trim();
+// --no-head drops the house head-band sentence (a scene written with no faces at all, Al 9 Oct 2026); --weather replaces
+// the folder's weather sentence (a hot NIGHT is not "hard bright sun").
+const weather = arg('--weather', null) || WEATHER[a.condition];
+const head = args.includes('--no-head') ? '' : HEAD;
+const prompt = `${DAY[a.day]}, South Africa. ${TIME[a.time]} ${scene} The weather: ${weather} ${note} ${TAIL} ${wet ? '' : DRY} ${head}`.replace(/\s+/g, ' ').trim();
 if (args.includes('--print')) { console.log(prompt); process.exit(0); }
 
 mkdirSync(DIR, { recursive: true });

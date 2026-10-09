@@ -1031,13 +1031,6 @@
    "bucket": "heat-night",
    "image": "heat/week_1/night/2.webp"
   },
-  "87546db18e01": {
-   "verdict": "FIXABLE",
-   "anchorY": 68,
-   "ink": "white",
-   "bucket": "heat-night",
-   "image": "heat/week_2/night/2.webp"
-  },
   "ea333aeefd0d": {
    "verdict": "FIXABLE",
    "anchorY": 43,
@@ -1268,13 +1261,6 @@
    "ink": "white",
    "bucket": "storm-day",
    "image": "storm/week_3/day/5.webp"
-  },
-  "20f3d07d3c47": {
-   "verdict": "FIXABLE",
-   "anchorY": 69,
-   "ink": "white",
-   "bucket": "storm-day",
-   "image": "storm/week_3/day/3.webp"
   },
   "a02b40a1cdb7": {
    "verdict": "FIXABLE",
@@ -1632,14 +1618,6 @@
    "bucket": "heat-day",
    "image": "heat/week_3/day/2.webp",
    "pair": "R43",
-   "note": "composed for Home with the subject in the upper part; anchor set by eye on the made photo"
-  },
-  "fbaca052756a": {
-   "verdict": "PAIR",
-   "anchorY": 33,
-   "bucket": "rain-day",
-   "image": "rain/week_1/day/2.webp",
-   "pair": "R45",
    "note": "composed for Home with the subject in the upper part; anchor set by eye on the made photo"
   },
   "00f62db773d8": {

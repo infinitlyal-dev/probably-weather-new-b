@@ -1,0 +1,37 @@
+[
+ {
+  "old": "20f3d07d3c47",
+  "cur": "20f3d07d3c47",
+  "hash": "02ce45e97097",
+  "slots": [
+   "storm/week_1/day/5.webp",
+   "storm/week_3/day/5.webp"
+  ],
+  "kb": 103,
+  "q": 82
+ },
+ {
+  "old": "87546db18e01",
+  "cur": "87546db18e01",
+  "hash": "4154d8900355",
+  "slots": [
+   "heat/week_1/night/6.webp",
+   "heat/week_2/night/6.webp",
+   "heat/week_3/night/6.webp",
+   "heat/week_4/night/6.webp"
+  ],
+  "kb": 107,
+  "q": 82
+ },
+ {
+  "old": "fbaca052756a",
+  "cur": "fbaca052756a",
+  "hash": "0e5b05676c08",
+  "slots": [
+   "rain/week_1/day/2.webp",
+   "rain/week_3/day/2.webp"
+  ],
+  "kb": 109,
+  "q": 82
+ }
+]

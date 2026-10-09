@@ -8,6 +8,8 @@
 //                                                      (each photograph with its first line, its folder's weather)
 //   node scripts/new-sets-phone-sheets.mjs --landmarks  the landmark-creep re-takes (review/landmark-creep-2026-10-08/<hash>.png),
 //                                                      one sheet, with the line and anchor the live photograph has
+//   node scripts/new-sets-phone-sheets.mjs --takes faceless-2026-10-09   any folder of takes named by the hash they replace
+//                                                      (the live one, or the one a reframe replaced): one sheet, phone/<folder>.jpg
 // Output: review/new-sets-phone-2026-10-08/{partly-cloudy,breezy,cloudy}.jpg (+ one render per photograph)
 import { createServer } from 'node:http';
 import { existsSync, mkdirSync, readdirSync, readFileSync } from 'node:fs';
@@ -39,9 +41,10 @@ const WEATHER = {
   storm: { key: 'storm', label: 'Storm', tempC: 16, cloudPct: 100, windKph: 35 },
   wind: { key: 'wind', label: 'Windy', tempC: 18, cloudPct: 30, windKph: 45 },
 };
-const LANDMARKS = process.argv.includes('--landmarks');
+const TAKES = process.argv.includes('--takes') ? process.argv[process.argv.indexOf('--takes') + 1] : null;
+const LANDMARKS = process.argv.includes('--landmarks') || !!TAKES;
 const REFRAMES = process.argv.includes('--reframes') || LANDMARKS;
-const LANDMARK_DIR = 'review/landmark-creep-2026-10-08';
+const LANDMARK_DIR = TAKES ? `review/${TAKES}` : 'review/landmark-creep-2026-10-08';
 const HOUR = { dawn: 7, day: 13, dusk: 18, night: 22 };
 let now = { set: 'cloudy', time: 'day' };
 function payload() {
@@ -92,18 +95,19 @@ if (REFRAMES) {
   const draft = JSON.parse(readFileSync(R('review', 'set-001-draft.json'), 'utf8'));
   const seen = new Set();
   const retaken = LANDMARKS ? new Set(readdirSync(R(LANDMARK_DIR)).filter((f) => /^[0-9a-f]{12}\.png$/.test(f)).map((f) => f.slice(0, 12))) : null;
-  reframeItems = draft.assignments.filter((a) => /library-reframe-2026-10-08/.test(a.source || '') && !seen.has(a.hash) && seen.add(a.hash))
-    .filter((a) => !retaken || retaken.has(a.replacedHash)).map((a) => {
+  const takeOf = (a) => (TAKES && retaken.has(a.hash) ? a.hash : a.replacedHash);
+  reframeItems = draft.assignments.filter((a) => (TAKES || /library-reframe-2026-10-08/.test(a.source || '')) && !seen.has(a.hash) && seen.add(a.hash))
+    .filter((a) => !retaken || retaken.has(takeOf(a))).map((a) => {
     const [cond, , time] = a.image.split('/');
     const bank = WEATHER_COPY.witty?.[cond]?.en || [];
     const line = (HERO_LINES[`bg/${a.image}`] || [])[0] || bank[0] || fin.set.find((e) => e.hash === a.hash)?.lines?.[0] || '';
-    const url = retaken ? `/${LANDMARK_DIR}/${a.replacedHash}.png` : `/assets/images/bg/${a.image}`;
-    return { rel: `${a.image} · ${a.replacedHash}`, url, set: cond, time, line, crop: heroCropFor(`assets/images/bg/${a.image}`) };
+    const url = retaken ? `/${LANDMARK_DIR}/${takeOf(a)}.png` : `/assets/images/bg/${a.image}`;
+    return { rel: `${a.image} · ${takeOf(a)}`, url, set: cond, time, line, crop: heroCropFor(`assets/images/bg/${a.image}`) };
   }).sort((a, b) => a.set.localeCompare(b.set) || ORDER.indexOf(a.time) - ORDER.indexOf(b.time));
 }
 const SHEET_DIR = LANDMARKS ? R(LANDMARK_DIR, 'phone') : OUT;
 mkdirSync(SHEET_DIR, { recursive: true });
-for (const set of LANDMARKS ? ['landmark-replacements'] : REFRAMES ? ['library-reframes'] : ['partly-cloudy', 'breezy', 'cloudy']) {
+for (const set of TAKES ? [TAKES] : LANDMARKS ? ['landmark-replacements'] : REFRAMES ? ['library-reframes'] : ['partly-cloudy', 'breezy', 'cloudy']) {
   const files = REFRAMES ? reframeItems.map((x) => x.rel) : readdirSync(R('review', 'new-sets-2026-10-07', set)).filter((f) => /^(dawn|day|dusk|night)-[1-7](-weekB)?\.png$/.test(f))
     .sort((a, b) => ORDER.indexOf(a.split('-')[0]) - ORDER.indexOf(b.split('-')[0]) || a.localeCompare(b, undefined, { numeric: true }));
   const shots = [];

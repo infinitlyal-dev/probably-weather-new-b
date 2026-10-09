@@ -42,7 +42,9 @@ const rows = [];
 for (const old of keep) {
   const take = path.join(DIR, `${old}.png`);
   if (!existsSync(take)) throw new Error(`${old}: no take at ${take}`);
-  const cur = SUB ? draft.assignments.find((a) => a.replacedHash === old)?.hash : old;
+  // a take named by a hash still in the grid is a first reframe (the three faceless scenes, 9 Oct 2026); one named by the
+  // hash a reframe replaced is a retake of that reframe
+  const cur = draft.assignments.some((a) => a.hash === old) ? old : draft.assignments.find((a) => a.replacedHash === old)?.hash;
   const as = draft.assignments.filter((a) => a.hash === cur);
   if (!as.length) throw new Error(`${old}: not in review/set-001-draft.json`);
   const slots = [...new Set(as.flatMap((a) => a.paths || [a.image]))];
@@ -50,13 +52,15 @@ for (const old of keep) {
   const enc = await encodeBg(take);
   rows.push({ old, cur, hash: sha12(enc.buf), enc, slots, as });
 }
+const RETAKE = rows.some((r) => r.cur !== r.old);
+if (RETAKE && rows.some((r) => r.cur === r.old)) throw new Error('one run is either all retakes or all first reframes');
 
-console.log(`${DRY ? '[dry run] ' : ''}${rows.length} ${SUB ? `retaken photographs (${SUB})` : 'reframed photographs'}`);
+console.log(`${DRY ? '[dry run] ' : ''}${rows.length} ${RETAKE ? `retaken photographs (${SUB})` : `reframed photographs (${SUB || 'library-reframe-2026-10-08'})`}`);
 console.log('| old | new | WebP | slots | face anchor |\n|---|---|---|---|---|');
 for (const r of rows) console.log(`| ${r.old} | ${r.hash} | ${Math.round(r.enc.buf.length / 1024)} KB q${r.enc.q} | ${r.slots.join(', ')} | ${faceAnchors[r.old] ?? '—'} |`);
 if (DRY) process.exit(0);
 
-if (SUB) {
+if (RETAKE) {
   for (const r of rows) {
     for (const s of r.slots) {
       const dest = R('assets', 'images', 'bg', ...s.split('/'));
@@ -85,7 +89,7 @@ for (const r of rows) {
     writeFileSync(dest, r.enc.buf);
     if (sha12(readFileSync(dest)) !== r.hash) throw new Error(`${s}: write verification failed`);
   }
-  for (const a of r.as) { a.replacedHash = a.hash; a.hash = r.hash; a.source = `review/library-reframe-2026-10-08/${r.old}.png`; }
+  for (const a of r.as) { a.replacedHash = a.hash; a.hash = r.hash; a.source = `review/${SUB || 'library-reframe-2026-10-08'}/${r.old}.png`; }
   const fe = final.set.find((e) => e.hash === r.old);
   if (fe) { fe.replacedHash = r.old; fe.hash = r.hash; fe.reframed = true; }
   const prev = offsets.offsets[r.old];
