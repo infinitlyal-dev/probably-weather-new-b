@@ -20,3 +20,7 @@ anchors are as they were. All 16 takes are landmark-free.
   462–551 out; 46–79 s each.
 - Nothing in `assets/` changed. On Al's go: `node scripts/ingest-library-reframes.mjs` from these takes, the face check,
   the suite and the build.
+
+## Ingested (9 Oct 2026, Al's go)
+
+All 16 takes passed the face check at their existing anchors (`node scripts/anchor-faces.mjs --reframes --dir landmark-creep-2026-10-08`) and went into 45 slots by hash (`node scripts/ingest-library-reframes.mjs --dir landmark-creep-2026-10-08 --keep …`); lines and anchors unchanged, `retakeOf` keeps the reframe's hash. Old → new hashes: `ingest-report.json`.

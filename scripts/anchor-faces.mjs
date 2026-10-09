@@ -117,14 +117,18 @@ for (const set of ['partly-cloudy', 'breezy', 'cloudy']) {
 }
 if (NEW_ONLY) photos.splice(0, photos.length, ...photos.filter((p) => p.kind === 'new'));
 if (REFRAMES) {
-  const dir = R('review', 'library-reframe-2026-10-08');
+  // --dir <folder under review/>: a later pass whose takes are named by the hash the reframe replaced
+  // (review/landmark-creep-2026-10-08); each is judged with its photograph's lines and its current anchor.
+  const sub = args.includes('--dir') ? args[args.indexOf('--dir') + 1] : 'library-reframe-2026-10-08';
+  const dir = R('review', sub);
   const takes = readdirSync(dir).filter((f) => /^[0-9a-f]{12}\.png$/.test(f)).map((f) => f.slice(0, 12));
   const keep = [];
   for (const h of takes) {
-    const p = photos.find((x) => x.hash === h);
+    const nowHash = draft.assignments.find((x) => x.hash === h) ? h : draft.assignments.find((x) => x.replacedHash === h)?.hash;
+    const p = photos.find((x) => x.hash === nowHash);
     if (!p) continue;
     const file = path.join(dir, `${h}.png`);
-    keep.push({ ...p, kind: 'new', newFile: `reframe ${h} ${p.label}`, file, url: `/review/library-reframe-2026-10-08/${h}.png`,
+    keep.push({ ...p, kind: 'new', newFile: `reframe ${h} ${p.label}`, file, url: `/review/${sub}/${h}.png`,
       hash: sha12(readFileSync(file)), current: null });
   }
   photos.splice(0, photos.length, ...keep);

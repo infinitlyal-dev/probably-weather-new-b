@@ -1,0 +1,191 @@
+[
+ {
+  "old": "1108cfd1192f",
+  "cur": "28438356788a",
+  "hash": "dfb6d9836456",
+  "slots": [
+   "clear/week_1/dawn/7.webp",
+   "clear/week_2/dawn/7.webp",
+   "clear/week_3/dawn/7.webp",
+   "clear/week_4/dawn/7.webp"
+  ],
+  "kb": 289,
+  "q": 76
+ },
+ {
+  "old": "15e8f0aa4baa",
+  "cur": "f0b88f3e50db",
+  "hash": "774654a37cd0",
+  "slots": [
+   "heat/week_2/dusk/5.webp",
+   "heat/week_4/dusk/5.webp"
+  ],
+  "kb": 202,
+  "q": 82
+ },
+ {
+  "old": "1c5f757ee79a",
+  "cur": "627b15e8ad3b",
+  "hash": "895dfa5ff063",
+  "slots": [
+   "cold/week_1/dawn/3.webp",
+   "cold/week_2/dawn/3.webp",
+   "cold/week_3/dawn/3.webp",
+   "cold/week_4/dawn/3.webp"
+  ],
+  "kb": 112,
+  "q": 82
+ },
+ {
+  "old": "2c5a9b3813f4",
+  "cur": "bb008f83ac69",
+  "hash": "3468bc7ffbbb",
+  "slots": [
+   "rain/week_2/day/5.webp",
+   "rain/week_4/day/5.webp"
+  ],
+  "kb": 169,
+  "q": 82
+ },
+ {
+  "old": "32dec9fbdcaa",
+  "cur": "bb69d0bf426a",
+  "hash": "1ae2d23447d6",
+  "slots": [
+   "cold-clear/week_1/day/7.webp",
+   "cold-clear/week_2/day/7.webp",
+   "cold-clear/week_3/day/7.webp",
+   "cold-clear/week_4/day/7.webp"
+  ],
+  "kb": 220,
+  "q": 82
+ },
+ {
+  "old": "3bb43b4437ad",
+  "cur": "33670cf75642",
+  "hash": "8e7fc10dc1a4",
+  "slots": [
+   "cold-clear/week_1/dusk/5.webp",
+   "cold-clear/week_2/dusk/5.webp",
+   "cold-clear/week_3/dusk/5.webp",
+   "cold-clear/week_4/dusk/5.webp"
+  ],
+  "kb": 125,
+  "q": 82
+ },
+ {
+  "old": "5542dfc7215d",
+  "cur": "0e37d6239e5c",
+  "hash": "bb28540e1b06",
+  "slots": [
+   "rain/week_2/dusk/3.webp",
+   "rain/week_4/dusk/3.webp"
+  ],
+  "kb": 165,
+  "q": 82
+ },
+ {
+  "old": "6bb604217e96",
+  "cur": "6d670d148ed4",
+  "hash": "3bfa8aa1a64f",
+  "slots": [
+   "wind/week_1/night/1.webp",
+   "wind/week_2/night/1.webp",
+   "wind/week_3/night/1.webp",
+   "wind/week_4/night/1.webp"
+  ],
+  "kb": 94,
+  "q": 82
+ },
+ {
+  "old": "775f4f1b47b4",
+  "cur": "38b862d7d61d",
+  "hash": "2aa5612f64b5",
+  "slots": [
+   "wind/week_2/dawn/1.webp",
+   "wind/week_4/dawn/1.webp"
+  ],
+  "kb": 183,
+  "q": 82
+ },
+ {
+  "old": "8fd1944f303b",
+  "cur": "c611a4090ff0",
+  "hash": "2019cbcce10a",
+  "slots": [
+   "cold-clear/week_1/night/6.webp",
+   "cold-clear/week_2/night/6.webp",
+   "cold-clear/week_3/night/6.webp",
+   "cold-clear/week_4/night/6.webp"
+  ],
+  "kb": 96,
+  "q": 82
+ },
+ {
+  "old": "a373f1d83e2f",
+  "cur": "ae1ddd4aa45b",
+  "hash": "7f171ad865df",
+  "slots": [
+   "cold/week_2/day/5.webp",
+   "cold/week_4/day/5.webp"
+  ],
+  "kb": 126,
+  "q": 82
+ },
+ {
+  "old": "c0246be3744d",
+  "cur": "8ee01c935b1d",
+  "hash": "472de3d20195",
+  "slots": [
+   "clear/week_2/dawn/4.webp",
+   "clear/week_4/dawn/4.webp"
+  ],
+  "kb": 218,
+  "q": 82
+ },
+ {
+  "old": "ca6d821f7c9b",
+  "cur": "61c5b91771e8",
+  "hash": "70d5788cc359",
+  "slots": [
+   "clear/week_1/day/5.webp"
+  ],
+  "kb": 148,
+  "q": 82
+ },
+ {
+  "old": "d878b96a3f71",
+  "cur": "5968109fcab9",
+  "hash": "2e7f07d4ef62",
+  "slots": [
+   "rain/week_2/day/2.webp",
+   "rain/week_4/day/2.webp"
+  ],
+  "kb": 171,
+  "q": 82
+ },
+ {
+  "old": "decff597fe6c",
+  "cur": "15a779ccb271",
+  "hash": "cd7c8dc7cb6a",
+  "slots": [
+   "cold-clear/week_1/day/5.webp",
+   "cold-clear/week_2/day/5.webp",
+   "cold-clear/week_3/day/5.webp",
+   "cold-clear/week_4/day/5.webp"
+  ],
+  "kb": 117,
+  "q": 82
+ },
+ {
+  "old": "e8500f5dfaee",
+  "cur": "71db5bd2e853",
+  "hash": "c3ee599ba674",
+  "slots": [
+   "wind/week_2/day/4.webp",
+   "wind/week_4/day/4.webp"
+  ],
+  "kb": 228,
+  "q": 82
+ }
+]

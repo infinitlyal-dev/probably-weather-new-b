@@ -1828,17 +1828,6 @@
     "reason": "reframed photograph (Al, 8 Oct 2026)"
    }
   },
-  "627b15e8ad3b": {
-   "verdict": "FACE",
-   "bucket": "cold-dawn",
-   "image": "cold/week_1/dawn/3.webp",
-   "anchorY": 30,
-   "faceAnchor": {
-    "on": "2026-10-08",
-    "by": "scripts/anchor-faces.mjs --reframes",
-    "reason": "reframed photograph (Al, 8 Oct 2026)"
-   }
-  },
   "4c306b0743ae": {
    "verdict": "FACE",
    "bucket": "fog-dusk",
@@ -1883,7 +1872,29 @@
     "reason": "reframed photograph (Al, 8 Oct 2026)"
    }
   },
-  "61c5b91771e8": {
+  "07134d7dde78": {
+   "verdict": "FACE",
+   "bucket": "heat-dawn",
+   "image": "heat/week_1/dawn/3.webp",
+   "anchorY": 10,
+   "faceAnchor": {
+    "on": "2026-10-08",
+    "by": "scripts/anchor-faces.mjs --reframes",
+    "reason": "reframed photograph (Al, 8 Oct 2026)"
+   }
+  },
+  "895dfa5ff063": {
+   "verdict": "FACE",
+   "bucket": "cold-dawn",
+   "image": "cold/week_1/dawn/3.webp",
+   "anchorY": 30,
+   "faceAnchor": {
+    "on": "2026-10-08",
+    "by": "scripts/anchor-faces.mjs --reframes",
+    "reason": "reframed photograph (Al, 8 Oct 2026)"
+   }
+  },
+  "70d5788cc359": {
    "verdict": "FACE",
    "bucket": "clear-day",
    "image": "clear/week_1/day/5.webp",
@@ -1894,22 +1905,11 @@
     "reason": "reframed photograph (Al, 8 Oct 2026)"
    }
   },
-  "5968109fcab9": {
+  "2e7f07d4ef62": {
    "verdict": "FACE",
    "bucket": "rain-day",
    "image": "rain/week_2/day/2.webp",
    "anchorY": 14,
-   "faceAnchor": {
-    "on": "2026-10-08",
-    "by": "scripts/anchor-faces.mjs --reframes",
-    "reason": "reframed photograph (Al, 8 Oct 2026)"
-   }
-  },
-  "07134d7dde78": {
-   "verdict": "FACE",
-   "bucket": "heat-dawn",
-   "image": "heat/week_1/dawn/3.webp",
-   "anchorY": 10,
    "faceAnchor": {
     "on": "2026-10-08",
     "by": "scripts/anchor-faces.mjs --reframes",

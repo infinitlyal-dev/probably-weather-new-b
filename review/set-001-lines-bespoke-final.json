@@ -1328,7 +1328,7 @@
   },
   {
    "image": "clear/week_1/day/5.webp",
-   "hash": "61c5b91771e8",
+   "hash": "70d5788cc359",
    "condition": "clear",
    "time": "day",
    "week": "A",
@@ -1346,7 +1346,8 @@
     "clear/week_2/day/5.webp"
    ],
    "replacedHash": "ca6d821f7c9b",
-   "reframed": true
+   "reframed": true,
+   "retakeOf": "61c5b91771e8"
   },
   {
    "image": "clear/week_2/day/5.webp",
@@ -2871,7 +2872,7 @@
   },
   {
    "image": "cold/week_1/dawn/3.webp",
-   "hash": "627b15e8ad3b",
+   "hash": "895dfa5ff063",
    "condition": "cold",
    "time": "dawn",
    "week": "A",
@@ -2892,7 +2893,8 @@
     "cold/week_3/dawn/3.webp"
    ],
    "replacedHash": "1c5f757ee79a",
-   "reframed": true
+   "reframed": true,
+   "retakeOf": "627b15e8ad3b"
   },
   {
    "image": "cold/week_1/dawn/4.webp",
@@ -3142,7 +3144,7 @@
   },
   {
    "image": "cold/week_2/day/5.webp",
-   "hash": "ae1ddd4aa45b",
+   "hash": "7f171ad865df",
    "condition": "cold",
    "time": "day",
    "week": "B",
@@ -3160,7 +3162,8 @@
     "cold/week_4/day/1.webp"
    ],
    "replacedHash": "a373f1d83e2f",
-   "reframed": true
+   "reframed": true,
+   "retakeOf": "ae1ddd4aa45b"
   },
   {
    "image": "cold-clear/week_2/day/6.webp",
@@ -3495,7 +3498,7 @@
   },
   {
    "image": "cold-clear/week_1/day/7.webp",
-   "hash": "bb69d0bf426a",
+   "hash": "1ae2d23447d6",
    "condition": "cold-clear",
    "time": "day",
    "week": "A",
@@ -3514,7 +3517,8 @@
     "cold-clear/week_2/day/2.webp"
    ],
    "replacedHash": "32dec9fbdcaa",
-   "reframed": true
+   "reframed": true,
+   "retakeOf": "bb69d0bf426a"
   },
   {
    "image": "cold-clear/week_1/dusk/1.webp",
@@ -4281,7 +4285,7 @@
   },
   {
    "image": "rain/week_2/day/2.webp",
-   "hash": "5968109fcab9",
+   "hash": "2e7f07d4ef62",
    "condition": "rain",
    "time": "day",
    "week": "B",
@@ -4299,7 +4303,8 @@
     "rain/week_1/day/1.webp"
    ],
    "replacedHash": "d878b96a3f71",
-   "reframed": true
+   "reframed": true,
+   "retakeOf": "5968109fcab9"
   },
   {
    "image": "rain/week_2/day/6.webp",
@@ -5908,7 +5913,7 @@
   },
   {
    "image": "rain/week_2/day/5.webp",
-   "hash": "bb008f83ac69",
+   "hash": "3468bc7ffbbb",
    "condition": "rain",
    "time": "day",
    "week": "B",
@@ -5923,7 +5928,8 @@
    "pair": "P04",
    "ruledBy": "Al: LOVE on the taste page (all ten pilot pairs), 25 Sept 2026; line placed on its photo pending review/pairs-ruled.json",
    "replacedHash": "2c5a9b3813f4",
-   "reframed": true
+   "reframed": true,
+   "retakeOf": "bb008f83ac69"
   },
   {
    "image": "cloudy/week_1/dusk/2.webp",
@@ -6113,7 +6119,7 @@
   },
   {
    "image": "clear/week_1/dawn/7.webp",
-   "hash": "28438356788a",
+   "hash": "dfb6d9836456",
    "condition": "clear",
    "time": "dawn",
    "week": "A",
@@ -6130,7 +6136,8 @@
    "pair": "R03",
    "ruledBy": "Al: USE, the rolling page (review/pairs-rolling-ruled-2026-09-27.json), 27 Sept 2026; his brief names this pair's take",
    "replacedHash": "1108cfd1192f",
-   "reframed": true
+   "reframed": true,
+   "retakeOf": "28438356788a"
   },
   {
    "image": "clear/week_1/dawn/2.webp",
@@ -6155,7 +6162,7 @@
   },
   {
    "image": "heat/week_2/dusk/5.webp",
-   "hash": "f0b88f3e50db",
+   "hash": "774654a37cd0",
    "condition": "heat",
    "time": "dusk",
    "week": "B",
@@ -6170,7 +6177,8 @@
    "pair": "R10",
    "ruledBy": "Al: USE, the rolling page (review/pairs-rolling-ruled-2026-09-27.json), 27 Sept 2026; his brief names this pair's take",
    "replacedHash": "15e8f0aa4baa",
-   "reframed": true
+   "reframed": true,
+   "retakeOf": "f0b88f3e50db"
   },
   {
    "image": "storm/week_1/dawn/7.webp",
@@ -6195,7 +6203,7 @@
   },
   {
    "image": "wind/week_1/night/1.webp",
-   "hash": "6d670d148ed4",
+   "hash": "3bfa8aa1a64f",
    "condition": "wind",
    "time": "night",
    "week": "A",
@@ -6212,11 +6220,12 @@
    "pair": "R24",
    "ruledBy": "Al: USE, the rolling page (review/pairs-rolling-ruled-2026-09-27.json), 27 Sept 2026; his brief names this pair's take",
    "replacedHash": "6bb604217e96",
-   "reframed": true
+   "reframed": true,
+   "retakeOf": "6d670d148ed4"
   },
   {
    "image": "wind/week_2/day/4.webp",
-   "hash": "71db5bd2e853",
+   "hash": "c3ee599ba674",
    "condition": "wind",
    "time": "day",
    "week": "B",
@@ -6231,7 +6240,8 @@
    "pair": "R48",
    "ruledBy": "Al: USE, the rolling page (review/pairs-rolling-ruled-2026-09-27.json), 27 Sept 2026; his brief names this pair's take",
    "replacedHash": "e8500f5dfaee",
-   "reframed": true
+   "reframed": true,
+   "retakeOf": "71db5bd2e853"
   },
   {
    "image": "clear/week_1/dusk/7.webp",
@@ -6370,7 +6380,7 @@
   },
   {
    "image": "wind/week_2/dawn/1.webp",
-   "hash": "38b862d7d61d",
+   "hash": "2aa5612f64b5",
    "condition": "wind",
    "time": "dawn",
    "week": "B",
@@ -6385,7 +6395,8 @@
    "pair": "R20",
    "ruledBy": "Al: his marks on the photo-batches page, review/photo-batches-ruled.json, 30 Sept 2026",
    "replacedHash": "775f4f1b47b4",
-   "reframed": true
+   "reframed": true,
+   "retakeOf": "38b862d7d61d"
   },
   {
    "image": "wind/week_2/dusk/1.webp",
@@ -6769,7 +6780,7 @@
   },
   {
    "image": "cold-clear/week_1/dusk/5.webp",
-   "hash": "33670cf75642",
+   "hash": "8e7fc10dc1a4",
    "condition": "cold-clear",
    "time": "dusk",
    "week": "A",
@@ -6786,7 +6797,8 @@
    "pair": "R31",
    "ruledBy": "Al: his marks on the batch-3 page, review/photo-batch-3-ruled.json, 30 Sept 2026",
    "replacedHash": "3bb43b4437ad",
-   "reframed": true
+   "reframed": true,
+   "retakeOf": "33670cf75642"
   },
   {
    "image": "fog/week_1/dusk/3.webp",
@@ -6868,7 +6880,7 @@
   },
   {
    "image": "clear/week_2/dawn/4.webp",
-   "hash": "8ee01c935b1d",
+   "hash": "472de3d20195",
    "condition": "clear",
    "time": "dawn",
    "week": "B",
@@ -6883,7 +6895,8 @@
    "pair": "R52b",
    "ruledBy": "Al: his marks on the batch-3 page, review/photo-batch-3-ruled.json, 30 Sept 2026",
    "replacedHash": "c0246be3744d",
-   "reframed": true
+   "reframed": true,
+   "retakeOf": "8ee01c935b1d"
   },
   {
    "image": "heat/week_1/night/4.webp",
@@ -6929,7 +6942,7 @@
   },
   {
    "image": "rain/week_2/dusk/3.webp",
-   "hash": "0e37d6239e5c",
+   "hash": "bb28540e1b06",
    "condition": "rain",
    "time": "dusk",
    "week": "B",
@@ -6944,7 +6957,8 @@
    "pair": "R57",
    "ruledBy": "Al: his marks on the batch-3 page, review/photo-batch-3-ruled.json, 30 Sept 2026",
    "replacedHash": "5542dfc7215d",
-   "reframed": true
+   "reframed": true,
+   "retakeOf": "0e37d6239e5c"
   },
   {
    "image": "storm/week_1/dawn/3.webp",
