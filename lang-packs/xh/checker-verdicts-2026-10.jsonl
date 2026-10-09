@@ -1,0 +1,77 @@
+{"key":"witty.rain[44]","verdict":"PASS","reason":"","bt":"One breath of rain wind, and suddenly the whole country is a poet.","btVerdict":"same","staleKey":"witty.rain[44]","slot":"empty-slot"}
+{"key":"witty.rain[49]","verdict":"PASS","reason":"","bt":"Farming rain isn't just weather. It's a reward falling from the sky.","btVerdict":"loose","staleKey":"witty.rain[49]","slot":"empty-slot"}
+{"key":"witty.rain[51]","verdict":"PASS","reason":"","bt":"Wet tar at sunrise. That isn't a smell, it's an inheritance.","btVerdict":"same","staleKey":"witty.rain[51]","slot":"empty-slot"}
+{"key":"witty.rain[52]","verdict":"PASS","reason":"","bt":"Joburg rain has a diary: at 2 right in the afternoon, plenty of drama, no apology.","btVerdict":"same","staleKey":"witty.rain[53]","slot":"empty-slot"}
+{"key":"witty.rain[59]","verdict":"PASS","reason":"","bt":"All plans are now moved to 'when it clears'. Which will never happen. Oh dear.","btVerdict":"same","staleKey":"witty.rain[61]","slot":"empty-slot"}
+{"key":"witty.rain[60]","verdict":"PASS","reason":"","bt":"Highveld rain you feel by its smell before you see it. That is an introduction.","btVerdict":"same","staleKey":"witty.rain[62]","slot":"empty-slot"}
+{"key":"witty.rain[63]","verdict":"PASS","reason":"","bt":"[?At the levels] of the dams! All big rain is a free gift.","btVerdict":"same","staleKey":"witty.rain[65]","slot":"empty-slot"}
+{"key":"witty.rain[64]","verdict":"PASS","reason":"","bt":"News: the [?puddles/pools] are now open.","btVerdict":"same","staleKey":"witty.rain[66]","slot":"empty-slot"}
+{"key":"witty.rain[73]","verdict":"PASS","reason":"","bt":"It is still fifty kilometres away, but the stoep is already full.","btVerdict":"same","staleKey":"witty.rain[75]","slot":"empty-slot"}
+{"key":"witty.cloudy[38]","verdict":"PASS","reason":"","bt":"It is grey tomorrow. Let it just sit a little, like tea.","btVerdict":"same","staleKey":"witty.cloudy[39]","slot":"empty-slot"}
+{"key":"witty.cloudy[45]","verdict":"PASS","reason":"","bt":"Grey is also a colour, says mother. Today I believe her.","btVerdict":"same","staleKey":"witty.cloudy[46]","slot":"empty-slot"}
+{"key":"witty.cloudy[54]","verdict":"PASS","reason":"","bt":"The sky is wearing an interview suit: grey, clean, says nothing.","btVerdict":"same","staleKey":"witty.cloudy[55]","slot":"empty-slot"}
+{"key":"witty.cloudy[55]","verdict":"PASS","reason":"","bt":"Weekend grey: lawful permission to do nothing at all.","btVerdict":"same","staleKey":"witty.cloudy[56]","slot":"empty-slot"}
+{"key":"witty.cloudy[60]","verdict":"PASS","reason":"","bt":"A grey day is a baking day. Somebody's kitchen already smells good.","btVerdict":"same","staleKey":"witty.cloudy[61]","slot":"empty-slot"}
+{"key":"witty.cloudy[64]","verdict":"PASS","reason":"","bt":"The sun left work without saying goodbye. No farewell, but we understand.","btVerdict":"loose","staleKey":"witty.cloudy[65]","slot":"empty-slot"}
+{"key":"witty.cloudy[67]","verdict":"PASS","reason":"","bt":"The sunset was quiet tonight. Night has come anyway.","btVerdict":"same","staleKey":"witty.cloudy[69]","slot":"empty-slot"}
+{"key":"witty.cloudy[72]","verdict":"PASS","reason":"","bt":"The sky has covered itself. Your blankets are waiting for you. Does it just happen so? No.","btVerdict":"same","staleKey":"witty.cloudy[74]","slot":"empty-slot"}
+{"key":"witty.wind[20]","verdict":"PASS","reason":"","bt":"The Doctor walks looking at tomorrow. No need to book, unfortunately.","btVerdict":"loose","staleKey":"witty.wind[20]","slot":"empty-slot"}
+{"key":"witty.wind[41]","verdict":"PASS","reason":"","bt":"The tablecloth of the mountain is ironed and ready for tomorrow's work.","btVerdict":"same","staleKey":"witty.wind[41]","slot":"empty-slot"}
+{"key":"witty.cold[44]","verdict":"PASS","reason":"","bt":"Cape cold is wet cold. It enters your bones and stays.","btVerdict":"same","staleKey":"witty.cold[44]","slot":"empty-slot"}
+{"key":"witty.cold[52]","verdict":"PASS","reason":"","bt":"Highveld winter: being burnt by the sun and gripped by frost can happen in one day.","btVerdict":"same","staleKey":"witty.cold[52]","slot":"empty-slot"}
+{"key":"witty.cold[65]","verdict":"PASS","reason":"","bt":"Close enough to smile at, far enough not to [?blink at]. Perfect.","btVerdict":"loose","staleKey":"witty.cold[66]","slot":"empty-slot"}
+{"key":"witty.cold[73]","verdict":"PASS","reason":"","bt":"Wet sea cold: that kind pierces four blankets even with a good wind.","btVerdict":"same","staleKey":"witty.cold[74]","slot":"empty-slot"}
+{"key":"witty.cold[77]","verdict":"PASS","reason":"","bt":"You see the cold coming. It doesn't hide at all.","btVerdict":"same","staleKey":"witty.cold[78]","slot":"empty-slot"}
+{"key":"witty.cold[83]","verdict":"PASS","reason":"","bt":"We sit outside in the cold because inside, truly, it is colder.","btVerdict":"same","staleKey":"witty.cold[84]","slot":"empty-slot"}
+{"key":"witty.cold[89]","verdict":"PASS","reason":"","bt":"Wild animals do not wear scarves and do not complain. We can learn something. We will not learn, but we could learn.","btVerdict":"loose","staleKey":"witty.cold[90]","slot":"empty-slot"}
+{"key":"witty.cold[96]","verdict":"PASS","reason":"","bt":"The last piece of firewood is a decision, not just something that exists.","btVerdict":"same","staleKey":"witty.cold[97]","slot":"empty-slot"}
+{"key":"witty.cold[99]","verdict":"PASS","reason":"","bt":"I forgot to switch on the electric blanket early. Every. Night. All.","btVerdict":"same","staleKey":"witty.cold[100]","slot":"empty-slot"}
+{"key":"witty.cold-clear[36]","verdict":"PASS","reason":"","bt":"Today's sky: just washed, ironed by frost.","btVerdict":"same","staleKey":"witty.cold-clear[41]","slot":"empty-slot"}
+{"key":"witty.cold-clear[42]","verdict":"PASS","reason":"","bt":"It is a nice day to stay inside.","btVerdict":"same","staleKey":"witty.cold-clear[48]","slot":"empty-slot"}
+{"key":"witty.cold-clear[48]","verdict":"PASS","reason":"","bt":"It is suitable weather for drying clothes. The clothes will dry and then become ice, in that order.","btVerdict":"same","staleKey":"witty.cold-clear[55]","slot":"empty-slot"}
+{"key":"witty.cold-clear[53]","verdict":"PASS","reason":"","bt":"The shaded side of the field is a country of its own.","btVerdict":"loose","staleKey":"witty.cold-clear[62]","slot":"empty-slot"}
+{"key":"witty.cold-clear[60]","verdict":"PASS","reason":"","bt":"Padstal coffee works as a heater today.","btVerdict":"same","staleKey":"witty.cold-clear[70]","slot":"empty-slot"}
+{"key":"witty.cold-clear[69]","verdict":"PASS","reason":"","bt":"This is the best time of day. And the shortest. Run.","btVerdict":"loose","staleKey":"witty.cold-clear[80]","slot":"empty-slot"}
+{"key":"witty.cold-clear[72]","verdict":"PASS","reason":"","bt":"Look quickly. In ten minutes it will be night with a big cold.","btVerdict":"loose","staleKey":"witty.cold-clear[83]","slot":"empty-slot"}
+{"key":"witty.cold-clear[77]","verdict":"PASS","reason":"","bt":"The Karoo opens its roof at night. Wear warm clothes for the show.","btVerdict":"same","staleKey":"witty.cold-clear[88]","slot":"empty-slot"}
+{"key":"witty.cold-clear[84]","verdict":"PASS","reason":"","bt":"Rooibos in the hand, blanket up to the ears. We are armed.","btVerdict":"same","staleKey":"witty.cold-clear[96]","slot":"empty-slot"}
+{"key":"witty.cold-clear[85]","verdict":"PASS","reason":"","bt":"No wind, no clouds, no reason for this thin jacket.","btVerdict":"same","staleKey":"witty.cold-clear[98]","slot":"empty-slot"}
+{"key":"witty.cold-clear[87]","verdict":"PASS","reason":"","bt":"You breathe like a [?fiery number], the view is like a dream.","btVerdict":"loose","staleKey":"witty.cold-clear[100]","slot":"empty-slot"}
+{"key":"witty.heat[44]","verdict":"PASS","reason":"","bt":"The hot wind from the mountains changed at night. Cape, today nearly becomes Upington.","btVerdict":"same","staleKey":"witty.heat[44]","slot":"empty-slot"}
+{"key":"witty.heat[45]","verdict":"PASS","reason":"","bt":"The sea is 12 degrees. By ten o'clock it will feel like a spa.","btVerdict":"same","staleKey":"witty.heat[45]","slot":"empty-slot"}
+{"key":"witty.heat[48]","verdict":"PASS","reason":"","bt":"Runners at 5:30 are tougher than us. They are just smarter.","btVerdict":"same","staleKey":"witty.heat[48]","slot":"empty-slot"}
+{"key":"witty.heat[53]","verdict":"PASS","reason":"","bt":"Even the dog looked at the weather and went back to bed.","btVerdict":"same","staleKey":"witty.heat[53]","slot":"empty-slot"}
+{"key":"witty.heat[60]","verdict":"PASS","reason":"","bt":"Come with your ice. Friendship doesn't include ice.","btVerdict":"same","staleKey":"witty.heat[60]","slot":"empty-slot"}
+{"key":"witty.heat[70]","verdict":"PASS","reason":"","bt":"We aren't talking about today. Today is finished. We are proud.","btVerdict":"same","staleKey":"witty.heat[70]","slot":"empty-slot"}
+{"key":"witty.heat[80]","verdict":"PASS","reason":"","bt":"The first light wind of the day has just arrived. Clap hands for it.","btVerdict":"same","staleKey":"witty.heat[80]","slot":"empty-slot"}
+{"key":"witty.fog[39]","verdict":"PASS","reason":"","bt":"The farm is still there. We just believe each other's word.","btVerdict":"same","staleKey":"witty.fog[39]","slot":"empty-slot"}
+{"key":"witty.fog[44]","verdict":"PASS","reason":"","bt":"The cows know exactly where they are. More than that, we can say so.","btVerdict":"same","staleKey":"witty.fog[44]","slot":"empty-slot"}
+{"key":"witty.fog[54]","verdict":"PASS","reason":"","bt":"Visibility: none. Mood: calm, amazingly.","btVerdict":"same","staleKey":"witty.fog[54]","slot":"empty-slot"}
+{"key":"witty.fog[60]","verdict":"PASS","reason":"","bt":"Every lit window is a person who has decided: enough for today.","btVerdict":"same","staleKey":"witty.fog[60]","slot":"empty-slot"}
+{"key":"witty.fog[63]","verdict":"PASS","reason":"","bt":"Hearth weather has arrived without being asked.","btVerdict":"same","staleKey":"witty.fog[63]","slot":"empty-slot"}
+{"key":"witty.fog[64]","verdict":"PASS","reason":"","bt":"It is the right weather to meet someone you always plan to phone.","btVerdict":"same","staleKey":"witty.fog[64]","slot":"empty-slot"}
+{"key":"witty.fog[65]","verdict":"PASS","reason":"","bt":"The whole town has switched itself to whisper volume.","btVerdict":"same","staleKey":"witty.fog[65]","slot":"empty-slot"}
+{"key":"witty.fog[68]","verdict":"PASS","reason":"","bt":"Let's say it's a nice situation, we go inside.","btVerdict":"loose","staleKey":"witty.fog[68]","slot":"empty-slot"}
+{"key":"witty.fog[72]","verdict":"PASS","reason":"","bt":"The sea has disappeared but the aunts are there. Priorities.","btVerdict":"same","staleKey":"witty.fog[72]","slot":"empty-slot"}
+{"key":"witty.fog[75]","verdict":"PASS","reason":"","bt":"The last one to pass closes the gate. Even if nobody sees it.","btVerdict":"same","staleKey":"witty.fog[75]","slot":"empty-slot"}
+{"key":"witty.fog[88]","verdict":"PASS","reason":"","bt":"Ten o'clock fog at night makes all the streets into film locations.","btVerdict":"same","staleKey":"witty.fog[89]","slot":"empty-slot"}
+{"key":"witty.fog[95]","verdict":"PASS","reason":"","bt":"The neighbours nearby are thirty kilometres away, and tonight you do not see them at all.","btVerdict":"drift","staleKey":"witty.fog[96]","slot":"empty-slot"}
+{"key":"witty.clear[34]","verdict":"PASS","reason":"","bt":"The sun started work before your alarm tried.","btVerdict":"same","staleKey":"witty.clear[38]","slot":"empty-slot"}
+{"key":"witty.clear[37]","verdict":"PASS","reason":"","bt":"No mistake today so far. Even the sky.","btVerdict":"same","staleKey":"witty.clear[42]","slot":"empty-slot"}
+{"key":"witty.clear[39]","verdict":"PASS","reason":"","bt":"Weather that behaves so well is surely planning something.","btVerdict":"same","staleKey":"witty.clear[45]","slot":"empty-slot"}
+{"key":"witty.clear[48]","verdict":"PASS","reason":"","bt":"Here even the sun refuses to hurry.","btVerdict":"same","staleKey":"witty.clear[55]","slot":"empty-slot"}
+{"key":"witty.clear[52]","verdict":"PASS","reason":"","bt":"Such nice weather is for borrowing. The south-east wind keeps the receipts.","btVerdict":"same","staleKey":"witty.clear[60]","slot":"empty-slot"}
+{"key":"witty.clear[56]","verdict":"PASS","reason":"","bt":"The weather made plans. We just answered that we are coming.","btVerdict":"same","staleKey":"witty.clear[65]","slot":"empty-slot"}
+{"key":"witty.clear[60]","verdict":"PASS","reason":"","bt":"The sun takes a long time to set. Truly, it deserves it.","btVerdict":"same","staleKey":"witty.clear[74]","slot":"empty-slot"}
+{"key":"witty.clear[62]","verdict":"PASS","reason":"","bt":"When the weather behaves so well, we behave too. Nearly.","btVerdict":"same","staleKey":"witty.clear[76]","slot":"empty-slot"}
+{"key":"witty.clear[63]","verdict":"PASS","reason":"","bt":"Let us say it truly: you opened this app to confirm Saturday's braai.","btVerdict":"same","staleKey":"witty.clear[77]","slot":"empty-slot"}
+{"key":"witty.fog[99]","verdict":"PASS","reason":"","bt":"Midlands fog: the way the countryside hides.","btVerdict":"loose","staleKey":"witty.fog[100]","slot":"empty-slot"}
+{"key":"witty.heat[85]","verdict":"PASS","reason":"","bt":"Go now or don't go at all. The Lowveld gives you time until seven o'clock.","btVerdict":"same","staleKey":"witty.heat[85]","slot":"empty-slot"}
+{"key":"witty.heat[86]","verdict":"PASS","reason":"","bt":"Even the impalas standing in the shade rethink their decisions.","btVerdict":"same","staleKey":"witty.heat[86]","slot":"empty-slot"}
+{"key":"witty.heat[87]","verdict":"PASS","reason":"","bt":"Lowveld summer: you are not [?two], you melt with a thud.","btVerdict":"loose","staleKey":"witty.heat[87]","slot":"empty-slot"}
+{"key":"witty.heat[88]","verdict":"PASS","reason":"","bt":"The forest is quiet today. Everyone. Everything.","btVerdict":"same","staleKey":"witty.heat[88]","slot":"empty-slot"}
+{"key":"witty.heat[89]","verdict":"PASS","reason":"","bt":"The sunset drink is not a luxury in the Lowveld. It heals.","btVerdict":"same","staleKey":"witty.heat[89]","slot":"empty-slot"}
+{"key":"witty.wind[52]","verdict":"PASS","reason":"","bt":"Gqeberha, we know. We know.","btVerdict":"same","staleKey":"witty.wind[53]","slot":"empty-slot"}
+{"key":"witty.wind[53]","verdict":"PASS","reason":"","bt":"The Friendly City never asked to be the Windy City, but anyway.","btVerdict":"same","staleKey":"witty.wind[54]","slot":"empty-slot"}
+{"key":"witty.wind[54]","verdict":"PASS","reason":"","bt":"Jeffreys Bay: where the wind exercises before its work in Cape Town.","btVerdict":"same","staleKey":"witty.wind[55]","slot":"empty-slot"}
+{"key":"witty.wind[55]","verdict":"PASS","reason":"","bt":"Gqeberha doesn't sleep, it just holds on.","btVerdict":"same","staleKey":"witty.wind[56]","slot":"empty-slot"}

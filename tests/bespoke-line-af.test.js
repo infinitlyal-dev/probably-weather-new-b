@@ -4,14 +4,16 @@ import { afterEach, describe, expect, it, vi } from 'vitest';
 import { heroCropKey } from '../assets/hero-crop.js';
 import * as heroLines from '../assets/hero-lines.js';
 import * as heroLinesAf from '../assets/hero-lines-af.js';
+import * as heroLinesXh from '../assets/hero-lines-xh.js';
 import { contentProblems } from '../scripts/lang-check/lib/af-content.mjs';
 import { contextTagAllows } from '../assets/witty-day-tags.js';
 
 // Afrikaans bespoke lines (2026-09-15, close-out item H). applyBespokeLine opened
 // for Afrikaans through a per-language table: assets/hero-lines-af.js, written
 // only by the language gate (scripts/lang-check/apply-af-accepted.mjs) for lines
-// that cleared lang-check and review/af-voice.md. zu/xh/st have no table and keep
-// the condition bank.
+// that cleared lang-check and review/af-voice.md. zu and st have no table and keep
+// the condition bank; isiXhosa has a PROVISIONAL table since 9 Oct 2026 (assets/hero-lines-xh.js) and a
+// photograph with no isiXhosa row keeps the condition line.
 //
 // Behavioural: the real bespoke block is lifted out of assets/app.js and run in
 // all five languages against the shipped tables.
@@ -25,19 +27,20 @@ function bespokeBlock() {
   return src.slice(start, end);
 }
 
-function harness({ lang, importEn = vi.fn(async () => heroLines), importAf = vi.fn(async () => heroLinesAf) }) {
+function harness({ lang, importEn = vi.fn(async () => heroLines), importAf = vi.fn(async () => heroLinesAf), importXh = vi.fn(async () => heroLinesXh) }) {
   const headlineEl = { textContent: 'Condition line' };
   const settings = { lang };
   const body = bespokeBlock()
     .replace("import('./hero-lines.js')", '__importEn()')
-    .replace("import('./hero-lines-af.js')", '__importAf()');
+    .replace("import('./hero-lines-af.js')", '__importAf()')
+    .replace("import('./hero-lines-xh.js')", '__importXh()');
   const make = new Function('headlineEl', 'settings', 'safeText', 'debugLog', 'heroCropKey', '__importEn', '__importAf',
-    'contextTagAllows', 'bespokeTagContext',
+    'contextTagAllows', 'bespokeTagContext', '__importXh',
     `${body}\nreturn { applyBespokeLine, loadBespokeTable };`);
   // No place and no month: the season/place gate fails open, as it does before a forecast.
   const api = make(headlineEl, settings, (el, text) => { el.textContent = text; }, () => {}, heroCropKey, importEn, importAf,
-    contextTagAllows, () => ({}));
-  return { ...api, headlineEl, settings, importEn, importAf };
+    contextTagAllows, () => ({}), importXh);
+  return { ...api, headlineEl, settings, importEn, importAf, importXh };
 }
 
 const srcFor = (key) => {
@@ -83,7 +86,7 @@ describe('bespoke lines — five languages', () => {
   it('each language rotates through exactly the lines it has for the photograph', async () => {
     const photo = srcFor(partial.key);
     const english = heroLines.HERO_LINES[partial.key];
-    const pools = { en: english, af: partial.af, zu: [], xh: [], st: [] };
+    const pools = { en: english, af: partial.af, zu: [], xh: english.map((l) => heroLinesXh.heroLine(l)).filter(Boolean), st: [] };
 
     for (const [lang, pool] of Object.entries(pools)) {
       const shown = new Set();
@@ -96,12 +99,20 @@ describe('bespoke lines — five languages', () => {
           await h.loadBespokeTable(lang);
           expect(h.applyBespokeLine(photo)).toBe(true);
           shown.add(h.headlineEl.textContent);
+        } else if (lang === 'xh') {
+          // a table exists, but not for this photograph: the condition line stands
+          expect(h.applyBespokeLine(photo)).toBe(false);
+          await flush();
+          await h.loadBespokeTable('en'); await h.loadBespokeTable('xh');
+          expect(h.applyBespokeLine(photo)).toBe(false);
+          expect(h.headlineEl.textContent).toBe('Condition line');
         } else {
           expect(h.applyBespokeLine(photo)).toBe(false);
           await flush();
           expect(h.headlineEl.textContent).toBe('Condition line');
           expect(h.importEn).not.toHaveBeenCalled();
           expect(h.importAf).not.toHaveBeenCalled();
+          expect(h.importXh).not.toHaveBeenCalled();
         }
         vi.restoreAllMocks();
       }
@@ -187,5 +198,32 @@ describe('the Afrikaans table is the gate\'s output', () => {
     const alRuled = new Set(JSON.parse(readFileSync(new URL('../review/af-al-decisions.json', import.meta.url), 'utf8')).decisions.map((d) => d.english));
     const problems = rows.filter(([english]) => !alRuled.has(english)).map(([english, afrikaans]) => [english, contentProblems(english, afrikaans)]).filter(([, p]) => p.length);
     expect(problems).toEqual([]);
+  });
+});
+
+describe('isiXhosa provisional photo lines (9 Oct 2026)', () => {
+  it('a photograph with isiXhosa rows rotates through exactly those rows, never an English line', async () => {
+    const key = slotKeys.find((k) => heroLines.HERO_LINES[k].some((l) => heroLinesXh.heroLine(l)));
+    expect(key, 'the isiXhosa table serves no wired photograph').toBeTruthy();
+    const pool = heroLines.HERO_LINES[key].map((l) => heroLinesXh.heroLine(l)).filter(Boolean);
+    const shown = new Set();
+    for (let i = 0; i < pool.length; i++) {
+      vi.spyOn(Math, 'random').mockReturnValue((i + 0.5) / pool.length);
+      const h = harness({ lang: 'xh' });
+      await h.loadBespokeTable('en'); await h.loadBespokeTable('xh');
+      expect(h.applyBespokeLine(srcFor(key))).toBe(true);
+      shown.add(h.headlineEl.textContent);
+      vi.restoreAllMocks();
+    }
+    expect([...shown].sort()).toEqual([...new Set(pool)].sort());
+    for (const l of shown) expect(heroLines.HERO_LINES[key]).not.toContain(l);
+  });
+  it('every row keys a line that is wired, and is not English', () => {
+    const wired = new Set(Object.values(heroLines.HERO_LINES).flat());
+    for (const [en, xh] of Object.entries(heroLinesXh.HERO_LINES_XH)) {
+      expect(wired.has(en), en).toBe(true);
+      expect(xh, en).not.toBe(en);
+      expect(xh.trim().length, en).toBeGreaterThan(3);
+    }
   });
 });

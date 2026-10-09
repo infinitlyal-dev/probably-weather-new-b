@@ -2299,6 +2299,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const BESPOKE_TABLES = {
     en: { load: () => import('./hero-lines.js') },
     af: { load: () => import('./hero-lines-af.js'), line: (mod, english) => mod.heroLineAf(english) },
+    // isiXhosa (9 Oct 2026): PROVISIONAL drafts through the rebuilt lang-check, pending a native reader
+    // (scripts/lang-check/apply-hero-lines-provisional.mjs); photographs without a row keep the condition bank line.
+    xh: { load: () => import('./hero-lines-xh.js'), line: (mod, english) => mod.heroLine(english) },
   };
   const bespokeTables = {};
   const bespokeTableLoads = {};

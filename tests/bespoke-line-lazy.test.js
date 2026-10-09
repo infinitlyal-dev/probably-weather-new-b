@@ -33,7 +33,8 @@ function harness({ lang = 'en', importEn, importAf = async () => heroLinesAf }) 
   const safeText = (el, text) => { el.textContent = text; };
   const body = bespokeBlock()
     .replace("import('./hero-lines.js')", '__importEn()')
-    .replace("import('./hero-lines-af.js')", '__importAf()');
+    .replace("import('./hero-lines-af.js')", '__importAf()')
+    .replace("import('./hero-lines-xh.js')", "import('../assets/hero-lines-xh.js')");
   const make = new Function('headlineEl', 'settings', 'safeText', 'debugLog', 'heroCropKey', '__importEn', '__importAf',
     'contextTagAllows', 'bespokeTagContext',
     `${body}\nreturn { applyBespokeLine, loadBespokeTable };`);
@@ -132,8 +133,9 @@ describe('bespoke line tables — lazy chunks', () => {
     expect(importEn).toHaveBeenCalledTimes(2);
   });
 
+  // isiXhosa has a provisional table since 9 Oct 2026 (assets/hero-lines-xh.js); zu and st still have none.
   it('languages without bespoke lines neither load a table nor touch the headline', async () => {
-    for (const lang of ['zu', 'xh', 'st']) {
+    for (const lang of ['zu', 'st']) {
       const importEn = vi.fn(async () => heroLines);
       const importAf = vi.fn(async () => heroLinesAf);
       const h = harness({ lang, importEn, importAf });

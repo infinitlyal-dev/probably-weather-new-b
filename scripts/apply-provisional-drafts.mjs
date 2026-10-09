@@ -13,13 +13,18 @@
 //
 // Usage: node scripts/apply-provisional-drafts.mjs            (dry run — reports, writes nothing)
 //        node scripts/apply-provisional-drafts.mjs --apply    (mutate weather-copy.js + manifests)
+//        --langs xh --drafts lang-packs/{lang}/drafts-2026-10.jsonl --verdicts lang-packs/{lang}/checker-verdicts-2026-10.jsonl
+//          (9 Oct 2026: a later drafting round; {lang} is replaced per language; rows whose key is not a bank slot are skipped)
 
 import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { WEATHER_COPY } from '../assets/weather-copy.js';
 
 const APPLY = process.argv.includes('--apply');
 const SKIP_LANG_CHECK = process.argv.includes('--skip-lang-check');
-const LANGS = ['zu', 'xh', 'st'];
+const opt = (k, d) => { const i = process.argv.indexOf(k); return i >= 0 ? process.argv[i + 1] : d; };
+const LANGS = opt('--langs', 'zu,xh,st').split(',');
+const DRAFTS = opt('--drafts', 'lang-packs/{lang}/drafts-batch-1.jsonl');
+const VERDICTS = opt('--verdicts', 'lang-packs/{lang}/checker-verdicts.jsonl');
 
 // lang-check gate (Al's ruling 2026-09-06): every zu/xh/st line runs through the corpus-backed
 // checker before it is wired. A draft the checker rates triage-high is HELD for a native, not
@@ -74,9 +79,9 @@ function rewriteArrayLine(group, bin, lang, newArray) {
 let missingChecker = [];
 const summary = {};
 for (const lang of LANGS) {
-  const drafts = readJsonl(`lang-packs/${lang}/drafts-batch-1.jsonl`);
-  const verdicts = readJsonl(`lang-packs/${lang}/checker-verdicts.jsonl`);
-  if (!drafts) { console.error(`${lang}: no drafts-batch-1.jsonl — run the drafters first`); continue; }
+  const drafts = readJsonl(DRAFTS.replace('{lang}', lang));
+  const verdicts = readJsonl(VERDICTS.replace('{lang}', lang));
+  if (!drafts) { console.error(`${lang}: no ${DRAFTS.replace('{lang}', lang)} — run the drafters first`); continue; }
   if (!verdicts) { missingChecker.push(lang); continue; }
 
   const draftByKey = new Map(drafts.map((d) => [d.key, d]));
