@@ -27,8 +27,8 @@ const CONDITION_ICON_MAP = {
   'partly-cloudy': { day: 'cloud-sun',  night: 'cloud'      },
   fog:             { day: 'fog',        night: 'fog'        },
   wind:            { day: 'wind',       night: 'wind'       },
-  // breezy (7 Oct 2026): the wind glyph until it has a drawing of its own.
-  breezy:          { day: 'wind',       night: 'wind'       },
+  // breezy (7 Oct 2026): its own glyph since 9 Oct 2026 — the wind glyph with two shorter lines.
+  breezy:          { day: 'breezy',     night: 'breezy'     },
   cold:            { day: 'cold',       night: 'cold'       },
   // cold-clear: Highveld dry-cold under blue sky. Sun AND snowflake — the
   // "deceptively beautiful" register the cold-face emoji used to carry. Kept

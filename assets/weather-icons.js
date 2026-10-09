@@ -54,6 +54,9 @@ const PATHS = {
   sleet: `<path d="${CLOUD}"/><path d="M9 20.2h.01M12.4 20.2h.01M10.7 22.8h.01M15.6 20.2h.01"/>`,
   fog: `<path d="${CLOUD}"/><path d="M6 20.6h12M8.6 23.2h7"/>`,
   wind: '<path d="M3 8h9a2.6 2.6 0 1 0-2.6-2.6"/><path d="M3 12h13a3 3 0 1 1-3 3"/><path d="M3 16h7a2.4 2.4 0 1 1-2.4 2.4"/>',
+  // Breezy (Al, 9 Oct 2026): the wind glyph's family — its three long lines become two shorter ones, same stroke, same
+  // curl ends, centred in the same box (x 4.5–17.1 against wind's 3–19).
+  breezy: '<path d="M4.5 9.5h7.5a2.4 2.4 0 1 0-2.4-2.4"/><path d="M4.5 14.5h10a2.6 2.6 0 1 1-2.6 2.6"/>',
   // Cold: the condition that also renders snow particles, so the snowflake is
   // the honest glyph for it.
   cold: '<path d="M12 3.4v17.2M4.6 7.7l14.8 8.6M19.4 7.7 4.6 16.3"/><path d="m9.9 5.5 2.1 1.9 2.1-1.9M9.9 18.5l2.1-1.9 2.1 1.9"/>',
@@ -81,7 +84,7 @@ const PATHS = {
 export const ICON_CONDITION = {
   sun: 'clear', moon: 'night', cloud: 'cloudy', 'cloud-sun': 'partly-cloudy',
   rain: 'rain', 'rain-sun': 'rain-possible', storm: 'storm', sleet: 'hail',
-  fog: 'fog', wind: 'wind', cold: 'cold', 'cold-clear': 'cold-clear', heat: 'heat',
+  fog: 'fog', wind: 'wind', breezy: 'breezy', cold: 'cold', 'cold-clear': 'cold-clear', heat: 'heat',
 };
 
 export const ICON_NAMES = Object.keys(PATHS);

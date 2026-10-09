@@ -155,3 +155,24 @@ describe('ICON_CONDITION — the accessible name comes from translated copy', ()
     }
   });
 });
+
+describe('breezy — the wind glyph with two shorter lines (Al, 9 Oct 2026)', () => {
+  const body = (n) => weatherIconSvg(n).replace(/^[^>]*>/, '').replace('</svg>', '');
+  const paths = (n) => [...body(n).matchAll(/<path d="([^"]+)"/g)].map((m) => m[1]);
+  // the straight run of each line: "M<x> <y>h<len>"
+  const runs = (n) => paths(n).map((d) => Number(/^M[\d.]+ [\d.]+h([\d.]+)/.exec(d)[1]));
+  it('is drawn, distinct from wind, and on the family contract', () => {
+    expect(ICON_NAMES).toContain('breezy');
+    expect(body('breezy')).not.toBe(body('wind'));
+    expect(ICON_CONDITION.breezy).toBe('breezy');
+  });
+  it('two lines where wind has three, each shorter than wind\'s longest, with the same curl ends', () => {
+    expect(paths('wind')).toHaveLength(3);
+    expect(paths('breezy')).toHaveLength(2);
+    for (const r of runs('breezy')) expect(r).toBeLessThan(Math.max(...runs('wind')));
+    for (const d of paths('breezy')) expect(d).toMatch(/a[\d.]+ [\d.]+ 0 1 [01]/);
+  });
+  it('the condition map gives breezy hours and day cards the breezy glyph, day and night', () => {
+    expect(__WEATHER_ICON_MAP.breezy).toEqual({ day: 'breezy', night: 'breezy' });
+  });
+});

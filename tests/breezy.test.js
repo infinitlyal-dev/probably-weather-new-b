@@ -66,7 +66,7 @@ describe('breezy — the phone', () => {
   const norm = { conditionKey: 'breezy', rainPct: 5, windKph: 18, cloudPct: 20, isDay: true, todayHigh: 23, sourceConditions: [] };
   it('shows the server\'s Breezy', () => { expect(home(norm)).toBe('breezy'); });
   it('rain later outranks it', () => { expect(home({ ...norm, rainLater: true })).toBe('rain-possible'); });
-  it('a breezy hour draws the wind glyph', () => {
-    expect(pickHourlyIcon({ rainPct: 5, cloudPct: 20, tempC: 20, isNight: false, condition: 'breezy' })).toBe('wind');
+  it('a breezy hour draws the breezy glyph', () => {
+    expect(pickHourlyIcon({ rainPct: 5, cloudPct: 20, tempC: 20, isNight: false, condition: 'breezy' })).toBe('breezy');
   });
 });
