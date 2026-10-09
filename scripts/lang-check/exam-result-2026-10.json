@@ -1,7 +1,7 @@
 {
- "generated": "2026-10-09T15:09:18.756Z",
+ "generated": "2026-10-09T15:14:51.908Z",
  "threshold": 0.25,
- "elapsedMs": 19947,
+ "elapsedMs": 18009,
  "excludedAdversarial": 6,
  "perLanguage": {
   "zu": {
@@ -276,7 +276,8 @@
    "ceiling": [
     false,
     false
-   ]
+   ],
+   "alFewer": true
   },
   "xh": {
    "pass": true,
@@ -288,7 +289,8 @@
    "ceiling": [
     false,
     true
-   ]
+   ],
+   "alFewer": true
   },
   "st": {
    "pass": false,
@@ -300,7 +302,8 @@
    "ceiling": [
     false,
     false
-   ]
+   ],
+   "alFewer": true
   },
   "af": {
    "pass": true,
@@ -312,7 +315,8 @@
    "ceiling": [
     false,
     true
-   ]
+   ],
+   "alFewer": true
   }
  },
  "alAccepted": {

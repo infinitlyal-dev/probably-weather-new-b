@@ -77,7 +77,7 @@ for (const lang of LANGS) {
   const pass = up.every(Boolean) && precisionHeld && alFewer;
   const btCover = L.filter((r) => r.btRun).length;
   result.perLanguage[lang] = { before: B, after: A, afterNoBt: N, classes: cls, btCoverage: `${btCover}/${L.length}` };
-  result.pass[lang] = { pass, precisionHeld, recallUp: up, ceiling };
+  result.pass[lang] = { pass, precisionHeld, recallUp: up, ceiling, alFewer };
   md.push(`| ${lang} | ${pct(B.precision)} → **${pct(A.precision)}** (${pct(N.precision)}) | ${pct(B.recall)} → **${pct(A.recall)}** (${pct(N.recall)}) | ${pct(hl[0].before)} → ${pct(hl[0].after)} | ${pct(hl[1].before)} → ${pct(hl[1].after)}${ceiling[1] ? ' (ceiling)' : ''} | **${pass ? 'PASS' : 'FAIL'}**${!precisionHeld ? ' — precision down' : ''}${!up[0] ? ' — wrong-sense not up' : ''}${!up[1] ? ' — wrong-language not up' : ''} |`);
   detail.push(`## ${lang}`, '', `Back-translation records for ${btCover} of ${L.length} scored items.`, '');
   detail.push('| | precision | recall | TP | FP | FN | TN |', '|---|---|---|---|---|---|---|');

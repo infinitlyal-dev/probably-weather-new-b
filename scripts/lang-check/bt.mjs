@@ -53,22 +53,29 @@ if (cmd === 'export') {
 } else if (cmd === 'merge') {
   const dir = fs.existsSync(target) && fs.statSync(target).isDirectory() ? target : path.dirname(target);
   const cache = new Map();
-  if (fs.existsSync(BT_CACHE)) for (const l of fs.readFileSync(BT_CACHE, 'utf8').split('\n')) if (l.trim()) { const r = JSON.parse(l); cache.set(btKey(r.lang, r.text, r.en), r); }
-  // maps: <prefix>-map.json (id → {lang,text,en}); the gold-set run of 9 Oct keeps map.json (id → gold ref) beside blind/src
-  const maps = {};
-  for (const f of fs.readdirSync(dir).filter((f) => /map\.json$/.test(f))) Object.assign(maps, JSON.parse(fs.readFileSync(path.join(dir, f), 'utf8')));
   let added = 0, missing = 0, bad = 0, invalid = 0;
   const VERDICTS = new Set(['same', 'loose', 'drift', 'wrong-language', 'untranslated', 'garbled']);
-  for (const f of fs.readdirSync(dir).filter((f) => /-out\.json$/.test(f))) {
+  const confOk = (c) => c !== null && c !== '' && Number.isFinite(Number(c)) && Number(c) >= 0 && Number(c) <= 1;
+  // records already cached are held to the same shape; a broken one is dropped, so its line counts as unchecked
+  if (fs.existsSync(BT_CACHE)) for (const l of fs.readFileSync(BT_CACHE, 'utf8').split('\n')) {
+    if (!l.trim()) continue;
+    let r; try { r = JSON.parse(l); } catch { invalid++; continue; }
+    if (!r || typeof r.lang !== 'string' || typeof r.text !== 'string' || typeof r.bt !== 'string' || !VERDICTS.has(r.verdict) || !confOk(r.confidence)) { invalid++; continue; }
+    cache.set(btKey(r.lang, r.text, r.en), r);
+  }
+  // Files merge in name order and a later run's answer for the same line and English replaces an earlier one — on
+  // purpose: a revised draft is re-checked under a later name (drafts-xh-r2 after drafts-xh-01).
+  for (const f of fs.readdirSync(dir).filter((f) => /-out\.json$/.test(f)).sort()) {
     let out;
     try { out = JSON.parse(fs.readFileSync(path.join(dir, f), 'utf8')); } catch { console.log(`  ${f}: not valid JSON — skipped`); bad++; continue; }
+    if (!Array.isArray(out)) { console.log(`  ${f}: not an array of answers — skipped`); bad++; continue; }
     const blind = JSON.parse(fs.readFileSync(path.join(dir, f.replace('-out.json', '-blind.json')), 'utf8'));
     const src = JSON.parse(fs.readFileSync(path.join(dir, f.replace('-out.json', '-src.json')), 'utf8'));
     // Every answer must be well formed and given once (Sol, 9 Oct 2026); anything else is not cached, so the gate
     // treats that line as never back-translated and holds it.
     const count = new Map(); for (const o of out) count.set(o?.id, (count.get(o?.id) || 0) + 1);
     const valid = (o) => o && count.get(o.id) === 1 && VERDICTS.has(o.verdict) && typeof o.bt === 'string' && o.bt.trim() !== ''
-      && o.confidence !== null && o.confidence !== '' && Number.isFinite(Number(o.confidence)) && Number(o.confidence) >= 0 && Number(o.confidence) <= 1;
+      && confOk(o.confidence);
     const byId = new Map(out.filter(valid).map((o) => [o.id, o]));
     invalid += out.length - byId.size;
     const enOf = new Map(src.map((s) => [s.id, s.en]));
