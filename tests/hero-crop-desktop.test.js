@@ -48,8 +48,9 @@ describe('desktop polaroid reads Al\'s ruled anchor for every photograph', () =>
       for (const rel of p.paths) expect(heroCropDesktopFor(`assets/images/bg/${rel}`), `${rel}`).toBe(want);
     }
     // 222 since the library reframes (8 Oct 2026): 77 photographs got new frames, and the anchors Al ruled on the old
-    // frames were dropped with them (scripts/ingest-library-reframes.mjs).
-    expect(ruled).toBeGreaterThanOrEqual(222);
+    // frames were dropped with them (scripts/ingest-library-reframes.mjs). 219 since the three faceless re-makes
+    // (9 Oct 2026, review/faceless-2026-10-09): the same rule for the storm dog, the pool party and the blanket fort.
+    expect(ruled).toBeGreaterThanOrEqual(219);
   });
 
   it('the dog in the grey jumper: ruled 100% (bottom of the frame), was cut off at 25%', () => {
