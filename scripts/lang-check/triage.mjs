@@ -5,17 +5,20 @@
 //   node scripts/lang-check/triage.mjs --lang af            # the 883-line bespoke set (533 new + 350 reused)
 //   node scripts/lang-check/triage.mjs --lang zu|xh|st      # provisional fills pending native confirm
 //   node scripts/lang-check/triage.mjs --lang zu --file lines.json   # any [{en,text,key}] set
+//   add --v2 for the rebuilt checker (9 Oct 2026: concord, attestation in context, back-translation records)
 //
 // Output: review/lang-check-triage-<lang>.md and .json
 
 import fs from 'node:fs';
 import path from 'node:path';
-import { check } from './lib/checker.mjs';
+import { check as check1 } from './lib/checker.mjs';
+import { checkV2 } from './lib/checker-v2.mjs';
 
 const ROOT = path.resolve(import.meta.dirname, '../..');
 const args = process.argv.slice(2);
 const val = (f) => { const i = args.indexOf(f); return i >= 0 ? args[i + 1] : undefined; };
 const lang = val('--lang');
+const check = args.includes('--v2') ? checkV2 : check1;
 if (!/^(af|zu|xh|st)$/.test(lang || '')) { console.error('usage: --lang af|zu|xh|st [--file lines.json]'); process.exit(2); }
 const readJsonl = (p) => fs.existsSync(p) ? fs.readFileSync(p, 'utf8').split('\n').filter(Boolean).map((l) => JSON.parse(l)) : [];
 

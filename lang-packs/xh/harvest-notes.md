@@ -27,3 +27,17 @@ fancy ones. Prefer the word a Umhlobo Wenene presenter would actually say.
 - Confirm attested everyday forms for the future_review flagged tokens (errors-observed.md list).
 - Sample I'solezwe lesiXhosa / Umhlobo Wenene social posts for weather-humour register.
 - Decide code-switch threshold per word (crows → amahlungulu vs "ii-crows") with a native.
+
+## 2026-10-09 — counts from current text (Vonk; `node scripts/lang-check/fetch-corpora.mjs ngrams`)
+Stored as word / pair / triple counts only (`.lang-check-cache/ngrams/xh.json`); no sentence was kept. What each source gave:
+I'solezwe lesiXhosa 300 article pages (from 1 029 in its section sitemaps) → 71 267 tokens; gov.za isiXhosa pages 67 pages
+→ 1 522 tokens; SABC News unreachable (redirect loop, not worked around); PanSALB not fetched (robots.txt disallows all).
+Local corpora counted the same way: 2.1 M tokens.
+Paraphrased observations:
+- Time words: namhlanje 524 (today); ngokuhlwanje only 8 — tonight is rare in print but is the form the bank uses.
+  kusasa 80 against ngentsasa 18: kusasa is common and also means "tomorrow"; for "this morning" prefer ngentsasa
+  (the native review asked exactly this about the morning-rain badge).
+- Weather: umoya 227, ilanga 136, ubushushu 127, imozulu 106, imvula 74; ingqele 10, inkungu 8, amafu 11 — the weather
+  vocabulary of the bank is attested but thin, which is why single-word lookup over-flags isiXhosa.
+- Neither "umoya uvuthuza" nor "umoya uphezulu" appears as a pair: the open question on the wind headline is not
+  settled by the corpus.

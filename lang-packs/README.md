@@ -44,6 +44,14 @@ target.
 4b. **lang-check gate** (Al's ruling 2026-09-06) — `scripts/lang-check.mjs` runs on every draft inside the apply
    step; triage-high drafts are held for a native (`review/lang-check-gate-<lang>.md`). Any set produced
    outside this pipeline goes through `node scripts/lang-check/triage.mjs --lang <l> --file <set.json>` first.
+4c. **Rebuilt checker (9 Oct 2026)** — `scripts/lang-check/lib/checker-v2.mjs` adds a concord check, attestation in
+   context (word pairs from `fetch-corpora.mjs ngrams`) and a **back-translation by a second model**: export the drafts
+   with `node scripts/lang-check/bt.mjs export <set.json>`, give each batch to a Sonnet 5.5 subagent with `BT_BRIEF`
+   (it translates blind, then compares), `node scripts/lang-check/bt.mjs merge scripts/lang-check/data/bt`. The gate
+   uses it only for a language that passed `scripts/lang-check/exam-result-2026-10.md`; a language that failed is not
+   drafted in. `node scripts/lang-check/build-bt-report.mjs` writes `review/lines-backtranslation-2026-10.md` — what
+   Maat reads to strike drift before anything merges. Photo lines go to `assets/hero-lines-<lang>.js` through
+   `scripts/lang-check/apply-hero-lines-provisional.mjs`.
 5. **Apply** — `scripts/apply-provisional-drafts.mjs --apply` folds PASS drafts into the `""` slots
    as PROVISIONAL (row-aligned); FLAG drafts stay in the debt ledger. Then regenerate splits + gates.
 6. **Confirm** — `scripts/generate-review-batch.mjs --lang <l> --limit <N>` emits a native batch,

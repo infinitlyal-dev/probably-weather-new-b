@@ -1,0 +1,329 @@
+{
+ "generated": "2026-10-09T14:55:12.037Z",
+ "threshold": 0.25,
+ "elapsedMs": 17421,
+ "excludedAdversarial": 6,
+ "perLanguage": {
+  "zu": {
+   "before": {
+    "tp": 57,
+    "fp": 48,
+    "fn": 35,
+    "tn": 457,
+    "precision": 0.5428571428571428,
+    "recall": 0.6195652173913043
+   },
+   "after": {
+    "tp": 61,
+    "fp": 53,
+    "fn": 31,
+    "tn": 452,
+    "precision": 0.5350877192982456,
+    "recall": 0.6630434782608695
+   },
+   "afterNoBt": {
+    "tp": 57,
+    "fp": 48,
+    "fn": 35,
+    "tn": 457,
+    "precision": 0.5428571428571428,
+    "recall": 0.6195652173913043
+   },
+   "classes": {
+    "wrong-sense": {
+     "n": 26,
+     "before": 0.38461538461538464,
+     "after": 0.5,
+     "noBt": 0.38461538461538464
+    },
+    "wrong-language": {
+     "n": 19,
+     "before": 0.8421052631578947,
+     "after": 0.8947368421052632,
+     "noBt": 0.8421052631578947
+    },
+    "untranslated": {
+     "n": 24,
+     "before": 0.6666666666666666,
+     "after": 0.6666666666666666,
+     "noBt": 0.6666666666666666
+    },
+    "boundary": {
+     "n": 19,
+     "before": 0.7894736842105263,
+     "after": 0.7894736842105263,
+     "noBt": 0.7894736842105263
+    },
+    "morphology": {
+     "n": 2,
+     "before": 0,
+     "after": 0,
+     "noBt": 0
+    },
+    "register": {
+     "n": 2,
+     "before": 0,
+     "after": 0,
+     "noBt": 0
+    }
+   },
+   "btCoverage": "597/597"
+  },
+  "xh": {
+   "before": {
+    "tp": 65,
+    "fp": 116,
+    "fn": 14,
+    "tn": 402,
+    "precision": 0.35911602209944754,
+    "recall": 0.8227848101265823
+   },
+   "after": {
+    "tp": 69,
+    "fp": 121,
+    "fn": 10,
+    "tn": 397,
+    "precision": 0.3631578947368421,
+    "recall": 0.8734177215189873
+   },
+   "afterNoBt": {
+    "tp": 65,
+    "fp": 116,
+    "fn": 14,
+    "tn": 402,
+    "precision": 0.35911602209944754,
+    "recall": 0.8227848101265823
+   },
+   "classes": {
+    "wrong-sense": {
+     "n": 21,
+     "before": 0.6190476190476191,
+     "after": 0.8095238095238095,
+     "noBt": 0.6190476190476191
+    },
+    "wrong-language": {
+     "n": 18,
+     "before": 1,
+     "after": 1,
+     "noBt": 1
+    },
+    "untranslated": {
+     "n": 17,
+     "before": 1,
+     "after": 1,
+     "noBt": 1
+    },
+    "spelling": {
+     "n": 4,
+     "before": 0.25,
+     "after": 0.25,
+     "noBt": 0.25
+    },
+    "boundary": {
+     "n": 19,
+     "before": 0.8421052631578947,
+     "after": 0.8421052631578947,
+     "noBt": 0.8421052631578947
+    }
+   },
+   "btCoverage": "597/597"
+  },
+  "st": {
+   "before": {
+    "tp": 59,
+    "fp": 98,
+    "fn": 13,
+    "tn": 388,
+    "precision": 0.37579617834394907,
+    "recall": 0.8194444444444444
+   },
+   "after": {
+    "tp": 64,
+    "fp": 98,
+    "fn": 8,
+    "tn": 388,
+    "precision": 0.3950617283950617,
+    "recall": 0.8888888888888888
+   },
+   "afterNoBt": {
+    "tp": 59,
+    "fp": 91,
+    "fn": 13,
+    "tn": 395,
+    "precision": 0.3933333333333333,
+    "recall": 0.8194444444444444
+   },
+   "classes": {
+    "wrong-sense": {
+     "n": 26,
+     "before": 0.5384615384615384,
+     "after": 0.7307692307692307,
+     "noBt": 0.5384615384615384
+    },
+    "wrong-language": {
+     "n": 19,
+     "before": 0.9473684210526315,
+     "after": 0.9473684210526315,
+     "noBt": 0.9473684210526315
+    },
+    "untranslated": {
+     "n": 18,
+     "before": 1,
+     "after": 1,
+     "noBt": 1
+    },
+    "spelling": {
+     "n": 3,
+     "before": 1,
+     "after": 1,
+     "noBt": 1
+    },
+    "calque": {
+     "n": 4,
+     "before": 1,
+     "after": 1,
+     "noBt": 1
+    },
+    "register": {
+     "n": 1,
+     "before": 1,
+     "after": 1,
+     "noBt": 1
+    },
+    "wrong-dialect": {
+     "n": 1,
+     "before": 1,
+     "after": 1,
+     "noBt": 1
+    }
+   },
+   "btCoverage": "558/558"
+  },
+  "af": {
+   "before": {
+    "tp": 57,
+    "fp": 28,
+    "fn": 17,
+    "tn": 962,
+    "precision": 0.6705882352941176,
+    "recall": 0.7702702702702703
+   },
+   "after": {
+    "tp": 64,
+    "fp": 29,
+    "fn": 10,
+    "tn": 961,
+    "precision": 0.6881720430107527,
+    "recall": 0.8648648648648649
+   },
+   "afterNoBt": {
+    "tp": 57,
+    "fp": 27,
+    "fn": 17,
+    "tn": 963,
+    "precision": 0.6785714285714286,
+    "recall": 0.7702702702702703
+   },
+   "classes": {
+    "wrong-sense": {
+     "n": 18,
+     "before": 0.5,
+     "after": 0.8333333333333334,
+     "noBt": 0.5
+    },
+    "wrong-language": {
+     "n": 18,
+     "before": 1,
+     "after": 1,
+     "noBt": 1
+    },
+    "untranslated": {
+     "n": 17,
+     "before": 0.9411764705882353,
+     "after": 1,
+     "noBt": 0.9411764705882353
+    },
+    "diacritic": {
+     "n": 17,
+     "before": 0.6470588235294118,
+     "after": 0.6470588235294118,
+     "noBt": 0.6470588235294118
+    },
+    "spelling": {
+     "n": 3,
+     "before": 1,
+     "after": 1,
+     "noBt": 1
+    },
+    "calque": {
+     "n": 1,
+     "before": 0,
+     "after": 0,
+     "noBt": 0
+    }
+   },
+   "btCoverage": "1064/1064"
+  }
+ },
+ "pass": {
+  "zu": {
+   "pass": false,
+   "precisionHeld": false,
+   "recallUp": [
+    true,
+    true
+   ],
+   "ceiling": [
+    false,
+    false
+   ]
+  },
+  "xh": {
+   "pass": true,
+   "precisionHeld": true,
+   "recallUp": [
+    true,
+    true
+   ],
+   "ceiling": [
+    false,
+    true
+   ]
+  },
+  "st": {
+   "pass": false,
+   "precisionHeld": true,
+   "recallUp": [
+    true,
+    false
+   ],
+   "ceiling": [
+    false,
+    false
+   ]
+  },
+  "af": {
+   "pass": true,
+   "precisionHeld": true,
+   "recallUp": [
+    true,
+    true
+   ],
+   "ceiling": [
+    false,
+    true
+   ]
+  }
+ },
+ "alAccepted": {
+  "n": 1673,
+  "before": 43,
+  "after": 34,
+  "afterNoBt": 32,
+  "ownN": 448,
+  "ownBefore": 16,
+  "ownAfter": 15,
+  "btCoverage": 1673
+ },
+ "overall": false
+}
