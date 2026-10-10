@@ -1,0 +1,930 @@
+[
+{
+"id": "drafts-zu-01-001",
+"bt": "The sky is quiet, and the line is quiet. Monday hasn't yet got the volume.",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-002",
+"bt": "The sky and the sea agree on a colour in the morning. It is not a cheerful colour.",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-003",
+"bt": "Even the hadeda is quiet. The sky is the one that has set the mood.",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-004",
+"bt": "There are no shadows, no shine, no excuses. Monday is under a Tupperware lid.",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-005",
+"bt": "The sun won't come to check the shine today. The car has no problem with that.",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-006",
+"bt": "There isn't a single shadow on the field all day. The referee did not close his eyes because of the sun.",
+"langSeen": "zu",
+"verdict": "loose",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-007",
+"bt": "Grey sky, jerseys worn, school is out. The weekend doesn't need the sun's permission.",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-008",
+"bt": "The whole plateau has a toned-down colour. The number of sheep is the same either way.",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-009",
+"bt": "The lamp in the kraal is the sunset tonight. The cattle welcome the dimming.",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-010",
+"bt": "The sky went from light grey to dark grey. That's the whole show.",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-011",
+"bt": "The security light came on early. The sun did not start work properly.",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-012",
+"bt": "The sea and the sky are equally grey. Only the harbour lights tried.",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-013",
+"bt": "The flag gives the forecast before the wave-riders [surfers]. It says: go.",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-014",
+"bt": "The jacaranda flowers are also riding the bus. The little wind bought itself tickets.",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-015",
+"bt": "The air pump does the morning work. The grass just encourages it.",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-016",
+"bt": "A hand on the cap, step by step. The little wind walks with him.",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-017",
+"bt": "The washing will be dry before the first break. The little wind started work early.",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-018",
+"bt": "A small whirlwind of dust walks in front of him. And it doesn't bother with hitting [?ukushova].",
+"langSeen": "zu",
+"verdict": "loose",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-019",
+"bt": "His hair arrived at the bakery first. The little wind has its own Sunday plans.",
+"langSeen": "zu",
+"verdict": "loose",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-020",
+"bt": "It's break time, and the little wind fixes everyone's hair. Including the teacher.",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-021",
+"bt": "The little wind is working at the fruit table today. The air-con is installed, no extra money.",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-022",
+"bt": "The wind does all the work. The kite takes all the glory.",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-023",
+"bt": "The corner flag points straight to where the ball will swerve off to.",
+"langSeen": "zu",
+"verdict": "loose",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-024",
+"bt": "The sheets are already dry. Now the little wind is just boasting at the [?enganeni: clothesline].",
+"langSeen": "zu",
+"verdict": "loose",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-025",
+"bt": "Smoke has arrived in the neighbours' yard. Saturday's braai is now officially a community event.",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-026",
+"bt": "Shoes at the corners of the blanket. The little wind is welcome, sand is not.",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-027",
+"bt": "Flags straight, wine held firmly. This is how the deck sees a calm Monday.",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-028",
+"bt": "Dust shines like gold in the sunset light. The game goes on.",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-029",
+"bt": "The [?igquma: hump/mound/hillock] moves with waves. The cattle decided to see nothing.",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-030",
+"bt": "The little wind moves the jacaranda to another street, flower by flower. The stoep agrees.",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-031",
+"bt": "The washing should have gone in hours ago. The little wind voted that it stay.",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-032",
+"bt": "The flags are still talking. The boats have finished the week.",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-033",
+"bt": "The leaves keep switching on the security light. The dog no longer gets up because of them.",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-034",
+"bt": "Somebody forgot the washing. The little wind did not forget, and does a good job.",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-035",
+"bt": "The little wind is still warm at this time. The sea leaves the heater on all night.",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-036",
+"bt": "The air pump doesn't believe in knock-off time. Nor does the dog believe in it.",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-037",
+"bt": "The little wind carries smoke down the road. The whole road knows what is being eaten this evening.",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-038",
+"bt": "All the lights on the string are moving. Saturday night has rhythm, just a little.",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-039",
+"bt": "Sand crosses the road grain by grain. Nobody here is in a hurry.",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-040",
+"bt": "The mountain has pulled a blanket over its head. Fine, it's Friday.",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-041",
+"bt": "The sun goes in, comes out. Monday starts slowly.",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-042",
+"bt": "The clouds gave the sun a break on Tuesday. Nobody told the humidity.",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-043",
+"bt": "Those clouds are just passing. Even the maize knows it shouldn't be happy.",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-044",
+"bt": "The shadow moves along the rows, one by one. It's inspecting.",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-045",
+"bt": "Purple below, white in the sky. Friday's colours are accepted.",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-046",
+"bt": "A few clouds came to watch. They don't run either.",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-047",
+"bt": "Clouds pass slowly. It's Sunday; they're allowed.",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-048",
+"bt": "The mountain's tablecloth is only half put on. It's Monday, nobody is fully dressed.",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-049",
+"bt": "Cloud shadows move slowly across the field. Nobody complains.",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-050",
+"bt": "Sun, then cloud, then sun. Even the monkeys can't plan around that.",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-051",
+"bt": "The dog found the border exactly between sun and shadow. It stays there.",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-052",
+"bt": "Sunglasses are put on, taken off, put on. Friday afternoon is exercise.",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-053",
+"bt": "One cloud over the mountain is not weather. The fire keeps burning.",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-054",
+"bt": "A cloud over the mountain, the potjie under the lapa. Both still need another hour.",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-055",
+"bt": "The clouds stayed a long time just for the colour. Monday owes everyone that.",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-056",
+"bt": "Clouds all afternoon, not even a drop. The water pipe is back at work.",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-057",
+"bt": "The sky puts on a show. The fish, as usual, do not.",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-058",
+"bt": "Sunset clouds, irrigation water for the grapes. The farm is preparing its own rain.",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-059",
+"bt": "The sun has already knocked off from work. The clouds are still glowing, and the balcony too.",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-060",
+"bt": "The clouds turned pink exactly at packing-up time. Nobody packed up.",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-061",
+"bt": "The cattle are already home before the colour is finished. Sunday ends right on time.",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-062",
+"bt": "The moon shines a little tonight. The security light doesn't have that ability.",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-063",
+"bt": "Half a moon, half a cloud, the bin [?umgqomo: drum/barrel/bin] is full. It's Tuesday night, as announced.",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-064",
+"bt": "The moon always comes out to look at the petrol garage. Nothing happens.",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-065",
+"bt": "The clouds pass the moon to one another. The balcony is happy to wait.",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-066",
+"bt": "The moon visits among the clouds. It smells the smell of meat in the sky.",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-067",
+"bt": "Half of the stars are behind the clouds. The small lights stand by themselves [?ziyazimela: wait their turn / stand aside].",
+"langSeen": "zu",
+"verdict": "loose",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-068",
+"bt": "The moon is behind a cloud, the dog is on the stoep. The Sunday service is over.",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-069",
+"bt": "It's 6 in the morning and the fridge is already the most loved place in the house.",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-070",
+"bt": "The dog likes this wind. It is the only one with a hairstyle made for it.",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-071",
+"bt": "It's really cold today. The kind that gets in through three jerseys as if they weren't there.",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-072",
+"bt": "Even those who swear it never gets cold agree now.",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-073",
+"bt": "Somebody's mother will scold. But it was nice.",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-074",
+"bt": "The sun is still loading. Don't refresh the page.",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-075",
+"bt": "There are no colours in the sky tonight, only silence.",
+"langSeen": "zu",
+"verdict": "loose",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-076",
+"bt": "Evening arrives on tiptoe, as if it has put on socks.",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-077",
+"bt": "Tomorrow is a new conversation with the weather. Tonight we rest.",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-078",
+"bt": "Clouds today. The feelings, though, are yours.",
+"langSeen": "zu",
+"verdict": "loose",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-079",
+"bt": "Cape Town sends support. And an extra cap.",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-080",
+"bt": "The South-Easter has no switch to turn it off. We looked for it.",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-081",
+"bt": "The tablecloth is fixed/arranged, ready for tomorrow's work.",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-082",
+"bt": "The most beautiful sky in the whole country, but it feels like you are in a fridge with a display.",
+"langSeen": "zu",
+"verdict": "loose",
+"confidence": 0.6,
+"note": ""
+},
+{
+"id": "drafts-zu-01-083",
+"bt": "Trout weather. Nice for the fish. It builds an angler's character.",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-084",
+"bt": "Blesbok don't wear scarves and don't complain. We could learn something. We won't, but we could learn.",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-085",
+"bt": "I forgot to turn on the electric blanket early. Always. Always. At night.",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-086",
+"bt": "That one small light is a person doing winter well: a [?iqhugwane: small bundle/clump?], a fire, done.",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.5,
+"note": ""
+},
+{
+"id": "drafts-zu-01-087",
+"bt": "The 7 a.m. sun hasn't put out heat yet. It's just a vibe.",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-088",
+"bt": "The sun does its admin outside. The heat wasn't in its pocket.",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-089",
+"bt": "Cape Town after the front: washed clean, shining, and really cold.",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-090",
+"bt": "One blanket, two people, no shame.",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-091",
+"bt": "The Karoo opens its roof at night. Wear warm clothes to watch the show.",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-092",
+"bt": "The moon lit up the mountains. But the heat was not turned on.",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-093",
+"bt": "The sea is 12 degrees. At 10 it will feel like a spa.",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.6,
+"note": ""
+},
+{
+"id": "drafts-zu-01-094",
+"bt": "We're not talking about today. Today is over. We take pride in ourselves.",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-095",
+"bt": "The rocks will hand out today's heat all night. Free.",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-096",
+"bt": "The whole city had the same [?isu: plan/strategy] tonight. Look at all of us.",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.7,
+"note": ""
+},
+{
+"id": "drafts-zu-01-097",
+"bt": "Irrigation water is said to be the grass's. Look at who is standing in the water.",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-098",
+"bt": "Rest, the mountains are just loading.",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-099",
+"bt": "Every lit window is a person deciding: enough for today.",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-100",
+"bt": "Good weather for meeting the person you were supposed to phone.",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-101",
+"bt": "The Sea Point foghorn sings us to sleep, free.",
+"langSeen": "zu",
+"verdict": "loose",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-102",
+"bt": "The sun took its time in the morning. The wait was deserved.",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-103",
+"bt": "Days like these are not worked for. They are given.",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-104",
+"bt": "The sun sets slowly, really showing off. But it deserves it.",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-105",
+"bt": "Midlands fog: a rural privacy setting.",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-106",
+"bt": "Go now or don't go at all. The Lowveld gives you until 7.",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-107",
+"bt": "Even the impalas stand in the shade reconsidering their decisions.",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-108",
+"bt": "Lowveld summer: you don't sweat, you melt with dignity [or: with shade; isithunzi is ambiguous].",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-109",
+"bt": "The bushveld is in silent mode today. Everyone. Everything.",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-110",
+"bt": "Sundowners are not glamour in the Lowveld. They are a tree [or: medicine; umuthi].",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.65,
+"note": ""
+},
+{
+"id": "drafts-zu-01-111",
+"bt": "Gqeberha, we know. We really know.",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-112",
+"bt": "The Friendly City has never asked to be the Windy City, but nonetheless.",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-113",
+"bt": "Jeffreys Bay: where the wind warms up before its shift in Cape Town.",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-114",
+"bt": "Gqeberha doesn't sleep, it just holds on.",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-115",
+"bt": "There is a little wind",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.85,
+"note": ""
+},
+{
+"id": "drafts-zu-01-116",
+"bt": "There is a little wind.",
+"langSeen": "zu",
+"verdict": "same",
+"confidence": 0.85,
+"note": ""
+}
+]

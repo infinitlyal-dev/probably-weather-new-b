@@ -6,11 +6,12 @@ description: Sesotho (st) translation quality checker for Probably Weather, back
 # st-qc — Sesotho QC for Probably Weather
 
 > **Status: rebuilt and examined (2026-10-09).** Exam: `scripts/lang-check/exam-result-2026-10.md` (the 6 Sept checker
-> BEFORE against the rebuilt one AFTER, same gold set). Sesotho: precision 38% → 40%,
+> BEFORE against the rebuilt one AFTER, same gold set). Sesotho: precision 38% → 39%,
 > recall 82% → 89%; wrong-sense 54% → 73%; wrong-language (Setswana / Sepedi / Nguni forms)
 > 95% → 95%. **FAILED** the brief's bar (recall up on wrong-sense and
 > wrong-language, precision not down) (wrong-language recall did not rise).
 > **Do not draft new Sesotho lines.** The rebuilt checker did not earn trust in Sesotho (wrong-language recall did not rise), and Al's brief (9 Oct 2026) says a language that fails is not drafted in. Existing provisional lines stay as they are; the checker of 6 Sept remains this language's gate.
+
 
 
 

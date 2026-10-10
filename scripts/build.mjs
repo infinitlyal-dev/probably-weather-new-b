@@ -153,7 +153,7 @@ const clientBundle = await emitClientBundle(path.join(dist, 'assets'));
 const lazyEntryPoints = Object.values(clientBundle.metafile.outputs)
   .map((output) => output.entryPoint?.replaceAll('\\', '/'))
   .filter(Boolean);
-for (const required of ['install.js', 'hero-lines.js', 'hero-lines-af.js', 'hero-lines-xh.js', 'copy/en.js', 'copy/af.js', 'copy/zu.js', 'copy/xh.js', 'copy/st.js']) {
+for (const required of ['install.js', 'hero-lines.js', 'hero-lines-af.js', 'hero-lines-xh.js', 'hero-lines-zu.js', 'copy/en.js', 'copy/af.js', 'copy/zu.js', 'copy/xh.js', 'copy/st.js']) {
   if (!lazyEntryPoints.some((entry) => entry.endsWith(`/${required}`))) {
     console.error(`[build] FATAL: P6 lazy client entry missing: ${required}`);
     process.exit(1);

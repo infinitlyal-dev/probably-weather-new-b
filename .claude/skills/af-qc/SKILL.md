@@ -15,6 +15,7 @@ description: Afrikaans (af) translation quality checker for Probably Weather, ba
 
 
 
+
 ## Drafting and checking a line (October 2026)
 
 What the checker does now, in order (`scripts/lang-check/lib/checker-v2.mjs`, run with `--v2`):

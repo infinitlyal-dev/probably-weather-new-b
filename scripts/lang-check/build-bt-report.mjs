@@ -37,7 +37,7 @@ for (const lang of LANGS) {
     const isApplied = d.set === 'debt' ? inBank : inTable;
     if (isApplied) applied++;
     tags[d.tag] = (tags[d.tag] || 0) + 1; if (d.mode === 'plain') plain++;
-    const why = !isApplied ? (/held-safety-rule/.test(ledgerStatus(d.key)) ? 'held: a safety line — needs the safety rule record (Claude + Sol) first' : d.slot === 'english-gone' ? 'not applied: the English line was cut from the bank' : v.action === 'triage-high' ? 'held: checker triage-high' : b && BAD.has(b.verdict) && b.confidence >= 0.6 ? `held: back-translation ${b.verdict}` : !b ? 'held: no back-translation' : 'held') : 'applied';
+    const why = !isApplied ? (/held-safety-rule/.test(ledgerStatus(d.key)) ? 'held: a safety line — needs the safety rule record (Claude + Sol) first' : d.slot === 'english-gone' ? 'not applied: the English line was cut from the bank' : d.slot === 'slot-filled' ? 'not applied: the slot already holds a line' : v.action === 'triage-high' ? 'held: checker triage-high' : b && BAD.has(b.verdict) && b.confidence >= 0.6 ? `held: back-translation ${b.verdict}` : !b ? 'held: no back-translation' : 'held') : 'applied';
     rows.push(`| ${cell(d.key)} | ${cell(d.en)} | ${cell(d[lang])} | ${cell(b ? b.bt : '—')} | ${d.tag}${d.mode === 'plain' ? ' · plain' : ''} | ${v.action} · BT ${b ? `${b.verdict} ${b.confidence}` : 'none'} | ${why} |`);
   }
   md.push(`## ${NAME[lang]} — ${drafts.length} drafts`, '', `HIGH ${tags.HIGH} · MED ${tags.MED} · LOW ${tags.LOW} · plain observations ${plain} · applied as provisional ${applied}, held ${drafts.length - applied}.`, '');
