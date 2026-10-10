@@ -1,8 +1,18 @@
 {
- "generated": "2026-10-10T11:54:11.494Z",
+ "generated": "2026-10-10T12:33:44.940Z",
  "threshold": 0.25,
- "elapsedMs": 14473,
+ "elapsedMs": 38217,
  "excludedAdversarial": 6,
+ "inputs": {
+  "scripts/lang-check/gold-set.json": "35506d016089e152905e80bac1c8d1ad1aca11cc00f50666e29bd35cfe28b980",
+  "scripts/lang-check/exam-2026-10.mjs": "8e31ee60d52ec8db07946a563ca75187487ed821c96b62e1b6e4d82e8534a15f",
+  "scripts/lang-check/lib/checker.mjs": "edcf2126c1b6e02ad27e1f42dbdb992800f805ee10ca83527861297c8a78e216",
+  "scripts/lang-check/lib/checker-v2.mjs": "7957d19653367944e321a2a8a46dfc70326b7c44417cfc4e15bf6dc803211041",
+  "scripts/lang-check/lib/concord.mjs": "8097786d7db8f0e0eb559bd8b8b90c60f8d84fae7eb3d088027c674de2ff6a33",
+  "scripts/lang-check/lib/ngram-attest.mjs": "99bc4d21ecb94fde45d92b181439ae1a4a7f11626c0fe13755945f524a23fa88",
+  "scripts/lang-check/lib/text.mjs": "17d0f376fdbe4d4d12524e73006792cdb1cf64291aca2661f2d21971fa396177",
+  "scripts/lang-check/lib/exam-inputs.mjs": "5794843d3569ae323afcfff5548c85e3583db2394b464b4154465701401e199e"
+ },
  "perLanguage": {
   "zu": {
    "before": {

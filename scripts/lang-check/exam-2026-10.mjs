@@ -15,6 +15,7 @@ import path from 'node:path';
 import { check, LangIndex } from './lib/checker.mjs';
 import { checkV2 } from './lib/checker-v2.mjs';
 import { normalizeWord } from './lib/text.mjs';
+import { examInputs } from './lib/exam-inputs.mjs';
 
 const args = process.argv.slice(2);
 const THRESH = parseFloat(args[args.indexOf('--threshold') + 1]) || 0.25;
@@ -52,7 +53,7 @@ const pr = (sub, k) => {
 };
 const pct = (x) => `${(x * 100).toFixed(0)}%`;
 const md = [];
-const result = { generated: new Date().toISOString(), threshold: THRESH, elapsedMs: elapsed, excludedAdversarial: excluded.length, perLanguage: {}, pass: {} };
+const result = { generated: new Date().toISOString(), threshold: THRESH, elapsedMs: elapsed, excludedAdversarial: excluded.length, inputs: examInputs(), perLanguage: {}, pass: {} };
 md.push(`# lang-check exam — October 2026 (before vs after)`);
 md.push('');
 md.push(`Run ${new Date().toISOString().slice(0, 10)}. Gold set: the September exam's set as it stands (${items.length} scored items; ${excluded.length} adversarial items excluded by the same rule). Threshold: confidence ≥ ${THRESH}. BEFORE = the 6 Sept checker (\`lib/checker.mjs\`, its numbers reproduce \`exam-result-2026-10-baseline.md\`). AFTER = \`lib/checker-v2.mjs\`: concord + back-translation (Sonnet 5.5) + attestation in context. "after, no BT" = AFTER without the back-translation pass.`);

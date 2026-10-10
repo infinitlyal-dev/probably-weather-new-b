@@ -19,6 +19,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { checkV2 } from './lib/checker-v2.mjs';
+import { EXAM_INPUTS, EXAM_THRESHOLD, examInputHash } from './lib/exam-inputs.mjs';
 import { HERO_LINES } from '../../assets/hero-lines.js';
 
 const ROOT = path.resolve(import.meta.dirname, '../..');
@@ -27,16 +28,37 @@ const lang = args[args.indexOf('--lang') + 1];
 const DRY = args.includes('--dry-run');
 if (!/^(zu|xh|st)$/.test(lang || '')) { console.error('usage: --lang zu|xh|st [--dry-run]'); process.exit(2); }
 const exam = JSON.parse(fs.readFileSync(path.join(import.meta.dirname, 'exam-result-2026-10.json'), 'utf8'));
-if (!exam.pass?.[lang]?.pass) { console.error(`${lang} did not pass the October exam — no table is written (Al's brief: don't draft in a language that fails)`); process.exit(1); }
+if (exam.pass?.[lang]?.pass !== true) { console.error(`${lang} did not pass the October exam — no table is written (Al's brief: don't draft in a language that fails)`); process.exit(1); }
+// The pass counts only for the gold set and checker it was earned on (Sol, 10 Oct 2026): the exam records their
+// hashes, and a change to either since the exam was run means the exam has to be run again first.
+// Every input must be recorded (an empty list proves nothing), and the pass must be at the brief's threshold.
+// The files checked are the current list AND every file the exam recorded, so trimming the list cannot void a check.
+const checked = [...new Set([...EXAM_INPUTS, 'scripts/lang-check/lib/exam-inputs.mjs', ...Object.keys(exam.inputs || {})])];
+const stale = checked.filter((f) => !exam.inputs?.[f] || examInputHash(f) !== exam.inputs[f]);
+if (stale.length) { console.error(`the exam result does not match the current ${stale.join(', ')} — run node scripts/lang-check/exam-2026-10.mjs again first`); process.exit(1); }
+if (exam.threshold !== EXAM_THRESHOLD) { console.error(`the exam was run at threshold ${exam.threshold}, not ${EXAM_THRESHOLD} — run it again at the default`); process.exit(1); }
 
 const wired = new Set(Object.values(HERO_LINES).flat());
 const drafts = fs.readFileSync(path.join(ROOT, 'lang-packs', lang, 'drafts-2026-10.jsonl'), 'utf8').trim().split('\n').map((l) => JSON.parse(l))
   .filter((d) => d.set === 'new-sets' || d.set === 'changed-lines');
 const BAD = new Set(['drift', 'wrong-language', 'untranslated', 'garbled']);
 const rows = [], held = [];
+// One English line, one row (Sol, 10 Oct 2026): two drafts that disagree on the same English are both held for a
+// reader to choose; an exact repeat is written once.
+const byEn = new Map();
+for (const d of drafts) byEn.set(d.en, [...(byEn.get(d.en) || []), d]);
+const seenEn = new Set();
 for (const d of drafts) {
+  if (seenEn.has(d.en)) continue;
+  seenEn.add(d.en);
   const v = checkV2({ lang, en: d.en, text: d[lang] });
   const why = [];
+  const variants = [...new Set(byEn.get(d.en).map((x) => x[lang]))];
+  if (variants.length > 1) {
+    // every variant is listed as held, so the reader sees all of them
+    for (const t of variants) held.push({ ...byEn.get(d.en).find((x) => x[lang] === t), why: [`conflicting drafts for the same English (${variants.length})`] });
+    continue;
+  }
   if (!wired.has(d.en)) why.push('English line no longer wired');
   if (v.action === 'triage-high') why.push(`checker triage-high ${v.confidence}`);
   if (v.back && BAD.has(v.back.verdict) && (v.back.confidence ?? 0) >= 0.6) why.push(`back-translation ${v.back.verdict}: "${v.back.bt}"`);
@@ -66,11 +88,12 @@ export function heroLine(english) {
 }
 `;
 console.log(`${lang}: ${rows.length} rows written, ${held.length} held`);
-for (const h of held) console.log(`  HELD ${JSON.stringify(h.en)} — ${h.why.join('; ')}`);
+for (const h of held) console.log(`  HELD ${JSON.stringify(h.en)} → ${JSON.stringify(h[lang])} — ${h.why.join('; ')}`);
 if (DRY) process.exit(0);
-fs.writeFileSync(path.join(ROOT, 'assets', `hero-lines-${lang}.js`), js);
+// read the manifest before writing anything, so a broken manifest leaves the table untouched too
 const mf = path.join(ROOT, 'lang-packs', lang, 'provisional-manifest.jsonl');
 const prior = fs.existsSync(mf) ? fs.readFileSync(mf, 'utf8').trim().split('\n').filter(Boolean).map((l) => JSON.parse(l)) : [];
+fs.writeFileSync(path.join(ROOT, 'assets', `hero-lines-${lang}.js`), js);
 const keep = prior.filter((m) => !String(m.key).startsWith('hero:'));
 const added = rows.map((r) => ({ key: `hero:${r.en}`, [lang]: r[lang], status: 'provisional-pending-native-confirm', confidence: r.tag, checker: r.confidence, mode: r.mode, source: 'drafts-2026-10' }));
 fs.writeFileSync(mf, [...keep, ...added].map((r) => JSON.stringify(r)).join('\n') + '\n');

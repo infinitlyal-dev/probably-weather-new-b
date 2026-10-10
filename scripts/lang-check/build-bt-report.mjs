@@ -8,6 +8,7 @@
 // (a bank slot filled, or a row in assets/hero-lines-<lang>.js) or was held, and why.
 
 import fs from 'node:fs';
+import { pathToFileURL } from 'node:url';
 import path from 'node:path';
 import { checkV2 } from './lib/checker-v2.mjs';
 import { WEATHER_COPY } from '../../assets/weather-copy.js';
@@ -23,7 +24,10 @@ const md = ['# Back-translations of the October drafts', '',
   'Confidence is the drafter\'s tag: HIGH = attested words and an idiom I am sure of; MED = structure sound, one word unsure; LOW = a word or construction I could not confirm, or a descriptive phrase standing in for a word I would not coin. Mode "plain" = the joke rests on English wordplay or an SA-English idiom, so the line is a plain warm observation about the same weather instead (the night-line rule).', ''];
 for (const lang of LANGS) {
   const drafts = fs.readFileSync(path.join(ROOT, 'lang-packs', lang, 'drafts-2026-10.jsonl'), 'utf8').trim().split('\n').map((l) => JSON.parse(l));
-  const table = fs.existsSync(path.join(ROOT, 'assets', `hero-lines-${lang}.js`)) ? fs.readFileSync(path.join(ROOT, 'assets', `hero-lines-${lang}.js`), 'utf8') : '';
+  // The photo table as data, so a row counts as applied only under its own English (Sol, 10 Oct 2026: a text search
+  // reported a held row as applied when another row had the same translation)
+  const tableFile = path.join(ROOT, 'assets', `hero-lines-${lang}.js`);
+  const table = fs.existsSync(tableFile) ? (await import(pathToFileURL(tableFile).href))[`HERO_LINES_${lang.toUpperCase()}`] || {} : {};
   const slotHolds = (key, text) => { const m = /^([a-z_]+)\.([a-z-]+)\[(\d+)\]$/.exec(key || ''); return !!m && WEATHER_COPY[m[1]]?.[m[2]]?.[lang]?.[+m[3]] === text; };
   const ledger = fs.readFileSync(path.join(ROOT, 'lang-packs', lang, 'debt-ledger.jsonl'), 'utf8').trim().split('\n').map((l) => JSON.parse(l));
   const ledgerStatus = (key) => ledger.filter((e) => e.key === key).map((e) => e.status).join(' ');
@@ -32,7 +36,7 @@ for (const lang of LANGS) {
   for (const d of drafts) {
     const v = checkV2({ lang, en: d.en, text: d[lang] });
     const b = v.back;
-    const inTable = table.includes(JSON.stringify(d[lang]));
+    const inTable = Object.prototype.hasOwnProperty.call(table, d.en) && table[d.en] === d[lang];
     const inBank = d.set === 'debt' && slotHolds(d.key, d[lang]);
     const isApplied = d.set === 'debt' ? inBank : inTable;
     if (isApplied) applied++;

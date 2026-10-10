@@ -55,12 +55,13 @@ if (cmd === 'export') {
   const cache = new Map();
   let added = 0, missing = 0, bad = 0, invalid = 0;
   const VERDICTS = new Set(['same', 'loose', 'drift', 'wrong-language', 'untranslated', 'garbled']);
-  const confOk = (c) => c !== null && c !== '' && Number.isFinite(Number(c)) && Number(c) >= 0 && Number(c) <= 1;
+  // a real number in 0..1, or a numeric string; never a boolean, null or blank (Sol, 10 Oct 2026: Number(false) is 0)
+  const confOk = (c) => (typeof c === 'number' || (typeof c === 'string' && c.trim() !== '')) && Number.isFinite(Number(c)) && Number(c) >= 0 && Number(c) <= 1;
   // records already cached are held to the same shape; a broken one is dropped, so its line counts as unchecked
   if (fs.existsSync(BT_CACHE)) for (const l of fs.readFileSync(BT_CACHE, 'utf8').split('\n')) {
     if (!l.trim()) continue;
     let r; try { r = JSON.parse(l); } catch { invalid++; continue; }
-    if (!r || typeof r.lang !== 'string' || typeof r.text !== 'string' || typeof r.bt !== 'string' || !VERDICTS.has(r.verdict) || !confOk(r.confidence)) { invalid++; continue; }
+    if (!r || typeof r.lang !== 'string' || typeof r.text !== 'string' || typeof r.bt !== 'string' || r.bt.trim() === '' || !VERDICTS.has(r.verdict) || !confOk(r.confidence)) { invalid++; continue; }
     cache.set(btKey(r.lang, r.text, r.en), r);
   }
   // Files merge in name order and a later run's answer for the same line and English replaces an earlier one — on
