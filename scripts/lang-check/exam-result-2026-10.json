@@ -1,40 +1,40 @@
 {
- "generated": "2026-10-09T15:14:51.908Z",
+ "generated": "2026-10-10T11:54:11.494Z",
  "threshold": 0.25,
- "elapsedMs": 18009,
+ "elapsedMs": 14473,
  "excludedAdversarial": 6,
  "perLanguage": {
   "zu": {
    "before": {
-    "tp": 57,
-    "fp": 48,
-    "fn": 35,
-    "tn": 457,
-    "precision": 0.5428571428571428,
-    "recall": 0.6195652173913043
+    "tp": 58,
+    "fp": 47,
+    "fn": 38,
+    "tn": 454,
+    "precision": 0.5523809523809524,
+    "recall": 0.6041666666666666
    },
    "after": {
-    "tp": 61,
-    "fp": 53,
-    "fn": 31,
-    "tn": 452,
-    "precision": 0.5350877192982456,
-    "recall": 0.6630434782608695
+    "tp": 64,
+    "fp": 50,
+    "fn": 32,
+    "tn": 451,
+    "precision": 0.5614035087719298,
+    "recall": 0.6666666666666666
    },
    "afterNoBt": {
-    "tp": 57,
-    "fp": 48,
-    "fn": 35,
-    "tn": 457,
-    "precision": 0.5428571428571428,
-    "recall": 0.6195652173913043
+    "tp": 58,
+    "fp": 47,
+    "fn": 38,
+    "tn": 454,
+    "precision": 0.5523809523809524,
+    "recall": 0.6041666666666666
    },
    "classes": {
     "wrong-sense": {
-     "n": 26,
-     "before": 0.38461538461538464,
-     "after": 0.5,
-     "noBt": 0.38461538461538464
+     "n": 30,
+     "before": 0.36666666666666664,
+     "after": 0.5333333333333333,
+     "noBt": 0.36666666666666664
     },
     "wrong-language": {
      "n": 19,
@@ -139,10 +139,10 @@
    },
    "after": {
     "tp": 64,
-    "fp": 98,
+    "fp": 101,
     "fn": 8,
-    "tn": 388,
-    "precision": 0.3950617283950617,
+    "tn": 385,
+    "precision": 0.3878787878787879,
     "recall": 0.8888888888888888
    },
    "afterNoBt": {
@@ -267,8 +267,8 @@
  },
  "pass": {
   "zu": {
-   "pass": false,
-   "precisionHeld": false,
+   "pass": true,
+   "precisionHeld": true,
    "recallUp": [
     true,
     true

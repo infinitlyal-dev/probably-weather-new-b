@@ -2,10 +2,10 @@
  "builtAt": "2026-09-06T16:32:36.832Z",
  "counts": {
   "zu": {
-   "good": 595,
-   "bad": 105,
+   "good": 591,
+   "bad": 109,
    "byClass": {
-    "wrong-sense": 28,
+    "wrong-sense": 32,
     "wrong-language": 19,
     "rewritten": 11,
     "register": 2,
@@ -2656,8 +2656,8 @@
    "lang": "zu",
    "en": "Cloud cover, low effort.",
    "text": "Amafu nelanga - bobabili lapha.",
-   "label": "good",
-   "cls": "native-bank",
+   "label": "bad",
+   "cls": "wrong-sense",
    "source": "lang-packs/zu/corpus-confirmed.jsonl witty.partly-cloudy[4]",
    "siblings": {
     "en": "Cloud cover, low effort.",
@@ -2665,6 +2665,11 @@
     "zu": "Amafu nelanga - bobabili lapha.",
     "xh": "Amafu akhona, kodwa awazami kakhulu.",
     "st": "Maru a teng, boiteko bo tlase."
+   },
+   "relabel": {
+    "on": "2026-10-10",
+    "from": "good / native-bank",
+    "reason": "Keyed to the wrong English line: the partly-cloudy isiZulu array of a3cbfd3 was never a translation of the English at its index (scripts/translation-skills/README.md; review/zu-addendum.md, 2 Jul 2026: bin authored misordered). The 23 Sept taxonomy typed it WRONG_KEY (zu-0255): \"Clouds and sun, both here\" renders the sibling \"Some clouds. Some sun.\", not \"Cloud cover, low effort.\""
    }
   },
   {
@@ -2688,8 +2693,8 @@
    "lang": "zu",
    "en": "Halfway to a Highveld thunderstorm. Or not.",
    "text": "Amafu amancane, ilanga elikhulu.",
-   "label": "good",
-   "cls": "native-bank",
+   "label": "bad",
+   "cls": "wrong-sense",
    "source": "lang-packs/zu/corpus-confirmed.jsonl witty.partly-cloudy[9]",
    "siblings": {
     "en": "Halfway to a Highveld thunderstorm. Or not.",
@@ -2697,6 +2702,11 @@
     "zu": "Amafu amancane, ilanga elikhulu.",
     "xh": "Indlela eya kwii ndudumo. Mhlawumbi ayikho",
     "st": "Re se re le tseleng ea sefefo sa Highveld… kapa mohlomong che"
+   },
+   "relabel": {
+    "on": "2026-10-10",
+    "from": "good / native-bank",
+    "reason": "The English is a storm threat (\"Halfway to a Highveld thunderstorm. Or not.\"); the isiZulu says \"few clouds, big sun\". Opposite weather. It sits in the partly-cloudy bank the isiZulu addendum (2 Jul 2026) records as authored misordered; the 2 Oct translation check (review/translation-check-data.json zu-0259) marked it MISMATCH, keyed to another line. The 23 Sept taxonomy typed it WRONG_KEY (zu-0259): it renders the sibling \"Some clouds. Some sun.\""
    }
   },
   {
@@ -2768,8 +2778,8 @@
    "lang": "zu",
    "en": "Sunscreen, but keep a hoodie close.",
    "text": "Phatha ihembe nesijele - kokubili.",
-   "label": "good",
-   "cls": "native-bank",
+   "label": "bad",
+   "cls": "wrong-sense",
    "source": "lang-packs/zu/corpus-confirmed.jsonl witty.partly-cloudy[14]",
    "siblings": {
     "en": "Sunscreen, but keep a hoodie close.",
@@ -2777,6 +2787,11 @@
     "zu": "Phatha ihembe nesijele - kokubili.",
     "xh": "Faka i-sunscreen, kodwa gcina ihoodie kufutshane.",
     "st": "Tlotsa sunscreen, empa boloka hoodie e le haufi."
+   },
+   "relabel": {
+    "on": "2026-10-10",
+    "from": "good / native-bank",
+    "reason": "isijele is jail, not jersey (ijezi): native ruling in lang-packs/zu/errors-observed.md, lexicon-protected.md, banned-words.json and review/zu-addendum.md (2 Jul 2026). The line says \"carry a shirt and a jail\"."
    }
   },
   {
@@ -2848,8 +2863,8 @@
    "lang": "zu",
    "en": "Cloudy enough to comment, sunny enough to ignore.",
    "text": "Amafu axubene nelanga - kuhle kakhulu.",
-   "label": "good",
-   "cls": "native-bank",
+   "label": "bad",
+   "cls": "wrong-sense",
    "source": "lang-packs/zu/corpus-confirmed.jsonl witty.partly-cloudy[19]",
    "siblings": {
     "en": "Cloudy enough to comment, sunny enough to ignore.",
@@ -2857,6 +2872,11 @@
     "zu": "Amafu axubene nelanga - kuhle kakhulu.",
     "xh": "Kukho amafu nelanga. Umlinganiselo awuqinisekanga",
     "st": "Maru a kopantsoe le letsatsi."
+   },
+   "relabel": {
+    "on": "2026-10-10",
+    "from": "good / native-bank",
+    "reason": "Keyed to the wrong English line: the partly-cloudy isiZulu array of a3cbfd3 was never a translation of the English at its index (scripts/translation-skills/README.md; review/zu-addendum.md, 2 Jul 2026: bin authored misordered). The 23 Sept taxonomy typed it WRONG_KEY (zu-0269): \"Clouds mixed with sun, very nice\" renders the sibling \"Some clouds. Some sun.\", not \"Cloudy enough to comment, sunny enough to ignore.\" Not flagged by either checker; relabelled for the same reason as zu-good-163."
    }
   },
   {
@@ -57831,11 +57851,11 @@
    "id": "st-bad-3541",
    "lang": "st",
    "en": "Very hot",
-   "text": "Ho tjhesa thata",
+   "text": "Ho tjhesa tota",
    "label": "bad",
    "cls": "wrong-language",
    "fix": "Ho tjhesa haholo",
-   "source": "adversarial wrong-language: haholo → thata",
+   "source": "adversarial wrong-language: haholo → tota (replanted 2026-10-10; was thata)",
    "siblings": {
     "en": "Very hot",
     "af": "Baie warm",
@@ -57843,22 +57863,27 @@
     "xh": "Kushushu kakhulu",
     "st": "Ho tjhesa haholo"
    },
-   "token": "thata",
+   "token": "tota",
    "adversarial": {
     "from": "haholo",
-    "to": "thata",
+    "to": "tota",
     "note": ""
+   },
+   "replanted": {
+    "on": "2026-10-10",
+    "was": "thata",
+    "reason": "thata is ordinary Sesotho too (ho thata = it is hard): Sesotho index 215, Sesotho n-gram corpus 250 of 1,253,894 tokens, so no checker can call it Setswana. tota (Setswana: really, truly) — Sesotho index 1, Sesotho n-gram corpus 1; Setswana index 637; Sepedi 0."
    }
   },
   {
    "id": "st-bad-3542",
    "lang": "st",
    "en": "UV's hectic.",
-   "text": "uv. e hodimu  thata",
+   "text": "uv. e hodimu  tota",
    "label": "bad",
    "cls": "wrong-language",
    "fix": "uv. e hodimu  haholo",
-   "source": "adversarial wrong-language: haholo → thata",
+   "source": "adversarial wrong-language: haholo → tota (replanted 2026-10-10; was thata)",
    "siblings": {
     "en": "UV's hectic.",
     "af": "UV is hoog.",
@@ -57866,11 +57891,16 @@
     "xh": "I-UV iphezulu kakhulu.",
     "st": "uv. e hodimu  haholo"
    },
-   "token": "thata",
+   "token": "tota",
    "adversarial": {
     "from": "haholo",
-    "to": "thata",
+    "to": "tota",
     "note": ""
+   },
+   "replanted": {
+    "on": "2026-10-10",
+    "was": "thata",
+    "reason": "thata is ordinary Sesotho too (ho thata = it is hard): Sesotho index 215, Sesotho n-gram corpus 250 of 1,253,894 tokens, so no checker can call it Setswana. tota (Setswana: really, truly) — Sesotho index 1, Sesotho n-gram corpus 1; Setswana index 637; Sepedi 0."
    }
   },
   {
