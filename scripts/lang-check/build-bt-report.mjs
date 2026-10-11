@@ -41,11 +41,26 @@ for (const lang of LANGS) {
     const isApplied = d.set === 'debt' ? inBank : inTable;
     if (isApplied) applied++;
     tags[d.tag] = (tags[d.tag] || 0) + 1; if (d.mode === 'plain') plain++;
-    const why = !isApplied ? (/held-safety-rule/.test(ledgerStatus(d.key)) ? 'held: a safety line — needs the safety rule record (Claude + Sol) first' : d.slot === 'english-gone' ? 'not applied: the English line was cut from the bank' : d.slot === 'slot-filled' ? 'not applied: the slot already holds a line' : v.action === 'triage-high' ? 'held: checker triage-high' : b && BAD.has(b.verdict) && b.confidence >= 0.6 ? `held: back-translation ${b.verdict}` : !b ? 'held: no back-translation' : 'held') : 'applied';
+    // Maat's rulings (10 Oct 2026): a replaced line says so; a released line was held by the checker and let through
+    const maat = d.released ? ' (Maat release)' : d.ruling ? ' (Maat fix)' : '';
+    const why = (!isApplied && d.ruling ? 'held after Maat fix: ' : '') + (!isApplied && d.released ? 'held despite Maat release: ' : '') + (!isApplied ? (/held-safety-rule/.test(ledgerStatus(d.key)) ? 'held: a safety line — needs the safety rule record (Claude + Sol) first' : d.slot === 'english-gone' ? 'not applied: the English line was cut from the bank' : d.slot === 'slot-filled' ? 'not applied: the slot already holds a line' : v.action === 'triage-high' && !d.released ? 'held: checker triage-high' : b && BAD.has(b.verdict) && b.confidence >= 0.6 ? `held: back-translation ${b.verdict}` : !b ? 'held: no back-translation' : 'held') : `applied${maat}`);
     rows.push(`| ${cell(d.key)} | ${cell(d.en)} | ${cell(d[lang])} | ${cell(b ? b.bt : '—')} | ${d.tag}${d.mode === 'plain' ? ' · plain' : ''} | ${v.action} · BT ${b ? `${b.verdict} ${b.confidence}` : 'none'} | ${why} |`);
   }
   md.push(`## ${NAME[lang]} — ${drafts.length} drafts`, '', `HIGH ${tags.HIGH} · MED ${tags.MED} · LOW ${tags.LOW} · plain observations ${plain} · applied as provisional ${applied}, held ${drafts.length - applied}.`, '');
   md.push('| key | English | draft | back-translation (blind) | confidence | verdict | applied |', '|---|---|---|---|---|---|---|', ...rows, '');
+  // Re-keyed lines for Maat to rule on (lang-packs/<lang>/rekeyed-review-2026-10.jsonl): live lines whose earlier
+  // translation was keyed to the wrong English. Shown with their blind back-translation; nothing here is changed.
+  const rkFile = path.join(ROOT, 'lang-packs', lang, 'rekeyed-review-2026-10.jsonl');
+  if (fs.existsSync(rkFile)) {
+    const rk = fs.readFileSync(rkFile, 'utf8').trim().split('\n').map((l) => JSON.parse(l));
+    md.push(`### ${NAME[lang]} — re-keyed (for Maat; not changed by this branch)`, '', rk[0]?.note || '', '');
+    md.push('| key | English | live line | back-translation (blind) | verdict | in the bank now |', '|---|---|---|---|---|---|');
+    for (const r of rk) {
+      const v = checkV2({ lang, en: r.en, text: r[lang] }); const b = v.back;
+      md.push(`| ${cell(r.key)} | ${cell(r.en)} | ${cell(r[lang])} | ${cell(b ? b.bt : '—')} | ${v.action} · BT ${b ? `${b.verdict} ${b.confidence}` : 'none'} | ${slotHolds(r.key, r[lang]) ? 'yes' : 'NO'} |`);
+    }
+    md.push('');
+  }
 }
 fs.writeFileSync(path.join(ROOT, 'review', 'lines-backtranslation-2026-10.md'), md.join('\n'));
 console.log('wrote review/lines-backtranslation-2026-10.md');

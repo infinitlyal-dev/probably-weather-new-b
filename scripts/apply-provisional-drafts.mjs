@@ -133,8 +133,10 @@ for (const lang of LANGS) {
     // Phase 3: APPEND to the provisional manifest (never overwrite the cumulative record) (#2).
     const manifestPath = `lang-packs/${lang}/provisional-manifest.jsonl`;
     const priorManifest = readJsonl(manifestPath) || [];
-    const priorKeys = new Set(priorManifest.map((m) => m.key));
-    const newManifest = pending.filter((p) => appliedKeys.has(p.key) && !priorKeys.has(p.key))
+    // Dedupe on key AND text (10 Oct 2026): the manifest still carries July rows whose index keys now name other
+    // lines, and a key-only check silently skipped recording 40 isiXhosa and 20 isiZulu October fills.
+    const priorKeys = new Set(priorManifest.map((m) => `${m.key}\u0000${m[lang]}`));
+    const newManifest = pending.filter((p) => appliedKeys.has(p.key) && !priorKeys.has(`${p.key}\u0000${p.value}`))
       .map((p) => ({ key: p.key, [lang]: p.value, status: 'provisional-pending-native-confirm', confidence: p.confidence }));
     writeFileSync(manifestPath, [...priorManifest, ...newManifest].map((r) => JSON.stringify(r)).join('\n') + '\n');
 

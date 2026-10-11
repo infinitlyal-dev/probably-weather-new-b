@@ -60,12 +60,15 @@ for (const d of drafts) {
     continue;
   }
   if (!wired.has(d.en)) why.push('English line no longer wired');
-  if (v.action === 'triage-high') why.push(`checker triage-high ${v.confidence}`);
+  // A reviewer's release (Maat, 10 Oct 2026: `released` on the draft row, naming the rulings file) lifts the checker's
+  // hold and nothing else; a drifting or missing back-translation still holds the line.
+  if (v.action === 'triage-high' && !d.released) why.push(`checker triage-high ${v.confidence}`);
   if (v.back && BAD.has(v.back.verdict) && (v.back.confidence ?? 0) >= 0.6) why.push(`back-translation ${v.back.verdict}: "${v.back.bt}"`);
   if (!v.back) why.push('no back-translation record');
   (why.length ? held : rows).push({ ...d, verdict: v.action, confidence: v.confidence, why });
 }
 rows.sort((a, b) => a.en.localeCompare(b.en));
+const released = rows.filter((r) => r.released && r.verdict === 'triage-high').length;
 const NAME = { zu: 'isiZulu', xh: 'isiXhosa', st: 'Sesotho' }[lang];
 const CONST = `HERO_LINES_${lang.toUpperCase()}`;
 const today = new Date().toISOString().slice(0, 10);
@@ -74,8 +77,8 @@ const js = `// Probably Weather — ${NAME} for the bespoke (per-photograph) lin
 // edit by hand.
 //
 // English line → ${NAME}. ${rows.length} rows, drafted by a model (not a native speaker), each through the rebuilt
-// lang-check (concord, attestation in context, a blind back-translation by a second model) and none rated triage-high
-// or drifting. Provisional pending a native reader: lang-packs/${lang}/provisional-manifest.jsonl. The back-translation
+// lang-check (concord, attestation in context, a blind back-translation by a second model), none drifting at the gate's 0.6 confidence, and none
+// rated triage-high${released ? ` except ${released} a reviewer released (the draft row names the ruling)` : ''}. Provisional pending a native reader: lang-packs/${lang}/provisional-manifest.jsonl. The back-translation
 // of every row: review/lines-backtranslation-2026-10.md. Served for ${NAME} by applyBespokeLine in assets/app.js,
 // loaded only then.
 export const ${CONST} = {
