@@ -1,0 +1,1637 @@
+{
+ "set": "exam",
+ "lang": "st",
+ "judge": null,
+ "built": "2026-10-11",
+ "exportedAt": 1791748390315,
+ "attempts": [
+  {
+   "built": "2026-10-11T19:53:10.314Z",
+   "again": null
+  }
+ ],
+ "inputs": {
+  "prompt": "cc0fc447a940fcd5cff66e4a59d47ce3893e1e15d3d8b1ff692bf2743055aa39",
+  "verdicts": "554a3c21ec0869fb7c6c1bb9a8ca5be6e87f90ad5d4baf02298b8056016c3e86",
+  "bundle": "f0be2a2cde70421dc40079e82e809bb10e0026e77190062e327520adbf8e5ec9",
+  "code": "57b19a2a28735baddca1170c7e64e8d86626fb7811889b7692a36b335be15e16"
+ },
+ "files": {
+  "bundle-st.md": "f0be2a2cde70421dc40079e82e809bb10e0026e77190062e327520adbf8e5ec9",
+  "exam-st-01-blind.json": "a7b599ad2a2c4b316c07ad80f8184a782b15f15f184327250c75293dd8358cfa",
+  "exam-st-02-blind.json": "11eac0c60a7a4f7e15161856ccbe0fa96a22f1c02fa92afd963f60136fd7e2ee",
+  "exam-st-03-blind.json": "d1bce4345a3bab432c5b184cf3dbdb8e5f9ffa89fc641ebe78d4695f4f88c12a",
+  "exam-st-04-blind.json": "312de1b1d3760039f5193aaff97dd00a4506c0eaa11d61ac8694ab6c68be1ac3",
+  "exam-st-05-blind.json": "cd8b40366794ce83d644e22bb206476e1ca1f9d4554a257827862a1a236a64fa",
+  "exam-st-06-blind.json": "0f622b9b873ba41d8d5b0268d3839fb72a18edca4dd882201ba446c061b957f3",
+  "exam-st-07-blind.json": "fedc746284072267897d410d2ec4f114d2a8f21f8f3661e250ed4c69a271c4c9",
+  "exam-st-08-blind.json": "ae0bfff04e27ab8d4a2f0905fc282381a2d59805e0c3f853d5c287335f538eac",
+  "exam-st-09-blind.json": "1b0fe7f5d3c91e91c6fe5f8fcad703ba5db3dac17cc44923c6052b768b312768",
+  "exam-st-10-blind.json": "f42d11b74c95d2ee70d4ea97a7ae3da6834b171d10ff8cd63168a58c7657a63a"
+ },
+ "anchors": [
+  "st-0186",
+  "st-0297",
+  "st-0429",
+  "st-0168",
+  "st-0450",
+  "st-0045",
+  "st-0204",
+  "st-0200",
+  "st-0421",
+  "st-0489",
+  "st-0180",
+  "st-0065"
+ ],
+ "map": {
+  "st01-01": {
+   "ref": "st-0471",
+   "en": "The coals aren't going to light themselves.",
+   "draft": "Mashala ha a na ho itukisa ka bo 'ona.",
+   "cond": "weekend",
+   "set": "exam"
+  },
+  "st01-02": {
+   "ref": "st-0097",
+   "en": "Absolutely beautiful out there.",
+   "draft": "Ho motle haholo kantle.",
+   "cond": "clear",
+   "set": "exam"
+  },
+  "st01-03": {
+   "ref": "st-0487",
+   "en": "Beach or braai? Yes.",
+   "draft": "Lebopo kapa braai? E.",
+   "cond": "weekend",
+   "set": "exam"
+  },
+  "st01-04": {
+   "ref": "st-0259",
+   "en": "Fog so thick it has opinions.",
+   "draft": "Moholi o mokoto haholo o na le maikutlo.",
+   "cond": "fog",
+   "set": "exam"
+  },
+  "st01-05": {
+   "ref": "st-0130",
+   "en": "Even the hadedas sound happy.",
+   "draft": "Esita le dinonyana di utloahala li thabile.",
+   "cond": "clear",
+   "set": "exam"
+  },
+  "st01-06": {
+   "ref": "st-0136",
+   "en": "Overcast but we'll survive.",
+   "draft": "Ho na le maru empa re tla phela.",
+   "cond": "cloudy",
+   "set": "exam"
+  },
+  "st01-07": {
+   "ref": "st-0209",
+   "en": "Three pairs of socks and still not enough.",
+   "draft": "Lipara tse tharo tsa dikausu empa ha li ea lekana.",
+   "cond": "cold",
+   "set": "exam"
+  },
+  "st01-08": {
+   "ref": "st-0059",
+   "en": "Warm one coming, give or take a few degrees.",
+   "draft": "Letsatsi le futhumetseng le tla, mohlomong.",
+   "cond": "heat",
+   "set": "exam"
+  },
+  "st01-09": {
+   "ref": "st-0423",
+   "en": "Windows closed, kettle on, and wait.",
+   "draft": "Lifensetere li koetsoe, ketlele e butsoe, ema.",
+   "cond": "storm",
+   "set": "exam"
+  },
+  "st01-10": {
+   "ref": "st-0383",
+   "en": "The commute just became a team sport.",
+   "draft": "Leeto le fetohile papali ea sehlopha.",
+   "cond": "rain",
+   "set": "exam"
+  },
+  "st01-11": {
+   "ref": "st-0420",
+   "en": "The sky just went full Carte Blanche.",
+   "draft": "Lehodimo le fetohile Carte Blanche ka botlalo.",
+   "cond": "storm",
+   "set": "exam"
+  },
+  "st01-12": {
+   "ref": "st-0243",
+   "en": "The fog ate the neighbourhood.",
+   "draft": "Moholi o jele tikoloho.",
+   "cond": "fog",
+   "set": "exam"
+  },
+  "st01-13": {
+   "ref": "st-0182",
+   "en": "The car's heater is the most important relationship in your life right now.",
+   "draft": "Heater ya koloi ke relationship ya bohlokwa ka ho fetisisa bophelong ba hao hona jwale.",
+   "cond": "cold-clear",
+   "set": "exam"
+  },
+  "st01-14": {
+   "ref": "st-0116",
+   "en": "Everything looks 4K today. The sky's in ultra mode.",
+   "draft": "Tsohle li shebahala 4K kajeno. Lehodimo le ultra mode.",
+   "cond": "clear",
+   "set": "exam"
+  },
+  "st01-15": {
+   "ref": "st-0373",
+   "en": "Weather's being more indecisive than you at Spur.",
+   "draft": "Leholimo ha le tsebe ho iketsa joalo ka uena Spur.",
+   "cond": "rain-possible",
+   "set": "exam"
+  },
+  "st01-16": {
+   "ref": "st-0156",
+   "en": "Nothing to see here. Literally.",
+   "draft": "Ha ho letho leo ho le bonoang mona. Ka nnete.",
+   "cond": "cloudy",
+   "set": "exam"
+  },
+  "st01-17": {
+   "ref": "st-0058",
+   "en": "Probably a scorcher. A hat's not a bad idea.",
+   "draft": "Mohlomong letsatsi le chesang. Katiba hase mohopolo o mobe.",
+   "cond": "heat",
+   "set": "exam"
+  },
+  "st01-18": {
+   "ref": "st-0433",
+   "en": "Stay safe. The sky is making a point.",
+   "draft": "Lula u bolokehile. Lehodimo le etsa ntlha.",
+   "cond": "storm",
+   "set": "exam"
+  },
+  "st01-19": {
+   "ref": "st-0222",
+   "en": "The couch has made a compelling case for staying.",
+   "draft": "Sofa e entsoe nyeoe e matla ea ho dula.",
+   "cond": "cold",
+   "set": "exam"
+  },
+  "st01-20": {
+   "ref": "st-0512",
+   "en": "Perfect conditions for losing your dignity.",
+   "draft": "Maemo a phethahetseng a ho lahleheloa ke seriti.",
+   "cond": "wind",
+   "set": "exam"
+  },
+  "st01-21": {
+   "ref": "st-0330",
+   "en": "Quiet out there. Almost suspicious.",
+   "draft": "Ho kgutsitse kantle. E batla ho belaela.",
+   "cond": "night",
+   "set": "exam"
+  },
+  "st01-22": {
+   "ref": "st-0431",
+   "en": "Don't even think about driving somewhere.",
+   "draft": "Se ke oa nahana ho otlela kae kapa kae.",
+   "cond": "storm",
+   "set": "exam"
+  },
+  "st02-01": {
+   "ref": "st-0278",
+   "en": "Table Mountain? What Table Mountain?",
+   "draft": "Table Mountain? Table Mountain efe?",
+   "cond": "fog",
+   "set": "exam"
+  },
+  "st02-02": {
+   "ref": "st-0144",
+   "en": "Good enough weather. Not great, not terrible.",
+   "draft": "Leholimo le lekaneng. Ha le leholo, ha le lebe.",
+   "cond": "cloudy",
+   "set": "exam"
+  },
+  "st02-03": {
+   "ref": "st-0114",
+   "en": "The type of day that makes people text 'lekker dag hey'.",
+   "draft": "Mofuta oa letsatsi o etsang batho ba romele 'letsatsi le letle hey'.",
+   "cond": "clear",
+   "set": "exam"
+  },
+  "st02-04": {
+   "ref": "st-0497",
+   "en": "Your washing just moved to the neighbour's yard.",
+   "draft": "Liaparo tsa hao li sa tsoa fallela jareteng ea moahisane.",
+   "cond": "wind",
+   "set": "exam"
+  },
+  "st02-05": {
+   "ref": "st-0175",
+   "en": "The kind of day Joburg pretends it doesn't have until you're standing in it.",
+   "draft": "Letsatsi la mofuta oo Joburg e iketsang eka ha e na lona, ho fihlela o eme ka hara lona.",
+   "cond": "cold-clear",
+   "set": "exam"
+  },
+  "st02-06": {
+   "ref": "st-0137",
+   "en": "Eskom-friendly weather. No solar today.",
+   "draft": "Leholimo le ratoang ke Eskom. Ha ho solar kajeno.",
+   "cond": "cloudy",
+   "set": "exam"
+  },
+  "st02-07": {
+   "ref": "st-0206",
+   "en": "The duvet had the right idea this morning.",
+   "draft": "Duvet e ne e na le mohopolo o nepahetseng hoseng.",
+   "cond": "cold",
+   "set": "exam"
+  },
+  "st02-08": {
+   "ref": "st-0189",
+   "en": "Three hadedas, two crows, one shivering human at the bird feeder.",
+   "draft": "Hadedas tse tharo, crows tse pedi, human a le mong ya thothomelang ho bird feeder.",
+   "cond": "cold-clear",
+   "set": "exam"
+  },
+  "st02-09": {
+   "ref": "st-0119",
+   "en": "Days like this is why we put up with the load shedding.",
+   "draft": "Matsatsi a tjena ke lebaka leo re mametseng load shedding.",
+   "cond": "clear",
+   "set": "exam"
+  },
+  "st02-10": {
+   "ref": "st-0103",
+   "en": "Take a moment. Look up. You're welcome.",
+   "draft": "Nka motsotso. Sheba holimo. Kea leboha.",
+   "cond": "clear",
+   "set": "exam"
+  },
+  "st02-11": {
+   "ref": "st-0053",
+   "en": "Could go misty. The dew point's flirting with it.",
+   "draft": "Ho ka ba le mohodi. Ela hloko.",
+   "cond": "fog",
+   "set": "exam"
+  },
+  "st02-12": {
+   "ref": "st-0229",
+   "en": "You miss your bed and you've been gone twelve minutes.",
+   "draft": "O hopola bethe ea hao mme o tsoile metsotso e leshome le metso e 'meli.",
+   "cond": "cold",
+   "set": "exam"
+  },
+  "st02-13": {
+   "ref": "st-0049",
+   "en": "Fog might be rolling in. Keep an eye on the mountain.",
+   "draft": "Mohodi o ka kena. Sheba thaba.",
+   "cond": "fog",
+   "set": "exam"
+  },
+  "st02-14": {
+   "ref": "st-0482",
+   "en": "Marinade in. Phone off. Day starts now.",
+   "draft": "Kenya marinade. Tima mohala. Letsatsi le qala joale.",
+   "cond": "weekend",
+   "set": "exam"
+  },
+  "st02-15": {
+   "ref": "st-0501",
+   "en": "Every loose object in the garden has chosen violence.",
+   "draft": "Ntho e 'ngoe le e 'ngoe e lokolohileng serapaneng e khethile pefo.",
+   "cond": "wind",
+   "set": "exam"
+  },
+  "st02-16": {
+   "ref": "st-0470",
+   "en": "Fire up the Weber. It's the law.",
+   "draft": "Chesa Weber. Ke molao.",
+   "cond": "weekend",
+   "set": "exam"
+  },
+  "st02-17": {
+   "ref": "st-0247",
+   "en": "The streetlights are trying their best.",
+   "draft": "Mabone a seterata a leka ka hohle.",
+   "cond": "fog",
+   "set": "exam"
+  },
+  "st02-18": {
+   "ref": "st-0215",
+   "en": "Cold enough for soup. And a second soup.",
+   "draft": "Ho bata ho lekana le soupa. Le soupa ea bobeli.",
+   "cond": "cold",
+   "set": "exam"
+  },
+  "st02-19": {
+   "ref": "st-0268",
+   "en": "The fog drank the mountain.",
+   "draft": "Moholi o noele thaba.",
+   "cond": "fog",
+   "set": "exam"
+  },
+  "st02-20": {
+   "ref": "st-0131",
+   "en": "If you're inside, you're doing it wrong.",
+   "draft": "Haeba o ka hare, o etsa phoso.",
+   "cond": "clear",
+   "set": "exam"
+  },
+  "st02-21": {
+   "ref": "st-0474",
+   "en": "Kuier weather. Get the people together.",
+   "draft": "Leholimo la ho kopana. Bokella batho.",
+   "cond": "weekend",
+   "set": "exam"
+  },
+  "st02-22": {
+   "ref": "st-0391",
+   "en": "Your suede shoes chose today? Bold.",
+   "draft": "Lieta tsa hao tsa suede li khethile kajeno? Sebete.",
+   "cond": "rain",
+   "set": "exam"
+  },
+  "st02-23": {
+   "ref": "st-0147",
+   "en": "Good day for a walk, bad day for a tan.",
+   "draft": "Letsatsi le letle la ho tsamaea, le lebe la ho tjhesa.",
+   "cond": "cloudy",
+   "set": "exam"
+  },
+  "st03-01": {
+   "ref": "st-0427",
+   "en": "Nature just reminded us of the pecking order.",
+   "draft": "Tlhaho e sa tsoa re hopotsa hore na ke mang ea pele.",
+   "cond": "storm",
+   "set": "exam"
+  },
+  "st03-02": {
+   "ref": "st-0319",
+   "en": "Perfect night to actually see the Milky Way.",
+   "draft": "Bosiu bo motle ba ho bona Tsela ea Lebese.",
+   "cond": "night",
+   "set": "exam"
+  },
+  "st03-03": {
+   "ref": "st-0498",
+   "en": "Sand in places sand should never be.",
+   "draft": "Lehlabathe libakeng tseo lehlabathe le sa lokelang ho ba teng.",
+   "cond": "wind",
+   "set": "exam"
+  },
+  "st03-04": {
+   "ref": "st-0194",
+   "en": "Maluti-frost morning. Lesotho's exporting it for free.",
+   "draft": "Maluti-frost morning. Lesotho e a e exporta mahala.",
+   "cond": "cold-clear",
+   "set": "exam"
+  },
+  "st03-05": {
+   "ref": "st-0099",
+   "en": "Somewhere an estate agent is saying 'lifestyle'.",
+   "draft": "Mohlomong sebakeng se seng estate agent e re 'lifestyle'.",
+   "cond": "clear",
+   "set": "exam"
+  },
+  "st03-06": {
+   "ref": "st-0327",
+   "en": "The frogs have entered the chat.",
+   "draft": "Digwagwa di kene puisanong.",
+   "cond": "night",
+   "set": "exam"
+  },
+  "st03-07": {
+   "ref": "st-0093",
+   "en": "Could get gusty. The forecast's a bit loose on this one.",
+   "draft": "Ho ka ba le moea. Ponelopele e hlephile mona.",
+   "cond": "wind",
+   "set": "exam"
+  },
+  "st03-08": {
+   "ref": "st-0304",
+   "en": "The aircon remote is now public property. Negotiate.",
+   "draft": "Remote ea aircon joale ke thepa ea sechaba. Buisana.",
+   "cond": "heat",
+   "set": "exam"
+  },
+  "st03-09": {
+   "ref": "st-0176",
+   "en": "Lekker koud, but the rugby fields are about to look perfect.",
+   "draft": "Lekker koud, empa di-rugby fields di se di tlo shebahala perfect.",
+   "cond": "cold-clear",
+   "set": "exam"
+  },
+  "st03-10": {
+   "ref": "st-0205",
+   "en": "This is not what the tourism brochure promised.",
+   "draft": "Hona ha se seo brosure ea bohahlauli e neng e se tšepisa.",
+   "cond": "cold",
+   "set": "exam"
+  },
+  "st03-11": {
+   "ref": "st-0402",
+   "en": "Wet jeans for the rest of the day. The classic punishment.",
+   "draft": "Lijinse tse metsi letsatsi lohle. Kotlo ea setso.",
+   "cond": "rain",
+   "set": "exam"
+  },
+  "st03-12": {
+   "ref": "st-0393",
+   "en": "Somewhere an umbrella just turned inside out. Moment of silence.",
+   "draft": "Kae-kae sekhele se sa tsoa reteleha ka hare. Motsotso oa kgutso.",
+   "cond": "rain",
+   "set": "exam"
+  },
+  "st03-13": {
+   "ref": "st-0415",
+   "en": "Thunder's grumbling, hey.",
+   "draft": "Ledimo le a duma.",
+   "cond": "storm",
+   "set": "exam"
+  },
+  "st03-14": {
+   "ref": "st-0495",
+   "en": "The southeaster's arrived. Uninvited, as usual.",
+   "draft": "Moea oa boroa o fihlile. O sa mengoa, joalo ka kamehla.",
+   "cond": "wind",
+   "set": "exam"
+  },
+  "st03-15": {
+   "ref": "st-0161",
+   "en": "A perfectly average sky doing perfectly average things.",
+   "draft": "Lehodimo le karolelano le etsang lintho tsa karolelano.",
+   "cond": "cloudy",
+   "set": "exam"
+  },
+  "st03-16": {
+   "ref": "st-0318",
+   "en": "Stars out, load shedding can't touch this.",
+   "draft": "Dinaledi di teng, load shedding e ke ke ea ama sena.",
+   "cond": "night",
+   "set": "exam"
+  },
+  "st03-17": {
+   "ref": "st-0401",
+   "en": "The potholes are becoming swimming pools.",
+   "draft": "Mesima e fetoha matamo a ho sesa.",
+   "cond": "rain",
+   "set": "exam"
+  },
+  "st03-18": {
+   "ref": "st-0039",
+   "en": "Grey skies, low conviction.",
+   "draft": "Leholimo le lerootho, tumelo e tlase.",
+   "cond": "cloudy",
+   "set": "exam"
+  },
+  "st03-19": {
+   "ref": "st-0321",
+   "en": "The neighbourhood cats have taken over.",
+   "draft": "Dikatse tsa moahisane di nkile taolo.",
+   "cond": "night",
+   "set": "exam"
+  },
+  "st03-20": {
+   "ref": "st-0178",
+   "en": "Tile floors are tonight's villain. Wear something on your feet.",
+   "draft": "Tile floors ke villain ya bosiu bona. Apara ntho maotong.",
+   "cond": "cold-clear",
+   "set": "exam"
+  },
+  "st03-21": {
+   "ref": "st-0277",
+   "en": "If you can read this, you're too close.",
+   "draft": "Haeba o ka bala sena, o haufi haholo.",
+   "cond": "fog",
+   "set": "exam"
+  },
+  "st03-22": {
+   "ref": "st-0107",
+   "en": "The fynbos is loving it. You should too.",
+   "draft": "Fynbos e e rata. Le uena o lokela.",
+   "cond": "clear",
+   "set": "exam"
+  },
+  "st03-23": {
+   "ref": "st-0486",
+   "en": "The braai is the social calendar. Show up.",
+   "draft": "Braai ke khalendara ea boithabiso. Hlaha.",
+   "cond": "weekend",
+   "set": "exam"
+  },
+  "st04-01": {
+   "ref": "st-0309",
+   "en": "Your iced coffee melted before you reached the car.",
+   "draft": "Kofi ea hao ea leqhoa e qhibilihile pele o fihla koloing.",
+   "cond": "heat",
+   "set": "exam"
+  },
+  "st04-02": {
+   "ref": "st-0310",
+   "en": "The neighbours' pool has never looked so tempting.",
+   "draft": "Pool ea baahisane ha e e-s'o shebahale e khahlisang hakana.",
+   "cond": "heat",
+   "set": "exam"
+  },
+  "st04-03": {
+   "ref": "st-0266",
+   "en": "The world ends two metres past the gate.",
+   "draft": "Lefatše le qetella limithara tse peli ka mose ho heke.",
+   "cond": "fog",
+   "set": "exam"
+  },
+  "st04-04": {
+   "ref": "st-0235",
+   "en": "Layer up like you're climbing Sani Pass.",
+   "draft": "Apara liaparo tse ngata joalo ka ho palama Sani Pass.",
+   "cond": "cold",
+   "set": "exam"
+  },
+  "st04-05": {
+   "ref": "st-0250",
+   "en": "Everything looks like a film scene. A creepy one.",
+   "draft": "Tsohle li shebahala joalo ka filimi. E tšosang.",
+   "cond": "fog",
+   "set": "exam"
+  },
+  "st04-06": {
+   "ref": "st-0138",
+   "en": "It is what it is.",
+   "draft": "Ke seo e leng sona.",
+   "cond": "cloudy",
+   "set": "exam"
+  },
+  "st04-07": {
+   "ref": "st-0198",
+   "en": "Welkom-cold today. The kind that goes through three jerseys like they aren't there.",
+   "draft": "Welkom-cold kajeno. Serame se fetang ka di-jersey tse tharo jwalo ka ha di se teng.",
+   "cond": "cold-clear",
+   "set": "exam"
+  },
+  "st04-08": {
+   "ref": "st-0390",
+   "en": "The garden's saying dankie at last.",
+   "draft": "Jarata e re kea leboha qetellong.",
+   "cond": "rain",
+   "set": "exam"
+  },
+  "st04-09": {
+   "ref": "st-0434",
+   "en": "Nature's having a word. Best to listen.",
+   "draft": "Tlhaho e batla ho bua. Ho molemo ho mametsa.",
+   "cond": "storm",
+   "set": "exam"
+  },
+  "st04-10": {
+   "ref": "st-0358",
+   "en": "Maybe rain, maybe not. Classic.",
+   "draft": "Mohlomong pula, mohlomong che. Setso.",
+   "cond": "rain-possible",
+   "set": "exam"
+  },
+  "st04-11": {
+   "ref": "st-0202",
+   "en": "Sun's out. Don't be fooled. Nature is lying.",
+   "draft": "Letsatsi le tjhabile. O se ke wa thetswa. Nature e bua leshano.",
+   "cond": "cold-clear",
+   "set": "exam"
+  },
+  "st04-12": {
+   "ref": "st-0197",
+   "en": "The dog is still keen. The dog is always keen. Respect.",
+   "draft": "Ntja e ntse e le keen. Ntja e dula e le keen. Respect.",
+   "cond": "cold-clear",
+   "set": "exam"
+  },
+  "st04-13": {
+   "ref": "st-0369",
+   "en": "Trust issues with the sky today.",
+   "draft": "Mathata a tšepo le lehodimo kajeno.",
+   "cond": "rain-possible",
+   "set": "exam"
+  },
+  "st04-14": {
+   "ref": "st-0128",
+   "en": "Bottle this one. Open it in winter.",
+   "draft": "Beha lena ka botlolong. Bula nakong ea mariha.",
+   "cond": "clear",
+   "set": "exam"
+  },
+  "st04-15": {
+   "ref": "st-0462",
+   "en": "You will look like a lobster. You've been warned.",
+   "draft": "O tla shebahala joalo ka lobster. O lemoselitsoe.",
+   "cond": "uv",
+   "set": "exam"
+  },
+  "st04-16": {
+   "ref": "st-0081",
+   "en": "Looks wet. The models are fairly sure, not certain.",
+   "draft": "Ho bonahala ho le metsi. Limodele li na le bonnete mohlomong, eseng ka botlalo.",
+   "cond": "rain",
+   "set": "exam"
+  },
+  "st04-17": {
+   "ref": "st-0452",
+   "en": "The UV index is higher than your expectations.",
+   "draft": "UV index e phahameng ho feta litšepo tsa hao.",
+   "cond": "uv",
+   "set": "exam"
+  },
+  "st04-18": {
+   "ref": "st-0289",
+   "en": "The fridge is the coolest room in the house.",
+   "draft": "Fridge ke kamore e pholileng ka ho fetisisa ka tlung.",
+   "cond": "heat",
+   "set": "exam"
+  },
+  "st04-19": {
+   "ref": "st-0508",
+   "en": "Your hairstyle? Gone. Accept it.",
+   "draft": "Moriri oa hao? O ile. Amohela.",
+   "cond": "wind",
+   "set": "exam"
+  },
+  "st04-20": {
+   "ref": "st-0504",
+   "en": "The braai cover is in the next suburb.",
+   "draft": "Sekoahelo sa braai se seterekeng se latelang.",
+   "cond": "wind",
+   "set": "exam"
+  },
+  "st04-21": {
+   "ref": "st-0179",
+   "en": "The kids still going to school in shorts. They know things we don't.",
+   "draft": "Bana ba ntse ba ya school ka shorts. Ba tseba dintho tseo rona re sa di tsebeng.",
+   "cond": "cold-clear",
+   "set": "exam"
+  },
+  "st04-22": {
+   "ref": "st-0442",
+   "en": "Cancel everything. Even your excuses.",
+   "draft": "Hlakola tsohle. Esita le mabaka a hao.",
+   "cond": "storm",
+   "set": "exam"
+  },
+  "st05-01": {
+   "ref": "st-0298",
+   "en": "Water consumption: yes. All of it.",
+   "draft": "Ho noa metsi: e. Kaofela.",
+   "cond": "heat",
+   "set": "exam"
+  },
+  "st05-02": {
+   "ref": "st-0133",
+   "en": "Postcard weather. You're welcome.",
+   "draft": "Leholimo la postcard. Kea leboha.",
+   "cond": "clear",
+   "set": "exam"
+  },
+  "st05-03": {
+   "ref": "st-0416",
+   "en": "Somewhere a roof is someone's new kite.",
+   "draft": "Mohlomong sebakeng se seng marulelo ke khaete e ncha.",
+   "cond": "storm",
+   "set": "exam"
+  },
+  "st05-04": {
+   "ref": "st-0265",
+   "en": "Cape Town just got a dimmer switch.",
+   "draft": "Cape Town e fumane konopo ea ho fokotsa lesedi.",
+   "cond": "fog",
+   "set": "exam"
+  },
+  "st05-05": {
+   "ref": "st-0073",
+   "en": "Maybe rain, maybe not. Classic.",
+   "draft": "Mohlomong pula, mohlomong che. Tloaelo.",
+   "cond": "rain-possible",
+   "set": "exam"
+  },
+  "st05-06": {
+   "ref": "st-0419",
+   "en": "Lightning's putting Eskom's grid to shame.",
+   "draft": "Lehadima le hlabisa Eskom dihlong.",
+   "cond": "storm",
+   "set": "exam"
+  },
+  "st05-07": {
+   "ref": "st-0367",
+   "en": "Somewhere between fine and soaked. Good luck.",
+   "draft": "Pakeng tsa ho loka le ho ba metsi. Katleho.",
+   "cond": "rain-possible",
+   "set": "exam"
+  },
+  "st05-08": {
+   "ref": "st-0077",
+   "en": "Might spit a bit. Might not bother.",
+   "draft": "Ho ka tšela hanyane. Ho ka se tshoenyehe.",
+   "cond": "rain-possible",
+   "set": "exam"
+  },
+  "st05-09": {
+   "ref": "st-0413",
+   "en": "Good soup weather, not gonna lie.",
+   "draft": "Leholimo le letle la soupa.",
+   "cond": "rain",
+   "set": "exam"
+  },
+  "st05-10": {
+   "ref": "st-0162",
+   "en": "The clouds RSVP'd 'maybe' and showed up anyway.",
+   "draft": "Maru a arabile 'mohlomong' empa a fihlile.",
+   "cond": "cloudy",
+   "set": "exam"
+  },
+  "st05-11": {
+   "ref": "st-0195",
+   "en": "Coffee in the sun on the stoep. The whole reason we live here.",
+   "draft": "Coffee letsatsing stoepong. Ke lona lebaka lohle leo re dulang mona.",
+   "cond": "cold-clear",
+   "set": "exam"
+  },
+  "st05-12": {
+   "ref": "st-0424",
+   "en": "Not the time for hero moves, hey.",
+   "draft": "Ha se nako ea bosenatla, hey.",
+   "cond": "storm",
+   "set": "exam"
+  },
+  "st05-13": {
+   "ref": "st-0410",
+   "en": "Perfect excuse to cancel plans.",
+   "draft": "Lebaka le letle la ho hlakola merero.",
+   "cond": "rain",
+   "set": "exam"
+  },
+  "st05-14": {
+   "ref": "st-0496",
+   "en": "The bins are on an adventure again.",
+   "draft": "Matlakala a tsamaisong hape.",
+   "cond": "wind",
+   "set": "exam"
+  },
+  "st05-15": {
+   "ref": "st-0067",
+   "en": "Probably a bit of cloud. Or a lot. Hard to call.",
+   "draft": "Mohlomong ho na le maru a manyane. Kapa a mangata. Ho thata ho bolela.",
+   "cond": "partly-cloudy",
+   "set": "exam"
+  },
+  "st05-16": {
+   "ref": "st-0361",
+   "en": "The sky's giving mixed signals again.",
+   "draft": "Lehodimo le fana le matšoao a tsoakaneng hape.",
+   "cond": "rain-possible",
+   "set": "exam"
+  },
+  "st05-17": {
+   "ref": "st-0418",
+   "en": "Eskom wishes it had this power.",
+   "draft": "Eskom e ka rata matla ana.",
+   "cond": "storm",
+   "set": "exam"
+  },
+  "st05-18": {
+   "ref": "st-0140",
+   "en": "Not depressing. Just... underwhelming.",
+   "draft": "Ha ho masoabi. Feela... ha ho khotsofatse.",
+   "cond": "cloudy",
+   "set": "exam"
+  },
+  "st05-19": {
+   "ref": "st-0325",
+   "en": "Cape Town's twinkling. Probably.",
+   "draft": "Cape Town e phatsima. Mohlomong.",
+   "cond": "night",
+   "set": "exam"
+  },
+  "st05-20": {
+   "ref": "st-0301",
+   "en": "Your makeup has an expiry date of 9am.",
+   "draft": "Grimase ea hao e na le nako ea ho fela ea 9 hoseng.",
+   "cond": "heat",
+   "set": "exam"
+  },
+  "st05-21": {
+   "ref": "st-0056",
+   "en": "Looks warm. How warm is a moving target.",
+   "draft": "Ho bonahala ho futhumetse. Hore na ho futhumetse hakae ho a fetoha.",
+   "cond": "heat",
+   "set": "exam"
+  },
+  "st05-22": {
+   "ref": "st-0366",
+   "en": "Even the weather apps are arguing about this one.",
+   "draft": "Esita le di-app tsa leholimo li phehisana ka sena.",
+   "cond": "rain-possible",
+   "set": "exam"
+  },
+  "st05-23": {
+   "ref": "st-0300",
+   "en": "The fridge door is getting a workout today.",
+   "draft": "Monyako oa fridge o fumana boikoetliso kajeno.",
+   "cond": "heat",
+   "set": "exam"
+  },
+  "st06-01": {
+   "ref": "st-0055",
+   "en": "Probably hot. We'll all find out together.",
+   "draft": "Mohlomong ho chesa. Re tla fumana kaofela hammoho.",
+   "cond": "heat",
+   "set": "exam"
+  },
+  "st06-02": {
+   "ref": "st-0142",
+   "en": "Could be worse. Could also be better.",
+   "draft": "E ka ba mpe le ho feta. E ka ba betere le ho feta.",
+   "cond": "cloudy",
+   "set": "exam"
+  },
+  "st06-03": {
+   "ref": "st-0159",
+   "en": "Cloud cover with a side of who-cares.",
+   "draft": "Maru le lehlakore la mang ea tsotellang.",
+   "cond": "cloudy",
+   "set": "exam"
+  },
+  "st06-04": {
+   "ref": "st-0331",
+   "en": "The hadedas are sleeping. Finally.",
+   "draft": "Dinonyana di robetse. Qetellong.",
+   "cond": "night",
+   "set": "exam"
+  },
+  "st06-05": {
+   "ref": "st-0403",
+   "en": "Solidarity to everyone with one wet shoe right now.",
+   "draft": "Kopano le bohle ba nang le seeta se le seng se metsi joale.",
+   "cond": "rain",
+   "set": "exam"
+  },
+  "st06-06": {
+   "ref": "st-0170",
+   "en": "The sky is buffering.",
+   "draft": "Lehodimo le a buffera.",
+   "cond": "cloudy",
+   "set": "exam"
+  },
+  "st06-07": {
+   "ref": "st-0224",
+   "en": "Hot water bottle is the real MVP today.",
+   "draft": "Botlolo ea metsi a chesang ke mohale oa 'nete kajeno.",
+   "cond": "cold",
+   "set": "exam"
+  },
+  "st06-08": {
+   "ref": "st-0076",
+   "en": "The sky's undecided. So are we.",
+   "draft": "Leholimo ha le qeta. Le rona.",
+   "cond": "rain-possible",
+   "set": "exam"
+  },
+  "st06-09": {
+   "ref": "st-0505",
+   "en": "Not a hairstyle in sight. Just survivors.",
+   "draft": "Ha ho setaele sa moriri se bonahalang. Ba pholosehileng feela.",
+   "cond": "wind",
+   "set": "exam"
+  },
+  "st06-10": {
+   "ref": "st-0432",
+   "en": "Thunder so close the walls shook. Respect.",
+   "draft": "Modumo o haufi mabota a thothomela. Hlompho.",
+   "cond": "storm",
+   "set": "exam"
+  },
+  "st06-11": {
+   "ref": "st-0223",
+   "en": "Outside is a test of character. You're failing.",
+   "draft": "Kantle ke teko ea botho. O a hloleha.",
+   "cond": "cold",
+   "set": "exam"
+  },
+  "st06-12": {
+   "ref": "st-0513",
+   "en": "Even the seagulls are walking today.",
+   "draft": "Esita le dikoekoe di tsamaea kajeno.",
+   "cond": "wind",
+   "set": "exam"
+  },
+  "st06-13": {
+   "ref": "st-0472",
+   "en": "Shoes optional. Attitude mandatory.",
+   "draft": "Lieta li ka khethoa. Boitšoaro bo tlamehile.",
+   "cond": "weekend",
+   "set": "exam"
+  },
+  "st06-14": {
+   "ref": "st-0290",
+   "en": "Flip-flops on tar was a mistake.",
+   "draft": "Lislipase ho tara e ne e le phoso.",
+   "cond": "heat",
+   "set": "exam"
+  },
+  "st06-15": {
+   "ref": "st-0091",
+   "en": "Probably windy. The Cape Doctor keeps its own diary.",
+   "draft": "Mohlomong ho na le moea. Cape Doctor e na le bukana ea eona.",
+   "cond": "wind",
+   "set": "exam"
+  },
+  "st06-16": {
+   "ref": "st-0089",
+   "en": "Storm on the cards, not yet confirmed. Stay sharp.",
+   "draft": "Sefefo se monyetleng, ha se e-s'o netefatsoe. Lula u falimehile.",
+   "cond": "storm",
+   "set": "exam"
+  },
+  "st06-17": {
+   "ref": "st-0451",
+   "en": "Your future self will thank you for that sunscreen.",
+   "draft": "Uena oa hosane o tla leboha ka setofo sa letsatsi.",
+   "cond": "uv",
+   "set": "exam"
+  },
+  "st06-18": {
+   "ref": "st-0225",
+   "en": "Why did past-you make plans? Past-you is the worst.",
+   "draft": "Hobaneng uena-oa-nakong-e-fetileng o entse merero? Uena-oa-nakong-e-fetileng o mobe.",
+   "cond": "cold",
+   "set": "exam"
+  },
+  "st06-19": {
+   "ref": "st-0478",
+   "en": "This is the weather the weekend was invented for.",
+   "draft": "Lena ke leholimo phomolo e entsoeng bakeng sa lona.",
+   "cond": "weekend",
+   "set": "exam"
+  },
+  "st06-20": {
+   "ref": "st-0372",
+   "en": "Don't trust those clouds. They're plotting.",
+   "draft": "Se ke oa tšepa maru ao. A rera.",
+   "cond": "rain-possible",
+   "set": "exam"
+  },
+  "st06-21": {
+   "ref": "st-0364",
+   "en": "Schrodinger's rain. It both is and isn't.",
+   "draft": "Pula ea Schrödinger. E teng le ha e eo.",
+   "cond": "rain-possible",
+   "set": "exam"
+  },
+  "st06-22": {
+   "ref": "st-0100",
+   "en": "Save this one in the memory bank.",
+   "draft": "Boloka letsatsi lena mohopolong.",
+   "cond": "clear",
+   "set": "exam"
+  },
+  "st06-23": {
+   "ref": "st-0336",
+   "en": "Somewhere a cricket is really giving it.",
+   "draft": "Kae-kae tšie e binela ka matla.",
+   "cond": "night",
+   "set": "exam"
+  },
+  "st07-01": {
+   "ref": "st-0106",
+   "en": "Your vitamin D levels are thanking you.",
+   "draft": "Maemo a hao a vitamin D a a leboha.",
+   "cond": "clear",
+   "set": "exam"
+  },
+  "st07-02": {
+   "ref": "st-0203",
+   "en": "Ja, it's jersey weather. Double jersey.",
+   "draft": "E, ke leholimo la jersey. Jersey tse peli.",
+   "cond": "cold",
+   "set": "exam"
+  },
+  "st07-03": {
+   "ref": "st-0160",
+   "en": "The sun's on airplane mode.",
+   "draft": "Letsatsi le ho airplane mode.",
+   "cond": "cloudy",
+   "set": "exam"
+  },
+  "st07-04": {
+   "ref": "st-0426",
+   "en": "The dog's under the bed. Smart move, honestly.",
+   "draft": "Ntja e ka tlas'a bethe. Mohato o bohlale, ka nnete.",
+   "cond": "storm",
+   "set": "exam"
+  },
+  "st07-05": {
+   "ref": "st-0302",
+   "en": "The ice cream van is playing everyone's anthem.",
+   "draft": "Bane ea ice cream e bapala pina ea bohle.",
+   "cond": "heat",
+   "set": "exam"
+  },
+  "st07-06": {
+   "ref": "st-0296",
+   "en": "The office aircon debate just went to level 5.",
+   "draft": "Puisano ea aircon ea ofisi e sa tsoa fihla boemong ba 5.",
+   "cond": "heat",
+   "set": "exam"
+  },
+  "st07-07": {
+   "ref": "st-0262",
+   "en": "The fog arrived unannounced. Classic fog.",
+   "draft": "Moholi o fihlile a sa memioa. Moholi oa setso.",
+   "cond": "fog",
+   "set": "exam"
+  },
+  "st07-08": {
+   "ref": "st-0333",
+   "en": "Dark outside, bright tomorrow.",
+   "draft": "Ho fifala kantle, ho phatsima hosane.",
+   "cond": "night",
+   "set": "exam"
+  },
+  "st07-09": {
+   "ref": "st-0502",
+   "en": "Walking into it feels like a video game boss fight.",
+   "draft": "Ho tsamaea ho eona ho ikutloa joalo ka ntoa ea boss ea papali ea video.",
+   "cond": "wind",
+   "set": "exam"
+  },
+  "st07-10": {
+   "ref": "st-0425",
+   "en": "The sky's reminding us who's boss.",
+   "draft": "Lehodimo le re hopotsa hore ke mang monga'a.",
+   "cond": "storm",
+   "set": "exam"
+  },
+  "st07-11": {
+   "ref": "st-0113",
+   "en": "No filter needed. Just look outside.",
+   "draft": "Ha ho hlokahale filitha. Sheba kantle feela.",
+   "cond": "clear",
+   "set": "exam"
+  },
+  "st07-12": {
+   "ref": "st-0294",
+   "en": "Ice cream isn't a treat. It's survival.",
+   "draft": "Ice cream ha se mpho. Ke bophelo.",
+   "cond": "heat",
+   "set": "exam"
+  },
+  "st07-13": {
+   "ref": "st-0057",
+   "en": "Hot-ish, likely. Keep the water close.",
+   "draft": "Ho chesa mohlomong. Boloka metsi haufi.",
+   "cond": "heat",
+   "set": "exam"
+  },
+  "st07-14": {
+   "ref": "st-0493",
+   "en": "The weekend doesn't get better than this.",
+   "draft": "Phomolo ha e be betere ho feta mona.",
+   "cond": "weekend",
+   "set": "exam"
+  },
+  "st07-15": {
+   "ref": "st-0381",
+   "en": "Rain so heavy it should pay rent.",
+   "draft": "Pula e boima haholo e lokela ho lefa rente.",
+   "cond": "rain",
+   "set": "exam"
+  },
+  "st07-16": {
+   "ref": "st-0047",
+   "en": "Bring a jacket. Or don't. We're only fairly sure.",
+   "draft": "Nka baki. Kapa che. Re na le bonnete feela mohlomong.",
+   "cond": "cold",
+   "set": "exam"
+  },
+  "st07-17": {
+   "ref": "st-0196",
+   "en": "Highveld winter: the only place where you wear two jackets to fetch the post.",
+   "draft": "Highveld winter: ke moo o aparang jackets tse pedi ho lata post.",
+   "cond": "cold-clear",
+   "set": "exam"
+  },
+  "st07-18": {
+   "ref": "st-0382",
+   "en": "Your shoes are about to have a bad day.",
+   "draft": "Lieta tsa hao li tla ba le letsatsi le lebe.",
+   "cond": "rain",
+   "set": "exam"
+  },
+  "st07-19": {
+   "ref": "st-0477",
+   "en": "No alarm. No agenda. Just vibes.",
+   "draft": "Ha ho alarm. Ha ho agenda. Vibes feela.",
+   "cond": "weekend",
+   "set": "exam"
+  },
+  "st07-20": {
+   "ref": "st-0285",
+   "en": "Somewhere a chocolate bar just died.",
+   "draft": "Mohlomong sebakeng se seng tšokolate e sa tsoa qhibiliha.",
+   "cond": "heat",
+   "set": "exam"
+  },
+  "st07-21": {
+   "ref": "st-0095",
+   "en": "Wind's on the cards. Peg the washing down.",
+   "draft": "Moea o monyetleng. Hokahanya liaparo tsa ho hlatsoa.",
+   "cond": "wind",
+   "set": "exam"
+  },
+  "st07-22": {
+   "ref": "st-0246",
+   "en": "Walking the dog has become a trust exercise.",
+   "draft": "Ho tsamaisa ntja e fetohile papali ea tšepo.",
+   "cond": "fog",
+   "set": "exam"
+  },
+  "st08-01": {
+   "ref": "st-0306",
+   "en": "Whoever has a pool today is your new best friend.",
+   "draft": "Mang kapa mang ea nang le pool kajeno ke motsoalle oa hao e mocha e moholo.",
+   "cond": "heat",
+   "set": "exam"
+  },
+  "st08-02": {
+   "ref": "st-0494",
+   "en": "Hold onto your hat! And your kids.",
+   "draft": "Tšoara katiba ea hao! Le bana ba hao.",
+   "cond": "wind",
+   "set": "exam"
+  },
+  "st08-03": {
+   "ref": "st-0374",
+   "en": "Pack an umbrella. Or don't. We don't know either.",
+   "draft": "Paka sekhele. Kapa o se ke oa paka. Ha re tsebe le rona.",
+   "cond": "rain-possible",
+   "set": "exam"
+  },
+  "st08-04": {
+   "ref": "st-0255",
+   "en": "Visibility sponsored by nobody.",
+   "draft": "Ho boneha ho sponsoritsoe ke motho. Motho.",
+   "cond": "fog",
+   "set": "exam"
+  },
+  "st08-05": {
+   "ref": "st-0094",
+   "en": "Breezy, probably. Maybe more.",
+   "draft": "Ho foka hanyane, mohlomong. Mohlomong ho feta.",
+   "cond": "wind",
+   "set": "exam"
+  },
+  "st08-06": {
+   "ref": "st-0269",
+   "en": "Walking to the bin is now an expedition.",
+   "draft": "Ho tsamaea ho ea bining joale ke leeto.",
+   "cond": "fog",
+   "set": "exam"
+  },
+  "st08-07": {
+   "ref": "st-0066",
+   "en": "Night looks calm. Models permitting.",
+   "draft": "Bosiu bo bonahala bo khutsitse. Haeba limodele li lumela.",
+   "cond": "night",
+   "set": "exam"
+  },
+  "st08-08": {
+   "ref": "st-0328",
+   "en": "Warm enough to leave the window open. Brave enough?",
+   "draft": "Ho futhumetse ho lekane ho bula fensetere. O sebete?",
+   "cond": "night",
+   "set": "exam"
+  },
+  "st08-09": {
+   "ref": "st-0279",
+   "en": "Sky's throwing rocks. Stay inside.",
+   "draft": "Lehodimo le lahla majoe. Sala ka hare.",
+   "cond": "hail",
+   "set": "exam"
+  },
+  "st08-10": {
+   "ref": "st-0317",
+   "en": "Even your phone's overheating.",
+   "draft": "Esita le mohala oa hao o chesang.",
+   "cond": "heat",
+   "set": "exam"
+  },
+  "st08-11": {
+   "ref": "st-0101",
+   "en": "The kind of day you text someone about.",
+   "draft": "Mofuta oa letsatsi oo o romelang motho molaetsa ka lona.",
+   "cond": "clear",
+   "set": "exam"
+  },
+  "st08-12": {
+   "ref": "st-0469",
+   "en": "Braai weather, boet! No excuses.",
+   "draft": "Leholimo la braai, boet! Ha ho mabaka.",
+   "cond": "weekend",
+   "set": "exam"
+  },
+  "st08-13": {
+   "ref": "st-0108",
+   "en": "Blue sky, warm breeze. The simple stuff.",
+   "draft": "Lehodimo le letala, moea o futhumetseng. Lintho tse bonolo.",
+   "cond": "clear",
+   "set": "exam"
+  },
+  "st08-14": {
+   "ref": "st-0286",
+   "en": "The office aircon war has begun.",
+   "draft": "Ntoa ea aircon ea ofisi e qalile.",
+   "cond": "heat",
+   "set": "exam"
+  },
+  "st08-15": {
+   "ref": "st-0283",
+   "en": "You could fry an egg on the N1.",
+   "draft": "O ka chesa lehe ho N1.",
+   "cond": "heat",
+   "set": "exam"
+  },
+  "st08-16": {
+   "ref": "st-0211",
+   "en": "Rooibos consumption just doubled.",
+   "draft": "Tšebeliso ea rooibos e sa tsoa phethahala habeli.",
+   "cond": "cold",
+   "set": "exam"
+  },
+  "st08-17": {
+   "ref": "st-0083",
+   "en": "Rain on the way, give or take.",
+   "draft": "Pula e tla, mohlomong.",
+   "cond": "rain",
+   "set": "exam"
+  },
+  "st08-18": {
+   "ref": "st-0228",
+   "en": "Even the geyser is putting in extra hours.",
+   "draft": "Esita le geyser e sebetsa lihora tse eketsehileng.",
+   "cond": "cold",
+   "set": "exam"
+  },
+  "st08-19": {
+   "ref": "st-0112",
+   "en": "Even the parking lot looks pretty today.",
+   "draft": "Esita le sebaka sa liphakinki se bonahala se setle kajeno.",
+   "cond": "clear",
+   "set": "exam"
+  },
+  "st08-20": {
+   "ref": "st-0208",
+   "en": "Your hands are in your pockets and they're not coming out.",
+   "draft": "Matsoho a hao a lipokothong 'me ha a tsoe.",
+   "cond": "cold",
+   "set": "exam"
+  },
+  "st08-21": {
+   "ref": "st-0086",
+   "en": "Storm's possible. The braai might need a rain check.",
+   "draft": "Sefefo se ka etsahala. Braai e ka hloka letsatsi le leng.",
+   "cond": "storm",
+   "set": "exam"
+  },
+  "st08-22": {
+   "ref": "st-0226",
+   "en": "Hot chocolate is not a want. It's a need.",
+   "draft": "Tšokolate e chesang ha se takatso. Ke tlhoko.",
+   "cond": "cold",
+   "set": "exam"
+  },
+  "st08-23": {
+   "ref": "st-0264",
+   "en": "Visibility: basically zero.",
+   "draft": "Ho boneha: hanyenyane nul.",
+   "cond": "fog",
+   "set": "exam"
+  },
+  "st09-01": {
+   "ref": "st-0455",
+   "en": "The sun doesn't care about your plans.",
+   "draft": "Letsatsi ha le khathalele merero ea hao.",
+   "cond": "uv",
+   "set": "exam"
+  },
+  "st09-02": {
+   "ref": "st-0456",
+   "en": "Tan lines are not a personality trait.",
+   "draft": "Mela ea ho tjhesa ha se botho.",
+   "cond": "uv",
+   "set": "exam"
+  },
+  "st09-03": {
+   "ref": "st-0090",
+   "en": "Sky's looking moody. Could escalate.",
+   "draft": "Leholimo le bonahala le halefile. Ho ka eketseha.",
+   "cond": "storm",
+   "set": "exam"
+  },
+  "st09-04": {
+   "ref": "st-0078",
+   "en": "50/50 on the rain. Bring a jacket, just in case.",
+   "draft": "50/50 ka pula. Nka baki, e le ka mohla.",
+   "cond": "rain-possible",
+   "set": "exam"
+  },
+  "st09-05": {
+   "ref": "st-0096",
+   "en": "Some wind expected. Strength still TBC.",
+   "draft": "Ho lebeletsoe moea o itseng. Matla ha a e-s'o netefatsoe.",
+   "cond": "wind",
+   "set": "exam"
+  },
+  "st09-06": {
+   "ref": "st-0234",
+   "en": "The fridge feels warmer than the lounge today.",
+   "draft": "Fridge e ikutloa e futhumetse ho feta lounge kajeno.",
+   "cond": "cold",
+   "set": "exam"
+  },
+  "st09-07": {
+   "ref": "st-0245",
+   "en": "The world got a soft filter this morning.",
+   "draft": "Lefatše le fumane filitha e bonolo hoseng.",
+   "cond": "fog",
+   "set": "exam"
+  },
+  "st09-08": {
+   "ref": "st-0459",
+   "en": "Today's forecast: medium rare.",
+   "draft": "Ponelopele ea kajeno: medium rare.",
+   "cond": "uv",
+   "set": "exam"
+  },
+  "st09-09": {
+   "ref": "st-0500",
+   "en": "The wind has a personal vendetta against umbrellas.",
+   "draft": "Moea o na le vendetta ea motho ka bo eena khahlanong le disekhele.",
+   "cond": "wind",
+   "set": "exam"
+  },
+  "st09-10": {
+   "ref": "st-0165",
+   "en": "Forecast: vibes neutral, expectations lower.",
+   "draft": "Ponelopele: vibes li bohareng, litebello li tlase.",
+   "cond": "cloudy",
+   "set": "exam"
+  },
+  "st09-11": {
+   "ref": "st-0201",
+   "en": "The lapa cushions are crispy.",
+   "draft": "Di-cushion tsa lapa di crispy.",
+   "cond": "cold-clear",
+   "set": "exam"
+  },
+  "st09-12": {
+   "ref": "st-0043",
+   "en": "Probably cold. Take the jersey, you'll thank us.",
+   "draft": "Mohlomong ho bata. Nka jeresi, u tla re leboha.",
+   "cond": "cold",
+   "set": "exam"
+  },
+  "st09-13": {
+   "ref": "st-0436",
+   "en": "Unplug the things. The sky has plans.",
+   "draft": "Tlosa lintho ho motlakase. Lehodimo le na le merero.",
+   "cond": "storm",
+   "set": "exam"
+  },
+  "st09-14": {
+   "ref": "st-0465",
+   "en": "Reapply that sunscreen or suffer.",
+   "draft": "Tšoaea hape kapa o hloke.",
+   "cond": "uv",
+   "set": "exam"
+  },
+  "st09-15": {
+   "ref": "st-0307",
+   "en": "Even the shade is sweating.",
+   "draft": "Esita le moriti o a fufuleloa.",
+   "cond": "heat",
+   "set": "exam"
+  },
+  "st09-16": {
+   "ref": "st-0123",
+   "en": "The kind of sky that makes you grateful for free things.",
+   "draft": "Mofuta oa lehodimo o etsang hore o leboge lintho tsa mahala.",
+   "cond": "clear",
+   "set": "exam"
+  },
+  "st09-17": {
+   "ref": "st-0447",
+   "en": "Sky's grumbling. Stay close to a roof.",
+   "draft": "Lehodimo le a duma. Lula haufi le marulelo.",
+   "cond": "thunder",
+   "set": "exam"
+  },
+  "st09-18": {
+   "ref": "st-0464",
+   "en": "The ozone layer called. It's on leave.",
+   "draft": "Ozone layer e llelitse. E leaveng.",
+   "cond": "uv",
+   "set": "exam"
+  },
+  "st09-19": {
+   "ref": "st-0414",
+   "en": "Jislaaik, stay inside!",
+   "draft": "Eish, dula ka hare!",
+   "cond": "storm",
+   "set": "exam"
+  },
+  "st09-20": {
+   "ref": "st-0449",
+   "en": "Sunscreen is not optional, boet.",
+   "draft": "Setofo sa letsatsi ha se kgetho, boet.",
+   "cond": "uv",
+   "set": "exam"
+  },
+  "st09-21": {
+   "ref": "st-0394",
+   "en": "The puddle was deeper than it looked. It's always deeper.",
+   "draft": "Letamo le ne le tebile ho feta kamoo le neng le shebahala kateng. Le lula le tebile.",
+   "cond": "rain",
+   "set": "exam"
+  },
+  "st09-22": {
+   "ref": "st-0121",
+   "en": "This is the stuff. Right here.",
+   "draft": "Ke sona sena. Mona feela.",
+   "cond": "clear",
+   "set": "exam"
+  },
+  "st09-23": {
+   "ref": "st-0050",
+   "en": "Probably fog later. The Boland does this.",
+   "draft": "Mohlomong mohodi hamorao. Boland e etsa sena.",
+   "cond": "fog",
+   "set": "exam"
+  },
+  "st10-01": {
+   "ref": "st-0164",
+   "en": "The sky is the colour of an old Tupperware lid.",
+   "draft": "Lehodimo le na le 'mala oa sekoahelo sa Tupperware sa khale.",
+   "cond": "cloudy",
+   "set": "exam"
+  },
+  "st10-02": {
+   "ref": "st-0315",
+   "en": "Your car seat is a weapon right now.",
+   "draft": "Setulo sa koloi ea hao ke sebetsa joale.",
+   "cond": "heat",
+   "set": "exam"
+  },
+  "st10-03": {
+   "ref": "st-0370",
+   "en": "Take a brolly just in case, hey.",
+   "draft": "Nka sekhele ho ba sireletsehile, hey.",
+   "cond": "rain-possible",
+   "set": "exam"
+  },
+  "st10-04": {
+   "ref": "st-0371",
+   "en": "50/50 on getting wet. Like a coin toss.",
+   "draft": "50/50 ho ba metsi. Joalo ka papadi.",
+   "cond": "rain-possible",
+   "set": "exam"
+  },
+  "st10-05": {
+   "ref": "st-0126",
+   "en": "This is the weather we brag about overseas.",
+   "draft": "Lena ke leholimo leo re le iponelang lichaba.",
+   "cond": "clear",
+   "set": "exam"
+  },
+  "st10-06": {
+   "ref": "st-0041",
+   "en": "Cloud's the call. With an asterisk.",
+   "draft": "Maru ke karabo. Ka letšoao.",
+   "cond": "cloudy",
+   "set": "exam"
+  },
+  "st10-07": {
+   "ref": "st-0238",
+   "en": "Even the Capetonians are admitting it's cold.",
+   "draft": "Esita le ba Cape ba lumela hore ho a bata.",
+   "cond": "cold",
+   "set": "exam"
+  },
+  "st10-08": {
+   "ref": "st-0183",
+   "en": "Welkom, Sasolburg, Kroonstad: the koue belt is doing its koue thing.",
+   "draft": "Welkom, Sasolburg, Kroonstad: koue belt e etsa koue thing ya yona.",
+   "cond": "cold-clear",
+   "set": "exam"
+  },
+  "st10-09": {
+   "ref": "st-0102",
+   "en": "Africa's sky just hits different.",
+   "draft": "Lehodimo la Afrika le fapane feela.",
+   "cond": "clear",
+   "set": "exam"
+  },
+  "st10-10": {
+   "ref": "st-0166",
+   "en": "The sun is technically present. Spiritually elsewhere.",
+   "draft": "Letsatsi ka tsela ea ts'ebetso le teng. Ka moea le sebakeng se seng.",
+   "cond": "cloudy",
+   "set": "exam"
+  },
+  "st10-11": {
+   "ref": "st-0311",
+   "en": "Don't touch the seatbelt buckle. Trust us.",
+   "draft": "Se ke oa ama buckle ea seatbelt. Re tšepe.",
+   "cond": "heat",
+   "set": "exam"
+  },
+  "st10-12": {
+   "ref": "st-0485",
+   "en": "Slip-slops, shorts, sun. The trinity.",
+   "draft": "Slip-slops, libhulukoe tse khutšoanyane, letsatsi. Boraro bo bong.",
+   "cond": "weekend",
+   "set": "exam"
+  },
+  "st10-13": {
+   "ref": "st-0417",
+   "en": "Even the bakkies on the N2 pulled over.",
+   "draft": "Esita le li-bakkie tsa N2 li emile ka thoko.",
+   "cond": "storm",
+   "set": "exam"
+  },
+  "st10-14": {
+   "ref": "st-0463",
+   "en": "Protect that face! It's the only one you've got.",
+   "draft": "Sireletsa sefahleho seo! Ke se le seng feela o nang le sona.",
+   "cond": "uv",
+   "set": "exam"
+  },
+  "st10-15": {
+   "ref": "st-0071",
+   "en": "Cloud's around. How much is up for debate.",
+   "draft": "Maru a potolohile. Hore na a makae ke ngangisano.",
+   "cond": "partly-cloudy",
+   "set": "exam"
+  },
+  "st10-16": {
+   "ref": "st-0143",
+   "en": "The sky's giving 'I'll try again tomorrow' energy.",
+   "draft": "Lehodimo le fana le 'ke tla leka hosane' matla.",
+   "cond": "cloudy",
+   "set": "exam"
+  },
+  "st10-17": {
+   "ref": "st-0199",
+   "en": "The geyser tripped overnight. Of course it did.",
+   "draft": "Geyser e tripile bosiu. Of course e entse jwalo.",
+   "cond": "cold-clear",
+   "set": "exam"
+  },
+  "st10-18": {
+   "ref": "st-0293",
+   "en": "Garage pie for lunch because the kitchen is lava.",
+   "draft": "Paee ea garage hobane kitchen ke lava.",
+   "cond": "heat",
+   "set": "exam"
+  },
+  "st10-19": {
+   "ref": "st-0232",
+   "en": "Coffee count: rising. Motivation count: still zero.",
+   "draft": "Palo ea kofi: e nyolohang. Palo ea khothatso: e ntse e le zero.",
+   "cond": "cold",
+   "set": "exam"
+  },
+  "st10-20": {
+   "ref": "st-0273",
+   "en": "Even your GPS is confused.",
+   "draft": "Esita le GPS ea hao e ferekane.",
+   "cond": "fog",
+   "set": "exam"
+  },
+  "st10-21": {
+   "ref": "st-0454",
+   "en": "Your nose is going to betray you by 3pm.",
+   "draft": "Nko ea hao e tla o eka ka 3pm.",
+   "cond": "uv",
+   "set": "exam"
+  },
+  "st10-22": {
+   "ref": "st-0139",
+   "en": "The sun's on a tea break. No ETA.",
+   "draft": "Letsatsi le phomoletseng ho noa tee. Ha ho ETA.",
+   "cond": "cloudy",
+   "set": "exam"
+  },
+  "st10-23": {
+   "ref": "st-0153",
+   "en": "The vibe is beige. Accept it.",
+   "draft": "Vibe ke beige. Amohela.",
+   "cond": "cloudy",
+   "set": "exam"
+  }
+ }
+}
