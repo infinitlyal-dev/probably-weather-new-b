@@ -331,7 +331,8 @@ function merge() {
   fs.mkdirSync(path.join(DATA, 'judgments'), { recursive: true });
   const prior = fs.existsSync(target) ? readJson(target) : null;
   const merges = [...(prior?.merges || []), { at: new Date().toISOString(), again: prior ? again() : null }];
-  fs.writeFileSync(target, JSON.stringify({ set, lang, judge, model, inputs: run.inputs, merged: new Date().toISOString().slice(0, 10), exportAttempts: run.attempts, merges, missing, invalid, unknown, rows }, null, 1) + '\n');
+  // `run` ties these answers to the exact run record they were merged against (report() checks it for October)
+  fs.writeFileSync(target, JSON.stringify({ set, lang, judge, model, inputs: run.inputs, run: sha(fs.readFileSync(mapFile(set, lang, judge), 'utf8')), merged: new Date().toISOString().slice(0, 10), exportAttempts: run.attempts, merges, missing, invalid, unknown, rows }, null, 1) + '\n');
   console.log(`${set} ${judge} ${lang}: ${rows.length} judged, ${missing} without a valid answer, ${invalid} malformed or duplicate answers dropped, ${unknown} unknown ids`);
 }
 
@@ -393,7 +394,10 @@ function examReport(V, out, judged, native) {
   const L = [];
   const c = V.counts;
   L.push('# Native-ear judge — the exam (October 2026)', '');
-  L.push(`Run ${out.scored}. Two judges — ${Object.values(JUDGES).join(' and ')}, each run as subagents in batches of at most ${BATCH_MAX} — judged every EXAM line blind. Pass bar per language per judge: keep-vs-not agreement with the natives at least ${pct(PASS.keepVsNot)}, and false keeps at most ${pct(PASS.falseKeepsOfCuts)} of the natives' cuts. Ground truth, inputs and method: \`scripts/lang-judge/\`.`, '');
+  // "every line" only when the record shows it: all six exams scored, none with an unjudged line
+  const sat = Object.keys(LANGS).flatMap((l) => Object.keys(JUDGES).map((j) => out.results[j]?.[l]));
+  const whole = sat.every((x) => x && !x.unjudged);
+  L.push(`Run ${out.scored}. Two judges — ${Object.values(JUDGES).join(' and ')}, each run as subagents in batches of at most ${BATCH_MAX} — ${whole ? 'judged every EXAM line blind' : 'judged the EXAM lines blind; the pass/fail table shows which exams ran and any lines left unjudged'}. Pass bar per language per judge: keep-vs-not agreement with the natives at least ${pct(PASS.keepVsNot)}, and false keeps at most ${pct(PASS.falseKeepsOfCuts)} of the natives' cuts. Ground truth, inputs and method: \`scripts/lang-judge/\`.`, '');
   L.push('## The verdict set', '');
   L.push('Every line a native reviewer ruled on (`scripts/lang-judge/data/native-verdicts.json`). The exam uses the witty lines; hero labels, headlines and app buttons are recorded but not examined (no joke to judge).', '');
   L.push('| language | rows on record | witty lines scored | KEEP | FIX | CUT | left out | TRAIN (K/F/C) | EXAM (K/F/C) |', '|---|---|---|---|---|---|---|---|---|');
@@ -459,20 +463,31 @@ function examReport(V, out, judged, native) {
   }
 
   L.push('## Method — what was fixed before the exam, what I would change', '');
-  L.push('- **Fixed before any judge ran:** the verdict set and its KEEP/FIX/CUT rule (30% letter-sequence overlap), the left-out rows and their reasons, the 50/50 split (seed 20261011; rows sharing an English, a draft or a native line kept on one side; stratified by verdict; balanced by rows), the judge prompt (`scripts/lang-judge/judge-prompt.md`), the twelve anchors and the compare-pair rule, and the pass bar. The exam ran once per judge per language; no anchor, prompt line or threshold was changed after a result was seen.');
+  L.push('- **Fixed before any judge ran:** the verdict set and its KEEP/FIX/CUT rule (30% letter-sequence overlap), the left-out rows and their reasons, the 50/50 split (seed 20261011; rows sharing an English, a draft or a native line kept on one side; stratified by verdict; balanced by rows), the judge prompt (`scripts/lang-judge/judge-prompt.md`), the twelve anchors and the compare-pair rule, and the pass bar. No anchor, prompt line or threshold was changed after a result was seen.');
   L.push('- **Blind:** each judge saw only its bundle (the prompt, the language pack with every EXAM line removed from the confirmed lines and withheld from the pack files, the humour doctrine, twelve TRAIN anchors) and its batch (English + draft + two TRAIN compare lines). No confidence tag, back-translation or checker verdict exists for these lines, and no EXAM verdict was in any file it was given. Batch files sat outside the repository; the id → line map stayed in it.');
-  L.push('- **Bound to its inputs:** `data/exam-result.json` records the hash of the prompt, the verdict set, each bundle, the code that picks anchors and batches, and each judge\'s scored answers; an October run refuses to start if any of them has changed since. The exam is exported once and each judge\'s answers merged once (the record in `data/runs` and `data/judgments` counts the attempts: one each).');
+  L.push('- **Bound to its inputs:** `data/exam-result.json` records the hash of the prompt, the verdict set, each bundle, the code that picks anchors and batches, and each judge\'s scored answers; an October run refuses to start if any of them has changed since.' + attemptsNote(out));
   L.push('- **What I would change next time:** calibrate the judge\'s bar for "fix" on TRAIN before the exam — these natives left most lines alone, and both judges hold a far stricter bar than they do; ask the natives to tick KEEP / FIX / CUT themselves — reading it off how much they changed is coarse in isiZulu and isiXhosa, where one prefix changes a whole word; get far more native cuts (isiZulu\'s whole review cut two witty lines); have both isiXhosa reviewers rule every row (35 of the changes are one reviewer\'s against the other\'s approval); and collect a written reason per row, so anchors can teach the ear rather than only show it.');
   return L.join('\n') + '\n';
+}
+
+// the attempt counts as recorded, not assumed
+function attemptsNote(out) {
+  const pairs = Object.keys(LANGS).flatMap((l) => Object.keys(JUDGES).map((j) => out.results[j]?.[l]));
+  const run = pairs.filter(Boolean);
+  if (run.length < pairs.length) return ` ${run.length} of the ${pairs.length} judge-and-language exams were run; attempts are counted in \`data/runs\` and \`data/judgments\`.`;
+  return run.every((x) => x.exports === 1 && x.merges === 1)
+    ? ` Each of the ${pairs.length} judge-and-language exams was exported once and its answers merged once (\`data/runs\`, \`data/judgments\`).`
+    : ' Attempts are counted in `data/runs` and `data/judgments`; the pass/fail table marks any exam exported or merged more than once.';
 }
 
 // ---------- report (step 4) ----------
 function report() {
   const result = readJson(path.join(DATA, 'exam-result.json'));
+  const V = loadVerdicts();
   const L = ['# Native-ear judge — verdicts on the October lines', ''];
   const anyPass = OCTOBER_LANGS.some((lang) => Object.keys(JUDGES).some((j) => result.results?.[j]?.[lang]?.pass));
   if (anyPass) {
-    L.push(`Built ${new Date().toISOString().slice(0, 10)} by \`scripts/lang-judge/judge.mjs report\`. Every applied October line (written by Claude Opus 5.5, none seen by a native) judged blind by a judge that passed that language's exam (\`review/lang-judge-exam-2026-10.md\`), with the same inputs it passed on. **Nothing in the app was changed. Maat rules from this file; Al rules from Maat.**`, '');
+    L.push(`Built ${new Date().toISOString().slice(0, 10)} by \`scripts/lang-judge/judge.mjs report\`. The applied October lines were written by Claude Opus 5.5 and seen by no native. Where a judge's verdicts are shown below, that judge passed the language's exam (\`review/lang-judge-exam-2026-10.md\`) and judged the lines blind on the same inputs; where none are shown, the section says why. **Nothing in the app was changed. Maat rules from this file; Al rules from Maat.**`, '');
     L.push('Scores: speaker = reads like a speaker (1–5), joke = the joke lands (1–5). Sorted CUT, then FIX, then KEEP.', '');
   } else {
     L.push(`Built ${new Date().toISOString().slice(0, 10)} by \`scripts/lang-judge/judge.mjs report\`. **No judge passed its exam (\`review/lang-judge-exam-2026-10.md\`), so no October line was judged.** Al's brief: a judge that cannot reproduce the natives' calls has no business judging new lines. The October isiXhosa and isiZulu lines stay exactly as they are — provisional, waiting for a native reader. Nothing in the app was changed.`, '');
@@ -488,8 +503,11 @@ function report() {
       // published only while the pass stands, from the model that passed, on the inputs it passed on
       let why = null;
       try {
-        const { res, inputs } = passedExam(judge, lang);
+        // the pass must still stand on today's inputs, and the answers must come from the October run on record
+        const { res, inputs } = passedExam(judge, lang, buildBundle(V, lang).text);
         const stale = Object.keys(inputs).filter((k) => inputs[k] !== J.inputs?.[k]);
+        const mf = mapFile('october', lang, judge);
+        if (!fs.existsSync(mf) || sha(fs.readFileSync(mf, 'utf8')) !== J.run) stale.push('the October run (exported again since these answers)');
         if (J.model !== res.model) why = `answers are from ${J.model}, the exam was passed by ${res.model}`;
         else if (stale.length) why = `answers were given on other inputs than the passed exam (${stale.join(', ')})`;
       } catch (e) { why = e.message; }
