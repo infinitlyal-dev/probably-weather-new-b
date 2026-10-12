@@ -42,7 +42,8 @@ for (const lang of LANGS) {
     if (isApplied) applied++;
     tags[d.tag] = (tags[d.tag] || 0) + 1; if (d.mode === 'plain') plain++;
     // Maat's rulings (10 Oct 2026): a replaced line says so; a released line was held by the checker and let through
-    const maat = d.released ? ' (Maat release)' : d.ruling ? ' (Maat fix)' : '';
+    // 12 Oct 2026: the judge's rewrite or Maat's own line, applied on review/maat-rulings-2026-10-12.md
+    const maat = d.released ? ' (Maat release)' : d.rewrite === 'judge' ? ` (judge rewrite${d.loanAccepted ? ', loan accepted (judge)' : ''})` : d.rewrite === 'maat' ? ' (Maat line)' : d.ruling ? ' (Maat fix)' : '';
     const why = (!isApplied && d.ruling ? 'held after Maat fix: ' : '') + (!isApplied && d.released ? 'held despite Maat release: ' : '') + (!isApplied ? (/held-safety-rule/.test(ledgerStatus(d.key)) ? 'held: a safety line — needs the safety rule record (Claude + Sol) first' : d.slot === 'english-gone' ? 'not applied: the English line was cut from the bank' : d.slot === 'slot-filled' ? 'not applied: the slot already holds a line' : v.action === 'triage-high' && !d.released ? 'held: checker triage-high' : b && BAD.has(b.verdict) && b.confidence >= 0.6 ? `held: back-translation ${b.verdict}` : !b ? 'held: no back-translation' : 'held') : `applied${maat}`);
     rows.push(`| ${cell(d.key)} | ${cell(d.en)} | ${cell(d[lang])} | ${cell(b ? b.bt : '—')} | ${d.tag}${d.mode === 'plain' ? ' · plain' : ''} | ${v.action} · BT ${b ? `${b.verdict} ${b.confidence}` : 'none'} | ${why} |`);
   }

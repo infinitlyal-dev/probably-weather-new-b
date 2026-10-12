@@ -1,0 +1,610 @@
+[
+ {
+  "id": "jr12-xh-01-001",
+  "bt": "There is no mistake today up to now. Even the sky.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "jr12-xh-01-002",
+  "bt": "A small dust storm walks in front of him. It does not even step on the pedals.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "jr12-xh-01-003",
+  "bt": "The last log is a decision, not just something to be counted.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "jr12-xh-01-004",
+  "bt": "The moon is behind the cloud, the dog is on the stoep. The Sunday service is over.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "jr12-xh-01-005",
+  "bt": "At ten o'clock at night, the fog turns all the streets into a film set.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "jr12-xh-01-006",
+  "bt": "The Bushveld is in silent mode today. Everyone. Everything.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "jr12-xh-01-007",
+  "bt": "The sky and the sea agree in colour this morning. It is not an interesting colour.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "jr12-xh-01-008",
+  "bt": "The shaded side of the field has its own weather.",
+  "langSeen": "xh",
+  "verdict": "loose",
+  "confidence": 0.7,
+  "note": ""
+ },
+ {
+  "id": "jr12-xh-01-009",
+  "bt": "The [?yeziko] weather has arrived without even asking permission.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.65,
+  "note": ""
+ },
+ {
+  "id": "jr12-xh-01-010",
+  "bt": "Half of the stars are behind clouds. The decorative lights cover for them.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "jr12-xh-01-011",
+  "bt": "I always forget to switch on the electric blanket early. Every. Single. Night.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "jr12-xh-01-012",
+  "bt": "Gqeberha, the Friendly City, did not ask to be the Windy City, but there it is.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "jr12-xh-01-013",
+  "bt": "The tablecloth is ironed, ready for tomorrow's work.",
+  "langSeen": "xh",
+  "verdict": "loose",
+  "confidence": 0.6,
+  "note": ""
+ },
+ {
+  "id": "jr12-xh-01-014",
+  "bt": "A few clouds came to watch. Even they are not running away.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "jr12-xh-01-015",
+  "bt": "Today's sky: freshly washed, clean, cold as ice.",
+  "langSeen": "xh",
+  "verdict": "loose",
+  "confidence": 0.7,
+  "note": ""
+ },
+ {
+  "id": "jr12-xh-01-016",
+  "bt": "The moon is on dimmer tonight. The security light does not have that setting.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "jr12-xh-01-017",
+  "bt": "No shadows, no shining, no [?zaba]. It is Monday under a Tupperware lid.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.6,
+  "note": ""
+ },
+ {
+  "id": "jr12-xh-01-018",
+  "bt": "Visibility: zero. Mood: calm, surprisingly.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "jr12-xh-01-019",
+  "bt": "You breathe in the rain wind just once, and suddenly the whole country becomes a poet.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "jr12-xh-01-020",
+  "bt": "The dog loves this wind. It is the only one with a hairstyle made for it.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "jr12-xh-01-021",
+  "bt": "The sun takes a long time going down to set. Truly, it deserves it.",
+  "langSeen": "xh",
+  "verdict": "loose",
+  "confidence": 0.6,
+  "note": ""
+ },
+ {
+  "id": "jr12-xh-01-022",
+  "bt": "Tell the truth: you opened this app to confirm Saturday's braai.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "jr12-xh-01-023",
+  "bt": "All plans have been officially postponed until 'it clears'. Which will never happen. Oh no.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "jr12-xh-01-024",
+  "bt": "The sea and the sky are equally grey. Only the bridge lights are trying.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "jr12-xh-01-025",
+  "bt": "Even those who swear it will never get cold admit once it is cold.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "jr12-xh-01-026",
+  "bt": "Today the sun will not look at the shine of the car. The car has no problem with that.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "jr12-xh-01-027",
+  "bt": "The grey weekend: official permission to do nothing at all.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "jr12-xh-01-028",
+  "bt": "The whole plateau looks as if the colour has been turned down. The number of sheep has not changed, though.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "jr12-xh-01-029",
+  "bt": "Look quickly. In ten minutes it will be night, as cold as the North Pole.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "jr12-xh-01-030",
+  "bt": "The mountain's tablecloth covers only half. It is Monday, nobody is fully dressed.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "jr12-xh-01-031",
+  "bt": "The farm is still there. We just rely on what we tell each other.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "jr12-xh-01-032",
+  "bt": "The sky has covered itself. Your clothes are waiting for you. Does it happen? Not once.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "jr12-xh-01-033",
+  "bt": "The blesbok do not wear scarves and do not lodge complaints. We could learn something. We will not learn, but we could.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "jr12-xh-01-034",
+  "bt": "The sky is wearing an interview suit: grey, clean, and says nothing.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "jr12-xh-01-035",
+  "bt": "The sky is grey, jerseys are on, school is out. The weekend does not need the sun's permission.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "jr12-xh-01-036",
+  "bt": "One cloud over the mountain is not a weather event. The fire is still burning.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "jr12-xh-01-037",
+  "bt": "The sunset was quiet tonight. Evening has come all the same.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "jr12-xh-01-038",
+  "bt": "The sky was a little grey, now it is very grey. That is the whole show.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "jr12-xh-01-039",
+  "bt": "The wind is still warm at this time. The sea leaves the heater on all night.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "jr12-xh-01-040",
+  "bt": "The flag announces the weather before the surfers do. It says: get into the water.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "jr12-xh-01-041",
+  "bt": "The last one to pass must close the gate. Even if nobody sees it.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "jr12-xh-01-042",
+  "bt": "Tonight the shed light takes the place of the setting sun. The cows agree, though it is not the same.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "jr12-xh-01-043",
+  "bt": "The rain is still 50 km away, but the stoep is already full.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "jr12-xh-01-044",
+  "bt": "Such lovely weather is only borrowed. The south-east wind keeps the receipts.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "jr12-xh-01-045",
+  "bt": "Go now or don't go at all. The Lowveld gives you time until seven o'clock.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "jr12-xh-01-046",
+  "bt": "Hot news: the pools are open now.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "jr12-xh-01-047",
+  "bt": "A small wind is working at the fruit stall today. Aircon installed, no extra money.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "jr12-xh-01-048",
+  "bt": "The Cape Doctor is going around tomorrow. You need not book, unfortunately.",
+  "langSeen": "xh",
+  "verdict": "drift",
+  "confidence": 0.45,
+  "note": "\"kusasa\" reads as tomorrow; English says morning rounds"
+ },
+ {
+  "id": "jr12-xh-01-049",
+  "bt": "The sky is grey tomorrow. Like tea, it just stops and sits a little.",
+  "langSeen": "xh",
+  "verdict": "drift",
+  "confidence": 0.45,
+  "note": "\"kusasa\" reads as tomorrow; English says early grey"
+ },
+ {
+  "id": "jr12-xh-01-050",
+  "bt": "A small wind carries jacaranda flowers to another street, one by one. The stoep agrees.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "jr12-xh-01-051",
+  "bt": "Highveld rain you smell before you see it. That is the trailer.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "jr12-xh-01-052",
+  "bt": "The flags are stretched, the wine is held firmly. On the deck, it is a calm Monday.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "jr12-xh-01-053",
+  "bt": "Sundowners are not a luxury in the Lowveld. They are medicine.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "jr12-xh-01-054",
+  "bt": "We sit outside on the lawn because inside, truly, it is colder.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.7,
+  "note": ""
+ },
+ {
+  "id": "jr12-xh-01-055",
+  "bt": "The dog has found exactly the border between sun and shade. It does not leave there.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "jr12-xh-01-056",
+  "bt": "There is not a single shade on the field all day. The umpire never had the sun in his eyes.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "jr12-xh-01-057",
+  "bt": "All the lights on the string are twinkling. Saturday night has rhythm, just a little.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.75,
+  "note": ""
+ },
+ {
+  "id": "jr12-xh-01-058",
+  "bt": "The sheets are already dry. Now a small wind is just showing off to the child.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "jr12-xh-01-059",
+  "bt": "The snow is near enough that you can admire it, but far enough that you will not clear it with a shovel. Perfect.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "jr12-xh-01-060",
+  "bt": "A grey day is a baking day. Someone's kitchen already smells good.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "jr12-xh-01-061",
+  "bt": "The sun has knocked off from work. The clouds are still shining, and the balcony is still shining.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "jr12-xh-01-062",
+  "bt": "The clouds pass the moon along to each other. The balcony has no problem waiting.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "jr12-xh-01-063",
+  "bt": "You breathe out smoke like a dragon, but the view is beautiful like a dream.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "jr12-xh-01-064",
+  "bt": "The wind carries smoke and takes it down the street. The whole street knows what is being eaten this evening.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "jr12-xh-01-065",
+  "bt": "The wet sea cold: the kind that pierces the four layers of clothes you are wearing, and your good mood.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "jr12-xh-01-066",
+  "bt": "The shadow walks line by line. It is inspecting.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "jr12-xh-01-067",
+  "bt": "You can see the cold coming. It does not hide at all.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "jr12-xh-01-068",
+  "bt": "People who run at 5:30 are not tougher than us. They are just [?krelekrele] more.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.7,
+  "note": ""
+ },
+ {
+  "id": "jr12-xh-01-069",
+  "bt": "No wind, no clouds, no reason for this thin jacket.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "jr12-xh-01-070",
+  "bt": "Cheers to the dams! All heavy rain is a free drink.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "jr12-xh-01-071",
+  "bt": "The nearest neighbours are 30 kilometres away, and tonight they see you even less.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "jr12-xh-01-072",
+  "bt": "The washing should have been brought in long ago. The wind voted for it to stay outside.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "jr12-xh-01-073",
+  "bt": "The cattle are already home before evening. Church ends exactly on time.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "jr12-xh-01-074",
+  "bt": "Weather that behaves so well: clearly it is planning something.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "jr12-xh-01-075",
+  "bt": "Highveld winter: being burnt by the sun and caught by the cold can happen on one day.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "jr12-xh-01-076",
+  "bt": "It is break time, and the wind fixes everybody's hair. Even the teachers.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ }
+]

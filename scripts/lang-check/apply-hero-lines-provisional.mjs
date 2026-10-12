@@ -62,13 +62,15 @@ for (const d of drafts) {
   if (!wired.has(d.en)) why.push('English line no longer wired');
   // A reviewer's release (Maat, 10 Oct 2026: `released` on the draft row, naming the rulings file) lifts the checker's
   // hold and nothing else; a drifting or missing back-translation still holds the line.
-  if (v.action === 'triage-high' && !d.released) why.push(`checker triage-high ${v.confidence}`);
+  // Maat, 12 Oct 2026: a judge rewrite whose only checker complaint is one of the loans the judge chose on purpose
+  // (`loanAccepted` on the draft row, naming the rulings file) lifts the checker hold the same way, and nothing else
+  if (v.action === 'triage-high' && !d.released && !d.loanAccepted) why.push(`checker triage-high ${v.confidence}`);
   if (v.back && BAD.has(v.back.verdict) && (v.back.confidence ?? 0) >= 0.6) why.push(`back-translation ${v.back.verdict}: "${v.back.bt}"`);
   if (!v.back) why.push('no back-translation record');
   (why.length ? held : rows).push({ ...d, verdict: v.action, confidence: v.confidence, why });
 }
 rows.sort((a, b) => a.en.localeCompare(b.en));
-const released = rows.filter((r) => r.released && r.verdict === 'triage-high').length;
+const released = rows.filter((r) => (r.released || r.loanAccepted) && r.verdict === 'triage-high').length;
 const NAME = { zu: 'isiZulu', xh: 'isiXhosa', st: 'Sesotho' }[lang];
 const CONST = `HERO_LINES_${lang.toUpperCase()}`;
 const today = new Date().toISOString().slice(0, 10);
@@ -98,6 +100,6 @@ const mf = path.join(ROOT, 'lang-packs', lang, 'provisional-manifest.jsonl');
 const prior = fs.existsSync(mf) ? fs.readFileSync(mf, 'utf8').trim().split('\n').filter(Boolean).map((l) => JSON.parse(l)) : [];
 fs.writeFileSync(path.join(ROOT, 'assets', `hero-lines-${lang}.js`), js);
 const keep = prior.filter((m) => !String(m.key).startsWith('hero:'));
-const added = rows.map((r) => ({ key: `hero:${r.en}`, [lang]: r[lang], status: 'provisional-pending-native-confirm', confidence: r.tag, checker: r.confidence, mode: r.mode, source: 'drafts-2026-10' }));
+const added = rows.map((r) => ({ key: `hero:${r.en}`, [lang]: r[lang], status: 'provisional-pending-native-confirm', confidence: r.tag, checker: r.confidence, mode: r.mode, source: 'drafts-2026-10', ...(r.loanAccepted ? { note: 'loan accepted (judge)' } : {}) }));
 fs.writeFileSync(mf, [...keep, ...added].map((r) => JSON.stringify(r)).join('\n') + '\n');
 console.log(`wrote assets/hero-lines-${lang}.js and ${added.length} manifest rows`);
