@@ -2562,6 +2562,8 @@ document.addEventListener("DOMContentLoaded", () => {
     // honoured exactly like the radar override.
     const rainNowOverride = now.conditionReason === 'tomorrow-io-radar-override'
       || now.conditionReason === 'rain-now'
+      // Candidate (12 Oct 2026, not ruled): rain described by 3+ sources from 2+ model families with 0.5 mm+.
+      || now.conditionReason === 'rain-now-descriptive'
       || overrides.some(o => o && o.rule === 'tomorrow-io-radar-override');
     if (rainNowOverride) debugLog(`[Rain-now override] server radar override → rain now ${now.rainChance}% keeps precedence over the 4h slice (${imminentRainMax}%)`);
     const modelRainPct = isNum(imminentRainMax) ? imminentRainMax : (today.rainChance ?? now.rainChance ?? null);

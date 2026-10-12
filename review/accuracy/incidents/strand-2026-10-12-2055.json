@@ -1,0 +1,1359 @@
+{
+  "note": "Fetched 2026-10-12 21:14 SAST (prompt asked for 20:55; the 20:55 numbers are recorded in incidentAt2055). Still raining by the sources at fetch time.",
+  "fetchedAt": "2026-10-12T21:14:55+02:00",
+  "url": "https://www.probablyweather.co.za/api/weather?lat=-34.1083&lon=18.8283&name=Strand&debug=1",
+  "incidentAt2055": {
+    "sources": {
+      "openMeteo": "Slight rain",
+      "weatherApi": "Light drizzle",
+      "metNorway": "Heavy rain",
+      "pirate": "Cloudy",
+      "tomorrowIo": "Light fog"
+    },
+    "rainVotes": 3,
+    "precipMm": 1,
+    "rainChance": 46.5,
+    "humidity": 91,
+    "cloudPct": 100,
+    "conditionKey": "rain-possible",
+    "conditionReason": "desc-rain-unconfirmed",
+    "radarHeld": null,
+    "radarNextHourBump": null,
+    "shown": {
+      "hero": "Probably Might rain.",
+      "pct": "47%",
+      "agree": "3/5 sources agree",
+      "photo": "cloudy set (moon through clouds)",
+      "line": "cloudy-night line about frost standing down"
+    }
+  },
+  "payload": {
+    "ok": true,
+    "location": {
+      "name": "Strand",
+      "lat": -34.1083,
+      "lon": 18.8283
+    },
+    "wind_kph": 9.5,
+    "maxWindKph": 20.2,
+    "gustKph": 20.2,
+    "windDir": 296,
+    "now": {
+      "tempC": 15.1,
+      "feelsLikeC": 15.1,
+      "windKph": 9.5,
+      "humidity": 94.4,
+      "rainChance": 46.9,
+      "uv": null,
+      "cloudPct": 100,
+      "skyCloudPct": 100,
+      "conditionKey": "rain-possible",
+      "conditionLabel": "Slight rain",
+      "conditionReason": "desc-rain-unconfirmed",
+      "conditionSignals": {
+        "descWinner": "Slight rain",
+        "numeric": {
+          "rainChance": 46.9,
+          "tempC": 15.1,
+          "feelsLikeC": 15.1,
+          "windKph": 9.5,
+          "rawWindKph": 9.5,
+          "windThresholdKph": 25,
+          "uvIndex": 0,
+          "cloudPct": 100,
+          "skyCloudPct": 100,
+          "skyCloudRule": null,
+          "dailyHighC": 21.1,
+          "isDay": false,
+          "precipMm": 1.2,
+          "rainVotes": 4,
+          "gustKph": 20.2,
+          "rawGustKph": 20.2,
+          "gustLineKph": 55,
+          "windSourcesAt25": 0,
+          "windSourcesMin": 2,
+          "breezySources": 0
+        },
+        "sourceVotes": [
+          {
+            "source": "Open-Meteo",
+            "desc": "Slight rain",
+            "vote": "rain"
+          },
+          {
+            "source": "WeatherAPI",
+            "desc": "Light drizzle",
+            "vote": "rain"
+          },
+          {
+            "source": "Pirate Weather",
+            "desc": "Cloudy",
+            "vote": "cloudy"
+          },
+          {
+            "source": "MET Norway",
+            "desc": "Heavy rain",
+            "vote": "rain"
+          },
+          {
+            "source": "Tomorrow.io",
+            "desc": "Drizzle",
+            "vote": "rain"
+          }
+        ],
+        "overrides": [],
+        "selector": {
+          "inputs": {
+            "now": true,
+            "precipMm": 1.2,
+            "rainVotes": 4,
+            "gustKph": 20.2,
+            "gustLineKph": 55,
+            "windSourcesAt25": 0,
+            "windSourcesMin": 2,
+            "breezySources": 0,
+            "rainOthersAt30": 1,
+            "desc": "Slight rain",
+            "rainChance": 46.9,
+            "tempC": 15.1,
+            "feelsLikeC": 15.1,
+            "windKph": 9.5,
+            "windThresholdKph": 25,
+            "uvIndex": 0,
+            "cloudPct": 100,
+            "uvCloudPct": 100,
+            "maxWindKph": 20.2,
+            "isDay": false,
+            "dailyHighC": 21.1,
+            "dailyLowC": 14,
+            "sourceDescs": [
+              "Slight rain",
+              "Light drizzle",
+              "Cloudy",
+              "Heavy rain",
+              "Drizzle"
+            ]
+          },
+          "base": {
+            "key": "rain-possible",
+            "reason": "desc-rain-unconfirmed"
+          }
+        },
+        "radarNextHourBump": null,
+        "radarHeld": null
+      },
+      "isDay": false,
+      "sunrise": "2026-10-12T06:07",
+      "sunset": "2026-10-12T18:56"
+    },
+    "consensus": {
+      "confidenceKey": "strong",
+      "pirateWeatherAlert": null
+    },
+    "daily": [
+      {
+        "highC": 21.1,
+        "lowC": 14,
+        "rainChance": 59.1,
+        "uv": 4.7,
+        "conditionLabel": "Slight rain showers",
+        "conditionKey": "rain",
+        "conditionReason": "moderate-rain-prob",
+        "windMaxKph": 24,
+        "gustMaxKph": 38,
+        "conditionSignals": {
+          "descWinner": "Slight rain showers",
+          "numeric": {
+            "rainChance": 59.1,
+            "highC": 21.1,
+            "uvIndex": 4.7,
+            "cloudPct": 100,
+            "skyCloudPct": 100,
+            "windKph": 23.8
+          },
+          "sourceDescs": [
+            "Slight rain showers",
+            "Overcast",
+            "Windy",
+            "Heavy rain",
+            "Drizzle"
+          ],
+          "overrides": []
+        },
+        "sunrise": "2026-10-12T06:07",
+        "sunset": "2026-10-12T18:56",
+        "uvMax": 4.7
+      },
+      {
+        "highC": 18.9,
+        "lowC": 11.3,
+        "rainChance": 53,
+        "uv": 7.7,
+        "conditionLabel": "Overcast",
+        "conditionKey": "rain",
+        "conditionReason": "moderate-rain-prob",
+        "windMaxKph": 19,
+        "gustMaxKph": 31,
+        "conditionSignals": {
+          "descWinner": "Overcast",
+          "numeric": {
+            "rainChance": 53,
+            "highC": 18.9,
+            "uvIndex": 7.7,
+            "cloudPct": 31,
+            "skyCloudPct": 31,
+            "windKph": 12.7
+          },
+          "sourceDescs": [
+            "Overcast",
+            "Overcast",
+            "Clear sky"
+          ],
+          "overrides": []
+        },
+        "sunrise": "2026-10-13T06:06",
+        "sunset": "2026-10-13T18:56"
+      },
+      {
+        "highC": 20.7,
+        "lowC": 10.4,
+        "rainChance": 4.1,
+        "uv": 6.9,
+        "conditionLabel": "Overcast",
+        "conditionKey": "partly-cloudy",
+        "conditionReason": "partly-cloudy",
+        "windMaxKph": 24,
+        "gustMaxKph": 37,
+        "conditionSignals": {
+          "descWinner": "Overcast",
+          "numeric": {
+            "rainChance": 4.1,
+            "highC": 20.7,
+            "uvIndex": 6.9,
+            "cloudPct": 46,
+            "skyCloudPct": 46,
+            "windKph": 23.3
+          },
+          "sourceDescs": [
+            "Overcast",
+            "Overcast",
+            "Windy"
+          ],
+          "overrides": []
+        },
+        "sunrise": "2026-10-14T06:04",
+        "sunset": "2026-10-14T18:57"
+      },
+      {
+        "highC": 22.2,
+        "lowC": 13,
+        "rainChance": 0,
+        "uv": 8,
+        "conditionLabel": "Windy",
+        "conditionKey": "cloudy",
+        "conditionReason": "mostly-cloudy",
+        "windMaxKph": 20,
+        "gustMaxKph": 36,
+        "conditionSignals": {
+          "descWinner": "Windy",
+          "numeric": {
+            "rainChance": 0,
+            "highC": 22.2,
+            "uvIndex": 8,
+            "cloudPct": 66,
+            "skyCloudPct": 66,
+            "windKph": 22.1
+          },
+          "sourceDescs": [
+            "Overcast",
+            "Windy"
+          ],
+          "overrides": []
+        },
+        "sunrise": "2026-10-15T06:03",
+        "sunset": "2026-10-15T18:58"
+      },
+      {
+        "highC": 24.2,
+        "lowC": 14.3,
+        "rainChance": 36.6,
+        "uv": 7.5,
+        "conditionLabel": "Windy",
+        "conditionKey": "rain",
+        "conditionReason": "moderate-rain-prob",
+        "windMaxKph": 21,
+        "gustMaxKph": 40,
+        "conditionSignals": {
+          "descWinner": "Windy",
+          "numeric": {
+            "rainChance": 36.6,
+            "highC": 24.2,
+            "uvIndex": 7.5,
+            "cloudPct": 73,
+            "skyCloudPct": 73,
+            "windKph": 22.4
+          },
+          "sourceDescs": [
+            "Overcast",
+            "Windy"
+          ],
+          "overrides": []
+        },
+        "sunrise": "2026-10-16T06:02",
+        "sunset": "2026-10-16T18:59"
+      },
+      {
+        "highC": 17,
+        "lowC": 12.6,
+        "rainChance": 40.7,
+        "uv": 0.6,
+        "conditionLabel": "Cloudy",
+        "conditionKey": "rain",
+        "conditionReason": "moderate-rain-prob",
+        "windMaxKph": 20,
+        "gustMaxKph": 39,
+        "conditionSignals": {
+          "descWinner": "Cloudy",
+          "numeric": {
+            "rainChance": 40.7,
+            "highC": 17,
+            "uvIndex": 0.6,
+            "cloudPct": 86,
+            "skyCloudPct": 86,
+            "windKph": 19.7
+          },
+          "sourceDescs": [
+            "Slight rain showers",
+            "Cloudy"
+          ],
+          "overrides": []
+        },
+        "sunrise": "2026-10-17T06:00",
+        "sunset": "2026-10-17T19:00"
+      },
+      {
+        "highC": 16.3,
+        "lowC": 11.7,
+        "rainChance": 10.1,
+        "uv": 2.2,
+        "conditionLabel": "Windy",
+        "conditionKey": "cloudy",
+        "conditionReason": "mostly-cloudy",
+        "windMaxKph": 22,
+        "gustMaxKph": 40,
+        "conditionSignals": {
+          "descWinner": "Windy",
+          "numeric": {
+            "rainChance": 10.1,
+            "highC": 16.3,
+            "uvIndex": 2.2,
+            "cloudPct": 56,
+            "skyCloudPct": 56,
+            "windKph": 22
+          },
+          "sourceDescs": [
+            "Overcast",
+            "Windy"
+          ],
+          "overrides": []
+        },
+        "sunrise": "2026-10-18T05:59",
+        "sunset": "2026-10-18T19:00"
+      }
+    ],
+    "hourly": [
+      {
+        "tempC": 14.4,
+        "feelsLikeC": 13.6,
+        "rainChance": 0,
+        "precipMm": 0,
+        "windKph": 9.5,
+        "breezySources": 0,
+        "windDir": 27,
+        "cloudPct": 15,
+        "skyCloudPct": 15,
+        "uv": 0,
+        "condition": "clear",
+        "descLabel": "Clear sky",
+        "rainOthersAt30": 0
+      },
+      {
+        "tempC": 14.4,
+        "feelsLikeC": 13.3,
+        "rainChance": 4.2,
+        "precipMm": 0,
+        "windKph": 10.6,
+        "breezySources": 0,
+        "windDir": 27,
+        "cloudPct": 44,
+        "skyCloudPct": 44,
+        "uv": 0,
+        "condition": "clear",
+        "descLabel": "Mainly clear",
+        "rainOthersAt30": 0
+      },
+      {
+        "tempC": 14.4,
+        "feelsLikeC": 13,
+        "rainChance": 0,
+        "precipMm": 0,
+        "windKph": 12,
+        "breezySources": 0,
+        "windDir": 25,
+        "cloudPct": 99,
+        "skyCloudPct": 99,
+        "uv": 0,
+        "condition": "cloudy",
+        "descLabel": "Overcast",
+        "rainOthersAt30": 0
+      },
+      {
+        "tempC": 14.4,
+        "feelsLikeC": 12.6,
+        "rainChance": 10.2,
+        "precipMm": 0,
+        "windKph": 13.8,
+        "breezySources": 0,
+        "windDir": 6,
+        "cloudPct": 100,
+        "skyCloudPct": 54,
+        "uv": 0,
+        "condition": "cloudy",
+        "descLabel": "Overcast",
+        "rainOthersAt30": 0
+      },
+      {
+        "tempC": 14.8,
+        "feelsLikeC": 12.5,
+        "rainChance": 8.9,
+        "precipMm": 0,
+        "windKph": 15.1,
+        "breezySources": 1,
+        "windDir": 7,
+        "cloudPct": 99,
+        "skyCloudPct": 99,
+        "uv": 0,
+        "condition": "cloudy",
+        "descLabel": "Overcast",
+        "rainOthersAt30": 0
+      },
+      {
+        "tempC": 14.8,
+        "feelsLikeC": 12.4,
+        "rainChance": 8.9,
+        "precipMm": 0,
+        "windKph": 15.3,
+        "breezySources": 2,
+        "windDir": 5,
+        "cloudPct": 99,
+        "skyCloudPct": 99,
+        "uv": 0,
+        "condition": "cloudy",
+        "descLabel": "Overcast",
+        "rainOthersAt30": 0
+      },
+      {
+        "tempC": 14.3,
+        "feelsLikeC": 11.8,
+        "rainChance": 0,
+        "precipMm": 0,
+        "windKph": 17.4,
+        "breezySources": 2,
+        "windDir": 3,
+        "cloudPct": 100,
+        "skyCloudPct": 100,
+        "uv": 0,
+        "condition": "cloudy",
+        "descLabel": "Overcast",
+        "rainOthersAt30": 0
+      },
+      {
+        "tempC": 14.4,
+        "feelsLikeC": 11.9,
+        "rainChance": 0,
+        "precipMm": 0,
+        "windKph": 17.9,
+        "breezySources": 2,
+        "windDir": 3,
+        "cloudPct": 96,
+        "skyCloudPct": 96,
+        "uv": 0.2,
+        "condition": "cloudy",
+        "descLabel": "Overcast",
+        "rainOthersAt30": 0
+      },
+      {
+        "tempC": 16.7,
+        "feelsLikeC": 14,
+        "rainChance": 6.3,
+        "precipMm": 0,
+        "windKph": 19.2,
+        "breezySources": 2,
+        "windDir": 6,
+        "cloudPct": 100,
+        "skyCloudPct": 100,
+        "uv": 1.1,
+        "condition": "cloudy",
+        "descLabel": "Overcast",
+        "rainOthersAt30": 0
+      },
+      {
+        "tempC": 17.9,
+        "feelsLikeC": 15.8,
+        "rainChance": 5.9,
+        "precipMm": 0,
+        "windKph": 16.9,
+        "breezySources": 2,
+        "windDir": 346,
+        "cloudPct": 100,
+        "skyCloudPct": 100,
+        "uv": 2.3,
+        "condition": "cloudy",
+        "descLabel": "Overcast",
+        "rainOthersAt30": 0
+      },
+      {
+        "tempC": 19.6,
+        "feelsLikeC": 16.7,
+        "rainChance": 5.5,
+        "precipMm": 0,
+        "windKph": 19.9,
+        "breezySources": 2,
+        "windDir": 337,
+        "cloudPct": 100,
+        "skyCloudPct": 100,
+        "uv": 3.7,
+        "condition": "cloudy",
+        "descLabel": "Overcast",
+        "rainOthersAt30": 0
+      },
+      {
+        "tempC": 21.1,
+        "feelsLikeC": 18.2,
+        "rainChance": 4.2,
+        "precipMm": 0,
+        "windKph": 20.1,
+        "breezySources": 2,
+        "windDir": 324,
+        "cloudPct": 100,
+        "skyCloudPct": 100,
+        "uv": 4.3,
+        "condition": "cloudy",
+        "descLabel": "Overcast",
+        "rainOthersAt30": 0
+      },
+      {
+        "tempC": 20.7,
+        "feelsLikeC": 17.1,
+        "rainChance": 7.7,
+        "precipMm": 0,
+        "windKph": 23.8,
+        "breezySources": 2,
+        "windDir": 334,
+        "cloudPct": 100,
+        "skyCloudPct": 100,
+        "uv": 4,
+        "condition": "cloudy",
+        "descLabel": "Overcast",
+        "rainOthersAt30": 0
+      },
+      {
+        "tempC": 21,
+        "feelsLikeC": 17.6,
+        "rainChance": 12.7,
+        "precipMm": 0,
+        "windKph": 22.4,
+        "breezySources": 2,
+        "windDir": 329,
+        "cloudPct": 100,
+        "skyCloudPct": 100,
+        "uv": 4.5,
+        "condition": "cloudy",
+        "descLabel": "Overcast",
+        "rainOthersAt30": 0
+      },
+      {
+        "tempC": 20.1,
+        "feelsLikeC": 16.5,
+        "rainChance": 17.9,
+        "precipMm": 0,
+        "windKph": 23.9,
+        "breezySources": 2,
+        "windDir": 309,
+        "cloudPct": 100,
+        "skyCloudPct": 100,
+        "uv": 2.9,
+        "condition": "cloudy",
+        "descLabel": "Overcast",
+        "rainOthersAt30": 0
+      },
+      {
+        "tempC": 18.8,
+        "feelsLikeC": 16.4,
+        "rainChance": 19.6,
+        "precipMm": 0,
+        "windKph": 18.8,
+        "breezySources": 2,
+        "windDir": 300,
+        "cloudPct": 100,
+        "skyCloudPct": 100,
+        "uv": 2,
+        "condition": "cloudy",
+        "descLabel": "Overcast",
+        "rainOthersAt30": 0
+      },
+      {
+        "tempC": 18.3,
+        "feelsLikeC": 16.1,
+        "rainChance": 21,
+        "precipMm": 0,
+        "windKph": 17.5,
+        "breezySources": 2,
+        "windDir": 302,
+        "cloudPct": 100,
+        "skyCloudPct": 100,
+        "uv": 1.6,
+        "condition": "cloudy",
+        "descLabel": "Overcast",
+        "rainOthersAt30": 0
+      },
+      {
+        "tempC": 18.1,
+        "feelsLikeC": 15.8,
+        "rainChance": 21.6,
+        "precipMm": 0,
+        "windKph": 18.1,
+        "breezySources": 2,
+        "windDir": 311,
+        "cloudPct": 100,
+        "skyCloudPct": 54,
+        "uv": 1.5,
+        "condition": "cloudy",
+        "descLabel": "Overcast",
+        "rainOthersAt30": 0
+      },
+      {
+        "tempC": 17.5,
+        "feelsLikeC": 15.8,
+        "rainChance": 25.3,
+        "precipMm": 0,
+        "windKph": 15.7,
+        "breezySources": 1,
+        "windDir": 323,
+        "cloudPct": 100,
+        "skyCloudPct": 100,
+        "uv": 0.5,
+        "condition": "cloudy",
+        "descLabel": "Overcast",
+        "rainOthersAt30": 0
+      },
+      {
+        "tempC": 16.8,
+        "feelsLikeC": 15.9,
+        "rainChance": 33.5,
+        "precipMm": 0.1,
+        "windKph": 11.1,
+        "breezySources": 1,
+        "windDir": 331,
+        "cloudPct": 100,
+        "skyCloudPct": 100,
+        "uv": 0.1,
+        "condition": "cloudy",
+        "descLabel": "Overcast",
+        "rainOthersAt30": 0
+      },
+      {
+        "tempC": 15.8,
+        "feelsLikeC": 15.6,
+        "rainChance": 42.7,
+        "precipMm": 0.7,
+        "windKph": 8.5,
+        "breezySources": 0,
+        "windDir": 320,
+        "cloudPct": 100,
+        "skyCloudPct": 100,
+        "uv": 0,
+        "condition": "rain",
+        "descLabel": "Moderate drizzle",
+        "rainOthersAt30": 0
+      },
+      {
+        "tempC": 15.1,
+        "feelsLikeC": 15.1,
+        "rainChance": 46.9,
+        "precipMm": 1.2,
+        "windKph": 9,
+        "breezySources": 0,
+        "windDir": 296,
+        "cloudPct": 100,
+        "skyCloudPct": 100,
+        "uv": 0,
+        "condition": "rain-possible",
+        "descLabel": "Slight rain showers",
+        "rainOthersAt30": 1
+      },
+      {
+        "tempC": 14.8,
+        "feelsLikeC": 14.7,
+        "rainChance": 39.6,
+        "precipMm": 0.6,
+        "windKph": 10.3,
+        "breezySources": 0,
+        "windDir": 240,
+        "cloudPct": 100,
+        "skyCloudPct": 100,
+        "uv": 0,
+        "condition": "rain",
+        "descLabel": "Dense drizzle",
+        "rainOthersAt30": 0
+      },
+      {
+        "tempC": 14.4,
+        "feelsLikeC": 14.1,
+        "rainChance": 36.4,
+        "precipMm": 0.1,
+        "windKph": 10.9,
+        "breezySources": 0,
+        "windDir": 203,
+        "cloudPct": 100,
+        "skyCloudPct": 100,
+        "uv": 0,
+        "condition": "rain",
+        "descLabel": "Light drizzle",
+        "rainOthersAt30": 0
+      },
+      {
+        "tempC": 14.2,
+        "feelsLikeC": 14.3,
+        "rainChance": 33.7,
+        "precipMm": 0,
+        "windKph": 5.9,
+        "breezySources": 0,
+        "windDir": 152,
+        "cloudPct": 99.22,
+        "skyCloudPct": 54,
+        "uv": 0,
+        "condition": "cloudy",
+        "descLabel": "Overcast",
+        "rainOthersAt30": 0
+      },
+      {
+        "tempC": 13.8,
+        "feelsLikeC": 13.9,
+        "rainChance": 25.4,
+        "precipMm": 0,
+        "windKph": 3.8,
+        "breezySources": 0,
+        "windDir": 90,
+        "cloudPct": 96,
+        "skyCloudPct": 96,
+        "uv": 0,
+        "condition": "cloudy",
+        "descLabel": "Overcast",
+        "rainOthersAt30": 0
+      },
+      {
+        "tempC": 13.4,
+        "feelsLikeC": 13.6,
+        "rainChance": 20.2,
+        "precipMm": 0,
+        "windKph": 3.3,
+        "breezySources": 0,
+        "windDir": 72,
+        "cloudPct": 99.2,
+        "skyCloudPct": 99.2,
+        "uv": 0,
+        "condition": "cloudy",
+        "descLabel": "Overcast",
+        "rainOthersAt30": 0
+      },
+      {
+        "tempC": 13.2,
+        "feelsLikeC": 13.3,
+        "rainChance": 16.8,
+        "precipMm": 0,
+        "windKph": 3.5,
+        "breezySources": 0,
+        "windDir": 196,
+        "cloudPct": 98,
+        "skyCloudPct": 98,
+        "uv": 0,
+        "condition": "cloudy",
+        "descLabel": "Overcast",
+        "rainOthersAt30": 0
+      },
+      {
+        "tempC": 12.8,
+        "feelsLikeC": 12.8,
+        "rainChance": 14.5,
+        "precipMm": 0,
+        "windKph": 3.3,
+        "breezySources": 0,
+        "windDir": 157,
+        "cloudPct": 99.2,
+        "skyCloudPct": 99.2,
+        "uv": 0,
+        "condition": "cloudy",
+        "descLabel": "Overcast",
+        "rainOthersAt30": 0
+      },
+      {
+        "tempC": 12.6,
+        "feelsLikeC": 12.5,
+        "rainChance": 12.6,
+        "precipMm": 0,
+        "windKph": 3.6,
+        "breezySources": 0,
+        "windDir": 101,
+        "cloudPct": 95,
+        "skyCloudPct": 95,
+        "uv": 0,
+        "condition": "cloudy",
+        "descLabel": "Overcast",
+        "rainOthersAt30": 0
+      },
+      {
+        "tempC": 12.3,
+        "feelsLikeC": 11.9,
+        "rainChance": 11.3,
+        "precipMm": 0,
+        "windKph": 4.5,
+        "breezySources": 0,
+        "windDir": 86,
+        "cloudPct": 98.4,
+        "skyCloudPct": 98.4,
+        "uv": 0,
+        "condition": "cloudy",
+        "descLabel": "Overcast",
+        "rainOthersAt30": 0
+      },
+      {
+        "tempC": 12.6,
+        "feelsLikeC": 12.3,
+        "rainChance": 9.1,
+        "precipMm": 0,
+        "windKph": 4.4,
+        "breezySources": 0,
+        "windDir": 80,
+        "cloudPct": 85.9,
+        "skyCloudPct": 85.9,
+        "uv": 0.2,
+        "condition": "clear",
+        "descLabel": "Partly cloudy",
+        "rainOthersAt30": 0
+      },
+      {
+        "tempC": 14.1,
+        "feelsLikeC": 13.8,
+        "rainChance": 3.4,
+        "precipMm": 0,
+        "windKph": 5.2,
+        "breezySources": 0,
+        "windDir": 83,
+        "cloudPct": 91,
+        "skyCloudPct": 91,
+        "uv": 0.9,
+        "condition": "clear",
+        "descLabel": "Clear sky",
+        "rainOthersAt30": 0
+      },
+      {
+        "tempC": 15.5,
+        "feelsLikeC": 14.9,
+        "rainChance": 3.1,
+        "precipMm": 0,
+        "windKph": 5.8,
+        "breezySources": 0,
+        "windDir": 183,
+        "cloudPct": 4,
+        "skyCloudPct": 4,
+        "uv": 2.3,
+        "condition": "clear",
+        "descLabel": "Clear sky",
+        "rainOthersAt30": 0
+      },
+      {
+        "tempC": 16.2,
+        "feelsLikeC": 15.6,
+        "rainChance": 2.4,
+        "precipMm": 0,
+        "windKph": 9,
+        "breezySources": 0,
+        "windDir": 216,
+        "cloudPct": 14.1,
+        "skyCloudPct": 14.1,
+        "uv": 4.2,
+        "condition": "clear",
+        "descLabel": "Clear sky",
+        "rainOthersAt30": 0
+      },
+      {
+        "tempC": 16.5,
+        "feelsLikeC": 15.9,
+        "rainChance": 2.1,
+        "precipMm": 0,
+        "windKph": 11.4,
+        "breezySources": 0,
+        "windDir": 212,
+        "cloudPct": 33,
+        "skyCloudPct": 33,
+        "uv": 6,
+        "condition": "clear",
+        "descLabel": "Mainly clear",
+        "rainOthersAt30": 0
+      },
+      {
+        "tempC": 16.8,
+        "feelsLikeC": 15.9,
+        "rainChance": 1.7,
+        "precipMm": 0,
+        "windKph": 12.7,
+        "breezySources": 2,
+        "windDir": 206,
+        "cloudPct": 31,
+        "skyCloudPct": 31,
+        "uv": 7.2,
+        "condition": "breezy",
+        "descLabel": "Mainly clear",
+        "rainOthersAt30": 0
+      },
+      {
+        "tempC": 17.1,
+        "feelsLikeC": 15.8,
+        "rainChance": 1,
+        "precipMm": 0,
+        "windKph": 16.4,
+        "breezySources": 3,
+        "windDir": 197,
+        "cloudPct": 5,
+        "skyCloudPct": 5,
+        "uv": 7.7,
+        "condition": "breezy",
+        "descLabel": "Clear sky",
+        "rainOthersAt30": 0
+      },
+      {
+        "tempC": 17.1,
+        "feelsLikeC": 15.7,
+        "rainChance": 3.5,
+        "precipMm": 0,
+        "windKph": 19.7,
+        "breezySources": 4,
+        "windDir": 200,
+        "cloudPct": 2,
+        "skyCloudPct": 2,
+        "uv": 7.3,
+        "condition": "breezy",
+        "descLabel": "Clear sky",
+        "rainOthersAt30": 0
+      },
+      {
+        "tempC": 16.7,
+        "feelsLikeC": 15.2,
+        "rainChance": 3.4,
+        "precipMm": 0,
+        "windKph": 18.7,
+        "breezySources": 4,
+        "windDir": 201,
+        "cloudPct": 1,
+        "skyCloudPct": 1,
+        "uv": 6,
+        "condition": "breezy",
+        "descLabel": "Clear sky",
+        "rainOthersAt30": 0
+      },
+      {
+        "tempC": 16.4,
+        "feelsLikeC": 14.9,
+        "rainChance": 3.3,
+        "precipMm": 0,
+        "windKph": 17,
+        "breezySources": 4,
+        "windDir": 201,
+        "cloudPct": 6,
+        "skyCloudPct": 6,
+        "uv": 4.1,
+        "condition": "breezy",
+        "descLabel": "Clear sky",
+        "rainOthersAt30": 0
+      },
+      {
+        "tempC": 15.9,
+        "feelsLikeC": 14,
+        "rainChance": 0,
+        "precipMm": 0,
+        "windKph": 17,
+        "breezySources": 3,
+        "windDir": 198,
+        "cloudPct": 2.34,
+        "skyCloudPct": 2.34,
+        "uv": 2.4,
+        "condition": "breezy",
+        "descLabel": "Clear sky",
+        "rainOthersAt30": 0
+      },
+      {
+        "tempC": 15,
+        "feelsLikeC": 13.2,
+        "rainChance": 0,
+        "precipMm": 0,
+        "windKph": 16.1,
+        "breezySources": 3,
+        "windDir": 194,
+        "cloudPct": 0,
+        "skyCloudPct": 0,
+        "uv": 1,
+        "condition": "breezy",
+        "descLabel": "Clear sky",
+        "rainOthersAt30": 0
+      },
+      {
+        "tempC": 13.8,
+        "feelsLikeC": 12.6,
+        "rainChance": 0,
+        "precipMm": 0,
+        "windKph": 12.8,
+        "breezySources": 2,
+        "windDir": 174,
+        "cloudPct": 7.8,
+        "skyCloudPct": 7.8,
+        "uv": 0.1,
+        "condition": "breezy",
+        "descLabel": "Clear sky",
+        "rainOthersAt30": 0
+      },
+      {
+        "tempC": 13.5,
+        "feelsLikeC": 12.3,
+        "rainChance": 0,
+        "precipMm": 0,
+        "windKph": 12.3,
+        "breezySources": 1,
+        "windDir": 157,
+        "cloudPct": 0,
+        "skyCloudPct": 0,
+        "uv": 0,
+        "condition": "clear",
+        "descLabel": "Clear sky",
+        "rainOthersAt30": 0
+      },
+      {
+        "tempC": 13,
+        "feelsLikeC": 12.2,
+        "rainChance": 0,
+        "precipMm": 0,
+        "windKph": 11.3,
+        "breezySources": 1,
+        "windDir": 161,
+        "cloudPct": 13,
+        "skyCloudPct": 13,
+        "uv": 0,
+        "condition": "clear",
+        "descLabel": "Clear sky",
+        "rainOthersAt30": 0
+      },
+      {
+        "tempC": 12.6,
+        "feelsLikeC": 12.1,
+        "rainChance": 5.6,
+        "precipMm": 0,
+        "windKph": 10,
+        "breezySources": 1,
+        "windDir": 137,
+        "cloudPct": 35.2,
+        "skyCloudPct": 35.2,
+        "uv": 0,
+        "condition": "clear",
+        "descLabel": "Mainly clear",
+        "rainOthersAt30": 0
+      },
+      {
+        "tempC": 12.1,
+        "feelsLikeC": 11.5,
+        "rainChance": 6.1,
+        "precipMm": 0,
+        "windKph": 7.8,
+        "breezySources": 1,
+        "windDir": 90,
+        "cloudPct": 91.4,
+        "skyCloudPct": 54,
+        "uv": 0,
+        "condition": "clear",
+        "descLabel": "Partly cloudy",
+        "rainOthersAt30": 0
+      }
+    ],
+    "meta": {
+      "sources": [
+        {
+          "name": "Open-Meteo",
+          "ok": true
+        },
+        {
+          "name": "WeatherAPI",
+          "ok": true
+        },
+        {
+          "name": "Pirate Weather",
+          "ok": true
+        },
+        {
+          "name": "MET Norway",
+          "ok": true
+        },
+        {
+          "name": "Tomorrow.io",
+          "ok": true
+        }
+      ],
+      "wind": {
+        "table": "v5-2025-three-guesses",
+        "rule": "today",
+        "region": "Western Cape",
+        "ratio": 1,
+        "rawKph": 9.5,
+        "kph": 9.5,
+        "heroKph": 9.5,
+        "heroThresholdKph": 25,
+        "weights": null,
+        "gust": {
+          "table": "v7-2026-09-28",
+          "rawKph": 20.2,
+          "kph": 20.2,
+          "factor": 1,
+          "station": null,
+          "town": null,
+          "sector": 7,
+          "heroKph": 20.2,
+          "lineKph": 55,
+          "sourcesMin": 2,
+          "rule": "R3"
+        }
+      },
+      "station": null,
+      "precision": {
+        "status": "applied",
+        "table": "v2-2025-01-01-2026-09-24",
+        "alpha": 0.5,
+        "days": [
+          {
+            "day": 0,
+            "date": "2026-10-12",
+            "consensusHigh": 20.8,
+            "consensusLow": 14,
+            "blendHigh": 20.6,
+            "blendLow": 14,
+            "highC": 21.1,
+            "lowC": 14
+          },
+          {
+            "day": 1,
+            "date": "2026-10-13",
+            "consensusHigh": 19.2,
+            "consensusLow": 11.3,
+            "blendHigh": 18.6,
+            "blendLow": 11.3,
+            "highC": 18.9,
+            "lowC": 11.3
+          }
+        ],
+        "frost": []
+      },
+      "sourceRanges": [
+        {
+          "name": "Open-Meteo",
+          "minTemp": 14.7,
+          "maxTemp": 20.7
+        },
+        {
+          "name": "WeatherAPI",
+          "minTemp": 12.8,
+          "maxTemp": 22
+        },
+        {
+          "name": "Pirate Weather",
+          "minTemp": 14.3,
+          "maxTemp": 18.2
+        },
+        {
+          "name": "MET Norway",
+          "minTemp": 11.9,
+          "maxTemp": 15.8
+        },
+        {
+          "name": "Tomorrow.io",
+          "minTemp": 14.2,
+          "maxTemp": 14.85
+        }
+      ],
+      "sourceWeights": {
+        "Open-Meteo": 30,
+        "WeatherAPI": 22,
+        "Pirate Weather": 13,
+        "MET Norway": 20,
+        "Tomorrow.io": 15
+      },
+      "sourceConditions": [
+        {
+          "source": "Open-Meteo",
+          "desc": "Slight rain",
+          "vote": "rain"
+        },
+        {
+          "source": "WeatherAPI",
+          "desc": "Light drizzle",
+          "vote": "rain"
+        },
+        {
+          "source": "Pirate Weather",
+          "desc": "Cloudy",
+          "vote": "cloudy"
+        },
+        {
+          "source": "MET Norway",
+          "desc": "Heavy rain",
+          "vote": "rain"
+        },
+        {
+          "source": "Tomorrow.io",
+          "desc": "Drizzle",
+          "vote": "rain"
+        }
+      ],
+      "sourceNow": [
+        {
+          "name": "Open-Meteo",
+          "tempC": 15.5,
+          "windKph": 9.2,
+          "gustKph": 20.2,
+          "humidity": 97,
+          "desc": "Slight rain",
+          "rainChance": 44,
+          "precipMm": 2.3,
+          "visKm": 2.6,
+          "cloudPct": 100
+        },
+        {
+          "name": "WeatherAPI",
+          "tempC": 14.7,
+          "windKph": 7.9,
+          "gustKph": 9.4,
+          "humidity": 92,
+          "desc": "Light drizzle",
+          "rainChance": 64,
+          "precipMm": 0.41,
+          "visKm": 2,
+          "cloudPct": 100
+        },
+        {
+          "name": "Pirate Weather",
+          "tempC": 15.02,
+          "windKph": 13,
+          "gustKph": 7.6,
+          "humidity": 90,
+          "desc": "Cloudy",
+          "rainChance": null,
+          "precipMm": null,
+          "visKm": 13.9,
+          "cloudPct": 90
+        },
+        {
+          "name": "MET Norway",
+          "tempC": 15,
+          "windKph": 12.2,
+          "gustKph": null,
+          "humidity": 95.7,
+          "desc": "Heavy rain",
+          "rainChance": 60,
+          "precipMm": 1,
+          "visKm": null,
+          "cloudPct": 100
+        },
+        {
+          "name": "Tomorrow.io",
+          "tempC": 14.85,
+          "windKph": 6.1,
+          "gustKph": null,
+          "humidity": 95,
+          "desc": "Drizzle",
+          "rainChance": 10,
+          "precipMm": 0.48,
+          "visKm": 2.5,
+          "cloudPct": 100
+        }
+      ],
+      "sourceToday": [
+        {
+          "name": "Open-Meteo",
+          "highC": 20.7,
+          "lowC": 14.7,
+          "rainChance": 65
+        },
+        {
+          "name": "WeatherAPI",
+          "highC": 22,
+          "lowC": 12.8,
+          "rainChance": 63
+        },
+        {
+          "name": "Pirate Weather",
+          "highC": 18.2,
+          "lowC": 14.3,
+          "rainChance": 94
+        },
+        {
+          "name": "MET Norway",
+          "highC": null,
+          "lowC": null,
+          "rainChance": 60
+        },
+        {
+          "name": "Tomorrow.io",
+          "highC": 14.85,
+          "lowC": 14.2,
+          "rainChance": 10
+        }
+      ],
+      "openMeteoEndpoint": "customer",
+      "openMeteoStatus": "ok",
+      "localHour": 21,
+      "schema": 5,
+      "utcOffsetSeconds": 7200,
+      "utcOffsetSource": "open-meteo",
+      "updatedAtLabel": "2026-10-12T19:14:39.942Z",
+      "confidence": "high",
+      "fogTrendIncoming": false,
+      "conditionConfidence": {
+        "level": "high",
+        "ensembleVote": "rain-possible",
+        "detectorVerdict": "none",
+        "finalCondition": "rain-possible",
+        "fogTrendIncoming": false,
+        "sourceAgreement": "4/5",
+        "fogSignal": {
+          "visKm": 2.5,
+          "humidity": 97,
+          "dewSpread": 0.4,
+          "omVisM": 2560,
+          "tioVisM": 2500,
+          "visSource": "Tomorrow.io",
+          "omWindKph": 9.2,
+          "rule": "strict",
+          "region": "Western Cape"
+        },
+        "rainRule": {
+          "rainHere": {
+            "votes": 2,
+            "prob": 90,
+            "mm": 2
+          },
+          "showersNearby": {
+            "prob": 60,
+            "mm": 0.3
+          }
+        }
+      },
+      "serverCache": "miss"
+    }
+  }
+}

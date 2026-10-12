@@ -107,6 +107,33 @@ export const RAIN_NOW_MIN_MM    = 2;      // mm blended precipitation for the cu
 //   would be (key stays rain-possible, reason 'showers-nearby'); wind and UV still outrank it.
 export const SHOWERS_NEARBY_MIN_PROB = 60;
 export const SHOWERS_NEARBY_MIN_MM   = 0.3;
+//   "rain-now-descriptive" — CANDIDATE, on branch fix/rain-now-descriptive, not ruled (Strand, 12 Oct 2026: steady
+//   light rain from 18:00, four sources describing it, 1 mm, the models' chance 46 % → "Might rain."). A third route
+//   to "Rain's here": at least 3 sources describing rain now, from at least 2 model families, and ≥ 0.5 mm blended
+//   for the hour. Probability is not read. Replayed in review/accuracy/v3/rainnow-descriptive.mjs; the numbers are in
+//   review/accuracy/results/rain-now-descriptive-2026-10-12.md.
+export const RAIN_NOW_DESC_MIN_VOTES    = 3;
+export const RAIN_NOW_DESC_MIN_FAMILIES = 2;
+export const RAIN_NOW_DESC_MIN_MM       = 0.5;
+//   Model families for the vote: Open-Meteo and WeatherAPI are the same ECMWF run and count once; the other three are
+//   each their own.
+export const RAIN_FAMILY = Object.freeze({
+  'Open-Meteo': 'ECMWF',
+  'WeatherAPI': 'ECMWF',
+  'MET Norway': 'MET Norway',
+  'Pirate Weather': 'Pirate Weather',
+  'Tomorrow.io': 'Tomorrow.io',
+});
+/**
+ * Sources whose CURRENT description is rain ("possible" not counting). `votes` is the count the strict cell and
+ * "Showers nearby" have always read (unchanged). `sources` / `families` feed the candidate and fail closed: only the
+ * five named sources count, each once.
+ */
+export function descriptiveRainVotes(sourceVotes) {
+  const rain = (sourceVotes || []).filter((v) => v && v.vote === 'rain' && !/possible/i.test(v.desc || ''));
+  const named = new Set(rain.map((v) => v.source).filter((s) => Object.hasOwn(RAIN_FAMILY, s)));
+  return { votes: rain.length, sources: named.size, families: new Set([...named].map((s) => RAIN_FAMILY[s])).size };
+}
 export const RAIN_POSSIBLE_NOW_MIN_PROB = 30; // % — the same line the stats row words "Possible"
 //   Part B item 6 (8 Oct 2026): Open-Meteo and WeatherAPI are the same ECMWF forecast, so when only those two are at
 //   30 % for the hour, one forecast is holding "Might rain." twice. The hero's probability might-rain needs at least
@@ -2642,7 +2669,8 @@ export default async function handler(req, res) {
     }));
     // A source's CURRENT description saying rain — "Patchy rain possible" and
     // "Possible rain" are a maybe, not a report, and do not count.
-    const nowRainVotes = sourceConditionVotes.filter(v => v.vote === 'rain' && !/possible/i.test(v.desc || '')).length;
+    const nowRainEvidence = descriptiveRainVotes(sourceConditionVotes);
+    const nowRainVotes = nowRainEvidence.votes;
     // 7 Oct 2026: the cloud figure the hero reads for this hour (skyCloudFor).
     const currentSky = skyCloudFor({ cloudPct: currentCloudPct, omLowPct: hourlies[0]?.cloudsLow?.[localHour], omMidPct: hourlies[0]?.cloudsMid?.[localHour] });
     if (currentSky.rule) debugLog(`[Sky cloud] ${currentCloudPct}% → ${currentSky.pct}% (${currentSky.rule})`);
@@ -2658,6 +2686,9 @@ export default async function handler(req, res) {
       now:        true,
       precipMm:   aggregatedHourly[localHour]?.precipMm ?? null,
       rainVotes:  nowRainVotes,
+      // Candidate rain-now-descriptive: the named sources describing rain, each once, and the families they span.
+      rainSources: nowRainEvidence.sources,
+      rainFamilies: nowRainEvidence.families,
       gustKph:    heroGust,
       // v7: the region's gust line and "enough sources" rule (api/_lib/gusts.js gustRuleAt)
       gustLineKph: gustRule.gustLineKph,
@@ -2705,6 +2736,12 @@ export default async function handler(req, res) {
       nowConditionKey = consensus.key;
       nowConditionReason = consensus.reason;
       nowOverrides.push(...consensus.overrides);
+    }
+    // Candidate rain-now-descriptive: the route does not read the chance, so the hour's chance can sit at 46 % beside
+    // "Rain's here." — raised to 70 as the radar route does below, so the stats row says Likely, not Possible.
+    if (nowConditionReason === 'rain-now-descriptive') {
+      debugLog(`[Rain now, descriptive] ${nowRainEvidence.sources} sources / ${nowRainEvidence.families} families describe rain, ${nowSelectorInputs.precipMm} mm → rain; rainChance ${currentHourRainChance} → ${Math.max(currentHourRainChance ?? 0, 70)}`);
+      currentHourRainChance = Math.max(currentHourRainChance ?? 0, 70);
     }
 
     // =========================================================================
@@ -3677,6 +3714,7 @@ function calcFeelsLike(tempC, windKph, humidity) {
  * TWO LADDERS since 2026-09-22 (condition-incident-20260922):
  *   now: true  — the hero. Rungs 5–12 below are replaced by
  *                5n rain NOW (rainVotes ≥ 2 AND rainChance ≥ 90 AND precipMm ≥ 2; strict, 2026-09-25)
+ *                5.5n CANDIDATE rain NOW by description (rainSources ≥ 3 from ≥ 2 families AND precipMm ≥ 0.5)
  *                6n wind (mean ≥ 25 OR gust ≥ 55)   7n high UV
  *                7.5n showers nearby → rain-possible (rainVotes ≥ 2 AND ≥ 60 AND ≥ 0.3, not 5n)
  *                8n rain by description → rain-possible
@@ -3727,7 +3765,7 @@ function calcFeelsLike(tempC, windKph, humidity) {
  * @param {number}  [params.gustKph]    - now: largest current gust any source reports
  * @returns {string} condition key
  */
-function deriveCondition({ desc, rainChance, tempC, feelsLikeC, windKph, uvIndex, cloudPct, uvCloudPct, maxWindKph, isDay = true, dailyHighC, dailyLowC, sourceDescs, now = false, precipMm, rainVotes, gustKph, windThresholdKph, gustLineKph, windSourcesAt25, windSourcesMin = 0, breezySources, rainOthersAt30 }) {
+function deriveCondition({ desc, rainChance, tempC, feelsLikeC, windKph, uvIndex, cloudPct, uvCloudPct, maxWindKph, isDay = true, dailyHighC, dailyLowC, sourceDescs, now = false, precipMm, rainVotes, rainSources, rainFamilies, gustKph, windThresholdKph, gustLineKph, windSourcesAt25, windSourcesMin = 0, breezySources, rainOthersAt30 }) {
   const d = String(desc || '').toLowerCase();
 
   // Use mean wind speed for condition thresholds. Gusts are displayed separately in the UI.
@@ -3875,6 +3913,12 @@ function deriveCondition({ desc, rainChance, tempC, feelsLikeC, windKph, uvIndex
         && isNum(rainChance) && rainChance >= minProb
         && isNum(precipMm) && precipMm >= minMm;
     if (rainEvidence(RAIN_NOW_MIN_PROB, RAIN_NOW_MIN_MM)) return { key: 'rain', reason: 'rain-now' };
+    // 5.5n. CANDIDATE (12 Oct 2026, not ruled): rain described by ≥ 3 sources from ≥ 2 model families with ≥ 0.5 mm
+    //     for the hour — steady drizzle the models hedge on. No probability test. Inputs cached before rainSources /
+    //     rainFamilies existed keep the old ladder.
+    if (isNum(rainSources) && rainSources >= RAIN_NOW_DESC_MIN_VOTES
+        && isNum(rainFamilies) && rainFamilies >= RAIN_NOW_DESC_MIN_FAMILIES
+        && isNum(precipMm) && precipMm >= RAIN_NOW_DESC_MIN_MM) return { key: 'rain', reason: 'rain-now-descriptive' };
     // 6n. Wind — above UV, might-rain and cloud: a fresh breeze IS the weather.
     //     Gusts count (Al, 2026-09-22): the models' mean wind reads ~40% under the
     //     anemometer at Cape Town and Johannesburg; the gust does not.

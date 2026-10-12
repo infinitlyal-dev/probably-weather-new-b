@@ -53,6 +53,7 @@ describe('hero vs stats consistency — the 22 September 2026 payload', () => {
       .map((source, i) => ({ source, desc: i < n ? 'Rain' : 'Partly cloudy', vote: i < n ? 'rain' : 'clear' }));
     const servers = [
       { conditionKey: 'rain', conditionReason: 'rain-now' },
+      { conditionKey: 'rain', conditionReason: 'rain-now-descriptive' },   // candidate, 12 Oct 2026
       { conditionKey: 'rain', conditionReason: 'tomorrow-io-radar-override' },
       { conditionKey: 'rain', conditionReason: 'moderate-rain-prob' },   // a pre-fix cached payload
       { conditionKey: 'rain', conditionReason: 'heavy-rain-prob' },
@@ -67,10 +68,10 @@ describe('hero vs stats consistency — the 22 September 2026 payload', () => {
     let checked = 0;
     for (const server of servers) for (const nowRain of [5, 25, 45, 65, 85]) for (const next of [0, 20, 40, 60]) for (const votes of [0, 1, 2, 5]) for (const dailyRain of [10, 49, 70]) for (const daily0Key of ['clear', 'rain', 'rain-possible']) {
       const hourly = Array.from({ length: 48 }, (_, i) => ({ rainChance: i === 12 ? nowRain : (i > 12 && i < 16 ? next : 5), uv: 3, cloudPct: 40 }));
-      const evidenced = server.conditionReason === 'rain-now' || server.conditionReason === 'tomorrow-io-radar-override';
+      const evidenced = server.conditionReason === 'rain-now' || server.conditionReason === 'rain-now-descriptive' || server.conditionReason === 'tomorrow-io-radar-override';
       const payload = {
         ok: true,
-        now: { tempC: 20, feelsLikeC: 20, windKph: 10, humidity: 60, rainChance: evidenced ? Math.max(nowRain, 60) : nowRain, uv: 3, cloudPct: 40, isDay: true,
+        now: { tempC: 20, feelsLikeC: 20, windKph: 10, humidity: 60, rainChance: evidenced ? Math.max(nowRain, server.conditionReason === 'rain-now-descriptive' ? 70 : 60) : nowRain, uv: 3, cloudPct: 40, isDay: true,
           conditionKey: server.conditionKey, conditionReason: server.conditionReason, conditionLabel: 'x', conditionSignals: { overrides: [] } },
         daily: [{ highC: 24, lowC: 12, rainChance: dailyRain, uvMax: 6, conditionKey: daily0Key }],
         hourly,

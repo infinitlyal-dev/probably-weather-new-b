@@ -19,7 +19,7 @@ import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import {
-  skyCloudFor, deriveCondition, applyVoteConsensus, categorizeDesc, pickWeightedMostCommon, pickModalCloud,
+  skyCloudFor, descriptiveRainVotes, deriveCondition, applyVoteConsensus, categorizeDesc, pickWeightedMostCommon, pickModalCloud,
   detectAdvectionFog, corroboratedFogUpgrade, isTrueFogDesc, countsAsWeatherVote, rainOthersAtLine,
 } from '../../../api/weather.js';
 import { HEAT_WARM_C, HEAT_EXTREME_C } from '../../../assets/weather-thresholds.js';
@@ -195,7 +195,8 @@ export function decideAt(city, i) {
   const sourceVotes = activeNorms.map((n) => ({ source: n.source, desc: n.desc, vote: categorizeDesc(n.desc) }));
   const precipNowArr = activeNorms.map((n) => n.precipNowMm).filter(isNum);
   // api/weather.js nowRainVotes: a current description that is rain and not a "possible".
-  const rainNowVotes = sourceVotes.filter((v) => v.vote === 'rain' && !/possible/i.test(v.desc || '')).length;
+  const rainNowEvidence = descriptiveRainVotes(sourceVotes);
+  const rainNowVotes = rainNowEvidence.votes;
   // 7 Oct 2026 — api/weather.js currentSky: the cloud figure the hero reads.
   const omLow = hourlies[0]?.cloudsLow?.[localHour], omMid = hourlies[0]?.cloudsMid?.[localHour];
   const currentSky = skyCloudFor({ cloudPct: currentCloudPct, omLowPct: omLow, omMidPct: omMid });
@@ -218,6 +219,8 @@ export function decideAt(city, i) {
     now: true,
     precipMm: aggregatedHourly[localHour]?.precipMm ?? null,
     rainVotes: rainNowVotes,
+    rainSources: rainNowEvidence.sources,
+    rainFamilies: rainNowEvidence.families,
     gustKph: maxGust,
     // 7 Oct 2026 (new sets) — api/weather.js breezySourcesNow; the replay has no wind correction (factor 1, line 25).
     breezySources: activeNorms.filter((n) => (isNum(n.windKph) && n.windKph >= 15) || (isNum(n.gustKph) && n.gustKph >= 30)).length,
@@ -246,7 +249,9 @@ export function decideAt(city, i) {
   // ---- frontend: assets/app.js normalizePayload (:2320–2380) ----
   const imminent = aggregatedHourly.slice(localHour, localHour + 4).map((x) => x.rainChance ?? 0);
   const imminentMax = imminent.length ? Math.max(...imminent) : null;
-  const rainPct = isNum(imminentMax) ? imminentMax : (daily0.rainChance ?? currentHourRainChance ?? null);
+  // api/weather.js: the candidate rain-now-descriptive lifts the hour's chance to 70; normalizePayload shows the larger.
+  const rainPctModels = isNum(imminentMax) ? imminentMax : (daily0.rainChance ?? currentHourRainChance ?? null);
+  const rainPct = reason === 'rain-now-descriptive' ? Math.max(rainPctModels ?? 0, 70) : rainPctModels;
   // Part B item 6 — normalizePayload mightRainMax: the next 4 hours without the ones only the ECMWF twins hold.
   const mightHours = aggregatedHourly.slice(localHour, localHour + 4).map((x, k) => ({ pct: x.rainChance ?? 0, others: rainOthersAtLine(hourlies, localHour + k) })).filter((x) => x.others >= 1);
   const mightRainPct = imminent.length ? (mightHours.length ? Math.max(...mightHours.map((x) => x.pct)) : 0) : rainPct;
@@ -257,7 +262,7 @@ export function decideAt(city, i) {
   const norm = {
     nowTemp: medNowTemp, feelsLike: medFeelsLike, todayHigh: daily0.highC, todayLow: daily0.lowC,
     // normalizePayload: the server's evidenced routes to rain (radar cannot occur in a replay).
-    rainPct, mightRainPct, dailyRainPct, rainLater, rainNowOverride: reason === 'rain-now',
+    rainPct, mightRainPct, dailyRainPct, rainLater, rainNowOverride: reason === 'rain-now' || reason === 'rain-now-descriptive',
     uv: isDay ? nowHourUv : null, uvMax: norms[0]?.todayUv ?? null, uvDaily: norms[0]?.todayUv ?? null,
     isDay, localHour,
     windKph: medWindKph ?? 0, maxWindKph: maxWindKph > 0 ? maxWindKph : null,
