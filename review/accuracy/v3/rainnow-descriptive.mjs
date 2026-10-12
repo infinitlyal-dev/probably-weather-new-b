@@ -18,7 +18,7 @@ import { writeFileSync } from 'node:fs';
 import path from 'node:path';
 import { SCORED } from '../v2/stations.mjs';
 import { loadObs, loadRuns, loadHist, days, hourKey, TEST, inRange, isNum, RESULTS } from '../v2/lib.mjs';
-import { RAIN_FAMILY } from '../../../api/weather.js';
+import { RAIN_FAMILY, RAIN_NOW_DESC_REGIONS } from '../../../api/weather.js';
 
 const NO_WX = new Set(['FALW', 'FAHS', 'FAWB']);
 const MODELS = ['best_match', 'ecmwf_ifs025', 'gfs_seamless', 'icon_seamless', 'ukmo_seamless', 'meteofrance_seamless'];
@@ -74,6 +74,8 @@ const RULES = {
   candidate: (r, an) => today(r, an) || desc(3, 0.5)(r, an),
   'neighbour (a) 0.3 mm': (r, an) => today(r, an) || desc(3, 0.3)(r, an),
   'neighbour (b) 2 votes': (r, an) => today(r, an) || desc(2, 0.5)(r, an),
+  // Maat's ruling (12 Oct 2026): the candidate on the coast only (api/weather.js RAIN_NOW_DESC_REGIONS), today elsewhere
+  'coast switch': (r, an) => today(r, an) || (RAIN_NOW_DESC_REGIONS.includes(r.region) && desc(3, 0.5)(r, an)),
 };
 
 const test = rows.filter((r) => inRange(r.day, TEST));
@@ -105,6 +107,11 @@ for (const an of ANS) {
   out.tonight[an] = { hours: kind.length, wet: kind.filter((r) => r.wet).length, near: kind.filter((r) => r.near).length,
     twoFamilies: kind2f.length, twoFamiliesWet: kind2f.filter((r) => r.wet).length, twoFamiliesNear: kind2f.filter((r) => r.near).length,
     byRegion: Object.fromEntries([...new Set(kind2f.map((r) => r.region))].map((g) => { const l = kind2f.filter((r) => r.region === g); return [g, { hours: l.length, wet: l.filter((r) => r.wet).length }]; })) };
+  // the coast switch: the three coast regions together, and the inland hours where it differs from today (must be 0)
+  const isCoast = (r) => RAIN_NOW_DESC_REGIONS.includes(r.region);
+  const coast = list.filter(isCoast), inland = list.filter((r) => !isCoast(r));
+  (out.coastSwitch ||= {})[an] = { coastToday: score(coast, today, an), coast: score(coast, RULES['coast switch'], an),
+    inlandHours: inland.length, inlandHoursDiffering: inland.filter((r) => RULES['coast switch'](r, an) !== today(r, an)).length };
 }
 writeFileSync(path.join(RESULTS, 'rain-now-descriptive.json'), JSON.stringify(out, null, 1));
 
@@ -121,3 +128,8 @@ for (const [g, s] of Object.entries(out.byRegion.A)) {
   const a = s.today, b = s.candidate;
   console.log(`  ${g.padEnd(14)} ${a.calls} ${pc(a.right, a.calls)} dry ${a.dry} caught ${a.caught}/${a.wet} → ${b.calls} ${pc(b.right, b.calls)} dry ${b.dry} caught ${b.caught}/${b.wet} (±1h ${pc(b.caughtNear, b.wet)})`);
 }
+for (const an of ANS) {
+  const c = out.coastSwitch[an], t = c.coastToday, s = c.coast;
+  console.log(`Coast switch, ${an}: coast today ${t.calls} calls ${pc(t.right, t.calls)} right, caught ${pc(t.caught, t.wet)} → ${s.calls} calls ${pc(s.right, s.calls)} right (±1h ${pc(s.rightNear, s.calls)}), caught ${s.caught}/${s.wet} = ${pc(s.caught, s.wet)} (±1h ${pc(s.caughtNear, s.wet)}); inland hours differing from today: ${c.inlandHoursDiffering} of ${c.inlandHours}`);
+}
+for (const g of RAIN_NOW_DESC_REGIONS) { const s = out.byRegion.A[g]['coast switch']; console.log(`  A ${g.padEnd(13)} ${s.calls} calls ${pc(s.right, s.calls)} right (±1h ${pc(s.rightNear, s.calls)}), caught ${s.caught}/${s.wet} = ${pc(s.caught, s.wet)} (±1h ${pc(s.caughtNear, s.wet)})`); }

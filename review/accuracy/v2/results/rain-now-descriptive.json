@@ -50,6 +50,16 @@
     "wet": 3702,
     "caught": 1547,
     "caughtNear": 1958
+   },
+   "coast switch": {
+    "calls": 978,
+    "right": 702,
+    "rightNear": 842,
+    "dry": 276,
+    "dryNear": 136,
+    "wet": 3702,
+    "caught": 702,
+    "caughtNear": 934
    }
   },
   "B": {
@@ -92,6 +102,16 @@
     "wet": 3702,
     "caught": 1069,
     "caughtNear": 1475
+   },
+   "coast switch": {
+    "calls": 816,
+    "right": 599,
+    "rightNear": 696,
+    "dry": 217,
+    "dryNear": 120,
+    "wet": 3702,
+    "caught": 599,
+    "caughtNear": 863
    }
   },
   "C": {
@@ -134,6 +154,16 @@
     "wet": 3702,
     "caught": 1398,
     "caughtNear": 1835
+   },
+   "coast switch": {
+    "calls": 921,
+    "right": 682,
+    "rightNear": 798,
+    "dry": 239,
+    "dryNear": 123,
+    "wet": 3702,
+    "caught": 682,
+    "caughtNear": 932
    }
   }
  },
@@ -179,6 +209,16 @@
      "wet": 321,
      "caught": 124,
      "caughtNear": 159
+    },
+    "coast switch": {
+     "calls": 172,
+     "right": 124,
+     "rightNear": 159,
+     "dry": 48,
+     "dryNear": 13,
+     "wet": 321,
+     "caught": 124,
+     "caughtNear": 159
     }
    },
    "Garden Route": {
@@ -221,6 +261,16 @@
      "wet": 659,
      "caught": 271,
      "caughtNear": 334
+    },
+    "coast switch": {
+     "calls": 345,
+     "right": 271,
+     "rightNear": 318,
+     "dry": 74,
+     "dryNear": 27,
+     "wet": 659,
+     "caught": 271,
+     "caughtNear": 333
     }
    },
    "Eastern Cape": {
@@ -263,6 +313,16 @@
      "wet": 1019,
      "caught": 431,
      "caughtNear": 528
+    },
+    "coast switch": {
+     "calls": 110,
+     "right": 65,
+     "rightNear": 78,
+     "dry": 45,
+     "dryNear": 32,
+     "wet": 1019,
+     "caught": 65,
+     "caughtNear": 102
     }
    },
    "KZN coast": {
@@ -302,6 +362,16 @@
      "rightNear": 192,
      "dry": 68,
      "dryNear": 42,
+     "wet": 423,
+     "caught": 166,
+     "caughtNear": 214
+    },
+    "coast switch": {
+     "calls": 226,
+     "right": 166,
+     "rightNear": 190,
+     "dry": 60,
+     "dryNear": 36,
      "wet": 423,
      "caught": 166,
      "caughtNear": 214
@@ -347,6 +417,16 @@
      "wet": 351,
      "caught": 146,
      "caughtNear": 195
+    },
+    "coast switch": {
+     "calls": 17,
+     "right": 11,
+     "rightNear": 15,
+     "dry": 6,
+     "dryNear": 2,
+     "wet": 351,
+     "caught": 11,
+     "caughtNear": 21
     }
    },
    "Free State": {
@@ -389,6 +469,16 @@
      "wet": 217,
      "caught": 89,
      "caughtNear": 112
+    },
+    "coast switch": {
+     "calls": 25,
+     "right": 19,
+     "rightNear": 22,
+     "dry": 6,
+     "dryNear": 3,
+     "wet": 217,
+     "caught": 19,
+     "caughtNear": 30
     }
    },
    "Northern Cape": {
@@ -431,6 +521,16 @@
      "wet": 254,
      "caught": 128,
      "caughtNear": 165
+    },
+    "coast switch": {
+     "calls": 45,
+     "right": 35,
+     "rightNear": 42,
+     "dry": 10,
+     "dryNear": 3,
+     "wet": 254,
+     "caught": 35,
+     "caughtNear": 48
     }
    },
    "North West": {
@@ -473,6 +573,16 @@
      "wet": 85,
      "caught": 44,
      "caughtNear": 53
+    },
+    "coast switch": {
+     "calls": 5,
+     "right": 1,
+     "rightNear": 2,
+     "dry": 4,
+     "dryNear": 3,
+     "wet": 85,
+     "caught": 1,
+     "caughtNear": 2
     }
    },
    "Lowveld": {
@@ -515,6 +625,16 @@
      "wet": 245,
      "caught": 103,
      "caughtNear": 136
+    },
+    "coast switch": {
+     "calls": 25,
+     "right": 9,
+     "rightNear": 14,
+     "dry": 16,
+     "dryNear": 11,
+     "wet": 245,
+     "caught": 9,
+     "caughtNear": 22
     }
    },
    "Limpopo": {
@@ -557,6 +677,16 @@
      "wet": 128,
      "caught": 45,
      "caughtNear": 62
+    },
+    "coast switch": {
+     "calls": 8,
+     "right": 1,
+     "rightNear": 2,
+     "dry": 7,
+     "dryNear": 6,
+     "wet": 128,
+     "caught": 1,
+     "caughtNear": 3
     }
    }
   },
@@ -593,6 +723,16 @@
      "caughtNear": 143
     },
     "neighbour (b) 2 votes": {
+     "calls": 126,
+     "right": 98,
+     "rightNear": 120,
+     "dry": 28,
+     "dryNear": 6,
+     "wet": 321,
+     "caught": 98,
+     "caughtNear": 127
+    },
+    "coast switch": {
      "calls": 126,
      "right": 98,
      "rightNear": 120,
@@ -643,6 +783,16 @@
      "wet": 659,
      "caught": 215,
      "caughtNear": 277
+    },
+    "coast switch": {
+     "calls": 259,
+     "right": 214,
+     "rightNear": 239,
+     "dry": 45,
+     "dryNear": 20,
+     "wet": 659,
+     "caught": 214,
+     "caughtNear": 276
     }
    },
    "Eastern Cape": {
@@ -685,6 +835,16 @@
      "wet": 1019,
      "caught": 286,
      "caughtNear": 401
+    },
+    "coast switch": {
+     "calls": 118,
+     "right": 73,
+     "rightNear": 84,
+     "dry": 45,
+     "dryNear": 34,
+     "wet": 1019,
+     "caught": 73,
+     "caughtNear": 128
     }
    },
    "KZN coast": {
@@ -727,6 +887,16 @@
      "wet": 423,
      "caught": 108,
      "caughtNear": 161
+    },
+    "coast switch": {
+     "calls": 132,
+     "right": 107,
+     "rightNear": 119,
+     "dry": 25,
+     "dryNear": 13,
+     "wet": 423,
+     "caught": 107,
+     "caughtNear": 160
     }
    },
    "Highveld": {
@@ -769,6 +939,16 @@
      "wet": 351,
      "caught": 88,
      "caughtNear": 132
+    },
+    "coast switch": {
+     "calls": 21,
+     "right": 16,
+     "rightNear": 21,
+     "dry": 5,
+     "dryNear": 0,
+     "wet": 351,
+     "caught": 16,
+     "caughtNear": 30
     }
    },
    "Free State": {
@@ -811,6 +991,16 @@
      "wet": 217,
      "caught": 75,
      "caughtNear": 96
+    },
+    "coast switch": {
+     "calls": 42,
+     "right": 27,
+     "rightNear": 31,
+     "dry": 15,
+     "dryNear": 11,
+     "wet": 217,
+     "caught": 27,
+     "caughtNear": 45
     }
    },
    "Northern Cape": {
@@ -853,6 +1043,16 @@
      "wet": 254,
      "caught": 92,
      "caughtNear": 118
+    },
+    "coast switch": {
+     "calls": 51,
+     "right": 36,
+     "rightNear": 45,
+     "dry": 15,
+     "dryNear": 6,
+     "wet": 254,
+     "caught": 36,
+     "caughtNear": 52
     }
    },
    "North West": {
@@ -895,6 +1095,16 @@
      "wet": 85,
      "caught": 21,
      "caughtNear": 27
+    },
+    "coast switch": {
+     "calls": 11,
+     "right": 4,
+     "rightNear": 7,
+     "dry": 7,
+     "dryNear": 4,
+     "wet": 85,
+     "caught": 4,
+     "caughtNear": 7
     }
    },
    "Lowveld": {
@@ -937,6 +1147,16 @@
      "wet": 245,
      "caught": 66,
      "caughtNear": 97
+    },
+    "coast switch": {
+     "calls": 44,
+     "right": 23,
+     "rightNear": 29,
+     "dry": 21,
+     "dryNear": 15,
+     "wet": 245,
+     "caught": 23,
+     "caughtNear": 35
     }
    },
    "Limpopo": {
@@ -979,6 +1199,16 @@
      "wet": 128,
      "caught": 20,
      "caughtNear": 39
+    },
+    "coast switch": {
+     "calls": 12,
+     "right": 1,
+     "rightNear": 1,
+     "dry": 11,
+     "dryNear": 11,
+     "wet": 128,
+     "caught": 1,
+     "caughtNear": 3
     }
    }
   },
@@ -1023,6 +1253,16 @@
      "wet": 321,
      "caught": 108,
      "caughtNear": 140
+    },
+    "coast switch": {
+     "calls": 134,
+     "right": 107,
+     "rightNear": 130,
+     "dry": 27,
+     "dryNear": 4,
+     "wet": 321,
+     "caught": 107,
+     "caughtNear": 136
     }
    },
    "Garden Route": {
@@ -1065,6 +1305,16 @@
      "wet": 659,
      "caught": 267,
      "caughtNear": 331
+    },
+    "coast switch": {
+     "calls": 318,
+     "right": 259,
+     "rightNear": 296,
+     "dry": 59,
+     "dryNear": 22,
+     "wet": 659,
+     "caught": 259,
+     "caughtNear": 319
     }
    },
    "Eastern Cape": {
@@ -1107,6 +1357,16 @@
      "wet": 1019,
      "caught": 385,
      "caughtNear": 503
+    },
+    "coast switch": {
+     "calls": 101,
+     "right": 64,
+     "rightNear": 73,
+     "dry": 37,
+     "dryNear": 28,
+     "wet": 1019,
+     "caught": 64,
+     "caughtNear": 112
     }
    },
    "KZN coast": {
@@ -1149,6 +1409,16 @@
      "wet": 423,
      "caught": 163,
      "caughtNear": 221
+    },
+    "coast switch": {
+     "calls": 214,
+     "right": 155,
+     "rightNear": 183,
+     "dry": 59,
+     "dryNear": 31,
+     "wet": 423,
+     "caught": 155,
+     "caughtNear": 209
     }
    },
    "Highveld": {
@@ -1191,6 +1461,16 @@
      "wet": 351,
      "caught": 119,
      "caughtNear": 168
+    },
+    "coast switch": {
+     "calls": 18,
+     "right": 16,
+     "rightNear": 17,
+     "dry": 2,
+     "dryNear": 1,
+     "wet": 351,
+     "caught": 16,
+     "caughtNear": 30
     }
    },
    "Free State": {
@@ -1233,6 +1513,16 @@
      "wet": 217,
      "caught": 85,
      "caughtNear": 103
+    },
+    "coast switch": {
+     "calls": 33,
+     "right": 22,
+     "rightNear": 24,
+     "dry": 11,
+     "dryNear": 9,
+     "wet": 217,
+     "caught": 22,
+     "caughtNear": 37
     }
    },
    "Northern Cape": {
@@ -1275,6 +1565,16 @@
      "wet": 254,
      "caught": 116,
      "caughtNear": 140
+    },
+    "coast switch": {
+     "calls": 51,
+     "right": 36,
+     "rightNear": 44,
+     "dry": 15,
+     "dryNear": 7,
+     "wet": 254,
+     "caught": 36,
+     "caughtNear": 50
     }
    },
    "North West": {
@@ -1317,6 +1617,16 @@
      "wet": 85,
      "caught": 36,
      "caughtNear": 48
+    },
+    "coast switch": {
+     "calls": 9,
+     "right": 4,
+     "rightNear": 7,
+     "dry": 5,
+     "dryNear": 2,
+     "wet": 85,
+     "caught": 4,
+     "caughtNear": 9
     }
    },
    "Lowveld": {
@@ -1359,6 +1669,16 @@
      "wet": 245,
      "caught": 88,
      "caughtNear": 127
+    },
+    "coast switch": {
+     "calls": 32,
+     "right": 19,
+     "rightNear": 24,
+     "dry": 13,
+     "dryNear": 8,
+     "wet": 245,
+     "caught": 19,
+     "caughtNear": 30
     }
    },
    "Limpopo": {
@@ -1401,6 +1721,16 @@
      "wet": 128,
      "caught": 31,
      "caughtNear": 54
+    },
+    "coast switch": {
+     "calls": 11,
+     "right": 0,
+     "rightNear": 0,
+     "dry": 11,
+     "dryNear": 11,
+     "wet": 128,
+     "caught": 0,
+     "caughtNear": 0
     }
    }
   }
@@ -1555,6 +1885,80 @@
      "wet": 2
     }
    }
+  }
+ },
+ "coastSwitch": {
+  "A": {
+   "coastToday": {
+    "calls": 137,
+    "right": 131,
+    "rightNear": 137,
+    "dry": 6,
+    "dryNear": 0,
+    "wet": 1403,
+    "caught": 131,
+    "caughtNear": 203
+   },
+   "coast": {
+    "calls": 743,
+    "right": 561,
+    "rightNear": 667,
+    "dry": 182,
+    "dryNear": 76,
+    "wet": 1403,
+    "caught": 561,
+    "caughtNear": 706
+   },
+   "inlandHours": 59285,
+   "inlandHoursDiffering": 0
+  },
+  "B": {
+   "coastToday": {
+    "calls": 183,
+    "right": 173,
+    "rightNear": 180,
+    "dry": 10,
+    "dryNear": 3,
+    "wet": 1403,
+    "caught": 173,
+    "caughtNear": 248
+   },
+   "coast": {
+    "calls": 517,
+    "right": 419,
+    "rightNear": 478,
+    "dry": 98,
+    "dryNear": 39,
+    "wet": 1403,
+    "caught": 419,
+    "caughtNear": 563
+   },
+   "inlandHours": 59285,
+   "inlandHoursDiffering": 0
+  },
+  "C": {
+   "coastToday": {
+    "calls": 155,
+    "right": 146,
+    "rightNear": 153,
+    "dry": 9,
+    "dryNear": 2,
+    "wet": 1403,
+    "caught": 146,
+    "caughtNear": 221
+   },
+   "coast": {
+    "calls": 666,
+    "right": 521,
+    "rightNear": 609,
+    "dry": 145,
+    "dryNear": 57,
+    "wet": 1403,
+    "caught": 521,
+    "caughtNear": 664
+   },
+   "inlandHours": 59285,
+   "inlandHoursDiffering": 0
   }
  }
 }

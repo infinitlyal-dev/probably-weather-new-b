@@ -1,98 +1,117 @@
 {
- "generatedAt": "2026-09-28T09:13:06.284Z",
+ "generatedAt": "2026-10-12T21:05:52.901Z",
  "files": [
   "2026-09-24.jsonl",
   "2026-09-25.jsonl",
   "2026-09-26.jsonl",
   "2026-09-27.jsonl",
-  "2026-09-28.jsonl"
+  "2026-09-28.jsonl",
+  "2026-09-29.jsonl",
+  "2026-09-30.jsonl",
+  "2026-10-01.jsonl",
+  "2026-10-02.jsonl",
+  "2026-10-03.jsonl",
+  "2026-10-04.jsonl",
+  "2026-10-05.jsonl",
+  "2026-10-06.jsonl",
+  "2026-10-07.jsonl",
+  "2026-10-08.jsonl",
+  "2026-10-09.jsonl",
+  "2026-10-10.jsonl",
+  "2026-10-11.jsonl",
+  "2026-10-12.jsonl"
  ],
- "records": 510,
+ "records": 2538,
  "failedReads": 18,
- "scoredNow": 389,
+ "scoredNow": 1961,
  "agreeNow": {
-  "n": 389,
-  "ok": 230
+  "n": 1961,
+  "ok": 1523
  },
  "byCity": {
   "FACT": {
-   "n": 68,
-   "ok": 35
+   "n": 342,
+   "ok": 273
   },
   "FAOR": {
-   "n": 79,
-   "ok": 66
+   "n": 413,
+   "ok": 357
   },
   "FALE": {
-   "n": 74,
-   "ok": 43
+   "n": 368,
+   "ok": 256
   },
   "FAGG": {
-   "n": 70,
-   "ok": 27
+   "n": 344,
+   "ok": 261
   },
   "FAPE": {
-   "n": 51,
-   "ok": 26
+   "n": 275,
+   "ok": 211
   },
   "FABL": {
-   "n": 47,
-   "ok": 33
+   "n": 219,
+   "ok": 165
   }
  },
  "falseRain": {
-  "served": 27,
-  "dry": 13
+  "served": 77,
+  "dry": 34
  },
  "radar": {
-  "overrides": 27,
-  "nextHourBumps": 8
+  "overrides": 75,
+  "nextHourBumps": 24
  },
  "calibration": [
   {
    "bin": "0–9",
-   "n": 244,
-   "rained": 1
+   "n": 1737,
+   "rained": 15
   },
   {
    "bin": "10–19",
-   "n": 61,
-   "rained": 4
+   "n": 171,
+   "rained": 15
   },
   {
    "bin": "20–29",
-   "n": 31,
-   "rained": 3
+   "n": 79,
+   "rained": 16
   },
   {
    "bin": "30–39",
-   "n": 24,
-   "rained": 3
+   "n": 69,
+   "rained": 11
   },
   {
    "bin": "40–49",
-   "n": 39,
-   "rained": 8
+   "n": 73,
+   "rained": 16
   },
   {
    "bin": "50–59",
-   "n": 6,
-   "rained": 0
+   "n": 21,
+   "rained": 9
   },
   {
    "bin": "60–69",
-   "n": 13,
-   "rained": 4
+   "n": 38,
+   "rained": 14
   },
   {
    "bin": "70–79",
-   "n": 26,
-   "rained": 10
+   "n": 75,
+   "rained": 39
   },
   {
    "bin": "80–89",
-   "n": 3,
-   "rained": 2
+   "n": 15,
+   "rained": 13
+  },
+  {
+   "bin": "90–100",
+   "n": 1,
+   "rained": 1
   }
  ],
  "mismatches": [
@@ -254,7 +273,286 @@
   "2026-09-28T08:10 FALE served cloudy (overcast) · airport clear",
   "2026-09-28T09:09 FACT served cloudy (overcast) · airport clear",
   "2026-09-28T09:09 FALE served cloudy (overcast) · airport clear",
-  "2026-09-28T09:09 FAPE served rain-possible (desc-rain-unconfirmed) · airport scattered"
+  "2026-09-28T09:09 FAPE served rain-possible (desc-rain-unconfirmed) · airport scattered",
+  "2026-09-28T10:09 FACT served cloudy (overcast) · airport clear",
+  "2026-09-28T10:09 FALE served cloudy (overcast) · airport clear",
+  "2026-09-28T10:10 FABL served cloudy (mostly-cloudy) · airport clear",
+  "2026-09-28T11:09 FACT served cloudy (overcast) · airport clear",
+  "2026-09-28T11:09 FALE served cloudy (overcast) · airport clear",
+  "2026-09-28T11:10 FABL served cloudy (mostly-cloudy) · airport clear",
+  "2026-09-28T12:09 FACT served cloudy (overcast) · airport clear",
+  "2026-09-28T12:09 FAOR served thunder (two-source-consensus-thunder) · airport clear",
+  "2026-09-28T12:10 FAPE served rain-possible (desc-rain-unconfirmed) · airport scattered",
+  "2026-09-28T12:09 FABL served cloudy (mostly-cloudy) · airport clear",
+  "2026-09-28T13:09 FABL served cloudy (overcast) · airport clear",
+  "2026-09-28T14:09 FAPE served cloudy (overcast) · airport clear",
+  "2026-09-28T14:09 FABL served cloudy (overcast) · airport clear",
+  "2026-09-28T15:09 FAPE served cloudy (mostly-cloudy) · airport clear",
+  "2026-09-28T15:09 FABL served cloudy (mostly-cloudy) · airport clear",
+  "2026-09-28T16:09 FALE served cloudy (overcast) · airport rain",
+  "2026-09-28T16:09 FABL served cloudy (overcast) · airport clear",
+  "2026-09-28T17:09 FACT served cloudy (overcast) · airport clear",
+  "2026-09-28T17:09 FALE served cloudy (overcast) · airport rain",
+  "2026-09-28T17:09 FABL served cloudy (overcast) · airport clear",
+  "2026-09-28T18:09 FACT served cloudy (overcast) · airport clear",
+  "2026-09-28T18:09 FAPE served partly-cloudy (partly-cloudy) · airport cloudy",
+  "2026-09-28T18:09 FABL served cloudy (overcast) · airport clear",
+  "2026-09-28T20:09 FACT served cloudy (overcast) · airport clear",
+  "2026-09-28T20:09 FALE served partly-cloudy (partly-cloudy) · airport rain",
+  "2026-09-28T22:09 FALE served cloudy (overcast) · airport clear",
+  "2026-09-28T23:09 FALE served cloudy (overcast) · airport clear",
+  "2026-09-29T00:09 FALE served cloudy (overcast) · airport clear",
+  "2026-09-29T02:09 FALE served cloudy (overcast) · airport clear",
+  "2026-09-29T05:09 FALE served cloudy (overcast) · airport clear",
+  "2026-09-29T06:09 FALE served cloudy (mostly-cloudy) · airport clear",
+  "2026-09-29T07:09 FALE served partly-cloudy (partly-cloudy) · airport cloudy",
+  "2026-09-29T08:10 FALE served cloudy (mostly-cloudy) · airport clear",
+  "2026-09-29T09:09 FALE served rain-possible (desc-rain-unconfirmed) · airport scattered",
+  "2026-09-29T11:09 FABL served thunder (two-source-consensus-thunder) · airport scattered",
+  "2026-09-29T12:10 FABL served thunder (two-source-consensus-thunder) · airport scattered",
+  "2026-09-29T13:10 FALE served rain-possible (desc-rain-unconfirmed) · airport scattered",
+  "2026-09-29T13:10 FABL served rain-possible (rain-possible-prob) · airport scattered",
+  "2026-09-29T14:10 FALE served rain-possible (rain-possible-prob) · airport scattered",
+  "2026-09-29T14:10 FABL served rain-possible (rain-possible-prob) · airport clear",
+  "2026-09-29T15:10 FAOR served rain (tomorrow-io-radar-override) · airport cloudy",
+  "2026-09-29T15:10 FABL served thunder (two-source-consensus-thunder) · airport cloudy",
+  "2026-09-29T16:10 FAOR served rain (tomorrow-io-radar-override) · airport cloudy",
+  "2026-09-29T16:10 FABL served thunder (two-source-consensus-thunder) · airport scattered",
+  "2026-09-29T17:10 FAOR served rain (tomorrow-io-radar-override) · airport cloudy",
+  "2026-09-29T17:10 FABL served cloudy (overcast) · airport clear",
+  "2026-09-30T03:10 FALE served cloudy (overcast) · airport rain",
+  "2026-09-30T08:10 FABL served partly-cloudy (partly-cloudy) · airport cloudy",
+  "2026-09-30T10:10 FABL served uv (high-uv-with-temp-gate) · airport cloudy",
+  "2026-09-30T12:10 FABL served partly-cloudy (partly-cloudy) · airport cloudy",
+  "2026-09-30T15:10 FALE served partly-cloudy (partly-cloudy) · airport cloudy",
+  "2026-09-30T17:10 FAOR served cloudy (overcast) · airport rain",
+  "2026-09-30T17:10 FALE served clear (desc-clear-keyword) · airport cloudy",
+  "2026-09-30T18:10 FALE served clear (desc-clear-keyword) · airport cloudy",
+  "2026-09-30T21:10 FAOR served cloudy (overcast) · airport clear",
+  "2026-09-30T22:10 FAOR served cloudy (overcast) · airport clear",
+  "2026-10-01T11:10 FAOR served clear (majority-override-clear) · airport cloudy",
+  "2026-10-01T12:10 FAOR served clear (majority-override-clear) · airport cloudy",
+  "2026-10-01T17:10 FAGG served partly-cloudy (partly-cloudy) · airport cloudy",
+  "2026-10-01T19:10 FACT served cloudy (overcast) · airport clear",
+  "2026-10-01T20:10 FACT served cloudy (overcast) · airport clear",
+  "2026-10-01T21:10 FAPE served cloudy (mostly-cloudy) · airport clear",
+  "2026-10-01T22:10 FACT served cloudy (overcast) · airport clear",
+  "2026-10-02T03:10 FACT served cloudy (overcast) · airport rain",
+  "2026-10-02T04:10 FACT served cloudy (overcast) · airport rain",
+  "2026-10-02T06:10 FACT served cloudy (overcast) · airport rain",
+  "2026-10-02T06:10 FAGG served fog (corroborated-fog-vote) · airport cloudy",
+  "2026-10-02T17:10 FAGG served cloudy (overcast) · airport rain",
+  "2026-10-02T22:10 FAPE served rain (tomorrow-io-radar-override) · airport cloudy",
+  "2026-10-02T23:10 FAPE served rain (tomorrow-io-radar-override) · airport clear",
+  "2026-10-03T01:10 FAGG served rain-possible (desc-rain-unconfirmed) · airport mist",
+  "2026-10-03T03:10 FALE served clear (desc-clear-keyword) · airport mist",
+  "2026-10-03T08:10 FAPE served rain (tomorrow-io-radar-override) · airport mist",
+  "2026-10-03T12:10 FABL served cloudy (mostly-cloudy) · airport clear",
+  "2026-10-03T12:10 FAGG served rain (tomorrow-io-radar-override) · airport cloudy",
+  "2026-10-03T13:10 FAGG served rain (tomorrow-io-radar-override) · airport cloudy",
+  "2026-10-03T14:10 FAPE served rain (tomorrow-io-radar-override) · airport cloudy",
+  "2026-10-03T15:10 FALE served partly-cloudy (partly-cloudy) · airport cloudy",
+  "2026-10-03T15:10 FABL served cloudy (overcast) · airport clear",
+  "2026-10-03T17:10 FAOR served cloudy (mostly-cloudy) · airport clear",
+  "2026-10-03T17:10 FALE served clear (desc-clear-keyword) · airport rain",
+  "2026-10-03T17:10 FAPE served rain-possible (rain-possible-prob) · airport clear",
+  "2026-10-03T18:10 FAPE served rain-possible (rain-possible-prob) · airport scattered",
+  "2026-10-03T18:10 FABL served cloudy (overcast) · airport clear",
+  "2026-10-03T18:10 FAGG served rain-possible (desc-rain-unconfirmed) · airport clear",
+  "2026-10-03T19:10 FAOR served cloudy (overcast) · airport clear",
+  "2026-10-03T19:10 FALE served rain-possible (desc-rain-unconfirmed) · airport scattered",
+  "2026-10-03T20:10 FAOR served cloudy (overcast) · airport clear",
+  "2026-10-03T20:10 FALE served rain-possible (desc-rain-unconfirmed) · airport clear",
+  "2026-10-03T21:10 FALE served rain-possible (desc-rain-unconfirmed) · airport clear",
+  "2026-10-03T21:10 FAGG served cloudy (mostly-cloudy) · airport rain",
+  "2026-10-03T22:10 FALE served rain-possible (desc-rain-unconfirmed) · airport clear",
+  "2026-10-03T23:10 FALE served rain-possible (rain-possible-prob) · airport clear",
+  "2026-10-04T00:10 FALE served rain-possible (rain-possible-prob) · airport clear",
+  "2026-10-04T01:10 FALE served rain-possible (rain-possible-prob) · airport clear",
+  "2026-10-04T02:10 FALE served cloudy (overcast) · airport clear",
+  "2026-10-04T03:10 FALE served rain-possible (desc-rain-unconfirmed) · airport clear",
+  "2026-10-04T03:10 FAGG served clear (desc-clear-keyword) · airport cloudy",
+  "2026-10-04T04:10 FALE served cloudy (overcast) · airport clear",
+  "2026-10-04T05:10 FALE served clear (majority-override-clear) · airport cloudy",
+  "2026-10-04T05:10 FAGG served clear (desc-clear-keyword) · airport cloudy",
+  "2026-10-04T06:10 FALE served cloudy (mostly-cloudy) · airport clear",
+  "2026-10-04T06:10 FAGG served clear (desc-clear-keyword) · airport cloudy",
+  "2026-10-04T07:10 FAOR served cloudy (mostly-cloudy) · airport clear",
+  "2026-10-04T07:10 FABL served cloudy (overcast) · airport clear",
+  "2026-10-04T08:10 FALE served rain-possible (rain-possible-prob) · airport scattered",
+  "2026-10-04T08:10 FABL served cloudy (overcast) · airport clear",
+  "2026-10-04T08:10 FAGG served partly-cloudy (partly-cloudy) · airport cloudy",
+  "2026-10-04T09:10 FALE served rain-possible (rain-possible-prob) · airport clear",
+  "2026-10-04T15:43 FAOR served cloudy (mostly-cloudy) · airport clear",
+  "2026-10-04T16:10 FAOR served cloudy (mostly-cloudy) · airport clear",
+  "2026-10-04T17:10 FAOR served cloudy (mostly-cloudy) · airport clear",
+  "2026-10-04T18:10 FAOR served cloudy (overcast) · airport clear",
+  "2026-10-04T19:10 FAOR served cloudy (overcast) · airport clear",
+  "2026-10-04T19:10 FALE served cloudy (mostly-cloudy) · airport clear",
+  "2026-10-04T20:10 FAOR served cloudy (overcast) · airport clear",
+  "2026-10-04T20:10 FALE served cloudy (overcast) · airport clear",
+  "2026-10-04T21:10 FAOR served cloudy (overcast) · airport clear",
+  "2026-10-04T21:10 FALE served cloudy (overcast) · airport clear",
+  "2026-10-04T22:26 FALE served cloudy (overcast) · airport clear",
+  "2026-10-05T00:26 FAOR served cloudy (mostly-cloudy) · airport clear",
+  "2026-10-05T01:10 FAOR served cloudy (overcast) · airport clear",
+  "2026-10-05T01:10 FALE served fog (corroborated-fog-vote) · airport clear",
+  "2026-10-05T02:10 FAOR served cloudy (mostly-cloudy) · airport clear",
+  "2026-10-05T02:10 FAPE served fog (visibility-humidity-fog-detector) · airport clear",
+  "2026-10-05T03:30 FAPE served cloudy (mostly-cloudy) · airport fog",
+  "2026-10-05T04:10 FAPE served cloudy (overcast) · airport fog",
+  "2026-10-05T05:31 FAPE served partly-cloudy (partly-cloudy) · airport fog",
+  "2026-10-05T06:10 FAPE served clear (desc-clear-keyword) · airport fog",
+  "2026-10-05T07:10 FAOR served cloudy (mostly-cloudy) · airport clear",
+  "2026-10-05T11:10 FAOR served partly-cloudy (partly-cloudy) · airport cloudy",
+  "2026-10-05T13:10 FAOR served cloudy (mostly-cloudy) · airport clear",
+  "2026-10-05T13:10 FAGG served rain-possible (desc-rain-unconfirmed) · airport clear",
+  "2026-10-05T14:10 FAOR served cloudy (mostly-cloudy) · airport clear",
+  "2026-10-05T15:10 FAOR served cloudy (overcast) · airport clear",
+  "2026-10-05T18:10 FALE served clear (desc-clear-keyword) · airport cloudy",
+  "2026-10-05T19:10 FALE served partly-cloudy (partly-cloudy) · airport cloudy",
+  "2026-10-06T03:34 FALE served fog (visibility-humidity-fog-detector) · airport clear",
+  "2026-10-06T03:34 FALE served fog (visibility-humidity-fog-detector) · airport clear",
+  "2026-10-06T04:10 FALE served fog (visibility-humidity-fog-detector) · airport clear",
+  "2026-10-06T04:10 FAGG served cloudy (mostly-cloudy) · airport clear",
+  "2026-10-06T05:10 FAOR served clear (desc-clear-keyword) · airport cloudy",
+  "2026-10-06T05:10 FAGG served rain (tomorrow-io-radar-override) · airport scattered",
+  "2026-10-06T06:10 FAOR served partly-cloudy (partly-cloudy) · airport cloudy",
+  "2026-10-06T07:10 FAOR served partly-cloudy (partly-cloudy) · airport cloudy",
+  "2026-10-06T08:10 FACT served clear (desc-clear-keyword) · airport cloudy",
+  "2026-10-06T08:10 FAOR served partly-cloudy (partly-cloudy) · airport cloudy",
+  "2026-10-06T12:10 FALE served rain-possible (desc-rain-unconfirmed) · airport clear",
+  "2026-10-06T12:09 FABL served partly-cloudy (partly-cloudy) · airport cloudy",
+  "2026-10-06T13:10 FAOR served cloudy (overcast) · airport clear",
+  "2026-10-06T13:10 FALE served rain-possible (desc-rain-unconfirmed) · airport clear",
+  "2026-10-06T13:10 FAPE served rain (tomorrow-io-radar-override) · airport clear",
+  "2026-10-06T13:10 FABL served partly-cloudy (partly-cloudy) · airport cloudy",
+  "2026-10-06T14:10 FAOR served cloudy (overcast) · airport clear",
+  "2026-10-06T14:10 FAPE served rain (tomorrow-io-radar-override) · airport clear",
+  "2026-10-06T15:10 FAOR served cloudy (mostly-cloudy) · airport clear",
+  "2026-10-06T16:10 FALE served rain (tomorrow-io-radar-override) · airport clear",
+  "2026-10-06T16:10 FAGG served partly-cloudy (partly-cloudy) · airport cloudy",
+  "2026-10-06T17:10 FAGG served cold-clear (dry-cold-clear-sky) · airport cloudy",
+  "2026-10-06T18:10 FAOR served cloudy (overcast) · airport clear",
+  "2026-10-06T18:10 FALE served clear (desc-clear-keyword) · airport storm",
+  "2026-10-06T19:10 FAOR served cloudy (overcast) · airport clear",
+  "2026-10-06T22:10 FALE served rain (tomorrow-io-radar-override) · airport clear",
+  "2026-10-07T03:10 FACT served cloudy (overcast) · airport clear",
+  "2026-10-07T04:10 FABL served clear (desc-clear-keyword) · airport cloudy",
+  "2026-10-07T06:10 FAPE served clear (desc-clear-keyword) · airport cloudy",
+  "2026-10-07T06:10 FABL served cloudy (overcast) · airport clear",
+  "2026-10-07T11:10 FALE served clear (desc-clear-keyword) · airport cloudy",
+  "2026-10-07T12:10 FABL served uv (high-uv-with-temp-gate) · airport cloudy",
+  "2026-10-07T13:10 FABL served uv (moderate-uv-with-temp-gate) · airport cloudy",
+  "2026-10-07T14:10 FAOR served cloudy (overcast) · airport clear",
+  "2026-10-07T15:10 FALE served partly-cloudy (partly-cloudy) · airport cloudy",
+  "2026-10-07T23:10 FALE served cloudy (overcast) · airport clear",
+  "2026-10-08T04:10 FACT served fog (visibility-humidity-fog-detector) · airport clear",
+  "2026-10-08T04:10 FAPE served fog (visibility-humidity-fog-detector) · airport scattered",
+  "2026-10-08T05:10 FACT served fog (desc-fog-keyword) · airport clear",
+  "2026-10-08T05:10 FAPE served cloudy (overcast) · airport clear",
+  "2026-10-08T19:10 FALE served clear (desc-clear-keyword) · airport cloudy",
+  "2026-10-09T02:09 FACT served breezy (breezy) · airport cloudy",
+  "2026-10-09T02:09 FALE served partly-cloudy (partly-cloudy) · airport cloudy",
+  "2026-10-09T03:10 FACT served breezy (breezy) · airport cloudy",
+  "2026-10-09T03:10 FALE served clear (desc-clear-keyword) · airport cloudy",
+  "2026-10-09T04:10 FACT served breezy (breezy) · airport cloudy",
+  "2026-10-09T04:10 FALE served clear (desc-clear-keyword) · airport cloudy",
+  "2026-10-09T16:09 FACT served clear (majority-override-clear) · airport cloudy",
+  "2026-10-09T17:09 FACT served cloudy (overcast) · airport clear",
+  "2026-10-09T18:09 FACT served cloudy (overcast) · airport clear",
+  "2026-10-09T18:09 FAPE served cloudy (overcast) · airport clear",
+  "2026-10-09T19:10 FACT served cloudy (overcast) · airport clear",
+  "2026-10-09T21:10 FACT served cloudy (overcast) · airport clear",
+  "2026-10-09T21:10 FALE served cloudy (overcast) · airport rain",
+  "2026-10-09T23:26 FAPE served clear (majority-override-clear) · airport cloudy",
+  "2026-10-09T23:26 FAGG served clear (desc-clear-keyword) · airport mist",
+  "2026-10-10T00:10 FALE served cloudy (overcast) · airport clear",
+  "2026-10-10T00:10 FAPE served partly-cloudy (partly-cloudy) · airport cloudy",
+  "2026-10-10T00:10 FAGG served clear (desc-clear-keyword) · airport mist",
+  "2026-10-10T01:10 FAPE served clear (desc-clear-keyword) · airport cloudy",
+  "2026-10-10T01:10 FAGG served clear (desc-clear-keyword) · airport rain",
+  "2026-10-10T02:18 FALE served clear (desc-clear-keyword) · airport cloudy",
+  "2026-10-10T02:18 FAPE served clear (desc-clear-keyword) · airport cloudy",
+  "2026-10-10T03:10 FALE served clear (desc-clear-keyword) · airport cloudy",
+  "2026-10-10T03:10 FAGG served clear (desc-clear-keyword) · airport fog",
+  "2026-10-10T04:18 FACT served fog (visibility-humidity-fog-detector) · airport clear",
+  "2026-10-10T04:18 FALE served clear (desc-clear-keyword) · airport cloudy",
+  "2026-10-10T05:10 FACT served fog (visibility-humidity-fog-detector) · airport clear",
+  "2026-10-10T05:10 FALE served clear (desc-clear-keyword) · airport cloudy",
+  "2026-10-10T05:10 FAGG served fog (corroborated-fog-vote) · airport clear",
+  "2026-10-10T06:18 FALE served clear (desc-clear-keyword) · airport cloudy",
+  "2026-10-10T08:10 FALE served uv (moderate-uv-with-temp-gate) · airport cloudy",
+  "2026-10-10T13:10 FALE served clear (desc-clear-keyword) · airport cloudy",
+  "2026-10-10T14:10 FAOR served cloudy (overcast) · airport clear",
+  "2026-10-10T14:10 FALE served breezy (breezy) · airport cloudy",
+  "2026-10-10T14:10 FABL served rain-possible (desc-rain-unconfirmed) · airport scattered",
+  "2026-10-10T15:10 FALE served partly-cloudy (partly-cloudy) · airport cloudy",
+  "2026-10-10T16:10 FABL served breezy (breezy) · airport cloudy",
+  "2026-10-10T18:10 FALE served clear (majority-override-clear) · airport cloudy",
+  "2026-10-10T18:10 FABL served cloudy (overcast) · airport clear",
+  "2026-10-10T19:10 FAOR served breezy (breezy) · airport rain",
+  "2026-10-10T19:10 FALE served clear (desc-clear-keyword) · airport cloudy",
+  "2026-10-10T20:10 FAOR served clear (majority-override-clear) · airport rain",
+  "2026-10-10T21:10 FAOR served partly-cloudy (partly-cloudy) · airport rain",
+  "2026-10-10T21:10 FALE served partly-cloudy (partly-cloudy) · airport cloudy",
+  "2026-10-10T22:10 FALE served fog (corroborated-fog-vote) · airport cloudy",
+  "2026-10-10T23:10 FALE served fog (visibility-humidity-fog-detector) · airport clear",
+  "2026-10-11T00:10 FACT served clear (desc-clear-keyword) · airport mist",
+  "2026-10-11T00:10 FALE served fog (desc-fog-keyword) · airport clear",
+  "2026-10-11T01:10 FACT served clear (desc-clear-keyword) · airport mist",
+  "2026-10-11T01:10 FAOR served cloudy (overcast) · airport clear",
+  "2026-10-11T01:10 FALE served fog (visibility-humidity-fog-detector) · airport clear",
+  "2026-10-11T02:10 FAPE served cloudy (overcast) · airport clear",
+  "2026-10-11T03:10 FACT served fog (corroborated-fog-vote) · airport cloudy",
+  "2026-10-11T04:10 FACT served clear (desc-clear-keyword) · airport cloudy",
+  "2026-10-11T04:10 FALE served clear (desc-clear-keyword) · airport mist",
+  "2026-10-11T04:10 FAPE served cloudy (overcast) · airport clear",
+  "2026-10-11T04:10 FABL served cloudy (overcast) · airport rain",
+  "2026-10-11T05:10 FACT served clear (desc-clear-keyword) · airport mist",
+  "2026-10-11T05:10 FALE served clear (desc-clear-keyword) · airport mist",
+  "2026-10-11T05:10 FAPE served fog (corroborated-fog-vote) · airport clear",
+  "2026-10-11T06:10 FACT served partly-cloudy (partly-cloudy) · airport cloudy",
+  "2026-10-11T06:10 FALE served breezy (breezy) · airport cloudy",
+  "2026-10-11T06:10 FABL served rain (tomorrow-io-radar-override) · airport scattered",
+  "2026-10-11T07:10 FAPE served fog (corroborated-fog-vote) · airport clear",
+  "2026-10-11T07:10 FABL served rain (tomorrow-io-radar-override) · airport scattered",
+  "2026-10-11T08:10 FAPE served fog (corroborated-fog-vote) · airport clear",
+  "2026-10-11T09:10 FABL served cloudy (mostly-cloudy) · airport clear",
+  "2026-10-11T10:10 FABL served cloudy (overcast) · airport clear",
+  "2026-10-11T13:10 FABL served rain-possible (rain-possible-prob) · airport clear",
+  "2026-10-11T15:10 FABL served cloudy (overcast) · airport clear",
+  "2026-10-11T16:10 FAPE served partly-cloudy (partly-cloudy) · airport cloudy",
+  "2026-10-11T17:09 FALE served cloudy (mostly-cloudy) · airport clear",
+  "2026-10-11T17:10 FAPE served breezy (breezy) · airport cloudy",
+  "2026-10-11T17:10 FAGG served clear (desc-clear-keyword) · airport mist",
+  "2026-10-11T18:10 FAPE served breezy (breezy) · airport storm",
+  "2026-10-11T18:10 FAGG served clear (desc-clear-keyword) · airport fog",
+  "2026-10-11T19:10 FAPE served partly-cloudy (partly-cloudy) · airport storm",
+  "2026-10-11T19:09 FAGG served fog (corroborated-fog-vote) · airport rain",
+  "2026-10-11T20:10 FAGG served fog (corroborated-fog-vote) · airport rain",
+  "2026-10-11T21:10 FAPE served clear (desc-clear-keyword) · airport cloudy",
+  "2026-10-11T21:10 FAGG served fog (corroborated-fog-vote) · airport rain",
+  "2026-10-11T22:10 FAPE served clear (desc-clear-keyword) · airport cloudy",
+  "2026-10-11T22:10 FAGG served fog (corroborated-fog-vote) · airport rain",
+  "2026-10-11T23:10 FAPE served clear (desc-clear-keyword) · airport cloudy",
+  "2026-10-11T23:10 FAGG served clear (desc-clear-keyword) · airport rain",
+  "2026-10-12T00:10 FAGG served clear (desc-clear-keyword) · airport rain",
+  "2026-10-12T01:10 FACT served cloudy (overcast) · airport clear",
+  "2026-10-12T01:10 FAGG served clear (desc-clear-keyword) · airport rain",
+  "2026-10-12T02:10 FACT served cloudy (overcast) · airport clear",
+  "2026-10-12T03:10 FAGG served partly-cloudy (partly-cloudy) · airport mist",
+  "2026-10-12T05:10 FAGG served cloudy (overcast) · airport clear",
+  "2026-10-12T08:10 FAGG served cloudy (mostly-cloudy) · airport clear",
+  "2026-10-12T09:10 FAGG served cloudy (mostly-cloudy) · airport clear",
+  "2026-10-12T11:10 FAGG served cloudy (mostly-cloudy) · airport clear",
+  "2026-10-12T13:49 FAGG served cloudy (overcast) · airport rain",
+  "2026-10-12T14:10 FAGG served cloudy (overcast) · airport rain",
+  "2026-10-12T15:10 FACT served breezy (breezy) · airport cloudy",
+  "2026-10-12T15:10 FAPE served rain-possible (desc-rain-unconfirmed) · airport clear",
+  "2026-10-12T18:10 FAGG served cloudy (overcast) · airport clear",
+  "2026-10-12T20:10 FACT served cloudy (overcast) · airport rain",
+  "2026-10-12T20:10 FAGG served cloudy (overcast) · airport rain"
  ],
  "wind": {
   "ec7ae52": {
@@ -334,12 +632,713 @@
     "rawN": 0
    },
    "strand": {
+    "n": 1,
+    "abs": 8.98,
+    "bias": -8.98,
+    "gustN": 1,
+    "gustAbs": 29.504000000000005,
+    "list": [
+     "2026-09-28T06Z 68911 28 km/h (gust 50) from 110° · app 18.8 km/h, clear"
+    ]
+   }
+  },
+  "acd15b2": {
+   "airport": {
+    "n": 10,
+    "abs": 56.13600000000001,
+    "bias": 40.656000000000006,
+    "rawAbs": 39.172,
+    "rawN": 10
+   },
+   "strand": {
     "n": 0,
     "abs": 0,
     "bias": 0,
     "gustN": 0,
     "gustAbs": 0,
     "list": []
+   }
+  },
+  "b9349db": {
+   "airport": {
+    "n": 15,
+    "abs": 75.00399999999999,
+    "bias": 64.348,
+    "rawAbs": 66.63999999999999,
+    "rawN": 15
+   },
+   "strand": {
+    "n": 1,
+    "abs": 6.080000000000002,
+    "bias": -6.080000000000002,
+    "gustN": 1,
+    "gustAbs": 26.864000000000004,
+    "list": [
+     "2026-09-28T12Z 68911 28 km/h (gust 59) from 140° · app 21.7 km/h, cloudy"
+    ]
+   }
+  },
+  "01cf992": {
+   "airport": {
+    "n": 5,
+    "abs": 35.864000000000004,
+    "bias": 3.2879999999999967,
+    "rawAbs": 37.916000000000004,
+    "rawN": 5
+   },
+   "strand": {
+    "n": 0,
+    "abs": 0,
+    "bias": 0,
+    "gustN": 0,
+    "gustAbs": 0,
+    "list": []
+   }
+  },
+  "f8caf7d": {
+   "airport": {
+    "n": 29,
+    "abs": 186.71600000000004,
+    "bias": 140.78800000000004,
+    "rawAbs": 139.54399999999998,
+    "rawN": 29
+   },
+   "strand": {
+    "n": 1,
+    "abs": 7.239999999999998,
+    "bias": -7.239999999999998,
+    "gustN": 1,
+    "gustAbs": 30.98400000000001,
+    "list": [
+     "2026-09-28T18Z 68911 37 km/h (gust 78) from 130° · app 29.8 km/h, wind"
+    ]
+   }
+  },
+  "426d2df": {
+   "airport": {
+    "n": 49,
+    "abs": 212.68399999999994,
+    "bias": 160.42799999999997,
+    "rawAbs": 242.18,
+    "rawN": 49
+   },
+   "strand": {
+    "n": 2,
+    "abs": 22.76,
+    "bias": -22.76,
+    "gustN": 2,
+    "gustAbs": 74.644,
+    "list": [
+     "2026-09-29T00Z 68911 30 km/h (gust 63) from 130° · app 15.3 km/h, clear",
+     "2026-09-29T06Z 68911 26 km/h (gust 70) from 130° · app 17.5 km/h, clear"
+    ]
+   }
+  },
+  "1afaf4e": {
+   "airport": {
+    "n": 11,
+    "abs": 24.908,
+    "bias": 20.404,
+    "rawAbs": 24.323999999999998,
+    "rawN": 11
+   },
+   "strand": {
+    "n": 0,
+    "abs": 0,
+    "bias": 0,
+    "gustN": 0,
+    "gustAbs": 0,
+    "list": []
+   }
+  },
+  "bf56025": {
+   "airport": {
+    "n": 6,
+    "abs": 11.54,
+    "bias": 9.628,
+    "rawAbs": 15.395999999999997,
+    "rawN": 6
+   },
+   "strand": {
+    "n": 0,
+    "abs": 0,
+    "bias": 0,
+    "gustN": 0,
+    "gustAbs": 0,
+    "list": []
+   }
+  },
+  "d63b5bc": {
+   "airport": {
+    "n": 133,
+    "abs": 305.7560000000001,
+    "bias": 64.41199999999996,
+    "rawAbs": 576.3840000000002,
+    "rawN": 133
+   },
+   "strand": {
+    "n": 4,
+    "abs": 30.788,
+    "bias": -16.108,
+    "gustN": 4,
+    "gustAbs": 72.64000000000001,
+    "list": [
+     "2026-09-29T12Z 68911 28 km/h (gust 72) from 130° · app 10.5 km/h, uv",
+     "2026-09-30T00Z 68911 17 km/h (gust 39) from 120° · app 10.5 km/h, clear",
+     "2026-09-30T06Z 68911 4 km/h (gust 9) from 90° · app 4.7 km/h, clear",
+     "2026-09-30T12Z 68911 6 km/h (gust 19) from 250° · app 11.9 km/h, uv"
+    ]
+   }
+  },
+  "fd43adc": {
+   "airport": {
+    "n": 18,
+    "abs": 28.907999999999994,
+    "bias": 11.619999999999997,
+    "rawAbs": 65.29199999999999,
+    "rawN": 18
+   },
+   "strand": {
+    "n": 0,
+    "abs": 0,
+    "bias": 0,
+    "gustN": 0,
+    "gustAbs": 0,
+    "list": []
+   }
+  },
+  "74f8991": {
+   "airport": {
+    "n": 80,
+    "abs": 235.23999999999995,
+    "bias": 33.496,
+    "rawAbs": 519.8439999999999,
+    "rawN": 80
+   },
+   "strand": {
+    "n": 3,
+    "abs": 17.996,
+    "bias": 17.956,
+    "gustN": 3,
+    "gustAbs": 21.044000000000004,
+    "list": [
+     "2026-09-30T18Z 68911 4 km/h (gust 17) from 270° · app 14.2 km/h, clear",
+     "2026-10-01T00Z 68911 19 km/h (gust 35) from 50° · app 18.5 km/h, clear",
+     "2026-10-01T06Z 68911 19 km/h (gust 46) from 10° · app 26 km/h, wind"
+    ]
+   }
+  },
+  "bbfa81d": {
+   "airport": {
+    "n": 5,
+    "abs": 11.291999999999998,
+    "bias": 10.084,
+    "rawAbs": 29.291999999999998,
+    "rawN": 5
+   },
+   "strand": {
+    "n": 0,
+    "abs": 0,
+    "bias": 0,
+    "gustN": 0,
+    "gustAbs": 0,
+    "list": []
+   }
+  },
+  "351e487": {
+   "airport": {
+    "n": 77,
+    "abs": 180.46000000000004,
+    "bias": -6.59600000000002,
+    "rawAbs": 534.4119999999997,
+    "rawN": 77
+   },
+   "strand": {
+    "n": 2,
+    "abs": 17.315999999999995,
+    "bias": 17.315999999999995,
+    "gustN": 2,
+    "gustAbs": 16.919999999999995,
+    "list": [
+     "2026-10-01T12Z 68911 24 km/h (gust 46) from 310° · app 31.4 km/h, wind",
+     "2026-10-01T18Z 68911 7 km/h (gust 28) from 320° · app 17.4 km/h, cloudy"
+    ]
+   }
+  },
+  "1475a47": {
+   "airport": {
+    "n": 47,
+    "abs": 92.43199999999999,
+    "bias": 5.599999999999987,
+    "rawAbs": 167.45999999999998,
+    "rawN": 47
+   },
+   "strand": {
+    "n": 2,
+    "abs": 15.331999999999997,
+    "bias": 15.331999999999997,
+    "gustN": 2,
+    "gustAbs": 14.46,
+    "list": [
+     "2026-10-02T00Z 68911 13 km/h (gust 20) from 10° · app 17.9 km/h, cloudy",
+     "2026-10-02T06Z 68911 4 km/h (gust 17) from 50° · app 14.1 km/h, cloudy"
+    ]
+   }
+  },
+  "81957bd": {
+   "airport": {
+    "n": 576,
+    "abs": 1282.000000000001,
+    "bias": 249.92800000000003,
+    "rawAbs": 2745.0640000000008,
+    "rawN": 576
+   },
+   "strand": {
+    "n": 18,
+    "abs": 112.868,
+    "bias": 11.851999999999997,
+    "gustN": 18,
+    "gustAbs": 207.10399999999998,
+    "list": [
+     "2026-10-02T12Z 68911 31 km/h (gust 37) from 250° · app 15.1 km/h, rain-possible",
+     "2026-10-02T18Z 68911 19 km/h (gust 39) from 150° · app 19 km/h, cloudy",
+     "2026-10-03T00Z 68911 11 km/h (gust 39) from 130° · app 21.4 km/h, wind",
+     "2026-10-03T06Z 68911 17 km/h (gust 33) from 200° · app 26.5 km/h, wind",
+     "2026-10-03T12Z 68911 28 km/h (gust 63) from 130° · app 31.2 km/h, wind",
+     "2026-10-03T18Z 68911 26 km/h (gust 59) from 110° · app 28.6 km/h, wind",
+     "2026-10-04T00Z 68911 22 km/h (gust 59) from 110° · app 11.1 km/h, clear",
+     "2026-10-04T06Z 68911 15 km/h (gust 46) from 130° · app 9.7 km/h, clear",
+     "2026-10-04T18Z 68911 6 km/h (gust 13) from 60° · app 10.9 km/h, clear",
+     "2026-10-05T00Z 68911 4 km/h (gust 7) from 30° · app 4.3 km/h, clear",
+     "2026-10-05T06Z 68911 6 km/h (gust 13) from 260° · app 4.7 km/h, clear",
+     "2026-10-05T12Z 68911 20 km/h (gust 35) from 270° · app 16.7 km/h, uv",
+     "2026-10-05T18Z 68911 4 km/h (gust 43) from 230° · app 8.6 km/h, clear",
+     "2026-10-06T06Z 68911 13 km/h (gust 22) from 260° · app 28.2 km/h, wind",
+     "2026-10-06T12Z 68911 22 km/h (gust 30) from 250° · app 17.6 km/h, uv",
+     "2026-10-06T18Z 68911 4 km/h (gust 22) from 110° · app 13.3 km/h, cold-clear",
+     "2026-10-07T00Z 68911 11 km/h (gust 20) from 160° · app 9.9 km/h, partly-cloudy",
+     "2026-10-07T06Z 68911 19 km/h (gust 28) from 140° · app 11 km/h, partly-cloudy"
+    ]
+   }
+  },
+  "?": {
+   "airport": {
+    "n": 5,
+    "abs": 9.824000000000002,
+    "bias": 9.751999999999999,
+    "rawAbs": 17.671999999999997,
+    "rawN": 5
+   },
+   "strand": {
+    "n": 0,
+    "abs": 0,
+    "bias": 0,
+    "gustN": 0,
+    "gustAbs": 0,
+    "list": []
+   }
+  },
+  "98e5a01": {
+   "airport": {
+    "n": 6,
+    "abs": 6.499999999999999,
+    "bias": -0.14800000000000058,
+    "rawAbs": 32,
+    "rawN": 6
+   },
+   "strand": {
+    "n": 0,
+    "abs": 0,
+    "bias": 0,
+    "gustN": 0,
+    "gustAbs": 0,
+    "list": []
+   }
+  },
+  "278f080": {
+   "airport": {
+    "n": 185,
+    "abs": 291.2639999999999,
+    "bias": -23.856000000000066,
+    "rawAbs": 830.624,
+    "rawN": 185
+   },
+   "strand": {
+    "n": 6,
+    "abs": 14.756,
+    "bias": 9.771999999999998,
+    "gustN": 6,
+    "gustAbs": 28.435999999999996,
+    "list": [
+     "2026-10-07T12Z 68911 19 km/h (gust 24) from 260° · app 18.4 km/h, uv",
+     "2026-10-07T18Z 68911 11 km/h (gust 22) from 100° · app 15.3 km/h, partly-cloudy",
+     "2026-10-08T00Z 68911 4 km/h (gust 9) from 150° · app 8.5 km/h, clear",
+     "2026-10-08T06Z 68911 7 km/h (gust 15) from 310° · app 7.9 km/h, partly-cloudy",
+     "2026-10-08T12Z 68911 20 km/h (gust 33) from 250° · app 18 km/h, uv",
+     "2026-10-08T18Z 68911 11 km/h (gust 24) from 330° · app 13.9 km/h, partly-cloudy"
+    ]
+   }
+  },
+  "26e442a": {
+   "airport": {
+    "n": 85,
+    "abs": 167.87599999999998,
+    "bias": -83.94000000000004,
+    "rawAbs": 420.18399999999997,
+    "rawN": 85
+   },
+   "strand": {
+    "n": 3,
+    "abs": 22.704,
+    "bias": 15.863999999999999,
+    "gustN": 3,
+    "gustAbs": 19.727999999999994,
+    "list": [
+     "2026-10-09T00Z 68911 4 km/h (gust 15) from 360° · app 17.1 km/h, cloudy",
+     "2026-10-09T06Z 68911 11 km/h (gust 24) from 20° · app 17 km/h, cloudy",
+     "2026-10-09T12Z 68911 19 km/h (gust 28) from 260° · app 15.1 km/h, cloudy"
+    ]
+   }
+  },
+  "0667a7e": {
+   "airport": {
+    "n": 127,
+    "abs": 229.7839999999999,
+    "bias": -5.952000000000009,
+    "rawAbs": 430.0199999999998,
+    "rawN": 127
+   },
+   "strand": {
+    "n": 2,
+    "abs": 4.336,
+    "bias": 4.336,
+    "gustN": 2,
+    "gustAbs": 13.828,
+    "list": [
+     "2026-10-09T18Z 68911 9 km/h (gust 15) from 260° · app 12.8 km/h, cloudy",
+     "2026-10-10T06Z 68911 4 km/h (gust 6) from 310° · app 4.5 km/h, partly-cloudy"
+    ]
+   }
+  },
+  "765f955": {
+   "airport": {
+    "n": 297,
+    "abs": 619.5280000000002,
+    "bias": 63.95999999999998,
+    "rawAbs": 1364.3960000000009,
+    "rawN": 297
+   },
+   "strand": {
+    "n": 9,
+    "abs": 48.612,
+    "bias": 20.052,
+    "gustN": 9,
+    "gustAbs": 52.052,
+    "list": [
+     "2026-10-10T18Z 68911 4 km/h (gust 13) from 360° · app 6 km/h, clear",
+     "2026-10-11T00Z 68911 4 km/h (gust 11) from 100° · app 7.7 km/h, clear",
+     "2026-10-11T06Z 68911 6 km/h (gust 13) from 80° · app 2.7 km/h, clear",
+     "2026-10-11T12Z 68911 22 km/h (gust 35) from 270° · app 15.5 km/h, breezy",
+     "2026-10-11T18Z 68911 7 km/h (gust 15) from 340° · app 7 km/h, clear",
+     "2026-10-12T00Z 68911 0 km/h (gust 6) from 0° · app 13.5 km/h, partly-cloudy",
+     "2026-10-12T06Z 68911 9 km/h (gust 35) from 20° · app 23.8 km/h, cloudy",
+     "2026-10-12T12Z 68911 26 km/h (gust 41) from 340° · app 24.2 km/h, wind",
+     "2026-10-12T18Z 68911 13 km/h (gust 24) from 280° · app 10.4 km/h, rain-possible"
+    ]
+   }
+  }
+ },
+ "rainNowSwitch": {
+  "all": {
+   "sinceUtc": null,
+   "reads": 2330,
+   "groups": {
+    "coast": {
+     "reads": 1251,
+     "today": {
+      "calls": 25,
+      "right": 15,
+      "wet": 94,
+      "caught": 15
+     },
+     "switch": {
+      "calls": 45,
+      "right": 27,
+      "wet": 94,
+      "caught": 27
+     },
+     "everywhere": {
+      "calls": 45,
+      "right": 27,
+      "wet": 94,
+      "caught": 27
+     },
+     "served": {
+      "calls": 25,
+      "right": 15,
+      "wet": 94,
+      "caught": 15
+     },
+     "servedMatchesSwitch": 1231
+    },
+    "inland": {
+     "reads": 1079,
+     "today": {
+      "calls": 49,
+      "right": 37,
+      "wet": 101,
+      "caught": 37
+     },
+     "switch": {
+      "calls": 49,
+      "right": 37,
+      "wet": 101,
+      "caught": 37
+     },
+     "everywhere": {
+      "calls": 73,
+      "right": 55,
+      "wet": 101,
+      "caught": 55
+     },
+     "served": {
+      "calls": 49,
+      "right": 37,
+      "wet": 101,
+      "caught": 37
+     },
+     "servedMatchesSwitch": 1079
+    },
+    "Eastern Cape": {
+     "reads": 412,
+     "today": {
+      "calls": 23,
+      "right": 19,
+      "wet": 48,
+      "caught": 19
+     },
+     "switch": {
+      "calls": 23,
+      "right": 19,
+      "wet": 48,
+      "caught": 19
+     },
+     "everywhere": {
+      "calls": 33,
+      "right": 25,
+      "wet": 48,
+      "caught": 25
+     },
+     "served": {
+      "calls": 23,
+      "right": 19,
+      "wet": 48,
+      "caught": 19
+     },
+     "servedMatchesSwitch": 412
+    },
+    "Free State": {
+     "reads": 251,
+     "today": {
+      "calls": 8,
+      "right": 3,
+      "wet": 7,
+      "caught": 3
+     },
+     "switch": {
+      "calls": 8,
+      "right": 3,
+      "wet": 7,
+      "caught": 3
+     },
+     "everywhere": {
+      "calls": 11,
+      "right": 6,
+      "wet": 7,
+      "caught": 6
+     },
+     "served": {
+      "calls": 8,
+      "right": 3,
+      "wet": 7,
+      "caught": 3
+     },
+     "servedMatchesSwitch": 251
+    },
+    "Garden Route": {
+     "reads": 417,
+     "today": {
+      "calls": 12,
+      "right": 7,
+      "wet": 46,
+      "caught": 7
+     },
+     "switch": {
+      "calls": 26,
+      "right": 16,
+      "wet": 46,
+      "caught": 16
+     },
+     "everywhere": {
+      "calls": 26,
+      "right": 16,
+      "wet": 46,
+      "caught": 16
+     },
+     "served": {
+      "calls": 12,
+      "right": 7,
+      "wet": 46,
+      "caught": 7
+     },
+     "servedMatchesSwitch": 403
+    },
+    "Highveld": {
+     "reads": 416,
+     "today": {
+      "calls": 18,
+      "right": 15,
+      "wet": 46,
+      "caught": 15
+     },
+     "switch": {
+      "calls": 18,
+      "right": 15,
+      "wet": 46,
+      "caught": 15
+     },
+     "everywhere": {
+      "calls": 29,
+      "right": 24,
+      "wet": 46,
+      "caught": 24
+     },
+     "served": {
+      "calls": 18,
+      "right": 15,
+      "wet": 46,
+      "caught": 15
+     },
+     "servedMatchesSwitch": 416
+    },
+    "KZN coast": {
+     "reads": 417,
+     "today": {
+      "calls": 13,
+      "right": 8,
+      "wet": 36,
+      "caught": 8
+     },
+     "switch": {
+      "calls": 14,
+      "right": 8,
+      "wet": 36,
+      "caught": 8
+     },
+     "everywhere": {
+      "calls": 14,
+      "right": 8,
+      "wet": 36,
+      "caught": 8
+     },
+     "served": {
+      "calls": 13,
+      "right": 8,
+      "wet": 36,
+      "caught": 8
+     },
+     "servedMatchesSwitch": 416
+    },
+    "Western Cape": {
+     "reads": 417,
+     "today": {
+      "calls": 0,
+      "right": 0,
+      "wet": 12,
+      "caught": 0
+     },
+     "switch": {
+      "calls": 5,
+      "right": 3,
+      "wet": 12,
+      "caught": 3
+     },
+     "everywhere": {
+      "calls": 5,
+      "right": 3,
+      "wet": 12,
+      "caught": 3
+     },
+     "served": {
+      "calls": 0,
+      "right": 0,
+      "wet": 12,
+      "caught": 0
+     },
+     "servedMatchesSwitch": 412
+    }
+   }
+  },
+  "sinceRuling": {
+   "sinceUtc": "2026-10-12T21:00:00Z",
+   "reads": 0,
+   "groups": {
+    "coast": {
+     "reads": 0,
+     "today": {
+      "calls": 0,
+      "right": 0,
+      "wet": 0,
+      "caught": 0
+     },
+     "switch": {
+      "calls": 0,
+      "right": 0,
+      "wet": 0,
+      "caught": 0
+     },
+     "everywhere": {
+      "calls": 0,
+      "right": 0,
+      "wet": 0,
+      "caught": 0
+     },
+     "served": {
+      "calls": 0,
+      "right": 0,
+      "wet": 0,
+      "caught": 0
+     },
+     "servedMatchesSwitch": 0
+    },
+    "inland": {
+     "reads": 0,
+     "today": {
+      "calls": 0,
+      "right": 0,
+      "wet": 0,
+      "caught": 0
+     },
+     "switch": {
+      "calls": 0,
+      "right": 0,
+      "wet": 0,
+      "caught": 0
+     },
+     "everywhere": {
+      "calls": 0,
+      "right": 0,
+      "wet": 0,
+      "caught": 0
+     },
+     "served": {
+      "calls": 0,
+      "right": 0,
+      "wet": 0,
+      "caught": 0
+     },
+     "servedMatchesSwitch": 0
+    }
    }
   }
  },
@@ -443,6 +1442,466 @@
      "Cape Town city": {
       "hours": 36,
       "fog": 0,
+      "rainHere": 0,
+      "nearby": 0
+     }
+    }
+   },
+   "acd15b2": {
+    "hours": 12,
+    "fog": 0,
+    "fogSeen": 0,
+    "rainHere": 0,
+    "rainHereWet": 0,
+    "nearby": 0,
+    "nearbyWet": 0,
+    "spots": {
+     "Strand": {
+      "hours": 2,
+      "fog": 0,
+      "rainHere": 0,
+      "nearby": 0
+     },
+     "Cape Town city": {
+      "hours": 2,
+      "fog": 0,
+      "rainHere": 0,
+      "nearby": 0
+     }
+    }
+   },
+   "b9349db": {
+    "hours": 18,
+    "fog": 0,
+    "fogSeen": 0,
+    "rainHere": 0,
+    "rainHereWet": 0,
+    "nearby": 0,
+    "nearbyWet": 0,
+    "spots": {
+     "Strand": {
+      "hours": 3,
+      "fog": 0,
+      "rainHere": 0,
+      "nearby": 0
+     },
+     "Cape Town city": {
+      "hours": 3,
+      "fog": 0,
+      "rainHere": 0,
+      "nearby": 0
+     }
+    }
+   },
+   "01cf992": {
+    "hours": 6,
+    "fog": 0,
+    "fogSeen": 0,
+    "rainHere": 0,
+    "rainHereWet": 0,
+    "nearby": 0,
+    "nearbyWet": 0,
+    "spots": {
+     "Strand": {
+      "hours": 1,
+      "fog": 0,
+      "rainHere": 0,
+      "nearby": 0
+     },
+     "Cape Town city": {
+      "hours": 1,
+      "fog": 0,
+      "rainHere": 0,
+      "nearby": 0
+     }
+    }
+   },
+   "f8caf7d": {
+    "hours": 33,
+    "fog": 0,
+    "fogSeen": 0,
+    "rainHere": 4,
+    "rainHereWet": 4,
+    "nearby": 0,
+    "nearbyWet": 0,
+    "spots": {
+     "Strand": {
+      "hours": 6,
+      "fog": 0,
+      "rainHere": 0,
+      "nearby": 0
+     },
+     "Cape Town city": {
+      "hours": 6,
+      "fog": 0,
+      "rainHere": 0,
+      "nearby": 0
+     }
+    }
+   },
+   "426d2df": {
+    "hours": 52,
+    "fog": 0,
+    "fogSeen": 0,
+    "rainHere": 2,
+    "rainHereWet": 2,
+    "nearby": 0,
+    "nearbyWet": 0,
+    "spots": {
+     "Strand": {
+      "hours": 10,
+      "fog": 0,
+      "rainHere": 0,
+      "nearby": 0
+     },
+     "Cape Town city": {
+      "hours": 10,
+      "fog": 0,
+      "rainHere": 0,
+      "nearby": 0
+     }
+    }
+   },
+   "1afaf4e": {
+    "hours": 12,
+    "fog": 0,
+    "fogSeen": 0,
+    "rainHere": 0,
+    "rainHereWet": 0,
+    "nearby": 1,
+    "nearbyWet": 1,
+    "spots": {
+     "Strand": {
+      "hours": 2,
+      "fog": 0,
+      "rainHere": 0,
+      "nearby": 0
+     },
+     "Cape Town city": {
+      "hours": 2,
+      "fog": 0,
+      "rainHere": 0,
+      "nearby": 0
+     }
+    }
+   },
+   "bf56025": {
+    "hours": 6,
+    "fog": 0,
+    "fogSeen": 0,
+    "rainHere": 0,
+    "rainHereWet": 0,
+    "nearby": 1,
+    "nearbyWet": 1,
+    "spots": {
+     "Strand": {
+      "hours": 1,
+      "fog": 0,
+      "rainHere": 0,
+      "nearby": 0
+     },
+     "Cape Town city": {
+      "hours": 1,
+      "fog": 0,
+      "rainHere": 0,
+      "nearby": 0
+     }
+    }
+   },
+   "d63b5bc": {
+    "hours": 148,
+    "fog": 0,
+    "fogSeen": 0,
+    "rainHere": 8,
+    "rainHereWet": 5,
+    "nearby": 7,
+    "nearbyWet": 6,
+    "spots": {
+     "Strand": {
+      "hours": 26,
+      "fog": 0,
+      "rainHere": 0,
+      "nearby": 0
+     },
+     "Cape Town city": {
+      "hours": 26,
+      "fog": 0,
+      "rainHere": 0,
+      "nearby": 0
+     }
+    }
+   },
+   "fd43adc": {
+    "hours": 18,
+    "fog": 0,
+    "fogSeen": 0,
+    "rainHere": 1,
+    "rainHereWet": 1,
+    "nearby": 0,
+    "nearbyWet": 0,
+    "spots": {
+     "Strand": {
+      "hours": 3,
+      "fog": 0,
+      "rainHere": 0,
+      "nearby": 0
+     },
+     "Cape Town city": {
+      "hours": 3,
+      "fog": 0,
+      "rainHere": 0,
+      "nearby": 0
+     }
+    }
+   },
+   "74f8991": {
+    "hours": 85,
+    "fog": 0,
+    "fogSeen": 0,
+    "rainHere": 0,
+    "rainHereWet": 0,
+    "nearby": 0,
+    "nearbyWet": 0,
+    "spots": {
+     "Strand": {
+      "hours": 16,
+      "fog": 0,
+      "rainHere": 0,
+      "nearby": 0
+     },
+     "Cape Town city": {
+      "hours": 16,
+      "fog": 0,
+      "rainHere": 0,
+      "nearby": 0
+     }
+    }
+   },
+   "bbfa81d": {
+    "hours": 6,
+    "fog": 0,
+    "fogSeen": 0,
+    "rainHere": 0,
+    "rainHereWet": 0,
+    "nearby": 0,
+    "nearbyWet": 0,
+    "spots": {
+     "Strand": {
+      "hours": 1,
+      "fog": 0,
+      "rainHere": 0,
+      "nearby": 0
+     },
+     "Cape Town city": {
+      "hours": 1,
+      "fog": 0,
+      "rainHere": 0,
+      "nearby": 0
+     }
+    }
+   },
+   "351e487": {
+    "hours": 80,
+    "fog": 0,
+    "fogSeen": 0,
+    "rainHere": 0,
+    "rainHereWet": 0,
+    "nearby": 0,
+    "nearbyWet": 0,
+    "spots": {
+     "Strand": {
+      "hours": 14,
+      "fog": 0,
+      "rainHere": 0,
+      "nearby": 0
+     },
+     "Cape Town city": {
+      "hours": 14,
+      "fog": 0,
+      "rainHere": 0,
+      "nearby": 0
+     }
+    }
+   },
+   "1475a47": {
+    "hours": 50,
+    "fog": 1,
+    "fogSeen": 0,
+    "rainHere": 0,
+    "rainHereWet": 0,
+    "nearby": 0,
+    "nearbyWet": 0,
+    "spots": {
+     "Strand": {
+      "hours": 9,
+      "fog": 0,
+      "rainHere": 0,
+      "nearby": 0
+     },
+     "Cape Town city": {
+      "hours": 9,
+      "fog": 0,
+      "rainHere": 0,
+      "nearby": 0
+     }
+    }
+   },
+   "81957bd": {
+    "hours": 616,
+    "fog": 5,
+    "fogSeen": 0,
+    "rainHere": 25,
+    "rainHereWet": 18,
+    "nearby": 13,
+    "nearbyWet": 13,
+    "spots": {
+     "Strand": {
+      "hours": 111,
+      "fog": 0,
+      "rainHere": 3,
+      "nearby": 1
+     },
+     "Cape Town city": {
+      "hours": 111,
+      "fog": 3,
+      "rainHere": 3,
+      "nearby": 0
+     }
+    }
+   },
+   "?": {
+    "hours": 5,
+    "fog": 0,
+    "fogSeen": 0,
+    "rainHere": 0,
+    "rainHereWet": 0,
+    "nearby": 0,
+    "nearbyWet": 0,
+    "spots": {
+     "Strand": {
+      "hours": 1,
+      "fog": 0,
+      "rainHere": 0,
+      "nearby": 0
+     },
+     "Cape Town city": {
+      "hours": 1,
+      "fog": 0,
+      "rainHere": 0,
+      "nearby": 0
+     }
+    }
+   },
+   "98e5a01": {
+    "hours": 6,
+    "fog": 0,
+    "fogSeen": 0,
+    "rainHere": 0,
+    "rainHereWet": 0,
+    "nearby": 0,
+    "nearbyWet": 0,
+    "spots": {
+     "Strand": {
+      "hours": 1,
+      "fog": 0,
+      "rainHere": 0,
+      "nearby": 0
+     },
+     "Cape Town city": {
+      "hours": 1,
+      "fog": 0,
+      "rainHere": 0,
+      "nearby": 0
+     }
+    }
+   },
+   "278f080": {
+    "hours": 201,
+    "fog": 3,
+    "fogSeen": 0,
+    "rainHere": 0,
+    "rainHereWet": 0,
+    "nearby": 0,
+    "nearbyWet": 0,
+    "spots": {
+     "Strand": {
+      "hours": 36,
+      "fog": 0,
+      "rainHere": 0,
+      "nearby": 0
+     },
+     "Cape Town city": {
+      "hours": 36,
+      "fog": 1,
+      "rainHere": 0,
+      "nearby": 0
+     }
+    }
+   },
+   "26e442a": {
+    "hours": 89,
+    "fog": 0,
+    "fogSeen": 0,
+    "rainHere": 0,
+    "rainHereWet": 0,
+    "nearby": 0,
+    "nearbyWet": 0,
+    "spots": {
+     "Strand": {
+      "hours": 16,
+      "fog": 0,
+      "rainHere": 0,
+      "nearby": 0
+     },
+     "Cape Town city": {
+      "hours": 16,
+      "fog": 0,
+      "rainHere": 0,
+      "nearby": 0
+     }
+    }
+   },
+   "0667a7e": {
+    "hours": 135,
+    "fog": 4,
+    "fogSeen": 1,
+    "rainHere": 0,
+    "rainHereWet": 0,
+    "nearby": 0,
+    "nearbyWet": 0,
+    "spots": {
+     "Strand": {
+      "hours": 24,
+      "fog": 4,
+      "rainHere": 0,
+      "nearby": 0
+     },
+     "Cape Town city": {
+      "hours": 24,
+      "fog": 0,
+      "rainHere": 0,
+      "nearby": 0
+     }
+    }
+   },
+   "765f955": {
+    "hours": 312,
+    "fog": 16,
+    "fogSeen": 4,
+    "rainHere": 7,
+    "rainHereWet": 4,
+    "nearby": 0,
+    "nearbyWet": 0,
+    "spots": {
+     "Strand": {
+      "hours": 55,
+      "fog": 0,
+      "rainHere": 0,
+      "nearby": 0
+     },
+     "Cape Town city": {
+      "hours": 55,
+      "fog": 4,
       "rainHere": 0,
       "nearby": 0
      }
