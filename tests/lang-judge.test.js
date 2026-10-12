@@ -7,7 +7,7 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { norm, similarity, verdictOf, stToSa, CUT_BELOW } from '../scripts/lang-judge/build-verdicts.mjs';
-import { buildBundle, scoreRows, validAnswer, comparePair, pickAnchors, outsideRepo, PASS } from '../scripts/lang-judge/judge.mjs';
+import { buildBundle, scoreRows, validAnswer, comparePair, pickAnchors, outsideRepo, passedExam, leadRows, reasonTypes, PASS, DETECTOR_JUDGES } from '../scripts/lang-judge/judge.mjs';
 
 const V = JSON.parse(fs.readFileSync(path.resolve('scripts/lang-judge/data/native-verdicts.json'), 'utf8'));
 const LANGS = ['zu', 'xh', 'st'];
@@ -119,5 +119,33 @@ describe('the exam\'s arithmetic', () => {
     expect(validAnswer({ ...ok, verdict: 'KILL' }, once)).toBe(false);
     expect(validAnswer({ ...ok, reason: ' ' }, once)).toBe(false);
     expect(validAnswer(ok, new Map([['a', 2]]))).toBe(false);              // given twice
+  });
+});
+
+describe('the October run as a detector (Maat, 12 Oct 2026)', () => {
+  it('refuses an October run without a pass unless run as a detector, and only Opus 5.5 may be one', () => {
+    expect(DETECTOR_JUDGES).toEqual(['opus']);
+    for (const lang of ['xh', 'zu']) {
+      expect(() => passedExam('opus', lang)).toThrow(/did not pass/);
+      expect(passedExam('opus', lang, null, 'Maat ruled').res.falseKeeps).toBe(0);
+      expect(() => passedExam('sonnet', lang, null, 'Maat ruled')).toThrow(/may not run as a detector/);
+    }
+  });
+
+  it('a lead is a line the natives kept that both judges flagged, each with a 2 or lower', () => {
+    const native = new Map([['a', { verdict: 'KEEP' }], ['b', { verdict: 'KEEP' }], ['c', { verdict: 'FIX' }], ['d', { verdict: 'KEEP' }]]);
+    const j = (ref, verdict, speaker, joke) => ({ ref, verdict, speaker, joke });
+    const sonnet = [j('a', 'FIX', 2, 3), j('b', 'FIX', 3, 3), j('c', 'CUT', 1, 1), j('d', 'KEEP', 2, 2)];
+    const opus = [j('a', 'CUT', 3, 2), j('b', 'FIX', 1, 1), j('c', 'CUT', 1, 1), j('d', 'FIX', 1, 1)];
+    expect(leadRows(native, sonnet, opus).map((x) => x.s.ref)).toEqual(['a']);
+  });
+
+  it('reads the type of problem off the words of a reason', () => {
+    expect(reasonTypes("'izimanga' means wonders, not monsters")).toContain('wrong word');
+    expect(reasonTypes('Concord clash: singular prefix with a plural verb')).toContain('wrong concord');
+    expect(reasonTypes("'ku-pet bowl' is an English loan where isiZulu has its own words")).toContain('raw English loan where the language has a word');
+    expect(reasonTypes('the load-shedding reference disappears, so the joke goes flat')).toContain('joke lost');
+    expect(reasonTypes('stiff: a speaker would say it differently')).toContain('register');
+    expect(reasonTypes("'abadlali bamaza' is a translated coinage for surfers (people just say ii-surfer)")).toContain('translated where people keep the English');
   });
 });

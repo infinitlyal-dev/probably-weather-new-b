@@ -12,7 +12,14 @@
 //       reads <dir>/<judge>/<set>-<lang>-NN-out.json, keeps only well-formed answers given once, and writes
 //       data/judgments/<set>-<judge>-<lang>.json
 //   node scripts/lang-judge/judge.mjs score     → review/lang-judge-exam-2026-10.md + data/exam-result.json
-//   node scripts/lang-judge/judge.mjs report    → review/lang-judge-verdicts-2026-10.md (judges that passed only)
+//   node scripts/lang-judge/judge.mjs report    → review/lang-judge-verdicts-2026-10.md (judges that passed, and
+//       judges run as a detector)
+//   node scripts/lang-judge/judge.mjs leads     → review/live-bank-errors-from-exam-2026-10.md
+//
+// --as-detector "<reason>" (export --set october only; Maat's ruling, 12 Oct 2026): a judge that failed its exam may
+// still read the October lines as a detector — its flags are leads for Maat, not verdicts — when it kept nothing the
+// natives cut in that language's exam. Same exam inputs, byte for byte, or it refuses. The reason is recorded in the run,
+// the merged answers and the report header.
 //
 // The subagent brief is JUDGE_BRIEF below.
 
@@ -21,7 +28,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { WEATHER_COPY } from '../../assets/weather-copy.js';
-import { mulberry32, norm, shuffle, SEED } from './build-verdicts.mjs';
+import { mulberry32, norm, shuffle, stToSa, SEED } from './build-verdicts.mjs';
 
 const ROOT = path.resolve(import.meta.dirname, '../..');
 const HERE = import.meta.dirname;
@@ -33,6 +40,8 @@ export const BATCH_MAX = 25;
 export const OCTOBER_LANGS = ['xh', 'zu'];
 // Al's pass bar, per language per judge
 export const PASS = { keepVsNot: 0.8, falseKeepsOfCuts: 0.1 };
+// Maat's ruling (12 Oct 2026): only Opus 5.5 may run as a detector — it kept nothing the natives cut in any language
+export const DETECTOR_JUDGES = ['opus'];
 const VERDICTS = ['KEEP', 'FIX', 'CUT'];
 const SPELLING = {
   zu: '- Both "namuhla" and "namhlanje" are isiZulu for today; neither is wrong in a line.',
@@ -57,6 +66,13 @@ const again = () => {
   if (!process.argv.includes('--again')) return null;
   const why = arg('--again');
   if (!why || !why.trim() || why.startsWith('--')) throw new Error('--again needs a reason: --again "<why this runs a second time>"');
+  return why.trim();
+};
+// --as-detector carries its reason the same way
+const asDetector = () => {
+  if (!process.argv.includes('--as-detector')) return null;
+  const why = arg('--as-detector');
+  if (!why || !why.trim() || why.startsWith('--')) throw new Error('--as-detector needs a reason: --as-detector "<the ruling this runs under>"');
   return why.trim();
 };
 const loadVerdicts = () => readJson(path.join(DATA, 'native-verdicts.json'));
@@ -170,6 +186,17 @@ export async function octoberItems(lang) {
     const cond = photo.match(/^bg\/([a-z-]+)\//)?.[1];
     if (cond) for (const en of lines) if (!condOfEn.has(en)) condOfEn.set(en, cond);
   }
+  // the held lines go in too, marked held (Maat's brief, 12 Oct 2026: he sees them beside the applied ones), with the
+  // reason review/lines-backtranslation-2026-10.md gives for holding each
+  const heldWhy = new Map();
+  let inLang = false;
+  for (const line of read('review/lines-backtranslation-2026-10.md').split('\n')) {
+    if (line.startsWith('## ')) inLang = line.startsWith(`## ${LANGS[lang]} `);
+    else if (line.startsWith('### ')) inLang = false;
+    if (!inLang || !line.startsWith('| ')) continue;
+    const cells = line.split(/(?<!\\)\|/).slice(1, -1).map((c) => c.trim().replace(/\\\|/g, '|'));
+    if (cells.length === 7) heldWhy.set(`${cells[0]}|${cells[2]}`, cells[6]);
+  }
   const items = [], seen = new Set();
   for (const d of drafts) {
     const text = d[lang];
@@ -177,6 +204,15 @@ export async function octoberItems(lang) {
     if (!live || seen.has(`${d.en}|${text}`)) continue;
     seen.add(`${d.en}|${text}`);
     items.push({ ref: d.key, set: d.set, en: d.en, draft: text, cond: live.cond });
+  }
+  for (const d of drafts) {
+    const text = d[lang];
+    if (seen.has(`${d.en}|${text}`)) continue;
+    seen.add(`${d.en}|${text}`);
+    const cond = condOfEn.get(d.en) || /^[a-zA-Z_]+\.([a-z-]+)/.exec(d.key || '')?.[1] || null;
+    const held = heldWhy.get(`${d.key}|${text}`);
+    if (!held || /^applied/.test(held)) throw new Error(`${d.key}: not live, and review/lines-backtranslation-2026-10.md gives no reason for holding it ("${held || 'no row'}") — rebuild that report first`);
+    items.push({ ref: d.key, set: d.set, en: d.en, draft: text, cond, held });
   }
   return items;
 }
@@ -210,11 +246,16 @@ export function outsideRepo(dir) {
 // A judge may judge October lines only on a PASS that still stands: the scored exam answers are the ones on disk now
 // (a later merge --again voids the pass until it is scored again), and, when a bundle is given, the inputs it passed on
 // are the inputs now. Returns the pass; throws with the reason otherwise.
-export function passedExam(judge, lang, bundleText = null) {
+// As a detector (Maat's ruling, 12 Oct 2026) no pass is asked for: the judge must be a detector judge that sat the whole
+// exam in that language, with native cuts in it, and kept none of them. Every other check is the same.
+export function passedExam(judge, lang, bundleText = null, detector = null) {
   const f = path.join(DATA, 'exam-result.json');
   const result = fs.existsSync(f) ? readJson(f) : null;
   const res = result?.results?.[judge]?.[lang];
-  if (!res?.pass) throw new Error(`${JUDGES[judge] || judge} did not pass the ${LANGS[lang] || lang} exam — no October run (Al's brief, step 4)`);
+  if (detector) {
+    if (!DETECTOR_JUDGES.includes(judge)) throw new Error(`${JUDGES[judge] || judge} may not run as a detector (Maat's ruling: ${DETECTOR_JUDGES.map((j) => JUDGES[j]).join(', ')} only)`);
+    if (!res || res.unjudged || !(res.cuts > 0) || res.falseKeeps !== 0) throw new Error(`${JUDGES[judge]} kept ${res?.falseKeeps ?? '?'} of ${res?.cuts ?? '?'} native cuts in the ${LANGS[lang] || lang} exam — a detector must have sat the whole exam and kept none`);
+  } else if (!res?.pass) throw new Error(`${JUDGES[judge] || judge} did not pass the ${LANGS[lang] || lang} exam — no October run (Al's brief, step 4)`);
   const jf = path.join(DATA, 'judgments', `exam-${judge}-${lang}.json`);
   if (!fs.existsSync(jf) || sha(fs.readFileSync(jf, 'utf8')) !== res.judgment) throw new Error(`exam-${judge}-${lang}.json changed after it was scored — score the exam again first`);
   if (bundleText != null) {
@@ -226,7 +267,9 @@ export function passedExam(judge, lang, bundleText = null) {
 }
 async function exportSet() {
   const set = arg('--set'), lang = arg('--lang'), judge = arg('--judge'), dir = path.resolve(arg('--dir', ''));
-  if (!['exam', 'october'].includes(set) || !LANGS[lang] || !arg('--dir') || (set === 'october' && !JUDGES[judge])) throw new Error('usage: export --set exam|october --lang zu|xh|st --dir <dir> [--judge sonnet|opus] [--again "<reason>"]');
+  if (!['exam', 'october'].includes(set) || !LANGS[lang] || !arg('--dir') || (set === 'october' && !JUDGES[judge])) throw new Error('usage: export --set exam|october --lang zu|xh|st --dir <dir> [--judge sonnet|opus] [--again "<reason>"] [--as-detector "<reason>"]');
+  const detector = asDetector();
+  if (detector && set !== 'october') throw new Error('--as-detector is for an October run only; the exam is the exam');
   if (set === 'october' && !OCTOBER_LANGS.includes(lang)) throw new Error(`no October ${LANGS[lang]} lines exist — ${LANGS[lang]} sits the exam only`);
   if (!outsideRepo(dir)) throw new Error('--dir must be outside the repository, so a judge never sits next to the answers');
   const prior = fs.existsSync(mapFile(set, lang, judge)) ? readJson(mapFile(set, lang, judge)) : null;
@@ -236,8 +279,9 @@ async function exportSet() {
   let items;
   if (set === 'exam') items = lineRows(V, lang, 'exam').map((r) => ({ ref: r.id, en: r.en, draft: r.draft, cond: r.cond }));
   else {
-    // only a judge that passed this language's exam, on these same inputs, judges the October lines
-    passedExam(judge, lang, bundle.text);
+    // only a judge that passed this language's exam (or may run as a detector), on these same inputs, judges the
+    // October lines
+    passedExam(judge, lang, bundle.text, detector);
     items = await octoberItems(lang);
   }
   const rand = mulberry32(SEED + 7 + Object.keys(LANGS).indexOf(lang) + (set === 'october' ? 50 : 0));
@@ -255,7 +299,7 @@ async function exportSet() {
     const nn = String(bi + 1).padStart(2, '0');
     const blind = b.map((it, k) => {
       const id = `${lang}${nn}-${String(k + 1).padStart(2, '0')}`;
-      map[id] = { ref: it.ref, en: it.en, draft: it.draft, cond: it.cond, set: it.set || 'exam' };
+      map[id] = { ref: it.ref, en: it.en, draft: it.draft, cond: it.cond, set: it.set || 'exam', ...(it.held ? { held: it.held } : {}) };
       const compare = comparePair(V, lang, it.cond, it.ref);
       for (const c of compare) if (holds(c.draft) || (c.line && holds(c.line))) throw new Error(`compare line for ${id} is or holds an exam line: "${c.draft}"`);
       return { id, en: it.en, draft: it.draft, compare };
@@ -265,8 +309,9 @@ async function exportSet() {
     files[`${set}-${lang}-${nn}-blind.json`] = sha(text);
   });
   const attempts = [...(prior?.attempts || []), { built: new Date().toISOString(), again: prior ? again() : null }];
-  fs.writeFileSync(mapFile(set, lang, judge), JSON.stringify({ set, lang, judge: set === 'exam' ? null : judge, built: new Date().toISOString().slice(0, 10), exportedAt: Date.now(), attempts, inputs: inputsHash(lang, bundle.text), files, anchors: bundle.anchors, map }, null, 1) + '\n');
-  console.log(`${set} ${lang}: ${items.length} lines in ${batches.length} batches (${batches.map((b) => b.length).join('/')}); bundle ${bundle.text.length} chars, ${bundle.corpusLines} confirmed lines, ${bundle.withheld} exam line(s) withheld from the pack files`);
+  fs.writeFileSync(mapFile(set, lang, judge), JSON.stringify({ set, lang, judge: set === 'exam' ? null : judge, built: new Date().toISOString().slice(0, 10), exportedAt: Date.now(), attempts, ...(detector ? { detector } : {}), inputs: inputsHash(lang, bundle.text), files, anchors: bundle.anchors, map }, null, 1) + '\n');
+  if (detector) console.log(`run as a detector — ${detector}`);
+  console.log(`${set} ${lang}: ${items.length} lines${items.some((it) => it.held) ? ` (${items.filter((it) => it.held).length} held)` : ''} in ${batches.length} batches (${batches.map((b) => b.length).join('/')}); bundle ${bundle.text.length} chars, ${bundle.corpusLines} confirmed lines, ${bundle.withheld} exam line(s) withheld from the pack files`);
   for (let i = 0; i < batches.length; i++) {
     const nn = String(i + 1).padStart(2, '0');
     console.log(`  brief ${nn}: JUDGE_BRIEF('${lang}', '${path.join(dir, sub, `bundle-${lang}.md`)}', '${path.join(dir, sub, `${set}-${lang}-${nn}-blind.json`)}', '${path.join(dir, judge || '<judge>', `${set}-${lang}-${nn}-out.json`)}')`);
@@ -287,9 +332,10 @@ function merge() {
   if (!['exam', 'october'].includes(set) || !LANGS[lang] || !JUDGES[judge] || !arg('--dir') || !model || model.startsWith('--')) throw new Error('usage: merge --set exam|october --lang L --judge sonnet|opus --dir <dir> --model <id> [--again "<reason>"]');
   if (set === 'october' && !OCTOBER_LANGS.includes(lang)) throw new Error(`no October ${LANGS[lang]} lines exist`);
   const run = readJson(mapFile(set, lang, judge));
-  // October answers count only from the very model that passed, on the inputs it passed on
+  // October answers count only from the very model that passed (or sat the exam it runs as a detector on), on the
+  // inputs it sat the exam on; a detector run stays a detector run
   if (set === 'october') {
-    const { res, inputs } = passedExam(judge, lang);
+    const { res, inputs } = passedExam(judge, lang, buildBundle(loadVerdicts(), lang).text, run.detector || null);
     if (model !== res.model) throw new Error(`the ${LANGS[lang]} exam was passed by ${res.model}, not ${model}`);
     const stale = Object.keys(inputs).filter((k) => inputs[k] !== run.inputs?.[k]);
     if (stale.length) throw new Error(`this October run was exported on other inputs than the passed exam (${stale.join(', ')})`);
@@ -326,13 +372,13 @@ function merge() {
   for (const [id, m] of Object.entries(run.map)) {
     const o = byId.get(id);
     if (!o) { missing++; continue; }
-    rows.push({ id, ref: m.ref, en: m.en, draft: m.draft, cond: m.cond, set: m.set, speaker: o.speaker, joke: o.joke, verdict: o.verdict, reason: o.reason.trim(), rewrite: o.verdict === 'KEEP' ? null : o.rewrite.trim() });
+    rows.push({ id, ref: m.ref, en: m.en, draft: m.draft, cond: m.cond, set: m.set, ...(m.held ? { held: m.held } : {}), speaker: o.speaker, joke: o.joke, verdict: o.verdict, reason: o.reason.trim(), rewrite: o.verdict === 'KEEP' ? null : o.rewrite.trim() });
   }
   fs.mkdirSync(path.join(DATA, 'judgments'), { recursive: true });
   const prior = fs.existsSync(target) ? readJson(target) : null;
   const merges = [...(prior?.merges || []), { at: new Date().toISOString(), again: prior ? again() : null }];
   // `run` ties these answers to the exact run record they were merged against (report() checks it for October)
-  fs.writeFileSync(target, JSON.stringify({ set, lang, judge, model, inputs: run.inputs, run: sha(fs.readFileSync(mapFile(set, lang, judge), 'utf8')), merged: new Date().toISOString().slice(0, 10), exportAttempts: run.attempts, merges, missing, invalid, unknown, rows }, null, 1) + '\n');
+  fs.writeFileSync(target, JSON.stringify({ set, lang, judge, model, ...(run.detector ? { detector: run.detector } : {}), inputs: run.inputs, run: sha(fs.readFileSync(mapFile(set, lang, judge), 'utf8')), merged: new Date().toISOString().slice(0, 10), exportAttempts: run.attempts, merges, missing, invalid, unknown, rows }, null, 1) + '\n');
   console.log(`${set} ${judge} ${lang}: ${rows.length} judged, ${missing} without a valid answer, ${invalid} malformed or duplicate answers dropped, ${unknown} unknown ids`);
 }
 
@@ -481,43 +527,84 @@ function attemptsNote(out) {
 }
 
 // ---------- report (step 4) ----------
+// The types a judge's reason names, for the list under each table (Maat's brief, 12 Oct 2026: where the drafter's
+// habits are). Read off the reason's words; a reason can name more than one, and one that names none is counted as such.
+export const REASON_TYPES = [
+  ['wrong word', /\bmeans?\b|\bmeaning\b|wrong word|not the (?:word|verb|noun)|the (?:word|verb|noun) (?:for|is)\b|reads as|(?:is|reads|shaped like|an?) (?:isi)?zulu|(?:isi)?zulu (?:word|form|verb)|neighbouring|not (?:an? )?(?:isixhosa|isizulu) word|no such word|not a word|coined|wrong verb|wrong noun|misspel|\bsays\b|\bis wrong\b|, not '|\bis '|the app's word|not a sure|pictures an?\b|leans to/i],
+  ['wrong concord', /concord|agreement|\bagree(?:s|ing)? with|noun class|\bclass \d|prefix|\btense\b|locative|copula|subject marker|object marker|possessive|\b-ya-|plural|singular|negative form|marker|passive|participial|subjunctive/i],
+  ['raw English loan where the language has a word', /(?:forced|raw|english|bare) loan|loan where|(?:raw|bare|forced|plain) english|(?:leaves?|left) (?:the )?english|english (?:word|noun|verb|adjective|phrase|compound|left|carrying|where)|\bin english\b/i],
+  ['translated where people keep the English', /code-?switch|keeps? (?:the )?(?:loan|name|english)|people (?:just )?(?:keep|say) (?:the |ii-|i-|')|natives (?:keep|kept)|translated (?:nickname|coinage)|as loans/i],
+  ['joke lost', /\bjoke|punch|\bthe turn\b|turn (?:is )?(?:lost|gone)|\bflat\b|\blost\b|\bloses\b|\bdropp?(?:ed|s)\b|disappears|wordplay|\bpun\b/i],
+  ['register', /stiff|formal|literal|calque|translat|unnatural|awkward|clunky|bookish|wordy|long-winded|register|a speaker (?:would )?(?:says?|writes?)|people (?:just )?(?:say|write)|\bodd\b|heavy|unusual|back to front|laboured|clumsy|not the everyday|abrupt/i],
+];
+export function reasonTypes(reason) {
+  return REASON_TYPES.filter(([, re]) => re.test(reason || '')).map(([t]) => t);
+}
+
+// The judgments to publish for a language: a judge that passed, or a judge run as a detector, each only while what it
+// stands on still holds — the exam answers it was scored on, the exam inputs (byte for byte), the October run on record,
+// the model that sat the exam. Returns [{ judge, J, why }] (why = the reason it is not shown, or null).
+function octoberJudgments(V, result, lang) {
+  const out = [];
+  let bundleText = null;
+  for (const judge of Object.keys(JUDGES)) {
+    const f = path.join(DATA, 'judgments', `october-${judge}-${lang}.json`);
+    const J = fs.existsSync(f) ? readJson(f) : null;
+    const passed = !!result.results?.[judge]?.[lang]?.pass;
+    if (!passed && !J?.detector) continue;
+    if (!J) { out.push({ judge, J: null, why: `${JUDGES[judge]} passed but has not been run on the October lines yet` }); continue; }
+    let why = null;
+    try {
+      bundleText ??= buildBundle(V, lang).text;
+      const { res, inputs } = passedExam(judge, lang, bundleText, J.detector || null);
+      const stale = Object.keys(inputs).filter((k) => inputs[k] !== J.inputs?.[k]);
+      const mf = mapFile('october', lang, judge);
+      const run = fs.existsSync(mf) ? readJson(mf) : null;
+      if (!run || sha(fs.readFileSync(mf, 'utf8')) !== J.run) stale.push('the October run (exported again since these answers)');
+      else if ((run.detector || null) !== (J.detector || null)) stale.push('the detector reason');
+      if (J.model !== res.model) why = `answers are from ${J.model}, the exam was sat by ${res.model}`;
+      else if (stale.length) why = `answers were given on other inputs than the exam (${stale.join(', ')})`;
+    } catch (e) { why = e.message; }
+    out.push({ judge, J, why });
+  }
+  return out;
+}
+
 function report() {
   const result = readJson(path.join(DATA, 'exam-result.json'));
   const V = loadVerdicts();
+  const date = new Date().toISOString().slice(0, 10);
+  const found = Object.fromEntries(OCTOBER_LANGS.map((lang) => [lang, octoberJudgments(V, result, lang)]));
+  const visible = Object.values(found).flat().filter((x) => x.J && !x.why);
+  const reasons = [...new Set(visible.filter((x) => x.J.detector).map((x) => x.J.detector))];
   const L = ['# Native-ear judge — verdicts on the October lines', ''];
-  const anyPass = OCTOBER_LANGS.some((lang) => Object.keys(JUDGES).some((j) => result.results?.[j]?.[lang]?.pass));
-  if (anyPass) {
-    L.push(`Built ${new Date().toISOString().slice(0, 10)} by \`scripts/lang-judge/judge.mjs report\`. The applied October lines were written by Claude Opus 5.5 and seen by no native. Where a judge's verdicts are shown below, that judge passed the language's exam (\`review/lang-judge-exam-2026-10.md\`) and judged the lines blind on the same inputs; where none are shown, the section says why. **Nothing in the app was changed. Maat rules from this file; Al rules from Maat.**`, '');
-    L.push('Scores: speaker = reads like a speaker (1–5), joke = the joke lands (1–5). Sorted CUT, then FIX, then KEEP.', '');
+  if (visible.length) {
+    for (const r of reasons) L.push(`> **${r}**`, '');
+    L.push(`Built ${date} by \`scripts/lang-judge/judge.mjs report\`. The October lines were written by Claude Opus 5.5 and seen by no native. ${reasons.length ? 'A judge marked *run as a detector* failed its exam (`review/lang-judge-exam-2026-10.md`); it read these lines blind, on the exam\'s exact inputs, and every flag it gives is a lead, not a verdict. ' : ''}${visible.some((x) => !x.J.detector) ? 'A judge marked *passed the exam* passed the language\'s exam (`review/lang-judge-exam-2026-10.md`) and judged the lines blind on the same inputs. ' : ''}Lines marked **held** are not in the app; they are here so they are seen beside the applied ones. **Nothing in the app was changed by this run: no line was edited, held, released or shipped. Maat rules from this file; Al rules from Maat.**`, '');
+    L.push('Scores: speaker = reads like a speaker (1–5), joke = the joke lands (1–5). Sorted CUT, then FIX, then KEEP; within each, lowest speaker score first.', '');
   } else {
-    L.push(`Built ${new Date().toISOString().slice(0, 10)} by \`scripts/lang-judge/judge.mjs report\`. **No judge passed its exam (\`review/lang-judge-exam-2026-10.md\`), so no October line was judged.** Al's brief: a judge that cannot reproduce the natives' calls has no business judging new lines. The October isiXhosa and isiZulu lines stay exactly as they are — provisional, waiting for a native reader. Nothing in the app was changed.`, '');
+    L.push(`Built ${date} by \`scripts/lang-judge/judge.mjs report\`. **No judge passed its exam (\`review/lang-judge-exam-2026-10.md\`), so no October line was judged.** Al's brief: a judge that cannot reproduce the natives' calls has no business judging new lines. The October isiXhosa and isiZulu lines stay exactly as they are — provisional, waiting for a native reader. Nothing in the app was changed.`, '');
   }
   for (const lang of OCTOBER_LANGS) {
-    const passed = Object.keys(JUDGES).filter((j) => result.results?.[j]?.[lang]?.pass);
     L.push(`## ${LANGS[lang]}`, '');
-    if (!passed.length) { L.push(`Neither judge passed the ${LANGS[lang]} exam, so no judge was run on these lines. They stay as they are: provisional, waiting for a native reader.`, ''); continue; }
-    for (const judge of passed) {
-      const f = path.join(DATA, 'judgments', `october-${judge}-${lang}.json`);
-      if (!fs.existsSync(f)) { L.push(`${JUDGES[judge]} passed but has not been run on the October lines yet.`, ''); continue; }
-      const J = readJson(f);
-      // published only while the pass stands, from the model that passed, on the inputs it passed on
-      let why = null;
-      try {
-        // the pass must still stand on today's inputs, and the answers must come from the October run on record
-        const { res, inputs } = passedExam(judge, lang, buildBundle(V, lang).text);
-        const stale = Object.keys(inputs).filter((k) => inputs[k] !== J.inputs?.[k]);
-        const mf = mapFile('october', lang, judge);
-        if (!fs.existsSync(mf) || sha(fs.readFileSync(mf, 'utf8')) !== J.run) stale.push('the October run (exported again since these answers)');
-        if (J.model !== res.model) why = `answers are from ${J.model}, the exam was passed by ${res.model}`;
-        else if (stale.length) why = `answers were given on other inputs than the passed exam (${stale.join(', ')})`;
-      } catch (e) { why = e.message; }
-      if (why) { L.push(`${JUDGES[judge]}'s October answers are not shown: ${why}.`, ''); continue; }
+    if (!found[lang].length) { L.push(`Neither judge passed the ${LANGS[lang]} exam, and none was run as a detector, so no judge read these lines. They stay as they are: provisional, waiting for a native reader.`, ''); continue; }
+    for (const { judge, J, why } of found[lang]) {
+      if (!J || why) { L.push(`${JUDGES[judge]}'s October answers are not shown: ${why}.`, ''); continue; }
       const order = { CUT: 0, FIX: 1, KEEP: 2 };
-      const rows = [...J.rows].sort((a, b) => order[a.verdict] - order[b.verdict] || a.speaker - b.speaker || a.en.localeCompare(b.en));
-      const n = (v) => rows.filter((r) => r.verdict === v).length;
-      L.push(`### ${JUDGES[judge]} (${J.model}) — ${rows.length} lines: CUT ${n('CUT')}, FIX ${n('FIX')}, KEEP ${n('KEEP')}${J.missing ? ` · ${J.missing} without a valid answer` : ''}`, '');
-      L.push('| English | draft | speaker | joke | verdict | reason | proposed rewrite |', '|---|---|---|---|---|---|---|');
-      for (const r of rows) L.push(`| ${md(r.en)} | ${md(r.draft)} | ${r.speaker} | ${r.joke} | **${r.verdict}** | ${md(r.reason)} | ${md(r.rewrite || '')} |`);
+      const rows = [...J.rows].sort((a, b) => order[a.verdict] - order[b.verdict] || a.speaker - b.speaker || a.joke - b.joke || a.en.localeCompare(b.en));
+      const n = (v, rs = rows) => rs.filter((r) => r.verdict === v).length;
+      const held = rows.filter((r) => r.held);
+      L.push(`### ${JUDGES[judge]} (${J.model})${J.detector ? ' — run as a detector' : ' — passed the exam'}`, '');
+      L.push(`${rows.length} lines judged (${rows.length - held.length} applied, ${held.length} held): **CUT ${n('CUT')} · FIX ${n('FIX')} · KEEP ${n('KEEP')}**.${held.length ? ` The held lines alone: CUT ${n('CUT', held)} · FIX ${n('FIX', held)} · KEEP ${n('KEEP', held)}.` : ''}${J.missing ? ` ${J.missing} line(s) got no valid answer and are not in the table.` : ''}`, '');
+      L.push('| key | English | draft | speaker | joke | verdict | judge\'s reason | judge\'s proposed rewrite |', '|---|---|---|---|---|---|---|---|');
+      for (const r of rows) L.push(`| ${md(r.ref)}${r.held ? ` — **held** (${md(r.held.replace(/^held after Maat fix: held: /, 'after a Maat fix: ').replace(/^held: /, ''))})` : ''} | ${md(r.en)} | ${md(r.draft)} | ${r.speaker} | ${r.joke} | **${r.verdict}** | ${md(r.reason)} | ${md(r.rewrite || '')} |`);
+      const flagged = rows.filter((r) => r.verdict !== 'KEEP');
+      const tally = new Map(REASON_TYPES.map(([t]) => [t, 0]));
+      let none = 0;
+      for (const r of flagged) { const ts = reasonTypes(r.reason); if (!ts.length) none++; for (const t of ts) tally.set(t, tally.get(t) + 1); }
+      L.push('', `**The judge's reasons by type** — the ${flagged.length} lines it flagged (CUT or FIX). Read off the words of each reason; one reason can name more than one type.`, '');
+      for (const [t, c] of [...tally].sort((a, b) => b[1] - a[1])) L.push(`- ${t.replace('the language', LANGS[lang])} — ${c}`);
+      if (none) L.push(`- none of these named — ${none}`);
       L.push('');
     }
   }
@@ -526,11 +613,57 @@ function report() {
   console.log('wrote review/lang-judge-verdicts-2026-10.md');
 }
 
+// ---------- leads: live-bank errors the exam surfaced (Maat's brief, 12 Oct 2026) ----------
+// Every EXAM line the natives kept where both judges said FIX or CUT, each with a 2 or lower on its speaker or joke
+// score. For Maat to rule on after launch; nothing is changed.
+export function leadRows(native, sonnetRows, opusRows) {
+  const op = new Map(opusRows.map((j) => [j.ref, j]));
+  const low = (j) => j && j.verdict !== 'KEEP' && Math.min(j.speaker, j.joke) <= 2;
+  return sonnetRows.filter((s) => native.get(s.ref)?.verdict === 'KEEP' && low(s) && low(op.get(s.ref))).map((s) => ({ n: native.get(s.ref), s, o: op.get(s.ref) }));
+}
+async function leads() {
+  const V = loadVerdicts();
+  const native = new Map(V.rows.map((r) => [r.id, r]));
+  // is the kept line still the live line? (later passes may have replaced it; Sesotho was respelled to the South African
+  // orthography on 6 Sept 2026, so a respelled line counts as the same line)
+  const same = (lang, t) => (lang === 'st' ? stToSa(t) : t);
+  const live = {};
+  for (const lang of Object.keys(LANGS)) {
+    const set = new Set();
+    for (const group of ['witty', 'witty_low_confidence']) for (const bank of Object.values(WEATHER_COPY[group] || {})) for (const t of bank[lang] || []) set.add(same(lang, t));
+    const f = path.join(ROOT, 'assets', `hero-lines-${lang}.js`);
+    if (fs.existsSync(f)) for (const t of Object.values((await import(pathToFileURL(f).href))[`HERO_LINES_${lang.toUpperCase()}`] || {})) set.add(same(lang, t));
+    live[lang] = set;
+    live[lang].holds = (t) => set.has(same(lang, t));
+  }
+  const by = {};
+  for (const lang of Object.keys(LANGS)) {
+    const J = (judge) => readJson(path.join(DATA, 'judgments', `exam-${judge}-${lang}.json`)).rows;
+    by[lang] = leadRows(native, J('sonnet'), J('opus')).sort((a, b) => Math.min(a.s.speaker, a.s.joke, a.o.speaker, a.o.joke) - Math.min(b.s.speaker, b.s.joke, b.o.speaker, b.o.joke) || a.n.key.localeCompare(b.n.key));
+  }
+  const L = ['# Live-bank errors the exam surfaced (October 2026)', ''];
+  L.push(`Built ${new Date().toISOString().slice(0, 10)} by \`scripts/lang-judge/judge.mjs leads\`, from the exam's answers (\`scripts/lang-judge/data/judgments/exam-*\`). Every EXAM line the native reviewers **kept** where **both** judges (Sonnet 5.5 and Opus 5.5) said FIX or CUT, each giving a 2 or lower on its speaker or joke score. Neither judge passed the exam; these are leads for Maat to rule on after launch, not verdicts. The judge was not re-run over the live bank. Nothing in the app was changed.`, '');
+  L.push('| language | leads | still live |', '|---|---|---|');
+  for (const lang of Object.keys(LANGS)) L.push(`| ${LANGS[lang]} | ${by[lang].length} | ${by[lang].filter((x) => live[lang].holds(x.n.draft)).length} |`);
+  L.push('', '"Still live" = the kept line is in the bank or the photo table today exactly as the natives saw it (Sesotho: allowing for the 6 Sept 2026 respelling to South African orthography); where it is not, a later pass has already changed it.', '');
+  const jd = (j) => `${j.verdict} (${j.speaker}/${j.joke}) ${md(j.reason)}${j.rewrite ? ` → "${md(j.rewrite)}"` : ''}`;
+  for (const lang of Object.keys(LANGS)) {
+    L.push(`## ${LANGS[lang]} — ${by[lang].length}`, '');
+    if (!by[lang].length) { L.push('None.', ''); continue; }
+    L.push('| key | English | the kept line | live now | Sonnet 5.5 | Opus 5.5 |', '|---|---|---|---|---|---|');
+    for (const { n, s, o } of by[lang]) L.push(`| ${md(n.key)} | ${md(n.en)} | ${md(n.draft)} | ${live[lang].holds(n.draft) ? 'yes' : 'no'} | ${jd(s)} | ${jd(o)} |`);
+    L.push('');
+  }
+  fs.writeFileSync(path.join(ROOT, 'review', 'live-bank-errors-from-exam-2026-10.md'), L.join('\n'));
+  console.log(`wrote review/live-bank-errors-from-exam-2026-10.md — ${Object.entries(by).map(([l, x]) => `${l} ${x.length}`).join(', ')}`);
+}
+
 if (process.argv[1] && path.resolve(process.argv[1]) === path.resolve(import.meta.filename)) {
   const cmd = process.argv[2];
   if (cmd === 'export') await exportSet();
   else if (cmd === 'merge') merge();
   else if (cmd === 'score') score();
   else if (cmd === 'report') report();
-  else console.log('usage: judge.mjs export | merge | score | report (see the header)');
+  else if (cmd === 'leads') await leads();
+  else console.log('usage: judge.mjs export | merge | score | report | leads (see the header)');
 }
