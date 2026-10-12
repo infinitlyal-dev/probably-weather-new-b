@@ -4,8 +4,9 @@
 //   - the rebuilt checker (lib/checker-v2.mjs, with the blind back-translation record) must not rate it triage-high —
 //     unless every medium/high finding is one of the English loans Maat lists, which the judge chose on purpose: then it
 //     is applied and marked "loan accepted (judge)" (Maat's first adjustment, this round only);
-//   - its back-translation must not drift from the English, at any confidence (Maat's second adjustment), nor be
-//     wrong-language, untranslated or garbled at the gate's 0.6 — a held rewrite leaves the previous line in place.
+//   - its back-translation must not drift from the English or read a word as garbled, at any confidence (Maat's second
+//     adjustment; garbled added by his ruling later on 12 Oct), nor be wrong-language or untranslated at the gate's 0.6
+//     — a held rewrite leaves the previous line in place.
 //
 //   node scripts/lang-check/apply-judge-rewrites.mjs plan     → lang-packs/<lang>/judge-rewrites-2026-10-12.jsonl and
 //       scripts/lang-check/data/bt/judge-rewrites-2026-10-12-<lang>.json (the lines still needing a back-translation)
@@ -13,6 +14,9 @@
 //       lang-packs/<lang>/drafts-2026-10.jsonl (photo lines) and assets/weather-copy.js + the provisional manifest (bank
 //       lines), and records the outcome of each in judge-rewrites-2026-10-12.jsonl. Then run
 //       apply-hero-lines-provisional.mjs per language, npm run copy:generate and build-bt-report.mjs.
+//   node scripts/lang-check/apply-judge-rewrites.mjs regate   → gates every applied rewrite again under the current rule
+//       and puts the previous line back wherever one now fails (draft row, bank slot, manifest row); then the same
+//       three regenerating steps.
 
 import fs from 'node:fs';
 import path from 'node:path';
@@ -25,7 +29,9 @@ const LANGS = { xh: 'isiXhosa', zu: 'isiZulu' };
 const HELD_LINE = 'hero:2071c8a37d11';
 // Maat's list of loans the judge chose on purpose, as whole phrases (Sol, 12 Oct 2026: never a generic part of one)
 export const ACCEPTED_LOANS = ['aircon', 'refresh', 'fairy lights', 'windpump', 'umpire', 'sundowners', 'surfer', 'privacy setting', 'trailer', 'cheers', 'zero', 'pier', 'electric blanket', 'cape doctor', 'friendly city', 'windy city'];
-const BAD = new Set(['wrong-language', 'untranslated', 'garbled']);
+const BAD = new Set(['wrong-language', 'untranslated']);
+// held at any confidence (Maat, 12 Oct 2026)
+const ANY = new Set(['drift', 'garbled']);
 const readJsonl = (p) => fs.readFileSync(p, 'utf8').trim().split('\n').filter(Boolean).map((l) => JSON.parse(l));
 const writeJsonl = (p, rows) => fs.writeFileSync(p, rows.map((r) => JSON.stringify(r)).join('\n') + '\n');
 const rel = (...p) => path.join(ROOT, ...p);
@@ -101,13 +107,19 @@ export function onlyAcceptedLoans(v) {
   if (!serious.length) return false;
   return serious.every((f) => (f.check === 'lexical' || f.check === 'semantic') && loanWord(f.token, v.text));
 }
+// why a back-translation holds a rewrite, or null
+export function backHold(back) {
+  if (!back) return 'no back-translation record';
+  if (ANY.has(back.verdict)) return `back-translation ${back.verdict === 'drift' ? 'drifts' : 'reads it as garbled'} (${back.confidence}): "${back.bt}"${back.note ? ` — ${back.note}` : ''}`;
+  if (BAD.has(back.verdict) && (back.confidence ?? 0) >= 0.6) return `back-translation ${back.verdict}: "${back.bt}"`;
+  return null;
+}
 export function gate(lang, o) {
   const v = checkV2({ lang, en: o.en, text: o.rewrite });
   const why = [];
   let loan = false;
-  if (!v.back) why.push('no back-translation record');
-  else if (v.back.verdict === 'drift') why.push(`back-translation drifts (${v.back.confidence}): "${v.back.bt}"${v.back.note ? ` — ${v.back.note}` : ''}`);
-  else if (BAD.has(v.back.verdict) && (v.back.confidence ?? 0) >= 0.6) why.push(`back-translation ${v.back.verdict}: "${v.back.bt}"`);
+  const held = backHold(v.back);
+  if (held) why.push(held);
   if (v.action === 'triage-high') {
     if (onlyAcceptedLoans(v)) loan = true;
     else why.push(`checker triage-high ${v.confidence}: ${v.findings.filter((f) => f.severity !== 'low').map((f) => f.message).join(' | ')}`);
@@ -137,6 +149,7 @@ function apply() {
   const src = fs.readFileSync(copyPath, 'utf8');
   const EOL = src.includes('\r\n') ? '\r\n' : '\n';
   const lines = src.split(EOL);
+  const writes = [];
   for (const lang of Object.keys(LANGS)) {
     const attempts = readJsonl(attemptsFile(lang));
     const draftsPath = rel('lang-packs', lang, 'drafts-2026-10.jsonl');
@@ -167,21 +180,82 @@ function apply() {
         const ruling = `maat-2026-10-12 ${o.by === 'maat' ? 'Maat line' : 'judge rewrite'}`;
         const m = manifest.find((x) => x.key === slot && x[lang] === o.was);
         if (!m && manifest.some((x) => x.key === slot)) throw new Error(`${lang} ${slot}: the manifest holds this slot with another line — reconcile it first`);
-        if (m) Object.assign(m, { [lang]: o.rewrite, ruling, ...(o.note ? { note: o.note } : {}) });
-        else manifest.push({ key: slot, [lang]: o.rewrite, status: 'provisional-pending-native-confirm', confidence: d.confidence ?? null, en: o.en, source: 'drafts-2026-10', ruling, ...(o.note ? { note: o.note } : {}) });
+        // what the row held before is kept beside it, and a row this round creates is marked, so regate can undo either
+        if (m) {
+          Object.assign(m, { ...('ruling' in m ? { earlierRuling: m.ruling } : {}), ...('note' in m ? { earlierNote: m.note } : {}), [lang]: o.rewrite, ruling, ...(o.note ? { note: o.note } : {}) });
+          if (!o.note) delete m.note;
+        } else manifest.push({ key: slot, [lang]: o.rewrite, status: 'provisional-pending-native-confirm', confidence: d.confidence ?? null, en: o.en, source: 'drafts-2026-10', ruling, createdBy: RULINGS, ...(o.note ? { note: o.note } : {}) });
       }
       // a release (10 Oct) lifted a checker hold on the line it replaced, not on this one
       if (d.released) { d.earlierRelease = d.released; delete d.released; }
-      Object.assign(d, { [lang]: o.rewrite, was: o.was, ...(d.ruling ? { earlierRuling: d.ruling } : {}), ruling: RULINGS, rewrite: o.by, ...(o.note ? { loanAccepted: RULINGS } : {}) });
+      Object.assign(d, { [lang]: o.rewrite, ...(d.was ? { earlierWas: d.was } : {}), was: o.was, ...(d.ruling ? { earlierRuling: d.ruling } : {}), ruling: RULINGS, rewrite: o.by, ...(o.note ? { loanAccepted: RULINGS } : {}) });
       counts.applied++;
       if (o.note) counts.loan++;
     }
-    writeJsonl(draftsPath, drafts);
-    writeJsonl(mfPath, manifest);
-    writeJsonl(attemptsFile(lang), attempts);
+    writes.push([draftsPath, drafts], [mfPath, manifest], [attemptsFile(lang), attempts]);
     console.log(`${lang}: ${counts.applied} applied (${counts.loan} loan accepted), ${counts.held} held by the gate`);
     for (const o of attempts.filter((x) => x.gate === 'held')) console.log(`  HELD ${o.key} (${o.by}${o.heldLine ? ', held line' : ''}) "${o.rewrite}" — ${o.why.join('; ')}`);
   }
+  // every check has passed for both languages: only now is anything written
+  for (const [p, rows] of writes) writeJsonl(p, rows);
+  fs.writeFileSync(copyPath, lines.join(EOL));
+}
+
+// A later ruling can tighten the gate after a round was applied (Maat, 12 Oct 2026: garbled at any confidence). Every
+// applied rewrite is gated again; one that now fails gets its previous line back everywhere it was written.
+function regate() {
+  const copyPath = rel('assets', 'weather-copy.js');
+  const src = fs.readFileSync(copyPath, 'utf8');
+  const EOL = src.includes('\r\n') ? '\r\n' : '\n';
+  const lines = src.split(EOL);
+  const writes = [];
+  for (const lang of Object.keys(LANGS)) {
+    const attempts = readJsonl(attemptsFile(lang));
+    const draftsPath = rel('lang-packs', lang, 'drafts-2026-10.jsonl');
+    const drafts = readJsonl(draftsPath);
+    const mfPath = rel('lang-packs', lang, 'provisional-manifest.jsonl');
+    const manifest = readJsonl(mfPath);
+    const undone = [];
+    for (const o of attempts.filter((x) => x.gate === 'applied')) {
+      const { why } = gate(lang, o);
+      if (!why.length) continue;
+      const d = drafts.find((x) => x.key === o.key && x.en === o.en && x[lang] === o.rewrite);
+      if (!d) throw new Error(`${lang} ${o.key}: the draft no longer carries the applied rewrite "${o.rewrite}"`);
+      if (o.set === 'debt') {
+        const hits = [];
+        for (const group of ['witty', 'witty_low_confidence']) for (const [bin, bank] of Object.entries(WEATHER_COPY[group] || {})) {
+          (bank.en || []).forEach((en, i) => { if (en === o.en && bank[lang]?.[i] === o.rewrite) hits.push({ group, bin, i, arr: bank[lang] }); });
+        }
+        if (hits.length !== 1) throw new Error(`${lang} ${o.key}: ${hits.length} bank slots hold "${o.rewrite}" — need exactly one`);
+        const [hit] = hits;
+        hit.arr[hit.i] = o.was;
+        if (!rewriteArrayLine(lines, hit.group, hit.bin, lang, hit.arr)) throw new Error(`${lang} ${o.key}: could not rewrite ${hit.group}.${hit.bin}`);
+        const slot = `${hit.group}.${hit.bin}[${hit.i}]`;
+        const m = manifest.filter((x) => x.key === slot && x[lang] === o.rewrite);
+        if (m.length !== 1) throw new Error(`${lang} ${slot}: ${m.length} manifest rows carry the rewrite — need exactly one`);
+        if (m[0].createdBy === RULINGS) manifest.splice(manifest.indexOf(m[0]), 1);
+        else {
+          m[0][lang] = o.was;
+          delete m[0].ruling; delete m[0].note;
+          if ('earlierRuling' in m[0]) { m[0].ruling = m[0].earlierRuling; delete m[0].earlierRuling; }
+          if ('earlierNote' in m[0]) { m[0].note = m[0].earlierNote; delete m[0].earlierNote; }
+        }
+      }
+      d[lang] = o.was;
+      for (const k of ['was', 'ruling', 'rewrite', 'loanAccepted']) delete d[k];
+      if (d.earlierWas) { d.was = d.earlierWas; delete d.earlierWas; }
+      if (d.earlierRuling) { d.ruling = d.earlierRuling; delete d.earlierRuling; }
+      if (d.earlierRelease) { d.released = d.earlierRelease; delete d.earlierRelease; }
+      Object.assign(o, { gate: 'held', why, regated: '2026-10-12 (garbled at any confidence)' });
+      delete o.note;
+      undone.push(o);
+    }
+    writes.push([draftsPath, drafts], [mfPath, manifest], [attemptsFile(lang), attempts]);
+    console.log(`${lang}: ${undone.length} applied rewrite(s) now held — previous line back`);
+    for (const o of undone) console.log(`  HELD ${o.key} "${o.rewrite}" → back to "${o.was}" — ${o.why.join('; ')}`);
+  }
+  // every check has passed for both languages: only now is anything written
+  for (const [p, rows] of writes) writeJsonl(p, rows);
   fs.writeFileSync(copyPath, lines.join(EOL));
 }
 
@@ -189,5 +263,6 @@ if (process.argv[1] && path.resolve(process.argv[1]) === path.resolve(import.met
   const cmd = process.argv[2];
   if (cmd === 'plan') plan();
   else if (cmd === 'apply') apply();
+  else if (cmd === 'regate') regate();
   else console.log('usage: apply-judge-rewrites.mjs plan | apply (see the header)');
 }

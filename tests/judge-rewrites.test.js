@@ -3,7 +3,7 @@
 import { describe, it, expect } from 'vitest';
 import fs from 'node:fs';
 import path from 'node:path';
-import { readRulings, onlyAcceptedLoans } from '../scripts/lang-check/apply-judge-rewrites.mjs';
+import { readRulings, onlyAcceptedLoans, backHold } from '../scripts/lang-check/apply-judge-rewrites.mjs';
 
 const RULINGS = path.resolve('review/maat-rulings-2026-10-12.md');
 
@@ -36,5 +36,16 @@ describe('Maat\'s rulings, 12 Oct 2026', () => {
     expect(onlyAcceptedLoans(v('friendly 123 city', f('lexical', 'medium', 'city')))).toBe(false);
     expect(onlyAcceptedLoans(v('unfriendly city', f('lexical', 'medium', 'city')))).toBe(false);
     expect(onlyAcceptedLoans(v('x', f('lexical', 'low', 'x')))).toBe(false);                       // nothing to lift
+  });
+
+  it('holds drift and garbled at any confidence, wrong-language and untranslated from 0.6 (Maat, 12 Oct 2026)', () => {
+    const b = (verdict, confidence) => ({ verdict, confidence, bt: 'x' });
+    expect(backHold(b('garbled', 0.45))).toContain('reads it as garbled (0.45)'); // "ziyabafura"
+    expect(backHold(b('drift', 0.45))).toContain('drifts (0.45)');
+    expect(backHold(b('untranslated', 0.5))).toBeNull();
+    expect(backHold(b('wrong-language', 0.6))).toContain('wrong-language');
+    expect(backHold(b('same', 0.9))).toBeNull();
+    expect(backHold(b('loose', 0.3))).toBeNull();
+    expect(backHold(null)).toBe('no back-translation record');
   });
 });
