@@ -13,6 +13,7 @@ import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 
 import os from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { rainNowSwitchScore, rainNowSwitchMd } from './rain-now-switch-lib.mjs';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const args = process.argv.slice(2);
@@ -178,6 +179,12 @@ for (const [key, ob] of synop68911) {
 }
 out.wind = windByVersion;
 
+// "Rain's here" by description, coast only (Maat's ruling 12 Oct 2026): per region, everything recorded and since the
+// ruling, so the coast numbers can be watched on real source words (rain-now-switch-lib.mjs).
+const RAIN_SWITCH_SINCE = '2026-10-12T21:00:00Z';
+const rainSwitch = { all: rainNowSwitchScore(recs), sinceRuling: rainNowSwitchScore(recs, { sinceUtc: RAIN_SWITCH_SINCE }) };
+out.rainNowSwitch = Object.fromEntries(Object.entries(rainSwitch).map(([k, { reads_, ...v }]) => [k, v]));
+
 mkdirSync(OUT, { recursive: true });
 out.alNote = { quote: AL_NOTE, byVersion: alNote };
 writeFileSync(path.join(OUT, 'live-score.json'), JSON.stringify(out, null, 1));
@@ -192,6 +199,7 @@ const md = [`# Live score — production vs the airports (${out.generatedAt.slic
   `## Wind, per release (served now-wind vs the airport; Strand vs its station 68911)`, '',
   ...Object.entries(windByVersion).map(([v, w]) => `- **${v}**: airports ${w.airport.n} h, off by ${w.airport.n ? (w.airport.abs / w.airport.n).toFixed(1) : '—'} km/h (bias ${w.airport.n ? (w.airport.bias / w.airport.n).toFixed(1) : '—'})${w.airport.rawN ? `, raw blend ${(w.airport.rawAbs / w.airport.rawN).toFixed(1)}` : ''} · Strand ${w.strand.n} reports, off by ${w.strand.n ? (w.strand.abs / w.strand.n).toFixed(1) : '—'} km/h (bias ${w.strand.n ? (w.strand.bias / w.strand.n).toFixed(1) : '—'})${w.strand.gustN ? `, gust off by ${(w.strand.gustAbs / w.strand.gustN).toFixed(1)}` : ''}`),
   ...Object.values(windByVersion).flatMap((w) => w.strand.list.map((x) => `  - ${x}`)), '',
+  ...rainNowSwitchMd(rainSwitch.sinceRuling), '', ...rainNowSwitchMd(rainSwitch.all), '',
   'Mismatches:', '', ...(out.mismatches.length ? out.mismatches.map((x) => `- ${x}`) : ['- none'])];
 writeFileSync(path.join(OUT, 'live-score.md'), md.join('\n') + '\n');
 console.log(md.join('\n'));

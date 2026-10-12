@@ -16,9 +16,10 @@ vi.mock('../api/_lib/weather-cache.js', async (importOriginal) => {
 import { weatherCacheGet, weatherCacheSetDeferred } from '../api/_lib/weather-cache.js';
 import handler, {
   deriveCondition, applyVoteConsensus, categorizeDesc, descriptiveRainVotes,
-  RAIN_NOW_DESC_MIN_VOTES, RAIN_NOW_DESC_MIN_FAMILIES, RAIN_NOW_DESC_MIN_MM, RAIN_FAMILY,
+  RAIN_NOW_DESC_MIN_VOTES, RAIN_NOW_DESC_MIN_FAMILIES, RAIN_NOW_DESC_MIN_MM, RAIN_FAMILY, RAIN_NOW_DESC_REGIONS,
   RAIN_NOW_MIN_VOTES, RAIN_NOW_MIN_PROB, RAIN_NOW_MIN_MM, SHOWERS_NEARBY_MIN_PROB, SHOWERS_NEARBY_MIN_MM,
 } from '../api/weather.js';
+import { REGION_STATIONS, regionOf } from '../api/_lib/regions.js';
 
 const incident = JSON.parse(readFileSync(new URL('../review/accuracy/incidents/strand-2026-10-12-2055.json', import.meta.url), 'utf8'));
 const SOURCES = ['Open-Meteo', 'WeatherAPI', 'Pirate Weather', 'MET Norway', 'Tomorrow.io'];
@@ -29,7 +30,7 @@ const STRAND_2055 = { 'Open-Meteo': 'Slight rain', 'WeatherAPI': 'Light drizzle'
 const strandInputs = (descs, over = {}) => {
   const ev = descriptiveRainVotes(votesOf(descs));
   return { ...incident.payload.now.conditionSignals.selector.inputs, sourceDescs: SOURCES.map((s) => descs[s]),
-    rainVotes: ev.votes, rainSources: ev.sources, rainFamilies: ev.families, precipMm: 1, rainChance: 46.5, ...over };
+    rainVotes: ev.votes, rainSources: ev.sources, rainFamilies: ev.families, rainDescRegion: true, precipMm: 1, rainChance: 46.5, ...over };
 };
 
 describe('rain-now-descriptive — the constants and the family map', () => {
@@ -37,6 +38,10 @@ describe('rain-now-descriptive — the constants and the family map', () => {
     expect([RAIN_NOW_DESC_MIN_VOTES, RAIN_NOW_DESC_MIN_FAMILIES, RAIN_NOW_DESC_MIN_MM]).toEqual([3, 2, 0.5]);
     expect([RAIN_NOW_MIN_VOTES, RAIN_NOW_MIN_PROB, RAIN_NOW_MIN_MM]).toEqual([2, 90, 2]);
     expect([SHOWERS_NEARBY_MIN_PROB, SHOWERS_NEARBY_MIN_MM]).toEqual([60, 0.3]);
+  });
+  it('the coast switch: Western Cape, Garden Route, KZN coast only (Maat ruling, 12 Oct 2026)', () => {
+    expect([...RAIN_NOW_DESC_REGIONS]).toEqual(['Western Cape', 'Garden Route', 'KZN coast']);
+    expect(regionOf(-34.1083, 18.8283)).toBe('Western Cape');   // Strand
   });
   it('Open-Meteo and WeatherAPI are one family; the other three are each their own', () => {
     expect(RAIN_FAMILY['Open-Meteo']).toBe(RAIN_FAMILY.WeatherAPI);
@@ -61,7 +66,10 @@ describe('rain-now-descriptive — the four cases', () => {
     expect(deriveCondition(strandInputs(STRAND_2055))).toEqual({ key: 'rain', reason: 'rain-now-descriptive' });
   });
   it('without the new inputs (a selector cached before them) the same hour is today\'s might-rain', () => {
-    expect(deriveCondition(strandInputs(STRAND_2055, { rainSources: undefined, rainFamilies: undefined }))).toEqual({ key: 'rain-possible', reason: 'desc-rain-unconfirmed' });
+    expect(deriveCondition(strandInputs(STRAND_2055, { rainSources: undefined, rainFamilies: undefined, rainDescRegion: undefined }))).toEqual({ key: 'rain-possible', reason: 'desc-rain-unconfirmed' });
+  });
+  it('the same hour off the coast (rainDescRegion false) is today\'s might-rain', () => {
+    expect(deriveCondition(strandInputs(STRAND_2055, { rainDescRegion: false }))).toEqual({ key: 'rain-possible', reason: 'desc-rain-unconfirmed' });
   });
   it('WeatherAPI "Cloudy" instead (2 votes, 2 families) → unchanged from today', () => {
     const descs = { ...STRAND_2055, WeatherAPI: 'Cloudy' };
@@ -151,9 +159,9 @@ const stubFive = (p) => vi.stubGlobal('fetch', vi.fn(async (url) => {
   if (href.startsWith('https://api.tomorrow.io/')) return makeResponse(p.tomorrow);
   throw new Error(`Unexpected URL: ${href}`);
 }));
-const callHandler = async () => {
+const callHandler = async (lat = '-34.1083', lon = '18.8283', name = 'Strand') => {
   let body;
-  await handler({ query: { lat: '-34.1083', lon: '18.8283', name: 'Strand' } }, { setHeader: vi.fn(), status() { return this; }, json(p) { body = p; return this; } });
+  await handler({ query: { lat, lon, name } }, { setHeader: vi.fn(), status() { return this; }, json(p) { body = p; return this; } });
   return body;
 };
 // Strand 20:55: Open-Meteo slight rain (61), WeatherAPI light drizzle (1153), Pirate cloudy, MET heavy rain, Tomorrow.io light fog (2100)
@@ -232,7 +240,7 @@ describe('rain-now-descriptive — the handler, end to end', () => {
     stubFive(strandFive());
     await callHandler();
     const fresh = weatherCacheSetDeferred.mock.calls[0][1];
-    const { rainSources, rainFamilies, ...oldInputs } = fresh.now.conditionSignals.selector.inputs;
+    const { rainSources, rainFamilies, rainDescRegion, ...oldInputs } = fresh.now.conditionSignals.selector.inputs;
     const oldBase = deriveCondition(oldInputs);
     expect(oldBase).toEqual({ key: 'rain-possible', reason: 'desc-rain-unconfirmed' });
     const legacy = { ...fresh, now: { ...fresh.now, conditionKey: oldBase.key, conditionReason: oldBase.reason, rainChance: oldInputs.rainChance,
@@ -245,6 +253,43 @@ describe('rain-now-descriptive — the handler, end to end', () => {
     expect(fetchFn).not.toHaveBeenCalled();
     expect([body.now.conditionKey, body.now.conditionReason]).toEqual(['rain-possible', 'desc-rain-unconfirmed']);
     expect(body.now.rainChance).toBeLessThan(70);
+  });
+
+  it('the same sky at all 20 region points: rain on the coast, today\'s ladder exactly everywhere else', async () => {
+    const seen = new Set();
+    for (const st of REGION_STATIONS) {
+      stubFive(strandFive());
+      const body = await callHandler(String(st.lat), String(st.lon), st.id);
+      const sel = body.now.conditionSignals.selector;
+      const coast = RAIN_NOW_DESC_REGIONS.includes(st.region);
+      expect(sel.inputs.rainDescRegion, st.id).toBe(coast);
+      // today's ladder on the very same inputs: the candidate's three inputs removed
+      const { rainSources, rainFamilies, rainDescRegion, ...todayInputs } = sel.inputs;
+      if (coast) {
+        expect([body.now.conditionKey, body.now.conditionReason], st.id).toEqual(['rain', 'rain-now-descriptive']);
+      } else {
+        expect(sel.base, st.id).toEqual(deriveCondition(todayInputs));
+        expect(body.now.conditionReason, st.id).not.toBe('rain-now-descriptive');
+        expect(body.now.rainChance, st.id).toBeLessThan(70);
+      }
+      seen.add(st.region);
+    }
+    expect(seen.size).toBe(13);
+  });
+
+  it('across the coast cells\' edges and outside South Africa, the flag follows regionOf and only the coast fires', async () => {
+    const POINTS = [
+      ['Saldanha', -33.01, 17.94, 'West Coast'], ['Plettenberg Bay', -34.05, 23.37, 'Garden Route'], ['Jeffreys Bay', -34.05, 24.92, 'Eastern Cape'],
+      ['Ballito', -29.54, 31.21, 'KZN coast'], ['Pietermaritzburg', -29.60, 30.38, 'KZN inland'], ['London', 51.5, -0.12, null],
+    ];
+    for (const [name, lat, lon, region] of POINTS) {
+      expect(regionOf(lat, lon), name).toBe(region);
+      stubFive(strandFive());
+      const body = await callHandler(String(lat), String(lon), name);
+      const coast = RAIN_NOW_DESC_REGIONS.includes(region);
+      expect(body.now.conditionSignals.selector.inputs.rainDescRegion, name).toBe(coast);
+      expect(body.now.conditionReason === 'rain-now-descriptive', name).toBe(coast);
+    }
   });
 
   it('Tomorrow.io thunder (8000) still turns it into a storm', async () => {

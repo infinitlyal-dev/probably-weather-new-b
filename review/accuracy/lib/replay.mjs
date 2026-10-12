@@ -19,11 +19,12 @@ import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import {
-  skyCloudFor, descriptiveRainVotes, deriveCondition, applyVoteConsensus, categorizeDesc, pickWeightedMostCommon, pickModalCloud,
+  skyCloudFor, descriptiveRainVotes, RAIN_NOW_DESC_REGIONS, deriveCondition, applyVoteConsensus, categorizeDesc, pickWeightedMostCommon, pickModalCloud,
   detectAdvectionFog, corroboratedFogUpgrade, isTrueFogDesc, countsAsWeatherVote, rainOthersAtLine,
 } from '../../../api/weather.js';
 import { HEAT_WARM_C, HEAT_EXTREME_C } from '../../../assets/weather-thresholds.js';
 import { ensembleAt } from './sources.mjs';
+import { regionOf } from '../../../api/_lib/regions.js';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const REPO = path.resolve(here, '..', '..', '..');
@@ -221,6 +222,7 @@ export function decideAt(city, i) {
     rainVotes: rainNowVotes,
     rainSources: rainNowEvidence.sources,
     rainFamilies: rainNowEvidence.families,
+    rainDescRegion: RAIN_NOW_DESC_REGIONS.includes(regionOf(city.lat, city.lon)),
     gustKph: maxGust,
     // 7 Oct 2026 (new sets) — api/weather.js breezySourcesNow; the replay has no wind correction (factor 1, line 25).
     breezySources: activeNorms.filter((n) => (isNum(n.windKph) && n.windKph >= 15) || (isNum(n.gustKph) && n.gustKph >= 30)).length,

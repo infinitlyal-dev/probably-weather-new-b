@@ -115,6 +115,9 @@ export const SHOWERS_NEARBY_MIN_MM   = 0.3;
 export const RAIN_NOW_DESC_MIN_VOTES    = 3;
 export const RAIN_NOW_DESC_MIN_FAMILIES = 2;
 export const RAIN_NOW_DESC_MIN_MM       = 0.5;
+//   The coast switch (Maat's ruling 12 Oct 2026, waiting on Al's "push"): only where the replay kept it 72–79 % right.
+//   Every other region keeps today's ladder exactly. Regions are api/_lib/regions.js regionOf (nearest measured station).
+export const RAIN_NOW_DESC_REGIONS = Object.freeze(['Western Cape', 'Garden Route', 'KZN coast']);
 //   Model families for the vote: Open-Meteo and WeatherAPI are the same ECMWF run and count once; the other three are
 //   each their own.
 export const RAIN_FAMILY = Object.freeze({
@@ -2689,6 +2692,8 @@ export default async function handler(req, res) {
       // Candidate rain-now-descriptive: the named sources describing rain, each once, and the families they span.
       rainSources: nowRainEvidence.sources,
       rainFamilies: nowRainEvidence.families,
+      // ...and only in RAIN_NOW_DESC_REGIONS (the coast switch); false elsewhere, absent on older cached inputs.
+      rainDescRegion: RAIN_NOW_DESC_REGIONS.includes(regionOf(lat, lon)),
       gustKph:    heroGust,
       // v7: the region's gust line and "enough sources" rule (api/_lib/gusts.js gustRuleAt)
       gustLineKph: gustRule.gustLineKph,
@@ -3714,7 +3719,8 @@ function calcFeelsLike(tempC, windKph, humidity) {
  * TWO LADDERS since 2026-09-22 (condition-incident-20260922):
  *   now: true  — the hero. Rungs 5–12 below are replaced by
  *                5n rain NOW (rainVotes ≥ 2 AND rainChance ≥ 90 AND precipMm ≥ 2; strict, 2026-09-25)
- *                5.5n CANDIDATE rain NOW by description (rainSources ≥ 3 from ≥ 2 families AND precipMm ≥ 0.5)
+ *                5.5n CANDIDATE rain NOW by description (rainSources ≥ 3 from ≥ 2 families AND precipMm ≥ 0.5;
+ *                     coast only — rainDescRegion, RAIN_NOW_DESC_REGIONS)
  *                6n wind (mean ≥ 25 OR gust ≥ 55)   7n high UV
  *                7.5n showers nearby → rain-possible (rainVotes ≥ 2 AND ≥ 60 AND ≥ 0.3, not 5n)
  *                8n rain by description → rain-possible
@@ -3765,7 +3771,7 @@ function calcFeelsLike(tempC, windKph, humidity) {
  * @param {number}  [params.gustKph]    - now: largest current gust any source reports
  * @returns {string} condition key
  */
-function deriveCondition({ desc, rainChance, tempC, feelsLikeC, windKph, uvIndex, cloudPct, uvCloudPct, maxWindKph, isDay = true, dailyHighC, dailyLowC, sourceDescs, now = false, precipMm, rainVotes, rainSources, rainFamilies, gustKph, windThresholdKph, gustLineKph, windSourcesAt25, windSourcesMin = 0, breezySources, rainOthersAt30 }) {
+function deriveCondition({ desc, rainChance, tempC, feelsLikeC, windKph, uvIndex, cloudPct, uvCloudPct, maxWindKph, isDay = true, dailyHighC, dailyLowC, sourceDescs, now = false, precipMm, rainVotes, rainSources, rainFamilies, rainDescRegion, gustKph, windThresholdKph, gustLineKph, windSourcesAt25, windSourcesMin = 0, breezySources, rainOthersAt30 }) {
   const d = String(desc || '').toLowerCase();
 
   // Use mean wind speed for condition thresholds. Gusts are displayed separately in the UI.
@@ -3913,10 +3919,10 @@ function deriveCondition({ desc, rainChance, tempC, feelsLikeC, windKph, uvIndex
         && isNum(rainChance) && rainChance >= minProb
         && isNum(precipMm) && precipMm >= minMm;
     if (rainEvidence(RAIN_NOW_MIN_PROB, RAIN_NOW_MIN_MM)) return { key: 'rain', reason: 'rain-now' };
-    // 5.5n. CANDIDATE (12 Oct 2026, not ruled): rain described by ≥ 3 sources from ≥ 2 model families with ≥ 0.5 mm
+    // 5.5n. CANDIDATE (12 Oct 2026; coast only by Maat's ruling, waits on Al): rain described by ≥ 3 sources from ≥ 2 model families with ≥ 0.5 mm
     //     for the hour — steady drizzle the models hedge on. No probability test. Inputs cached before rainSources /
-    //     rainFamilies existed keep the old ladder.
-    if (isNum(rainSources) && rainSources >= RAIN_NOW_DESC_MIN_VOTES
+    //     rainFamilies / rainDescRegion existed keep the old ladder; so does every region off the coast.
+    if (rainDescRegion === true && isNum(rainSources) && rainSources >= RAIN_NOW_DESC_MIN_VOTES
         && isNum(rainFamilies) && rainFamilies >= RAIN_NOW_DESC_MIN_FAMILIES
         && isNum(precipMm) && precipMm >= RAIN_NOW_DESC_MIN_MM) return { key: 'rain', reason: 'rain-now-descriptive' };
     // 6n. Wind — above UV, might-rain and cloud: a fresh breeze IS the weather.
