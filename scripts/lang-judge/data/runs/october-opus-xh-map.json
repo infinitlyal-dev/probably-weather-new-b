@@ -1,0 +1,1131 @@
+{
+ "set": "october",
+ "lang": "xh",
+ "judge": "opus",
+ "built": "2026-10-12",
+ "exportedAt": 1791815286823,
+ "attempts": [
+  {
+   "built": "2026-10-12T14:28:06.822Z",
+   "again": null
+  }
+ ],
+ "detector": "Run as a detector under Maat's ruling of 12 Oct 2026: exam bar not met (keep-vs-not 61% isiXhosa / 47% isiZulu); used because false keeps were 0 of 19 and 0 of 1, false cuts 4% and 3%. Flags are leads for Maat, not verdicts.",
+ "inputs": {
+  "prompt": "cc0fc447a940fcd5cff66e4a59d47ce3893e1e15d3d8b1ff692bf2743055aa39",
+  "verdicts": "554a3c21ec0869fb7c6c1bb9a8ca5be6e87f90ad5d4baf02298b8056016c3e86",
+  "bundle": "b4e67f9214c78d61b93a6bc44af8a79ba2c70b2d103958332265acb152c3ff69",
+  "code": "57b19a2a28735baddca1170c7e64e8d86626fb7811889b7692a36b335be15e16"
+ },
+ "files": {
+  "bundle-xh.md": "b4e67f9214c78d61b93a6bc44af8a79ba2c70b2d103958332265acb152c3ff69",
+  "october-xh-01-blind.json": "8d274068a1e0355719596bb5123d0d7a7f9b38557bceb0bcaa93b54797fcee00",
+  "october-xh-02-blind.json": "a1a7cc0f6480ed9a9bbcaea519dc30ca8ba5411303f1109a0e7244ec4e967576",
+  "october-xh-03-blind.json": "6895554866bcb6c269409d5ef0488440c655e9eebaff9aabd3ac27ee3010b5a2",
+  "october-xh-04-blind.json": "30df4484bd95cb295335579a2c6cd0d1150f4a0a503bfaa5897b8e7007862147",
+  "october-xh-05-blind.json": "1dbabd9b1fe92e2b4dbb700a9e0a263f54c293c11f82bdd9a53b7b440016faf2",
+  "october-xh-06-blind.json": "fcc72cf64a6122128dab902ddeb93e1f2ad384582c71c68f61728ef2caa5dbb3",
+  "october-xh-07-blind.json": "596211791fccef093b4a0f2cfe2cec6a02bf9f19acf1917ff4f4e1a86298e975"
+ },
+ "anchors": [
+  "xh-0427",
+  "xh-0453",
+  "xh-0295",
+  "xh-0214",
+  "xh-0286",
+  "xh-0505",
+  "xh-0055",
+  "xh-0169",
+  "xh-0317",
+  "xh-0109",
+  "xh-0053",
+  "xh-0102"
+ ],
+ "map": {
+  "xh01-01": {
+   "ref": "witty.heat[80]",
+   "en": "The first breeze of the day has just arrived. Give it a round of applause.",
+   "draft": "Umoya omncinci wokuqala wosuku usandul' ukufika. Wuqhwabele izandla.",
+   "cond": "heat",
+   "set": "debt"
+  },
+  "xh01-02": {
+   "ref": "witty.heat[87]",
+   "en": "Lowveld summer: you don't sweat, you melt with dignity.",
+   "draft": "Ihlobo laseLowveld: awubili, unyibilika ngesidima.",
+   "cond": "heat",
+   "set": "debt"
+  },
+  "xh01-03": {
+   "ref": "hero:d20cb10e620f",
+   "en": "The clouds are drifting through slowly. It's Sunday; they're allowed.",
+   "draft": "Amafu adlula kancinci. YiCawa; avumelekile.",
+   "cond": "partly-cloudy",
+   "set": "new-sets"
+  },
+  "xh01-04": {
+   "ref": "hero:d28a5c534bda",
+   "en": "The mountain pulled the duvet over its head. Fair enough, it's Friday.",
+   "draft": "Intaba izigqume intloko ngengubo. Kulungile, nguLwesihlanu.",
+   "cond": "cloudy",
+   "set": "new-sets"
+  },
+  "xh01-05": {
+   "ref": "witty.clear[37]",
+   "en": "Zero mistakes from today so far. Sky included.",
+   "draft": "Akukho mpazamo namhlanje ukuza kuthi ga ngoku. Nesibhakabhaka.",
+   "cond": "clear",
+   "set": "debt"
+  },
+  "xh01-06": {
+   "ref": "hero:2071c8a37d11",
+   "en": "A little dust devil is riding ahead of him. It isn't even pedalling.",
+   "draft": "Isaqhwithi esincinci sothuli sihamba phambi kwakhe. Asikhabi nokukhaba iipedali.",
+   "cond": "breezy",
+   "set": "new-sets",
+   "held": "held after Maat fix: held: checker triage-high"
+  },
+  "xh01-07": {
+   "ref": "hero:2ae8db32f086",
+   "en": "The moon drops in between clouds. It can smell the meat from up there.",
+   "draft": "Inyanga ityelela phakathi kwamafu. Iyayiva ivumba lenyama ukusuka phaya phezulu.",
+   "cond": "partly-cloudy",
+   "set": "new-sets"
+  },
+  "xh01-08": {
+   "ref": "witty.cold[96]",
+   "en": "The last log is a decision, not an inventory item.",
+   "draft": "Isiqwengana sokugqibela seenkuni sisigqibo, asiyonto nje ekhoyo.",
+   "cond": "cold",
+   "set": "debt"
+  },
+  "xh01-09": {
+   "ref": "hero:f14387acb77e",
+   "en": "Moon behind a cloud, dog on the stoep. Sunday's service is over.",
+   "draft": "Inyanga ingemva kwelifu, inja isestoep. Inkonzo yangeCawa iphelile.",
+   "cond": "partly-cloudy",
+   "set": "new-sets"
+  },
+  "xh01-10": {
+   "ref": "witty.heat[60]",
+   "en": "Bring your own ice. The friendship doesn't cover ice.",
+   "draft": "Yiza nomkhenkce wakho. Ubuhlobo abubandakanyi umkhenkce.",
+   "cond": "heat",
+   "set": "debt"
+  },
+  "xh01-11": {
+   "ref": "hero:8e7b11775e04",
+   "en": "Those clouds are only passing through. Even the mealies know not to get excited.",
+   "draft": "Loo mafu adlula nje. Nditsho nombona uyazi ukuba akufuneki uvuye.",
+   "cond": "partly-cloudy",
+   "set": "new-sets"
+  },
+  "xh01-12": {
+   "ref": "witty.fog[88]",
+   "en": "Ten pm fog turns every street into a film set.",
+   "draft": "Inkungu yentsimbi yeshumi ebusuku yenza zonke izitrato zibe ziindawo zokwenza ifilimu.",
+   "cond": "fog",
+   "set": "debt"
+  },
+  "xh01-13": {
+   "ref": "witty.cold-clear[69]",
+   "en": "Prettiest moment of the day. Also the shortest. Run.",
+   "draft": "Lelona xesha lihle losuku. Kwaye lelona lifutshane. Baleka.",
+   "cond": "cold-clear",
+   "set": "debt"
+  },
+  "xh01-14": {
+   "ref": "hero:changed",
+   "en": "It's 6am and the fridge is already the most popular room in the house.",
+   "draft": "Ngu-6 ngentsasa, kwaye ifriji sele iyeyona ndawo ithandwayo endlwini.",
+   "cond": "heat",
+   "set": "changed-lines"
+  },
+  "xh01-15": {
+   "ref": "witty.heat[88]",
+   "en": "The bushveld is on silent mode today. Everyone. Everything.",
+   "draft": "Ihlathi lithe cwaka namhlanje. Wonke umntu. Yonke into.",
+   "cond": "heat",
+   "set": "debt"
+  },
+  "xh01-16": {
+   "ref": "hero:7607b502a13f",
+   "en": "Sky and sea agreed on a colour this morning. Not an exciting one.",
+   "draft": "Isibhakabhaka nolwandle bavumelene ngombala ngale ntsasa. Asingombala onomdla.",
+   "cond": "cloudy",
+   "set": "new-sets"
+  },
+  "xh01-17": {
+   "ref": "hero:changed",
+   "en": "Properly cold today. The kind that goes through three jerseys like they aren't there.",
+   "draft": "Kuyabanda nyhani namhlanje. Yingqele egqobhoza iijezi ezintathu ngathi azikho.",
+   "cond": "cold-clear",
+   "set": "changed-lines"
+  },
+  "xh01-18": {
+   "ref": "witty.cold-clear[53]",
+   "en": "The shady side of the field is a separate climate zone.",
+   "draft": "Icala elinesithunzi lebala lilizwe lalo ngokwalo.",
+   "cond": "cold-clear",
+   "set": "debt"
+  },
+  "xh01-19": {
+   "ref": "witty.clear[67]",
+   "en": "Karoo sky: same flawless blue for the next 400 km. Guaranteed.",
+   "draft": "Isibhakabhaka saseKaroo: luhlaza okwesibhakabhaka olufanayo kwiikhilomitha ezingama-400 ezizayo. Kuqinisekisiwe.",
+   "cond": "clear",
+   "set": "debt",
+   "held": "not applied: the English line was cut from the bank"
+  },
+  "xh01-20": {
+   "ref": "hero:25beac6c1c50",
+   "en": "Hand on the cap, one stride at a time. The breeze is pacing her.",
+   "draft": "Isandla ekepusini, inyathelo ngenyathelo. Umoya omncinci uhamba naye.",
+   "cond": "breezy",
+   "set": "new-sets"
+  },
+  "xh01-21": {
+   "ref": "hero:1d8c84ac2fde",
+   "en": "Her hair got to the bakery first. The breeze has its own Sunday plans.",
+   "draft": "Iinwele zakhe zifike kuqala evenkileni yesonka. Umoya omncinci unamacebo awo angeCawa.",
+   "cond": "breezy",
+   "set": "new-sets"
+  },
+  "xh01-22": {
+   "ref": "hero:55d3187335f2",
+   "en": "The sky's putting on a show. The fish, as usual, are not.",
+   "draft": "Isibhakabhaka senza umboniso. Iintlanzi, njengesiqhelo, azenzi.",
+   "cond": "partly-cloudy",
+   "set": "new-sets"
+  },
+  "xh02-01": {
+   "ref": "witty.cold[44]",
+   "en": "Cape cold is wet cold. It moves into your bones and unpacks.",
+   "draft": "Ingqele yaseKapa yingqele emanzi. Ingena emathanjeni akho ize ihlale.",
+   "cond": "cold",
+   "set": "debt"
+  },
+  "xh02-02": {
+   "ref": "witty.cold-clear[84]",
+   "en": "Rooibos in hand, blanket to the ears. Full kit.",
+   "draft": "IRooibos esandleni, ingubo ide ifike ezindlebeni. Sizixhobile.",
+   "cond": "cold-clear",
+   "set": "debt"
+  },
+  "xh02-03": {
+   "ref": "witty.fog[63]",
+   "en": "Fireplace weather showed up without even asking.",
+   "draft": "Imozulu yeziko ifikile ingakhange icele.",
+   "cond": "fog",
+   "set": "debt"
+  },
+  "xh02-04": {
+   "ref": "witty.fog[65]",
+   "en": "The whole town just switched itself to whisper volume.",
+   "draft": "Idolophu yonke izitshintshele kwivolyum yokusebeza.",
+   "cond": "fog",
+   "set": "debt"
+  },
+  "xh02-05": {
+   "ref": "hero:3bc0c957a3eb",
+   "en": "Half the stars are behind cloud. The fairy lights are covering for them.",
+   "draft": "Isiqingatha seenkwenkwezi singemva kwamafu. Izibane ezincinci zizithathela indawo.",
+   "cond": "partly-cloudy",
+   "set": "new-sets"
+  },
+  "xh02-06": {
+   "ref": "witty.heat[69]",
+   "en": "The first sip after a 35-degree day should honestly be taxable.",
+   "draft": "Isiselo sokuqala emva kosuku lweedigri ezingama-35 bekufanele ukuba sihlawulelwe irhafu, inyani.",
+   "cond": "heat",
+   "set": "debt",
+   "held": "not applied: the English line was cut from the bank"
+  },
+  "xh02-07": {
+   "ref": "witty.cold[99]",
+   "en": "Forgot to switch the electric blanket on in advance. Every. Single. Night.",
+   "draft": "Ndilibale ukuvula ingubo yombane kwangethuba. Qho. Ngobusuku. Bonke.",
+   "cond": "cold",
+   "set": "debt"
+  },
+  "xh02-08": {
+   "ref": "hero:9f33503bb2be",
+   "en": "The flags are still chatting. The boats have called it a week.",
+   "draft": "Iiflegi zisancokola. Izikhephe ziyigqibile iveki.",
+   "cond": "breezy",
+   "set": "new-sets"
+  },
+  "xh02-09": {
+   "ref": "witty.clear[56]",
+   "en": "The weather made the plans. We just RSVP'd.",
+   "draft": "Imozulu yenze amacebo. Thina siphendule nje sathi siyeza.",
+   "cond": "clear",
+   "set": "debt"
+  },
+  "xh02-10": {
+   "ref": "witty.wind[53]",
+   "en": "The Friendly City never asked to be the Windy City, and yet.",
+   "draft": "IDolophu enoBubele ayizange icele ukuba yiDolophu enoMoya, kodwa ke.",
+   "cond": "wind",
+   "set": "debt"
+  },
+  "xh02-11": {
+   "ref": "witty.heat[86]",
+   "en": "Even the impala are standing in the shade rethinking their choices.",
+   "draft": "Nditsho neempala zimi emthunzini ziphinda zicinga ngezigqibo zazo.",
+   "cond": "heat",
+   "set": "debt"
+  },
+  "xh02-12": {
+   "ref": "witty.heat[44]",
+   "en": "The berg wind turned overnight. Cape Town, today you're basically Upington.",
+   "draft": "Umoya oshushu wasezintabeni utshintshe ebusuku. Kapa, namhlanje uphantse ube yi-Upington.",
+   "cond": "heat",
+   "set": "debt"
+  },
+  "xh02-13": {
+   "ref": "hero:dd3ddc3ad613",
+   "en": "The hill is moving in waves. The cattle have decided not to notice.",
+   "draft": "Induli ishukuma ngathi ngamaza. Iinkomo zigqibe ekubeni zingaboni nto.",
+   "cond": "breezy",
+   "set": "new-sets"
+  },
+  "xh02-14": {
+   "ref": "hero:90fe2cf4d92b",
+   "en": "The sky's on mute and so is the queue. Monday hasn't found the volume.",
+   "draft": "Isibhakabhaka sithe cwaka, nomgca uthe cwaka. UMvulo akakayifumani ivolyum.",
+   "cond": "cloudy",
+   "set": "new-sets"
+  },
+  "xh02-15": {
+   "ref": "hero:1d6a21cfb9e4",
+   "en": "Shoes on the blanket corners. The breeze is welcome, the sand isn't.",
+   "draft": "Izihlangu kwiikona zengubo. Umoya omncinci wamkelekile, isanti ayamkelekanga.",
+   "cond": "breezy",
+   "set": "new-sets"
+  },
+  "xh02-16": {
+   "ref": "witty.wind[41]",
+   "en": "The tablecloth is pressed and ready for tomorrow's service.",
+   "draft": "Ilaphu letafile li-ayiniwe kwaye lilungele umsebenzi wangomso.",
+   "cond": "wind",
+   "set": "debt"
+  },
+  "xh02-17": {
+   "ref": "hero:a8dc12a0d491",
+   "en": "A few clouds came along to watch. Also not running.",
+   "draft": "Amafu ambalwa eze kubukela. Nawo akabaleki.",
+   "cond": "partly-cloudy",
+   "set": "new-sets"
+  },
+  "xh02-18": {
+   "ref": "hero:3ed1be041201",
+   "en": "The moon keeps popping out to check on the forecourt. Still nothing happening.",
+   "draft": "Inyanga isoloko iphuma ijonga igaraji. Akukho nto yenzekayo.",
+   "cond": "partly-cloudy",
+   "set": "new-sets"
+  },
+  "xh02-19": {
+   "ref": "witty.cold-clear[36]",
+   "en": "Today's sky: freshly washed, ice-pressed.",
+   "draft": "Isibhakabhaka sanamhlanje: sisandul' ukuhlanjwa, sayinwa ngumkhenkce.",
+   "cond": "cold-clear",
+   "set": "debt"
+  },
+  "xh02-20": {
+   "ref": "witty.rain[49]",
+   "en": "Rain on a farm isn't weather. It's a salary falling from the sky.",
+   "draft": "Imvula efama ayiyiyo imozulu nje. Ngumvuzo owa uvela esibhakabhakeni.",
+   "cond": "rain",
+   "set": "debt"
+  },
+  "xh02-21": {
+   "ref": "hero:693625baa70e",
+   "en": "The windpump doesn't believe in knock-off time. Neither does the dog.",
+   "draft": "Umpompo womoya awukholelwa kwixesha lokuphuma emsebenzini. Nenja ayikholelwa.",
+   "cond": "breezy",
+   "set": "new-sets"
+  },
+  "xh02-22": {
+   "ref": "hero:2ee611032a66",
+   "en": "The corner flag is pointing out exactly where the conversions will drift.",
+   "draft": "Iflegi yekona ibonisa kanye apho ibhola iza kutyekela khona.",
+   "cond": "breezy",
+   "set": "new-sets"
+  },
+  "xh03-01": {
+   "ref": "witty.fog[99]",
+   "en": "Midlands mist: the countryside's privacy setting.",
+   "draft": "Inkungu yaseMidlands: indlela amaphandle azifihla ngayo.",
+   "cond": "fog",
+   "set": "debt"
+  },
+  "xh03-02": {
+   "ref": "witty.fog[64]",
+   "en": "Perfect weather to bump into someone you've 'been meaning to call'.",
+   "draft": "Yimozulu efanelekileyo yokudibana nomntu 'obusoloko uceba ukumtsalela umnxeba'.",
+   "cond": "fog",
+   "set": "debt"
+  },
+  "xh03-03": {
+   "ref": "witty.clear[43]",
+   "en": "Highveld mornings: freezing, gorgeous, zero apologies.",
+   "draft": "Iintsasa zaseHighveld: kubanda kakhulu, kuhle, akukho kuxolisa.",
+   "cond": "clear",
+   "set": "debt",
+   "held": "not applied: the English line was cut from the bank"
+  },
+  "xh03-04": {
+   "ref": "witty.heat[53]",
+   "en": "Even the dog checked the forecast and went straight back to bed.",
+   "draft": "Nditsho nenja ijonge imozulu yaza yabuyela ebhedini.",
+   "cond": "heat",
+   "set": "debt"
+  },
+  "xh03-05": {
+   "ref": "witty.clear[34]",
+   "en": "The sun clocked in before your alarm even tried.",
+   "draft": "Ilanga liqale umsebenzi phambi kokuba i-alamu yakho izame.",
+   "cond": "clear",
+   "set": "debt"
+  },
+  "xh03-06": {
+   "ref": "hero:cc8c9847fa04",
+   "en": "The moon's on a dimmer tonight. The security light has no such setting.",
+   "draft": "Inyanga ikhanya kancinci ngokuhlwanje. Isibane sokhuseleko asinako oko.",
+   "cond": "partly-cloudy",
+   "set": "new-sets"
+  },
+  "xh03-07": {
+   "ref": "hero:e751a9e376bf",
+   "en": "The breeze does all the work. The kite takes all the credit.",
+   "draft": "Umoya omncinci wenza wonke umsebenzi. Ikhayithi ifumana lonke udumo.",
+   "cond": "breezy",
+   "set": "new-sets"
+  },
+  "xh03-08": {
+   "ref": "hero:bae38570c296",
+   "en": "No shadows, no glare, no excuses. Monday under a Tupperware lid.",
+   "draft": "Akukho zithunzi, akukho kukhazimla, akukho zizathu. UMvulo uphantsi kwesiciko seTupperware.",
+   "cond": "cloudy",
+   "set": "new-sets"
+  },
+  "xh03-09": {
+   "ref": "witty.fog[54]",
+   "en": "Visibility: zero. Mood: surprisingly at peace with it.",
+   "draft": "Ukubona: akukho. Isimo sengqondo: sizolile, ngokumangalisayo.",
+   "cond": "fog",
+   "set": "debt"
+  },
+  "xh03-10": {
+   "ref": "witty.fog[72]",
+   "en": "The sea has vanished but the tannies are here. Priorities.",
+   "draft": "Ulwandle lunyamalele kodwa oomakazi bakhona. Izinto eziphambili.",
+   "cond": "fog",
+   "set": "debt"
+  },
+  "xh03-11": {
+   "ref": "witty.rain[44]",
+   "en": "One breath of rain air and suddenly the whole country is a poet.",
+   "draft": "Umphefumlo omnye womoya wemvula, ngequbuliso ilizwe lonke liyimbongi.",
+   "cond": "rain",
+   "set": "debt"
+  },
+  "xh03-12": {
+   "ref": "hero:changed",
+   "en": "The dog is loving this wind. He's got the only hairstyle built for it.",
+   "draft": "Inja iyawuthanda lo moya. Inenwele ekuphela kwazo ezenzelwe wona.",
+   "cond": "wind",
+   "set": "changed-lines"
+  },
+  "xh03-13": {
+   "ref": "witty.fog[44]",
+   "en": "The cows know exactly where they are. Which is more than the rest of us can say.",
+   "draft": "Iinkomo ziyazi kanye apho zikhoyo. Thina asinakutsho njalo.",
+   "cond": "fog",
+   "set": "debt"
+  },
+  "xh03-14": {
+   "ref": "witty.wind[52]",
+   "en": "Gqeberha, we know. We know.",
+   "draft": "Gqeberha, siyazi. Siyazi.",
+   "cond": "wind",
+   "set": "debt"
+  },
+  "xh03-15": {
+   "ref": "witty.clear[60]",
+   "en": "The sun is really milking this exit. Honestly, deserved.",
+   "draft": "Ilanga lithatha ixesha elide lisiya kutshona. Inyani, liyakufanele.",
+   "cond": "clear",
+   "set": "debt"
+  },
+  "xh03-16": {
+   "ref": "hero:b1410fa385e0",
+   "en": "Clouds for the sunset, sprinklers for the vines. The farm arranges its own rain.",
+   "draft": "Amafu okutshona kwelanga, amanzi okunkcenkceshela iidiliya. Ifama izilungiselela eyayo imvula.",
+   "cond": "partly-cloudy",
+   "set": "new-sets"
+  },
+  "xh03-17": {
+   "ref": "witty.clear[63]",
+   "en": "Be honest — you opened this app to confirm Saturday's braai.",
+   "draft": "Yithi inyani — uvule le app ukuze uqinisekise ibraai yangoMgqibelo.",
+   "cond": "clear",
+   "set": "debt"
+  },
+  "xh03-18": {
+   "ref": "witty.rain[59]",
+   "en": "All plans are officially moved to 'when it clears up'. Which is never. Shame.",
+   "draft": "Onke amacebo ngoku afuduselwe 'xa kuthe kwacaca'. Okungasoze kwenzeke. Hayi bo.",
+   "cond": "rain",
+   "set": "debt"
+  },
+  "xh03-19": {
+   "ref": "hero:fced9eb66ab6",
+   "en": "Even the hadeda is keeping it down. The sky set the tone.",
+   "draft": "Nditsho ne-hadeda ithe cwaka. Isibhakabhaka simisele umzekelo.",
+   "cond": "cloudy",
+   "set": "new-sets"
+  },
+  "xh03-20": {
+   "ref": "hero:757e7d6ae192",
+   "en": "Sea and sky in matching grey. Only the pier lights made an effort.",
+   "draft": "Ulwandle nesibhakabhaka bangwevu ngokufanayo. Zizibane zebhulorho kuphela ezizamileyo.",
+   "cond": "cloudy",
+   "set": "new-sets"
+  },
+  "xh03-21": {
+   "ref": "hero:80745efed5f3",
+   "en": "Sunglasses on, sunglasses off, sunglasses on. Friday afternoon is interval training.",
+   "draft": "Iiglasi zelanga ziyanxitywa, ziyakhululwa, ziyanxitywa. Emva kwemini ngoLwesihlanu kukuzilolonga.",
+   "cond": "partly-cloudy",
+   "set": "new-sets"
+  },
+  "xh03-22": {
+   "ref": "witty.heat[45]",
+   "en": "The sea is 12 degrees. By ten o'clock it's going to feel like a spa.",
+   "draft": "Ulwandle luziidigri ezili-12. Ngentsimbi yeshumi luza kuziva ngathi yispa.",
+   "cond": "heat",
+   "set": "debt"
+  },
+  "xh04-01": {
+   "ref": "hero:changed",
+   "en": "Even the people who swear it never gets cold are admitting it.",
+   "draft": "Nditsho nabo bafunga ukuba akuze kubande ngoku bayavuma.",
+   "cond": "cold",
+   "set": "changed-lines"
+  },
+  "xh04-02": {
+   "ref": "hero:fea9501b8608",
+   "en": "The sun won't be inspecting the shine today. The car is fine with that.",
+   "draft": "Ilanga alizukuza kujonga ukukhazimla namhlanje. Imoto ayinangxaki ngaloo nto.",
+   "cond": "cloudy",
+   "set": "new-sets"
+  },
+  "xh04-03": {
+   "ref": "witty.cloudy[55]",
+   "en": "Weekend grey: official permission to do absolutely nothing.",
+   "draft": "Ungwevu wempelaveki: imvume esemthethweni yokungenzi nto konke konke.",
+   "cond": "cloudy",
+   "set": "debt"
+  },
+  "xh04-04": {
+   "ref": "hero:c1ce48322447",
+   "en": "The whole veld with the colour turned down. The sheep count the same either way.",
+   "draft": "Ithafa lonke ngathi umbala uthotyiwe. Iigusha zibalwa ngendlela efanayo noko.",
+   "cond": "cloudy",
+   "set": "new-sets"
+  },
+  "xh04-05": {
+   "ref": "witty.cold-clear[72]",
+   "en": "Look quickly. In ten minutes it's night and the North Pole.",
+   "draft": "Jonga ngokukhawuleza. Kwimizuzu elishumi kuza kuba bubusuku nengqele enkulu.",
+   "cond": "cold-clear",
+   "set": "debt"
+  },
+  "xh04-06": {
+   "ref": "hero:763ab069ce5f",
+   "en": "The mountain's tablecloth is only half on. It's Monday, nobody's fully dressed.",
+   "draft": "Ilaphu letafile lentaba lingaphezulu ngesiqingatha kuphela. NguMvulo, akukho mntu unxibe ngokupheleleyo.",
+   "cond": "partly-cloudy",
+   "set": "new-sets"
+  },
+  "xh04-07": {
+   "ref": "witty.fog[39]",
+   "en": "The farm is still there. We're all just taking each other's word for it.",
+   "draft": "Ifama isekhona. Sikholelwa nje kwilizwi lomnye nomnye.",
+   "cond": "fog",
+   "set": "debt"
+  },
+  "xh04-08": {
+   "ref": "hero:967a77a46dcc",
+   "en": "Purple on the ground, white in the sky. Friday's colour scheme is approved.",
+   "draft": "Mfusa emhlabeni, mhlophe esibhakabhakeni. Imibala kaLwesihlanu yamkelwe.",
+   "cond": "partly-cloudy",
+   "set": "new-sets"
+  },
+  "xh04-09": {
+   "ref": "witty.cold-clear[42]",
+   "en": "It's a beautiful day to stay indoors.",
+   "draft": "Lusuku oluhle lokuhlala ngaphakathi.",
+   "cond": "cold-clear",
+   "set": "debt"
+  },
+  "xh04-10": {
+   "ref": "hero:dd431148f58b",
+   "en": "The clouds turned pink right on packing-up time. Nobody packed up.",
+   "draft": "Amafu abe pinki kanye ngexesha lokupakisha. Akukho mntu upakishileyo.",
+   "cond": "partly-cloudy",
+   "set": "new-sets"
+  },
+  "xh04-11": {
+   "ref": "witty.cloudy[72]",
+   "en": "The sky is under the covers. Yours are waiting. Coincidence? Never.",
+   "draft": "Isibhakabhaka sizigqumile. Iingubo zakho ziyakulinda. Kuyenzeka nje? Hayi.",
+   "cond": "cloudy",
+   "set": "debt"
+  },
+  "xh04-12": {
+   "ref": "hero:2b898e3bf961",
+   "en": "The dust is going for gold in the low light. The match plays on through it.",
+   "draft": "Uthuli lukhazimla ngathi yigolide ekukhanyeni kokutshona kwelanga. Umdlalo uyaqhubeka.",
+   "cond": "breezy",
+   "set": "new-sets"
+  },
+  "xh04-13": {
+   "ref": "witty.cold[89]",
+   "en": "The blesbok wear no scarves and file no complaints. We could learn something. We won't, but we could.",
+   "draft": "Izilwanyana zasendle azinxibi zikhafu kwaye azikhalazi. Singafunda into. Asizukufunda, kodwa singafunda.",
+   "cond": "cold",
+   "set": "debt"
+  },
+  "xh04-14": {
+   "ref": "witty.cloudy[54]",
+   "en": "The sky is in its interview suit: grey, neat, giving nothing away.",
+   "draft": "Isibhakabhaka sinxibe isuti yodliwano-ndlebe: ngwevu, icocekile, ayixeli nto.",
+   "cond": "cloudy",
+   "set": "debt"
+  },
+  "xh04-15": {
+   "ref": "hero:fe8f7c00561c",
+   "en": "Grey sky, jerseys on, school's out. The weekend doesn't need the sun's permission.",
+   "draft": "Isibhakabhaka singwevu, iijezi zinxitywe, isikolo siphumile. Impelaveki ayidingi mvume yelanga.",
+   "cond": "cloudy",
+   "set": "new-sets"
+  },
+  "xh04-16": {
+   "ref": "hero:2c1a57fdd503",
+   "en": "One cloud over the mountain is not a weather event. The fire stays lit.",
+   "draft": "Ilifu elinye phezu kwentaba asiyiyo imozulu. Umlilo uhlala uvutha.",
+   "cond": "partly-cloudy",
+   "set": "new-sets"
+  },
+  "xh04-17": {
+   "ref": "witty.cold-clear[39]",
+   "en": "The front left. The cold just moved in permanently.",
+   "draft": "Ifronti ihambile. Ingqele yona ifudukele apha ngokusisigxina.",
+   "cond": "cold-clear",
+   "set": "debt",
+   "held": "not applied: the English line was cut from the bank"
+  },
+  "xh04-18": {
+   "ref": "witty.cloudy[67]",
+   "en": "Dusk is on mute tonight. The evening showed up anyway.",
+   "draft": "Ukutshona kwelanga kuthe cwaka ngokuhlwanje. Ubusuku bufikile noko.",
+   "cond": "cloudy",
+   "set": "debt"
+  },
+  "xh04-19": {
+   "ref": "hero:0f2d38d86d44",
+   "en": "Clouds all afternoon, not a drop. The hose is back on duty.",
+   "draft": "Amafu emva kwemini yonke, akukho thontsi. Umbhobho wamanzi ubuyele emsebenzini.",
+   "cond": "partly-cloudy",
+   "set": "new-sets"
+  },
+  "xh04-20": {
+   "ref": "hero:2854d864e0bd",
+   "en": "The sky went from light grey to dark grey. That was the whole show.",
+   "draft": "Isibhakabhaka sisuke kungwevu olukhanyayo saya kungwevu olumnyama. Yayiyiyo yonke imiboniso leyo.",
+   "cond": "cloudy",
+   "set": "new-sets"
+  },
+  "xh04-21": {
+   "ref": "hero:e13550eec88a",
+   "en": "The breeze is still warm at this hour. The sea leaves the heating on all night.",
+   "draft": "Umoya omncinci usashushu ngeli xesha. Ulwandle lushiya isifudumezi sivuliwe ubusuku bonke.",
+   "cond": "breezy",
+   "set": "new-sets"
+  },
+  "xh04-22": {
+   "ref": "witty.cloudy[64]",
+   "en": "The sun clocked out without saying bye. Rude, but relatable.",
+   "draft": "Ilanga liphume emsebenzini lingavalelisanga. Akukho mbeko, kodwa siyaqonda.",
+   "cond": "cloudy",
+   "set": "debt"
+  },
+  "xh05-01": {
+   "ref": "witty.heat[70]",
+   "en": "We don't talk about today. Today is over. We're proud of us.",
+   "draft": "Asithethi nganamhlanje. Namhlanje kuphelile. Siyazingca.",
+   "cond": "heat",
+   "set": "debt"
+  },
+  "xh05-02": {
+   "ref": "hero:35db8dc9bed7",
+   "en": "The flag's giving the forecast before the surfers do. It says: go.",
+   "draft": "Iflegi ixela imozulu phambi kwabadlali bamaza. Ithi: hambani.",
+   "cond": "breezy",
+   "set": "new-sets"
+  },
+  "xh05-03": {
+   "ref": "witty.fog[75]",
+   "en": "Last one through closes the gate. Even if nobody can see it.",
+   "draft": "Owokugqibela ukudlula uvala isango. Nokuba akukho mntu ulibonayo.",
+   "cond": "fog",
+   "set": "debt"
+  },
+  "xh05-04": {
+   "ref": "witty.clear[62]",
+   "en": "When the weather behaves this well, so do we. Roughly.",
+   "draft": "Xa imozulu iziphethe kakuhle kangaka, nathi siyaziphatha. Phantse.",
+   "cond": "clear",
+   "set": "debt"
+  },
+  "xh05-05": {
+   "ref": "hero:82d7022c8ba8",
+   "en": "Sun, then cloud, then sun. Even the monkeys can't plan around that.",
+   "draft": "Ilanga, emva koko ilifu, emva koko ilanga. Nditsho neenkawu azikwazi ukwenza icebo.",
+   "cond": "partly-cloudy",
+   "set": "new-sets"
+  },
+  "xh05-06": {
+   "ref": "witty.wind[54]",
+   "en": "Jeffreys Bay: where the wind warms up before its Cape Town shift.",
+   "draft": "IJeffreys Bay: apho umoya uzilolonga khona phambi komsebenzi wawo eKapa.",
+   "cond": "wind",
+   "set": "debt"
+  },
+  "xh05-07": {
+   "ref": "hero:74df807311b7",
+   "en": "The shed bulb is tonight's sunset. The cattle accept the downgrade.",
+   "draft": "Isibane seshedi kukutshona kwelanga ngokuhlwanje. Iinkomo zamkela oko.",
+   "cond": "cloudy",
+   "set": "new-sets"
+  },
+  "xh05-08": {
+   "ref": "witty.rain[73]",
+   "en": "It's still fifty kilometres away and the stoep is already sold out.",
+   "draft": "Isekude ngeekhilomitha ezingamashumi amahlanu, kodwa istoep sele sigcwele.",
+   "cond": "rain",
+   "set": "debt"
+  },
+  "xh05-09": {
+   "ref": "witty.clear[52]",
+   "en": "Weather this perfect is on loan. The southeaster keeps receipts.",
+   "draft": "Imozulu entle kangaka yeyokubolekwa. Umoya wasempuma-mzantsi ugcina iirisithi.",
+   "cond": "clear",
+   "set": "debt"
+  },
+  "xh05-10": {
+   "ref": "witty.clear[78]",
+   "en": "A day so good even rush hour felt optional.",
+   "draft": "Usuku oluhle kangangokuba nditsho nexesha lezithuthi ezininzi beliziva ngathi ngumba wokuzikhethela.",
+   "cond": "clear",
+   "set": "debt",
+   "held": "not applied: the English line was cut from the bank"
+  },
+  "xh05-11": {
+   "ref": "hero:32f69c5844fd",
+   "en": "The security light came on early. The sun never properly clocked in.",
+   "draft": "Isibane sokhuseleko sikhanyise kwangethuba. Ilanga alizange liqale umsebenzi kakuhle.",
+   "cond": "cloudy",
+   "set": "new-sets"
+  },
+  "xh05-12": {
+   "ref": "hero:f7d3c5235454",
+   "en": "Cloud over the mountain, potjie under the lapa. Both need another hour.",
+   "draft": "Ilifu phezu kwentaba, ipotjie phantsi kwelapa. Zombini zisafuna enye iyure.",
+   "cond": "partly-cloudy",
+   "set": "new-sets"
+  },
+  "xh05-13": {
+   "ref": "witty.heat[85]",
+   "en": "Walk now or don't walk at all. The Lowveld gives you until seven.",
+   "draft": "Hamba ngoku okanye ungahambi konke. ILowveld ikunika ixesha de kube yintsimbi yesixhenxe.",
+   "cond": "heat",
+   "set": "debt"
+  },
+  "xh05-14": {
+   "ref": "hero:e5455833b948",
+   "en": "Half moon, half cloud, full bin. Tuesday night, as advertised.",
+   "draft": "Isiqingatha senyanga, isiqingatha selifu, umgqomo ugcwele. NgoLwesibini ebusuku, njengoko kwakuthenjisiwe.",
+   "cond": "partly-cloudy",
+   "set": "new-sets"
+  },
+  "xh05-15": {
+   "ref": "hero:6c0c0fcbfc50",
+   "en": "The smoke has found the neighbours' yard. Saturday's braai is officially a community event.",
+   "draft": "Umsi ufike eyadini yabamelwane. Ibraai yangoMgqibelo ngoku yeyoluntu lonke.",
+   "cond": "breezy",
+   "set": "new-sets"
+  },
+  "xh05-16": {
+   "ref": "witty.cold-clear[77]",
+   "en": "The Karoo is opening its roof for the night. Dress warm for the show.",
+   "draft": "IKaroo ivula uphahla lwayo ebusuku. Nxiba iimpahla ezifudumeleyo kumboniso.",
+   "cond": "cold-clear",
+   "set": "debt"
+  },
+  "xh05-17": {
+   "ref": "witty.rain[64]",
+   "en": "Breaking news: the puddles are open for business.",
+   "draft": "Iindaba ezintsha: amachibi avuliwe ngoku.",
+   "cond": "rain",
+   "set": "debt"
+  },
+  "xh05-18": {
+   "ref": "witty.cold-clear[48]",
+   "en": "Perfect drying weather. The washing will dry and freeze, in that order.",
+   "draft": "Yimozulu efanelekileyo yokomisa impahla. Impahla iza koma ize ibe ngumkhenkce, ngolo landelelwano.",
+   "cond": "cold-clear",
+   "set": "debt"
+  },
+  "xh05-19": {
+   "ref": "hero:7d42afbbd427",
+   "en": "The breeze is working the fruit stall today. Air-con included, no extra charge.",
+   "draft": "Umoya omncinci usebenza kwindawo yeziqhamo namhlanje. Ipholisa simahla, akukho mali yongezelelweyo.",
+   "cond": "breezy",
+   "set": "new-sets"
+  },
+  "xh05-20": {
+   "ref": "witty.cold-clear[60]",
+   "en": "Padstal coffee is functioning as central heating today.",
+   "draft": "Ikofu yepadstal isebenza njengesifudumezi namhlanje.",
+   "cond": "cold-clear",
+   "set": "debt"
+  },
+  "xh05-21": {
+   "ref": "witty.wind[20]",
+   "en": "The Doctor's on morning rounds. No appointment needed, unfortunately.",
+   "draft": "UGqirha uhamba ejonga kusasa. Akufuneki kubhukisha, ngelishwa.",
+   "cond": "wind",
+   "set": "debt"
+  },
+  "xh05-22": {
+   "ref": "hero:54b501779293",
+   "en": "The clouds stayed late just for the colour. Monday owed everyone that much.",
+   "draft": "Amafu ahlale kade ngenxa yombala kuphela. UMvulo ebetyala wonke umntu oko.",
+   "cond": "partly-cloudy",
+   "set": "new-sets"
+  },
+  "xh06-01": {
+   "ref": "hero:72637f2e8156",
+   "en": "Cloud shadows crossing the outfield at a steady walk. Nobody's appealing.",
+   "draft": "Izithunzi zamafu ziwela ibala zihamba kancinci. Akukho mntu ukhalazayo.",
+   "cond": "partly-cloudy",
+   "set": "new-sets"
+  },
+  "xh06-02": {
+   "ref": "witty.fog[60]",
+   "en": "Every window switching on is someone deciding: that's enough for today.",
+   "draft": "Yonke ifestile ekhanyayo ngumntu ogqibe kwelokuba: kwanele namhlanje.",
+   "cond": "fog",
+   "set": "debt"
+  },
+  "xh06-03": {
+   "ref": "witty.cloudy[38]",
+   "en": "Early grey. Like the tea, just let it steep.",
+   "draft": "Ungwevu kusasa. Mayihlale nje kancinci, njengeti.",
+   "cond": "cloudy",
+   "set": "debt"
+  },
+  "xh06-04": {
+   "ref": "hero:340ad671125a",
+   "en": "Sun's in, sun's out. Monday's doing a soft launch.",
+   "draft": "Ilanga liyangena, liyaphuma. UMvulo uqala kancinci.",
+   "cond": "partly-cloudy",
+   "set": "new-sets"
+  },
+  "xh06-05": {
+   "ref": "hero:6cbf0aa77a83",
+   "en": "The breeze is moving the jacaranda one street over, petal by petal. The stoep approves.",
+   "draft": "Umoya omncinci uthutha i-jacaranda iye kwesinye isitrato, intyatyambo ngentyatyambo. Istoep siyavuma.",
+   "cond": "breezy",
+   "set": "new-sets"
+  },
+  "xh06-06": {
+   "ref": "witty.rain[60]",
+   "en": "You smell Highveld rain before you see it. That's the trailer.",
+   "draft": "Imvula yaseHighveld uyayiva ngevumba phambi kokuba uyibone. Yintshayelelo leyo.",
+   "cond": "rain",
+   "set": "debt"
+  },
+  "xh06-07": {
+   "ref": "hero:bcf2e3521f6a",
+   "en": "The clouds gave the sun Tuesday off. Nobody told the humidity.",
+   "draft": "Amafu alinike ilanga ikhefu ngoLwesibini. Akukho mntu uxelele ubumanzi bomoya.",
+   "cond": "partly-cloudy",
+   "set": "new-sets"
+  },
+  "xh06-08": {
+   "ref": "hero:65940314e696",
+   "en": "Flags out straight, wine held tight. The deck's version of a calm Monday.",
+   "draft": "Iiflegi zolulekile, iwayini ibanjwe ngokuqinileyo. Yile ndlela uMvulo ozolileyo ukhangeleka ngayo apha.",
+   "cond": "breezy",
+   "set": "new-sets"
+  },
+  "xh06-09": {
+   "ref": "witty.heat[89]",
+   "en": "Sundowners aren't a luxury in the Lowveld. They're medical.",
+   "draft": "Isiselo sokutshona kwelanga asiyonto yobunewunewu eLowveld. Lichiza.",
+   "cond": "heat",
+   "set": "debt"
+  },
+  "xh06-10": {
+   "ref": "witty.cold[83]",
+   "en": "We're visiting outside in the cold because inside is, honestly, colder.",
+   "draft": "Sihleli phandle engqeleni kuba ngaphakathi, inyani, kubanda ngakumbi.",
+   "cond": "cold",
+   "set": "debt"
+  },
+  "xh06-11": {
+   "ref": "witty.fog[68]",
+   "en": "Let's call it atmosphere and go inside.",
+   "draft": "Masithi yimeko entle, singene ngaphakathi.",
+   "cond": "fog",
+   "set": "debt",
+   "held": "held: a safety line — needs the safety rule record (Claude + Sol) first"
+  },
+  "xh06-12": {
+   "ref": "witty.rain[51]",
+   "en": "Wet tar at sunrise. That's not a smell, that's heritage.",
+   "draft": "ITar emanzi ekuphumeni kwelanga. Asilovumba elo, lilifa.",
+   "cond": "rain",
+   "set": "debt"
+  },
+  "xh06-13": {
+   "ref": "hero:cbb3c781bd07",
+   "en": "The dog found the exact line between sun and shade. He's staying put.",
+   "draft": "Inja iwufumene kanye umda phakathi kwelanga nesithunzi. Ihlala khona.",
+   "cond": "partly-cloudy",
+   "set": "new-sets"
+  },
+  "xh06-14": {
+   "ref": "witty.clear[48]",
+   "en": "Out here even the sun refuses to rush.",
+   "draft": "Apha nditsho nelanga liyala ukungxama.",
+   "cond": "clear",
+   "set": "debt"
+  },
+  "xh06-15": {
+   "ref": "witty.wind[55]",
+   "en": "Gqeberha doesn't sleep, it just holds on.",
+   "draft": "IGqeberha ayilali, ibambelela nje.",
+   "cond": "wind",
+   "set": "debt"
+  },
+  "xh06-16": {
+   "ref": "witty.cloudy[45]",
+   "en": "Grey is also a colour, says my ma. Today I believe her.",
+   "draft": "Ungwevu nawo ngumbala, utsho umama. Namhlanje ndiyamkholelwa.",
+   "cond": "cloudy",
+   "set": "debt"
+  },
+  "xh06-17": {
+   "ref": "hero:52fa9e2e3b6b",
+   "en": "Not one shadow on the field all day. The umpire never had to squint.",
+   "draft": "Akukho sithunzi nesinye ebaleni imini yonke. Usompempe akazange afinyeze amehlo.",
+   "cond": "cloudy",
+   "set": "new-sets"
+  },
+  "xh06-18": {
+   "ref": "hero:ac9855f2fec7",
+   "en": "Every light on the string is swaying. Saturday night has rhythm, barely.",
+   "draft": "Zonke izibane ezisentanjeni ziyajiwuzela. UMgqibelo ebusuku unesingqi, kancinci nje.",
+   "cond": "breezy",
+   "set": "new-sets"
+  },
+  "xh06-19": {
+   "ref": "hero:5649361ed22c",
+   "en": "The leaves keep setting off the security light. The dog's stopped getting up for them.",
+   "draft": "Amagqabi asoloko ekhanyisa isibane sokhuseleko. Inja ayisaphakami ngenxa yawo.",
+   "cond": "breezy",
+   "set": "new-sets"
+  },
+  "xh06-20": {
+   "ref": "hero:12463d59eca0",
+   "en": "The sheets are dry already. Now the breeze is just showing off for the kid.",
+   "draft": "Amashiti sele omile. Ngoku umoya omncinci uzibonakalisa nje kumntwana.",
+   "cond": "breezy",
+   "set": "new-sets"
+  },
+  "xh06-21": {
+   "ref": "witty.cold[65]",
+   "en": "Close enough to admire, far enough that you don't have to shovel it. Perfect.",
+   "draft": "Kufutshane ngokwaneleyo ukuba ulincome, kude ngokwaneleyo ukuba ungalimbi. Kugqibelele.",
+   "cond": "cold",
+   "set": "debt"
+  },
+  "xh06-22": {
+   "ref": "witty.cloudy[60]",
+   "en": "Grey day equals baking day. Somebody's kitchen already smells amazing.",
+   "draft": "Usuku olungwevu lusuku lokubhaka. Ikhitshi lomntu othile sele linuka kamnandi.",
+   "cond": "cloudy",
+   "set": "debt"
+  },
+  "xh07-01": {
+   "ref": "hero:5ba811cb2946",
+   "en": "The sun's clocked out. The clouds are still lit, and so is the balcony.",
+   "draft": "Ilanga liphume emsebenzini. Amafu asakhanya, kunye nebhalkoni.",
+   "cond": "partly-cloudy",
+   "set": "new-sets"
+  },
+  "xh07-02": {
+   "ref": "hero:8d960369fd27",
+   "en": "The windpump is doing the morning's work. The grass is just waving it on.",
+   "draft": "Umpompo womoya wenza umsebenzi wakusasa. Ingca iyawangawangisa nje.",
+   "cond": "breezy",
+   "set": "new-sets"
+  },
+  "xh07-03": {
+   "ref": "hero:15326afa073e",
+   "en": "Somebody forgot the washing. The breeze didn't, and it's doing a lovely job.",
+   "draft": "Umntu uyilibele impahla. Umoya omncinci awuyilibalanga, kwaye wenza umsebenzi omhle.",
+   "cond": "breezy",
+   "set": "new-sets"
+  },
+  "xh07-04": {
+   "ref": "hero:3908d5812ded",
+   "en": "The clouds are passing the moon around. The balcony is happy to wait.",
+   "draft": "Amafu ayayidlulisana inyanga. Ibhalkoni ivuya ukulinda.",
+   "cond": "partly-cloudy",
+   "set": "new-sets"
+  },
+  "xh07-05": {
+   "ref": "witty.cold-clear[87]",
+   "en": "Breathing like a dragon, view like a dream.",
+   "draft": "Uphefumla ngathi yinamba enomlilo, umbono ngathi liphupha.",
+   "cond": "cold-clear",
+   "set": "debt"
+  },
+  "xh07-06": {
+   "ref": "hero:2ea929cc10b0",
+   "en": "The breeze is taking the smoke down the block. The whole street knows what's for supper.",
+   "draft": "Umoya omncinci uthwala umsi usiwa ezantsi kwesitrato. Isitrato sonke siyazi ukuba kutyiwa ntoni ngokuhlwa.",
+   "cond": "breezy",
+   "set": "new-sets"
+  },
+  "xh07-07": {
+   "ref": "hero:052cd437e1af",
+   "en": "The washing will be dry before first break. The breeze took the early shift.",
+   "draft": "Impahla iza koma phambi kwekhefu lokuqala. Umoya omncinci uqale umsebenzi kwangethuba.",
+   "cond": "breezy",
+   "set": "new-sets"
+  },
+  "xh07-08": {
+   "ref": "witty.cold[73]",
+   "en": "Wet sea cold: the kind that gets through four layers and a good mood.",
+   "draft": "Ingqele emanzi yaselwandle: lolo hlobo lugqobhoza iimpahla ezine nomoya omhle.",
+   "cond": "cold",
+   "set": "debt"
+  },
+  "xh07-09": {
+   "ref": "hero:0423b0d11d29",
+   "en": "The shade is working down the rows one at a time. It's inspecting.",
+   "draft": "Isithunzi sihamba imigca ngemigca. Siyahlola.",
+   "cond": "partly-cloudy",
+   "set": "new-sets"
+  },
+  "xh07-10": {
+   "ref": "witty.cold[77]",
+   "en": "You can watch the cold arriving. It's not even being subtle about it.",
+   "draft": "Uyayibona ingqele isiza. Ayizifihli konke konke.",
+   "cond": "cold",
+   "set": "debt"
+  },
+  "xh07-11": {
+   "ref": "witty.heat[48]",
+   "en": "The 5:30 runners aren't fitter than us. They're just smarter.",
+   "draft": "Ababaleki bango-5:30 abomelelanga kunathi. Bakrelekrele nje ngakumbi.",
+   "cond": "heat",
+   "set": "debt"
+  },
+  "xh07-12": {
+   "ref": "witty.rain[52]",
+   "en": "Joburg rain keeps a diary: 2pm sharp, maximum drama, no apologies.",
+   "draft": "Imvula yaseJoburg inedayari: ngo-2 emva kwemini kanye, idrama eninzi, akukho kuxolisa.",
+   "cond": "rain",
+   "set": "debt"
+  },
+  "xh07-13": {
+   "ref": "witty.cold-clear[85]",
+   "en": "No wind, no clouds, no excuse for that thin jacket.",
+   "draft": "Akukho moya, akukho mafu, akukho sizathu sale bhatyi ibhityileyo.",
+   "cond": "cold-clear",
+   "set": "debt"
+  },
+  "xh07-14": {
+   "ref": "witty.rain[63]",
+   "en": "To the dam levels! Every downpour is a round on the house.",
+   "draft": "Kumanqanaba amadama! Yonke imvula enkulu sisipho sasimahla.",
+   "cond": "rain",
+   "set": "debt"
+  },
+  "xh07-15": {
+   "ref": "witty.fog[95]",
+   "en": "The nearest neighbours are thirty kilometres away and tonight they can see you even less.",
+   "draft": "Abamelwane abakufutshane bakude ngeekhilomitha ezingamashumi amathathu, kwaye ngokuhlwanje bakubona kancinci nangakumbi.",
+   "cond": "fog",
+   "set": "debt"
+  },
+  "xh07-16": {
+   "ref": "hero:148cfc7f68b6",
+   "en": "The washing should have come in hours ago. The breeze voted to leave it.",
+   "draft": "Impahla bekufanele ingene kwiiyure ezidlulileyo. Umoya omncinci uvote ukuba ihlale.",
+   "cond": "breezy",
+   "set": "new-sets"
+  },
+  "xh07-17": {
+   "ref": "hero:6aa922bb24c8",
+   "en": "The cattle are home before the colour goes. Sunday ends exactly on schedule.",
+   "draft": "Iinkomo zisekhaya phambi kokuba umbala uphele. ICawa iphela ngexesha kanye.",
+   "cond": "partly-cloudy",
+   "set": "new-sets"
+  },
+  "xh07-18": {
+   "ref": "witty.clear[39]",
+   "en": "Weather this well-behaved is definitely up to something.",
+   "draft": "Imozulu eziphethe kakuhle kangaka ngokuqinisekileyo iceba into.",
+   "cond": "clear",
+   "set": "debt"
+  },
+  "xh07-19": {
+   "ref": "witty.cold[52]",
+   "en": "Highveld winter: sunburn and frostbite achievable on the same day.",
+   "draft": "Ubusika baseHighveld: ukutshiswa lilanga nokubanjwa ngumkhenkce kunokwenzeka ngosuku olunye.",
+   "cond": "cold",
+   "set": "debt"
+  },
+  "xh07-20": {
+   "ref": "hero:8db6041b06ea",
+   "en": "The jacaranda petals are taking the bus too. The breeze bought their tickets.",
+   "draft": "Amagqabi eentyatyambo ze-jacaranda nawo akhwele ibhasi. Umoya omncinci uwathengele amatikiti.",
+   "cond": "breezy",
+   "set": "new-sets"
+  },
+  "xh07-21": {
+   "ref": "hero:b8e6f92e8e84",
+   "en": "The sand is crossing the road a grain at a time. Nobody here is in a hurry.",
+   "draft": "Isanti iwela indlela ukhozo ngokhozo. Akukho mntu ungxamileyo apha.",
+   "cond": "breezy",
+   "set": "new-sets"
+  },
+  "xh07-22": {
+   "ref": "hero:1e5e636b6273",
+   "en": "Break time, and the breeze is doing everyone's hair. Teachers included.",
+   "draft": "Lixesha lekhefu, kwaye umoya omncinci ulungisa iinwele zabo bonke. Nootitshala.",
+   "cond": "breezy",
+   "set": "new-sets"
+  }
+ }
+}
