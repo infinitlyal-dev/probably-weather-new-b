@@ -1,0 +1,1560 @@
+{
+ "test": {
+  "from": "2026-01-01",
+  "to": "2026-09-24"
+ },
+ "hours": 78338,
+ "missingWords": {
+  "A": 0,
+  "B": 0,
+  "C": 0
+ },
+ "pooled": {
+  "A": {
+   "today": {
+    "calls": 372,
+    "right": 272,
+    "rightNear": 312,
+    "dry": 100,
+    "dryNear": 60,
+    "wet": 3702,
+    "caught": 272,
+    "caughtNear": 431
+   },
+   "candidate": {
+    "calls": 3197,
+    "right": 1533,
+    "rightNear": 2031,
+    "dry": 1664,
+    "dryNear": 1166,
+    "wet": 3702,
+    "caught": 1533,
+    "caughtNear": 1942
+   },
+   "neighbour (a) 0.3 mm": {
+    "calls": 4379,
+    "right": 1911,
+    "rightNear": 2621,
+    "dry": 2468,
+    "dryNear": 1758,
+    "wet": 3702,
+    "caught": 1911,
+    "caughtNear": 2296
+   },
+   "neighbour (b) 2 votes": {
+    "calls": 3300,
+    "right": 1547,
+    "rightNear": 2059,
+    "dry": 1753,
+    "dryNear": 1241,
+    "wet": 3702,
+    "caught": 1547,
+    "caughtNear": 1958
+   }
+  },
+  "B": {
+   "today": {
+    "calls": 482,
+    "right": 353,
+    "rightNear": 398,
+    "dry": 129,
+    "dryNear": 84,
+    "wet": 3702,
+    "caught": 353,
+    "caughtNear": 548
+   },
+   "candidate": {
+    "calls": 1958,
+    "right": 1053,
+    "rightNear": 1341,
+    "dry": 905,
+    "dryNear": 617,
+    "wet": 3702,
+    "caught": 1053,
+    "caughtNear": 1454
+   },
+   "neighbour (a) 0.3 mm": {
+    "calls": 2389,
+    "right": 1216,
+    "rightNear": 1585,
+    "dry": 1173,
+    "dryNear": 804,
+    "wet": 3702,
+    "caught": 1216,
+    "caughtNear": 1638
+   },
+   "neighbour (b) 2 votes": {
+    "calls": 1988,
+    "right": 1069,
+    "rightNear": 1361,
+    "dry": 919,
+    "dryNear": 627,
+    "wet": 3702,
+    "caught": 1069,
+    "caughtNear": 1475
+   }
+  },
+  "C": {
+   "today": {
+    "calls": 410,
+    "right": 307,
+    "rightNear": 342,
+    "dry": 103,
+    "dryNear": 68,
+    "wet": 3702,
+    "caught": 307,
+    "caughtNear": 489
+   },
+   "candidate": {
+    "calls": 2511,
+    "right": 1324,
+    "rightNear": 1707,
+    "dry": 1187,
+    "dryNear": 804,
+    "wet": 3702,
+    "caught": 1324,
+    "caughtNear": 1721
+   },
+   "neighbour (a) 0.3 mm": {
+    "calls": 3244,
+    "right": 1589,
+    "rightNear": 2108,
+    "dry": 1655,
+    "dryNear": 1136,
+    "wet": 3702,
+    "caught": 1589,
+    "caughtNear": 2000
+   },
+   "neighbour (b) 2 votes": {
+    "calls": 2824,
+    "right": 1398,
+    "rightNear": 1832,
+    "dry": 1426,
+    "dryNear": 992,
+    "wet": 3702,
+    "caught": 1398,
+    "caughtNear": 1835
+   }
+  }
+ },
+ "byRegion": {
+  "A": {
+   "Western Cape": {
+    "today": {
+     "calls": 41,
+     "right": 37,
+     "rightNear": 41,
+     "dry": 4,
+     "dryNear": 0,
+     "wet": 321,
+     "caught": 37,
+     "caughtNear": 64
+    },
+    "candidate": {
+     "calls": 172,
+     "right": 124,
+     "rightNear": 159,
+     "dry": 48,
+     "dryNear": 13,
+     "wet": 321,
+     "caught": 124,
+     "caughtNear": 159
+    },
+    "neighbour (a) 0.3 mm": {
+     "calls": 245,
+     "right": 159,
+     "rightNear": 215,
+     "dry": 86,
+     "dryNear": 30,
+     "wet": 321,
+     "caught": 159,
+     "caughtNear": 196
+    },
+    "neighbour (b) 2 votes": {
+     "calls": 173,
+     "right": 124,
+     "rightNear": 159,
+     "dry": 49,
+     "dryNear": 14,
+     "wet": 321,
+     "caught": 124,
+     "caughtNear": 159
+    }
+   },
+   "Garden Route": {
+    "today": {
+     "calls": 80,
+     "right": 78,
+     "rightNear": 80,
+     "dry": 2,
+     "dryNear": 0,
+     "wet": 659,
+     "caught": 78,
+     "caughtNear": 109
+    },
+    "candidate": {
+     "calls": 345,
+     "right": 271,
+     "rightNear": 318,
+     "dry": 74,
+     "dryNear": 27,
+     "wet": 659,
+     "caught": 271,
+     "caughtNear": 333
+    },
+    "neighbour (a) 0.3 mm": {
+     "calls": 483,
+     "right": 350,
+     "rightNear": 420,
+     "dry": 133,
+     "dryNear": 63,
+     "wet": 659,
+     "caught": 350,
+     "caughtNear": 407
+    },
+    "neighbour (b) 2 votes": {
+     "calls": 347,
+     "right": 271,
+     "rightNear": 319,
+     "dry": 76,
+     "dryNear": 28,
+     "wet": 659,
+     "caught": 271,
+     "caughtNear": 334
+    }
+   },
+   "Eastern Cape": {
+    "today": {
+     "calls": 110,
+     "right": 65,
+     "rightNear": 78,
+     "dry": 45,
+     "dryNear": 32,
+     "wet": 1019,
+     "caught": 65,
+     "caughtNear": 102
+    },
+    "candidate": {
+     "calls": 887,
+     "right": 427,
+     "rightNear": 543,
+     "dry": 460,
+     "dryNear": 344,
+     "wet": 1019,
+     "caught": 427,
+     "caughtNear": 526
+    },
+    "neighbour (a) 0.3 mm": {
+     "calls": 1220,
+     "right": 526,
+     "rightNear": 709,
+     "dry": 694,
+     "dryNear": 511,
+     "wet": 1019,
+     "caught": 526,
+     "caughtNear": 624
+    },
+    "neighbour (b) 2 votes": {
+     "calls": 913,
+     "right": 431,
+     "rightNear": 550,
+     "dry": 482,
+     "dryNear": 363,
+     "wet": 1019,
+     "caught": 431,
+     "caughtNear": 528
+    }
+   },
+   "KZN coast": {
+    "today": {
+     "calls": 16,
+     "right": 16,
+     "rightNear": 16,
+     "dry": 0,
+     "dryNear": 0,
+     "wet": 423,
+     "caught": 16,
+     "caughtNear": 30
+    },
+    "candidate": {
+     "calls": 226,
+     "right": 166,
+     "rightNear": 190,
+     "dry": 60,
+     "dryNear": 36,
+     "wet": 423,
+     "caught": 166,
+     "caughtNear": 214
+    },
+    "neighbour (a) 0.3 mm": {
+     "calls": 336,
+     "right": 210,
+     "rightNear": 253,
+     "dry": 126,
+     "dryNear": 83,
+     "wet": 423,
+     "caught": 210,
+     "caughtNear": 255
+    },
+    "neighbour (b) 2 votes": {
+     "calls": 234,
+     "right": 166,
+     "rightNear": 192,
+     "dry": 68,
+     "dryNear": 42,
+     "wet": 423,
+     "caught": 166,
+     "caughtNear": 214
+    }
+   },
+   "Highveld": {
+    "today": {
+     "calls": 17,
+     "right": 11,
+     "rightNear": 15,
+     "dry": 6,
+     "dryNear": 2,
+     "wet": 351,
+     "caught": 11,
+     "caughtNear": 21
+    },
+    "candidate": {
+     "calls": 247,
+     "right": 143,
+     "rightNear": 195,
+     "dry": 104,
+     "dryNear": 52,
+     "wet": 351,
+     "caught": 143,
+     "caughtNear": 194
+    },
+    "neighbour (a) 0.3 mm": {
+     "calls": 355,
+     "right": 180,
+     "rightNear": 253,
+     "dry": 175,
+     "dryNear": 102,
+     "wet": 351,
+     "caught": 180,
+     "caughtNear": 221
+    },
+    "neighbour (b) 2 votes": {
+     "calls": 257,
+     "right": 146,
+     "rightNear": 199,
+     "dry": 111,
+     "dryNear": 58,
+     "wet": 351,
+     "caught": 146,
+     "caughtNear": 195
+    }
+   },
+   "Free State": {
+    "today": {
+     "calls": 25,
+     "right": 19,
+     "rightNear": 22,
+     "dry": 6,
+     "dryNear": 3,
+     "wet": 217,
+     "caught": 19,
+     "caughtNear": 30
+    },
+    "candidate": {
+     "calls": 244,
+     "right": 87,
+     "rightNear": 128,
+     "dry": 157,
+     "dryNear": 116,
+     "wet": 217,
+     "caught": 87,
+     "caughtNear": 110
+    },
+    "neighbour (a) 0.3 mm": {
+     "calls": 308,
+     "right": 103,
+     "rightNear": 156,
+     "dry": 205,
+     "dryNear": 152,
+     "wet": 217,
+     "caught": 103,
+     "caughtNear": 124
+    },
+    "neighbour (b) 2 votes": {
+     "calls": 251,
+     "right": 89,
+     "rightNear": 131,
+     "dry": 162,
+     "dryNear": 120,
+     "wet": 217,
+     "caught": 89,
+     "caughtNear": 112
+    }
+   },
+   "Northern Cape": {
+    "today": {
+     "calls": 45,
+     "right": 35,
+     "rightNear": 42,
+     "dry": 10,
+     "dryNear": 3,
+     "wet": 254,
+     "caught": 35,
+     "caughtNear": 48
+    },
+    "candidate": {
+     "calls": 297,
+     "right": 126,
+     "rightNear": 182,
+     "dry": 171,
+     "dryNear": 115,
+     "wet": 254,
+     "caught": 126,
+     "caughtNear": 158
+    },
+    "neighbour (a) 0.3 mm": {
+     "calls": 390,
+     "right": 146,
+     "rightNear": 219,
+     "dry": 244,
+     "dryNear": 171,
+     "wet": 254,
+     "caught": 146,
+     "caughtNear": 176
+    },
+    "neighbour (b) 2 votes": {
+     "calls": 318,
+     "right": 128,
+     "rightNear": 188,
+     "dry": 190,
+     "dryNear": 130,
+     "wet": 254,
+     "caught": 128,
+     "caughtNear": 165
+    }
+   },
+   "North West": {
+    "today": {
+     "calls": 5,
+     "right": 1,
+     "rightNear": 2,
+     "dry": 4,
+     "dryNear": 3,
+     "wet": 85,
+     "caught": 1,
+     "caughtNear": 2
+    },
+    "candidate": {
+     "calls": 187,
+     "right": 44,
+     "rightNear": 74,
+     "dry": 143,
+     "dryNear": 113,
+     "wet": 85,
+     "caught": 44,
+     "caughtNear": 53
+    },
+    "neighbour (a) 0.3 mm": {
+     "calls": 241,
+     "right": 50,
+     "rightNear": 83,
+     "dry": 191,
+     "dryNear": 158,
+     "wet": 85,
+     "caught": 50,
+     "caughtNear": 56
+    },
+    "neighbour (b) 2 votes": {
+     "calls": 196,
+     "right": 44,
+     "rightNear": 74,
+     "dry": 152,
+     "dryNear": 122,
+     "wet": 85,
+     "caught": 44,
+     "caughtNear": 53
+    }
+   },
+   "Lowveld": {
+    "today": {
+     "calls": 25,
+     "right": 9,
+     "rightNear": 14,
+     "dry": 16,
+     "dryNear": 11,
+     "wet": 245,
+     "caught": 9,
+     "caughtNear": 22
+    },
+    "candidate": {
+     "calls": 379,
+     "right": 103,
+     "rightNear": 174,
+     "dry": 276,
+     "dryNear": 205,
+     "wet": 245,
+     "caught": 103,
+     "caughtNear": 135
+    },
+    "neighbour (a) 0.3 mm": {
+     "calls": 505,
+     "right": 133,
+     "rightNear": 217,
+     "dry": 372,
+     "dryNear": 288,
+     "wet": 245,
+     "caught": 133,
+     "caughtNear": 159
+    },
+    "neighbour (b) 2 votes": {
+     "calls": 386,
+     "right": 103,
+     "rightNear": 175,
+     "dry": 283,
+     "dryNear": 211,
+     "wet": 245,
+     "caught": 103,
+     "caughtNear": 136
+    }
+   },
+   "Limpopo": {
+    "today": {
+     "calls": 8,
+     "right": 1,
+     "rightNear": 2,
+     "dry": 7,
+     "dryNear": 6,
+     "wet": 128,
+     "caught": 1,
+     "caughtNear": 3
+    },
+    "candidate": {
+     "calls": 213,
+     "right": 42,
+     "rightNear": 68,
+     "dry": 171,
+     "dryNear": 145,
+     "wet": 128,
+     "caught": 42,
+     "caughtNear": 60
+    },
+    "neighbour (a) 0.3 mm": {
+     "calls": 296,
+     "right": 54,
+     "rightNear": 96,
+     "dry": 242,
+     "dryNear": 200,
+     "wet": 128,
+     "caught": 54,
+     "caughtNear": 78
+    },
+    "neighbour (b) 2 votes": {
+     "calls": 225,
+     "right": 45,
+     "rightNear": 72,
+     "dry": 180,
+     "dryNear": 153,
+     "wet": 128,
+     "caught": 45,
+     "caughtNear": 62
+    }
+   }
+  },
+  "B": {
+   "Western Cape": {
+    "today": {
+     "calls": 53,
+     "right": 48,
+     "rightNear": 53,
+     "dry": 5,
+     "dryNear": 0,
+     "wet": 321,
+     "caught": 48,
+     "caughtNear": 74
+    },
+    "candidate": {
+     "calls": 126,
+     "right": 98,
+     "rightNear": 120,
+     "dry": 28,
+     "dryNear": 6,
+     "wet": 321,
+     "caught": 98,
+     "caughtNear": 127
+    },
+    "neighbour (a) 0.3 mm": {
+     "calls": 152,
+     "right": 109,
+     "rightNear": 138,
+     "dry": 43,
+     "dryNear": 14,
+     "wet": 321,
+     "caught": 109,
+     "caughtNear": 143
+    },
+    "neighbour (b) 2 votes": {
+     "calls": 126,
+     "right": 98,
+     "rightNear": 120,
+     "dry": 28,
+     "dryNear": 6,
+     "wet": 321,
+     "caught": 98,
+     "caughtNear": 127
+    }
+   },
+   "Garden Route": {
+    "today": {
+     "calls": 93,
+     "right": 91,
+     "rightNear": 93,
+     "dry": 2,
+     "dryNear": 0,
+     "wet": 659,
+     "caught": 91,
+     "caughtNear": 127
+    },
+    "candidate": {
+     "calls": 259,
+     "right": 214,
+     "rightNear": 239,
+     "dry": 45,
+     "dryNear": 20,
+     "wet": 659,
+     "caught": 214,
+     "caughtNear": 276
+    },
+    "neighbour (a) 0.3 mm": {
+     "calls": 321,
+     "right": 249,
+     "rightNear": 291,
+     "dry": 72,
+     "dryNear": 30,
+     "wet": 659,
+     "caught": 249,
+     "caughtNear": 317
+    },
+    "neighbour (b) 2 votes": {
+     "calls": 260,
+     "right": 215,
+     "rightNear": 240,
+     "dry": 45,
+     "dryNear": 20,
+     "wet": 659,
+     "caught": 215,
+     "caughtNear": 277
+    }
+   },
+   "Eastern Cape": {
+    "today": {
+     "calls": 118,
+     "right": 73,
+     "rightNear": 84,
+     "dry": 45,
+     "dryNear": 34,
+     "wet": 1019,
+     "caught": 73,
+     "caughtNear": 128
+    },
+    "candidate": {
+     "calls": 567,
+     "right": 285,
+     "rightNear": 367,
+     "dry": 282,
+     "dryNear": 200,
+     "wet": 1019,
+     "caught": 285,
+     "caughtNear": 399
+    },
+    "neighbour (a) 0.3 mm": {
+     "calls": 700,
+     "right": 342,
+     "rightNear": 440,
+     "dry": 358,
+     "dryNear": 260,
+     "wet": 1019,
+     "caught": 342,
+     "caughtNear": 457
+    },
+    "neighbour (b) 2 votes": {
+     "calls": 570,
+     "right": 286,
+     "rightNear": 370,
+     "dry": 284,
+     "dryNear": 200,
+     "wet": 1019,
+     "caught": 286,
+     "caughtNear": 401
+    }
+   },
+   "KZN coast": {
+    "today": {
+     "calls": 37,
+     "right": 34,
+     "rightNear": 34,
+     "dry": 3,
+     "dryNear": 3,
+     "wet": 423,
+     "caught": 34,
+     "caughtNear": 47
+    },
+    "candidate": {
+     "calls": 132,
+     "right": 107,
+     "rightNear": 119,
+     "dry": 25,
+     "dryNear": 13,
+     "wet": 423,
+     "caught": 107,
+     "caughtNear": 160
+    },
+    "neighbour (a) 0.3 mm": {
+     "calls": 162,
+     "right": 124,
+     "rightNear": 138,
+     "dry": 38,
+     "dryNear": 24,
+     "wet": 423,
+     "caught": 124,
+     "caughtNear": 172
+    },
+    "neighbour (b) 2 votes": {
+     "calls": 134,
+     "right": 108,
+     "rightNear": 120,
+     "dry": 26,
+     "dryNear": 14,
+     "wet": 423,
+     "caught": 108,
+     "caughtNear": 161
+    }
+   },
+   "Highveld": {
+    "today": {
+     "calls": 21,
+     "right": 16,
+     "rightNear": 21,
+     "dry": 5,
+     "dryNear": 0,
+     "wet": 351,
+     "caught": 16,
+     "caughtNear": 30
+    },
+    "candidate": {
+     "calls": 132,
+     "right": 79,
+     "rightNear": 108,
+     "dry": 53,
+     "dryNear": 24,
+     "wet": 351,
+     "caught": 79,
+     "caughtNear": 121
+    },
+    "neighbour (a) 0.3 mm": {
+     "calls": 162,
+     "right": 96,
+     "rightNear": 134,
+     "dry": 66,
+     "dryNear": 28,
+     "wet": 351,
+     "caught": 96,
+     "caughtNear": 138
+    },
+    "neighbour (b) 2 votes": {
+     "calls": 142,
+     "right": 88,
+     "rightNear": 117,
+     "dry": 54,
+     "dryNear": 25,
+     "wet": 351,
+     "caught": 88,
+     "caughtNear": 132
+    }
+   },
+   "Free State": {
+    "today": {
+     "calls": 42,
+     "right": 27,
+     "rightNear": 31,
+     "dry": 15,
+     "dryNear": 11,
+     "wet": 217,
+     "caught": 27,
+     "caughtNear": 45
+    },
+    "candidate": {
+     "calls": 165,
+     "right": 73,
+     "rightNear": 99,
+     "dry": 92,
+     "dryNear": 66,
+     "wet": 217,
+     "caught": 73,
+     "caughtNear": 92
+    },
+    "neighbour (a) 0.3 mm": {
+     "calls": 193,
+     "right": 75,
+     "rightNear": 106,
+     "dry": 118,
+     "dryNear": 87,
+     "wet": 217,
+     "caught": 75,
+     "caughtNear": 96
+    },
+    "neighbour (b) 2 votes": {
+     "calls": 170,
+     "right": 75,
+     "rightNear": 102,
+     "dry": 95,
+     "dryNear": 68,
+     "wet": 217,
+     "caught": 75,
+     "caughtNear": 96
+    }
+   },
+   "Northern Cape": {
+    "today": {
+     "calls": 51,
+     "right": 36,
+     "rightNear": 45,
+     "dry": 15,
+     "dryNear": 6,
+     "wet": 254,
+     "caught": 36,
+     "caughtNear": 52
+    },
+    "candidate": {
+     "calls": 171,
+     "right": 91,
+     "rightNear": 118,
+     "dry": 80,
+     "dryNear": 53,
+     "wet": 254,
+     "caught": 91,
+     "caughtNear": 117
+    },
+    "neighbour (a) 0.3 mm": {
+     "calls": 211,
+     "right": 103,
+     "rightNear": 139,
+     "dry": 108,
+     "dryNear": 72,
+     "wet": 254,
+     "caught": 103,
+     "caughtNear": 129
+    },
+    "neighbour (b) 2 votes": {
+     "calls": 172,
+     "right": 92,
+     "rightNear": 119,
+     "dry": 80,
+     "dryNear": 53,
+     "wet": 254,
+     "caught": 92,
+     "caughtNear": 118
+    }
+   },
+   "North West": {
+    "today": {
+     "calls": 11,
+     "right": 4,
+     "rightNear": 7,
+     "dry": 7,
+     "dryNear": 4,
+     "wet": 85,
+     "caught": 4,
+     "caughtNear": 7
+    },
+    "candidate": {
+     "calls": 82,
+     "right": 21,
+     "rightNear": 32,
+     "dry": 61,
+     "dryNear": 50,
+     "wet": 85,
+     "caught": 21,
+     "caughtNear": 27
+    },
+    "neighbour (a) 0.3 mm": {
+     "calls": 99,
+     "right": 22,
+     "rightNear": 35,
+     "dry": 77,
+     "dryNear": 64,
+     "wet": 85,
+     "caught": 22,
+     "caughtNear": 28
+    },
+    "neighbour (b) 2 votes": {
+     "calls": 85,
+     "right": 21,
+     "rightNear": 32,
+     "dry": 64,
+     "dryNear": 53,
+     "wet": 85,
+     "caught": 21,
+     "caughtNear": 27
+    }
+   },
+   "Lowveld": {
+    "today": {
+     "calls": 44,
+     "right": 23,
+     "rightNear": 29,
+     "dry": 21,
+     "dryNear": 15,
+     "wet": 245,
+     "caught": 23,
+     "caughtNear": 35
+    },
+    "candidate": {
+     "calls": 218,
+     "right": 66,
+     "rightNear": 108,
+     "dry": 152,
+     "dryNear": 110,
+     "wet": 245,
+     "caught": 66,
+     "caughtNear": 96
+    },
+    "neighbour (a) 0.3 mm": {
+     "calls": 258,
+     "right": 72,
+     "rightNear": 119,
+     "dry": 186,
+     "dryNear": 139,
+     "wet": 245,
+     "caught": 72,
+     "caughtNear": 106
+    },
+    "neighbour (b) 2 votes": {
+     "calls": 221,
+     "right": 66,
+     "rightNear": 109,
+     "dry": 155,
+     "dryNear": 112,
+     "wet": 245,
+     "caught": 66,
+     "caughtNear": 97
+    }
+   },
+   "Limpopo": {
+    "today": {
+     "calls": 12,
+     "right": 1,
+     "rightNear": 1,
+     "dry": 11,
+     "dryNear": 11,
+     "wet": 128,
+     "caught": 1,
+     "caughtNear": 3
+    },
+    "candidate": {
+     "calls": 106,
+     "right": 19,
+     "rightNear": 31,
+     "dry": 87,
+     "dryNear": 75,
+     "wet": 128,
+     "caught": 19,
+     "caughtNear": 39
+    },
+    "neighbour (a) 0.3 mm": {
+     "calls": 131,
+     "right": 24,
+     "rightNear": 45,
+     "dry": 107,
+     "dryNear": 86,
+     "wet": 128,
+     "caught": 24,
+     "caughtNear": 52
+    },
+    "neighbour (b) 2 votes": {
+     "calls": 108,
+     "right": 20,
+     "rightNear": 32,
+     "dry": 88,
+     "dryNear": 76,
+     "wet": 128,
+     "caught": 20,
+     "caughtNear": 39
+    }
+   }
+  },
+  "C": {
+   "Western Cape": {
+    "today": {
+     "calls": 43,
+     "right": 39,
+     "rightNear": 43,
+     "dry": 4,
+     "dryNear": 0,
+     "wet": 321,
+     "caught": 39,
+     "caughtNear": 65
+    },
+    "candidate": {
+     "calls": 134,
+     "right": 107,
+     "rightNear": 130,
+     "dry": 27,
+     "dryNear": 4,
+     "wet": 321,
+     "caught": 107,
+     "caughtNear": 136
+    },
+    "neighbour (a) 0.3 mm": {
+     "calls": 184,
+     "right": 133,
+     "rightNear": 169,
+     "dry": 51,
+     "dryNear": 15,
+     "wet": 321,
+     "caught": 133,
+     "caughtNear": 174
+    },
+    "neighbour (b) 2 votes": {
+     "calls": 139,
+     "right": 108,
+     "rightNear": 134,
+     "dry": 31,
+     "dryNear": 5,
+     "wet": 321,
+     "caught": 108,
+     "caughtNear": 140
+    }
+   },
+   "Garden Route": {
+    "today": {
+     "calls": 85,
+     "right": 81,
+     "rightNear": 84,
+     "dry": 4,
+     "dryNear": 1,
+     "wet": 659,
+     "caught": 81,
+     "caughtNear": 120
+    },
+    "candidate": {
+     "calls": 318,
+     "right": 259,
+     "rightNear": 296,
+     "dry": 59,
+     "dryNear": 22,
+     "wet": 659,
+     "caught": 259,
+     "caughtNear": 319
+    },
+    "neighbour (a) 0.3 mm": {
+     "calls": 402,
+     "right": 309,
+     "rightNear": 365,
+     "dry": 93,
+     "dryNear": 37,
+     "wet": 659,
+     "caught": 309,
+     "caughtNear": 371
+    },
+    "neighbour (b) 2 votes": {
+     "calls": 342,
+     "right": 267,
+     "rightNear": 308,
+     "dry": 75,
+     "dryNear": 34,
+     "wet": 659,
+     "caught": 267,
+     "caughtNear": 331
+    }
+   },
+   "Eastern Cape": {
+    "today": {
+     "calls": 101,
+     "right": 64,
+     "rightNear": 73,
+     "dry": 37,
+     "dryNear": 28,
+     "wet": 1019,
+     "caught": 64,
+     "caughtNear": 112
+    },
+    "candidate": {
+     "calls": 702,
+     "right": 359,
+     "rightNear": 456,
+     "dry": 343,
+     "dryNear": 246,
+     "wet": 1019,
+     "caught": 359,
+     "caughtNear": 472
+    },
+    "neighbour (a) 0.3 mm": {
+     "calls": 911,
+     "right": 432,
+     "rightNear": 569,
+     "dry": 479,
+     "dryNear": 342,
+     "wet": 1019,
+     "caught": 432,
+     "caughtNear": 549
+    },
+    "neighbour (b) 2 votes": {
+     "calls": 790,
+     "right": 385,
+     "rightNear": 493,
+     "dry": 405,
+     "dryNear": 297,
+     "wet": 1019,
+     "caught": 385,
+     "caughtNear": 503
+    }
+   },
+   "KZN coast": {
+    "today": {
+     "calls": 27,
+     "right": 26,
+     "rightNear": 26,
+     "dry": 1,
+     "dryNear": 1,
+     "wet": 423,
+     "caught": 26,
+     "caughtNear": 36
+    },
+    "candidate": {
+     "calls": 214,
+     "right": 155,
+     "rightNear": 183,
+     "dry": 59,
+     "dryNear": 31,
+     "wet": 423,
+     "caught": 155,
+     "caughtNear": 209
+    },
+    "neighbour (a) 0.3 mm": {
+     "calls": 286,
+     "right": 191,
+     "rightNear": 228,
+     "dry": 95,
+     "dryNear": 58,
+     "wet": 423,
+     "caught": 191,
+     "caughtNear": 250
+    },
+    "neighbour (b) 2 votes": {
+     "calls": 235,
+     "right": 163,
+     "rightNear": 193,
+     "dry": 72,
+     "dryNear": 42,
+     "wet": 423,
+     "caught": 163,
+     "caughtNear": 221
+    }
+   },
+   "Highveld": {
+    "today": {
+     "calls": 18,
+     "right": 16,
+     "rightNear": 17,
+     "dry": 2,
+     "dryNear": 1,
+     "wet": 351,
+     "caught": 16,
+     "caughtNear": 30
+    },
+    "candidate": {
+     "calls": 183,
+     "right": 111,
+     "rightNear": 150,
+     "dry": 72,
+     "dryNear": 33,
+     "wet": 351,
+     "caught": 111,
+     "caughtNear": 149
+    },
+    "neighbour (a) 0.3 mm": {
+     "calls": 242,
+     "right": 133,
+     "rightNear": 186,
+     "dry": 109,
+     "dryNear": 56,
+     "wet": 351,
+     "caught": 133,
+     "caughtNear": 176
+    },
+    "neighbour (b) 2 votes": {
+     "calls": 210,
+     "right": 119,
+     "rightNear": 166,
+     "dry": 91,
+     "dryNear": 44,
+     "wet": 351,
+     "caught": 119,
+     "caughtNear": 168
+    }
+   },
+   "Free State": {
+    "today": {
+     "calls": 33,
+     "right": 22,
+     "rightNear": 24,
+     "dry": 11,
+     "dryNear": 9,
+     "wet": 217,
+     "caught": 22,
+     "caughtNear": 37
+    },
+    "candidate": {
+     "calls": 186,
+     "right": 78,
+     "rightNear": 105,
+     "dry": 108,
+     "dryNear": 81,
+     "wet": 217,
+     "caught": 78,
+     "caughtNear": 93
+    },
+    "neighbour (a) 0.3 mm": {
+     "calls": 233,
+     "right": 82,
+     "rightNear": 115,
+     "dry": 151,
+     "dryNear": 118,
+     "wet": 217,
+     "caught": 82,
+     "caughtNear": 95
+    },
+    "neighbour (b) 2 votes": {
+     "calls": 215,
+     "right": 85,
+     "rightNear": 119,
+     "dry": 130,
+     "dryNear": 96,
+     "wet": 217,
+     "caught": 85,
+     "caughtNear": 103
+    }
+   },
+   "Northern Cape": {
+    "today": {
+     "calls": 51,
+     "right": 36,
+     "rightNear": 44,
+     "dry": 15,
+     "dryNear": 7,
+     "wet": 254,
+     "caught": 36,
+     "caughtNear": 50
+    },
+    "candidate": {
+     "calls": 217,
+     "right": 110,
+     "rightNear": 144,
+     "dry": 107,
+     "dryNear": 73,
+     "wet": 254,
+     "caught": 110,
+     "caughtNear": 130
+    },
+    "neighbour (a) 0.3 mm": {
+     "calls": 267,
+     "right": 121,
+     "rightNear": 166,
+     "dry": 146,
+     "dryNear": 101,
+     "wet": 254,
+     "caught": 121,
+     "caughtNear": 141
+    },
+    "neighbour (b) 2 votes": {
+     "calls": 256,
+     "right": 116,
+     "rightNear": 159,
+     "dry": 140,
+     "dryNear": 97,
+     "wet": 254,
+     "caught": 116,
+     "caughtNear": 140
+    }
+   },
+   "North West": {
+    "today": {
+     "calls": 9,
+     "right": 4,
+     "rightNear": 7,
+     "dry": 5,
+     "dryNear": 2,
+     "wet": 85,
+     "caught": 4,
+     "caughtNear": 9
+    },
+    "candidate": {
+     "calls": 124,
+     "right": 33,
+     "rightNear": 50,
+     "dry": 91,
+     "dryNear": 74,
+     "wet": 85,
+     "caught": 33,
+     "caughtNear": 44
+    },
+    "neighbour (a) 0.3 mm": {
+     "calls": 165,
+     "right": 44,
+     "rightNear": 66,
+     "dry": 121,
+     "dryNear": 99,
+     "wet": 85,
+     "caught": 44,
+     "caughtNear": 49
+    },
+    "neighbour (b) 2 votes": {
+     "calls": 145,
+     "right": 36,
+     "rightNear": 56,
+     "dry": 109,
+     "dryNear": 89,
+     "wet": 85,
+     "caught": 36,
+     "caughtNear": 48
+    }
+   },
+   "Lowveld": {
+    "today": {
+     "calls": 32,
+     "right": 19,
+     "rightNear": 24,
+     "dry": 13,
+     "dryNear": 8,
+     "wet": 245,
+     "caught": 19,
+     "caughtNear": 30
+    },
+    "candidate": {
+     "calls": 278,
+     "right": 82,
+     "rightNear": 135,
+     "dry": 196,
+     "dryNear": 143,
+     "wet": 245,
+     "caught": 82,
+     "caughtNear": 117
+    },
+    "neighbour (a) 0.3 mm": {
+     "calls": 349,
+     "right": 101,
+     "rightNear": 165,
+     "dry": 248,
+     "dryNear": 184,
+     "wet": 245,
+     "caught": 101,
+     "caughtNear": 129
+    },
+    "neighbour (b) 2 votes": {
+     "calls": 311,
+     "right": 88,
+     "rightNear": 144,
+     "dry": 223,
+     "dryNear": 167,
+     "wet": 245,
+     "caught": 88,
+     "caughtNear": 127
+    }
+   },
+   "Limpopo": {
+    "today": {
+     "calls": 11,
+     "right": 0,
+     "rightNear": 0,
+     "dry": 11,
+     "dryNear": 11,
+     "wet": 128,
+     "caught": 0,
+     "caughtNear": 0
+    },
+    "candidate": {
+     "calls": 155,
+     "right": 30,
+     "rightNear": 58,
+     "dry": 125,
+     "dryNear": 97,
+     "wet": 128,
+     "caught": 30,
+     "caughtNear": 52
+    },
+    "neighbour (a) 0.3 mm": {
+     "calls": 205,
+     "right": 43,
+     "rightNear": 79,
+     "dry": 162,
+     "dryNear": 126,
+     "wet": 128,
+     "caught": 43,
+     "caughtNear": 66
+    },
+    "neighbour (b) 2 votes": {
+     "calls": 181,
+     "right": 31,
+     "rightNear": 60,
+     "dry": 150,
+     "dryNear": 121,
+     "wet": 128,
+     "caught": 31,
+     "caughtNear": 54
+    }
+   }
+  }
+ },
+ "tonight": {
+  "A": {
+   "hours": 368,
+   "wet": 92,
+   "near": 145,
+   "twoFamilies": 368,
+   "twoFamiliesWet": 92,
+   "twoFamiliesNear": 145,
+   "byRegion": {
+    "Western Cape": {
+     "hours": 12,
+     "wet": 7
+    },
+    "Garden Route": {
+     "hours": 18,
+     "wet": 6
+    },
+    "Eastern Cape": {
+     "hours": 97,
+     "wet": 24
+    },
+    "KZN coast": {
+     "hours": 31,
+     "wet": 15
+    },
+    "Highveld": {
+     "hours": 35,
+     "wet": 19
+    },
+    "Free State": {
+     "hours": 39,
+     "wet": 3
+    },
+    "Northern Cape": {
+     "hours": 35,
+     "wet": 5
+    },
+    "North West": {
+     "hours": 29,
+     "wet": 2
+    },
+    "Lowveld": {
+     "hours": 39,
+     "wet": 7
+    },
+    "Limpopo": {
+     "hours": 33,
+     "wet": 4
+    }
+   }
+  },
+  "B": {
+   "hours": 90,
+   "wet": 26,
+   "near": 40,
+   "twoFamilies": 90,
+   "twoFamiliesWet": 26,
+   "twoFamiliesNear": 40,
+   "byRegion": {
+    "Western Cape": {
+     "hours": 3,
+     "wet": 2
+    },
+    "Garden Route": {
+     "hours": 4,
+     "wet": 3
+    },
+    "Eastern Cape": {
+     "hours": 19,
+     "wet": 5
+    },
+    "KZN coast": {
+     "hours": 6,
+     "wet": 5
+    },
+    "Highveld": {
+     "hours": 11,
+     "wet": 5
+    },
+    "Free State": {
+     "hours": 13,
+     "wet": 1
+    },
+    "Northern Cape": {
+     "hours": 12,
+     "wet": 1
+    },
+    "North West": {
+     "hours": 4,
+     "wet": 1
+    },
+    "Lowveld": {
+     "hours": 12,
+     "wet": 3
+    },
+    "Limpopo": {
+     "hours": 6,
+     "wet": 0
+    }
+   }
+  },
+  "C": {
+   "hours": 290,
+   "wet": 87,
+   "near": 136,
+   "twoFamilies": 290,
+   "twoFamiliesWet": 87,
+   "twoFamiliesNear": 136,
+   "byRegion": {
+    "Western Cape": {
+     "hours": 3,
+     "wet": 3
+    },
+    "Garden Route": {
+     "hours": 23,
+     "wet": 12
+    },
+    "Eastern Cape": {
+     "hours": 53,
+     "wet": 19
+    },
+    "KZN coast": {
+     "hours": 31,
+     "wet": 14
+    },
+    "Highveld": {
+     "hours": 34,
+     "wet": 17
+    },
+    "Free State": {
+     "hours": 20,
+     "wet": 3
+    },
+    "Northern Cape": {
+     "hours": 34,
+     "wet": 6
+    },
+    "North West": {
+     "hours": 27,
+     "wet": 4
+    },
+    "Lowveld": {
+     "hours": 34,
+     "wet": 7
+    },
+    "Limpopo": {
+     "hours": 31,
+     "wet": 2
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,954 @@
+{
+ "from": "2026-09-24T21:58:20.001Z",
+ "to": "2026-10-12T19:10:01.687Z",
+ "reads": 2325,
+ "rules": {
+  "today": {
+   "calls": 74,
+   "right": 52,
+   "wet": 192,
+   "caught": 52
+  },
+  "candidate": {
+   "calls": 118,
+   "right": 82,
+   "wet": 192,
+   "caught": 82
+  },
+  "a": {
+   "calls": 151,
+   "right": 98,
+   "wet": 192,
+   "caught": 98
+  },
+  "b": {
+   "calls": 123,
+   "right": 84,
+   "wet": 192,
+   "caught": 84
+  }
+ },
+ "wetShownMightRain": 73,
+ "wetByAirport": {
+  "FACT": {
+   "wet": 11,
+   "mightRain": 3,
+   "rainToday": 0,
+   "rainCandidate": 3
+  },
+  "FAOR": {
+   "wet": 46,
+   "mightRain": 23,
+   "rainToday": 15,
+   "rainCandidate": 24
+  },
+  "FALE": {
+   "wet": 36,
+   "mightRain": 14,
+   "rainToday": 8,
+   "rainCandidate": 8
+  },
+  "FAPE": {
+   "wet": 47,
+   "mightRain": 14,
+   "rainToday": 19,
+   "rainCandidate": 25
+  },
+  "FAGG": {
+   "wet": 45,
+   "mightRain": 16,
+   "rainToday": 7,
+   "rainCandidate": 16
+  },
+  "FABL": {
+   "wet": 7,
+   "mightRain": 3,
+   "rainToday": 3,
+   "rainCandidate": 6
+  }
+ },
+ "added": [
+  {
+   "icao": "FAGG",
+   "at": "2026-09-25T19:10",
+   "wet": false,
+   "key": "rain-possible",
+   "reason": "desc-rain-unconfirmed",
+   "chance": 43.6,
+   "mm": 0.8,
+   "votes": 3,
+   "families": 3,
+   "words": "Open-Meteo: Dense drizzle · WeatherAPI: Patchy rain possible · Pirate Weather: Light rain · MET Norway: Heavy rain · Tomorrow.io: Overcast"
+  },
+  {
+   "icao": "FAPE",
+   "at": "2026-09-26T07:10",
+   "wet": true,
+   "key": "rain-possible",
+   "reason": "showers-nearby",
+   "chance": 66.1,
+   "mm": 0.6,
+   "votes": 4,
+   "families": 3,
+   "words": "Open-Meteo: Moderate drizzle · WeatherAPI: Light rain shower · Pirate Weather: Drizzle · MET Norway: Rain"
+  },
+  {
+   "icao": "FAPE",
+   "at": "2026-09-26T08:10",
+   "wet": true,
+   "key": "rain-possible",
+   "reason": "showers-nearby",
+   "chance": 66.1,
+   "mm": 0.9,
+   "votes": 3,
+   "families": 3,
+   "words": "Open-Meteo: Slight rain · WeatherAPI: Patchy rain possible · Pirate Weather: Drizzle · MET Norway: Heavy rain"
+  },
+  {
+   "icao": "FABL",
+   "at": "2026-09-26T11:10",
+   "wet": true,
+   "key": "rain-possible",
+   "reason": "showers-nearby",
+   "chance": 60.1,
+   "mm": 1.6,
+   "votes": 3,
+   "families": 3,
+   "words": "Open-Meteo: Overcast · WeatherAPI: Moderate rain · Pirate Weather: Light rain · MET Norway: Heavy rain"
+  },
+  {
+   "icao": "FABL",
+   "at": "2026-09-26T12:10",
+   "wet": true,
+   "key": "rain-possible",
+   "reason": "showers-nearby",
+   "chance": 74.1,
+   "mm": 2.1,
+   "votes": 4,
+   "families": 3,
+   "words": "Open-Meteo: Light drizzle · WeatherAPI: Light rain shower · Pirate Weather: Light rain · MET Norway: Heavy rain"
+  },
+  {
+   "icao": "FABL",
+   "at": "2026-09-26T18:10",
+   "wet": true,
+   "key": "rain-possible",
+   "reason": "showers-nearby",
+   "chance": 70.6,
+   "mm": 2.4,
+   "votes": 4,
+   "families": 4,
+   "words": "WeatherAPI: Moderate rain · Pirate Weather: Light rain · MET Norway: Heavy rain showers · Tomorrow.io: Drizzle"
+  },
+  {
+   "icao": "FAGG",
+   "at": "2026-09-26T22:10",
+   "wet": true,
+   "key": "rain-possible",
+   "reason": "showers-nearby",
+   "chance": 80.4,
+   "mm": 1.8,
+   "votes": 4,
+   "families": 3,
+   "words": "Open-Meteo: Slight rain showers · WeatherAPI: Light rain · Pirate Weather: Light rain · MET Norway: Heavy rain"
+  },
+  {
+   "icao": "FAGG",
+   "at": "2026-09-26T23:10",
+   "wet": true,
+   "key": "rain-possible",
+   "reason": "showers-nearby",
+   "chance": 80.5,
+   "mm": 2.1,
+   "votes": 4,
+   "families": 3,
+   "words": "Open-Meteo: Moderate rain showers · WeatherAPI: Light rain · Pirate Weather: Drizzle · MET Norway: Heavy rain"
+  },
+  {
+   "icao": "FAGG",
+   "at": "2026-09-27T06:10",
+   "wet": false,
+   "key": "rain-possible",
+   "reason": "showers-nearby",
+   "chance": 77.1,
+   "mm": 0.8,
+   "votes": 4,
+   "families": 3,
+   "words": "Open-Meteo: Moderate drizzle · WeatherAPI: Light rain shower · Pirate Weather: Light rain · MET Norway: Heavy rain"
+  },
+  {
+   "icao": "FAGG",
+   "at": "2026-09-27T07:10",
+   "wet": false,
+   "key": "rain-possible",
+   "reason": "showers-nearby",
+   "chance": 71.5,
+   "mm": 0.7,
+   "votes": 4,
+   "families": 3,
+   "words": "Open-Meteo: Moderate drizzle · WeatherAPI: Light rain shower · Pirate Weather: Light rain · MET Norway: Rain showers"
+  },
+  {
+   "icao": "FAGG",
+   "at": "2026-09-27T08:10",
+   "wet": false,
+   "key": "rain-possible",
+   "reason": "showers-nearby",
+   "chance": 63.5,
+   "mm": 0.7,
+   "votes": 4,
+   "families": 3,
+   "words": "Open-Meteo: Dense drizzle · WeatherAPI: Light rain shower · Pirate Weather: Light rain · MET Norway: Rain"
+  },
+  {
+   "icao": "FAOR",
+   "at": "2026-09-28T15:10",
+   "wet": false,
+   "key": "rain-possible",
+   "reason": "desc-rain-unconfirmed",
+   "chance": 47.1,
+   "mm": 1.5,
+   "votes": 3,
+   "families": 3,
+   "words": "Open-Meteo: Moderate drizzle · WeatherAPI: Cloudy · Pirate Weather: Light rain · MET Norway: Heavy rain showers · Tomorrow.io: Cloudy"
+  },
+  {
+   "icao": "FAOR",
+   "at": "2026-09-29T09:10",
+   "wet": true,
+   "key": "rain-possible",
+   "reason": "showers-nearby",
+   "chance": 63.7,
+   "mm": 0.5,
+   "votes": 3,
+   "families": 3,
+   "words": "Open-Meteo: Overcast · WeatherAPI: Light rain shower · Pirate Weather: Rain · MET Norway: Heavy rain · Tomorrow.io: Light fog"
+  },
+  {
+   "icao": "FAOR",
+   "at": "2026-09-29T10:10",
+   "wet": true,
+   "key": "rain-possible",
+   "reason": "showers-nearby",
+   "chance": 74.3,
+   "mm": 1.2,
+   "votes": 5,
+   "families": 4,
+   "words": "Open-Meteo: Dense drizzle · WeatherAPI: Light rain shower · Pirate Weather: Light rain · MET Norway: Heavy rain · Tomorrow.io: Drizzle"
+  },
+  {
+   "icao": "FAOR",
+   "at": "2026-09-29T11:10",
+   "wet": true,
+   "key": "rain-possible",
+   "reason": "showers-nearby",
+   "chance": 77.6,
+   "mm": 3.1,
+   "votes": 4,
+   "families": 3,
+   "words": "Open-Meteo: Moderate rain showers · WeatherAPI: Moderate or heavy rain shower · Pirate Weather: Light rain · MET Norway: Rain"
+  },
+  {
+   "icao": "FAOR",
+   "at": "2026-09-29T12:10",
+   "wet": true,
+   "key": "rain-possible",
+   "reason": "desc-rain-unconfirmed",
+   "chance": 57.9,
+   "mm": 0.8,
+   "votes": 3,
+   "families": 2,
+   "words": "Open-Meteo: Slight rain showers · WeatherAPI: Light rain shower · Pirate Weather: Rain · MET Norway: Cloudy"
+  },
+  {
+   "icao": "FAOR",
+   "at": "2026-09-29T18:46",
+   "wet": false,
+   "key": "rain-possible",
+   "reason": "desc-rain-unconfirmed",
+   "chance": 60,
+   "mm": 0.7,
+   "votes": 3,
+   "families": 3,
+   "words": "Open-Meteo: Dense drizzle · WeatherAPI: Patchy rain possible · Pirate Weather: Light rain · MET Norway: Rain · Tomorrow.io: Overcast"
+  },
+  {
+   "icao": "FAOR",
+   "at": "2026-09-29T19:10",
+   "wet": true,
+   "key": "rain-possible",
+   "reason": "showers-nearby",
+   "chance": 67.4,
+   "mm": 1,
+   "votes": 4,
+   "families": 3,
+   "words": "Open-Meteo: Dense drizzle · WeatherAPI: Light rain shower · Pirate Weather: Light rain · MET Norway: Rain"
+  },
+  {
+   "icao": "FAOR",
+   "at": "2026-09-29T22:10",
+   "wet": true,
+   "key": "rain-possible",
+   "reason": "showers-nearby",
+   "chance": 71.6,
+   "mm": 0.8,
+   "votes": 3,
+   "families": 3,
+   "words": "Open-Meteo: Overcast · WeatherAPI: Light rain shower · Pirate Weather: Rain · MET Norway: Light rain"
+  },
+  {
+   "icao": "FAOR",
+   "at": "2026-09-29T23:10",
+   "wet": true,
+   "key": "rain-possible",
+   "reason": "showers-nearby",
+   "chance": 66.6,
+   "mm": 0.5,
+   "votes": 3,
+   "families": 3,
+   "words": "Open-Meteo: Overcast · WeatherAPI: Light rain shower · Pirate Weather: Rain · MET Norway: Rain · Tomorrow.io: Overcast"
+  },
+  {
+   "icao": "FAOR",
+   "at": "2026-09-30T00:10",
+   "wet": true,
+   "key": "rain-possible",
+   "reason": "showers-nearby",
+   "chance": 68.2,
+   "mm": 0.6,
+   "votes": 4,
+   "families": 3,
+   "words": "Open-Meteo: Light drizzle · WeatherAPI: Light rain shower · Pirate Weather: Rain · MET Norway: Heavy rain · Tomorrow.io: Overcast"
+  },
+  {
+   "icao": "FAOR",
+   "at": "2026-09-30T11:10",
+   "wet": true,
+   "key": "rain-possible",
+   "reason": "desc-rain-unconfirmed",
+   "chance": 56.3,
+   "mm": 0.5,
+   "votes": 4,
+   "families": 3,
+   "words": "Open-Meteo: Light drizzle · WeatherAPI: Light rain shower · Pirate Weather: Light rain · MET Norway: Rain"
+  },
+  {
+   "icao": "FAPE",
+   "at": "2026-10-03T01:10",
+   "wet": true,
+   "key": "rain-possible",
+   "reason": "showers-nearby",
+   "chance": 64.4,
+   "mm": 0.7,
+   "votes": 3,
+   "families": 3,
+   "words": "Open-Meteo: Dense drizzle · WeatherAPI: Patchy rain possible · Pirate Weather: Light rain · MET Norway: Rain"
+  },
+  {
+   "icao": "FAPE",
+   "at": "2026-10-03T02:10",
+   "wet": true,
+   "key": "rain-possible",
+   "reason": "showers-nearby",
+   "chance": 83.1,
+   "mm": 1.3,
+   "votes": 4,
+   "families": 3,
+   "words": "Open-Meteo: Moderate drizzle · WeatherAPI: Light rain · Pirate Weather: Light rain · MET Norway: Heavy rain"
+  },
+  {
+   "icao": "FAPE",
+   "at": "2026-10-03T03:10",
+   "wet": true,
+   "key": "rain-possible",
+   "reason": "showers-nearby",
+   "chance": 84.9,
+   "mm": 1.9,
+   "votes": 4,
+   "families": 3,
+   "words": "Open-Meteo: Dense drizzle · WeatherAPI: Moderate rain · Pirate Weather: Light rain · MET Norway: Heavy rain"
+  },
+  {
+   "icao": "FAGG",
+   "at": "2026-10-03T05:10",
+   "wet": true,
+   "key": "rain-possible",
+   "reason": "showers-nearby",
+   "chance": 71.6,
+   "mm": 1,
+   "votes": 5,
+   "families": 4,
+   "words": "Open-Meteo: Dense drizzle · WeatherAPI: Light drizzle · Pirate Weather: Light rain · MET Norway: Heavy rain · Tomorrow.io: Drizzle"
+  },
+  {
+   "icao": "FAGG",
+   "at": "2026-10-03T06:10",
+   "wet": true,
+   "key": "rain-possible",
+   "reason": "showers-nearby",
+   "chance": 82.6,
+   "mm": 1.5,
+   "votes": 4,
+   "families": 3,
+   "words": "Open-Meteo: Slight rain showers · WeatherAPI: Light rain · Pirate Weather: Light rain · MET Norway: Heavy rain"
+  },
+  {
+   "icao": "FAGG",
+   "at": "2026-10-03T07:10",
+   "wet": true,
+   "key": "rain-possible",
+   "reason": "showers-nearby",
+   "chance": 82,
+   "mm": 1.1,
+   "votes": 4,
+   "families": 3,
+   "words": "Open-Meteo: Dense drizzle · WeatherAPI: Light drizzle · Pirate Weather: Light rain · MET Norway: Heavy rain"
+  },
+  {
+   "icao": "FAGG",
+   "at": "2026-10-03T08:10",
+   "wet": true,
+   "key": "rain-possible",
+   "reason": "showers-nearby",
+   "chance": 86.2,
+   "mm": 1.8,
+   "votes": 4,
+   "families": 3,
+   "words": "Open-Meteo: Slight rain showers · WeatherAPI: Light drizzle · Pirate Weather: Light rain · MET Norway: Heavy rain"
+  },
+  {
+   "icao": "FAPE",
+   "at": "2026-10-03T09:10",
+   "wet": true,
+   "key": "rain-possible",
+   "reason": "showers-nearby",
+   "chance": 72,
+   "mm": 0.8,
+   "votes": 4,
+   "families": 3,
+   "words": "Open-Meteo: Light drizzle · WeatherAPI: Light rain · Pirate Weather: Light rain · MET Norway: Rain"
+  },
+  {
+   "icao": "FAGG",
+   "at": "2026-10-03T09:10",
+   "wet": true,
+   "key": "rain-possible",
+   "reason": "showers-nearby",
+   "chance": 82.6,
+   "mm": 2,
+   "votes": 4,
+   "families": 3,
+   "words": "Open-Meteo: Moderate rain showers · WeatherAPI: Light rain · Pirate Weather: Light rain · MET Norway: Heavy rain"
+  },
+  {
+   "icao": "FAGG",
+   "at": "2026-10-03T10:10",
+   "wet": true,
+   "key": "rain-possible",
+   "reason": "showers-nearby",
+   "chance": 76,
+   "mm": 1.4,
+   "votes": 4,
+   "families": 3,
+   "words": "Open-Meteo: Slight rain showers · WeatherAPI: Light rain · Pirate Weather: Light rain · MET Norway: Rain"
+  },
+  {
+   "icao": "FACT",
+   "at": "2026-10-06T03:34",
+   "wet": true,
+   "key": "rain-possible",
+   "reason": "showers-nearby",
+   "chance": 88,
+   "mm": 2.4,
+   "votes": 4,
+   "families": 3,
+   "words": "Open-Meteo: Moderate rain showers · WeatherAPI: Light rain · Pirate Weather: Light rain · MET Norway: Heavy rain"
+  },
+  {
+   "icao": "FACT",
+   "at": "2026-10-06T04:10",
+   "wet": true,
+   "key": "wind",
+   "reason": "sustained-wind",
+   "chance": 82.2,
+   "mm": 2.4,
+   "votes": 4,
+   "families": 3,
+   "words": "Open-Meteo: Moderate rain showers · WeatherAPI: Light rain · Pirate Weather: Light rain · MET Norway: Heavy rain"
+  },
+  {
+   "icao": "FACT",
+   "at": "2026-10-06T05:10",
+   "wet": true,
+   "key": "wind",
+   "reason": "sustained-wind",
+   "chance": 56.4,
+   "mm": 0.8,
+   "votes": 3,
+   "families": 3,
+   "words": "Open-Meteo: Slight rain showers · WeatherAPI: Patchy rain possible · Pirate Weather: Light rain · MET Norway: Heavy rain"
+  },
+  {
+   "icao": "FAGG",
+   "at": "2026-10-06T08:10",
+   "wet": false,
+   "key": "wind",
+   "reason": "sustained-wind",
+   "chance": 54.5,
+   "mm": 0.6,
+   "votes": 4,
+   "families": 3,
+   "words": "Open-Meteo: Light drizzle · WeatherAPI: Light rain · Pirate Weather: Drizzle · MET Norway: Rain"
+  },
+  {
+   "icao": "FAGG",
+   "at": "2026-10-06T09:10",
+   "wet": true,
+   "key": "wind",
+   "reason": "sustained-wind",
+   "chance": 60.3,
+   "mm": 0.6,
+   "votes": 4,
+   "families": 3,
+   "words": "Open-Meteo: Moderate drizzle · WeatherAPI: Light drizzle · Pirate Weather: Drizzle · MET Norway: Light rain"
+  },
+  {
+   "icao": "FALE",
+   "at": "2026-10-06T20:10",
+   "wet": false,
+   "key": "wind",
+   "reason": "sustained-wind",
+   "chance": 50.1,
+   "mm": 0.8,
+   "votes": 4,
+   "families": 3,
+   "words": "Open-Meteo: Dense drizzle · WeatherAPI: Light rain shower · Pirate Weather: Drizzle · MET Norway: Rain showers"
+  },
+  {
+   "icao": "FAPE",
+   "at": "2026-10-12T14:10",
+   "wet": false,
+   "key": "wind",
+   "reason": "sustained-wind",
+   "chance": 40.1,
+   "mm": 1.4,
+   "votes": 3,
+   "families": 3,
+   "words": "Open-Meteo: Slight rain showers · WeatherAPI: Sunny · Pirate Weather: Light rain · MET Norway: Heavy rain showers · Tomorrow.io: Light fog"
+  },
+  {
+   "icao": "FAPE",
+   "at": "2026-10-12T15:10",
+   "wet": false,
+   "key": "rain-possible",
+   "reason": "desc-rain-unconfirmed",
+   "chance": 56.4,
+   "mm": 1.9,
+   "votes": 4,
+   "families": 3,
+   "words": "Open-Meteo: Moderate rain showers · WeatherAPI: Patchy light drizzle · Pirate Weather: Light rain · MET Norway: Heavy rain showers · Tomorrow.io: Partly cloudy"
+  },
+  {
+   "icao": "FAPE",
+   "at": "2026-10-12T16:10",
+   "wet": false,
+   "key": "wind",
+   "reason": "station-wind",
+   "chance": 39.3,
+   "mm": 1.1,
+   "votes": 3,
+   "families": 3,
+   "words": "Open-Meteo: Moderate rain showers · WeatherAPI: Partly cloudy · Pirate Weather: Drizzle · MET Norway: Light rain · Tomorrow.io: Overcast"
+  },
+  {
+   "icao": "FACT",
+   "at": "2026-10-12T18:10",
+   "wet": false,
+   "key": "rain-possible",
+   "reason": "desc-rain-unconfirmed",
+   "chance": 39.3,
+   "mm": 0.6,
+   "votes": 3,
+   "families": 2,
+   "words": "Open-Meteo: Dense drizzle · WeatherAPI: Light rain shower · Pirate Weather: Cloudy · MET Norway: Heavy rain · Tomorrow.io: Overcast"
+  },
+  {
+   "icao": "FAPE",
+   "at": "2026-10-12T18:10",
+   "wet": false,
+   "key": "wind",
+   "reason": "station-wind",
+   "chance": 54.4,
+   "mm": 0.5,
+   "votes": 3,
+   "families": 3,
+   "words": "Open-Meteo: Dense drizzle · WeatherAPI: Patchy rain possible · Pirate Weather: Drizzle · MET Norway: Rain"
+  },
+  {
+   "icao": "FACT",
+   "at": "2026-10-12T19:10",
+   "wet": false,
+   "key": "rain-possible",
+   "reason": "desc-rain-unconfirmed",
+   "chance": 38.8,
+   "mm": 0.5,
+   "votes": 4,
+   "families": 3,
+   "words": "Open-Meteo: Moderate drizzle · WeatherAPI: Light drizzle · Pirate Weather: Cloudy · MET Norway: Rain · Tomorrow.io: Drizzle"
+  }
+ ],
+ "strand": [
+  {
+   "sast": "00:10",
+   "key": "clear",
+   "reason": "desc-clear-keyword",
+   "chance": 0,
+   "mm": 0,
+   "votes": 0,
+   "families": 0,
+   "words": "Open-Meteo: Mainly clear · WeatherAPI: Smoky haze · Pirate Weather: Clear sky · MET Norway: Clear sky",
+   "rules": {
+    "today": false,
+    "candidate": false,
+    "a": false,
+    "b": false
+   }
+  },
+  {
+   "sast": "01:10",
+   "key": "partly-cloudy",
+   "reason": "partly-cloudy",
+   "chance": 1.8,
+   "mm": 0,
+   "votes": 0,
+   "families": 0,
+   "words": "Open-Meteo: Mainly clear · WeatherAPI: Smoky haze · Pirate Weather: Clear sky · MET Norway: Fair",
+   "rules": {
+    "today": false,
+    "candidate": false,
+    "a": false,
+    "b": false
+   }
+  },
+  {
+   "sast": "02:10",
+   "key": "partly-cloudy",
+   "reason": "partly-cloudy",
+   "chance": 4,
+   "mm": 0,
+   "votes": 0,
+   "families": 0,
+   "words": "Open-Meteo: Overcast · WeatherAPI: Smoky haze · Pirate Weather: Partly cloudy · MET Norway: Partly cloudy",
+   "rules": {
+    "today": false,
+    "candidate": false,
+    "a": false,
+    "b": false
+   }
+  },
+  {
+   "sast": "03:10",
+   "key": "cloudy",
+   "reason": "overcast",
+   "chance": 4.1,
+   "mm": 0,
+   "votes": 0,
+   "families": 0,
+   "words": "Open-Meteo: Overcast · WeatherAPI: Smoky haze · Pirate Weather: Partly cloudy · MET Norway: Cloudy",
+   "rules": {
+    "today": false,
+    "candidate": false,
+    "a": false,
+    "b": false
+   }
+  },
+  {
+   "sast": "04:10",
+   "key": "cloudy",
+   "reason": "overcast",
+   "chance": 5.3,
+   "mm": 0,
+   "votes": 0,
+   "families": 0,
+   "words": "Open-Meteo: Overcast · WeatherAPI: Overcast · Pirate Weather: Cloudy · MET Norway: Cloudy · Tomorrow.io: Overcast",
+   "rules": {
+    "today": false,
+    "candidate": false,
+    "a": false,
+    "b": false
+   }
+  },
+  {
+   "sast": "05:10",
+   "key": "cloudy",
+   "reason": "overcast",
+   "chance": 0,
+   "mm": 0,
+   "votes": 0,
+   "families": 0,
+   "words": "Open-Meteo: Overcast · WeatherAPI: Partly cloudy · Pirate Weather: Cloudy · MET Norway: Cloudy · Tomorrow.io: Overcast",
+   "rules": {
+    "today": false,
+    "candidate": false,
+    "a": false,
+    "b": false
+   }
+  },
+  {
+   "sast": "06:10",
+   "key": "cloudy",
+   "reason": "overcast",
+   "chance": 0,
+   "mm": 0,
+   "votes": 0,
+   "families": 0,
+   "words": "Open-Meteo: Overcast · WeatherAPI: Sunny · Pirate Weather: Cloudy · MET Norway: Cloudy · Tomorrow.io: Overcast",
+   "rules": {
+    "today": false,
+    "candidate": false,
+    "a": false,
+    "b": false
+   }
+  },
+  {
+   "sast": "07:10",
+   "key": "cloudy",
+   "reason": "overcast",
+   "chance": 0.9,
+   "mm": 0,
+   "votes": 0,
+   "families": 0,
+   "words": "Open-Meteo: Overcast · WeatherAPI: Sunny · Pirate Weather: Cloudy · MET Norway: Cloudy · Tomorrow.io: Overcast",
+   "rules": {
+    "today": false,
+    "candidate": false,
+    "a": false,
+    "b": false
+   }
+  },
+  {
+   "sast": "08:10",
+   "key": "cloudy",
+   "reason": "overcast",
+   "chance": 4.6,
+   "mm": 0,
+   "votes": 0,
+   "families": 0,
+   "words": "Open-Meteo: Overcast · WeatherAPI: Overcast · Pirate Weather: Cloudy · MET Norway: Cloudy",
+   "rules": {
+    "today": false,
+    "candidate": false,
+    "a": false,
+    "b": false
+   }
+  },
+  {
+   "sast": "09:10",
+   "key": "cloudy",
+   "reason": "overcast",
+   "chance": 4.3,
+   "mm": 0,
+   "votes": 0,
+   "families": 0,
+   "words": "Open-Meteo: Overcast · WeatherAPI: Overcast · Pirate Weather: Windy · MET Norway: Cloudy",
+   "rules": {
+    "today": false,
+    "candidate": false,
+    "a": false,
+    "b": false
+   }
+  },
+  {
+   "sast": "10:10",
+   "key": "wind",
+   "reason": "sources-wind",
+   "chance": 4,
+   "mm": 0,
+   "votes": 0,
+   "families": 0,
+   "words": "Open-Meteo: Overcast · WeatherAPI: Overcast · Pirate Weather: Windy · MET Norway: Cloudy",
+   "rules": {
+    "today": false,
+    "candidate": false,
+    "a": false,
+    "b": false
+   }
+  },
+  {
+   "sast": "11:10",
+   "key": "wind",
+   "reason": "sources-wind",
+   "chance": 3.1,
+   "mm": 0,
+   "votes": 0,
+   "families": 0,
+   "words": "Open-Meteo: Overcast · WeatherAPI: Overcast · Pirate Weather: Windy · MET Norway: Cloudy",
+   "rules": {
+    "today": false,
+    "candidate": false,
+    "a": false,
+    "b": false
+   }
+  },
+  {
+   "sast": "12:10",
+   "key": "wind",
+   "reason": "sources-wind",
+   "chance": 5.5,
+   "mm": 0.3,
+   "votes": 1,
+   "families": 1,
+   "words": "Open-Meteo: Overcast · WeatherAPI: Overcast · Pirate Weather: Windy · MET Norway: Cloudy · Tomorrow.io: Light rain",
+   "rules": {
+    "today": false,
+    "candidate": false,
+    "a": false,
+    "b": false
+   }
+  },
+  {
+   "sast": "13:10",
+   "key": "wind",
+   "reason": "sources-wind",
+   "chance": 60,
+   "mm": 0.4,
+   "votes": 1,
+   "families": 1,
+   "words": "Open-Meteo: Overcast · WeatherAPI: Overcast · Pirate Weather: Windy · MET Norway: Cloudy · Tomorrow.io: Light rain",
+   "rules": {
+    "today": false,
+    "candidate": false,
+    "a": false,
+    "b": false
+   }
+  },
+  {
+   "sast": "14:10",
+   "key": "wind",
+   "reason": "sources-wind",
+   "chance": 60,
+   "mm": 0.3,
+   "votes": 1,
+   "families": 1,
+   "words": "Open-Meteo: Overcast · WeatherAPI: Patchy rain possible · Pirate Weather: Windy · MET Norway: Cloudy · Tomorrow.io: Light rain",
+   "rules": {
+    "today": false,
+    "candidate": false,
+    "a": false,
+    "b": false
+   }
+  },
+  {
+   "sast": "15:48",
+   "key": "wind",
+   "reason": "sources-wind",
+   "chance": 14.2,
+   "mm": 0,
+   "votes": 0,
+   "families": 0,
+   "words": "Open-Meteo: Overcast · WeatherAPI: Overcast · Pirate Weather: Windy · MET Norway: Cloudy",
+   "rules": {
+    "today": false,
+    "candidate": false,
+    "a": false,
+    "b": false
+   }
+  },
+  {
+   "sast": "16:10",
+   "key": "wind",
+   "reason": "sources-wind",
+   "chance": 15.2,
+   "mm": 0,
+   "votes": 0,
+   "families": 0,
+   "words": "Open-Meteo: Overcast · WeatherAPI: Overcast · Pirate Weather: Windy · MET Norway: Cloudy",
+   "rules": {
+    "today": false,
+    "candidate": false,
+    "a": false,
+    "b": false
+   }
+  },
+  {
+   "sast": "17:10",
+   "key": "breezy",
+   "reason": "breezy",
+   "chance": 15.6,
+   "mm": 0,
+   "votes": 0,
+   "families": 0,
+   "words": "Open-Meteo: Overcast · WeatherAPI: Patchy rain possible · Pirate Weather: Windy · MET Norway: Partly cloudy",
+   "rules": {
+    "today": false,
+    "candidate": false,
+    "a": false,
+    "b": false
+   }
+  },
+  {
+   "sast": "18:10",
+   "key": "cloudy",
+   "reason": "overcast",
+   "chance": 18.3,
+   "mm": 0,
+   "votes": 0,
+   "families": 0,
+   "words": "Open-Meteo: Overcast · WeatherAPI: Patchy rain possible · Pirate Weather: Cloudy · MET Norway: Cloudy",
+   "rules": {
+    "today": false,
+    "candidate": false,
+    "a": false,
+    "b": false
+   }
+  },
+  {
+   "sast": "19:10",
+   "key": "rain-possible",
+   "reason": "rain-possible-prob",
+   "chance": 40.9,
+   "mm": 0.4,
+   "votes": 2,
+   "families": 2,
+   "words": "Open-Meteo: Overcast · WeatherAPI: Light drizzle · Pirate Weather: Cloudy · MET Norway: Heavy rain",
+   "rules": {
+    "today": false,
+    "candidate": false,
+    "a": false,
+    "b": false
+   }
+  },
+  {
+   "sast": "20:10",
+   "key": "rain-possible",
+   "reason": "desc-rain-unconfirmed",
+   "chance": 46.5,
+   "mm": 1,
+   "votes": 3,
+   "families": 2,
+   "words": "Open-Meteo: Moderate drizzle · WeatherAPI: Light drizzle · Pirate Weather: Cloudy · MET Norway: Heavy rain · Tomorrow.io: Light fog",
+   "rules": {
+    "today": false,
+    "candidate": true,
+    "a": true,
+    "b": true
+   }
+  },
+  {
+   "sast": "21:10",
+   "key": "rain-possible",
+   "reason": "desc-rain-unconfirmed",
+   "chance": 46.9,
+   "mm": 1.2,
+   "votes": 4,
+   "families": 3,
+   "words": "Open-Meteo: Slight rain · WeatherAPI: Light drizzle · Pirate Weather: Cloudy · MET Norway: Heavy rain · Tomorrow.io: Drizzle",
+   "rules": {
+    "today": false,
+    "candidate": true,
+    "a": true,
+    "b": true
+   }
+  }
+ ]
+}
