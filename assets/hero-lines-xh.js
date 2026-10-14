@@ -27,7 +27,7 @@ export const HERO_LINES_XH = {
  "Half moon, half cloud, full bin. Tuesday night, as advertised.": "Isiqingatha senyanga, isiqingatha selifu, umgqomo ugcwele. NgoLwesibini ebusuku, njengoko kwakuthenjisiwe.",
  "Half the stars are behind cloud. The fairy lights are covering for them.": "Isiqingatha seenkwenkwezi singemva kwamafu. Izibane zokuhombisa ziyazibambela.",
  "Hand on the cap, one stride at a time. The breeze is pacing her.": "Isandla ekepusini, inyathelo ngenyathelo. Umoya omncinci uhamba naye.",
- "Hot enough that the ref's calling a water break every ten minutes.": "Kushushu kangangokuba usompempe ubiza ikhefu lamanzi rhoqo emva kwemizuzu elishumi.",
+ "Hot enough that the ref's calling a water break every ten minutes.": "Kushushu kakhulu: usompempe ubiza ikhefu lamanzi rhoqo.",
  "In and out of the sun all day, then this. We all know someone like that.": "Ilanga liphuma lingena imini yonke, kwaye ngoku le nto. Sonke siyamazi umntu onjalo.",
  "It's 6am and the fridge is already the most popular room in the house.": "Ngu-6 ngentsasa, kwaye ifriji sele iyeyona ndawo ithandwayo endlwini.",
  "It's looked like rain since breakfast. Still just looking.": "Ukususela kwisidlo sakusasa kukhangeleka ngathi iza kuna imvula. Kusakhangeleka nje.",

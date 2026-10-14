@@ -28,7 +28,7 @@ export const HERO_LINES_ST = {
  "Half moon, half cloud, full bin. Tuesday night, as advertised.": "Halofo ya kgwedi, halofo ya leru, bin e tletse. Bosiu ba Labobedi, jwalo ka ha ho boletswe.",
  "Half the stars are behind cloud. The fairy lights are covering for them.": "Halofo ya dinaledi e ka mora maru. Mabone a manyane a a di emela.",
  "Hand on the cap, one stride at a time. The breeze is pacing her.": "Letsoho hodima kepisi, mohato ka mohato. Moya o mo behela lebelo.",
- "Hot enough that the ref's calling a water break every ten minutes.": "Ho tjhesa hoo moahlodi a bitsang phomolo ya metsi metsotso e meng le e meng e leshome.",
+ "Hot enough that the ref's calling a water break every ten minutes.": "Ho a tjhesa. Moahlodi o bitsa phomolo ya metsi kgafetsa.",
  "In and out of the sun all day, then this. We all know someone like that.": "Letsatsi le ne le kena le tswa letsatsi lohle, mme jwale sena. Bohle re tseba motho ya jwalo.",
  "It's 6am and the fridge is already the most popular room in the house.": "Ke hora ya botshelela hoseng mme fridge e se e le kamore e ratwang ka ho fetisisa ka tlung.",
  "It's looked like rain since breakfast. Still just looking.": "Esale ho shebahala eka pula e tla na ho tloha dijong tsa hoseng. E ntse e shebahala feela.",
