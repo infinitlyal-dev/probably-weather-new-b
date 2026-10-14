@@ -32,6 +32,7 @@ import { isDeepStrictEqual } from 'node:util';
 import { REGION_BOXES } from '../assets/geo-regions.js';
 import { WEATHER_COPY } from '../assets/weather-copy.js';
 import { WITTY_DAY_TAGS } from '../assets/witty-day-tags.js';
+import { loadHeroPairs } from './build-hero-pairs.mjs';
 
 const root = fileURLToPath(new URL('..', import.meta.url));
 const CHECK = process.argv.includes('--check');
@@ -76,6 +77,13 @@ for (const entry of approved.set || []) {
     rows.push([`bg-canonical/${createHash('sha256').update(bytes).digest('hex')}.webp`, lines]);
   }
 }
+
+// HERO PAIRS (Al + Maat, 14 Oct 2026; review/hero-pairs.json): photographs served outside the slot grid by their own
+// rules (image-picker.js pickHeroPair). One key each — bg-pairs/<id>.webp is the path in the source tree and in
+// production alike. loadHeroPairs refuses a pair whose file no longer holds the bytes its line was written about.
+try {
+  for (const pair of loadHeroPairs()) rows.push([`bg-pairs/${pair.id}.webp`, pair.lines]);
+} catch (e) { problems.push(e.message); }
 
 // ---- RULING DRIFT GUARD ------------------------------------------------------
 // The guard above catches a SLOT whose bytes moved under its lines. It cannot

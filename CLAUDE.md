@@ -72,6 +72,8 @@ Day image naming (14-day cycle — UPDATE IN PROGRESS):
 
 **Benching a photograph** (2026-09-23): `review/benched-photos.json` takes a photograph out of rotation without moving a file — the build's slot manifest (`scripts/image-slot-manifest.mjs`) serves the picker's own week-collapse fallback (same folder and time, week_1 slot 1) in its slots, and the benched bytes are not shipped. Moving a photograph to another bucket needs Al's ruling on its page (`review/cold-move-dog.html`, `review/bucket-check.html`).
 
+**Hero pairs** (Al + Maat, 14 Oct 2026): a photograph and its line made as one idea, served OUTSIDE the slot grid. Source: `review/hero-pairs.json` (each pair: condition folder, times of day, SAST weekdays it fits, crop, line, Afrikaans, stranger-read sentence, sha1). Photographs in `assets/images/bg-pairs/<id>.webp`. `pickHeroPair` (assets/image-picker.js) gives each pair ONE of its allowed days per week in its cell; the library serves the other days and stays behind it as the fallback. After editing the JSON run `node scripts/build-hero-pairs.mjs`, `scripts/build-hero-lines.mjs` and `scripts/build-hero-crop-offsets.mjs` (each refuses a pair whose bytes moved); `tests/hero-pairs.test.js` holds the rules.
+
 ## LANGUAGES
 The app supports 5 languages: English, Afrikaans, Zulu, Xhosa, Sotho.
 All new user-facing strings must include translations for all 5 languages.
