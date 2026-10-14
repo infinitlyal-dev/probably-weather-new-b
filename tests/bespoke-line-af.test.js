@@ -6,6 +6,7 @@ import * as heroLines from '../assets/hero-lines.js';
 import * as heroLinesAf from '../assets/hero-lines-af.js';
 import * as heroLinesXh from '../assets/hero-lines-xh.js';
 import * as heroLinesZu from '../assets/hero-lines-zu.js';
+import * as heroLinesSt from '../assets/hero-lines-st.js';
 import { contentProblems } from '../scripts/lang-check/lib/af-content.mjs';
 import { contextTagAllows } from '../assets/witty-day-tags.js';
 
@@ -28,21 +29,22 @@ function bespokeBlock() {
   return src.slice(start, end);
 }
 
-function harness({ lang, importEn = vi.fn(async () => heroLines), importAf = vi.fn(async () => heroLinesAf), importXh = vi.fn(async () => heroLinesXh), importZu = vi.fn(async () => heroLinesZu) }) {
+function harness({ lang, importEn = vi.fn(async () => heroLines), importAf = vi.fn(async () => heroLinesAf), importXh = vi.fn(async () => heroLinesXh), importZu = vi.fn(async () => heroLinesZu), importSt = vi.fn(async () => heroLinesSt) }) {
   const headlineEl = { textContent: 'Condition line' };
   const settings = { lang };
   const body = bespokeBlock()
     .replace("import('./hero-lines.js')", '__importEn()')
     .replace("import('./hero-lines-af.js')", '__importAf()')
     .replace("import('./hero-lines-xh.js')", '__importXh()')
-    .replace("import('./hero-lines-zu.js')", '__importZu()');
+    .replace("import('./hero-lines-zu.js')", '__importZu()')
+    .replace("import('./hero-lines-st.js')", '__importSt()');
   const make = new Function('headlineEl', 'settings', 'safeText', 'debugLog', 'heroCropKey', '__importEn', '__importAf',
-    'contextTagAllows', 'bespokeTagContext', '__importXh', '__importZu',
+    'contextTagAllows', 'bespokeTagContext', '__importXh', '__importZu', '__importSt',
     `${body}\nreturn { applyBespokeLine, loadBespokeTable };`);
   // No place and no month: the season/place gate fails open, as it does before a forecast.
   const api = make(headlineEl, settings, (el, text) => { el.textContent = text; }, () => {}, heroCropKey, importEn, importAf,
-    contextTagAllows, () => ({}), importXh, importZu);
-  return { ...api, headlineEl, settings, importEn, importAf, importXh, importZu };
+    contextTagAllows, () => ({}), importXh, importZu, importSt);
+  return { ...api, headlineEl, settings, importEn, importAf, importXh, importZu, importSt };
 }
 
 const srcFor = (key) => {
@@ -88,7 +90,7 @@ describe('bespoke lines — five languages', () => {
   it('each language rotates through exactly the lines it has for the photograph', async () => {
     const photo = srcFor(partial.key);
     const english = heroLines.HERO_LINES[partial.key];
-    const pools = { en: english, af: partial.af, zu: english.map((l) => heroLinesZu.heroLine(l)).filter(Boolean), xh: english.map((l) => heroLinesXh.heroLine(l)).filter(Boolean), st: [] };
+    const pools = { en: english, af: partial.af, zu: english.map((l) => heroLinesZu.heroLine(l)).filter(Boolean), xh: english.map((l) => heroLinesXh.heroLine(l)).filter(Boolean), st: english.map((l) => heroLinesSt.heroLine(l)).filter(Boolean) };
 
     for (const [lang, pool] of Object.entries(pools)) {
       const shown = new Set();
@@ -101,7 +103,7 @@ describe('bespoke lines — five languages', () => {
           await h.loadBespokeTable(lang);
           expect(h.applyBespokeLine(photo)).toBe(true);
           shown.add(h.headlineEl.textContent);
-        } else if (lang === 'xh' || lang === 'zu') {
+        } else if (lang === 'xh' || lang === 'zu' || lang === 'st') {
           // a table exists, but not for this photograph: the condition line stands
           expect(h.applyBespokeLine(photo)).toBe(false);
           await flush();
@@ -210,6 +212,7 @@ describe('the Afrikaans table is the gate\'s output', () => {
 for (const [lang, name, mod, rows] of [
   ['xh', 'isiXhosa', heroLinesXh, heroLinesXh.HERO_LINES_XH],
   ['zu', 'isiZulu', heroLinesZu, heroLinesZu.HERO_LINES_ZU],
+  ['st', 'Sesotho', heroLinesSt, heroLinesSt.HERO_LINES_ST],
 ]) {
   describe(`${name} provisional photo lines`, () => {
     it(`a photograph with ${name} rows rotates through exactly those rows, never an English line`, async () => {

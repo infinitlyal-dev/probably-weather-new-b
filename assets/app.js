@@ -2304,6 +2304,8 @@ document.addEventListener("DOMContentLoaded", () => {
     xh: { load: () => import('./hero-lines-xh.js'), line: (mod, english) => mod.heroLine(english) },
     // isiZulu (10 Oct 2026): the same, after isiZulu passed the re-run October exam.
     zu: { load: () => import('./hero-lines-zu.js'), line: (mod, english) => mod.heroLine(english) },
+    // Sesotho (14 Oct 2026): the same, after Sesotho passed the re-run October exam (review/sesotho-exam-fix-2026-10-14.md).
+    st: { load: () => import('./hero-lines-st.js'), line: (mod, english) => mod.heroLine(english) },
   };
   const bespokeTables = {};
   const bespokeTableLoads = {};
