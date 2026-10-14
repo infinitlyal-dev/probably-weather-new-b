@@ -50,6 +50,65 @@
    "reason": "A man in a puffer jacket on a rooftop at night. Cloudy also serves warm summer nights.",
    "benchedOn": "2026-09-23",
    "ruling": "review/bucket-check-ruled.json"
+  },
+  {
+   "sha1": "82d7022c8ba8",
+   "sha256": "dde634fd8c9caf1b90b3abef360ee1aee327f039e9ea5d2b516811ba63d44cdb",
+   "slots": [
+    "partly-cloudy/week_1/day/3.webp",
+    "partly-cloudy/week_2/day/3.webp",
+    "partly-cloudy/week_3/day/3.webp",
+    "partly-cloudy/week_4/day/3.webp"
+   ],
+   "fallback": "partly-cloudy/week_1/day/1.webp",
+   "movedTo": null,
+   "reason": "Two Black schoolchildren cycling past vervet monkeys on a wall: the picture alone invites the racist reading the monkey line made explicit.",
+   "benchedOn": "2026-10-14",
+   "ruling": "Maat, 14 Oct 2026 (people-photo sweep, review/hero-sweep-2026-10-14/SWEEP.md)"
+  },
+  {
+   "sha1": "2d71f451d0df",
+   "sha256": "cca354da10378cc7c2d412caf296630fd50ccf149b5c942ecc7e82851c85e63a",
+   "slots": [
+    "fog/week_1/day/1.webp",
+    "fog/week_3/day/1.webp"
+   ],
+   "fallback": "fog/week_1/day/2.webp",
+   "fallbackSkipped": [
+    "fog/week_1/day/1.webp: is this photograph"
+   ],
+   "movedTo": null,
+   "reason": "A cat on a wall with faint faceless human figures standing in the fog behind it: a horror look.",
+   "benchedOn": "2026-10-14",
+   "ruling": "Maat, 14 Oct 2026 (people-photo sweep, review/hero-sweep-2026-10-14/SWEEP.md)"
+  },
+  {
+   "sha1": "fe838c8901f7",
+   "sha256": "2b85cbdecded3c5f27e21081563b0112cf4c0abc15d488764fb04d8ea2cc938a",
+   "slots": [
+    "rain/week_2/day/1.webp",
+    "rain/week_4/day/1.webp"
+   ],
+   "fallback": "rain/week_1/day/1.webp",
+   "movedTo": null,
+   "reason": "A Black construction worker leaning on a shovel in the rain: composes into the idle-worker stereotype on its own.",
+   "benchedOn": "2026-10-14",
+   "ruling": "Maat, 14 Oct 2026 (people-photo sweep, review/hero-sweep-2026-10-14/SWEEP.md)"
+  },
+  {
+   "sha1": "395ad8d85838",
+   "sha256": "2fff3e04ea53d83ba9c489063dd3ba17c58ea58cecfffcadd7a14743d84fd70b",
+   "slots": [
+    "fog/week_1/night/5.webp",
+    "fog/week_2/night/5.webp",
+    "fog/week_3/night/5.webp",
+    "fog/week_4/night/5.webp"
+   ],
+   "fallback": "fog/week_1/night/1.webp",
+   "movedTo": null,
+   "reason": "A Black waiter serving white diners in the fog: composes into a racial service hierarchy on its own.",
+   "benchedOn": "2026-10-14",
+   "ruling": "Maat, 14 Oct 2026 (people-photo sweep, review/hero-sweep-2026-10-14/SWEEP.md)"
   }
  ],
  "retired": [
