@@ -59,6 +59,16 @@ describe('pickHeroPair — the rotation rule', () => {
     }
   });
 
+  it('a one-day pair is never crowded out by an any-day pair in the same cell', () => {
+    const pairs = [{ id: 'any', folder: 'heat', times: ['day'], days: [1, 2, 3, 4, 5, 6, 7] }, { id: 'sat', folder: 'heat', times: ['day'], days: [6] }];
+    for (let w = 0; w < 30; w++) {
+      expect(daysOf('sat', w, 'heat', 'day', pairs), `week ${w}`).toEqual([6]);
+      const any = daysOf('any', w, 'heat', 'day', pairs);
+      expect(any).toHaveLength(1);
+      expect(any[0]).not.toBe(6);
+    }
+  });
+
   it('moves through every allowed day over the weeks', () => {
     for (const p of FIXTURE.slice(0, 3)) {
       const seen = new Set();

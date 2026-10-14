@@ -127,6 +127,16 @@ export const HERO_PAIRS = Object.freeze([
   { id: "a08-rain-dawn-oupa", folder: "rain", times: ["dawn"], days: [1,2,3,4,5,6,7] },
   { id: "a09-rain-night-sprinkler", folder: "rain", times: ["night"], days: [1,2,3,4,5,6,7] },
   { id: "a10-pc-dusk-sink", folder: "partly-cloudy", times: ["dusk"], days: [1,2,3,4,5,6,7] },
+  { id: "b01-wind-night-caravan", folder: "wind", times: ["night"], days: [5,6,7] },
+  { id: "b02-heat-day-candles", folder: "heat", times: ["day"], days: [1,2,3,4,5,6,7] },
+  { id: "b03-coldclear-dawn-queue", folder: "cold-clear", times: ["dawn"], days: [1,2,3,4,5] },
+  { id: "b04-fog-dawn-dam", folder: "fog", times: ["dawn"], days: [1,2,3,4,5,6,7] },
+  { id: "b05-storm-dusk-hadedas", folder: "storm", times: ["dusk"], days: [1,2,3,4,5,6,7] },
+  { id: "b06-cold-day-chips", folder: "cold", times: ["day"], days: [1,2,3,4,5,6,7] },
+  { id: "b07-wind-day-avos", folder: "wind", times: ["day"], days: [1,2,3,4,5,6,7] },
+  { id: "b08-fog-day-webs", folder: "fog", times: ["day"], days: [1,2,3,4,5,6,7] },
+  { id: "b09-heat-day-waterbreak", folder: "heat", times: ["day"], days: [6] },
+  { id: "b10-cold-night-heater", folder: "cold", times: ["night"], days: [1,2,3,4,5,6,7] },
 ]);
 
 /** Whole weeks since WEEK_ANCHOR_MS (not folded into the 4-week cycle); 0 before the anchor or on a bad input. */
@@ -140,16 +150,20 @@ export function getAbsoluteWeek(nowMs = Date.now()) {
  *
  * Each pair takes ONE of its allowed weekdays per week in its cell; the library serves every other day, so a pair
  * joins the rotation instead of replacing it. The day steps through the pair's allowed days one week at a time (offset
- * by its position in the table, so pairs spread out), and a pair whose day is already taken in that cell by an earlier
- * pair moves to its next free allowed day. Deterministic: every re-paint of the same cell on the same day agrees.
+ * by its position in the table, so pairs spread out), and a pair whose day is already taken in that cell by another
+ * pair moves to its next free allowed day. The pair with the fewest allowed days chooses first (a Saturday-only pair
+ * is never crowded out by an any-day pair in the same cell). Deterministic: every re-paint of the same cell on the
+ * same day agrees.
  */
 export function pickHeroPair(folder, timeOfDay, nowMs = Date.now(), pairs = HERO_PAIRS) {
   const day = getRotationDay(nowMs);
   const week = getAbsoluteWeek(nowMs);
   const taken = new Set();
   let chosen = null;
-  pairs.forEach((pair, i) => {
-    if (pair.folder !== folder || !pair.times.includes(timeOfDay) || !pair.days.length) return;
+  const cell = pairs.map((pair, i) => [pair, i])
+    .filter(([pair]) => pair.folder === folder && pair.times.includes(timeOfDay) && pair.days.length)
+    .sort((a, b) => a[0].days.length - b[0].days.length || a[1] - b[1]);
+  cell.forEach(([pair, i]) => {
     for (let k = 0; k < pair.days.length; k++) {
       const d = pair.days[(week + i + k) % pair.days.length];
       if (taken.has(d)) continue;

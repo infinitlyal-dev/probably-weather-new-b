@@ -255,6 +255,8 @@ export const HERO_CROP_OFFSETS = Object.freeze({
   "bg-canonical/fcf4723f8026e9745e713e15f649694244762a78172832d0445e5cd01076425d.webp": 6,
   "bg-canonical/fe5774dcc9216ef0deb008c2aca645d4c9e29e3bda7c767fa3791e2ff1b713cb.webp": 66,
   "bg-pairs/a07-breezy-night-mozzies.webp": 49,
+  "bg-pairs/b04-fog-dawn-dam.webp": 34,
+  "bg-pairs/b10-cold-night-heater.webp": 46,
   "bg/breezy/week_1/dawn/2.webp": 6,
   "bg/breezy/week_1/day/1.webp": 26,
   "bg/breezy/week_2/dawn/2.webp": 6,

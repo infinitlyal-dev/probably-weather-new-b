@@ -2,7 +2,7 @@
 // scripts/lang-check/apply-hero-lines-provisional.mjs on 2026-10-14 from lang-packs/xh/drafts-2026-10.jsonl — do not
 // edit by hand.
 //
-// English line → isiXhosa. 73 rows, drafted by a model (not a native speaker), each through the rebuilt
+// English line → isiXhosa. 83 rows, drafted by a model (not a native speaker), each through the rebuilt
 // lang-check (concord, attestation in context, a blind back-translation by a second model), none drifting at the gate's 0.6 confidence, and none
 // rated triage-high except 2 a reviewer released (the draft row names the ruling). Provisional pending a native reader: lang-packs/xh/provisional-manifest.jsonl. The back-translation
 // of every row: review/lines-backtranslation-2026-10.md. Served for isiXhosa by applyBespokeLine in assets/app.js,
@@ -10,19 +10,24 @@
 export const HERO_LINES_XH = {
  "A few clouds came along to watch. Also not running.": "Amafu ambalwa afike ezokubukela. Nawo akabaleki.",
  "A proper breeze tonight. The mosquitoes have been grounded.": "Kukho umoya owaneleyo ngobu busuku. Iingcongconi azikwazi ukuhla.",
+ "Big wind today. The avo tree is having a clearance sale.": "Umoya omkhulu namhlanje. Umthi we-avocado unentengiso enkulu.",
  "Clear sky this morning. Anyone driving east is doing it from memory.": "Isibhakabhaka sicacile ngale ntsasa. Nabani na oqhuba esinga empuma uqhuba ngentloko.",
  "Cloud over the mountain, potjie under the lapa. Both need another hour.": "Ilifu phezu kwentaba, ipotjie phantsi kwelapa. Zombini zisafuna enye iyure.",
  "Clouds all afternoon, not a drop. The hose is back on duty.": "Amafu emva kwemini yonke, akukho thontsi. Umbhobho wamanzi ubuyele emsebenzini.",
  "Clouds for the sunset, sprinklers for the vines. The farm arranges its own rain.": "Amafu okutshona kwelanga, amanzi okunkcenkceshela iidiliya. Ifama izilungiselela eyayo imvula.",
+ "Cold and wet all day. The furniture has slowly moved closer to the heater.": "Kuyabanda kwaye kumanzi imini yonke. Ifenitshala isondele kancinci kancinci kwi-heater.",
+ "Cold, wet and grey. The car smells of vinegar. Correct.": "Kuyabanda, kumanzi kwaye kungwevu. Imoto inuka iviniga. Kulungile.",
  "Even the hadeda is keeping it down. The sky set the tone.": "Nditsho ne-hadeda ithe cwaka. Isibhakabhaka simisele umzekelo.",
  "Even the people who swear it never gets cold are admitting it.": "Nditsho nabo bafunga ukuba akusoze kubande sebeyavuma ukuba kuyabanda.",
  "Every light on the string is swaying. Saturday night has rhythm, barely.": "Zonke izibane ezisentanjeni ziyajinga. UMgqibelo ebusuku unesingqi, kancinci nje.",
  "Flags out straight, wine held tight. The deck's version of a calm Monday.": "Iiflegi zolulekile, iwayini ibanjwe ngokuqinileyo. Kwi-deck, nguMvulo ozolileyo lo.",
+ "Frost in the shade. The bus queue has moved into the sun.": "Iqabaka emthunzini. Umgca webhasi ungene elangeni.",
  "Good rain. Oupa's already phoning round: 'How much did you get?'": "Imvula entle. UTatomkhulu sele etsalela wonke umntu: 'Nifumene engakanani?'",
  "Grey sky, jerseys on, school's out. The weekend doesn't need the sun's permission.": "Isibhakabhaka singwevu, iijezi zinxitywe, isikolo siphumile. Impelaveki ayifuni mvume yelanga.",
  "Half moon, half cloud, full bin. Tuesday night, as advertised.": "Isiqingatha senyanga, isiqingatha selifu, umgqomo ugcwele. NgoLwesibini ebusuku, njengoko kwakuthenjisiwe.",
  "Half the stars are behind cloud. The fairy lights are covering for them.": "Isiqingatha seenkwenkwezi singemva kwamafu. Izibane zokuhombisa ziyazibambela.",
  "Hand on the cap, one stride at a time. The breeze is pacing her.": "Isandla ekepusini, inyathelo ngenyathelo. Umoya omncinci uhamba naye.",
+ "Hot enough that the ref's calling a water break every ten minutes.": "Kushushu kangangokuba usompempe ubiza ikhefu lamanzi rhoqo emva kwemizuzu elishumi.",
  "In and out of the sun all day, then this. We all know someone like that.": "Ilanga liphuma lingena imini yonke, kwaye ngoku le nto. Sonke siyamazi umntu onjalo.",
  "It's 6am and the fridge is already the most popular room in the house.": "Ngu-6 ngentsasa, kwaye ifriji sele iyeyona ndawo ithandwayo endlwini.",
  "It's looked like rain since breakfast. Still just looking.": "Ukususela kwisidlo sakusasa kukhangeleka ngathi iza kuna imvula. Kusakhangeleka nje.",
@@ -32,6 +37,8 @@ export const HERO_LINES_XH = {
  "Not a cloud all day. The only tree in the car park is now prime property.": "Akukho nelinye ilifu imini yonke. Ekuphela komthi kwindawo yokupaka ngoku yindawo efunwa ngumntu wonke.",
  "Not one shadow on the field all day. The umpire never had to squint.": "Akukho sithunzi nesinye ebaleni imini yonke. I-umpire ayizange ibe nelanga emehlweni.",
  "One cloud over the mountain is not a weather event. The fire stays lit.": "Ilifu elinye phezu kwentaba ayisosiganeko semozulu. Umlilo usavutha.",
+ "Proper gale tonight. If you're towing a caravan, the caravan is driving.": "Isaqhwithi sokwenene ngobu busuku. Ukuba urhuqa i-caravan, i-caravan yiyo eqhubayo.",
+ "Proper heat this afternoon. Even the candles can't stand up straight.": "Kushushu ngokwenene emva kwemini. Nditsho namakhandlela akakwazi ukuma ethe nkqo.",
  "Properly cold today. The kind that goes through three jerseys like they aren't there.": "Kuyabanda nyhani namhlanje. Yingqele egqobhoza iijezi ezintathu ngathi azikho.",
  "Purple on the ground, white in the sky. Friday's colour scheme is approved.": "Mfusa emhlabeni, mhlophe esibhakabhakeni. Imibala kaLwesihlanu yamkelwe.",
  "Raining all night. The sprinkler hasn't noticed.": "Iyana ubusuku bonke. I-sprinkler ayikaqapheli.",
@@ -56,6 +63,7 @@ export const HERO_LINES_XH = {
  "The dust is going for gold in the low light. The match plays on through it.": "Uthuli lukhazimla ngathi yigolide ekukhanyeni kokutshona kwelanga. Umdlalo uyaqhubeka.",
  "The flag's giving the forecast before the surfers do. It says: go.": "Iflegi ixela imozulu phambi kwee-surfer. Ithi: ngenani emanzini.",
  "The flags are still chatting. The boats have called it a week.": "Iiflegi zisancokola. Izikhephe ziyigqibile iveki.",
+ "The hadedas are heading home early. Follow them.": "Ii-hadeda zigoduka kwangoko. Zilandele.",
  "The hill is moving in waves. The cattle have decided not to notice.": "Induli ishukuma ngathi ngamaza. Iinkomo zigqibe ekubeni zingaboni nto.",
  "The jacaranda petals are taking the bus too. The breeze bought their tickets.": "Amagqabi eentyatyambo ze-jacaranda nawo akhwele ibhasi. Umoya omncinci uwathengele amatikiti.",
  "The leaves keep setting off the security light. The dog's stopped getting up for them.": "Amagqabi asoloko ekhanyisa isibane sokhuseleko. Inja ayisaphakami ngenxa yawo.",
@@ -80,6 +88,8 @@ export const HERO_LINES_XH = {
  "The whole veld with the colour turned down. The sheep count the same either way.": "Ithafa lonke libonakala ngathi umbala wehlisiwe. Inani leegusha alitshintshi noko.",
  "The windpump doesn't believe in knock-off time. Neither does the dog.": "Umpompo womoya awukholelwa kwixesha lokuphuma emsebenzini. Nenja ayikholelwa.",
  "The windpump is doing the morning's work. The grass is just waving it on.": "Umpompo womoya wenza umsebenzi wakusasa. Ingca iyawangawangisa nje.",
+ "Thick mist on the dam this morning. The fish have the same view as you.": "Inkungu eshinyeneyo edamini ngale ntsasa. Iintlanzi zibona into efanayo nawe.",
+ "Thick mist this morning. The spiders have been busy all along.": "Inkungu eshinyeneyo ngale ntsasa. Izigcawu bezisoloko zixakekile ixesha lonke.",
  "Those clouds are only passing through. Even the mealies know not to get excited.": "Loo mafu adlula nje. Nditsho nombona uyazi ukuba akufuneki uvuye.",
 };
 
