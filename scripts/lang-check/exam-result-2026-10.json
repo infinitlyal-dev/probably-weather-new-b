@@ -1,13 +1,13 @@
 {
- "generated": "2026-10-10T12:33:44.940Z",
+ "generated": "2026-10-14T18:43:18.151Z",
  "threshold": 0.25,
- "elapsedMs": 38217,
+ "elapsedMs": 14847,
  "excludedAdversarial": 6,
  "inputs": {
   "scripts/lang-check/gold-set.json": "35506d016089e152905e80bac1c8d1ad1aca11cc00f50666e29bd35cfe28b980",
-  "scripts/lang-check/exam-2026-10.mjs": "8e31ee60d52ec8db07946a563ca75187487ed821c96b62e1b6e4d82e8534a15f",
+  "scripts/lang-check/exam-2026-10.mjs": "147b64cdad2aeb41504334a335533f86bd7d6407e6ea78a6e8f4684c0fadd768",
   "scripts/lang-check/lib/checker.mjs": "edcf2126c1b6e02ad27e1f42dbdb992800f805ee10ca83527861297c8a78e216",
-  "scripts/lang-check/lib/checker-v2.mjs": "7957d19653367944e321a2a8a46dfc70326b7c44417cfc4e15bf6dc803211041",
+  "scripts/lang-check/lib/checker-v2.mjs": "f3bcf95f81c78f3c8530543d4e7028cd96e8f8a90fa7cc977acef9bb3514d779",
   "scripts/lang-check/lib/concord.mjs": "8097786d7db8f0e0eb559bd8b8b90c60f8d84fae7eb3d088027c674de2ff6a33",
   "scripts/lang-check/lib/ngram-attest.mjs": "99bc4d21ecb94fde45d92b181439ae1a4a7f11626c0fe13755945f524a23fa88",
   "scripts/lang-check/lib/text.mjs": "17d0f376fdbe4d4d12524e73006792cdb1cf64291aca2661f2d21971fa396177",
@@ -148,20 +148,20 @@
     "recall": 0.8194444444444444
    },
    "after": {
-    "tp": 64,
+    "tp": 65,
     "fp": 101,
-    "fn": 8,
+    "fn": 7,
     "tn": 385,
-    "precision": 0.3878787878787879,
-    "recall": 0.8888888888888888
+    "precision": 0.39156626506024095,
+    "recall": 0.9027777777777778
    },
    "afterNoBt": {
-    "tp": 59,
+    "tp": 60,
     "fp": 91,
-    "fn": 13,
+    "fn": 12,
     "tn": 395,
-    "precision": 0.3933333333333333,
-    "recall": 0.8194444444444444
+    "precision": 0.3973509933774834,
+    "recall": 0.8333333333333334
    },
    "classes": {
     "wrong-sense": {
@@ -173,8 +173,8 @@
     "wrong-language": {
      "n": 19,
      "before": 0.9473684210526315,
-     "after": 0.9473684210526315,
-     "noBt": 0.9473684210526315
+     "after": 1,
+     "noBt": 1
     },
     "untranslated": {
      "n": 18,
@@ -303,11 +303,11 @@
    "alFewer": true
   },
   "st": {
-   "pass": false,
+   "pass": true,
    "precisionHeld": true,
    "recallUp": [
     true,
-    false
+    true
    ],
    "ceiling": [
     false,
@@ -330,14 +330,14 @@
   }
  },
  "alAccepted": {
-  "n": 1673,
-  "before": 43,
-  "after": 34,
-  "afterNoBt": 32,
-  "ownN": 448,
-  "ownBefore": 16,
-  "ownAfter": 15,
-  "btCoverage": 1673
+  "n": 1687,
+  "before": 44,
+  "after": 35,
+  "afterNoBt": 33,
+  "ownN": 459,
+  "ownBefore": 17,
+  "ownAfter": 16,
+  "btCoverage": 1683
  },
- "overall": false
+ "overall": true
 }

@@ -1,0 +1,530 @@
+{
+ "generated": "2026-10-14T18:50:44.026Z",
+ "before": "checker-v2 without rule (d), not the 6 Sept checker",
+ "rule": "lib/checker-v2.mjs (d): Sesotho freq <= 3, Setswana/Sepedi freq >= 100 and >= 50x",
+ "threshold": 0.25,
+ "liveBank": {
+  "n": 901,
+  "before": 198,
+  "after": 198,
+  "ruleFired": 0,
+  "fired": []
+ },
+ "goldGood": {
+  "n": 486,
+  "before": 91,
+  "after": 91,
+  "ruleFired": 0,
+  "fired": []
+ },
+ "goldWrongLanguage": {
+  "n": 19,
+  "before": 18,
+  "after": 19,
+  "ruleFired": 2,
+  "rows": [
+   {
+    "id": "st-bad-2889",
+    "text": "Hlonepha",
+    "before": true,
+    "after": true,
+    "words": []
+   },
+   {
+    "id": "st-bad-3527",
+    "text": "Lehodimo le re hopotsa gore ke mang monga'a.",
+    "before": true,
+    "after": true,
+    "words": []
+   },
+   {
+    "id": "st-bad-3528",
+    "text": "Tlhaho e sa tsoa re hopotsa gore na ke mang ea pele.",
+    "before": true,
+    "after": true,
+    "words": []
+   },
+   {
+    "id": "st-bad-3529",
+    "text": "go  a tjhesa",
+    "before": true,
+    "after": true,
+    "words": []
+   },
+   {
+    "id": "st-bad-3530",
+    "text": "Bohle ba lebetse ho otlela. Gape.",
+    "before": true,
+    "after": true,
+    "words": []
+   },
+   {
+    "id": "st-bad-3531",
+    "text": "Sephethephethe se sa tsoa hopola hore pula e teng. Gape.",
+    "before": true,
+    "after": true,
+    "words": []
+   },
+   {
+    "id": "st-bad-3532",
+    "text": "N1 jaanong ke waterpark.",
+    "before": true,
+    "after": true,
+    "words": []
+   },
+   {
+    "id": "st-bad-3533",
+    "text": "Kopano le bohle ba nang le seeta se le seng se metsi jaanong.",
+    "before": true,
+    "after": true,
+    "words": []
+   },
+   {
+    "id": "st-bad-3534",
+    "text": "Heater ya koloi ke yona relationship ya bohlokwa ka ho fetisisa bophelong ba hao hona jaanong.",
+    "before": true,
+    "after": true,
+    "words": []
+   },
+   {
+    "id": "st-bad-3535",
+    "text": "Lieta tsa hao tsa suede li khethile gompieno? Sebete.",
+    "before": true,
+    "after": true,
+    "words": []
+   },
+   {
+    "id": "st-bad-3536",
+    "text": "Mathata a tšepo le lehodimo gompieno.",
+    "before": true,
+    "after": true,
+    "words": []
+   },
+   {
+    "id": "st-bad-3537",
+    "text": "Bosigo bo hlakileng",
+    "before": true,
+    "after": true,
+    "words": []
+   },
+   {
+    "id": "st-bad-3538",
+    "text": "Bosigo bo hlakileng.",
+    "before": true,
+    "after": true,
+    "words": []
+   },
+   {
+    "id": "st-bad-3539",
+    "text": "Dibomo tse nyenyane tsa leqhoa di a wa. Ka hare ke moralo o le mong fela.",
+    "before": true,
+    "after": true,
+    "words": []
+   },
+   {
+    "id": "st-bad-3540",
+    "text": "Ha ho motho ea bolelletseng ponelopele. E fihletse fela.",
+    "before": true,
+    "after": true,
+    "words": []
+   },
+   {
+    "id": "st-bad-3541",
+    "text": "Ho tjhesa tota",
+    "before": false,
+    "after": true,
+    "words": [
+     "tota"
+    ]
+   },
+   {
+    "id": "st-bad-3542",
+    "text": "uv. e hodimu  tota",
+    "before": true,
+    "after": true,
+    "words": [
+     "tota"
+    ]
+   },
+   {
+    "id": "st-bad-3543",
+    "text": "O ka besa steak holim'a pavement gona joale.",
+    "before": true,
+    "after": true,
+    "words": []
+   },
+   {
+    "id": "st-bad-3544",
+    "text": "Gona ha se seo brosure ea bohahlauli e neng e se tšepisa.",
+    "before": true,
+    "after": true,
+    "words": []
+   }
+  ]
+ },
+ "independent": {
+  "source": "st-independent.json",
+  "note": "written by a Sonnet 5.5 subagent told only to write Sesotho lines with one Setswana/Sepedi slip each (and clean lines), and which words the OLD checker already lists; it was not told the rule",
+  "contaminated": {
+   "n": 40,
+   "before": 18,
+   "after": 25,
+   "ruleFired": 7,
+   "intruders": 40,
+   "rows": [
+    {
+     "text": "Ka mariga ho a bata haholo.",
+     "intruder": "mariga",
+     "from": "tn",
+     "before": true,
+     "after": true,
+     "words": []
+    },
+    {
+     "text": "Pula e tla na hosane kgotsa ka Laboraro.",
+     "intruder": "kgotsa",
+     "from": "tn",
+     "before": true,
+     "after": true,
+     "words": []
+    },
+    {
+     "text": "Nka jase, gonne ho tla bata kajeno.",
+     "intruder": "gonne",
+     "from": "tn",
+     "before": true,
+     "after": true,
+     "words": []
+    },
+    {
+     "text": "Kamoso ho tla tjhesa haholo toropong.",
+     "intruder": "Kamoso",
+     "from": "tn",
+     "before": false,
+     "after": false,
+     "words": []
+    },
+    {
+     "text": "Gosasa leholimo le tla hlaka mantsiboya.",
+     "intruder": "Gosasa",
+     "from": "nso",
+     "before": true,
+     "after": true,
+     "words": []
+    },
+    {
+     "text": "Maabane pula e ne e na bosiu bohle.",
+     "intruder": "Maabane",
+     "from": "tn",
+     "before": false,
+     "after": false,
+     "words": []
+    },
+    {
+     "text": "Kajeno maitsiboa moya o tla fokola.",
+     "intruder": "maitsiboa",
+     "from": "tn",
+     "before": true,
+     "after": true,
+     "words": []
+    },
+    {
+     "text": "Motshegare ho tla tjhesa haholo, dula moriting.",
+     "intruder": "Motshegare",
+     "from": "tn",
+     "before": true,
+     "after": true,
+     "words": []
+    },
+    {
+     "text": "Pula e na gaufi le toropo.",
+     "intruder": "gaufi",
+     "from": "tn",
+     "before": true,
+     "after": true,
+     "words": []
+    },
+    {
+     "text": "Ke tla fihla gae pele pula e qala.",
+     "intruder": "gae",
+     "from": "tn",
+     "before": true,
+     "after": true,
+     "words": []
+    },
+    {
+     "text": "Morago ho pula, ho tla ba le moholi.",
+     "intruder": "Morago",
+     "from": "tn",
+     "before": false,
+     "after": true,
+     "words": [
+      "Morago"
+     ]
+    },
+    {
+     "text": "Ngwana ya mogolo o thusa ho nosetsa dipalesa.",
+     "intruder": "mogolo",
+     "from": "tn",
+     "before": false,
+     "after": true,
+     "words": [
+      "mogolo"
+     ]
+    },
+    {
+     "text": "Re ja mmogo ha pula e na.",
+     "intruder": "mmogo",
+     "from": "tn",
+     "before": false,
+     "after": true,
+     "words": [
+      "mmogo"
+     ]
+    },
+    {
+     "text": "Ke futhumatsa matsogo a ka ka mollo.",
+     "intruder": "matsogo",
+     "from": "tn",
+     "before": true,
+     "after": true,
+     "words": []
+    },
+    {
+     "text": "Apara katiba, letsatsi le tjhesa tlhogo.",
+     "intruder": "tlhogo",
+     "from": "tn",
+     "before": true,
+     "after": true,
+     "words": []
+    },
+    {
+     "text": "Ke utlwa botlhoko maotong ha ho bata.",
+     "intruder": "botlhoko",
+     "from": "tn",
+     "before": false,
+     "after": false,
+     "words": []
+    },
+    {
+     "text": "Tlhokomela ha o khanna, ditsela di thella.",
+     "intruder": "Tlhokomela",
+     "from": "tn",
+     "before": false,
+     "after": false,
+     "words": []
+    },
+    {
+     "text": "Ke tla tlhapa koloi hosane haeba pula e sa na.",
+     "intruder": "tlhapa",
+     "from": "tn",
+     "before": true,
+     "after": true,
+     "words": []
+    },
+    {
+     "text": "Mogala wa ka o bontsha hore ho tla na hosane.",
+     "intruder": "Mogala",
+     "from": "tn",
+     "before": false,
+     "after": false,
+     "words": []
+    },
+    {
+     "text": "Moya o fokang ho tswa bokone o bata haholo.",
+     "intruder": "bokone",
+     "from": "tn",
+     "before": false,
+     "after": false,
+     "words": []
+    },
+    {
+     "text": "Letsatsi le hlaha ka botlhaba hoseng.",
+     "intruder": "botlhaba",
+     "from": "tn",
+     "before": true,
+     "after": true,
+     "words": []
+    },
+    {
+     "text": "Mosimane o bapala kantle ha pula e khaotsa.",
+     "intruder": "Mosimane",
+     "from": "tn",
+     "before": false,
+     "after": true,
+     "words": [
+      "Mosimane"
+     ]
+    },
+    {
+     "text": "Diphologolo di ipata ha pula e na haholo.",
+     "intruder": "Diphologolo",
+     "from": "tn",
+     "before": false,
+     "after": false,
+     "words": []
+    },
+    {
+     "text": "Ge pula e na, kenya dikobo ka tlung.",
+     "intruder": "Ge",
+     "from": "nso",
+     "before": false,
+     "after": false,
+     "words": []
+    },
+    {
+     "text": "Ho tjhesa kudu kajeno.",
+     "intruder": "kudu",
+     "from": "nso",
+     "before": false,
+     "after": false,
+     "words": []
+    },
+    {
+     "text": "Ke kgonthe hore pula e tla na hosane.",
+     "intruder": "kgonthe",
+     "from": "nso",
+     "before": false,
+     "after": false,
+     "words": []
+    },
+    {
+     "text": "Robala gabotse, bosiu bo tla bata.",
+     "intruder": "gabotse",
+     "from": "nso",
+     "before": true,
+     "after": true,
+     "words": []
+    },
+    {
+     "text": "Gopola ho nka samorele kajeno.",
+     "intruder": "Gopola",
+     "from": "nso",
+     "before": true,
+     "after": true,
+     "words": []
+    },
+    {
+     "text": "Ke nyaka jase ya ka ya pula.",
+     "intruder": "nyaka",
+     "from": "nso",
+     "before": false,
+     "after": true,
+     "words": [
+      "nyaka"
+     ]
+    },
+    {
+     "text": "O swanetše ho apara jase hoseng.",
+     "intruder": "swanetše",
+     "from": "nso",
+     "before": false,
+     "after": false,
+     "words": []
+    },
+    {
+     "text": "Pula e na gantši ka Mphalane.",
+     "intruder": "gantši",
+     "from": "nso",
+     "before": true,
+     "after": true,
+     "words": []
+    },
+    {
+     "text": "Boemo ba leholimo bo bjang kajeno?",
+     "intruder": "bjang",
+     "from": "nso",
+     "before": false,
+     "after": true,
+     "words": [
+      "bjang"
+     ]
+    },
+    {
+     "text": "Re a leboga pula e ngata ya mantsiboya.",
+     "intruder": "leboga",
+     "from": "nso",
+     "before": false,
+     "after": false,
+     "words": []
+    },
+    {
+     "text": "Kwala lenane la ho reka pele pula e qala.",
+     "intruder": "Kwala",
+     "from": "tn",
+     "before": false,
+     "after": false,
+     "words": []
+    },
+    {
+     "text": "Ke bereka hae kajeno hobane ditsela di thella.",
+     "intruder": "bereka",
+     "from": "tn",
+     "before": true,
+     "after": true,
+     "words": []
+    },
+    {
+     "text": "Tsena ka tlung, pula e qala ho na.",
+     "intruder": "Tsena",
+     "from": "nso",
+     "before": false,
+     "after": false,
+     "words": []
+    },
+    {
+     "text": "Dipalesa di tlhoka metsi kajeno.",
+     "intruder": "tlhoka",
+     "from": "tn",
+     "before": true,
+     "after": true,
+     "words": []
+    },
+    {
+     "text": "Moholi o dutse bogareng ba toropo.",
+     "intruder": "bogareng",
+     "from": "tn",
+     "before": false,
+     "after": false,
+     "words": []
+    },
+    {
+     "text": "Tlhwatlhwa ya peterole e phahame kajeno.",
+     "intruder": "Tlhwatlhwa",
+     "from": "tn",
+     "before": true,
+     "after": true,
+     "words": []
+    },
+    {
+     "text": "Dula ka gare, ho na le sefako.",
+     "intruder": "gare",
+     "from": "tn",
+     "before": false,
+     "after": true,
+     "words": [
+      "gare"
+     ]
+    }
+   ]
+  },
+  "clean": {
+   "n": 40,
+   "before": 2,
+   "after": 2,
+   "ruleFired": 0,
+   "fired": [
+    {
+     "text": "Bana ba boela sekolong ka Mantaha.",
+     "after": true,
+     "words": []
+    },
+    {
+     "text": "Teksi e lieha kajeno ka lebaka la pula.",
+     "after": true,
+     "words": []
+    }
+   ]
+  }
+ }
+}

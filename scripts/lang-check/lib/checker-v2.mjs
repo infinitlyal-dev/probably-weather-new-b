@@ -20,6 +20,7 @@ import { check, LangIndex } from './checker.mjs';
 import { concordFindings } from './concord.mjs';
 import { contextOf } from './ngram-attest.mjs';
 import { ROOT } from './build-index.mjs';
+import { normalizeWord } from './text.mjs';
 
 export const BT_CACHE = path.join(ROOT, 'scripts', 'lang-check', 'data', 'bt-cache.jsonl');
 let btIndex = null;
@@ -116,6 +117,33 @@ export function checkV2(item, { bt = 'cache' } = {}) {
     const idx = LangIndex.load(lang);
     for (const c of concordFindings(text, lang, { lexicon: idx.nounClass, protect: prot })) {
       findings.push({ check: 'concord', severity: 'medium', token: c.at, message: c.message, evidence: { concord: c } });
+    }
+  }
+
+  // (d) LOPSIDED SOTHO-TSWANA ATTESTATION (14 Oct 2026, after the October exam failed Sesotho on wrong-language recall).
+  // A word the Sesotho corpora attest at most three times while Setswana or Sepedi use it 100+ times and 50x as often is
+  // a Setswana/Sepedi word some Sesotho text happened to quote (tota, mongwe, ngwaga, dilo, leina, gomme: 110 such
+  // words), and the 6 Sept check let it through as "attested". Its marker lists name the function words; this catches
+  // the rest by the counts. Evidence (false alarms on the live bank and the good gold items, a held-out set written by
+  // another model): review/sesotho-exam-fix-2026-10-14.md, scripts/lang-check/st-lopsided-evidence.mjs. Here, not in
+  // checker.mjs, so the exam's BEFORE column stays the 6 Sept checker. Hyphenated and elided forms (sa-tota, ha'tota)
+  // are judged part by part; a word the 6 Sept check already called contamination is raised, never counted twice.
+  if (lang === 'st') {
+    const st = LangIndex.load('st'), sib = { tn: LangIndex.load('tn'), nso: LangIndex.load('nso') };
+    const seen = new Set();
+    const parts = text.split(/[^\p{L}'’-]+/u).flatMap((w) => [w, ...(/['’-]/.test(w) ? w.split(/['’-]+/) : [])]);
+    for (const surface of parts) {
+      const key = normalizeWord(surface, 'st');
+      if (!key || key.length < 3 || seen.has(key) || !st.has(key) || st.freq(key) > 3) continue;
+      seen.add(key);
+      const [sl, n] = Object.entries(sib).map(([l, i]) => [l, i.freq(key)]).sort((a, b) => b[1] - a[1])[0];
+      if (n < 100 || n < 50 * Math.max(1, st.freq(key))) continue;
+      const evidence = { sibling: sl, siblingFreq: n, ownFreq: st.freq(key), lopsided: true };
+      const message = `'${surface}' is attested in Sesotho only ${st.freq(key)}× but in ${sl} ${n}× — a ${sl === 'tn' ? 'Setswana' : 'Sepedi'} word?`;
+      const prior = findings.find((f) => f.check === 'contamination' && normalizeWord(String(f.token), 'st') === key);
+      if (prior && prior.severity !== 'low') continue;
+      if (prior) Object.assign(prior, { severity: 'medium', message, evidence: { ...(prior.evidence || {}), ...evidence, raisedFrom: 'low' } });
+      else findings.push({ check: 'contamination', severity: 'medium', token: surface, message, evidence });
     }
   }
 
