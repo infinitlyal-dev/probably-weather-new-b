@@ -444,7 +444,7 @@ export const HERO_LINES_AF = {
  "Sun's in, sun's out. Monday's doing a soft launch.": "Son in, son uit. Maandag warm nog net op.",
  "Sun's out. Don't be fooled. Nature is lying.": "Son is uit. Moenie geflous word nie. Die natuur lieg.",
  "Sun's playing peek-a-boo.": "Son speel wegkruipertjie.",
- "Sun, then cloud, then sun. Even the monkeys can't plan around that.": "Son, dan wolk, dan son. Selfs die apies kan nie daarvolgens beplan nie.",
+ "Sun, then cloud, then sun. Dress for all three.": "Son, dan wolk, dan son. Trek aan vir al drie.",
  "Sunday morning, and the sea is throwing the first half of it at her.": "Sondagoggend, en die see gooi alles wat hy het na haar toe.",
  "Sunday night, and even the washing is refusing to accept it.": "Sondagaand, en selfs die wasgoed weier om dit te aanvaar.",
  "Sunday night, and the best thing on tonight is not on a screen.": "Sondagaand, en die beste program vanaand is nie op 'n skerm nie.",

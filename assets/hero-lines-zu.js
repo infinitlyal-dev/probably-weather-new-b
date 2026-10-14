@@ -35,7 +35,6 @@ export const HERO_LINES_ZU = {
  "Shoes on the blanket corners. The breeze is welcome, the sand isn't.": "Izicathulo zisemakhoneni engubo. Umoya omncane uyamukeleka, isihlabathi asamukeleki.",
  "Sky and sea agreed on a colour this morning. Not an exciting one.": "Isibhakabhaka nolwandle kuvumelene ngombala ekuseni. Akuwona umbala ojabulisayo.",
  "Somebody forgot the washing. The breeze didn't, and it's doing a lovely job.": "Othile ukhohliwe izingubo. Umoya omncane wona awukhohlwanga, futhi wenza umsebenzi omuhle.",
- "Sun, then cloud, then sun. Even the monkeys can't plan around that.": "Ilanga, bese kuba namafu, bese liphuma futhi. Ngisho nezinkawu azikwazi ukuhlela lutho.",
  "Sun's in, sun's out. Monday's doing a soft launch.": "Ilanga liyangena, liyaphuma. UMsombuluko uqala kancane.",
  "Sunglasses on, sunglasses off, sunglasses on. Friday afternoon is interval training.": "Izibuko zelanga ziyagqokwa, ziyakhunyulwa, ziyagqokwa. ULwesihlanu ntambama kungukuzivocavoca.",
  "The breeze does all the work. The kite takes all the credit.": "Umoya wenza wonke umsebenzi. I-kite ithatha lonke udumo.",
