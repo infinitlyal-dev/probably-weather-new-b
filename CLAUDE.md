@@ -111,6 +111,7 @@ Language strings live in `assets/app.js` in the `translations` object.
 7. Add console.log debug lines for weather logic decisions (condition voting, source weights) — helps Al debug via browser console
 8. Keep prompts focused — do one thing well per session
 9. **Every isiZulu, isiXhosa and Sesotho transcreation runs through lang-check before it is wired** (Al's ruling 2026-09-06): `node scripts/lang-check/triage.mjs --lang <zu|xh|st> --file <set.json>` on the set, and `scripts/apply-provisional-drafts.mjs` holds triage-high lines by itself. A line the checker rates triage-high is not wired until a native rules. Sesotho follows the South African orthography (`jwale`, `dipula`, `tjhesa`).
+10. **Nothing is approved as text** (Al + Maat, 14 Oct 2026, standing rule): a photo-and-line pair is approved only when it has been seen rendered on the phone, with its stranger-read sentence (the worst way a stranger could read the picture and the line together). This applies to every hero line and photograph, and it came from a partly-cloudy line that read as a racist slur beside the people in its photo.
 
 ## CURRENT OUTSTANDING TASKS
 See `.claude/tasks/BACKLOG.md` for the full task list.
