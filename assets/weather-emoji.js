@@ -71,6 +71,8 @@ export function pickHourlyIcon({ rainPct, cloudPct, tempC, isNight, condition })
   if (cond === 'fog') return pickConditionIconForTime('fog', isDay);
   // The server marks an hour Breezy only under 30 % rain on a clear-family sky (api/weather.js aggregatedHourly).
   if (cond === 'breezy') return pickConditionIconForTime('breezy', isDay);
+  // 17 Oct 2026 (Al): the server marks an hour Windy at the hero's own Windy line, never on a wet, stormy or foggy hour.
+  if (cond === 'wind') return pickConditionIconForTime('wind', isDay);
 
   if (isNum(tempC) && tempC <= 0)        return pickConditionIconForTime('cold', isDay);
   if (isNum(rainPct) && rainPct >= 50)   return pickConditionIconForTime('rain', isDay);

@@ -2259,7 +2259,7 @@ export default async function handler(req, res) {
       const skyCloud = skyCloudFor({ cloudPct: modalCloud, omLowPct: hourlies[0]?.cloudsLow?.[i], omMidPct: hourlies[0]?.cloudsMid?.[i] });
 
       // The hour's row says Breezy on the same rule as the hero: a clear-family sky, under 30 % rain, the wind in the
-      // breezy band under the Windy line, two sources at the line. Windy hours are not marked here (as before).
+      // breezy band under the Windy line, two sources at the line. Windy hours are marked just below (17 Oct 2026).
       const hourRainChance = wAvg(hourlies, hourlyW, h => h.rains[i]);
       const hourWindyLine = windLine(shapedHour).thresholdKph;
       const hourBreezy = (hourCondition === 'clear' || hourCondition === null)
@@ -2267,6 +2267,13 @@ export default async function handler(req, res) {
         && isNum(effectiveHourlyWind) && effectiveHourlyWind < hourWindyLine
         && (effectiveHourlyWind >= BREEZY_MEAN_KPH || (isNum(hourlies[0]?.gusts?.[i]) && hourlies[0].gusts[i] >= BREEZY_GUST_KPH))
         && breezySources >= BREEZY_MIN_SOURCES;
+      // 17 Oct 2026 (Al): a Windy hour now shows the wind icon too, so the hourly row stops showing a sun under a
+      // stronger wind than the hero called Breezy. Same line the hero's Windy rung reads for this hour (windLine); a
+      // wet hour (50 %+ rain, or rain in the sources' words), storm, fog and snow keep their own icons.
+      const hourWindy = !hourBreezy
+        && (hourCondition === 'clear' || hourCondition === 'cloudy' || hourCondition === null)
+        && !(isNum(hourRainChance) && hourRainChance >= 50)
+        && isNum(effectiveHourlyWind) && effectiveHourlyWind >= hourWindyLine;
 
       return {
         tempC:      wAvg(hourlies, hourlyW, h => h.temps[i]),
@@ -2281,7 +2288,7 @@ export default async function handler(req, res) {
         skyCloudPct: skyCloud.pct, // what the icon reads; cloudPct stays the models' number for display
         uv:         isNum(uvVal) ? Math.round(uvVal * 10) / 10 : null,
         // Phase B-1 Item 3: categorised hourly condition + winning desc label
-        condition:  hourBreezy ? 'breezy' : hourCondition,
+        condition:  hourBreezy ? 'breezy' : hourWindy ? 'wind' : hourCondition,
         descLabel:  hourWinningDesc,
         // Part B item 6 (8 Oct 2026): sources other than the ECMWF twins at 30 % this hour; the phone's "Might rain."
         // over the next four hours reads only hours where this is at least 1. rainChance (the stats row) is unchanged.
