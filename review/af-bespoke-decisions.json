@@ -16633,6 +16633,156 @@
    "afrikaans": "Maan agter 'n wolk, hond op die stoep. Sondag se diens is verby.",
    "score": null,
    "reason": "Maat's line for the new photograph, ruled by Al (8 Oct 2026); written straight to assets/hero-lines-af.js by scripts/ingest-new-sets.mjs"
+  },
+  {
+   "id": "S14-01",
+   "group": "people-sweep-2026-10-14",
+   "verdict": "CANON",
+   "slot": "heat/dusk",
+   "english": "Ice cream isn't a treat. It's survival.",
+   "afrikaans": "Roomys is nie 'n lekkerny nie. Dis oorlewing.",
+   "score": null,
+   "reason": "Al's native condition-bank line, reused to replace a line that could be read against the people in the photograph (people-photo sweep, 14 Oct 2026)"
+  },
+  {
+   "id": "S14-02",
+   "group": "people-sweep-2026-10-14",
+   "verdict": "CANON",
+   "slot": "wind/day",
+   "english": "The southeaster's arrived. Uninvited, as usual.",
+   "afrikaans": "Die suidooster het aangekom. Ongenooid, soos altyd.",
+   "score": null,
+   "reason": "Al's native condition-bank line, reused to replace a line that could be read against the people in the photograph (people-photo sweep, 14 Oct 2026)"
+  },
+  {
+   "id": "S14-03",
+   "group": "people-sweep-2026-10-14",
+   "verdict": "CANON",
+   "slot": "wind/day",
+   "english": "Kite surfers are having the time of their lives.",
+   "afrikaans": "Vlieërsurfers het die tyd van hul lewe.",
+   "score": null,
+   "reason": "Al's native condition-bank line, reused to replace a line that could be read against the people in the photograph (people-photo sweep, 14 Oct 2026)"
+  },
+  {
+   "id": "S14-04",
+   "group": "people-sweep-2026-10-14",
+   "verdict": "CANON",
+   "slot": "wind/dusk",
+   "english": "The wind has opinions and it's sharing every one.",
+   "afrikaans": "Die wind het opinies en deel elkeen.",
+   "score": null,
+   "reason": "Al's native condition-bank line, reused to replace a line that could be read against the people in the photograph (people-photo sweep, 14 Oct 2026)"
+  },
+  {
+   "id": "S14-05",
+   "group": "people-sweep-2026-10-14",
+   "verdict": "CANON",
+   "slot": "wind/dawn",
+   "english": "Close it, tie it down, surrender.",
+   "afrikaans": "Maak toe, maak vas, gee oor.",
+   "score": null,
+   "reason": "Al's native condition-bank line, reused to replace a line that could be read against the people in the photograph (people-photo sweep, 14 Oct 2026)"
+  },
+  {
+   "id": "S14-06",
+   "group": "people-sweep-2026-10-14",
+   "verdict": "CANON",
+   "slot": "wind/dawn",
+   "english": "The boats are staying in. Take the hint.",
+   "afrikaans": "Die bote bly binne. Vat die wenk.",
+   "score": null,
+   "reason": "Al's native condition-bank line, reused to replace a line that could be read against the people in the photograph (people-photo sweep, 14 Oct 2026)"
+  },
+  {
+   "id": "S14-07",
+   "group": "people-sweep-2026-10-14",
+   "verdict": "CANON",
+   "slot": "heat/day",
+   "english": "The AC is begging for mercy.",
+   "afrikaans": "Die AC smeek om genade.",
+   "score": null,
+   "reason": "Al's native condition-bank line, reused to replace a line that could be read against the people in the photograph (people-photo sweep, 14 Oct 2026)"
+  },
+  {
+   "id": "S14-08",
+   "group": "people-sweep-2026-10-14",
+   "verdict": "CANON",
+   "slot": "cloudy/dawn",
+   "english": "The sky's giving absolutely nothing.",
+   "afrikaans": "Die lug gee absoluut niks.",
+   "score": null,
+   "reason": "Al's native condition-bank line, reused to replace a line that could be read against the people in the photograph (people-photo sweep, 14 Oct 2026)"
+  },
+  {
+   "id": "S14-09",
+   "group": "people-sweep-2026-10-14",
+   "verdict": "CANON",
+   "slot": "cold/dawn",
+   "english": "Cold enough for soup. And a second soup.",
+   "afrikaans": "Koud genoeg vir sop. En 'n tweede sop.",
+   "score": null,
+   "reason": "Al's native condition-bank line, reused to replace a line that could be read against the people in the photograph (people-photo sweep, 14 Oct 2026)"
+  },
+  {
+   "id": "S14-10",
+   "group": "people-sweep-2026-10-14",
+   "verdict": "CANON",
+   "slot": "cold/day",
+   "english": "Rooibos consumption just doubled.",
+   "afrikaans": "Rooibos-verbruik het net verdubbel.",
+   "score": null,
+   "reason": "Al's native condition-bank line, reused to replace a line that could be read against the people in the photograph (people-photo sweep, 14 Oct 2026)"
+  },
+  {
+   "id": "S14-11",
+   "group": "people-sweep-2026-10-14",
+   "verdict": "CANON",
+   "slot": "rain/dusk",
+   "english": "The clouds are having a moment.",
+   "afrikaans": "Die wolke tjank, iemand kry 'n tissue asb.",
+   "score": null,
+   "reason": "Al's native condition-bank line, reused to replace a line that could be read against the people in the photograph (people-photo sweep, 14 Oct 2026)"
+  },
+  {
+   "id": "S14-12",
+   "group": "people-sweep-2026-10-14",
+   "verdict": "NEW",
+   "slot": "breezy/dawn",
+   "english": "Petals on the pavement and a breeze down the street. That's a quiet Sunday morning.",
+   "afrikaans": "Blomblare op die sypaadjie en 'n briesie in die straat af. So lyk 'n stil Sondagoggend.",
+   "score": 4,
+   "reason": "Weather-only line for a breezy photograph whose line commented on the people in it (people-photo sweep, 14 Oct 2026); lang-check pass, low findings only"
+  },
+  {
+   "id": "S14-13",
+   "group": "people-sweep-2026-10-14",
+   "verdict": "NEW",
+   "slot": "breezy/day",
+   "english": "A breeze off the mountain for break time. Monday, but a gentle one.",
+   "afrikaans": "'n Briesie van die berg af vir pouse. Maandag, maar 'n sagte een.",
+   "score": 4,
+   "reason": "Weather-only line for a breezy photograph whose line commented on the people in it (people-photo sweep, 14 Oct 2026); lang-check pass, low findings only"
+  },
+  {
+   "id": "S14-14",
+   "group": "people-sweep-2026-10-14",
+   "verdict": "NEW",
+   "slot": "breezy/day",
+   "english": "Sea breeze through the stalls and the palms. Tuesday's air-con is free.",
+   "afrikaans": "Seebries deur die stalletjies en die palms. Dinsdag se lugversorging is verniet.",
+   "score": 4,
+   "reason": "Weather-only line for a breezy photograph whose line commented on the people in it (people-photo sweep, 14 Oct 2026); lang-check pass, low findings only"
+  },
+  {
+   "id": "S14-15",
+   "group": "people-sweep-2026-10-14",
+   "verdict": "CANON",
+   "slot": "partly-cloudy/day",
+   "english": "Half-committed clouds.",
+   "afrikaans": "Halfgewillig bewolk.",
+   "score": null,
+   "reason": "Al's native condition-bank line, reused to replace a line that could be read against the people in the photograph (people-photo sweep, 14 Oct 2026)"
   }
  ]
 }

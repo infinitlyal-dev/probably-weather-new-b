@@ -1,0 +1,44 @@
+{"key":"witty.rain[66]","verdict":"PASS","reason":"","bt":"Somebody's mother will scold. But it was nice.","btVerdict":"same","checker":"pass","slot":"empty-slot"}
+{"key":"witty.cloudy[46]","verdict":"PASS","reason":"","bt":"The sun is still loading. Don't refresh the page.","btVerdict":"same","checker":"triage","slot":"empty-slot"}
+{"key":"witty.cloudy[70]","verdict":"PASS","reason":"","bt":"There are no colours in the sky tonight, only silence.","btVerdict":"loose","checker":"pass","slot":"empty-slot"}
+{"key":"witty.cloudy[71]","verdict":"PASS","reason":"","bt":"Evening arrives on tiptoe, as if it has put on socks.","btVerdict":"same","checker":"pass","slot":"empty-slot"}
+{"key":"witty.cloudy[79]","verdict":"PASS","reason":"","bt":"Tomorrow is a new conversation with the weather. Tonight we rest.","btVerdict":"same","checker":"pass","slot":"empty-slot"}
+{"key":"witty.partly-cloudy[6]","verdict":"PASS","reason":"","bt":"Clouds today. The feelings, though, are yours.","btVerdict":"loose","checker":"pass","slot":"empty-slot"}
+{"key":"witty.wind[23]","verdict":"PASS","reason":"","bt":"Cape Town sends support. And an extra cap.","btVerdict":"same","checker":"pass","slot":"empty-slot"}
+{"key":"witty.wind[26]","verdict":"PASS","reason":"","bt":"The South-Easter has no switch to turn it off. We looked for it.","btVerdict":"same","checker":"pass","slot":"empty-slot"}
+{"key":"witty.wind[41]","verdict":"PASS","reason":"","bt":"The tablecloth is fixed/arranged, ready for tomorrow's work.","btVerdict":"same","checker":"pass","slot":"empty-slot"}
+{"key":"witty.cold[51]","verdict":"PASS","reason":"","bt":"The most beautiful blue (literally green-blue) sky in the whole country, but it feels as if you are in a fridge that has a display/show.","btVerdict":"loose","checker":"pass","slot":"empty-slot"}
+{"key":"witty.cold[71]","verdict":"PASS","reason":"","bt":"Trout weather. Nice for the fish. It builds an angler's character.","btVerdict":"same","checker":"pass","slot":"empty-slot"}
+{"key":"witty.cold[89]","verdict":"PASS","reason":"","bt":"Blesbok don't wear scarves and don't complain. We could learn something. We won't, but we could learn.","btVerdict":"same","checker":"pass","slot":"empty-slot"}
+{"key":"witty.cold[99]","verdict":"PASS","reason":"","bt":"I forgot to turn on the electric blanket early. Always. Always. At night.","btVerdict":"same","checker":"pass","slot":"empty-slot"}
+{"key":"witty.cold[101]","verdict":"PASS","reason":"","bt":"That one small light is a person who does winter well: a grass house, a fire, it is finished.","btVerdict":"same","checker":"pass","slot":"empty-slot"}
+{"key":"witty.cold-clear[39]","verdict":"PASS","reason":"","bt":"The 7 a.m. sun hasn't put out heat yet. It's just a vibe.","btVerdict":"same","checker":"pass","slot":"empty-slot"}
+{"key":"witty.cold-clear[49]","verdict":"PASS","reason":"","bt":"The sun does the outside admin. The heat was not part of the package.","btVerdict":"same","checker":"pass","slot":"empty-slot"}
+{"key":"witty.cold-clear[51]","verdict":"PASS","reason":"","bt":"Cape Town after the front: washed clean, shining, and really cold.","btVerdict":"same","checker":"pass","slot":"empty-slot"}
+{"key":"witty.cold-clear[63]","verdict":"PASS","reason":"","bt":"One blanket, two people, no shame.","btVerdict":"same","checker":"pass","slot":"empty-slot"}
+{"key":"witty.cold-clear[77]","verdict":"PASS","reason":"","bt":"The Karoo opens its roof at night. Wear warm clothes to watch the show.","btVerdict":"same","checker":"pass","slot":"empty-slot"}
+{"key":"witty.cold-clear[86]","verdict":"PASS","reason":"","bt":"The moon lit up the mountains. But the heat was not turned on.","btVerdict":"same","checker":"pass","slot":"empty-slot"}
+{"key":"witty.heat[45]","verdict":"PASS","reason":"","bt":"The sea is 12 degrees. At 10 it will feel like a spa.","btVerdict":"same","checker":"pass","slot":"empty-slot"}
+{"key":"witty.heat[70]","verdict":"PASS","reason":"","bt":"We're not talking about today. Today is over. We take pride in ourselves.","btVerdict":"same","checker":"pass","slot":"empty-slot"}
+{"key":"witty.heat[75]","verdict":"PASS","reason":"","bt":"The rocks will hand out today's heat all night. Free.","btVerdict":"same","checker":"pass","slot":"empty-slot"}
+{"key":"witty.heat[77]","verdict":"PASS","reason":"","bt":"The whole city had the same [?isu: plan/strategy] tonight. Look at all of us.","btVerdict":"same","checker":"pass","slot":"empty-slot"}
+{"key":"witty.heat[82]","verdict":"PASS","reason":"","bt":"Irrigation water is said to be the grass's. Look at who is standing in the water.","btVerdict":"same","checker":"pass","slot":"empty-slot"}
+{"key":"witty.fog[56]","verdict":"PASS","reason":"","bt":"Rest, the mountains are just loading.","btVerdict":"same","checker":"pass","slot":"empty-slot"}
+{"key":"witty.fog[60]","verdict":"PASS","reason":"","bt":"Every lit window is a person deciding: enough for today.","btVerdict":"same","checker":"pass","slot":"empty-slot"}
+{"key":"witty.fog[64]","verdict":"PASS","reason":"","bt":"Good weather for meeting the person you were supposed to phone.","btVerdict":"same","checker":"pass","slot":"empty-slot"}
+{"key":"witty.fog[81]","verdict":"PASS","reason":"","bt":"The Sea Point foghorn sings us to sleep, free.","btVerdict":"loose","checker":"pass","slot":"empty-slot"}
+{"key":"witty.clear[41]","verdict":"PASS","reason":"","bt":"The sun took its time in the morning. The wait was deserved.","btVerdict":"same","checker":"pass","slot":"empty-slot"}
+{"key":"witty.clear[58]","verdict":"PASS","reason":"","bt":"Days like these are not worked for. They are given.","btVerdict":"same","checker":"triage","slot":"empty-slot"}
+{"key":"witty.clear[60]","verdict":"PASS","reason":"","bt":"The sun sets slowly, really showing off. But it deserves it.","btVerdict":"same","checker":"pass","slot":"empty-slot"}
+{"key":"witty.fog[99]","verdict":"PASS","reason":"","bt":"Midlands fog: a rural privacy setting.","btVerdict":"same","checker":"pass","slot":"empty-slot"}
+{"key":"witty.heat[85]","verdict":"PASS","reason":"","bt":"Go now or don't go at all. The Lowveld gives you until 7.","btVerdict":"same","checker":"pass","slot":"empty-slot"}
+{"key":"witty.heat[86]","verdict":"PASS","reason":"","bt":"Even the impalas stand in the shade reconsidering their decisions.","btVerdict":"same","checker":"pass","slot":"empty-slot"}
+{"key":"witty.heat[87]","verdict":"PASS","reason":"","bt":"Lowveld summer: you don't sweat, you melt with dignity [or: with shade; isithunzi is ambiguous].","btVerdict":"same","checker":"pass","slot":"empty-slot"}
+{"key":"witty.heat[88]","verdict":"PASS","reason":"","bt":"The bushveld is in silent mode today. Everyone. Everything.","btVerdict":"same","checker":"pass","slot":"empty-slot"}
+{"key":"witty.heat[89]","verdict":"PASS","reason":"","bt":"Sundowners are not glamour in the Lowveld. They are a tree [or: medicine; umuthi].","btVerdict":"same","checker":"pass","slot":"empty-slot"}
+{"key":"witty.wind[52]","verdict":"PASS","reason":"","bt":"Gqeberha, we know. We really know.","btVerdict":"same","checker":"pass","slot":"empty-slot"}
+{"key":"witty.wind[53]","verdict":"PASS","reason":"","bt":"The Friendly City has never asked to be the Windy City, but nonetheless.","btVerdict":"same","checker":"triage","slot":"empty-slot"}
+{"key":"witty.wind[54]","verdict":"PASS","reason":"","bt":"Jeffreys Bay: where the wind warms up before its shift in Cape Town.","btVerdict":"same","checker":"pass","slot":"empty-slot"}
+{"key":"witty.wind[55]","verdict":"PASS","reason":"","bt":"Gqeberha doesn't sleep, it just holds on.","btVerdict":"same","checker":"pass","slot":"empty-slot"}
+{"key":"heroLabels.breezy","verdict":"FLAG","reason":"slot already holds \"Umoya omncane\"","bt":"There is a little wind","btVerdict":"same","checker":"pass","slot":"slot-filled"}
+{"key":"headlines.breezy","verdict":"FLAG","reason":"slot already holds \"Kunomoya omncane.\"","bt":"There is a little wind.","btVerdict":"same","checker":"pass","slot":"slot-filled"}

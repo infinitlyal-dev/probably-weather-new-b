@@ -58,7 +58,8 @@ describe('witty bins — realignment empties are exactly where expected', () => 
   // (scripts/apply-provisional-drafts.mjs) folded the checker-PASSED zu/xh/st
   // drafts into these bins and recorded each in lang-packs/<lang>/provisional-manifest.jsonl.
   // That closed partly-cloudy zu[3,7,8] + st[4] and lc-clear zu/st[2]; zu
-  // partly-cloudy[6] stays a FLAG debt (empty) pending native review. The
+  // partly-cloudy[6] stayed a FLAG debt (empty) pending native review — until 2026-10-10, when the October
+  // isiZulu drafting round filled it as provisional (lang-packs/zu/drafts-2026-10.jsonl). The
   // sanctioned-fill guarantee (filled ⟺ in the manifest, byte-identical) is
   // enforced by review/tools/verify-lines.mjs; this block pins the residual empties.
   const emptiesOf = (arr) =>
@@ -66,7 +67,7 @@ describe('witty bins — realignment empties are exactly where expected', () => 
   const pc = WEATHER_COPY.witty['partly-cloudy'];
   const lc = WEATHER_COPY.witty_low_confidence.clear;
   it('partly-cloudy AF has no empties (owner filled the gap-fill slots, G0)', () => expect(emptiesOf(pc.af)).toEqual([]));
-  it('partly-cloudy ZU empty at [6] only (FLAG debt; PASS drafts filled [3,7,8])', () => expect(emptiesOf(pc.zu)).toEqual([6]));
+  it('partly-cloudy ZU has no empties (PASS drafts filled [3,7,8]; the October round filled [6])', () => expect(emptiesOf(pc.zu)).toEqual([]));
   it('partly-cloudy ST has no empties (provisional apply filled [4])', () => expect(emptiesOf(pc.st)).toEqual([]));
   it('lc-clear ZU/ST have no empties (provisional apply filled [2])', () => {
     expect(emptiesOf(lc.zu)).toEqual([]);

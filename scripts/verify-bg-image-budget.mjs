@@ -5,7 +5,8 @@ import { fileURLToPath } from 'node:url';
 export const MAX_BG_IMAGE_BYTES = 300 * 1024;
 
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const imageRoot = path.join(repoRoot, 'assets', 'images', 'bg');
+// The grid, and the hero pairs that are served outside it (14 Oct 2026, review/hero-pairs.json).
+const imageRoots = [path.join(repoRoot, 'assets', 'images', 'bg'), path.join(repoRoot, 'assets', 'images', 'bg-pairs')];
 
 async function collectWebps(dir) {
   const entries = await readdir(dir, { withFileTypes: true });
@@ -17,7 +18,7 @@ async function collectWebps(dir) {
   return nested.flat();
 }
 
-const files = await collectWebps(imageRoot);
+const files = (await Promise.all(imageRoots.map((dir) => collectWebps(dir)))).flat();
 const measured = await Promise.all(files.map(async (file) => ({ file, bytes: (await stat(file)).size })));
 const violations = measured
   .filter(({ bytes }) => bytes > MAX_BG_IMAGE_BYTES)

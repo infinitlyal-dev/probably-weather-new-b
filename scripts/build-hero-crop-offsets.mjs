@@ -20,6 +20,7 @@ import { createHash } from 'node:crypto';
 import { readFileSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { loadHeroPairs } from './build-hero-pairs.mjs';
 
 const root = fileURLToPath(new URL('..', import.meta.url));
 const CHECK = process.argv.includes('--check');
@@ -89,6 +90,16 @@ for (const [hash, entry] of Object.entries(offsets.offsets || {})) {
     rows.push([`bg-canonical/${createHash('sha256').update(bytes).digest('hex')}.webp`, y]);
   }
 }
+
+// HERO PAIRS (14 Oct 2026; review/hero-pairs.json): a pair's anchor comes from the face check on Al's phone
+// (review/opus-ten/tools/phone.mjs, the same judge as scripts/anchor-faces.mjs). Null = the CSS default, no entry.
+try {
+  for (const pair of loadHeroPairs()) {
+    if (pair.crop === null) continue;
+    if (pair.crop === CSS_DEFAULT) { problems.push(`${pair.id}: crop ${pair.crop} is the CSS default — set it to null instead`); continue; }
+    rows.push([`bg-pairs/${pair.id}.webp`, pair.crop]);
+  }
+} catch (e) { problems.push(e.message); }
 
 if (problems.length) {
   console.error('[hero-crop] refusing to generate:');

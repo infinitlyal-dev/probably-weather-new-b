@@ -1299,6 +1299,19 @@
     "comet": null,
     "rules": true
    }
+  },
+  {
+   "lang": "xh",
+   "en": "It's a beautiful day to stay indoors.",
+   "text": "Lusuku oluhle lokuhlala ngaphakathi.",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": null,
+    "rules": true
+   },
+   "on": "2026-10-10"
   }
  ],
  "stays": []

@@ -1,0 +1,506 @@
+{
+  "note": "Hero pairs: a photograph and its line made as one idea, served outside the slot grid (Al + Maat, 14 Oct 2026). Each pair carries its own rules instead of a grid slot: its condition folder, the times of day and the SAST weekdays (Mon=1 … Sun=7) it fits. assets/image-picker.js pickHeroPair gives each pair ONE of its allowed days per week in its cell (the day moves week by week; two pairs in one cell never share a day); the library serves every other day. This file is the source: scripts/build-hero-pairs.mjs writes the picker table, scripts/build-hero-lines.mjs the English lines, scripts/build-hero-crop-offsets.mjs the crop anchors; each refuses a pair whose bytes no longer match sha1. A pair is approved rendered on the phone with its stranger-read sentence, never as text (Al + Maat, 14 Oct 2026).",
+  "version": "20261014",
+  "sets": {
+    "a": {
+      "approved": "Al + Maat, 14 Oct 2026, on the phone renders in review/opus-ten-2026-10-14.html (pairs 04 and 07 re-shot to their rulings the same day: 04 with nobody in frame, 07 with the dog awake beside her)",
+      "made": "Opus 5.5 (Vonk), Codex gpt-5.6-sol image tool; review/opus-ten/"
+    },
+    "b": {
+      "approved": "Al, 14 Oct 2026 (\"Happy with all ten new ones\"), on the phone renders in review/opus-ten-b-2026-10-14.html",
+      "made": "Opus 5.5 (Vonk), Codex gpt-5.6-sol image tool; review/opus-ten-b/"
+    }
+  },
+  "pairs": [
+    {
+      "set": "a",
+      "id": "a01-clear-dawn-east",
+      "folder": "clear",
+      "times": [
+        "dawn"
+      ],
+      "days": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "crop": null,
+      "sha1": "cbffcc3350e2",
+      "lines": [
+        "Clear sky this morning. Anyone driving east is doing it from memory."
+      ],
+      "af": "Helder lug vanoggend. Wie oos ry, ry maar uit die kop uit.",
+      "stranger": "A reader who has lost someone on the road could hear it as glib about driving blind; it stays because it names a shared nuisance, not a risk anyone takes for fun.",
+      "source": "review/opus-ten/01-clear-dawn-east.r2.png (q82, 296616 bytes)",
+      "image": "assets/images/bg-pairs/a01-clear-dawn-east.webp"
+    },
+    {
+      "set": "a",
+      "id": "a02-clear-day-tree",
+      "folder": "clear",
+      "times": [
+        "day"
+      ],
+      "days": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "crop": null,
+      "sha1": "f6950e1bdb35",
+      "lines": [
+        "Not a cloud all day. The only tree in the car park is now prime property."
+      ],
+      "af": "Heeldag nie 'n wolkie nie. Die enigste boom op die parkeerterrein is nou prima eiendom.",
+      "stranger": "It could be read as sneering at drivers who won't park in the sun; nobody in it is identifiable, and every reader is one of those drivers.",
+      "source": "review/opus-ten/02-clear-day-tree.r2.png (q75, 286714 bytes)",
+      "image": "assets/images/bg-pairs/a02-clear-day-tree.webp"
+    },
+    {
+      "set": "a",
+      "id": "a03-pc-day-garden",
+      "folder": "partly-cloudy",
+      "times": [
+        "day"
+      ],
+      "days": [
+        6,
+        7
+      ],
+      "crop": null,
+      "sha1": "e89849f1fba6",
+      "lines": [
+        "Mostly sunny. Except over your garden."
+      ],
+      "af": "Oorwegend sonnig. Behalwe bo jou erf.",
+      "stranger": "With a South African Indian family in the frame, a stranger could read 'your garden' as aimed at them; the line speaks to the reader, and the father's flat look up at the cloud makes him the one in on the joke.",
+      "source": "review/opus-ten/03-pc-day-garden.r3.png (q82, 257074 bytes)",
+      "image": "assets/images/bg-pairs/a03-pc-day-garden.webp"
+    },
+    {
+      "set": "a",
+      "id": "a04-cloudy-day-plants",
+      "folder": "cloudy",
+      "times": [
+        "day"
+      ],
+      "days": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "crop": null,
+      "sha1": "e5cb9e9f48aa",
+      "lines": [
+        "It's looked like rain since breakfast. Still just looking."
+      ],
+      "af": "Dit lyk al van ontbyt af na reën. Lyk is al wat dit doen.",
+      "stranger": "With nobody in the frame, the line can only be about the sky.",
+      "source": "review/opus-ten/04-cloudy-day-plants.r4.png (q82, 268870 bytes)",
+      "image": "assets/images/bg-pairs/a04-cloudy-day-plants.webp"
+    },
+    {
+      "set": "a",
+      "id": "a05-cloudy-dusk-sundowners",
+      "folder": "cloudy",
+      "times": [
+        "dusk"
+      ],
+      "days": [
+        5,
+        6,
+        7
+      ],
+      "crop": null,
+      "sha1": "1b691fbec55c",
+      "lines": [
+        "The sun didn't show for sundowners. Everyone else did."
+      ],
+      "af": "Die son het nie vir sundowners opgedaag nie. Die res van ons wel.",
+      "stranger": "It could be read as a dig at older people who drink no matter what; they are a mixed group of friends seen from behind, and the joke is on the sun.",
+      "source": "review/opus-ten/05-cloudy-dusk-sundowners.r1.png (q82, 234786 bytes)",
+      "image": "assets/images/bg-pairs/a05-cloudy-dusk-sundowners.webp"
+    },
+    {
+      "set": "a",
+      "id": "a06-breezy-day-nextdoor",
+      "folder": "breezy",
+      "times": [
+        "day"
+      ],
+      "days": [
+        6,
+        7
+      ],
+      "crop": null,
+      "sha1": "d64acefc835d",
+      "lines": [
+        "Steady breeze from next door's braai. You get everything but the meat."
+      ],
+      "af": "Die wind waai reg van die bure se braai af. Jy kry alles behalwe die vleis.",
+      "stranger": "It could be read as a joke about who can afford meat; there is no person in the frame, only a dog and a wall, and it is plainly a Saturday in a cared-for yard.",
+      "source": "review/opus-ten/06-breezy-day-nextdoor.r1.png (q77, 294438 bytes)",
+      "image": "assets/images/bg-pairs/a06-breezy-day-nextdoor.webp"
+    },
+    {
+      "set": "a",
+      "id": "a07-breezy-night-mozzies",
+      "folder": "breezy",
+      "times": [
+        "night"
+      ],
+      "days": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "crop": 49,
+      "sha1": "51b3b5b3a9c2",
+      "lines": [
+        "A proper breeze tonight. The mosquitoes have been grounded."
+      ],
+      "af": "Lekker bries vanaand. Die muskiete kan nie land nie.",
+      "stranger": "A reader could see a young woman alone outside at night as a worry rather than a pleasure; she is on her own back stoep, behind a wall, with the door open and the dog asleep beside her.",
+      "source": "review/opus-ten/07-breezy-night-mozzies.r3.png (q82, 122278 bytes)",
+      "image": "assets/images/bg-pairs/a07-breezy-night-mozzies.webp"
+    },
+    {
+      "set": "a",
+      "id": "a08-rain-dawn-oupa",
+      "folder": "rain",
+      "times": [
+        "dawn"
+      ],
+      "days": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "crop": null,
+      "sha1": "ebfde71bbb94",
+      "lines": [
+        "Good rain. Oupa's already phoning round: 'How much did you get?'"
+      ],
+      "af": "Goeie reën. Oupa bel al klaar rond: 'Hoeveel het julle gehad?'",
+      "stranger": "Calling an old Coloured man 'Oupa' could sting if it sounded like the old diminutives; it is the word his own grandchildren use, and he is shown at his own gauge, on his own land, delighted.",
+      "source": "review/opus-ten/08-rain-dawn-oupa.r3.png (q82, 270476 bytes)",
+      "image": "assets/images/bg-pairs/a08-rain-dawn-oupa.webp"
+    },
+    {
+      "set": "a",
+      "id": "a09-rain-night-sprinkler",
+      "folder": "rain",
+      "times": [
+        "night"
+      ],
+      "days": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "crop": null,
+      "sha1": "ee2151cb3767",
+      "lines": [
+        "Raining all night. The sprinkler hasn't noticed."
+      ],
+      "af": "Dit reën die hele nag. Die sprinkelaar het nog nie agtergekom nie.",
+      "stranger": "In a water-scarce country it could read as a dig at people who waste water; the rain is doing the watering either way, and nobody is shown.",
+      "source": "review/opus-ten/09-rain-night-sprinkler.r1.png (q80, 290270 bytes)",
+      "image": "assets/images/bg-pairs/a09-rain-night-sprinkler.webp"
+    },
+    {
+      "set": "a",
+      "id": "a10-pc-dusk-sink",
+      "folder": "partly-cloudy",
+      "times": [
+        "dusk"
+      ],
+      "days": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "crop": null,
+      "sha1": "ecd6131a2df9",
+      "lines": [
+        "In and out of the sun all day, then this. We all know someone like that."
+      ],
+      "af": "Heeldag son-in, son-uit, en dan dít. Ons ken almal so iemand.",
+      "stranger": "Someone could hear 'someone like that' as a dig at a moody partner or parent; it's warm, and it's the sky that's being described.",
+      "source": "review/opus-ten/10-pc-dusk-sink.r2.png (q82, 103554 bytes)",
+      "image": "assets/images/bg-pairs/a10-pc-dusk-sink.webp"
+    },
+    {
+      "set": "b",
+      "id": "b01-wind-night-caravan",
+      "folder": "wind",
+      "times": [
+        "night"
+      ],
+      "days": [
+        5,
+        6,
+        7
+      ],
+      "crop": null,
+      "sha1": "84838bd02db6",
+      "lines": [
+        "Proper gale tonight. If you're towing a caravan, the caravan is driving."
+      ],
+      "af": "Stormwind vanaand. As jy 'n karavaan sleep, bestuur die karavaan.",
+      "stranger": "A reader who has lost someone on the road could hear it as making light of a dangerous drive; nobody is shown and the joke is on the wind.",
+      "source": "review/opus-ten-b/b01-wind-night-caravan.r2.png (q82, 112760 bytes)",
+      "image": "assets/images/bg-pairs/b01-wind-night-caravan.webp"
+    },
+    {
+      "set": "b",
+      "id": "b02-heat-day-candles",
+      "folder": "heat",
+      "times": [
+        "day"
+      ],
+      "days": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "crop": null,
+      "sha1": "79c7c9d54491",
+      "lines": [
+        "Proper heat this afternoon. Even the candles can't stand up straight."
+      ],
+      "af": "Behoorlik warm vanmiddag. Selfs die kerse kan nie regop staan nie.",
+      "stranger": "Hard to find one: there is nobody in it, and candles are only candles.",
+      "source": "review/opus-ten-b/b02-heat-day-candles.r1.png (q82, 155820 bytes)",
+      "image": "assets/images/bg-pairs/b02-heat-day-candles.webp"
+    },
+    {
+      "set": "b",
+      "id": "b03-coldclear-dawn-queue",
+      "folder": "cold-clear",
+      "times": [
+        "dawn"
+      ],
+      "days": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "crop": null,
+      "sha1": "b82a641221c0",
+      "lines": [
+        "Frost in the shade. The bus queue has moved into the sun."
+      ],
+      "af": "Ryp in die skaduwee. Die bustou het in die son gaan staan.",
+      "stranger": "A reader could see working people waiting in the cold as hardship; they are shown warm-coated, clever about it and in a neat town, and the joke is on the frost.",
+      "source": "review/opus-ten-b/b03-coldclear-dawn-queue.r1.png (q82, 269094 bytes)",
+      "image": "assets/images/bg-pairs/b03-coldclear-dawn-queue.webp"
+    },
+    {
+      "set": "b",
+      "id": "b04-fog-dawn-dam",
+      "folder": "fog",
+      "times": [
+        "dawn"
+      ],
+      "days": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "crop": 34,
+      "sha1": "7f5d39ab256b",
+      "lines": [
+        "Thick mist on the dam this morning. The fish have the same view as you."
+      ],
+      "af": "Dik mis oor die dam vanoggend. Die visse het dieselfde uitsig as jy.",
+      "stranger": "Hard to find one: an older man at his favourite spot, the joke is on the fish.",
+      "source": "review/opus-ten-b/b04-fog-dawn-dam.r1.png (q82, 122958 bytes)",
+      "image": "assets/images/bg-pairs/b04-fog-dawn-dam.webp"
+    },
+    {
+      "set": "b",
+      "id": "b05-storm-dusk-hadedas",
+      "folder": "storm",
+      "times": [
+        "dusk"
+      ],
+      "days": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "crop": null,
+      "sha1": "9b4052ef3307",
+      "lines": [
+        "The hadedas are heading home early. Follow them."
+      ],
+      "af": "Die hadedas gaan vroeg huis toe. Gaan saam.",
+      "stranger": "Hard to find one: three birds and a sky.",
+      "source": "review/opus-ten-b/b05-storm-dusk-hadedas.r1.png (q82, 210746 bytes)",
+      "image": "assets/images/bg-pairs/b05-storm-dusk-hadedas.webp"
+    },
+    {
+      "set": "b",
+      "id": "b06-cold-day-chips",
+      "folder": "cold",
+      "times": [
+        "day"
+      ],
+      "days": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "crop": null,
+      "sha1": "6cc0e6fde036",
+      "lines": [
+        "Cold, wet and grey. The car smells of vinegar. Correct."
+      ],
+      "af": "Koud, nat en grys. Die kar ruik na asyn. Presies reg.",
+      "stranger": "Hard to find one: two people sharing chips in their own car, nobody's body or habits are the joke.",
+      "source": "review/opus-ten-b/b06-cold-day-chips.r3.png (q82, 165546 bytes)",
+      "image": "assets/images/bg-pairs/b06-cold-day-chips.webp"
+    },
+    {
+      "set": "b",
+      "id": "b07-wind-day-avos",
+      "folder": "wind",
+      "times": [
+        "day"
+      ],
+      "days": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "crop": null,
+      "sha1": "532d5f6fd087",
+      "lines": [
+        "Big wind today. The avo tree is having a clearance sale."
+      ],
+      "af": "Groot wind vandag. Die avokadoboom hou uitverkoping.",
+      "stranger": "A reader could see an elderly woman picking fruit off the ground as hardship; it is her own tree in her own cared-for yard, and she is delighted.",
+      "source": "review/opus-ten-b/b07-wind-day-avos.r1.png (q69, softened 0.6 px to fit the budget, 295134 bytes)",
+      "image": "assets/images/bg-pairs/b07-wind-day-avos.webp"
+    },
+    {
+      "set": "b",
+      "id": "b08-fog-day-webs",
+      "folder": "fog",
+      "times": [
+        "day"
+      ],
+      "days": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "crop": null,
+      "sha1": "016733212ca5",
+      "lines": [
+        "Thick mist this morning. The spiders have been busy all along."
+      ],
+      "af": "Dik mis vanoggend. Die spinnekoppe was heeltyd besig.",
+      "stranger": "Someone afraid of spiders won't love it; nobody is in the frame.",
+      "source": "review/opus-ten-b/b08-fog-day-webs.r1.png (q82, 225578 bytes)",
+      "image": "assets/images/bg-pairs/b08-fog-day-webs.webp"
+    },
+    {
+      "set": "b",
+      "id": "b09-heat-day-waterbreak",
+      "folder": "heat",
+      "times": [
+        "day"
+      ],
+      "days": [
+        6
+      ],
+      "crop": null,
+      "sha1": "152df9962b5e",
+      "lines": [
+        "Hot enough that the ref's calling a water break every ten minutes."
+      ],
+      "af": "So warm, die skeidsregter blaas elke tien minute vir 'n waterpouse.",
+      "stranger": "A reader could worry about children playing in dangerous heat; the picture shows the adult in charge doing the right thing.",
+      "source": "review/opus-ten-b/b09-heat-day-waterbreak.r1.png (q82, 288398 bytes)",
+      "image": "assets/images/bg-pairs/b09-heat-day-waterbreak.webp"
+    },
+    {
+      "set": "b",
+      "id": "b10-cold-night-heater",
+      "folder": "cold",
+      "times": [
+        "night"
+      ],
+      "days": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "crop": 46,
+      "sha1": "91657fb7031f",
+      "lines": [
+        "Cold and wet all day. The furniture has slowly moved closer to the heater."
+      ],
+      "af": "Heeldag koud en nat. Die meubels het stadig nader aan die verwarmer geskuif.",
+      "stranger": "Hard to find one: a woman warm in her own lounge, the joke is on the furniture.",
+      "source": "review/opus-ten-b/b10-cold-night-heater.r4.png (q82, 131592 bytes)",
+      "image": "assets/images/bg-pairs/b10-cold-night-heater.webp"
+    }
+  ]
+}

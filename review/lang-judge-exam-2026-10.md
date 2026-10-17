@@ -1,0 +1,119 @@
+# Native-ear judge — the exam (October 2026)
+
+Run 2026-10-11. Two judges — Sonnet 5.5 and Opus 5.5, each run as subagents in batches of at most 25 — judged every EXAM line blind. Pass bar per language per judge: keep-vs-not agreement with the natives at least 80%, and false keeps at most 10% of the natives' cuts. Ground truth, inputs and method: `scripts/lang-judge/`.
+
+## The verdict set
+
+Every line a native reviewer ruled on (`scripts/lang-judge/data/native-verdicts.json`). The exam uses the witty lines; hero labels, headlines and app buttons are recorded but not examined (no joke to judge).
+
+| language | rows on record | witty lines scored | KEEP | FIX | CUT | left out | TRAIN (K/F/C) | EXAM (K/F/C) |
+|---|---|---|---|---|---|---|---|---|
+| isiZulu | 515 | 454 | 441 | 11 | 2 | 29 | 220/6/1 | 221/5/1 |
+| isiXhosa | 615 | 479 | 228 | 214 | 37 | 8 | 115/106/18 | 113/108/19 |
+| Sesotho | 533 | 454 | 401 | 49 | 4 | 29 | 200/25/2 | 201/24/2 |
+
+- **isiZulu:** only 1 native cut in its exam, so "false keeps" rests on one line: a pass there shows the judge keeps what natives keep, not that it catches bad lines; 6 native changes in all in its exam.
+- **Sesotho:** only 2 native cuts in its exam, so "false keeps" rests on 2 lines: a pass there shows the judge keeps what natives keep, not that it catches bad lines.
+
+Where the verdicts come from: isiZulu — the native review commit d51b173 (30 May 2026), the bank before vs after; isiXhosa — `review/Xhosa-Review-Merge.xlsx` (two reviewers, July 2026: 333 approved, 256 changed); Sesotho — commit ecdfe11 and `review/sesotho-replacements.txt` (1 Jun 2026). The natives wrote lines, not labels: a line they left is KEEP; a changed line is FIX when their line still shares 30% or more of the draft's letter sequences, CUT below that (they wrote a new line). Reasons in the natives' own words survive for 14 witty lines (isiXhosa 8, Sesotho 6, isiZulu none). `docs/cold-clear-copy-review-*` were written by Codex, not a native, and are not used.
+
+Left out of the exam, before it ran: isiZulu — 26 bin misaligned with the English when the native read it; 3 kept by the native, but "…" is documented as the wrong word. isiXhosa — 6 no native line written for it; 1 the native's line carries "…", documented as the wrong word; 1 the native's line in the record is a fragment. Sesotho — 26 bin misaligned with the English when the native read it; 1 the native's line carries "…", documented as the wrong word; 1 spelling only: the reviewer wrote Lesotho orthography, and Al ruled on 6 Sept 2026 that the house standard is the South African one; 1 kept by the native, but "…" is documented as the wrong word.
+
+## Pass / fail
+
+| language | judge | lines | keep-vs-not | exact (3-way) | false keeps (of native cuts) | false cuts (of native keeps) | native changes kept as-is | result |
+|---|---|---|---|---|---|---|---|---|
+| isiZulu | Sonnet 5.5 | 227 | 57% | 57% | 0 of 1 (0%) | 4 of 221 (2%) | 4 of 6 | **FAIL** |
+| isiZulu | Opus 5.5 | 227 | 47% | 46% | 0 of 1 (0%) | 7 of 221 (3%) | 3 of 6 | **FAIL** |
+| isiXhosa | Sonnet 5.5 | 240 | 60% | 54% | 1 of 19 (5%) | 3 of 113 (3%) | 40 of 127 | **FAIL** |
+| isiXhosa | Opus 5.5 | 240 | 61% | 53% | 0 of 19 (0%) | 5 of 113 (4%) | 27 of 127 | **FAIL** |
+| Sesotho | Sonnet 5.5 | 227 | 55% | 54% | 1 of 2 (50%) | 5 of 201 (2%) | 7 of 26 | **FAIL** |
+| Sesotho | Opus 5.5 | 227 | 48% | 46% | 0 of 2 (0%) | 11 of 201 (5%) | 5 of 26 | **FAIL** |
+
+"Native changes kept as-is" counts every line the natives fixed or cut that the judge would have kept — it is not part of the bar, but it is the number to watch where the natives cut few lines.
+
+### How often a judge wanted to change a line, by what the natives did
+
+| language | judge | lines the natives kept | lines the natives fixed | lines the natives cut |
+|---|---|---|---|---|
+| isiZulu | Sonnet 5.5 | 94 of 221 (43%) | 1 of 5 (20%) | 1 of 1 (100%) |
+| isiZulu | Opus 5.5 | 118 of 221 (53%) | 2 of 5 (40%) | 1 of 1 (100%) |
+| isiXhosa | Sonnet 5.5 | 55 of 113 (49%) | 69 of 108 (64%) | 18 of 19 (95%) |
+| isiXhosa | Opus 5.5 | 67 of 113 (59%) | 81 of 108 (75%) | 19 of 19 (100%) |
+| Sesotho | Sonnet 5.5 | 96 of 201 (48%) | 18 of 24 (75%) | 1 of 2 (50%) |
+| Sesotho | Opus 5.5 | 114 of 201 (57%) | 19 of 24 (79%) | 2 of 2 (100%) |
+
+A useful judge flags few of the first column and most of the last. Both judges flag the natives' cuts, but they also want to change roughly half of the lines the natives kept, and about as often as the lines the natives fixed: they cannot tell a line a native would leave alone from one a native would touch. The exam takes the natives' keeps as right. Some of the judges' objections to kept lines may be fair — they name real words — but nothing on record can say which, so they count as errors.
+
+## isiZulu — examples
+
+Agreed (both judges gave the native's verdict; 91 lines did):
+
+| English | draft | native | Sonnet 5.5 | Opus 5.5 |
+|---|---|---|---|---|
+| Frost on the lawn. Frost on the bakkie. Frost in the pet bowl. | Isithwathwa otshanini. Isithwathwa ku-bakkie. Isithwathwa ku-pet bowl. | FIX → "Kunesithwathwa otshanini. Kunesithwathwa ku-bakkie. Kunesithwathwa esitsheni sesilwane." | FIX (3/4) 'ku-pet bowl' is an English loan where isiZulu has its own phrase (natives replaced 'bird feeder' and 'milk bottle' the same way), and 'ku-bakkie' should take the e- locative. The three-beat repetition works. → "Isithwathwa otshanini. Isithwathwa ebakkie. Isithwathwa esitsheni senja." | FIX (3/4) Triple rhythm works and 'isithwathwa otshanini' is right, but 'ku-pet bowl' is a forced English compound where isiZulu has its own words, the same fault natives fixed in 'milk bottle' and 'bird feeder'. → "Isithwathwa otshanini. Isithwathwa ku-bakkie. Isithwathwa esitsheni senja." |
+| The sky's giving everything today. | Isibhakabhaka sinikeza konke namuhla. | KEEP | KEEP (4/3) Plain, grammatical, warm; the slang 'giving' becomes a literal 'gives everything', which still reads as the sky delivering, like the other loose calques the natives kept. | KEEP (4/3) Grammatical and warm; the slang 'giving' goes literal but 'the sky gives everything today' still reads as a generous sky, as in the kept 'sinikeza ... amandla' line. |
+| Your motivation froze on the way to the door. | Ugqozi lwakho luqande endleleni eya emnyango. | KEEP | KEEP (5/4) 'ugqozi' is the confirmed word for motivation, 'luqande' is right for frozen, and the sentence flows naturally. | KEEP (4/4) 'Ugqozi' is the confirmed word for motivation, concords right; motivation going cold on the way to the door lands. |
+| The world got a soft filter this morning. | Umhlaba uthole ifilitha ethambile ekuseni. | KEEP | KEEP (4/4) Natural and correct; 'ifilitha' is the word natives kept elsewhere, and 'ethambile ekuseni' gives the soft-morning image. | KEEP (4/4) Natural, and 'ifilitha ethambile' is a clean picture of the fog; ekuseni does the 'this morning' work. |
+| Night looks calm. Models permitting. | Ubusuku bubukeka buzolile. Uma amamodeli evuma. | KEEP | KEEP (5/4) "Ubusuku bubukeka buzolile" has correct class 14 concords and "uma amamodeli evuma" has the right 'e-' concord for a uma-clause; a dry, natural close. | KEEP (5/4) Correct and natural; 'Uma amamodeli evuma' gives the dry 'models permitting' turn, same register as the kept 'Kubukeka kuzolile. Cishe.' |
+
+Disagreed (a judge kept what the native changed, or changed what the native kept; 135 lines). The first 2 are lines the native changed and a judge kept; the rest are lines the native kept and both judges wanted changed:
+
+| English | draft | native | Sonnet 5.5 | Opus 5.5 |
+|---|---|---|---|---|
+| Bloemfontein at 6am: jersey, gown, scarf, takkies, and a brave face. | EBloemfontein ngo-6 ekuseni: i-jersey, i-gown, i-scarf, ama-takkies, nobuso obunesibindi. | FIX → "EBloemfontein ngo-6 ekuseni: ijezi, igawuni, isikhafu, amateki, nesibindi sokubhekana namakhaza." | KEEP (4/4) A list of everyday loans in the same style as the kept 'I-weather yokubilisa i-kettle kabili'; 'ngo-6 ekuseni' and 'nobuso obunesibindi' are natural and the list-then-brave-face turn survives. | FIX (3/4) Too many forced loans where isiZulu has its own everyday words: jersey is 'ijezi' (the pack's own correction) and scarf is 'isikhafu'. 'i-gown' and 'ama-takkies' stay as people say them. → "EBloemfontein ngo-6 ekuseni: ijezi, i-gown, isikhafu, ama-takkies, nobuso obunesibindi." |
+| Calm night, most likely. The sky reserves the right to change. | Ubusuku obuzolile, cishe. Isibhakabhaka singashintsha. | FIX → "Ubusuku obuzolile. Isibhakabhaka singashintsha." | KEEP (5/4) 'Ubusuku obuzolile, cishe' and 'singashintsha' mirror the confirmed hedged lines (Kubukeka kuzolile. Cishe. / Iqiniso lingahluka); dry and natural. | KEEP (5/3) Natural; matches the confirmed low-confidence pattern ('Iqiniso lingahluka'), though 'reserves the right' flattens to 'might change'. |
+| Silent Hill vibes. Without the monsters. Hopefully. | I-Silent Hill vibes. Ngaphandle kwezimanga. Sithemba. | KEEP | FIX (2/2) "Izimanga" means wonders/marvels, not monsters, so the line now says 'without the wonders'; "I-Silent Hill vibes" also takes a singular i- on a plural loan. → "Ama-vibes ase-Silent Hill. Ngaphandle kwama-monster. Sithemba." | FIX (2/2) 'izimanga' means marvels/wonders, not monsters (use izilo), so the turn says the wrong thing; standalone 'we hope' needs -ya-: 'Siyathemba'. → "I-Silent Hill vibes. Ngaphandle kwezilo. Siyathemba." |
+| Weekend vibes so strong they need their own playlist. | I-weekend vibes ezinamandla kakhulu zidinga i-playlist yazo. | KEEP | FIX (3/3) Concords are muddled: 'i-weekend vibes' takes a class 9 prefix but a class 10 verb, and the 'so strong that' link is missing. Natives write 'ama-vibes' and 'kangangokuthi'. → "Ama-vibes e-weekend anamandla kangangokuthi adinga i-playlist yawo." | FIX (3/3) Concord clash: singular 'I-weekend vibes' with plural 'ezinamandla ... zidinga ... yazo'; the corpus uses 'ama-vibes', and 'kangangokuthi' is needed for 'so strong they'. → "Ama-vibes e-weekend anamandla kangangokuthi adinga i-playlist yawo." |
+| Unplug the things. The sky has plans. | Susa izinto eziphakwe ku-elektriki. Isibhakabhaka sinezinhlelo. | KEEP | FIX (2/2) 'Eziphakwe ku-elektriki' means things served on electricity ('phakwa' is to be dished up); unplug needs 'susa/khipha' and electricity is 'ugesi'. The second sentence is fine. → "Susa izinto zikagesi kugesi. Isibhakabhaka sinezinhlelo." | FIX (2/3) 'eziphakwe' (phaka = to dish up) is the wrong word for 'plugged in', and 'elektriki' is forced where Zulu says ugesi or just the loan 'plug'. The second sentence is fine. → "Khipha izinto ku-plug. Isibhakabhaka sinezinhlelo." |
+
+## isiXhosa — examples
+
+Agreed (both judges gave the native's verdict; 101 lines did):
+
+| English | draft | native | Sonnet 5.5 | Opus 5.5 |
+|---|---|---|---|---|
+| Fog's on the cards. The sky's being coy about it. | Inkungu ikwithuba. Isibhakabhaka siyazenza. | FIX → "Inkungu inokwenzeka. Isibhakabhaka asicaci." | FIX (2/3) 'ikwithuba' is the same 'on the cards' calque the natives replaced in the storm line; 'siyazenza' is left hanging with no 'as if nothing'. → "Inkungu isenokusondela. Isibhakabhaka siyazenza ngathi akukho nto." | FIX (3/3) 'ikwithuba' is the calque of 'on the cards' that natives replaced with 'isenokwenzeka/isenokubakho'. 'siyazenza' reads as 'is pretending/showing off', not coy. → "Inkungu isenokubakho. Isibhakabhaka asifuni ukutsho ngqo." |
+| Nature's having a word. Best to listen. | Indalo ifuna ukuthetha. Kulungile ukuphulaphula. | FIX → "Indalo iyathetha, kungcono ukuphulaphula" | FIX (4/3) 'Kulungile' is 'it is fine/OK', not 'best'; a speaker would say 'kungcono ukumamela' (better to listen), and 'ukuphulaphula' is stiffer than everyday 'ukumamela'. The 'nature wants a word' idea comes through. → "Indalo ifuna ukuthetha. Kungcono ukumamela." | FIX (3/3) 'Kulungile ukuphulaphula' means 'it's fine to listen', not 'best to listen'; 'ifuna ukuthetha' (wants to talk) loses the telling-off of 'having a word'. A speaker would say 'Kungcono uphulaphule'. → "Indalo iyathetha. Kungcono uphulaphule." |
+| You could fry an egg on the N1. | Ungabhaka iqanda kwi-N1. | FIX → "Ungabhaqa inqa kuN1" | FIX (3/3) 'ukubhaka' means to bake; frying an egg is 'ukuthosa'. Rest is fine (kwi-N1 as in the confirmed lines). → "Ungathosa iqanda kwi-N1." | FIX (3/3) 'ukubhaka' is to bake; frying an egg is 'ukuqhotsa'. → "Ungaqhotsa iqanda kwi-N1." |
+| Chilly, most likely. Layer up to be safe. | Kuyabanda, mhlawumbi. Nxiba iimpahla ezininzi. | KEEP | KEEP (4/3) Natural and clear; 'nxiba iimpahla ezininzi' is how people say layer up, and 'mhlawumbi' matches the natives' use. | KEEP (4/3) Mirrors the confirmed 'X, mhlawumbi' shape. 'Nxiba iimpahla ezininzi' is plain and correct; the 'to be safe' nuance is lightly dropped. |
+| Fire up the Weber. It's the law. | Basa i-Weber. Ngumthetho. | KEEP | KEEP (5/4) 'Basa i-Weber. Ngumthetho.' - basa is the right verb for lighting a fire and the clipped two-beat order matches the English. | KEEP (5/4) 'Basa' is the natural word for lighting a fire, and the short 'Ngumthetho' keeps the deadpan. |
+
+Disagreed (a judge kept what the native changed, or changed what the native kept; 120 lines). The first 2 are lines the native changed and a judge kept; the rest are lines the native kept and both judges wanted changed:
+
+| English | draft | native | Sonnet 5.5 | Opus 5.5 |
+|---|---|---|---|---|
+| Even your phone's overheating. | Nefowuni yakho iyashushu. | CUT → "Nditsho ne phone ishushu kakhulu." | KEEP (4/3) Same 'even your X' pattern as the kept Ne-GPS line and reads naturally; 'overheating' is softened to plain 'hot' but the meaning comes through. | FIX (3/4) "iyashushu" is not how isiXhosa uses -shushu. It is shaped like isiZulu "iyashisa"; a speaker says "ishushu". → "Nefowuni yakho ishushu kakhulu." |
+| Somewhere an estate agent is saying 'lifestyle'. | Kwezinye iindawo umthengisi wendlu uthi 'lifestyle'. | FIX → "Kwenye indawo umthengisi wezindlu uthi “lifestyle”." | KEEP (4/3) Natural; 'lifestyle' stays as the estate-agent buzzword. 'Kwenye indawo' would be tighter for 'somewhere', but the confirmed corpus also uses 'Kwezinye iindawo'. | FIX (3/4) 'Kwezinye iindawo' is 'in some places'; natives write 'kwenye indawo' for somewhere; and 'umthengisi wendlu' is the seller of one house, not an estate agent (wezindlu). → "Kwenye indawo umthengisi wezindlu uthi 'lifestyle'." |
+| Nature's doing its own load shedding. | Indalo yenza ukucima kwayo. | KEEP | FIX (3/2) 'ukucima kwayo' (its own switching-off) never says load shedding; the natives write the loan 'i-load shedding', and without it the Eskom joke does not land. → "Indalo yenza i-load shedding yayo." | FIX (3/2) 'ukucima kwayo' (its switching-off) is vague and the load-shedding reference disappears. The confirmed lines just say the loan, 'i-load shedding'. → "Indalo yenza i-load shedding yayo." |
+| Dark outside, bright tomorrow. | Mnyama ngaphandle, kukhanya ngomso. | KEEP | FIX (3/3) 'Mnyama ngaphandle' lacks the 'ku-' (it is 'kumnyama' for 'it is dark', as with 'kubanda'), and 'kukhanya ngomso' needs the future 'kuya kukhanya'. → "Kumnyama ngaphandle, kodwa kuya kukhanya ngomso." | FIX (3/3) "Mnyama" needs its concord ("Kumnyama"), and "kukhanya ngomso" is present tense; tomorrow needs "kuya kukhanya". → "Kumnyama ngaphandle, kodwa ngomso kuya kukhanya." |
+| Maluti-frost morning. Lesotho's exporting it for free. | Yi-Maluti-frost morning. ILesotho iyayithumela mahala. | KEEP | FIX (3/4) 'Yi-Maluti-frost morning' forces English 'frost' and 'morning' where the app has 'iqabaka' and 'kusasa' (Kusasa kwaseKaroo); 'thumela mahala' is fine and the joke survives. → "Kusasa kweqabaka laseMaluti. ILesotho iyalithumela mahala." | FIX (2/3) First sentence is English with a Yi- prefix; isiXhosa has its own words (iqabaka for frost, intsasa for morning), as the natives did with posikhadi and iibhloko zomkhenkce. "iyayithumela" has no clear object. → "Iqabaka laseMaluti ngale ntsasa. ILesotho isithumelela lona mahala." |
+
+## Sesotho — examples
+
+Agreed (both judges gave the native's verdict; 84 lines did):
+
+| English | draft | native | Sonnet 5.5 | Opus 5.5 |
+|---|---|---|---|---|
+| Good soup weather, not gonna lie. | Leholimo le letle la soupa. | FIX → "Leholimo le letle la  sopho" | FIX (3/3) 'Soupa' is the banned loan, the word is 'sopho'; the dry 'not gonna lie' tag is dropped. → "Lehodimo le lokileng la sopho, ka nnete." | FIX (3/3) 'soupa' is the known raw loan, and the word is sopho; the 'not gonna lie' turn is dropped, and 'ka nnete' gives it back. → "Lehodimo le letle la sopho, ka nnete." |
+| The kids still going to school in shorts. They know things we don't. | Bana ba ntse ba ya school ka shorts. Ba tseba dintho tseo rona re sa di tsebeng. | FIX → "Bana ba ntse ba ya sekolong ka shorts. Ba tseba dintho tseo rona re sa di tsebeng." — *sekolong* | FIX (4/4) 'school' is left raw where Sesotho has 'sekolo' (as with 'huddled' and 'farmer' that the natives replaced); the rest is natural. → "Bana ba ntse ba ya sekolong ka shorts. Ba tseba dintho tseo rona re sa di tsebeng." | FIX (3/4) 'ba ya school' leaves English where everyone says sekolong, and 'ka shorts' should be 'ba apere shorts'; second beat is natural. → "Bana ba ntse ba ya sekolong ba apere shorts. Ba tseba dintho tseo rona re sa di tsebeng." |
+| Your future self will thank you for that sunscreen. | Uena oa hosane o tla leboha ka setofo sa letsatsi. | FIX → "Uena oa hosane o tla leboha ka setlolo sa letsatsi." | FIX (2/2) 'Setofo' reads as a stove, not sunscreen (a banned word the natives already fixed to 'setlolo sa letsatsi'), so the line now says your future self will thank you for a stove. → "Uena wa hosane o tla leboha ka setlolo sa letsatsi." | FIX (2/2) 'setofo' reads as stove (banned; sunscreen is 'setlolo sa letsatsi'), and 'o tla leboha' lacks the object 'you' (o tla o leboha). → "Wena wa hosane o tla o leboha bakeng sa setlolo sa letsatsi." |
+| The potholes are becoming swimming pools. | Mesima e fetoha matamo a ho sesa. | KEEP | KEEP (4/4) Clear image with the right concords (mesima e fetoha, matamo a ho sesa); 'mesima' (pits) is understood for potholes though masoba is also possible. | KEEP (4/4) 'Mesima' for the holes and 'matamo a ho sesa' for swimming pools are plain and natural, and the turn from hole to pool lands. |
+| If you're inside, you're doing it wrong. | Haeba o ka hare, o etsa phoso. | KEEP | KEEP (4/4) Direct and natural: 'haeba o ka hare, o etsa phoso' is how a speaker would tease. | KEEP (5/4) 'Haeba o ka hare, o etsa phoso' is plain, natural and carries the cheeky nudge outside. |
+
+Disagreed (a judge kept what the native changed, or changed what the native kept; 141 lines). The first 2 are lines the native changed and a judge kept; the rest are lines the native kept and both judges wanted changed:
+
+| English | draft | native | Sonnet 5.5 | Opus 5.5 |
+|---|---|---|---|---|
+| The lapa cushions are crispy. | Di-cushion tsa lapa di crispy. | CUT → "mesamo ya lapa e thatafetse ke serame" | KEEP (4/4) 'Di-cushion' pluralised like the kept 'Di-koppies' and 'Di-fleece'; the English 'crispy' is the joke and survives as an everyday loan. | FIX (3/3) 'di crispy' leaves the whole joke in an English adjective a reader may not take as sun-baked; say they are roasted by the sun ('besa', as in the confirmed steak line). → "Di-cushion tsa lapa di besitswe ke letsatsi." |
+| The car's heater is the most important relationship in your life right now. | Heater ya koloi ke relationship ya bohlokwa ka ho fetisisa bophelong ba hao hona jwale. | FIX → "Heater ya koloi ke yona relationship ya bohlokwa ka ho fetisisa bophelong ba hao hona jwale." | KEEP (4/4) Heater and relationship left in English the way the natives code-switch (cf. the kept 'Cold ya mofuta...'); the heater-as-relationship joke carries. | KEEP (4/4) Urban code-switch (heater, relationship) the way people actually talk, with correct ka ho fetisisa / bophelong ba hao frame. |
+| The sky's undecided. So are we. | Leholimo ha le qeta. Le rona. | KEEP | FIX (2/2) 'Ha le qeta' means 'it does not finish'; 'undecided' needs 'etsa qeto' (make a decision), as in the confirmed 'Lehodimo ha le e-s'o etse qeto'. 'Le rona' then has nothing to hang on. → "Lehodimo ha le e-s'o etse qeto. Le rona." | FIX (2/2) 'qeta' means finish, not decide: 'ha le qeta' says the sky isn't finishing; undecided is 'ha le e-so etse qeto' (as in the confirmed partly-cloudy line). → "Lehodimo ha le e-so etse qeto. Le rona." |
+| Welkom, Sasolburg, Kroonstad: the koue belt is doing its koue thing. | Welkom, Sasolburg, Kroonstad: koue belt e etsa koue thing ya yona. | KEEP | FIX (3/3) The koue repetition survives, but 'koue thing ya yona' leaves 'thing' in English; natives replaced the English leftover ('brave face') in the comparable line. → "Welkom, Sasolburg, Kroonstad: koue belt e etsa ntho ya yona ya koue." | FIX (3/3) 'koue belt' is the joke and can stay, but 'koue thing' leaves English carrying the sentence where Sesotho has its own words. → "Welkom, Sasolburg, Kroonstad: koue belt e a bata jwalo ka mehla." |
+| Wind's on the cards. Peg the washing down. | Moea o monyetleng. Hokahanya liaparo tsa ho hlatsoa. | KEEP | CUT (2/2) "Hokahanya" means to connect or arrange, and "liaparo tsa ho hlatsoa" is clothes waiting to be washed, not washing on the line; the second sentence says something else. The first sentence is fine. → "Moya o monyetleng. Tiisa diaparo tse fanyehileng." | FIX (2/3) 'Moya o monyetleng' is good (natives kept 'Mohodi o monyetleng'), but 'hokahanya' means connect/coordinate, not peg down; 'diaparo tsa ho hlatswa' is clothes-to-be-washed, not the hung washing. → "Moya o monyetleng. Tiisa diaparo tse fanyehilweng." |
+
+## Method — what was fixed before the exam, what I would change
+
+- **Fixed before any judge ran:** the verdict set and its KEEP/FIX/CUT rule (30% letter-sequence overlap), the left-out rows and their reasons, the 50/50 split (seed 20261011; rows sharing an English, a draft or a native line kept on one side; stratified by verdict; balanced by rows), the judge prompt (`scripts/lang-judge/judge-prompt.md`), the twelve anchors and the compare-pair rule, and the pass bar. No anchor, prompt line or threshold was changed after a result was seen.
+- **Blind:** each judge saw only its bundle (the prompt, the language pack with every EXAM line removed from the confirmed lines and withheld from the pack files, the humour doctrine, twelve TRAIN anchors) and its batch (English + draft + two TRAIN compare lines). No confidence tag, back-translation or checker verdict exists for these lines, and no EXAM verdict was in any file it was given. Batch files sat outside the repository; the id → line map stayed in it.
+- **Bound to its inputs:** `data/exam-result.json` records the hash of the prompt, the verdict set, each bundle, the code that picks anchors and batches, and each judge's scored answers; an October run refuses to start if any of them has changed since. Each of the 6 judge-and-language exams was exported once and its answers merged once (`data/runs`, `data/judgments`).
+- **What I would change next time:** calibrate the judge's bar for "fix" on TRAIN before the exam — these natives left most lines alone, and both judges hold a far stricter bar than they do; ask the natives to tick KEEP / FIX / CUT themselves — reading it off how much they changed is coarse in isiZulu and isiXhosa, where one prefix changes a whole word; get far more native cuts (isiZulu's whole review cut two witty lines); have both isiXhosa reviewers rule every row (35 of the changes are one reviewer's against the other's approval); and collect a written reason per row, so anchors can teach the ear rather than only show it.

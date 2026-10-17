@@ -110,6 +110,76 @@ export function getRotationWeek(nowMs = Date.now()) {
   return (Math.floor(elapsed / WEEK_MS) % 4) + 1;
 }
 
+// HERO PAIRS (Al + Maat, 14 Oct 2026): a photograph and its line made as one idea, served OUTSIDE the slot grid.
+// A pair carries its own rules instead of a slot: its condition folder, the times of day and the SAST weekdays
+// (Mon=1 … Sun=7) it fits. Source: review/hero-pairs.json; scripts/build-hero-pairs.mjs writes this table.
+// Photographs at assets/images/bg-pairs/<id>.webp; their lines are in hero-lines.js under bg-pairs/<id>.webp.
+export const HERO_PAIRS_URL_VERSION = '20261014';
+export const HERO_PAIRS = Object.freeze([
+  // __HERO_PAIRS__  (generated — do not hand-edit)
+  { id: "a01-clear-dawn-east", folder: "clear", times: ["dawn"], days: [1,2,3,4,5] },
+  { id: "a02-clear-day-tree", folder: "clear", times: ["day"], days: [1,2,3,4,5] },
+  { id: "a03-pc-day-garden", folder: "partly-cloudy", times: ["day"], days: [6,7] },
+  { id: "a04-cloudy-day-plants", folder: "cloudy", times: ["day"], days: [1,2,3,4,5,6,7] },
+  { id: "a05-cloudy-dusk-sundowners", folder: "cloudy", times: ["dusk"], days: [5,6,7] },
+  { id: "a06-breezy-day-nextdoor", folder: "breezy", times: ["day"], days: [6,7] },
+  { id: "a07-breezy-night-mozzies", folder: "breezy", times: ["night"], days: [1,2,3,4,5,6,7] },
+  { id: "a08-rain-dawn-oupa", folder: "rain", times: ["dawn"], days: [1,2,3,4,5,6,7] },
+  { id: "a09-rain-night-sprinkler", folder: "rain", times: ["night"], days: [1,2,3,4,5,6,7] },
+  { id: "a10-pc-dusk-sink", folder: "partly-cloudy", times: ["dusk"], days: [1,2,3,4,5,6,7] },
+  { id: "b01-wind-night-caravan", folder: "wind", times: ["night"], days: [5,6,7] },
+  { id: "b02-heat-day-candles", folder: "heat", times: ["day"], days: [1,2,3,4,5,6,7] },
+  { id: "b03-coldclear-dawn-queue", folder: "cold-clear", times: ["dawn"], days: [1,2,3,4,5] },
+  { id: "b04-fog-dawn-dam", folder: "fog", times: ["dawn"], days: [1,2,3,4,5,6,7] },
+  { id: "b05-storm-dusk-hadedas", folder: "storm", times: ["dusk"], days: [1,2,3,4,5,6,7] },
+  { id: "b06-cold-day-chips", folder: "cold", times: ["day"], days: [1,2,3,4,5,6,7] },
+  { id: "b07-wind-day-avos", folder: "wind", times: ["day"], days: [1,2,3,4,5,6,7] },
+  { id: "b08-fog-day-webs", folder: "fog", times: ["day"], days: [1,2,3,4,5,6,7] },
+  { id: "b09-heat-day-waterbreak", folder: "heat", times: ["day"], days: [6] },
+  { id: "b10-cold-night-heater", folder: "cold", times: ["night"], days: [1,2,3,4,5,6,7] },
+]);
+
+/** Whole weeks since WEEK_ANCHOR_MS (not folded into the 4-week cycle); 0 before the anchor or on a bad input. */
+export function getAbsoluteWeek(nowMs = Date.now()) {
+  if (!Number.isFinite(nowMs) || nowMs < WEEK_ANCHOR_MS) return 0;
+  return Math.floor((nowMs - WEEK_ANCHOR_MS) / WEEK_MS);
+}
+
+/**
+ * The hero pair that takes this cell (condition folder + time of day) today, or null for the library slot.
+ *
+ * Each pair takes ONE of its allowed weekdays per week in its cell; the library serves every other day, so a pair
+ * joins the rotation instead of replacing it. The day steps through the pair's allowed days one week at a time (offset
+ * by its position in the table, so pairs spread out), and a pair whose day is already taken in that cell by another
+ * pair moves to its next free allowed day. The pair with the fewest allowed days chooses first (a Saturday-only pair
+ * is never crowded out by an any-day pair in the same cell). Deterministic: every re-paint of the same cell on the
+ * same day agrees.
+ */
+export function pickHeroPair(folder, timeOfDay, nowMs = Date.now(), pairs = HERO_PAIRS) {
+  const day = getRotationDay(nowMs);
+  const week = getAbsoluteWeek(nowMs);
+  const taken = new Set();
+  let chosen = null;
+  const cell = pairs.map((pair, i) => [pair, i])
+    .filter(([pair]) => pair.folder === folder && pair.times.includes(timeOfDay) && pair.days.length)
+    .sort((a, b) => a[0].days.length - b[0].days.length || a[1] - b[1]);
+  cell.forEach(([pair, i]) => {
+    for (let k = 0; k < pair.days.length; k++) {
+      const d = pair.days[(week + i + k) % pair.days.length];
+      if (taken.has(d)) continue;
+      taken.add(d);
+      if (d === day && !chosen) chosen = pair;
+      break;
+    }
+  });
+  return chosen;
+}
+
+/** The URL of a hero pair's photograph (versioned like the grid: the folder is served immutable for a year). */
+export function heroPairPath(pair, base = 'assets/images/bg-pairs') {
+  return `${base}/${pair.id}.webp?v=${HERO_PAIRS_URL_VERSION}`;
+}
+
 /**
  * Build the 4-step fallback chain for a single picker selection.
  *

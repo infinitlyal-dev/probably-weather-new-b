@@ -1,0 +1,5308 @@
+{
+ "source": "review/Xhosa-Review-Merge.xlsx",
+ "summary": [
+  [
+   "Probably Weather - Xhosa Review Merge (v2: typo-normalized)",
+   null
+  ],
+  [
+   null,
+   null
+  ],
+  [
+   "Total strings reviewed",
+   "615"
+  ],
+  [
+   "Approved unchanged",
+   "333"
+  ],
+  [
+   "Changes to apply (ALL apply; skim rows additionally listed for next native pass)",
+   "256"
+  ],
+  [
+   "   from Reviewer A",
+   "183"
+  ],
+  [
+   "   from Reviewer B",
+   "73"
+  ],
+  [
+   "   clean (no flags)",
+   "189"
+  ],
+  [
+   "   flagged for future native pass (FUTURE-REVIEW tab)",
+   "67"
+  ],
+  [
+   "QUARANTINED - scrambled Partly cloudy bins (fix session realigns, then fills)",
+   "26"
+  ],
+  [
+   null,
+   null
+  ],
+  [
+   "Mechanical typo normalizations applied (3): irboxisiwe->irhoxisiwe, ziyaband->ziyabanda, kakhulku->kakhulu",
+   null
+  ],
+  [
+   "Criteria: orthographically impossible or unattested token; target attested in native-written corpus; 1-2 char slip; never a grammar change",
+   null
+  ],
+  [
+   "One re-pick: \"Good soup weather\" -> A (B wrote isepha/soap for soup - semantic slip)",
+   null
+  ],
+  [
+   "No wording invented or blended - every final string is verbatim one reviewer or shipped (modulo the 3 listed slips)",
+   null
+  ]
+ ],
+ "apply": [
+  {
+   "section": "Main weather labels",
+   "english": "Severe weather",
+   "shipped": "Imozulu embi",
+   "final": "Imozulu embi kakhulu",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Main weather labels",
+   "english": "Cold but clear",
+   "shipped": "Kubanda, kucwebile",
+   "final": "Kubanda, kodwa kucacile",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "A: 'kucwebile is still right but [kucacile] more direct' — reviewer-stated preference applied",
+   "flags": "commentary-stripped"
+  },
+  {
+   "section": "Main weather labels",
+   "english": "Low visibility",
+   "shipped": "Ukubonakala okuphantsi",
+   "final": "Ukungabonakali kakuhle",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Main weather labels",
+   "english": "Overcast",
+   "shipped": "Linamafu",
+   "final": "Linamafu ngokupheleleyo",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Main weather labels",
+   "english": "Clear night",
+   "shipped": "Ubusuku obuhle",
+   "final": "Ubusuku obucacileyo",
+   "source": "A",
+   "confidence": "MED",
+   "rationale": "Only A corrected",
+   "flags": "commentary-stripped"
+  },
+  {
+   "section": "Headlines",
+   "english": "Cloudy vibes.",
+   "shipped": "Linamafu.",
+   "final": "Kunamafu",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Headlines",
+   "english": "Partly cloudy.",
+   "shipped": "Linamafu kancinci.",
+   "final": "Kunamafu kancinci.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Headlines",
+   "english": "Wind's up.",
+   "shipped": "Umoya uvuthuza.",
+   "final": "Umoya uphezulu",
+   "source": "B",
+   "confidence": "LOW",
+   "rationale": "Only B corrected (within reviewed range)",
+   "flags": "possible typos (unattested): ['uphezulu']"
+  },
+  {
+   "section": "Headlines",
+   "english": "Foggy out there.",
+   "shipped": "Linenkungula.",
+   "final": "Kukho inkungu.",
+   "source": "A",
+   "confidence": "MED",
+   "rationale": "Different rewrites; B unattested ['linenkungu'], A clean (grammar rule)",
+   "flags": null
+  },
+  {
+   "section": "Headlines",
+   "english": "Clear skies.",
+   "shipped": "Isibhakabhaka sihlanzekile.",
+   "final": "Isibhakabhaka sicacile",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Day status tags",
+   "english": "Cold",
+   "shipped": "Kubanda",
+   "final": "Kuyabanda",
+   "source": "A",
+   "confidence": "MED",
+   "rationale": "Only A corrected",
+   "flags": "commentary-stripped"
+  },
+  {
+   "section": "Weather words&labels",
+   "english": "Feels like",
+   "shipped": "Kuziva ngathi",
+   "final": "Ingathi",
+   "source": "B",
+   "confidence": "HIGH",
+   "rationale": "Only B corrected (within reviewed range)",
+   "flags": null
+  },
+  {
+   "section": "Weather words&labels",
+   "english": "gusts",
+   "shipped": "ukuya kuthi ga kwi",
+   "final": "ukuqhwithela komoya / izivuthuvuthu zomoya",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Part 2 — The witty one-liners",
+   "english": "Bloemfontein at 6am: jersey, gown, scarf, takkies, and a brave face.",
+   "shipped": "EBloemfontein nge-6 kusasa: i-jersey, i-gown, i-scarf, ii-takkies, nobuso obunesibindi.",
+   "final": "Ngo - 6",
+   "source": "B",
+   "confidence": "HIGH",
+   "rationale": "Only B corrected (within reviewed range)",
+   "flags": null
+  },
+  {
+   "section": "Part 2 — The witty one-liners",
+   "english": "The Free State just remembered it has a winter setting.",
+   "shipped": "I-Free State isanda kukhumbula ukuba ine-winter setting.",
+   "final": "IFree State isand’ ukukhumbula ukuba nayo inemowudi yasebusika",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Part 2 — The witty one-liners",
+   "english": "The dog is still keen. The dog is always keen. Respect.",
+   "shipped": "Inja isekeen. Inja ihlala i-keen. Respect.",
+   "final": "Inja inomnqweno. Inja isoloko inomnqweno. Hlonipha.",
+   "source": "B",
+   "confidence": "LOW",
+   "rationale": "Only B corrected (within reviewed range)",
+   "flags": "possible typos (unattested): ['isoloko', 'hlonipha']"
+  },
+  {
+   "section": "Part 2 — The witty one-liners",
+   "english": "Welkom-cold today. The kind that goes through three jerseys like they aren't there.",
+   "shipped": "Yi-Welkom-cold namhlanje. La makhaza adlula kwii-jersey ezintathu ngathi azikho.",
+   "final": "iWelkom iyabanda namhlanje. Okwakubanda kuphumela kwii-jersey ezintathu ingathi azikho.",
+   "source": "B",
+   "confidence": "MED",
+   "rationale": "Voice rule: B keeps ['jersey'], A translates",
+   "flags": "B typos: ['iwelkom', 'okwakubanda', 'kuphumela']; commentary-stripped"
+  },
+  {
+   "section": "Part 2 — The witty one-liners",
+   "english": "The geyser tripped overnight. Of course it did.",
+   "shipped": "I-geyser i-tripile ebusuku. Ewe, vele.",
+   "final": "Igeyser icimile ebusuku. Ewe, bekulindelekile",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Part 2 — The witty one-liners",
+   "english": "Frost on the lawn. Frost on the bakkie. Frost in the pet bowl.",
+   "shipped": "Iqabaka engceni. Iqabaka kwi-bakkie. Iqabaka kwi-pet bowl.",
+   "final": "Iqabaka engceni. Iqabaka kwi-bakkie. Iqabaka nakwisitya samanzi sesilwanyana.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Part 2 — The witty one-liners",
+   "english": "The lapa cushions are crispy.",
+   "shipped": "Ii-cushions ze-lapa zi-crispy.",
+   "final": "Imiqamelo ye-Lapa ii-crispy.",
+   "source": "B",
+   "confidence": "MED",
+   "rationale": "Voice rule: B keeps ['crispy', 'lapa'], A translates",
+   "flags": "B typos: ['imiqamelo', 'ye-lapa', 'ii-crispy']"
+  },
+  {
+   "section": "Part 2 — The witty one-liners",
+   "english": "Sun's out. Don't be fooled. Nature is lying.",
+   "shipped": "Ilanga liphumile. Ungaxokiswa. Indalo iyaxoka.",
+   "final": "Ilanga liphumile. Musa ukukhohliswa. Indalo iyakuxoka.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Part 2 — The witty one-liners",
+   "english": "Lekker koud, but the rugby fields are about to look perfect.",
+   "shipped": "Lekker koud, kodwa amabala e-rugby sele eza kujongeka perfect.",
+   "final": "Kubanda kamnandi, kodwa amabala ombhoxo sele ezakubamahle.",
+   "source": "B",
+   "confidence": "LOW",
+   "rationale": "Only B corrected (within reviewed range)",
+   "flags": "possible typos (unattested): ['kamnandi', 'ombhoxo', 'ezakubamahle']"
+  },
+  {
+   "section": "Part 2 — The witty one-liners",
+   "english": "Boiling-the-kettle-twice weather: once for the coffee, once for the hands.",
+   "shipped": "Yi-boiling-the-kettle-twice weather: kube kanye ye-coffee, kube kanye yezandla.",
+   "final": "Yimozulu yokubilisa i-ketile kabini. Kube kanye eye-kofu, kubekanye eye-zandla",
+   "source": "B",
+   "confidence": "LOW",
+   "rationale": "Only B corrected (within reviewed range)",
+   "flags": "possible typos (unattested): ['yokubilisa', 'i-ketile', 'eye-kofu', 'kubekanye', 'eye-zandla']"
+  },
+  {
+   "section": "Part 2 — The witty one-liners",
+   "english": "Welkom, Sasolburg, Kroonstad: the koue belt is doing its koue thing.",
+   "shipped": "EWelkom, eSasolburg, eKroonstad: i-koue belt yenza i-koue thing yayo.",
+   "final": "eWelkom, Sasolburg, Koroonstad: ibhanti lengqele lenza izinto zengqele zayo.",
+   "source": "B",
+   "confidence": "LOW",
+   "rationale": "Only B corrected (within reviewed range)",
+   "flags": "possible typos (unattested): ['sasolburg', 'koroonstad', 'ibhanti', 'lengqele', 'lenza', 'zengqele', 'zayo']"
+  },
+  {
+   "section": "Part 2 — The witty one-liners",
+   "english": "Layers off by 11. Layers on by 4. Highveld classic.",
+   "shipped": "Ii-layers off ngo-11. Ii-layers on ngo-4. Highveld classic.",
+   "final": "Ii-layers ziyakhutshwa ngo-11. Ziphinde zifakwe ngo-4. Highveld classic.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Part 2 — The witty one-liners",
+   "english": "The koppies look like a postcard. Your feet feel like ice blocks.",
+   "shipped": "Ii-koppies zijongeka njenge-postcard. Iinyawo zakho zivakala ngathi zi-ice blocks.",
+   "final": "Ii-koppies zijongeka njengeposikhadi. Iinyawo zakho zivakala njengeebhloko zomkhenkce",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Part 2 — The witty one-liners",
+   "english": "The kind of cold that has you Googling 'underfloor heating Bloemfontein'.",
+   "shipped": "Uhlobo lwamakhaza olukwenza u-Google 'underfloor heating Bloemfontein'.",
+   "final": "Uhlobo lwengqeleolukwenza u-Google underfloor heating Bloenfontein",
+   "source": "B",
+   "confidence": "LOW",
+   "rationale": "Only B corrected (within reviewed range)",
+   "flags": "possible typos (unattested): ['lwengqeleolukwenza', 'underfloor', 'bloenfontein']"
+  },
+  {
+   "section": "Part 2 — The witty one-liners",
+   "english": "Three hadedas, two crows, one shivering human at the bird feeder.",
+   "shipped": "Ii-hadedas ezintathu, ama-crows amabini, umntu omnye ongcangcazelayo e-bird feeder.",
+   "final": "ii-Hadedas ezintathu, ii-crows ezimbini, nomntu omnye ongcangcazelayo e-bird feeder.",
+   "source": "B",
+   "confidence": "LOW",
+   "rationale": "Different rewrites, both plausible; B default (active speaker) — SKIM",
+   "flags": "B unattested: ['ii-crows']; commentary-stripped"
+  },
+  {
+   "section": "Part 2 — The witty one-liners",
+   "english": "The Toyota started first try. You owe it a wash.",
+   "shipped": "I-Toyota i-startile nge-try yokuqala. Uyikweleta i-wash.",
+   "final": "iToyota idume ngemizamo yokuqala. Uyityala i-wash.",
+   "source": "B",
+   "confidence": "LOW",
+   "rationale": "Only B corrected (within reviewed range)",
+   "flags": "possible typos (unattested): ['itoyota', 'idume', 'ngemizamo', 'uyityala']"
+  },
+  {
+   "section": "Storms / severe weather",
+   "english": "The dog's under the bed. Smart move, honestly.",
+   "shipped": "Inja ingaphantsi kombhede. Icebo elihle, ngenene.",
+   "final": "Inja iphantsi kwebhedi. Icebo elihle, inene.",
+   "source": "B",
+   "confidence": "LOW",
+   "rationale": "Only B corrected (within reviewed range)",
+   "flags": "possible typos (unattested): ['iphantsi', 'kwebhedi', 'inene']"
+  },
+  {
+   "section": "Storms / severe weather",
+   "english": "Even the hadedas are quiet.",
+   "shipped": "Iintaka zithe cwaka.",
+   "final": "Nditsho neeNtaka zithe cwaka.",
+   "source": "B",
+   "confidence": "LOW",
+   "rationale": "Only B corrected (within reviewed range)",
+   "flags": "possible typos (unattested): ['neentaka']"
+  },
+  {
+   "section": "Storms / severe weather",
+   "english": "Weather so dramatic it needs a Carte Blanche segment.",
+   "shipped": "Imozulu edramatiki kakhulu ifuna i-Carte Blanche.",
+   "final": "Imozulu ine drama ifuna uCarte Blanche.",
+   "source": "B",
+   "confidence": "LOW",
+   "rationale": "Different rewrites, both plausible; B default (active speaker) — SKIM",
+   "flags": "B unattested: ['drama', 'ucarte']"
+  },
+  {
+   "section": "Storms / severe weather",
+   "english": "This is why Noah built a boat.",
+   "shipped": "Yiyo le nto uNowa wakha umkhombe.",
+   "final": "Lo ngunobangela wokuba uNoah okhe uMkhombe.",
+   "source": "B",
+   "confidence": "LOW",
+   "rationale": "Only B corrected (within reviewed range)",
+   "flags": "possible typos (unattested): ['ngunobangela', 'wokuba', 'unoah', 'okhe']"
+  },
+  {
+   "section": "Storms / severe weather",
+   "english": "The braai is cancelled. Yes, really.",
+   "shipped": "Ukugrila kurhoxisiwe. Ewe, nyhani.",
+   "final": "uBraai irhoxisiwe. Ewe nyhani.",
+   "source": "B",
+   "confidence": "MED",
+   "rationale": "Voice rule: B keeps ['braai'], A translates",
+   "flags": "normalized 'irboxisiwe'->'irhoxisiwe' ('rb' impossible in Xhosa orthography; stem -rhoxisiwe attested (shipped 'kurhoxisiwe'))"
+  },
+  {
+   "section": "Storms / severe weather",
+   "english": "Somewhere a roof is someone's new kite.",
+   "shipped": "Kwezinye iindawo uphahla lungumntla omtsha.",
+   "final": "Kwezinye iindawo uphahla luguquke lwaba yikhayithi.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Storms / severe weather",
+   "english": "Respect the thunder. It's earned it.",
+   "shipped": "Hlonela iindudumo. Zikufanele.",
+   "final": "Yihloniphe induduma, iyakufanele\"",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Storms / severe weather",
+   "english": "Nature's having a word. Best to listen.",
+   "shipped": "Indalo ifuna ukuthetha. Kulungile ukuphulaphula.",
+   "final": "Indalo iyathetha, kungcono ukuphulaphula",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Storms / severe weather",
+   "english": "Wait it out indoors. The mountains aren't going anywhere.",
+   "shipped": "Yima phakathi. Iintaba aziyi ndawo.",
+   "final": "Yilinde ngaphakathi le meko. Iintaba azisayi ndawo",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Hail",
+   "english": "Tiny ice bombs falling. Indoors is the only plan.",
+   "shipped": "Iibhombu ezincinci zomkhenkce ziyawa. Ngaphakathi kuphela.",
+   "final": "iiBhombu ezincinci zomkhenkce ziyawa. Hlala ngaphakathi qha.",
+   "source": "B",
+   "confidence": "LOW",
+   "rationale": "Different rewrites, both plausible; B default (active speaker) — SKIM",
+   "flags": null
+  },
+  {
+   "section": "Rain",
+   "english": "The clouds are having a moment.",
+   "shipped": "Amafu anethuba lawo.",
+   "final": "Amafu ayazibonakalisa namhlanje.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Rain",
+   "english": "Grab your brolly, boet.",
+   "shipped": "Thatha isambreli sakho, boet.",
+   "final": "Thatha iambrela yakho, bhuti.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Rain",
+   "english": "The garden's saying dankie at last.",
+   "shipped": "Igadi ithi ekugqibeleni enkosi.",
+   "final": "Igadi ithi enkosi ekugqibeleni.",
+   "source": "B",
+   "confidence": "LOW",
+   "rationale": "Different rewrites, both plausible; B default (active speaker) — SKIM",
+   "flags": null
+  },
+  {
+   "section": "Rain",
+   "english": "The potholes are becoming swimming pools.",
+   "shipped": "Imingxunya iba ziipuli zokuqubha.",
+   "final": "Imingxuma endleleni ijika ibe ngamadama okuqubha.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Rain",
+   "english": "Joburg drivers are panicking already.",
+   "shipped": "Abaqhubi baseJohanesburg sele beyoyika.",
+   "final": "Abaqhubi baseJoburg sele beqalile ukuphakuzela.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Rain",
+   "english": "The dams are doing a happy dance.",
+   "shipped": "Amadama enza umdaniso ovuyayo.",
+   "final": "Amadama enza umdaniso wolonwabo.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Rain",
+   "english": "The N1 is now a waterpark.",
+   "shipped": "I-N1 ngoku yi-waterpark.",
+   "final": "uN1 yi paki yamanzi ngoku.",
+   "source": "B",
+   "confidence": "LOW",
+   "rationale": "Only B corrected (within reviewed range)",
+   "flags": "possible typos (unattested): ['paki']"
+  },
+  {
+   "section": "Rain",
+   "english": "Good soup weather, not gonna lie.",
+   "shipped": "Imozulu elungele isuphu.",
+   "final": "Imozulu elungele isuphu, andizuxoka.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "B wrote 'isepha' (soap) for soup — semantic slip; A complete, clean, attested ('isuphu')",
+   "flags": "re-picked: B semantic slip (isepha=soap)"
+  },
+  {
+   "section": "Rain",
+   "english": "Someone's braai just got ruined.",
+   "shipped": "Ukugrila komntu kusanda konakala.",
+   "final": "iBraai yomntu isando konakala.",
+   "source": "B",
+   "confidence": "LOW",
+   "rationale": "Different rewrites, both plausible; B default (active speaker) — SKIM",
+   "flags": "B unattested: ['isando']"
+  },
+  {
+   "section": "Rain",
+   "english": "Rain so heavy it should pay rent.",
+   "shipped": "Imvula enzima kufanele ihlawule irenti.",
+   "final": "Imvula inetha ngamandla kangangokuba kufanele ihlawule irenti.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Rain",
+   "english": "Everyone's forgotten how to drive. Again.",
+   "shipped": "Bonke balibele ukuqhuba. Kwakhona.",
+   "final": "Bonke balibele ukuba kuqhutywa njani. Kwakhona.",
+   "source": "B",
+   "confidence": "LOW",
+   "rationale": "Only B corrected (within reviewed range)",
+   "flags": "possible typos (unattested): ['kuqhutywa', 'njani']"
+  },
+  {
+   "section": "Rain",
+   "english": "The umbrella broke on the first gust. Classic.",
+   "shipped": "Isambreli saphuke ngomoya wokuqala. Okwesiqhelo.",
+   "final": "Iambrela yophuke nje kwakuvuthuza umoya wokuqala. Okwesiqhelo.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Rain",
+   "english": "Wet socks. The ultimate betrayal.",
+   "shipped": "Iikawusi ezimanzi. Ukukreqwa okukhulu.",
+   "final": "Iikawusi ezimanzi. Olona kungcatshwa lukhulu.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Rain",
+   "english": "At least the garden's happy. Someone has to be.",
+   "shipped": "Ubuncinane igadi iyavuya. Umntu kufuneka avuye.",
+   "final": "Noko igadi iyavuya. Umntu angavuya.",
+   "source": "B",
+   "confidence": "LOW",
+   "rationale": "Different rewrites, both plausible; B default (active speaker) — SKIM",
+   "flags": "B unattested: ['angavuya']"
+  },
+  {
+   "section": "Rain",
+   "english": "Your suede shoes chose today? Bold.",
+   "shipped": "Izihlangu zakho zesuede zikhethe namhlanje? Isibindi.",
+   "final": "Izihlangu zakho zesuede zikhethe namhlanje? Sisibindi eso.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Rain",
+   "english": "Somewhere an umbrella just turned inside out. Moment of silence.",
+   "shipped": "Ndaweni ithile isambreli sisanda kuguquka ngaphakathi. Umzuzu wokuthi cwaka.",
+   "final": "Kwenye indawo iambrela isand’ ukujikwa ngumoya ngaphakathi ngaphandle. Umzuzu wokuthi cwaka.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Rain",
+   "english": "Every taxi on the road has decided to freestyle.",
+   "shipped": "Yonke itekisi endleleni ikhethe ukudlala ngokukhululekileyo.",
+   "final": "Yonke iteksi endleleni igqibe kwelokuba izenzele umthetho wayo.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Rain",
+   "english": "Yes, it's raining sideways. South Africa speciality.",
+   "shipped": "Ewe, imvula iyana ngecala. Eyodwa yaseMzantsi Afrika.",
+   "final": "Ewe, imvula ina ngecala. Yinto eqhelekileyo yaseMzantsi Afrika.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Rain",
+   "english": "Forgot your jacket? The universe noticed.",
+   "shipped": "Ulibele ibhatyi yakho? Indalo iqaphele.",
+   "final": "Uyilibele ibhatyi yakho? Indalo iphela ikuqaphele oko.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Rain",
+   "english": "The dog is staring at the rain like it's a personal insult.",
+   "shipped": "Inja ijonge imvula ngathi yinto yobuqu.",
+   "final": "Inja ijonga imvula ngathi iyithuka buqu.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Possible rain (showers)",
+   "english": "Maybe rain, maybe not. Classic.",
+   "shipped": "Mhlawumbi imvula, mhlawumbi hayi. Okwesiqhelo.",
+   "final": "Mhlawumbi iza kuna, mhlawumbi hayi. Into eqhelekileyo leyo.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Possible rain (showers)",
+   "english": "Clouds looking proper suspicious.",
+   "shipped": "Amafu abonakala erhanela ngokwenene.",
+   "final": "Amafu akhangeleka erhaneleka nyhani.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Possible rain (showers)",
+   "english": "Take a brolly just in case, hey.",
+   "shipped": "Thatha isambreli ukuba kunokwenzeka, hey.",
+   "final": "Phatha isambreli nje xa kunokwenzeka, hey.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Possible rain (showers)",
+   "english": "Don't trust those clouds. They're plotting.",
+   "shipped": "Musa ukuwathemba lawo mafu. Ayaceba.",
+   "final": "Sukuwathemba loo-mafu. Ayadibana.",
+   "source": "B",
+   "confidence": "LOW",
+   "rationale": "Different rewrites, both plausible; B default (active speaker) — SKIM",
+   "flags": "B unattested: ['sukuwathemba', 'loo-mafu', 'ayadibana']"
+  },
+  {
+   "section": "Possible rain (showers)",
+   "english": "Weather's being more indecisive than you at Spur.",
+   "shipped": "Imozulu ayikwazi ukuzigqiba njengawe eSpur.",
+   "final": "Imozulu ayikwazi kuzenzela sigqibo ngakumbi kunawe eSpur.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Possible rain (showers)",
+   "english": "The sky can't make up its mind. Join the club.",
+   "shipped": "Isibhakabhaka asikwazi ukuzigqiba. Joyina iklabhu.",
+   "final": "Isibhakabhaka asikwazi ukwenza isigqibo. Wamkelekile eklabhini",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Possible rain (showers)",
+   "english": "Forecast says maybe. We say probably.",
+   "shipped": "Isibikezelo sithi mhlawumbi. Sithi mhlawumbi.",
+   "final": "Isibikezelo sithi mhlawumbi. Thina sithi kusenokwenzeka",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Possible rain (showers)",
+   "english": "Bring a jacket. Or sunscreen. Or both.",
+   "shipped": "Zisa ijekithi. Okanye isithinteli selanga. Okanye zombini.",
+   "final": "Yiza nesilamba. Okanye iSunscreen. Okanye zombini.",
+   "source": "B",
+   "confidence": "MED",
+   "rationale": "Voice rule: B keeps ['sunscreen'], A translates",
+   "flags": "B typos: ['nesilamba']"
+  },
+  {
+   "section": "Possible rain (showers)",
+   "english": "The sky's giving mixed signals again.",
+   "shipped": "Isibhakabhaka siphinda sinika imiqondiso exubileyo.",
+   "final": "Isibhakabhaka siphinda sithumele imiqondiso exubeneyo.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Possible rain (showers)",
+   "english": "Schrodinger's rain. It both is and isn't.",
+   "shipped": "Imvula kaSchrödinger. Iyakho futhi ayikho.",
+   "final": "Imvula kaSchrödinger — ikhona kodwa kwangaxeshanye ayikho",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Possible rain (showers)",
+   "english": "The washing's on the line and you're feeling brave.",
+   "shipped": "Impahla yokuhlamba isemthayeni kwaye uziva unesibindi.",
+   "final": "Impahla yonekwe ecingweni yaye uziva unesbindi.",
+   "source": "B",
+   "confidence": "LOW",
+   "rationale": "Only B corrected (within reviewed range)",
+   "flags": "possible typos (unattested): ['yonekwe', 'ecingweni', 'unesbindi']"
+  },
+  {
+   "section": "Possible rain (showers)",
+   "english": "Even the weather apps are arguing about this one.",
+   "shipped": "Kwanee-app zemozulu ziyaxabana ngale nto.",
+   "final": "Nokuba nee-app zemozulu ziyaphikisana ngale meko",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Possible rain (showers)",
+   "english": "Somewhere between fine and soaked. Good luck.",
+   "shipped": "Phakathi kokuhle nokuba manzi. Inyhani enhle.",
+   "final": "Phakathi kobamhle nokuba manzi. Unqweno omhle.",
+   "source": "B",
+   "confidence": "LOW",
+   "rationale": "Different rewrites, both plausible; B default (active speaker) — SKIM",
+   "flags": "B unattested: ['kobamhle', 'unqweno']"
+  },
+  {
+   "section": "Possible rain (showers)",
+   "english": "The clouds are just vibing. No promises.",
+   "shipped": "Amafu akhona nje. Akukho zithembiso.",
+   "final": "Amafu azihambela nje. Akukho zithembiso namhlanje",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Possible rain (showers)",
+   "english": "Trust issues with the sky today.",
+   "shipped": "Iingxaki zokuthemba isibhakabhaka namhlanje.",
+   "final": "Namhlanje isibhakabhaka asinakuthembeka.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Overcast / cloudy",
+   "english": "The sky's giving absolutely nothing.",
+   "shipped": "Isibhakabhaka asiniki nto.",
+   "final": "Isibhakabhaka asiniki kwanto tu.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Overcast / cloudy",
+   "english": "Overcast but we'll survive.",
+   "shipped": "Linamafu kodwa siya kuphila.",
+   "final": "Kunamafu kodwa siza kuphila.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Overcast / cloudy",
+   "english": "Good day for a walk, bad day for a tan.",
+   "shipped": "Imini entle yokuhamba, embi yokutshisa.",
+   "final": "Lusuku oluhle lokuhamba, kodwa alulungelanga ukutshisa.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Overcast / cloudy",
+   "english": "The sun's bunking today.",
+   "shipped": "Ilanga liyabaleka namhlanje.",
+   "final": "Ilanga alibonakali namhlanje.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Overcast / cloudy",
+   "english": "Moody weather. Same, honestly.",
+   "shipped": "Imozulu ezithwele. Njengam.",
+   "final": "Imozulu iyatshintsha-tshintsha. Nam ke kunjalo.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Overcast / cloudy",
+   "english": "Not bad, not great. Like a 6/10 date.",
+   "shipped": "Ayimbi, ayintle. Njengedethi ye-6/10.",
+   "final": "Ayikho mbi, ayikho ntle. Njeng date ye6/10",
+   "source": "B",
+   "confidence": "LOW",
+   "rationale": "Only B corrected (within reviewed range)",
+   "flags": "possible typos (unattested): ['ntle', 'njeng', 'date']"
+  },
+  {
+   "section": "Overcast / cloudy",
+   "english": "Perfect weather for a Woolies run and Netflix.",
+   "shipped": "Imozulu elungele uWoolies neNetflix.",
+   "final": "Imozulu efanelekileyo yokuya eWoolies nokubukela iNetflix.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Overcast / cloudy",
+   "english": "Eskom-friendly weather. No solar today.",
+   "shipped": "Imozulu elungele i-Eskom. Akukho solar.",
+   "final": "Imozulu ye-Eskom. Ayikho i-solar namhlanje.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Overcast / cloudy",
+   "english": "It is what it is.",
+   "shipped": "Kuyiloo nto iyiyo.",
+   "final": "Kunjalo nje.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Overcast / cloudy",
+   "english": "by",
+   "shipped": "Ilanga lisekhefu letiye. Akukho ETA.",
+   "final": "Ilanga lithathe ikhefu leti. Akukho mntu waziyo ukuba libuya nini.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Overcast / cloudy",
+   "english": "Not depressing. Just... underwhelming.",
+   "shipped": "Ayidakumbi. Nje... ayihlabi umxhwele.",
+   "final": "Ayidakumbisi. Kodwa... ayinamdla tu.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Overcast / cloudy",
+   "english": "A hoodie and an attitude. That's today.",
+   "shipped": "I-hoodie nesimilo. Namhlanje kunje.",
+   "final": "Namhlanje yi-hoodie nesimo sengqondo nje.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Overcast / cloudy",
+   "english": "Could be worse. Could also be better.",
+   "shipped": "Kunokuba kubi kakhulu. Kunokuba bhetele futhi.",
+   "final": "Bekunokuba kubi ngakumbi. Bekunokuba bhetele nayo.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Overcast / cloudy",
+   "english": "The sky's giving 'I'll try again tomorrow' energy.",
+   "shipped": "Isibhakabhaka sinika 'ndiya kuzama ngomso' amandla.",
+   "final": "Isibhakabhaka sinika loo vibe ka “ndiza kuphinda ndizame ngomso.”",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Overcast / cloudy",
+   "english": "Good enough weather. Not great, not terrible.",
+   "shipped": "Imozulu eyaneleyo. Ayinkulu, ayimbi.",
+   "final": "Imozulu ilungile ngokwaneleyo. Ayintle kakhulu, ayimbi kakhulu.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Overcast / cloudy",
+   "english": "Nobody's posting this sunset on Instagram.",
+   "shipped": "Akukho mntu uza kuposta oku kwi-Instagram.",
+   "final": "Akukho mntu uza kuposta le sunset kwi-Instagram.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Voice rule: A keeps ['instagram', 'sunset'], B translates",
+   "flags": null
+  },
+  {
+   "section": "Overcast / cloudy",
+   "english": "The clouds are here but they're not doinganything.",
+   "shipped": "Amafu akho kodwa awenzi nto.",
+   "final": "Amafu akhona, kodwa akukho nto ayenzayo.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Overcast / cloudy",
+   "english": "Not Instagram weather. Not the end of the world.",
+   "shipped": "Ayiyomozulu ye-Instagram. Ayikokuphela kwehlabathi.",
+   "final": "Ayiyomozulu ye-Instagram. Ayisosiphelo sehlabathi.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Overcast / cloudy",
+   "english": "The sun sent an out-of-office reply.",
+   "shipped": "Ilanga lithumele i-out-of-office.",
+   "final": "Ilanga lithumele impendulo ka out-of-office",
+   "source": "B",
+   "confidence": "LOW",
+   "rationale": "Only B corrected (within reviewed range)",
+   "flags": "possible typos (unattested): ['out-of-office']"
+  },
+  {
+   "section": "Overcast / cloudy",
+   "english": "At least it's not raining. That's the bar.",
+   "shipped": "Ubuncinane ayimvula. Yilonto kuphela.",
+   "final": "Noko akunethi. Yilonto qha.",
+   "source": "B",
+   "confidence": "LOW",
+   "rationale": "Different rewrites, both plausible; B default (active speaker) — SKIM",
+   "flags": "B unattested: ['akunethi']"
+  },
+  {
+   "section": "Overcast / cloudy",
+   "english": "Perfect weather for existing without enthusiasm.",
+   "shipped": "Imozulu elungele ukuphila ngaphandle kwentshisekelo.",
+   "final": "Imozulu efanele ukuphila ngaphandle komdla.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Overcast / cloudy",
+   "english": "The clouds are committed to being average.",
+   "shipped": "Amafu azibophelele ekubeni phakathi naphakathi.",
+   "final": "Amafu azimisele ngokuba phakathi nendawo nje.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Overcast / cloudy",
+   "english": "The sky picked a vibe and the vibe is shrug.",
+   "shipped": "Isibhakabhaka sikhethe i-vibe kwaye i-vibe kukunyusa amagxa.",
+   "final": "Isibhakabhaka sikhethe i-vibe, kwaye loo vibe kukuziphakamisa amagxa nje",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Overcast / cloudy",
+   "english": "Cloud cover with a side of who-cares.",
+   "shipped": "Amafu nelinye icala lokuba ngubani onomdla.",
+   "final": "Amafu agqume isibhakabhaka, ehamba nomoya wokungakhathali.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Overcast / cloudy",
+   "english": "A perfectly average sky doing perfectly average things.",
+   "shipped": "Isibhakabhaka esiphakathi esenza izinto eziphakathi.",
+   "final": "Isibhakabhaka esiqhelekileyo sisenza izinto eziqhelekileyo nje.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Overcast / cloudy",
+   "english": "The clouds RSVP'd 'maybe' and showed up anyway.",
+   "shipped": "Amafu aphendule athi 'mhlawumbi' aze nje.",
+   "final": "Amafu aphendule athi “mhlawumbi,” kodwa avele afika kunjalo.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Overcast / cloudy",
+   "english": "Forecast: vibes neutral, expectations lower.",
+   "shipped": "Isibikezelo: ii-vibes ezingenamfuneko, indlela eziphantsi.",
+   "final": "Uqikelelo: ii-vibes eziphakathi, ulindeleko lusezantsi.",
+   "source": "B",
+   "confidence": "LOW",
+   "rationale": "Different rewrites, both plausible; B default (active speaker) — SKIM",
+   "flags": "B unattested: ['ulindeleko']"
+  },
+  {
+   "section": "Overcast / cloudy",
+   "english": "The sun is technically present. Spiritually elsewhere.",
+   "shipped": "Ilanga ngokwasemthethweni likho. Ngokomoya likwenye indawo.",
+   "final": "Ilanga likhona ngokwasemthethweni. Kodwa ngomoya likwenye indawo.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Strong sun (high UV)",
+   "english": "Sunscreen is not optional, boet.",
+   "shipped": "Ikhrimu yelanga ayinakukhethwa, boet.",
+   "final": "Ikhrimu yelanga ayisosikhetho, boet.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Strong sun (high UV)",
+   "english": "The sun's not playing games today.",
+   "shipped": "Ilanga alidlali namhlanje.",
+   "final": "Ilanga lidlala imidlalo namhlanje.",
+   "source": "B",
+   "confidence": "LOW",
+   "rationale": "Only B corrected (within reviewed range)",
+   "flags": "possible typos (unattested): ['imidlalo']"
+  },
+  {
+   "section": "Strong sun (high UV)",
+   "english": "You will look like a lobster. You've been warned.",
+   "shipped": "Uya kubonakala njenge-lobster. Ulumkisiwe.",
+   "final": "Uza kubomvu njenge-lobster. Ulumkisiwe.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Strong sun (high UV)",
+   "english": "Protect that face! It's the only one you've got.",
+   "shipped": "Khusela elo buso! Lelinye kuphela onalo.",
+   "final": "Khusela obo buso! Bubo kuphela onabo.",
+   "source": "A",
+   "confidence": "MED",
+   "rationale": "Different rewrites; B unattested ['obobuso', 'bodwa'], A clean (grammar rule)",
+   "flags": null
+  },
+  {
+   "section": "Strong sun (high UV)",
+   "english": "The ozone layer called. It's on leave.",
+   "shipped": "I-ozone layer ifownile. Iku-leave.",
+   "final": "I-ozone layer ifownile — ithathe ileave.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Strong sun (high UV)",
+   "english": "Reapply that sunscreen or suffer.",
+   "shipped": "Sebenzisa kwakhona okanye ubandezeleke.",
+   "final": "Sebenzisa lo sunscreen okanye kuzakubanzima kuwe.",
+   "source": "B",
+   "confidence": "MED",
+   "rationale": "Voice rule: B keeps ['sunscreen'], A translates",
+   "flags": "B typos: ['kuzakubanzima']"
+  },
+  {
+   "section": "Strong sun (high UV)",
+   "english": "Hat, sunnies, sunscreen. Non-negotiable.",
+   "shipped": "Umnqwazi, izipeki, ikhrimu. Akuxoxwa.",
+   "final": "iHat, izipeksi, sunscreen. Ayixoxisi.",
+   "source": "B",
+   "confidence": "LOW",
+   "rationale": "Only B corrected (within reviewed range)",
+   "flags": "possible typos (unattested): ['ihat', 'izipeksi', 'ayixoxisi']"
+  },
+  {
+   "section": "Strong sun (high UV)",
+   "english": "You could braai a steak on the pavement right now.",
+   "shipped": "Ungagrila isteki epavimentini ngoku.",
+   "final": "Unga braai inyama kwi pavement ngalomzuzu.",
+   "source": "B",
+   "confidence": "LOW",
+   "rationale": "Different rewrites, both plausible; B default (active speaker) — SKIM",
+   "flags": "B unattested: ['unga', 'pavement']"
+  },
+  {
+   "section": "Strong sun (high UV)",
+   "english": "Your future self will thank you for that sunscreen.",
+   "shipped": "Wena wakusasa uya kukubulela ngekhrimu yelanga.",
+   "final": "Ingomso lakho lakho lizakubulela ngalo sunscreen",
+   "source": "B",
+   "confidence": "MED",
+   "rationale": "Voice rule: B keeps ['sunscreen'], A translates",
+   "flags": "B typos: ['ingomso', 'lizakubulela']"
+  },
+  {
+   "section": "Strong sun (high UV)",
+   "english": "Walking to the car counts as a sun hazard today.",
+   "shipped": "Ukuhamba uye emotweni kubhekwa njengengozi yelanga namhlanje.",
+   "final": "Nokuhamba uye emotweni namhlanje kubeka emngciphekweni welanga.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Strong sun (high UV)",
+   "english": "Tan lines are not a personality trait.",
+   "shipped": "Imigca yokutshisa ayisiyonto yobuqu.",
+   "final": "Izivubeko zokutsha azinasimilo",
+   "source": "B",
+   "confidence": "LOW",
+   "rationale": "Different rewrites, both plausible; B default (active speaker) — SKIM",
+   "flags": "B unattested: ['izivubeko', 'zokutsha', 'azinasimilo']"
+  },
+  {
+   "section": "Strong sun (high UV)",
+   "english": "The back of your neck. You forgot that bit.",
+   "shipped": "Umva wentamo yakho. Ukulibele loo ndawo.",
+   "final": "Umva wentamo yakho — loo ndawo uyilibele.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Strong sun (high UV)",
+   "english": "Sunscreen budget: higher than your data bill.",
+   "shipped": "Iibhajethi zekhrimu yelanga: ngaphezu kwebhili yakho yedatha.",
+   "final": "Ibhajethi yekrimu yelanga: ingaphezulu kwebhili yakho yedatha.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Strong sun (high UV)",
+   "english": "Today's forecast: medium rare.",
+   "shipped": "Isibikezelo sanamhlanje: medium rare.",
+   "final": "Uqikelelo lwanamhlanje: aluvuthwanga kakuhle",
+   "source": "B",
+   "confidence": "LOW",
+   "rationale": "Different rewrites, both plausible; B default (active speaker) — SKIM",
+   "flags": "B unattested: ['lwanamhlanje', 'aluvuthwanga']"
+  },
+  {
+   "section": "Strong sun (high UV)",
+   "english": "Even the shade is warm. Good luck out there.",
+   "shipped": "Kwanomthunzi ufudumele. Inyhani enhle.",
+   "final": "Nditsho nomthunzi lo ushushu. Ndininqwenelela impumelelo phandl’apha",
+   "source": "B",
+   "confidence": "LOW",
+   "rationale": "Different rewrites, both plausible; B default (active speaker) — SKIM",
+   "flags": "B unattested: ['ndininqwenelela', 'impumelelo', 'phandl’apha']"
+  },
+  {
+   "section": "Wind",
+   "english": "The southeaster's arrived. Uninvited, as usual.",
+   "shipped": "Umoya wasemzantsi ufikile. Ungamenyanga, njengoko eqhelile.",
+   "final": "Umoya wemzantsi mpuma ufikile. Ungamenywanga njengesiqhelo.",
+   "source": "B",
+   "confidence": "LOW",
+   "rationale": "Only B corrected (within reviewed range)",
+   "flags": "possible typos (unattested): ['wemzantsi', 'mpuma']"
+  },
+  {
+   "section": "Wind",
+   "english": "Table Mountain's tablecloth is out.",
+   "shipped": "Ilaphu leTable Mountain liphumile.",
+   "final": "Ilaphu lentaba ye tafile liphumile.",
+   "source": "B",
+   "confidence": "LOW",
+   "rationale": "Only B corrected (within reviewed range)",
+   "flags": "possible typos (unattested): ['lentaba', 'tafile']"
+  },
+  {
+   "section": "Wind",
+   "english": "The Cape Doctor is making house calls.",
+   "shipped": "UGqirha waseKapa wenza iindwendwe.",
+   "final": "Sizakundwendwelwa ngumoya woGqirha waseKapa.",
+   "source": "B",
+   "confidence": "LOW",
+   "rationale": "Different rewrites, both plausible; B default (active speaker) — SKIM",
+   "flags": "B unattested: ['sizakundwendwelwa', 'wogqirha']"
+  },
+  {
+   "section": "Wind",
+   "english": "The trees are doing involuntary yoga.",
+   "shipped": "Imithi yenza i-yoga engafunekiyo.",
+   "final": "Imithi yenza i-yoga ngenkani.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Same substance; A cleaner-typed (B unattested: ['nyenza', 'yoga'])",
+   "flags": null
+  },
+  {
+   "section": "Wind",
+   "english": "Someone's trampoline is now two streets away.",
+   "shipped": "I-trampoline yomntu ngoku zizitalato ezimbini.",
+   "final": "iTrampoline yomntu iphaphathekile ngapha kwezitalato ezimbini.",
+   "source": "B",
+   "confidence": "LOW",
+   "rationale": "Only B corrected (within reviewed range)",
+   "flags": "possible typos (unattested): ['itrampoline', 'iphaphathekile', 'ngapha', 'kwezitalato']"
+  },
+  {
+   "section": "Wind",
+   "english": "Perfect conditions for losing your dignity.",
+   "shipped": "Iimeko ezilungileyo zokulahlekelwa sisidima.",
+   "final": "Iimeko ezigqibeleleyo zokulahlekelwa sisidima sakho.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Wind",
+   "english": "Even the seagulls are walking today.",
+   "shipped": "Neenkonjane ziyahamba namhlanje.",
+   "final": "Neengabangaba zihamba ngeenyawo namhlanje.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Wind",
+   "english": "The bins are on an adventure again.",
+   "shipped": "Iibhini zikwi-adventure kwakhona.",
+   "final": "Iibhini ziphinde zangena kwi-adventure",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Wind",
+   "english": "Your washing just moved to the neighbour's yard.",
+   "shipped": "Impahla yakho isanda kukhutshelwa kwiyadhi yommelwane.",
+   "final": "Impahla yakho iphaphathekele kwamelwane.",
+   "source": "B",
+   "confidence": "LOW",
+   "rationale": "Only B corrected (within reviewed range)",
+   "flags": "possible typos (unattested): ['iphaphathekele', 'kwamelwane']"
+  },
+  {
+   "section": "Wind",
+   "english": "Sand in places sand should never be.",
+   "shipped": "Intlabathi kwiindawo intlabathi engamele ibe kuzo.",
+   "final": "Isanti ikwindawo ebekungafanelakanga ikuzo.",
+   "source": "B",
+   "confidence": "LOW",
+   "rationale": "Only B corrected (within reviewed range)",
+   "flags": "possible typos (unattested): ['isanti', 'ikwindawo', 'ebekungafanelakanga', 'ikuzo']"
+  },
+  {
+   "section": "Wind",
+   "english": "Ponytail holders are doing overtime.",
+   "shipped": "Izibopho zeenwele zisebenza ngokungaphezulu.",
+   "final": "Abanamaphondo ezinweleni basebenza i overtime.",
+   "source": "B",
+   "confidence": "MED",
+   "rationale": "Voice rule: B keeps ['overtime'], A translates",
+   "flags": "B typos: ['abanamaphondo', 'ezinweleni', 'basebenza', 'overtime']"
+  },
+  {
+   "section": "Wind",
+   "english": "The braai cover is in the next suburb.",
+   "shipped": "Isigqubuthelo sebraai sisekwisifunda esilandelayo.",
+   "final": "Isigqubuthelo se braai sikwingingqi elandelayo.",
+   "source": "B",
+   "confidence": "LOW",
+   "rationale": "Different rewrites, both plausible; B default (active speaker) — SKIM",
+   "flags": "B unattested: ['sikwingingqi', 'elandelayo']"
+  },
+  {
+   "section": "Cold",
+   "english": "Layer up like you're climbing Sani Pass.",
+   "shipped": "Faka iingubo ezininzi njengokunyuka uSani Pass.",
+   "final": "Fumbelo okungathi uzakunyuka intaba ye Sani Pass",
+   "source": "B",
+   "confidence": "LOW",
+   "rationale": "Different rewrites, both plausible; B default (active speaker) — SKIM",
+   "flags": "B unattested: ['fumbelo', 'okungathi', 'uzakunyuka', 'sani']"
+  },
+  {
+   "section": "Cold",
+   "english": "The heater is your best friend. Your only friend.",
+   "shipped": "I-heater ngumhlobo wakho omkhulu. Owodwa.",
+   "final": "I-heater ngumhlobo wakho omkhulu. Enyanisweni, kuphela kwakhe",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Cold",
+   "english": "Even the Capetonians are admitting it's cold.",
+   "shipped": "Nabantu baseCape bayavuma kuyabanda.",
+   "final": "Nditsho nabantu baseKapa bayavuma ukuba kuyabanda.",
+   "source": "B",
+   "confidence": "LOW",
+   "rationale": "Only B corrected (within reviewed range)",
+   "flags": "possible typos (unattested): ['basekapa']"
+  },
+  {
+   "section": "Cold",
+   "english": "This is not what the tourism brochure promised.",
+   "shipped": "Oku akukokuthenjiswa yincwadi yokhenketho.",
+   "final": "Le ayisiyiyo into eyathenjiswa yibrochure yezokhenketho",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Cold",
+   "english": "The duvet had the right idea this morning.",
+   "shipped": "I-duvet yayinecebo elifanelekileyo ngale ntsasa.",
+   "final": "I-duvet ibinombono ongcono kule ntsasa.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Cold",
+   "english": "Three pairs of socks and still not enough.",
+   "shipped": "Amapheya amathathu eekawusi kodwa ayanelanga.",
+   "final": "Izibini ezintathu zee kawusi kodwa kunjalo azonelanga.",
+   "source": "B",
+   "confidence": "LOW",
+   "rationale": "Only B corrected (within reviewed range)",
+   "flags": "possible typos (unattested): ['izibini', 'kawusi', 'azonelanga']"
+  },
+  {
+   "section": "Cold",
+   "english": "The car seats are freezing. Everything is freezing.",
+   "shipped": "Izihlalo zemoto ziyaqanda. Yonke into iyaqanda.",
+   "final": "Izihlalo zemoto ziyabanda. Yonke into iyabanda.",
+   "source": "B",
+   "confidence": "HIGH",
+   "rationale": "Same substance; B cleaner-typed (A unattested: ['ziyabanda', 'qhwa'])",
+   "flags": "normalized 'ziyaband.'->'ziyabanda.' (truncated final 'a'; 'iyabanda' attested in B's own same sentence)"
+  },
+  {
+   "section": "Cold",
+   "english": "Rooibos consumption just doubled.",
+   "shipped": "Ukusetyenziswa kwerooibos kusanda kuphindaphindeka.",
+   "final": "Ukuselwa kwerooibos kuphindaphindeke kabini ngoku.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Cold",
+   "english": "The dog refused to go outside. Fair.",
+   "shipped": "Inja yala ukuphuma. Kulungile.",
+   "final": "Nditsho nenja ayivumi ukuphuma phandle. Iyavakala loo nto.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Cold",
+   "english": "The cold front is here and it brought friends.",
+   "shipped": "Amakhaza afikile kwaye azise abahlobo.",
+   "final": "Ingqele ifikile yaye ize nabahlobo bayo.",
+   "source": "B",
+   "confidence": "LOW",
+   "rationale": "Different rewrites, both plausible; B default (active speaker) — SKIM",
+   "flags": "B unattested: ['ingqele', 'nabahlobo', 'bayo']"
+  },
+  {
+   "section": "Cold",
+   "english": "You're not cold, you're 'lekker koud'. Big difference.",
+   "shipped": "Akubandi, u-'lekker koud'. Umahluko omkhulu.",
+   "final": "Awugodoli, u “lekker koud”. Mkhulu umahluko.",
+   "source": "B",
+   "confidence": "LOW",
+   "rationale": "Different rewrites, both plausible; B default (active speaker) — SKIM",
+   "flags": "B unattested: ['awugodoli']"
+  },
+  {
+   "section": "Cold",
+   "english": "The kettle is working harder than anyone today.",
+   "shipped": "Iketile isebenza ngamandla kunabo bonke namhlanje.",
+   "final": "Iketile isebenza ngaphezu kwakhe wonke umntu namhlanje.",
+   "source": "A",
+   "confidence": "MED",
+   "rationale": "Different rewrites; B unattested ['kahulu', 'kunomntu'], A clean (grammar rule)",
+   "flags": null
+  },
+  {
+   "section": "Cold",
+   "english": "Nobody signed up for this temperature.",
+   "shipped": "Akukho mntu ubhalisele oku kushushu.",
+   "final": "Akhomtu ubhalisele le mozulu.",
+   "source": "B",
+   "confidence": "LOW",
+   "rationale": "Different rewrites, both plausible; B default (active speaker) — SKIM",
+   "flags": "B unattested: ['akhomtu']"
+  },
+  {
+   "section": "Cold",
+   "english": "Your motivation froze on the way to the door.",
+   "shipped": "Inkuthazo yakho iqandile endleleni eya emnyango.",
+   "final": "Inkuthazo yakho iqandusele endleleni eya emnyango.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Cold",
+   "english": "Outside is a test of character. You're failing.",
+   "shipped": "Ngaphandle luvavanyo lwesimilo. Uyaphulukana.",
+   "final": "Phandle luvavanyo lwesimilo — kwaye uyasilela.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Cold",
+   "english": "Hot water bottle is the real MVP today.",
+   "shipped": "Ibhotile yamanzi ashushu ngumqhubi wangempela namhlanje.",
+   "final": "Ibhotile yamanzi ashushu yeyona MVP yokwenyani namhlanje.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Cold",
+   "english": "Why did past-you make plans? Past-you is the worst.",
+   "shipped": "Kutheni wena-wexesha-elidlulileyo wenze izicwangciso? Wena-wexesha-elidlulileyo mbi.",
+   "final": "Kutheni wena wakudala wenza izicwangciso? Wena wakudala ngoyena mbi.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Cold",
+   "english": "You miss your bed and you've been gone twelve minutes.",
+   "shipped": "Ukhumbula ibhedi yakho kwaye sele iyimizuzu elishumi elinambini uhambile.",
+   "final": "Sewukhumbula ibhedi yakho kodwa unemizuzu nje elishumi elinesibini uphumile.",
+   "source": "B",
+   "confidence": "LOW",
+   "rationale": "Different rewrites, both plausible; B default (active speaker) — SKIM",
+   "flags": "B unattested: ['sewukhumbula', 'unemizuzu', 'uphumile']; commentary-stripped"
+  },
+  {
+   "section": "Cold",
+   "english": "The shower was the highlight. It is downhill from here.",
+   "shipped": "Ishawa yayiyincopho. Konke kuya ezantsi ngoku.",
+   "final": "iShower ibigqamile. Kuyehlela ukususela apha.",
+   "source": "B",
+   "confidence": "MED",
+   "rationale": "Voice rule: B keeps ['shower'], A translates",
+   "flags": "B typos: ['ishower', 'ibigqamile', 'kuyehlela', 'ukususela']"
+  },
+  {
+   "section": "Cold",
+   "english": "Your toes have filed a formal complaint.",
+   "shipped": "Iinzwane zakho zifake isikhalazo esisesikweni.",
+   "final": "Iinzwane zakho zifake isikhalazo esisemthethweni.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Cold",
+   "english": "Coffee count: rising. Motivation count: still zero.",
+   "shipped": "Ukubalwa kwekofu: kunyuka. Ukubalwa kwenkuthazo: kuse zero.",
+   "final": "Ukubalwa kwe kofu kuyenyuka. Inkuthazo iku zero.",
+   "source": "B",
+   "confidence": "LOW",
+   "rationale": "Different rewrites, both plausible; B default (active speaker) — SKIM",
+   "flags": "B unattested: ['kofu']"
+  },
+  {
+   "section": "Cold",
+   "english": "Outside has betrayed you and you went anyway.",
+   "shipped": "Ngaphandle kukukhaphele kwaye nokuba kunjalo uhambile.",
+   "final": "Umphandle ukuphoxe wahamba.",
+   "source": "B",
+   "confidence": "LOW",
+   "rationale": "Different rewrites, both plausible; B default (active speaker) — SKIM",
+   "flags": "B unattested: ['umphandle', 'ukuphoxe', 'wahamba']; A-note cell-bleed: contains a stray sentence likely belonging to another row — excluded"
+  },
+  {
+   "section": "Very hot",
+   "english": "Jislaaik, it's properly hot!",
+   "shipped": "Yhuu, kushushu ngempela!",
+   "final": "Yhuu, kushushu nyhani!",
+   "source": "B",
+   "confidence": "HIGH",
+   "rationale": "Only B corrected (within reviewed range)",
+   "flags": null
+  },
+  {
+   "section": "Very hot",
+   "english": "You could fry an egg on the N1.",
+   "shipped": "Ungabhaka iqanda kwi-N1.",
+   "final": "Ungabhaqa inqa kuN1",
+   "source": "B",
+   "confidence": "LOW",
+   "rationale": "Different rewrites, both plausible; B default (active speaker) — SKIM",
+   "flags": "B unattested: ['ungabhaqa', 'inqa']"
+  },
+  {
+   "section": "Very hot",
+   "english": "Ice cream isn't a treat. It's survival.",
+   "shipped": "I-ice cream ayisosipho. Kukuphila.",
+   "final": "I-ice cream ayisosipho — kukusinda.",
+   "source": "A",
+   "confidence": "MED",
+   "rationale": "Different rewrites; B unattested ['ayonto', 'imnandi'], A clean (grammar rule)",
+   "flags": null
+  },
+  {
+   "section": "Very hot",
+   "english": "The pool is not optional.",
+   "shipped": "Ipuli ayinakukhethwa.",
+   "final": "Ipuli ayisosigqibo — iyafuneka",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Very hot",
+   "english": "The AC is begging for mercy.",
+   "shipped": "I-AC icela inceba.",
+   "final": "I-aircon icela inceba.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Very hot",
+   "english": "Your car seat is a weapon right now.",
+   "shipped": "Isihlalo semoto sakho sisixhobo ngoku.",
+   "final": "Isihlalo semoto yakho sisixhobo ngoku.",
+   "source": "A",
+   "confidence": "MED",
+   "rationale": "Different rewrites; B unattested ['isixhobo', 'sisihlalo'], A clean (grammar rule)",
+   "flags": null
+  },
+  {
+   "section": "Very hot",
+   "english": "Too hot to argue. Too hot to function.",
+   "shipped": "Kushushu kakhulu ukuxoxa. Kushushu kakhulu ukusebenza.",
+   "final": "Kushushu kakhulu ube uxoxa. Kushushu kakhulu for nukusebenza.",
+   "source": "B",
+   "confidence": "LOW",
+   "rationale": "Only B corrected (within reviewed range)",
+   "flags": "possible typos (unattested): ['uxoxa', 'nukusebenza']"
+  },
+  {
+   "section": "Very hot",
+   "english": "Even your phone's overheating.",
+   "shipped": "Nefowuni yakho iyashushu.",
+   "final": "Nditsho ne phone ishushu kakhulu.",
+   "source": "B",
+   "confidence": "MED",
+   "rationale": "Voice rule: B keeps ['phone'], A translates",
+   "flags": "normalized 'kakhulku'->'kakhulu' (transposition; 'kakhulu' attested 50+ times)"
+  },
+  {
+   "section": "Very hot",
+   "english": "The tar is soft. The people are softer.",
+   "shipped": "I-tar ithambile. Abantu bathambile.",
+   "final": "iTar ithambile. Abantu bathambe ngaphezulu.",
+   "source": "B",
+   "confidence": "LOW",
+   "rationale": "Only B corrected (within reviewed range)",
+   "flags": "possible typos (unattested): ['itar', 'bathambe']"
+  },
+  {
+   "section": "Very hot",
+   "english": "Somewhere a chocolate bar just died.",
+   "shipped": "Kwezinye iindawo ishokolethi isanda kufa.",
+   "final": "Itshokolethi isandokufa kwenye indawo.",
+   "source": "B",
+   "confidence": "LOW",
+   "rationale": "Only B corrected (within reviewed range)",
+   "flags": "possible typos (unattested): ['isandokufa']"
+  },
+  {
+   "section": "Very hot",
+   "english": "Everyone with a pool just became very popular.",
+   "shipped": "Bonke abanepuli basanda kuba bathandwa kakhulu.",
+   "final": "Wonke umntu one pool ngusaziwayo ngoku bayathandwa.",
+   "source": "B",
+   "confidence": "MED",
+   "rationale": "Voice rule: B keeps ['pool'], A translates",
+   "flags": "B typos: ['ngusaziwayo', 'bayathandwa']"
+  },
+  {
+   "section": "Very hot",
+   "english": "You're not sweating. You're 'glowing'. Sure.",
+   "shipped": "Awubili. U-'glow'. Ewe.",
+   "final": "Awubilanga uya glowa qha.",
+   "source": "B",
+   "confidence": "LOW",
+   "rationale": "Only B corrected (within reviewed range)",
+   "flags": "possible typos (unattested): ['awubilanga', 'glowa']"
+  },
+  {
+   "section": "Very hot",
+   "english": "Flip-flops on tar was a mistake.",
+   "shipped": "Iislipas kwi-tar yayiyimpazamo.",
+   "final": "iFlops etheni ibeyeyona mpazamo.",
+   "source": "B",
+   "confidence": "LOW",
+   "rationale": "Only B corrected (within reviewed range)",
+   "flags": "possible typos (unattested): ['iflops', 'etheni', 'ibeyeyona', 'mpazamo']"
+  },
+  {
+   "section": "Very hot",
+   "english": "Shorts weather? This is underwear weather.",
+   "shipped": "Imozulu yamabhlukhwe amafutshane? Le yimozulu yamanqisi.",
+   "final": "Ayomozulu yo shorty lena. Yimozulu yempahla yangapohantsi.",
+   "source": "B",
+   "confidence": "LOW",
+   "rationale": "Different rewrites, both plausible; B default (active speaker) — SKIM",
+   "flags": "B unattested: ['ayomozulu', 'shorty', 'lena', 'yangapohantsi']"
+  },
+  {
+   "section": "Very hot",
+   "english": "The shade is working harder than you today.",
+   "shipped": "Umthunzi usebenza ngamandla kunawe namhlanje.",
+   "final": "Umthunzi usebenza nzima kunawe namhlanje.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Very hot",
+   "english": "The office aircon debate just went to level 5.",
+   "shipped": "Ingxoxo ye-aircon yaseofisini isanda kufikelela inqanaba 5.",
+   "final": "Ingxoxo nge-aircon yaseofisini ifikelele kwinqanaba lesi-5 ngoku.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Very hot",
+   "english": "Everyone's suddenly your friend when you have a pool.",
+   "shipped": "Bonke bangabahlobo bakho xa unepuli.",
+   "final": "Wonke umntu uba ngumhlobho wakho xa une pool.",
+   "source": "B",
+   "confidence": "LOW",
+   "rationale": "Only B corrected (within reviewed range)",
+   "flags": "possible typos (unattested): ['ngumhlobho']"
+  },
+  {
+   "section": "Very hot",
+   "english": "Your steering wheel is a hot plate.",
+   "shipped": "Isitiyeli sakho sisitya esishushu.",
+   "final": "Istiyeringi yemoto yakho ishushu okwepani.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Very hot",
+   "english": "The fridge door is getting a workout today.",
+   "shipped": "Ucango lwefriji lufumana ukuzilolonga namhlanje.",
+   "final": "Ucango lwe fridge yakho luya gyma namhlanje.",
+   "source": "B",
+   "confidence": "MED",
+   "rationale": "Voice rule: B keeps ['fridge'], A translates",
+   "flags": "B typos: ['fridge', 'luya', 'gyma']"
+  },
+  {
+   "section": "Very hot",
+   "english": "Your makeup has an expiry date of 9am.",
+   "shipped": "I-makeup yakho ixesha lokugqibela ngu-9 kusasa.",
+   "final": "iMake up yakho iyaphelelwa ngo9",
+   "source": "B",
+   "confidence": "LOW",
+   "rationale": "Only B corrected (within reviewed range)",
+   "flags": "possible typos (unattested): ['imake', 'iyaphelelwa']"
+  },
+  {
+   "section": "Very hot",
+   "english": "The ice cream van is playing everyone's anthem.",
+   "shipped": "Imoto ye-ice cream idlala ingoma yabo bonke abantu.",
+   "final": "Imoto ye ice cream idlale umhobe womntu wonke.",
+   "source": "B",
+   "confidence": "LOW",
+   "rationale": "Only B corrected (within reviewed range)",
+   "flags": "possible typos (unattested): ['idlale', 'umhobe', 'womntu']"
+  },
+  {
+   "section": "Very hot",
+   "english": "Slowly becoming a puddle in the corner.",
+   "shipped": "Kancinane ndijika ndiba lichibana ekoneni.",
+   "final": "Kancinci kancinci ndinyibilika ndibe lichibi ekoneni.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Very hot",
+   "english": "The aircon remote is now public property. Negotiate.",
+   "shipped": "I-aircon remote ngoku yimpahla kawonke-wonke. Xoxa.",
+   "final": "Iremote ye-aircon ngoku yeyomntu wonke. Thethani kakuhle.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Very hot",
+   "english": "Even the shade is sweating.",
+   "shipped": "Nawumthunzi uyabila.",
+   "final": "Nditsho nomthunzi lo uyabila.",
+   "source": "B",
+   "confidence": "LOW",
+   "rationale": "Different rewrites, both plausible; B default (active speaker) — SKIM",
+   "flags": null
+  },
+  {
+   "section": "Very hot",
+   "english": "The ceiling fan is doing its best, but its best is not enough.",
+   "shipped": "Ifeni yophahla yenza okusemandleni ayo, kodwa okusemandleni ayo akwanelanga.",
+   "final": "Ifeni yophahla yenza konke okusemandleni ayo, kodwa akwanele",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Very hot",
+   "english": "Your iced coffee melted before you reached the car.",
+   "shipped": "Ikofu yakho yomkhenkce inyibilikile ngaphambi kokufika emotweni.",
+   "final": "Ikhofi yakho elineqhwa incibilikile ngaphambi kokuba ufike emotweni",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Very hot",
+   "english": "The neighbours' pool has never looked so tempting.",
+   "shipped": "Ipuli yommelwane ayikaze ibonakale ihehayo kangaka.",
+   "final": "Ipuli yommelwane ayikaze ibonakale iheha kangaka",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Very hot",
+   "english": "Don't touch the seatbelt buckle. Trust us.",
+   "shipped": "Ungaluchukumisi ucango lwebhande lokukhusela. Sithembe.",
+   "final": "Ungaluchukumisi iqhosha lebhande lokhuseleko. Sithembe. - \"ucango\" means \" door \"",
+   "source": "A",
+   "confidence": "MED",
+   "rationale": "Only A corrected",
+   "flags": "commentary-stripped"
+  },
+  {
+   "section": "Fog / low visibility",
+   "english": "Can't see a thing. Not a thing.",
+   "shipped": "Andiboni nto. Nto.",
+   "final": "Andiboni nto. Nento encinci.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Fog / low visibility",
+   "english": "Visibility: basically zero.",
+   "shipped": "Ukubonakala: phantse iqanda.",
+   "final": "Ukubonakala: phantse kungabikho.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Fog / low visibility",
+   "english": "Perfect weather for a horror movie.",
+   "shipped": "Imozulu elungele ifilimu yoyiko.",
+   "final": "Yimozulu efanele ifilimu eyoyikisayo",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Fog / low visibility",
+   "english": "Ghost town. But it's just Tuesday.",
+   "shipped": "Idolophu yesipoki. Kodwa ngolwesiBini nje.",
+   "final": "Kufana nedolophu yeziporho. Kanti nguLwesibini nje",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Fog / low visibility",
+   "english": "If you can read this, you're too close.",
+   "shipped": "Ukuba ungafunda oku, ukufutshane kakhulu.",
+   "final": "Ukuba uyakwazi ukufunda oku, ukufutshane kakhulu.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Fog / low visibility",
+   "english": "The streetlights are trying their best.",
+   "shipped": "Izibane zesitalato zizama ngako konke.",
+   "final": "Izibane zesitalato zizama ngako konke ezinako.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Fog / low visibility",
+   "english": "Somewhere out there is the road. We think.",
+   "shipped": "Ndaweni ithile ngaphandle kukho indlela. Sicinga.",
+   "final": "Ndaweni ithile phaya kukho indlela. Mhlawumbi",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Fog / low visibility",
+   "english": "The mountains are on holiday today.",
+   "shipped": "Iintaba ziholide namhlanje.",
+   "final": "Iintaba zithathe usuku lokuphumla namhlanje",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Fog / low visibility",
+   "english": "Your high beams are making it worse, boet.",
+   "shipped": "Ii-high beam zakho zenza kube kubi, boet.",
+   "final": "Cima ii-high beam, boet. Azincedi nganto ngoku",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Fog / low visibility",
+   "english": "The neighbours exist. Apparently. Can't confirm.",
+   "shipped": "Abamelwane bakho. Kubonakala kanjalo. Andinakuqinisekisa.",
+   "final": "Abamelwane bakho bakhona. Kuthiwa kunjalo. Andinakuqinisekisa.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Fog / low visibility",
+   "english": "The street signs gave up.",
+   "shipped": "Izimpawu zendlela ziyekile.",
+   "final": "Izimpawu zendlela zinikezele.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Fog / low visibility",
+   "english": "The world ends two metres past the gate.",
+   "shipped": "Ihlabathi liphela kwiimitha ezimbini ngaphesheya kwesango.",
+   "final": "umhlaba uphela kwiimitha ezimbini ngaphesheya kwesango.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Clear&pleasant",
+   "english": "Even the hadedas sound happy.",
+   "shipped": "Iintaka zivakala zivuya.",
+   "final": "lintaka zivakala zivuyile",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Clear&pleasant",
+   "english": "The kind of day that makes you forget load shedding.",
+   "shipped": "Uhlobo lwemini olwenza ulibale i-load shedding.",
+   "final": "Luhlobo lwemini olukwenza ulibale nge-load shedding.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Clear&pleasant",
+   "english": "Somewhere an estate agent is saying 'lifestyle'.",
+   "shipped": "Kwezinye iindawo umthengisi wendlu uthi 'lifestyle'.",
+   "final": "Kwenye indawo umthengisi wezindlu uthi “lifestyle”.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Clear&pleasant",
+   "english": "Save this one in the memory bank.",
+   "shipped": "Gcina le mini kwinkumbulo.",
+   "final": "Yigcine le mini kwibhanki yeenkumbulo",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Clear&pleasant",
+   "english": "The kind of day you text someone about.",
+   "shipped": "Uhlobo lwemini othumela umntu umyalezo ngalo.",
+   "final": "Luhlobo lwemini olwenza uthumele umntu umyalezo ngayo.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Clear&pleasant",
+   "english": "Africa's sky just hits different.",
+   "shipped": "Isibhakabhaka saseAfrika sihlukile nje.",
+   "final": "Isibhakabhaka saseAfrika sahlukile nyhani.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Clear&pleasant",
+   "english": "Take a moment. Look up. You're welcome.",
+   "shipped": "Thatha umzuzu. Jonga phezulu. Wamkelekile.",
+   "final": "Thatha umzuzwana. Jonga phezulu. Wamkelekile.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Clear&pleasant",
+   "english": "The Helderberg is showing off today.",
+   "shipped": "I-Helderberg iyaziqhayisa namhlanje.",
+   "final": "IHelderberg iyazibonakalisa namhlanje.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Clear&pleasant",
+   "english": "Days like this should come with a soundtrack.",
+   "shipped": "Iimini ezinje kufanele zize ne-soundtrack.",
+   "final": "Iimini ezinje kufanele zibe ne-soundtrack yazo.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Clear&pleasant",
+   "english": "The fynbos is loving it. You should too.",
+   "shipped": "Ifynbos iyakuthanda. Nawe kufanele.",
+   "final": "IFynbos iyayonwabela le mozulu. Nawe kufanele.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Clear&pleasant",
+   "english": "Blue sky, warm breeze. The simple stuff.",
+   "shipped": "Isibhakabhaka esiluhlaza, umoya ofudumeleyo. Izinto ezilula.",
+   "final": "Isibhakabhaka esiluhlaza, impepho efudumeleyo. Izinto ezilula.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Clear&pleasant",
+   "english": "Africa showing off again. Quietly devastating.",
+   "shipped": "I-Afrika iyaziqhayisa kwakhona. Ngokuzolileyo ngokumangalisayo.",
+   "final": "I-Afrika iyaziqhayisa kwakhona. Ngokuzolileyo ngokumangalisayo.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Clear night",
+   "english": "Perfect night to actually see the Milky Way.",
+   "shipped": "Ubusuku obulungileyo bokubona iNdlela yaseSisi.",
+   "final": "Ubusuku obulungileyo bokubona iNdlela yeMilky Way.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Clear night",
+   "english": "The moon's doing the most tonight.",
+   "shipped": "Inyanga ibonakala ngokukhethekileyo ngokuhlwa.",
+   "final": "Inyanga izenza eyona nkanyezi ephambili ngokuhlwa.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Clear night",
+   "english": "Somewhere a cricket is really giving it.",
+   "shipped": "Ndaweni ithile irhejane lizimisele ngokwenene.",
+   "final": "Ndaweni ithile irhejane lisenza umboniso walo ngokupheleleyo.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Clear night",
+   "english": "Even Table Mountain's called it a day.",
+   "shipped": "Kwanentaba yeTafile iphumle ngoku.",
+   "final": "kwa ne Table mountain igqibe ngalo mhla",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Clear night",
+   "english": "The frogs have entered the chat.",
+   "shipped": "Amasele angene kwinkcazo.",
+   "final": "Amasele angene kwincoko.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Weekend",
+   "english": "Braai weather, boet! No excuses.",
+   "shipped": "Imozulu yokugrila, boet! Akukho zaba.",
+   "final": "Imozulu yo ukosa inyama boet! Akukho zaba.ukosa inyama",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Weekend",
+   "english": "The weather gods are showing off.",
+   "shipped": "Oothixo bemozulu bayaziqhayisa.",
+   "final": "Oothixo bemozulu bayazibonakalisa kwakhona.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Weekend",
+   "english": "Beach or braai? Yes.",
+   "shipped": "Ibhitshi okanye ukugrila? Ewe.",
+   "final": "Ibhitshi okanye",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Weekend",
+   "english": "If you're working today, we feel sorry for you.",
+   "shipped": "Ukuba usebenza namhlanje, siyakuzwela.",
+   "final": "Ukuba usebenza namhlanje… siyakuqonda ukubandezeleka kwakho.- siyakuzwela is pity in isizulu",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Weekend",
+   "english": "Saturday energy: maximum. Responsibilities: minimum.",
+   "shipped": "Amandla angoMgqibelo: aphezulu. Uxanduva: lusezantsi.",
+   "final": "NgoMgqibelo amandla aphezulu. Uxanduva luphantsi - lusezantsi means underneath whereas luphantsi means down",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Weekend",
+   "english": "Marinade in. Phone off. Day starts now.",
+   "shipped": "Faka i-marinade. Cima ifowuni. Imini iqala ngoku.",
+   "final": "I-marinade ifakiwe. Ifowuni icinyiwe. Imini iqala ngoku. -this sentence is literal unlike the original xhosa version",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Weekend",
+   "english": "The chops are calling. So is the chair.",
+   "shipped": "Iitshophu ziyabiza. Nesitulo nayo.",
+   "final": "Iitshops ziyabiza. Nesitulo naso silindile.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Weekend",
+   "english": "Boerie roll for breakfast? On a weekend? Acceptable.",
+   "shipped": "Iboerie roll yebhrekfesi? Ngempelaveki? Iyamkeleka.",
+   "final": "I-boerie roll yesidlo sakusasa? Ngempelaveki? Yamkelekile.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Weekend",
+   "english": "The braai is the social calendar. Show up.",
+   "shipped": "Ukugrila yikhalenda yentlalo. Bonakala.",
+   "final": "ukosa inyama yikhalenda yentlalo. Yiza uzibonakalise.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Clear&pleasant — uncertain version",
+   "english": "Looks clear-ish. The models and the sky don't always agree.",
+   "shipped": "Kubonakala kuhle. Iimodeli nesibhakabhaka azivumelani rhoqo.",
+   "final": "Kubonakala kucacile kancinci. Iimodeli nesibhakabhaka azisoloko zivumelana.- replace rhoqo with azisoloko for a more relaxed tone.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Clear&pleasant — uncertain version",
+   "english": "Clear, in theory. The Cape Doctor doesn't always RSVP.",
+   "shipped": "Mhlawumbi yimini entle. Siqinisekile malunga ne-80%.",
+   "final": "Kucacile ngokwethiyori. I-Cape Doctor ayisoloko ifika xa ilindelwe.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Clear&pleasant — uncertain version",
+   "english": "Probably a good one. We're about 80% sure.",
+   "shipped": "Isibhakabhaka sicacile, itsho imathematika. Jonga nesibhakabhaka sokwenene.",
+   "final": "Kubonakala kuyimini entle. Siqinisekile malunga ne-80%.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Clear&pleasant — uncertain version",
+   "english": "Clear skies, says the maths. Check the actual sky too.",
+   "shipped": "Iimodeli zithi kuhle. Inyaniso inelungelo lokwahluka.",
+   "final": "Iimodeli zithi isibhakabhaka sicacile. Kodwa jonga nesibhakabhaka sokwenene.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Clear&pleasant — uncertain version",
+   "english": "Models say lovely. Reality reserves the right to differ.",
+   "shipped": "Asiqinisekanga Mhlawumbi kuhle. ngokupheleleyo.",
+   "final": "Iimodeli zithi kuhle. Inyaniso inelungelo lokwahluka",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Overcast / cloudy — uncertain version",
+   "english": "Probably grey. Could lift, could thicken.",
+   "shipped": "Mhlawumbi limpunga. Linganyuka, lingaba shinyene.",
+   "final": "Mhlawumbi mpunga. Inokucaca, inokujiya.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Overcast / cloudy — uncertain version",
+   "english": "Cloudy-ish. Don't bet the braai on it.",
+   "shipped": "Linamafu-ish. Ungabhejeli ukugrila kuko.",
+   "final": "Kunamafu kancinci. Ungabhejeli ukosa inyama kuko",
+   "source": "A",
+   "confidence": "MED",
+   "rationale": "Only A corrected",
+   "flags": "commentary-stripped"
+  },
+  {
+   "section": "Overcast / cloudy — uncertain version",
+   "english": "Cloud's the call. With an asterisk.",
+   "shipped": "Amafu lulo uluvo. Kunophawu.",
+   "final": "Amafu sesona sigqibo, kodwa kunophawu.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Fog / low visibility — uncertain version",
+   "english": "Fog might be rolling in. Keep an eye on the mountain.",
+   "shipped": "Inkungu ingangena. Jonga intaba.",
+   "final": "Inkungu isenokusondela. Gcina iliso entabeni.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Fog / low visibility — uncertain version",
+   "english": "Mist building, maybe. Headlights wouldn't hurt.",
+   "shipped": "Inkungu iyakheka, mhlawumbi. Layita izibane.",
+   "final": "Inkungu iyanda. Izibane zemoto aziyingozi",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Fog / low visibility — uncertain version",
+   "english": "Fog's on the cards. The sky's being coy about it.",
+   "shipped": "Inkungu ikwithuba. Isibhakabhaka siyazenza.",
+   "final": "Inkungu inokwenzeka. Isibhakabhaka asicaci.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Fog / low visibility — uncertain version",
+   "english": "Watch for fog — it likes to arrive unannounced.",
+   "shipped": "Lumkela inkungu — ithanda ukufika ingazange yazise.",
+   "final": "Lumkela inkungu — ithanda ukufika ingalindelekanga.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Rain — uncertain version",
+   "english": "Wet conditions, probably. Don't quote us at the braai.",
+   "shipped": "Iimeko ezimanzi, mhlawumbi. Ungasicaphuli ekugrileni.",
+   "final": "Iimeko ezimanzi, mhlawumbi. Ungasicaphuli kwi braai. ekugrileni sounds stiff not everyone is familiar with the word unlike braai wich all South africans know",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Wind — uncertain version",
+   "english": "Probably windy. The Cape Doctor keeps its own diary.",
+   "shipped": "Mhlawumbi kunomoya. I-Cape Doctor inebhukana layo.",
+   "final": "Mhlawumbi kunomoya. I-Cape Doctor inendlela yayo yokuziphatha. - there is no such a word as bhukana in isixhosa",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Wind — uncertain version",
+   "english": "Wind's likely. Hold onto the braai cover.",
+   "shipped": "Umoya umhlawumbi ukho. Bambelela kwisigqubuthelo sokugrila.",
+   "final": "Umoya unokwenzeka. Bambelela kwisigqubuthelo sokosa inyama",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Wind — uncertain version",
+   "english": "Could get gusty. The forecast's a bit loose on this one.",
+   "shipped": "Kunokuba nomoya. Uqikelelo luxega kule nto.",
+   "final": "Kunokuba nomoya onamandla ngamaxesha athile. Uqikelelo aluqinisekanga kule meko",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Wind — uncertain version",
+   "english": "Wind's on the cards. Peg the washing down.",
+   "shipped": "Umoya ukwithuba. Bopha impahla yokuhlamba.",
+   "final": "Umoya ulindelekile. Bopha impahla yokuhlamba ngeziqhoboshi.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Cold — uncertain version",
+   "english": "Probably nippy. The Boland mornings do this.",
+   "shipped": "Mhlawumbi kuyaqanda. I-Boland yenza oku kusasa.",
+   "final": "kuyaqanda mhlawumbi Iintsasa zaseBoland zihlala zinje",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Very hot — uncertain version",
+   "english": "Looks warm. How warm is a moving target.",
+   "shipped": "Kubonakala kufudumele. Ukuba kufudumele kangakanani kuyatshintsha.",
+   "final": "Kubonakala kufudumele. Kodwa ubushushu buhlala butshintsha.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Very hot — uncertain version",
+   "english": "Hot-ish, likely. Keep the water close.",
+   "shipped": "Kushushu mhlawumbi. Gcina amanzi ekufutshane.",
+   "final": "Kushushu kancinci, mhlawumbi. Gcina amanzi ekufutshane.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Very hot — uncertain version",
+   "english": "Probably a scorcher. A hat's not a bad idea.",
+   "shipped": "Mhlawumbi imini eshushu. Umnqwazi asiyongcinga embi.",
+   "final": "Mhlawumbi kushushu kakhulu. Umnqwazi awuyongcamango embi",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Storms / severe weather — uncertain version",
+   "english": "Could turn stormy. Keep one eye on the sky.",
+   "shipped": "Kunokuba sisaqhwithi. Jongaisibhakabhaka.",
+   "final": "Kunokuthi kuze isaqhwithi. Jonga isibhakabhaka.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Storms / severe weather — uncertain version",
+   "english": "Weather might get serious. Stay loosely on alert.",
+   "shipped": "Imozulu ingaba nzima. Hlala ulindile.",
+   "final": "Imozulu inganzima. Hlala ulumkile. ulindile means waiting rather than stay alert.",
+   "source": "A",
+   "confidence": "MED",
+   "rationale": "Only A corrected",
+   "flags": "commentary-stripped"
+  },
+  {
+   "section": "Storms / severe weather — uncertain version",
+   "english": "Storm on the cards, not yet confirmed. Stay sharp.",
+   "shipped": "Isaqhwithi sikwithuba, asikaqinisekiswa. Hlala uphaphile.",
+   "final": "Sisenokwenzeka isaqhwithi, asikaqinisekiswa. Hlala uphaphile.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Storms / severe weather — uncertain version",
+   "english": "Sky's looking moody. Could escalate.",
+   "shipped": "Isibhakabhaka sibonakala sinomsindo. Kunganyuka.",
+   "final": "Isibhakabhaka sibonakala sinomsindo. Kungaqatsela.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Clear night — uncertain version",
+   "english": "Clear-ish night. Don't hold us to the stars.",
+   "shipped": "Ubusuku obuhle-ish. Ungasibambi kwiinkwenkwezi.",
+   "final": "Ubusuku obucacileyo kancinci. Musa ukusibamba ngeenkwenkwezi",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Search screen",
+   "english": "No saved places yet.",
+   "shipped": "Akukho ndawo igciniweyo.",
+   "final": "Akukho ndawo igciniweyo okwangoku.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Search screen",
+   "english": "Clear recents",
+   "shipped": "Susa okutsha",
+   "final": "Susa okukhangelwe kutshanje",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Search screen",
+   "english": "Done",
+   "shipped": "Kwenziwe",
+   "final": "Kugqityiwe. .In isiXhosa, \"kwenziwe\" means \"it has been done\".",
+   "source": "A",
+   "confidence": "MED",
+   "rationale": "Only A corrected",
+   "flags": "commentary-stripped"
+  },
+  {
+   "section": "Settings screen",
+   "english": "Probably Weather combines forecasts from Open-Meteo, WeatherAPI.com, MET Norway, Pirate Weather&Tomorrow.io to give you a more reliable prediction.",
+   "shipped": "I-Probably Weather idibanisa izithembiso ezivela ku-Open-Meteo, WeatherAPI.com, MET Norway, Pirate Weather ne-Tomorrow.io ukukunika isithembiso esithembekileyo.",
+   "final": "I-Probably Weather idibanisa uqikelelo lwemozulu oluvela ku-Open-Meteo, WeatherAPI.com, MET Norway, Pirate Weather ne-Tomorrow.io ukuze ikunike uqikelelo oluthembeke ngakumbi.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Buttons&the share message",
+   "english": "Couldn't fetch weather right now.",
+   "shipped": "Ayikwazanga ukufumana imozulu.",
+   "final": "Ayikwazanga ukufumana ulwazi lwemozulu ngoku.",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Pop-up messages",
+   "english": "No saved places",
+   "shipped": "Akukho ndawo",
+   "final": "akukho ndawo zigciniweyo",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Pop-up messages",
+   "english": "Could not get location",
+   "shipped": "Ayikwazanga ukufumana indawo",
+   "final": "Ayikwazanga ukufumana indawo okuyo",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Pop-up messages",
+   "english": "Using saved location",
+   "shipped": "Isebenzisa indawo egciniweyo",
+   "final": "Kusetyenziswa indawo egciniweyo sounds.",
+   "source": "A",
+   "confidence": "MED",
+   "rationale": "Only A corrected",
+   "flags": "commentary-stripped"
+  },
+  {
+   "section": "Pop-up messages",
+   "english": "Weather lookup taking too long. Try again.",
+   "shipped": "Ukubuka isimo sezulu kuthatha ixesha elide. Zama kwakhona.",
+   "final": "Ukukhangela isimo sezulu kuthatha ixesha elide. Zama kwakhona",
+   "source": "A",
+   "confidence": "MED",
+   "rationale": "Only A corrected",
+   "flags": "commentary-stripped"
+  },
+  {
+   "section": "Cape Town wind warning",
+   "english": "Cape Doctor is doing rounds today",
+   "shipped": "UGqirha waseKapa wenza iindwendwe namhlanje",
+   "final": "UGqirha waseKapa uyajikeleza namhlanje",
+   "source": "A",
+   "confidence": "MED",
+   "rationale": "Only A corrected",
+   "flags": "commentary-stripped"
+  },
+  {
+   "section": "Cape Town wind warning",
+   "english": "Hold onto your hat, the Southeaster means business",
+   "shipped": "Bamba umnqwazi, iSoutheaster iyasebenza",
+   "final": "Bamba umnqwazi wakho, umoya waseMzantsi-Mpuma uzimisele namhlanje",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Cape Town wind warning",
+   "english": "The Southeaster arrived uninvited — as always",
+   "shipped": "Umoya waseMzantsi ufikile ungamenywanga — njengoko eqhelile",
+   "final": "Umoya waseMzantsi-Mpuma ufike ungamenywanga njengesiqhelo",
+   "source": "A",
+   "confidence": "HIGH",
+   "rationale": "Only A corrected",
+   "flags": null
+  },
+  {
+   "section": "Cape Town wind warning",
+   "english": "Wind's hectic — even the seagulls are walking",
+   "shipped": "Umoya unamandla — neenkonjane ziyahamba",
+   "final": "Umoya unamandla — neengabangaba zihamba ngeenyawo",
+   "source": "A",
+   "confidence": "MED",
+   "rationale": "Only A corrected",
+   "flags": "commentary-stripped"
+  }
+ ],
+ "approved": [
+  {
+   "section": "Main weather labels",
+   "english": "Thunder",
+   "shipped": "Iindudumo",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Main weather labels",
+   "english": "Hail",
+   "shipped": "Isichotho",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Main weather labels",
+   "english": "Wet conditions",
+   "shipped": "Iimeko ezimanzi",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Main weather labels",
+   "english": "Possible showers",
+   "shipped": "Imvula enokubakho",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Main weather labels",
+   "english": "Gusty winds",
+   "shipped": "Imimoya enamandla",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Main weather labels",
+   "english": "Chilly",
+   "shipped": "Kupholile",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Main weather labels",
+   "english": "Very hot",
+   "shipped": "Kushushu kakhulu",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Main weather labels",
+   "english": "High UV",
+   "shipped": "I-UV ephezulu",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Main weather labels",
+   "english": "Partly cloudy",
+   "shipped": "Linamafu kancinci",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Main weather labels",
+   "english": "Pleasant",
+   "shipped": "Kumnandi",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Headlines",
+   "english": "Storms rolling in.",
+   "shipped": "Isaqhwithi siyeza.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Headlines",
+   "english": "Thunder rolling in.",
+   "shipped": "Iindudumo ziyeza.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Headlines",
+   "english": "Hail incoming.",
+   "shipped": "Isichotho siyeza.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Headlines",
+   "english": "Rain's here.",
+   "shipped": "Imvula ikhona.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Headlines",
+   "english": "Might rain.",
+   "shipped": "Mhlawumbi iya kuna.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Headlines",
+   "english": "It's chilly.",
+   "shipped": "Kuyabanda.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Headlines",
+   "english": "Cold but stunning.",
+   "shipped": "Kubanda, kodwa mhle umhla.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Headlines",
+   "english": "It's hot.",
+   "shipped": "Kushushu.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Headlines",
+   "english": "UV's hectic.",
+   "shipped": "I-UV iphezulu kakhulu.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Headlines",
+   "english": "Clear night.",
+   "shipped": "Ubusuku obuhle.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Day status tags",
+   "english": "Rainy",
+   "shipped": "Linemvula",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Day status tags",
+   "english": "Showers",
+   "shipped": "Iimvula",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Day status tags",
+   "english": "Rain later",
+   "shipped": "Imvula kamva",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Day status tags",
+   "english": "Rain tonight",
+   "shipped": "Imvula ngokuhlwa",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Day status tags",
+   "english": "Rain AM",
+   "shipped": "Imvula kusasa",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Day status tags",
+   "english": "High UV",
+   "shipped": "I-UV ephezulu",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Day status tags",
+   "english": "Hot",
+   "shipped": "Kushushu",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Day status tags",
+   "english": "UV Alert",
+   "shipped": "Isilumkiso se-UV",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Day-of-week abbreviations",
+   "english": "Sun",
+   "shipped": "Caw",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Day-of-week abbreviations",
+   "english": "Mon",
+   "shipped": "Mvu",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Day-of-week abbreviations",
+   "english": "Tue",
+   "shipped": "Lwes",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Day-of-week abbreviations",
+   "english": "Wed",
+   "shipped": "Tha",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Day-of-week abbreviations",
+   "english": "Thu",
+   "shipped": "Sin",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Day-of-week abbreviations",
+   "english": "Fri",
+   "shipped": "Hlanu",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Day-of-week abbreviations",
+   "english": "Sat",
+   "shipped": "Mgqi",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Weather words&labels",
+   "english": "Probably",
+   "shipped": "Mhlawumbi",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Weather words&labels",
+   "english": "Wind",
+   "shipped": "Umoya",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Weather words&labels",
+   "english": "Rain",
+   "shipped": "Imvula",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Weather words&labels",
+   "english": "UV",
+   "shipped": "UV",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Weather words&labels",
+   "english": "Later ⏰",
+   "shipped": "Kamva ⏰",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Weather words&labels",
+   "english": "None",
+   "shipped": "Akukho",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Weather words&labels",
+   "english": "Unlikely",
+   "shipped": "Akunakulindeleka",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Weather words&labels",
+   "english": "Possible",
+   "shipped": "Kunokwenzeka",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Weather words&labels",
+   "english": "Likely",
+   "shipped": "Kunokubakho",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Weather words&labels",
+   "english": "Possible later",
+   "shipped": "Kunokwenzeka kamva",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Weather words&labels",
+   "english": "Low",
+   "shipped": "Phantsi",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Weather words&labels",
+   "english": "Moderate",
+   "shipped": "Phakathi",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Weather words&labels",
+   "english": "High",
+   "shipped": "Phezulu",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Weather words&labels",
+   "english": "Very High",
+   "shipped": "Phezulu Kakhulu",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Weather words&labels",
+   "english": "Time",
+   "shipped": "Ixesha",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Weather words&labels",
+   "english": "Temp",
+   "shipped": "Temp",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Weather words&labels",
+   "english": "Day",
+   "shipped": "Usuku",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Weather words&labels",
+   "english": "Sunrise",
+   "shipped": "Ukuphuma kwelanga",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Weather words&labels",
+   "english": "Sunset",
+   "shipped": "Ukutshona kwelanga",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Weather words&labels",
+   "english": "Hourly forecast appears 48 hours before this day.",
+   "shipped": "Isibikezelo seeyure sivela kwiiyure ezingama-48 phambi kwalo mhla.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Part 2 — The witty one-liners",
+   "english": "The car coughed twice before it agreed to start.",
+   "shipped": "Imoto ikhohlele kabini phambi kokuba ivume uku-starta.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Part 2 — The witty one-liners",
+   "english": "Highveld winter: the only place where you wear two jackets to fetch the post.",
+   "shipped": "Ubusika baseHighveld: indawo ekuphela kwayo apho unxiba ii-jackets ezimbini nje uyokuthatha iposi.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Part 2 — The witty one-liners",
+   "english": "The kind of day Joburg pretends it doesn't have until you're standing in it.",
+   "shipped": "Yimini iJoburg ezenza ngathi ayinayo, ude uzifumane umi kuyo.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Part 2 — The witty one-liners",
+   "english": "Pretoria-bare-jacaranda energy. Beautiful and bleak.",
+   "shipped": "IPretoria-bare-jacaranda energy. Intle, kodwa ibuhlungu kancinci.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Part 2 — The witty one-liners",
+   "english": "Tile floors are tonight's villain. Wear something on your feet.",
+   "shipped": "Imigangatho ye-tile yi-villain yanamhlanje. Nxiba into ezinyaweni.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Part 2 — The witty one-liners",
+   "english": "The kids still going to school in shorts. They know things we don't.",
+   "shipped": "Abantwana basaya esikolweni benxibe ii-shorts. Bazi izinto thina esingazaziyo.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Part 2 — The witty one-liners",
+   "english": "Karoo morning. The kind that makes you respect every farmer who chose this.",
+   "shipped": "Kusasa kwaseKaroo. Uhlobo olwenza uhlonele wonke umlimi okhethe oku.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Part 2 — The witty one-liners",
+   "english": "The car's heater is the most important relationship in your life right now.",
+   "shipped": "I-heater yemoto yeyona relationship ibalulekileyo ebomini bakho ngoku.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Part 2 — The witty one-liners",
+   "english": "Sun on your back, freezer on your face.",
+   "shipped": "Ilanga emqolo wakho, i-freezer ebusweni bakho.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Part 2 — The witty one-liners",
+   "english": "Cold enough that the milk-bottle-on-the-stoep is now a cooler box.",
+   "shipped": "Kubanda ngokwaneleyo ukuba i-milk-bottle-on-the-stoep ngoku iyi-cooler box.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Part 2 — The witty one-liners",
+   "english": "Even the cattle on the N1 are huddled like they paid for it.",
+   "shipped": "Nkqu neenkomo ezikwi-N1 ziqokelelene ngathi zibhatele.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Part 2 — The witty one-liners",
+   "english": "The braai is happening. The braai always happens. We just pull the chairs closer.",
+   "shipped": "I-braai iyenzeka. I-braai ihlala isenzeka. Sitsala nje izitulo sondele.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Part 2 — The witty one-liners",
+   "english": "Maluti-frost morning. Lesotho's exporting it for free.",
+   "shipped": "Yi-Maluti-frost morning. ILesotho iyayithumela mahala.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Part 2 — The witty one-liners",
+   "english": "Coffee in the sun on the stoep. The whole reason we live here.",
+   "shipped": "I-coffee elangeni kwi-stoep. Sesi sizathu sonke sokuba sihlale apha.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Storms / severe weather",
+   "english": "Jislaaik, stay inside!",
+   "shipped": "Yhuu, hlala ngaphakathi!",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Storms / severe weather",
+   "english": "Thunder's grumbling, hey.",
+   "shipped": "Iindudumo ziyagquma.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Storms / severe weather",
+   "english": "The sky's having a full-on tantrum.",
+   "shipped": "Isibhakabhaka siqumba ngokupheleleyo.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Storms / severe weather",
+   "english": "Nature's doing its own load shedding.",
+   "shipped": "Indalo yenza ukucima kwayo.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Storms / severe weather",
+   "english": "Cancel everything. Even your excuses.",
+   "shipped": "Rhoxisa yonke into. Nezizathu zakho.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Storms / severe weather",
+   "english": "Even the bakkies on the N2 pulled over.",
+   "shipped": "Neebakkie kwi-N2 zime ecaleni.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Storms / severe weather",
+   "english": "Eskom wishes it had this power.",
+   "shipped": "U-Eskom unqwenela la mandla.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Storms / severe weather",
+   "english": "Lightning's putting Eskom's grid to shame.",
+   "shipped": "Umbane ubeka i-Eskom ehlazweni.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Storms / severe weather",
+   "english": "The sky just went full Carte Blanche.",
+   "shipped": "Isibhakabhaka sivele saba yi-Carte Blanche ngokupheleleyo.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Storms / severe weather",
+   "english": "The lightning is putting on a proper show.",
+   "shipped": "Umbane ubeka umboniso omhle.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Storms / severe weather",
+   "english": "Windows closed, kettle on, and wait.",
+   "shipped": "Iifestile zivalwe, iketile ivulwe, ulinde.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Storms / severe weather",
+   "english": "Not the time for hero moves, hey.",
+   "shipped": "Asilo xesha lamagorha, hey.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Storms / severe weather",
+   "english": "The sky's reminding us who's boss.",
+   "shipped": "Isibhakabhaka sisikhumbuza ukuba ngubani inkosi.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Storms / severe weather",
+   "english": "Nature just reminded us of the pecking order.",
+   "shipped": "Indalo isanda kusikhumbuza ukuba ngubani ophambili.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Storms / severe weather",
+   "english": "The sky's CV just got updated.",
+   "shipped": "I-CV yesibhakabhaka isanda kuhlaziywa.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Storms / severe weather",
+   "english": "Somewhere a weather reporter is living their best life.",
+   "shipped": "Ndaweni ithile umxeli wemozulu uphila ubomi obuhle.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Storms / severe weather",
+   "english": "This is the sky's performance review. It passed.",
+   "shipped": "Olu luhlolo lwesibhakabhaka. Luphumelele.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Storms / severe weather",
+   "english": "Don't even think about driving somewhere.",
+   "shipped": "Ungacinganga ngokuqhuba ndawo.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Storms / severe weather",
+   "english": "Thunder so close the walls shook. Respect.",
+   "shipped": "Iindudumo ezikufutshane iindonga zachachamba. Intlonipho.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Storms / severe weather",
+   "english": "Stay safe. The sky is making a point.",
+   "shipped": "Hlala ukhuselekile. Isibhakabhaka senza inkcukacha.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Storms / severe weather",
+   "english": "Big sky energy. Small human response.",
+   "shipped": "Amandla amakhulu esibhakabhaka. Impendulo encinci yomntu.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Storms / severe weather",
+   "english": "Unplug the things. The sky has plans.",
+   "shipped": "Khupha izinto kumbane. Isibhakabhaka sinezicwangciso.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Storms / severe weather",
+   "english": "Beautiful and terrifying in equal measure.",
+   "shipped": "Kuhle kwaye koyikisa ngokulinganayo.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Thunder",
+   "english": "Thunder rolling in. Inside is the move.",
+   "shipped": "Iindudumo ziyeza. Hlala ngaphakathi.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Thunder",
+   "english": "Sky's grumbling. Stay close to a roof.",
+   "shipped": "Isibhakabhaka siyagquma. Hlala kufutshane nophahla.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Thunder",
+   "english": "Lightning's putting on a show — watch from the window.",
+   "shipped": "Umbane ubonisa umboniso — jonga ngefestile.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Hail",
+   "english": "Sky's throwing rocks. Stay inside.",
+   "shipped": "Isibhakabhaka siphosa amatye. Hlala ngaphakathi.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Hail",
+   "english": "Hail's down — cover the bakkie.",
+   "shipped": "Isichotho siyawa — gquma ibhaki.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Rain",
+   "english": "Your car wash was a waste of money.",
+   "shipped": "Ukuhlamba imoto kwakho bekuyimali elahlekileyo.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Rain",
+   "english": "Perfect excuse to cancel plans.",
+   "shipped": "Isizathu esihle sokurhoxisa izicwangciso.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Rain",
+   "english": "Your shoes are about to have a bad day.",
+   "shipped": "Izihlangu zakho ziza kuba nosuku olubi.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Rain",
+   "english": "The commute just became a team sport.",
+   "shipped": "Uhambo lusanda kuba ngumdlalo weqela.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Rain",
+   "english": "You'll dry. Eventually. Probably.",
+   "shipped": "Uya koma. Ekugqibeleni. Mhlawumbi.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Rain",
+   "english": "The wipers are on max and it's still not enough.",
+   "shipped": "Ii-wipers ziku-max kodwa azanelanga.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Rain",
+   "english": "The queue at the petrol station just tripled.",
+   "shipped": "Umgca kwisikhululo sepethroli usanda kuphindeka kathathu.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Rain",
+   "english": "The puddle was deeper than it looked. It's always deeper.",
+   "shipped": "Isisele sasinzulu kunalento esasibonakala ngayo. Sisoloko sinzulu.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Rain",
+   "english": "Hair plans: cancelled.",
+   "shipped": "Izicwangciso zeenwele: zirhoxisiwe.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Rain",
+   "english": "The traffic is emotional.",
+   "shipped": "Ithrafiki inomvakalelo.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Rain",
+   "english": "Nobody told the forecast. It just arrived.",
+   "shipped": "Akukho mntu uxelele isibikezelo. Sivele safika.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Rain",
+   "english": "The umbrella tax is now in effect.",
+   "shipped": "Irhafu yesambreli isebenzayo ngoku.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Rain",
+   "english": "Wet jeans for the rest of the day. The classic punishment.",
+   "shipped": "Ijinsi emanzi yonke imini. Isohlwayo esiqhelekileyo.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Rain",
+   "english": "Solidarity to everyone with one wet shoe right now.",
+   "shipped": "Imanyano kubo bonke abanesihlangu esinye esimanzi ngoku.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Rain",
+   "english": "The pavement is a river and the river has plans.",
+   "shipped": "Ipavimente ngumlambo kwaye umlambo unezicwangciso.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Rain",
+   "english": "The traffic just remembered rain exists. Again.",
+   "shipped": "Itrafikhi isanda kukhumbula ukuba imvula ikhona. Kwakhona.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Possible rain (showers)",
+   "english": "50/50 on getting wet. Like a coin toss.",
+   "shipped": "50/50 ukufumana amanzi. Njengomdlalo.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Possible rain (showers)",
+   "english": "Pack an umbrella. Or don't. We don't know either.",
+   "shipped": "Phakisha isambreli. Okanye ungaphakishi. Asazi nathi.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Possible rain (showers)",
+   "english": "The clouds are threatening but probably bluffing.",
+   "shipped": "Amafu ayoyikisa kodwa mhlawumbi ayakhohlisa.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Possible rain (showers)",
+   "english": "Rain? Possibly. Commitment? Never.",
+   "shipped": "Imvula? Kunokwenzeka. Ukuzibophelela? Soze.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Possible rain (showers)",
+   "english": "This weather needs a life coach.",
+   "shipped": "Le mozulu ifuna umqeqeshi wobomi.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Overcast / cloudy",
+   "english": "Even the weather can't be bothered today.",
+   "shipped": "Imozulu ayonqena namhlanje.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Overcast / cloudy",
+   "english": "Grey vibes. The sky matched my Monday.",
+   "shipped": "I-grey vibes. Isibhakabhaka sifana noMvulo wam.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Overcast / cloudy",
+   "english": "The sky's on mute. Nobody's complaining.",
+   "shipped": "Isibhakabhaka sithule. Akukho mntu ukhalazayo.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Overcast / cloudy",
+   "english": "This weather has 'meh' written all over it.",
+   "shipped": "Le mozulu ibhalwe 'meh' kuyo yonke indawo.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Overcast / cloudy",
+   "english": "The vibe is beige. Accept it.",
+   "shipped": "I-vibe yi-beige. Yamkela.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Overcast / cloudy",
+   "english": "Nothing to see here. Literally.",
+   "shipped": "Akukho nto ibonwayo apha. Ngenene.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Overcast / cloudy",
+   "english": "The sun's on airplane mode.",
+   "shipped": "Ilanga liku-airplane mode.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Overcast / cloudy",
+   "english": "Today's weather: still loading.",
+   "shipped": "Imozulu yanamhlanje: isalayisha.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Overcast / cloudy",
+   "english": "The sky is the colour of an old Tupperware lid.",
+   "shipped": "Isibhakabhaka sinombala wesiciko seTupperware esidala.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Strong sun (high UV)",
+   "english": "SPF 50 or regret it by tonight.",
+   "shipped": "I-SPF 50 okanye uya kuzisola ngokuhlwa.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Strong sun (high UV)",
+   "english": "The sun is personally attacking you.",
+   "shipped": "Ilanga likuhlasela wena buqu.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Strong sun (high UV)",
+   "english": "The UV index is higher than your expectations.",
+   "shipped": "I-UV index iphezulu kunalento uyilindeleyo.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Strong sun (high UV)",
+   "english": "Your nose is going to betray you by 3pm.",
+   "shipped": "Impumlo yakho iya kukuthengisa ngo-3pm.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Strong sun (high UV)",
+   "english": "The sun doesn't care about your plans.",
+   "shipped": "Ilanga alikhathalelanga izicwangciso zakho.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Wind",
+   "english": "Hold onto your hat! And your kids.",
+   "shipped": "Bamba umnqwazi wakho! Nabantwana bakho.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Wind",
+   "english": "Your hairstyle? Gone. Accept it.",
+   "shipped": "Isimbo seenwele zakho? Simkile. Yamkela.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Wind",
+   "english": "Kite surfers are having the time of their lives.",
+   "shipped": "Abadlali bekite bonwabile kakhulu.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Wind",
+   "english": "The wind has a personal vendetta against umbrellas.",
+   "shipped": "Umoya unenzondo yobuqu ngesambreli.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Wind",
+   "english": "Every loose object in the garden has chosen violence.",
+   "shipped": "Yonke into ekhululekileyo egadini ikhethe ubundlobongela.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Wind",
+   "english": "Walking into it feels like a video game boss fight.",
+   "shipped": "Ukuhamba kuwo kuziva njengokulwa ne-boss yomdlalo wevidiyo.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Wind",
+   "english": "Your car door just became a weapon.",
+   "shipped": "Ucango lwemoto yakho lusanda kuba sisixhobo.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Wind",
+   "english": "Not a hairstyle in sight. Just survivors.",
+   "shipped": "Akukho simbo seenwele esibonwayo. Abasindileyo kuphela.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Cold",
+   "english": "Ja, it's jersey weather. Double jersey.",
+   "shipped": "Ewe, lixesha lejezi. Ijezi ephindwe kabini.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Cold",
+   "english": "Time to dig out that ugly beanie.",
+   "shipped": "Ixesha lokumba loo beanie imbi.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Cold",
+   "english": "Cold enough for soup. And a second soup.",
+   "shipped": "Kuyabanda ngokwaneleyo kwesuphu. Nesuphu yesibini.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Cold",
+   "english": "Hot chocolate is not a want. It's a need.",
+   "shipped": "Itshokolethi eshushu ayikokufuna. Yimfuno.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Cold",
+   "english": "Two-fleece minimum today.",
+   "shipped": "Ii-fleece ezimbini ubuncinane namhlanje.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Cold",
+   "english": "Your breath is doing special effects.",
+   "shipped": "Umphefumlo wakho wenza i-special effects.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Cold",
+   "english": "Blanket burrito mode: activated.",
+   "shipped": "Imowudi ye-blanket burrito: ivuliwe.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Cold",
+   "english": "Why did you leave the house? Honestly.",
+   "shipped": "Kutheni ushiye indlu? Ngenene.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Cold",
+   "english": "Your hands are in your pockets and they're not coming out.",
+   "shipped": "Izandla zakho zisepokothweni kwaye aziphumi.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Cold",
+   "english": "Getting out of bed was a mistake. A documented one.",
+   "shipped": "Ukuvuka yayiyimpazamo. Ebhaliweyo phantsi.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Cold",
+   "english": "The duvet understood the assignment.",
+   "shipped": "I-duvet iyiqondile into efunekayo.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Cold",
+   "english": "Your jacket has a jacket. It's that kind of day.",
+   "shipped": "Ibhatyi yakho inebhatyi. Yimini enjalo.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Cold",
+   "english": "The couch has made a compelling case for staying.",
+   "shipped": "Isofa yenze icala elinamandla lokuhlala.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Cold",
+   "english": "The duvet is calling and the duvet is winning.",
+   "shipped": "I-duvet iyabiza kwaye i-duvet iyaphumelela.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Cold",
+   "english": "Even the geyser is putting in extra hours.",
+   "shipped": "Kwane-geyser isebenza iiyure ezongezelelweyo.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Cold",
+   "english": "The fridge feels warmer than the lounge today.",
+   "shipped": "Ifriji iziva ifudumele kunelawunji namhlanje.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Very hot",
+   "english": "Stay hydrated or become a biltong.",
+   "shipped": "Hlala unamanzi okanye ube yi-biltong.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Very hot",
+   "english": "Hotter than a bakkie dashboard at noon.",
+   "shipped": "Kushushu ngaphezu kwe-dashboard yebakkie emini.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Very hot",
+   "english": "The office aircon war has begun.",
+   "shipped": "Imfazwe ye-aircon yaseofisini iqalile.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Very hot",
+   "english": "The fridge is the coolest room in the house.",
+   "shipped": "Ifriji yeyona ndawo ipholileyo endlini.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Very hot",
+   "english": "The ice in your drink lasted exactly 30 seconds.",
+   "shipped": "Umkhenkce kwisiselo sakho uhlale imizuzwana engama-30.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Very hot",
+   "english": "Garage pie for lunch because the kitchen is lava.",
+   "shipped": "Iphayi yasegaraji ngenxa yokuba ikhitshi yi-lava.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Very hot",
+   "english": "Water consumption: yes. All of it.",
+   "shipped": "Ukusela amanzi: ewe. Onke.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Very hot",
+   "english": "Whoever has a pool today is your new best friend.",
+   "shipped": "Nabani onepuli namhlanje ngumhlobo wakho omtsha omkhulu.",
+   "basis": "Approved by both"
+  },
+  {
+   "section": "Fog / low visibility",
+   "english": "Driving slow is not a suggestion.",
+   "shipped": "Ukuqhuba kancinci akusosiphakamiso.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Fog / low visibility",
+   "english": "Silent Hill vibes. Without the monsters. Hopefully.",
+   "shipped": "I-Silent Hill vibes. Ngaphandle kwezidalwa. Sinethemba.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Fog / low visibility",
+   "english": "Even your GPS is confused.",
+   "shipped": "Ne-GPS yakho iyadideka.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Fog / low visibility",
+   "english": "The world just... disappeared.",
+   "shipped": "Ihlabathi nje... lanyamalala.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Fog / low visibility",
+   "english": "Table Mountain? What Table Mountain?",
+   "shipped": "I-Table Mountain? Yiyiphi i-Table Mountain?",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Fog / low visibility",
+   "english": "The fog ate the neighbourhood.",
+   "shipped": "Inkungu itye indawo.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Fog / low visibility",
+   "english": "by",
+   "shipped": "Imoto yakho ikhona ngaphandle. Ndaweni ithile. Mhlawumbi.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Fog / low visibility",
+   "english": "The world got a soft filter this morning.",
+   "shipped": "Ihlabathi lifumene ifilitha ethambileyo ngale ntsasa.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Fog / low visibility",
+   "english": "Walking the dog has become a trust exercise.",
+   "shipped": "Ukuhambisa inja kusanda kuba ngumdlalo wokuthemba.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Fog / low visibility",
+   "english": "Everything looks like a film scene. A creepy one.",
+   "shipped": "Yonke into ibonakala njengomfanekiso wefilimu. Oyoyikisayo.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Fog / low visibility",
+   "english": "The fog doesn't care about your schedule.",
+   "shipped": "Inkungu ayikhathalelanga ishedyuli yakho.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Fog / low visibility",
+   "english": "Visibility sponsored by nobody.",
+   "shipped": "Ukubonakala kuxhaswe ngubani. Mntu.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Fog / low visibility",
+   "english": "Your front gate is now the edge of the known world.",
+   "shipped": "Isango lakho langaphambili ngoku ngumda wehlabathi elaziwayo.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Fog / low visibility",
+   "english": "Even Google Maps is being vague today.",
+   "shipped": "NeGoogle Maps iyathengathenga namhlanje.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Fog / low visibility",
+   "english": "Fog so thick it has opinions.",
+   "shipped": "Inkungu eqine kakhulu inezimvo.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Fog / low visibility",
+   "english": "The traffic lights are vibing in the mist.",
+   "shipped": "Izibane zendlela ziyavuma enkungu.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Fog / low visibility",
+   "english": "Your driveway is a mystery novel right now.",
+   "shipped": "Indlela yakho yokungena yinoveli yemfihlakalo ngoku.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Fog / low visibility",
+   "english": "The fog arrived unannounced. Classic fog.",
+   "shipped": "Inkungu ifikile ingamenyanga. Inkungu yoqobo.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Fog / low visibility",
+   "english": "The car is out there. Allegedly.",
+   "shipped": "Imoto ikho ngaphandle. Kuthiwa nje.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Fog / low visibility",
+   "english": "Cape Town just got a dimmer switch.",
+   "shipped": "IKapa lifumene iswitshi yokuncipha ukukhanya.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Fog / low visibility",
+   "english": "Your headlights are doing a 'thoughts and prayers'.",
+   "shipped": "Iziqhumane zakho ezikhulu zenza 'iingcinga nemithandazo'.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Fog / low visibility",
+   "english": "The fog drank the mountain.",
+   "shipped": "Inkungu iyiselile intaba.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Fog / low visibility",
+   "english": "Walking to the bin is now an expedition.",
+   "shipped": "Ukuhamba uye kwibhinikhisi ngoku luhambo.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Fog / low visibility",
+   "english": "Visibility: vibes only.",
+   "shipped": "Ukubonakala: ii-vibes kuphela.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Fog / low visibility",
+   "english": "The garden is somewhere out there. We trust the process.",
+   "shipped": "Igadi ikhona ngaphandle. Siyithemba inkqubo.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Fog / low visibility",
+   "english": "The morning forgot to render.",
+   "shipped": "Intsasa ilibele ukurenda.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Clear&pleasant",
+   "english": "Absolutely beautiful out there.",
+   "shipped": "Kuhle kakhulu ngaphandle.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Clear&pleasant",
+   "english": "Perfect day. No excuses. Get out.",
+   "shipped": "Imini egqibeleleyo. Akukho zaba. Phuma.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Clear&pleasant",
+   "english": "This is why we live in South Africa.",
+   "shipped": "Yiyo le nto sihlala eMzantsi Afrika.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Clear&pleasant",
+   "english": "Not a cloud in sight. Not one.",
+   "shipped": "Akukho lifu elibonwayo. Nelinye.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Clear&pleasant",
+   "english": "Main character weather right here.",
+   "shipped": "Imozulu yomlinganiswa ophambili apha.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Clear&pleasant",
+   "english": "If you're inside, you're doing it wrong.",
+   "shipped": "Ukuba ungaphakathi, wenza ngokuphosakeleyo.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Clear&pleasant",
+   "english": "Nature's flexing and we're here for it.",
+   "shipped": "Indalo iyaziqhayisa kwaye silapha ngenxa yayo.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Clear&pleasant",
+   "english": "Postcard weather. You're welcome.",
+   "shipped": "Imozulu ye-postcard. Wamkelekile.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Clear&pleasant",
+   "english": "Your vitamin D levels are thanking you.",
+   "shipped": "Amanqanaba akho e-vitamin D ayakubulela.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Clear&pleasant",
+   "english": "The sky's giving everything today.",
+   "shipped": "Isibhakabhaka sinika yonke into namhlanje.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Clear&pleasant",
+   "english": "This is the weather you'll miss in December traffic.",
+   "shipped": "Le yimozulu oya kuyikhumbula kwitrafi kaDisemba.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Clear&pleasant",
+   "english": "Even the parking lot looks pretty today.",
+   "shipped": "Kwanendawo yokuphaka ibonakala intle namhlanje.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Clear&pleasant",
+   "english": "No filter needed. Just look outside.",
+   "shipped": "Akufuneki ifilitha. Jonga ngaphandle nje.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Clear&pleasant",
+   "english": "The type of day that makes people text 'lekker dag hey'.",
+   "shipped": "Uhlobo lwemini olwenza abantu bathumele 'imini entle hey'.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Clear&pleasant",
+   "english": "Take your coffee outside. You deserve it.",
+   "shipped": "Thatha ikofu yakho uye ngaphandle. Uyifanele.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Clear&pleasant",
+   "english": "Everything looks 4K today. The sky's in ultra mode.",
+   "shipped": "Yonke into ibonakala nge-4K namhlanje. Isibhakabhaka siku-ultra mode.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Clear&pleasant",
+   "english": "This is the day the brochure was talking about.",
+   "shipped": "Le yimini incwadana eyayithetha ngayo.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Clear&pleasant",
+   "english": "Your excuse to stay inside just expired.",
+   "shipped": "Isizathu sakho sokuhlala ngaphakathi sisanda kuphelelwa.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Clear&pleasant",
+   "english": "Days like this is why we put up with the load shedding.",
+   "shipped": "Iimini ezinje zezinto ezisenza sinyamezele i-load shedding.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Clear&pleasant",
+   "english": "This is the stuff. Right here.",
+   "shipped": "Yiloo nto. Apha kanye.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Clear&pleasant",
+   "english": "A proper good one. Don't waste it.",
+   "shipped": "Eyona ilungileyo. Sukuyichitha.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Clear&pleasant",
+   "english": "The kind of sky that makes you grateful for free things.",
+   "shipped": "Uhlobo lwesibhakabhaka olwenza ubulele izinto zasimahla.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Clear&pleasant",
+   "english": "Pour the coffee outside. Trust us.",
+   "shipped": "Galela ikofu ngaphandle. Sithembe.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Clear&pleasant",
+   "english": "This is the weather we brag about overseas.",
+   "shipped": "Le yimozulu esiziqhayisa ngayo phesheya.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Clear&pleasant",
+   "english": "Feels like the country is on its best behaviour.",
+   "shipped": "Kuvakala ngathi ilizwe likwisimo esihle.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Clear&pleasant",
+   "english": "Bottle this one. Open it in winter.",
+   "shipped": "Yifake ebhotileni le. Yivule ebusika.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Clear night",
+   "english": "Stars out, load shedding can't touch this.",
+   "shipped": "Iinkwenkwezi ziphumile, ukuCimwa akukwazi oku.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Clear night",
+   "english": "Quiet out there. Almost suspicious.",
+   "shipped": "Kuzolile ngaphandle. Cishe okusolisayo.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Clear night",
+   "english": "The hadedas are sleeping. Finally.",
+   "shipped": "Iintaka zilele. Ekugqibeleni.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Clear night",
+   "english": "Night shift weather: approved.",
+   "shipped": "Imozulu yobusuku: yamkelekile.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Clear night",
+   "english": "Dark outside, bright tomorrow.",
+   "shipped": "Mnyama ngaphandle, kukhanya ngomso.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Clear night",
+   "english": "Good night, South Africa.",
+   "shipped": "Lala kakuhle, Mzantsi Afrika.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Clear night",
+   "english": "Nothing a cup of rooibos won't fix.",
+   "shipped": "Akukho nto ingalungiswa yikomityi yerooibos.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Clear night",
+   "english": "The neighbourhood cats have taken over.",
+   "shipped": "Iikati zabamelwane zithathile.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Clear night",
+   "english": "Perfect weather for pretending you'll go to bed early.",
+   "shipped": "Imozulu egqibeleleyo yokuzenza uza kulala kwangoko.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Clear night",
+   "english": "Not a cloud. Just you and the Southern Cross.",
+   "shipped": "Akukho lifu. Nguwe neCross yaseMzantsi kuphela.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Clear night",
+   "english": "The owls are judging your screen time.",
+   "shipped": "Izikhova ziyawugweba umsebenzi wakho wesikrini.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Clear night",
+   "english": "Cape Town's twinkling. Probably.",
+   "shipped": "IKapa iyabengezela. Mhlawumbi.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Clear night",
+   "english": "Tomorrow's weather is tomorrow's problem.",
+   "shipped": "Imozulu yangomso yingxaki yangomso.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Clear night",
+   "english": "Warm enough to leave the window open. Brave enough?",
+   "shipped": "Kufudumele ngokwaneleyo ukuvula ifestile. Unesibindi?",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Clear night",
+   "english": "The sky looks like it's showing off.",
+   "shipped": "Isibhakabhaka sibonakala siziqhayisa.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Weekend",
+   "english": "Fire up the Weber. It's the law.",
+   "shipped": "Basa i-Weber. Ngumthetho.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Weekend",
+   "english": "Weekend vibes so strong they need their own playlist.",
+   "shipped": "Weekend vibes ezinamandla kakhulu zifuna i-playlist yazo.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Weekend",
+   "english": "Perfect for doing absolutely nothing.",
+   "shipped": "Ilungele ukungenza nto kwaphela.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Weekend",
+   "english": "Call the mates. Get the meat. Let's go.",
+   "shipped": "Tsalela abahlobo. Fumana inyama. Masiye.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Weekend",
+   "english": "Today's plans: exist outside.",
+   "shipped": "Izicwangciso zanamhlanje: phila ngaphandle.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Weekend",
+   "english": "The weekend doesn't get better than this.",
+   "shipped": "Impelaveki ayibi bhetele kunale.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Weekend",
+   "english": "The coals aren't going to light themselves.",
+   "shipped": "Amalahle awayi kuzilayita ngokwawo.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Weekend",
+   "english": "Shoes optional. Attitude mandatory.",
+   "shipped": "Izihlangu zingakhethwa. Isimilo siyanyanzelelwa.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Weekend",
+   "english": "Your out-of-office is doing the heavy lifting.",
+   "shipped": "I-out-of-office yakho yenza umsebenzi onzima.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Weekend",
+   "english": "Kuier weather. Get the people together.",
+   "shipped": "Imozulu yokuhlangana. Biza abantu.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Weekend",
+   "english": "The Weber's been waiting all week for this.",
+   "shipped": "I-Weber ibelinde iveki yonke oku.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Weekend",
+   "english": "The tongs are calling. Answer them.",
+   "shipped": "Ama-tong ayabiza. Waphendule.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Weekend",
+   "english": "No alarm. No agenda. Just vibes.",
+   "shipped": "Akukho i-alarm. Akukho i-agenda. Ii-vibes kuphela.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Weekend",
+   "english": "This is the weather the weekend was invented for.",
+   "shipped": "Le yimozulu impelaveki eyenzelwe yona.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Weekend",
+   "english": "Your only responsibility is choosing charcoal or wood.",
+   "shipped": "Umsebenzi wakho okukuphela ukukhetha amalahle okanye iinkuni.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Weekend",
+   "english": "Slip-slops, shorts, sun. The trinity.",
+   "shipped": "Iislipas, iibhulukhwe ezimfutshane, ilanga. Imanyano emithathu.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Clear&pleasant — uncertain version",
+   "english": "Probably clear. Your window's the final say.",
+   "shipped": "Mhlawumbi sicacile isibhakabhaka. Ifestile yakho inegunya lokugqibela.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Overcast / cloudy — uncertain version",
+   "english": "Grey skies, low conviction.",
+   "shipped": "Isibhakabhaka esimpunga, ukholo oluphantsi.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Overcast / cloudy — uncertain version",
+   "english": "Looks overcast. The sources aren't unanimous.",
+   "shipped": "Kubonakala kugutyungelwe. Imithombo ayivumelani.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Overcast / cloudy — uncertain version",
+   "english": "Grey, probably. We've seen it surprise us.",
+   "shipped": "Mpunga, mhlawumbi. Sakha sabona kusothusa.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Fog / low visibility — uncertain version",
+   "english": "Probably fog later. The Boland does this.",
+   "shipped": "Mhlawumbi inkungu kamva. I-Boland yenza oku.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Fog / low visibility — uncertain version",
+   "english": "Could go misty. The dew point's flirting with it.",
+   "shipped": "Kunokuba mhlophe yinkungu. Lumka.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Rain — uncertain version",
+   "english": "Probably rain. Take the umbrella, settle the argument.",
+   "shipped": "Mhlawumbi imvula. Thatha isambrela.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Rain — uncertain version",
+   "english": "Rain's likely-ish. The sky hasn't signed anything.",
+   "shipped": "Imvula imhlawumbi ikho. Isibhakabhaka asikatyikityi nto.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Rain — uncertain version",
+   "english": "Looks wet. The models are fairly sure, not certain.",
+   "shipped": "Kubonakala kumanzi. Iimodeli ziqinisekile mhlawumbi, hayi ngokupheleleyo.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Rain — uncertain version",
+   "english": "Probably a damp one. Pack accordingly.",
+   "shipped": "Mhlawumbi imini emanzi. Pakisha ngokufanelekileyo.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Rain — uncertain version",
+   "english": "Rain on the way, give or take.",
+   "shipped": "Imvula iyeza, mhlawumbi.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Possible rain (showers) — uncertain version",
+   "english": "Maybe rain, maybe not. Classic.",
+   "shipped": "Mhlawumbi imvula, mhlawumbi hayi. Into eqhelekileyo.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Possible rain (showers) — uncertain version",
+   "english": "Could rain. Could just threaten to.",
+   "shipped": "Kusenokuna. Kusenokoyikisa nje.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Possible rain (showers) — uncertain version",
+   "english": "Rain's possible. So is being completely wrong.",
+   "shipped": "Imvula inokwenzeka. Nokuba siphazame ngokupheleleyo kunokwenzeka.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Possible rain (showers) — uncertain version",
+   "english": "The sky's undecided. So are we.",
+   "shipped": "Isibhakabhaka asikagqibi. Nathi.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Possible rain (showers) — uncertain version",
+   "english": "Might spit a bit. Might not bother.",
+   "shipped": "Kusenokutshiza kancinci. Kungenakuhlupha.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Possible rain (showers) — uncertain version",
+   "english": "50/50 on the rain. Bring a jacket, just in case.",
+   "shipped": "I-50/50 emvuleni. Thatha ibhatyi, ukuba kuyenzeka.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Wind — uncertain version",
+   "english": "Breezy, probably. Maybe more.",
+   "shipped": "Kunomoya omncinci, mhlawumbi. Mhlawumbi ngaphezulu.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Wind — uncertain version",
+   "english": "Some wind expected. Strength still TBC.",
+   "shipped": "Kulindeleke umoya othile. Amandla awakaqinisekiswa.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Cold — uncertain version",
+   "english": "Probably cold. Take the jersey, you'll thank us.",
+   "shipped": "Mhlawumbi kuyabanda. Thatha ijezi, uya kusibulela.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Cold — uncertain version",
+   "english": "Chilly, most likely. Layer up to be safe.",
+   "shipped": "Kuyabanda, mhlawumbi. Nxiba iimpahla ezininzi.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Cold — uncertain version",
+   "english": "Looks cold-ish. The thermometer's keeping us guessing.",
+   "shipped": "Kubonakala kubanda. I-thermometer isenza siqikelele.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Cold — uncertain version",
+   "english": "Cold's the bet. Don't trust a sunny window in winter.",
+   "shipped": "Ukubanda koko sikubhejayo. Ungathembi ifestile enelanga ebusika.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Cold — uncertain version",
+   "english": "Bring a jacket. Or don't. We're only fairly sure.",
+   "shipped": "Thatha ibhatyi. Okanye hayi. Siqinisekile nje mhlawumbi.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Very hot — uncertain version",
+   "english": "Probably hot. We'll all find out together.",
+   "shipped": "Mhlawumbi kushushu. Siya kufumanisa sonke kunye.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Very hot — uncertain version",
+   "english": "Warm one coming, give or take a few degrees.",
+   "shipped": "Imini efudumeleyo iyeza, mhlawumbi.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Very hot — uncertain version",
+   "english": "Heat's likely. The number's still settling.",
+   "shipped": "Ubushushu mhlawumbi bukho. Inani lisazinza.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Storms / severe weather — uncertain version",
+   "english": "Storm's possible. The braai might need a rain check.",
+   "shipped": "Isaqhwithi siyenzeka. Ukugrila kungafuna olunye usuku.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Storms / severe weather — uncertain version",
+   "english": "Probably brewing something. Stay close to a roof.",
+   "shipped": "Mhlawumbi kukho into ephekwayo. Hlala kufutshane nophahla.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Clear night — uncertain version",
+   "english": "Probably a clear night. The stars haven't confirmed.",
+   "shipped": "Mhlawumbi ubusuku obuhle. Iinkwenkwezi azikaqinisekisi.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Clear night — uncertain version",
+   "english": "Calm night, most likely. The sky reserves the right to change.",
+   "shipped": "Ubusuku obuzolileyo, mhlawumbi. Isibhakabhaka singatshintsha.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Clear night — uncertain version",
+   "english": "Looks settled out there. Roughly.",
+   "shipped": "Kubonakala kuzolile. Mhlawumbi.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Clear night — uncertain version",
+   "english": "Probably quiet skies. We're fairly sure.",
+   "shipped": "Mhlawumbi isibhakabhaka esithe cwaka. Siqinisekile mhlawumbi.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Clear night — uncertain version",
+   "english": "Night looks calm. Models permitting.",
+   "shipped": "Ubusuku bubonakala buzolile. Ukuba iimodeli ziyavuma.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Bottom navigation buttons",
+   "english": "Home",
+   "shipped": "Ikhaya",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Bottom navigation buttons",
+   "english": "Hourly",
+   "shipped": "Ngeyure",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Bottom navigation buttons",
+   "english": "Weekly",
+   "shipped": "Ngeveki",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Bottom navigation buttons",
+   "english": "Search",
+   "shipped": "Khangela",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Bottom navigation buttons",
+   "english": "Settings",
+   "shipped": "Iisetingi",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Bottom navigation buttons",
+   "english": "Sources",
+   "shipped": "Imithombo",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Screen titles",
+   "english": "Hourly",
+   "shipped": "Ngeyure",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Screen titles",
+   "english": "7-Day",
+   "shipped": "Intsuku-7",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Screen titles",
+   "english": "Search",
+   "shipped": "Khangela",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Screen titles",
+   "english": "Settings",
+   "shipped": "Iisetingi",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Screen titles",
+   "english": "Sources",
+   "shipped": "Imithombo",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Search screen",
+   "english": "Search for a place",
+   "shipped": "Khangela indawo",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Search screen",
+   "english": "Cancel",
+   "shipped": "Rhoxisa",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Search screen",
+   "english": "Saved Places",
+   "shipped": "Iindawo Ezigciniweyo",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Search screen",
+   "english": "Recent",
+   "shipped": "Okutsha",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Search screen",
+   "english": "No recent searches yet.",
+   "shipped": "Akukho kukhangela kwakutsha.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Search screen",
+   "english": "Edit",
+   "shipped": "Hlela",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Search screen",
+   "english": "Manage",
+   "shipped": "Lawula",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Settings screen",
+   "english": "Units",
+   "shipped": "Iiyunithi",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Settings screen",
+   "english": "Temperature",
+   "shipped": "Ubushushu",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Settings screen",
+   "english": "Wind speed",
+   "shipped": "Isantya somoya",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Settings screen",
+   "english": "Precipitation",
+   "shipped": "Imvula",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Settings screen",
+   "english": "Display",
+   "shipped": "Ukubonisa",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Settings screen",
+   "english": "Time format",
+   "shipped": "Ifomathi yexesha",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Settings screen",
+   "english": "Language",
+   "shipped": "Ulwimi",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Settings screen",
+   "english": "About",
+   "shipped": "Malunga",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Buttons&the share message",
+   "english": "Loading…",
+   "shipped": "Iyalayisha…",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Buttons&the share message",
+   "english": "Error",
+   "shipped": "Impazamo",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Buttons&the share message",
+   "english": "Save",
+   "shipped": "Gcina",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Buttons&the share message",
+   "english": "Saved",
+   "shipped": "Igciniwe",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Buttons&the share message",
+   "english": "Save this place",
+   "shipped": "Gcina le ndawo",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Buttons&the share message",
+   "english": "Share",
+   "shipped": "Yabelana",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Buttons&the share message",
+   "english": "in",
+   "shipped": "e-",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Buttons&the share message",
+   "english": "Check the weather in {city} — South African weather in your language: {url}",
+   "shipped": "Jonga imozulu e-{city} — imozulu yaseMzantsi Afrika ngolwimi lwakho: {url}",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Buttons&the share message",
+   "english": "your area",
+   "shipped": "indawo yakho",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Pop-up messages",
+   "english": "Saved!",
+   "shipped": "Igciniwe!",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Pop-up messages",
+   "english": "Removed",
+   "shipped": "Isusiwe",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Pop-up messages",
+   "english": "Max 5 places. Remove one first.",
+   "shipped": "Iindawo ezi-5 kuphela. Susa enye kuqala.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Pop-up messages",
+   "english": "Already saved!",
+   "shipped": "Sele igciniwe!",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Pop-up messages",
+   "english": "Cleared",
+   "shipped": "Kucociwe",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Pop-up messages",
+   "english": "Location permission needed. Tap the location icon in your browser's address bar to enable it.",
+   "shipped": "Kufuneka imvume yendawo. Cofa i-ayikhoni yendawo kwibar yedilesi yebhrawuza ukuze uyivule.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Pop-up messages",
+   "english": "Location permission needed. Open device Settings → Apps → Probably Weather → Permissions → Location to enable.",
+   "shipped": "Kufuneka imvume yendawo. Vula iiSetingi zesixhobo → Apps → Probably Weather → Permissions → Location ukuze uyivule.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Pop-up messages",
+   "english": "Location updated",
+   "shipped": "Indawo ihlaziyiwe",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Pop-up messages",
+   "english": "Updated ✓",
+   "shipped": "Kuhlaziyiwe ✓",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Pop-up messages",
+   "english": "New version",
+   "shipped": "Inguqulelo entsha",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Pop-up messages",
+   "english": "Tap to refresh",
+   "shipped": "Cofa ukuze uhlaziye",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Ad placeholder",
+   "english": "Possible ad one day. Sadly, weather websites don't grow on trees.",
+   "shipped": "Mhlawumbi intengiso ngenye imini. Ngelishwa, iiwebhusayithi zemozulu azikhuli emithini.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "The \"Sources\" page",
+   "english": "Probably Weather checks four weather sources every time you open the app. We average them so you get a more honest forecast — no single source guessing wrong about whether it'll rain.",
+   "shipped": "I-Probably Weather ijonga imithombo emine yemozulu ngalo lonke ixesha uvula i-app. Sidibanisa imilinganiselo ukuze ufumane isiprofeto esinyanisekileyo — akukho mthombo omnye oqikelela ngokungafanelekanga ngokuba kuza kuna na okanye hayi.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "The \"Sources\" page",
+   "english": "Data from Open-Meteo, WeatherAPI.com, MET Norway, Pirate Weather, and Tomorrow.io. Used with permission and gratitude.",
+   "shipped": "Idatha ivela ku-Open-Meteo, WeatherAPI.com, MET Norway, i-Pirate Weather ne-Tomorrow.io. Isetyenziswa ngemvume nokubulela.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "The \"Sources\" page",
+   "english": "Tomorrow.io — radar-based short-term precipitation nowcasting. Catches active rain that other sources miss.",
+   "shipped": "I-Tomorrow.io — uqikelelo lwemvula olufutshane olusekwe kwi-radar. Ifumana imvula yangoku engaqondwa ngeminye imithombo.",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Cape Town wind warning",
+   "english": "WIND WARNING",
+   "shipped": "ISILUMKISO SOMOYA",
+   "basis": "Approved by A (finished); B did not reach this row"
+  },
+  {
+   "section": "Cape Town wind warning",
+   "english": "Ag no, the tablecloth is out 💨",
+   "shipped": "Yhuu, ilaphu letafile liphumile 💨",
+   "basis": "Approved by A (finished); B did not reach this row"
+  }
+ ],
+ "quarantine": [
+  {
+   "section": "Partly cloudy",
+   "english": "Sun, hide-and-seek champion of the day.",
+   "shipped": "Ilanga lidlala ukufihlana.",
+   "noteA": "Ilanga liyintshatsheli yokufihlana namhlanje",
+   "noteB": "Ilanga lidlala undize, lizenza iintshatsheli zosuku.",
+   "use": "Native translation of the ENGLISH line - candidate fill at this EN index post-realignment"
+  },
+  {
+   "section": "Partly cloudy",
+   "english": "Sky can't make up its mind.",
+   "shipped": "Isibhakabhaka asikwazi ukugqiba.",
+   "noteA": "Isibhakabhaka asikwazi ukwenza isigqibo",
+   "noteB": null,
+   "use": "Native translation of the ENGLISH line - candidate fill at this EN index post-realignment"
+  },
+  {
+   "section": "Partly cloudy",
+   "english": "Half-committed clouds.",
+   "shipped": "Amafu kancinci nje.",
+   "noteA": "Amafu azimisele kancinci kuphela",
+   "noteB": "Amafu angaqinisekanga",
+   "use": "Native translation of the ENGLISH line - candidate fill at this EN index post-realignment"
+  },
+  {
+   "section": "Partly cloudy",
+   "english": "Sky's doing the most, but only a little.",
+   "shipped": "Ilanga liphuma liphinde licaceke.",
+   "noteA": "Isibhakabhaka sizama kakhulu, kodwa hayi ngokupheleleyo.",
+   "noteB": "Ilanga limane liphuma kancinci",
+   "use": "Native translation of the ENGLISH line - candidate fill at this EN index post-realignment"
+  },
+  {
+   "section": "Partly cloudy",
+   "english": "Cloud cover, low effort.",
+   "shipped": "Amafu nelanga - kuyo yomibini.",
+   "noteA": "Amafu akhona, kodwa awazami kakhulu.",
+   "noteB": null,
+   "use": "Native translation of the ENGLISH line - candidate fill at this EN index post-realignment"
+  },
+  {
+   "section": "Partly cloudy",
+   "english": "Sun's playing peek-a-boo.",
+   "shipped": "Phantse usuku lwebraai.",
+   "noteA": "Ilanga lidlala umcacamezelo.",
+   "noteB": null,
+   "use": "Native translation of the ENGLISH line - candidate fill at this EN index post-realignment"
+  },
+  {
+   "section": "Partly cloudy",
+   "english": "Clouds today, vibes optional.",
+   "shipped": "Iimpahla zisesemkhuselweni. Kunokwenzeka.",
+   "noteA": "Namhlanje kukho amafu — iimvakalelo zikuwe.",
+   "noteB": "Amafu namhlanje, mhlawumbi neentshukumo.",
+   "use": "Native translation of the ENGLISH line - candidate fill at this EN index post-realignment"
+  },
+  {
+   "section": "Partly cloudy",
+   "english": "Sky's drafting, not committing.",
+   "shipped": "Phatha ihempe nehoodie - zombini.",
+   "noteA": "Isibhakabhaka sisacinga, asikaqiniseki.",
+   "noteB": "Isibhakabhaka siyayila, asizibopheleli.",
+   "use": "Native translation of the ENGLISH line - candidate fill at this EN index post-realignment"
+  },
+  {
+   "section": "Partly cloudy",
+   "english": "Patchy ambitions.",
+   "shipped": "Isibhakabhaka siyazithanda namhlanje.",
+   "noteA": null,
+   "noteB": "Amabhongo angacacanga",
+   "use": "Native translation of the ENGLISH line - candidate fill at this EN index post-realignment"
+  },
+  {
+   "section": "Partly cloudy",
+   "english": "Halfway to a Highveld thunderstorm. Or not.",
+   "shipped": "Amafu amancinci, ilanga elikhulu.",
+   "noteA": null,
+   "noteB": "Indlela eya kwii ndudumo. Mhlawmbi ayikho",
+   "use": "Native translation of the ENGLISH line - candidate fill at this EN index post-realignment"
+  },
+  {
+   "section": "Partly cloudy",
+   "english": "Clouds, but make it casual.",
+   "shipped": "Akumnandanga, akukubi - phakathi.",
+   "noteA": null,
+   "noteB": "Amafu, kodwa akaqinisekanga",
+   "use": "Native translation of the ENGLISH line - candidate fill at this EN index post-realignment"
+  },
+  {
+   "section": "Partly cloudy",
+   "english": "Sun on a smoke break.",
+   "shipped": "Ilanga lithatha ikhefu.",
+   "noteA": null,
+   "noteB": "Ilanga lisayotshaya",
+   "use": "Native translation of the ENGLISH line - candidate fill at this EN index post-realignment"
+  },
+  {
+   "section": "Partly cloudy",
+   "english": "Almost a braai day.",
+   "shipped": "Amafu azofika ahambe.",
+   "noteA": "Phantse yaba lusuku lwebraai.",
+   "noteB": "Iphantse yalusuku lwe braai",
+   "use": "Native translation of the ENGLISH line - candidate fill at this EN index post-realignment"
+  },
+  {
+   "section": "Partly cloudy",
+   "english": "Washing's still safe. Probably.",
+   "shipped": "Usuku lwe-mhlawumbi.",
+   "noteA": "Impahla ingahlamba ngaphandle. Mhlawumbi.",
+   "noteB": "Ukuhlamba impahla kusakhuselekile. Mhlawumbi",
+   "use": "Native translation of the ENGLISH line - candidate fill at this EN index post-realignment"
+  },
+  {
+   "section": "Partly cloudy",
+   "english": "Sunscreen, but keep a hoodie close.",
+   "shipped": "Amafu, kodwa akukho ngxaki.",
+   "noteA": "Faka i-sunscreen, kodwa gcina ihoodie kufutshane.",
+   "noteB": "iSunscreen, kodwa uyiphathe ne jersey.",
+   "use": "Native translation of the ENGLISH line - candidate fill at this EN index post-realignment"
+  },
+  {
+   "section": "Partly cloudy",
+   "english": "Indecisive sky energy.",
+   "shipped": "Isibhakabhaka esiphakathi-phakathi.",
+   "noteA": "Isibhakabhaka asikwazi kugqiba namhlanje.",
+   "noteB": "Isibhakabhaka esingaqinisekanga",
+   "use": "Native translation of the ENGLISH line - candidate fill at this EN index post-realignment"
+  },
+  {
+   "section": "Partly cloudy",
+   "english": "Some clouds. Some sun. South African summer admin.",
+   "shipped": "Phantse ihlobo lase-South Africa.",
+   "noteA": "Amafu kancinci, ilanga kancinci — ubomi nje behlobo laseMzantsi Afrika.",
+   "noteB": "Amafu amancinci. Ilanga elincinci. iAdmin yehlobo lwaseMzantsi Africa",
+   "use": "Native translation of the ENGLISH line - candidate fill at this EN index post-realignment"
+  },
+  {
+   "section": "Partly cloudy",
+   "english": "The sky's doing freelance today.",
+   "shipped": "Amafu enza i-statement encinci.",
+   "noteA": null,
+   "noteB": "Isibhakabhaka siyadlala namhlanje.",
+   "use": "Native translation of the ENGLISH line - candidate fill at this EN index post-realignment"
+  },
+  {
+   "section": "Partly cloudy",
+   "english": "Cloud cover with main-character syndrome.",
+   "shipped": "Ilanga liyafika liphume.",
+   "noteA": null,
+   "noteB": "Kuthe gqabagqaba ngamafu.",
+   "use": "Native translation of the ENGLISH line - candidate fill at this EN index post-realignment"
+  },
+  {
+   "section": "Partly cloudy",
+   "english": "Cloudy enough to comment, sunny enough to ignore.",
+   "shipped": "Amafu axutyiwe nelanga.",
+   "noteA": null,
+   "noteB": null,
+   "use": "Re-review after realignment"
+  },
+  {
+   "section": "Partly cloudy — uncertain version",
+   "english": "Probably a bit of cloud. Or a lot. Hard to call.",
+   "shipped": "Mhlawumbi kukho amafu amancinci. Okanye amaninzi. Kunzima ukutsho.",
+   "noteA": null,
+   "noteB": null,
+   "use": "Re-review after realignment"
+  },
+  {
+   "section": "Partly cloudy — uncertain version",
+   "english": "Partly cloudy, partly guessing.",
+   "shipped": "Linamafu kancinci, kuqashelwa kancinci.",
+   "noteA": null,
+   "noteB": null,
+   "use": "Re-review after realignment"
+  },
+  {
+   "section": "Partly cloudy — uncertain version",
+   "english": "Some cloud, some sun. The ratio's anyone's guess.",
+   "shipped": "Amafu akho, ilanga likho. Umlinganiselo ukuqashelo.",
+   "noteA": "Kukho amafu nelanga. Umlinganiselo awuqinisekanga",
+   "noteB": null,
+   "use": "Native translation of the ENGLISH line - candidate fill at this EN index post-realignment"
+  },
+  {
+   "section": "Partly cloudy — uncertain version",
+   "english": "Mixed bag out there. We're hedging.",
+   "shipped": "Imini exubeneyo. Siyazigcina.",
+   "noteA": null,
+   "noteB": null,
+   "use": "Re-review after realignment"
+  },
+  {
+   "section": "Partly cloudy — uncertain version",
+   "english": "Cloud's around. How much is up for debate.",
+   "shipped": "Amafu ajikelezile. Ukuba mangaphi kuyimpikiswano.",
+   "noteA": null,
+   "noteB": null,
+   "use": "Re-review after realignment"
+  },
+  {
+   "section": "Partly cloudy — uncertain version",
+   "english": "Bit of everything. Classic in-between day.",
+   "shipped": "Inxalenye yento yonke. Imini ephakathi.",
+   "noteA": null,
+   "noteB": null,
+   "use": "Re-review after realignment"
+  }
+ ],
+ "futureReview": [
+  {
+   "section": "Headlines",
+   "english": "Wind's up.",
+   "final": "Umoya uphezulu",
+   "sourceConf": "B/LOW",
+   "why": "possible typos (unattested): ['uphezulu']"
+  },
+  {
+   "section": "Part 2 — The witty one-liners",
+   "english": "The dog is still keen. The dog is always keen. Respect.",
+   "final": "Inja inomnqweno. Inja isoloko inomnqweno. Hlonipha.",
+   "sourceConf": "B/LOW",
+   "why": "possible typos (unattested): ['isoloko', 'hlonipha']"
+  },
+  {
+   "section": "Part 2 — The witty one-liners",
+   "english": "Welkom-cold today. The kind that goes through three jerseys like they aren't there.",
+   "final": "iWelkom iyabanda namhlanje. Okwakubanda kuphumela kwii-jersey ezintathu ingathi azikho.",
+   "sourceConf": "B/MED",
+   "why": "B typos: ['iwelkom', 'okwakubanda', 'kuphumela']; commentary-stripped"
+  },
+  {
+   "section": "Part 2 — The witty one-liners",
+   "english": "The lapa cushions are crispy.",
+   "final": "Imiqamelo ye-Lapa ii-crispy.",
+   "sourceConf": "B/MED",
+   "why": "B typos: ['imiqamelo', 'ye-lapa', 'ii-crispy']"
+  },
+  {
+   "section": "Part 2 — The witty one-liners",
+   "english": "Lekker koud, but the rugby fields are about to look perfect.",
+   "final": "Kubanda kamnandi, kodwa amabala ombhoxo sele ezakubamahle.",
+   "sourceConf": "B/LOW",
+   "why": "possible typos (unattested): ['kamnandi', 'ombhoxo', 'ezakubamahle']"
+  },
+  {
+   "section": "Part 2 — The witty one-liners",
+   "english": "Boiling-the-kettle-twice weather: once for the coffee, once for the hands.",
+   "final": "Yimozulu yokubilisa i-ketile kabini. Kube kanye eye-kofu, kubekanye eye-zandla",
+   "sourceConf": "B/LOW",
+   "why": "possible typos (unattested): ['yokubilisa', 'i-ketile', 'eye-kofu', 'kubekanye', 'eye-zandla']"
+  },
+  {
+   "section": "Part 2 — The witty one-liners",
+   "english": "Welkom, Sasolburg, Kroonstad: the koue belt is doing its koue thing.",
+   "final": "eWelkom, Sasolburg, Koroonstad: ibhanti lengqele lenza izinto zengqele zayo.",
+   "sourceConf": "B/LOW",
+   "why": "possible typos (unattested): ['sasolburg', 'koroonstad', 'ibhanti', 'lengqele', 'lenza', 'zengqele', 'zayo']"
+  },
+  {
+   "section": "Part 2 — The witty one-liners",
+   "english": "The kind of cold that has you Googling 'underfloor heating Bloemfontein'.",
+   "final": "Uhlobo lwengqeleolukwenza u-Google underfloor heating Bloenfontein",
+   "sourceConf": "B/LOW",
+   "why": "possible typos (unattested): ['lwengqeleolukwenza', 'underfloor', 'bloenfontein']"
+  },
+  {
+   "section": "Part 2 — The witty one-liners",
+   "english": "Three hadedas, two crows, one shivering human at the bird feeder.",
+   "final": "ii-Hadedas ezintathu, ii-crows ezimbini, nomntu omnye ongcangcazelayo e-bird feeder.",
+   "sourceConf": "B/LOW",
+   "why": "B unattested: ['ii-crows']; commentary-stripped"
+  },
+  {
+   "section": "Part 2 — The witty one-liners",
+   "english": "The Toyota started first try. You owe it a wash.",
+   "final": "iToyota idume ngemizamo yokuqala. Uyityala i-wash.",
+   "sourceConf": "B/LOW",
+   "why": "possible typos (unattested): ['itoyota', 'idume', 'ngemizamo', 'uyityala']"
+  },
+  {
+   "section": "Storms / severe weather",
+   "english": "The dog's under the bed. Smart move, honestly.",
+   "final": "Inja iphantsi kwebhedi. Icebo elihle, inene.",
+   "sourceConf": "B/LOW",
+   "why": "possible typos (unattested): ['iphantsi', 'kwebhedi', 'inene']"
+  },
+  {
+   "section": "Storms / severe weather",
+   "english": "Even the hadedas are quiet.",
+   "final": "Nditsho neeNtaka zithe cwaka.",
+   "sourceConf": "B/LOW",
+   "why": "possible typos (unattested): ['neentaka']"
+  },
+  {
+   "section": "Storms / severe weather",
+   "english": "Weather so dramatic it needs a Carte Blanche segment.",
+   "final": "Imozulu ine drama ifuna uCarte Blanche.",
+   "sourceConf": "B/LOW",
+   "why": "B unattested: ['drama', 'ucarte']"
+  },
+  {
+   "section": "Storms / severe weather",
+   "english": "This is why Noah built a boat.",
+   "final": "Lo ngunobangela wokuba uNoah okhe uMkhombe.",
+   "sourceConf": "B/LOW",
+   "why": "possible typos (unattested): ['ngunobangela', 'wokuba', 'unoah', 'okhe']"
+  },
+  {
+   "section": "Hail",
+   "english": "Tiny ice bombs falling. Indoors is the only plan.",
+   "final": "iiBhombu ezincinci zomkhenkce ziyawa. Hlala ngaphakathi qha.",
+   "sourceConf": "B/LOW",
+   "why": "Different rewrites, both plausible; B default (active speaker) — SKIM"
+  },
+  {
+   "section": "Rain",
+   "english": "The garden's saying dankie at last.",
+   "final": "Igadi ithi enkosi ekugqibeleni.",
+   "sourceConf": "B/LOW",
+   "why": "Different rewrites, both plausible; B default (active speaker) — SKIM"
+  },
+  {
+   "section": "Rain",
+   "english": "The N1 is now a waterpark.",
+   "final": "uN1 yi paki yamanzi ngoku.",
+   "sourceConf": "B/LOW",
+   "why": "possible typos (unattested): ['paki']"
+  },
+  {
+   "section": "Rain",
+   "english": "Someone's braai just got ruined.",
+   "final": "iBraai yomntu isando konakala.",
+   "sourceConf": "B/LOW",
+   "why": "B unattested: ['isando']"
+  },
+  {
+   "section": "Rain",
+   "english": "Everyone's forgotten how to drive. Again.",
+   "final": "Bonke balibele ukuba kuqhutywa njani. Kwakhona.",
+   "sourceConf": "B/LOW",
+   "why": "possible typos (unattested): ['kuqhutywa', 'njani']"
+  },
+  {
+   "section": "Rain",
+   "english": "At least the garden's happy. Someone has to be.",
+   "final": "Noko igadi iyavuya. Umntu angavuya.",
+   "sourceConf": "B/LOW",
+   "why": "B unattested: ['angavuya']"
+  },
+  {
+   "section": "Possible rain (showers)",
+   "english": "Don't trust those clouds. They're plotting.",
+   "final": "Sukuwathemba loo-mafu. Ayadibana.",
+   "sourceConf": "B/LOW",
+   "why": "B unattested: ['sukuwathemba', 'loo-mafu', 'ayadibana']"
+  },
+  {
+   "section": "Possible rain (showers)",
+   "english": "Bring a jacket. Or sunscreen. Or both.",
+   "final": "Yiza nesilamba. Okanye iSunscreen. Okanye zombini.",
+   "sourceConf": "B/MED",
+   "why": "B typos: ['nesilamba']"
+  },
+  {
+   "section": "Possible rain (showers)",
+   "english": "The washing's on the line and you're feeling brave.",
+   "final": "Impahla yonekwe ecingweni yaye uziva unesbindi.",
+   "sourceConf": "B/LOW",
+   "why": "possible typos (unattested): ['yonekwe', 'ecingweni', 'unesbindi']"
+  },
+  {
+   "section": "Possible rain (showers)",
+   "english": "Somewhere between fine and soaked. Good luck.",
+   "final": "Phakathi kobamhle nokuba manzi. Unqweno omhle.",
+   "sourceConf": "B/LOW",
+   "why": "B unattested: ['kobamhle', 'unqweno']"
+  },
+  {
+   "section": "Overcast / cloudy",
+   "english": "Not bad, not great. Like a 6/10 date.",
+   "final": "Ayikho mbi, ayikho ntle. Njeng date ye6/10",
+   "sourceConf": "B/LOW",
+   "why": "possible typos (unattested): ['ntle', 'njeng', 'date']"
+  },
+  {
+   "section": "Overcast / cloudy",
+   "english": "The sun sent an out-of-office reply.",
+   "final": "Ilanga lithumele impendulo ka out-of-office",
+   "sourceConf": "B/LOW",
+   "why": "possible typos (unattested): ['out-of-office']"
+  },
+  {
+   "section": "Overcast / cloudy",
+   "english": "At least it's not raining. That's the bar.",
+   "final": "Noko akunethi. Yilonto qha.",
+   "sourceConf": "B/LOW",
+   "why": "B unattested: ['akunethi']"
+  },
+  {
+   "section": "Overcast / cloudy",
+   "english": "Forecast: vibes neutral, expectations lower.",
+   "final": "Uqikelelo: ii-vibes eziphakathi, ulindeleko lusezantsi.",
+   "sourceConf": "B/LOW",
+   "why": "B unattested: ['ulindeleko']"
+  },
+  {
+   "section": "Strong sun (high UV)",
+   "english": "The sun's not playing games today.",
+   "final": "Ilanga lidlala imidlalo namhlanje.",
+   "sourceConf": "B/LOW",
+   "why": "possible typos (unattested): ['imidlalo']"
+  },
+  {
+   "section": "Strong sun (high UV)",
+   "english": "Reapply that sunscreen or suffer.",
+   "final": "Sebenzisa lo sunscreen okanye kuzakubanzima kuwe.",
+   "sourceConf": "B/MED",
+   "why": "B typos: ['kuzakubanzima']"
+  },
+  {
+   "section": "Strong sun (high UV)",
+   "english": "Hat, sunnies, sunscreen. Non-negotiable.",
+   "final": "iHat, izipeksi, sunscreen. Ayixoxisi.",
+   "sourceConf": "B/LOW",
+   "why": "possible typos (unattested): ['ihat', 'izipeksi', 'ayixoxisi']"
+  },
+  {
+   "section": "Strong sun (high UV)",
+   "english": "You could braai a steak on the pavement right now.",
+   "final": "Unga braai inyama kwi pavement ngalomzuzu.",
+   "sourceConf": "B/LOW",
+   "why": "B unattested: ['unga', 'pavement']"
+  },
+  {
+   "section": "Strong sun (high UV)",
+   "english": "Your future self will thank you for that sunscreen.",
+   "final": "Ingomso lakho lakho lizakubulela ngalo sunscreen",
+   "sourceConf": "B/MED",
+   "why": "B typos: ['ingomso', 'lizakubulela']"
+  },
+  {
+   "section": "Strong sun (high UV)",
+   "english": "Tan lines are not a personality trait.",
+   "final": "Izivubeko zokutsha azinasimilo",
+   "sourceConf": "B/LOW",
+   "why": "B unattested: ['izivubeko', 'zokutsha', 'azinasimilo']"
+  },
+  {
+   "section": "Strong sun (high UV)",
+   "english": "Today's forecast: medium rare.",
+   "final": "Uqikelelo lwanamhlanje: aluvuthwanga kakuhle",
+   "sourceConf": "B/LOW",
+   "why": "B unattested: ['lwanamhlanje', 'aluvuthwanga']"
+  },
+  {
+   "section": "Strong sun (high UV)",
+   "english": "Even the shade is warm. Good luck out there.",
+   "final": "Nditsho nomthunzi lo ushushu. Ndininqwenelela impumelelo phandl’apha",
+   "sourceConf": "B/LOW",
+   "why": "B unattested: ['ndininqwenelela', 'impumelelo', 'phandl’apha']"
+  },
+  {
+   "section": "Wind",
+   "english": "The southeaster's arrived. Uninvited, as usual.",
+   "final": "Umoya wemzantsi mpuma ufikile. Ungamenywanga njengesiqhelo.",
+   "sourceConf": "B/LOW",
+   "why": "possible typos (unattested): ['wemzantsi', 'mpuma']"
+  },
+  {
+   "section": "Wind",
+   "english": "Table Mountain's tablecloth is out.",
+   "final": "Ilaphu lentaba ye tafile liphumile.",
+   "sourceConf": "B/LOW",
+   "why": "possible typos (unattested): ['lentaba', 'tafile']"
+  },
+  {
+   "section": "Wind",
+   "english": "The Cape Doctor is making house calls.",
+   "final": "Sizakundwendwelwa ngumoya woGqirha waseKapa.",
+   "sourceConf": "B/LOW",
+   "why": "B unattested: ['sizakundwendwelwa', 'wogqirha']"
+  },
+  {
+   "section": "Wind",
+   "english": "Someone's trampoline is now two streets away.",
+   "final": "iTrampoline yomntu iphaphathekile ngapha kwezitalato ezimbini.",
+   "sourceConf": "B/LOW",
+   "why": "possible typos (unattested): ['itrampoline', 'iphaphathekile', 'ngapha', 'kwezitalato']"
+  },
+  {
+   "section": "Wind",
+   "english": "Your washing just moved to the neighbour's yard.",
+   "final": "Impahla yakho iphaphathekele kwamelwane.",
+   "sourceConf": "B/LOW",
+   "why": "possible typos (unattested): ['iphaphathekele', 'kwamelwane']"
+  },
+  {
+   "section": "Wind",
+   "english": "Sand in places sand should never be.",
+   "final": "Isanti ikwindawo ebekungafanelakanga ikuzo.",
+   "sourceConf": "B/LOW",
+   "why": "possible typos (unattested): ['isanti', 'ikwindawo', 'ebekungafanelakanga', 'ikuzo']"
+  },
+  {
+   "section": "Wind",
+   "english": "Ponytail holders are doing overtime.",
+   "final": "Abanamaphondo ezinweleni basebenza i overtime.",
+   "sourceConf": "B/MED",
+   "why": "B typos: ['abanamaphondo', 'ezinweleni', 'basebenza', 'overtime']"
+  },
+  {
+   "section": "Wind",
+   "english": "The braai cover is in the next suburb.",
+   "final": "Isigqubuthelo se braai sikwingingqi elandelayo.",
+   "sourceConf": "B/LOW",
+   "why": "B unattested: ['sikwingingqi', 'elandelayo']"
+  },
+  {
+   "section": "Cold",
+   "english": "Layer up like you're climbing Sani Pass.",
+   "final": "Fumbelo okungathi uzakunyuka intaba ye Sani Pass",
+   "sourceConf": "B/LOW",
+   "why": "B unattested: ['fumbelo', 'okungathi', 'uzakunyuka', 'sani']"
+  },
+  {
+   "section": "Cold",
+   "english": "Even the Capetonians are admitting it's cold.",
+   "final": "Nditsho nabantu baseKapa bayavuma ukuba kuyabanda.",
+   "sourceConf": "B/LOW",
+   "why": "possible typos (unattested): ['basekapa']"
+  },
+  {
+   "section": "Cold",
+   "english": "Three pairs of socks and still not enough.",
+   "final": "Izibini ezintathu zee kawusi kodwa kunjalo azonelanga.",
+   "sourceConf": "B/LOW",
+   "why": "possible typos (unattested): ['izibini', 'kawusi', 'azonelanga']"
+  },
+  {
+   "section": "Cold",
+   "english": "The cold front is here and it brought friends.",
+   "final": "Ingqele ifikile yaye ize nabahlobo bayo.",
+   "sourceConf": "B/LOW",
+   "why": "B unattested: ['ingqele', 'nabahlobo', 'bayo']"
+  },
+  {
+   "section": "Cold",
+   "english": "You're not cold, you're 'lekker koud'. Big difference.",
+   "final": "Awugodoli, u “lekker koud”. Mkhulu umahluko.",
+   "sourceConf": "B/LOW",
+   "why": "B unattested: ['awugodoli']"
+  },
+  {
+   "section": "Cold",
+   "english": "Nobody signed up for this temperature.",
+   "final": "Akhomtu ubhalisele le mozulu.",
+   "sourceConf": "B/LOW",
+   "why": "B unattested: ['akhomtu']"
+  },
+  {
+   "section": "Cold",
+   "english": "You miss your bed and you've been gone twelve minutes.",
+   "final": "Sewukhumbula ibhedi yakho kodwa unemizuzu nje elishumi elinesibini uphumile.",
+   "sourceConf": "B/LOW",
+   "why": "B unattested: ['sewukhumbula', 'unemizuzu', 'uphumile']; commentary-stripped"
+  },
+  {
+   "section": "Cold",
+   "english": "The shower was the highlight. It is downhill from here.",
+   "final": "iShower ibigqamile. Kuyehlela ukususela apha.",
+   "sourceConf": "B/MED",
+   "why": "B typos: ['ishower', 'ibigqamile', 'kuyehlela', 'ukususela']"
+  },
+  {
+   "section": "Cold",
+   "english": "Coffee count: rising. Motivation count: still zero.",
+   "final": "Ukubalwa kwe kofu kuyenyuka. Inkuthazo iku zero.",
+   "sourceConf": "B/LOW",
+   "why": "B unattested: ['kofu']"
+  },
+  {
+   "section": "Cold",
+   "english": "Outside has betrayed you and you went anyway.",
+   "final": "Umphandle ukuphoxe wahamba.",
+   "sourceConf": "B/LOW",
+   "why": "B unattested: ['umphandle', 'ukuphoxe', 'wahamba']; A-note cell-bleed: contains a stray sentence likely belonging to another row — excluded"
+  },
+  {
+   "section": "Very hot",
+   "english": "You could fry an egg on the N1.",
+   "final": "Ungabhaqa inqa kuN1",
+   "sourceConf": "B/LOW",
+   "why": "B unattested: ['ungabhaqa', 'inqa']"
+  },
+  {
+   "section": "Very hot",
+   "english": "Too hot to argue. Too hot to function.",
+   "final": "Kushushu kakhulu ube uxoxa. Kushushu kakhulu for nukusebenza.",
+   "sourceConf": "B/LOW",
+   "why": "possible typos (unattested): ['uxoxa', 'nukusebenza']"
+  },
+  {
+   "section": "Very hot",
+   "english": "The tar is soft. The people are softer.",
+   "final": "iTar ithambile. Abantu bathambe ngaphezulu.",
+   "sourceConf": "B/LOW",
+   "why": "possible typos (unattested): ['itar', 'bathambe']"
+  },
+  {
+   "section": "Very hot",
+   "english": "Somewhere a chocolate bar just died.",
+   "final": "Itshokolethi isandokufa kwenye indawo.",
+   "sourceConf": "B/LOW",
+   "why": "possible typos (unattested): ['isandokufa']"
+  },
+  {
+   "section": "Very hot",
+   "english": "Everyone with a pool just became very popular.",
+   "final": "Wonke umntu one pool ngusaziwayo ngoku bayathandwa.",
+   "sourceConf": "B/MED",
+   "why": "B typos: ['ngusaziwayo', 'bayathandwa']"
+  },
+  {
+   "section": "Very hot",
+   "english": "You're not sweating. You're 'glowing'. Sure.",
+   "final": "Awubilanga uya glowa qha.",
+   "sourceConf": "B/LOW",
+   "why": "possible typos (unattested): ['awubilanga', 'glowa']"
+  },
+  {
+   "section": "Very hot",
+   "english": "Flip-flops on tar was a mistake.",
+   "final": "iFlops etheni ibeyeyona mpazamo.",
+   "sourceConf": "B/LOW",
+   "why": "possible typos (unattested): ['iflops', 'etheni', 'ibeyeyona', 'mpazamo']"
+  },
+  {
+   "section": "Very hot",
+   "english": "Shorts weather? This is underwear weather.",
+   "final": "Ayomozulu yo shorty lena. Yimozulu yempahla yangapohantsi.",
+   "sourceConf": "B/LOW",
+   "why": "B unattested: ['ayomozulu', 'shorty', 'lena', 'yangapohantsi']"
+  },
+  {
+   "section": "Very hot",
+   "english": "Everyone's suddenly your friend when you have a pool.",
+   "final": "Wonke umntu uba ngumhlobho wakho xa une pool.",
+   "sourceConf": "B/LOW",
+   "why": "possible typos (unattested): ['ngumhlobho']"
+  },
+  {
+   "section": "Very hot",
+   "english": "The fridge door is getting a workout today.",
+   "final": "Ucango lwe fridge yakho luya gyma namhlanje.",
+   "sourceConf": "B/MED",
+   "why": "B typos: ['fridge', 'luya', 'gyma']"
+  },
+  {
+   "section": "Very hot",
+   "english": "Your makeup has an expiry date of 9am.",
+   "final": "iMake up yakho iyaphelelwa ngo9",
+   "sourceConf": "B/LOW",
+   "why": "possible typos (unattested): ['imake', 'iyaphelelwa']"
+  },
+  {
+   "section": "Very hot",
+   "english": "The ice cream van is playing everyone's anthem.",
+   "final": "Imoto ye ice cream idlale umhobe womntu wonke.",
+   "sourceConf": "B/LOW",
+   "why": "possible typos (unattested): ['idlale', 'umhobe', 'womntu']"
+  },
+  {
+   "section": "Very hot",
+   "english": "Even the shade is sweating.",
+   "final": "Nditsho nomthunzi lo uyabila.",
+   "sourceConf": "B/LOW",
+   "why": "Different rewrites, both plausible; B default (active speaker) — SKIM"
+  }
+ ]
+}

@@ -1,0 +1,834 @@
+[
+ {
+  "id": "hero-pairs-b-and-st-01-001",
+  "bt": "A real storm tonight. If you are pulling a caravan, the caravan is the one driving.",
+  "langSeen": "zu",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "hero-pairs-b-and-st-01-002",
+  "bt": "It is really hot this afternoon. Even the candles cannot stand straight.",
+  "langSeen": "zu",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "hero-pairs-b-and-st-01-003",
+  "bt": "Frost in the shade. The bus queue has moved into the sun.",
+  "langSeen": "zu",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "hero-pairs-b-and-st-01-004",
+  "bt": "Thick fog at the dam this morning. The fish see the same thing as you.",
+  "langSeen": "zu",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "hero-pairs-b-and-st-01-005",
+  "bt": "The hadedas are going home early. Follow them.",
+  "langSeen": "zu",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "hero-pairs-b-and-st-01-006",
+  "bt": "It is cold, wet and grey. The car smells of vinegar. It is fine.",
+  "langSeen": "zu",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "hero-pairs-b-and-st-01-007",
+  "bt": "Big wind today. The avocado tree has a big sale.",
+  "langSeen": "zu",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "hero-pairs-b-and-st-01-008",
+  "bt": "Thick fog this morning. The [?izicabucabu] have been busy all the time.",
+  "langSeen": "zu",
+  "verdict": "same",
+  "confidence": 0.4,
+  "note": ""
+ },
+ {
+  "id": "hero-pairs-b-and-st-01-009",
+  "bt": "Very hot: the referee calls a water break every ten minutes.",
+  "langSeen": "zu",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "hero-pairs-b-and-st-01-010",
+  "bt": "It is cold and wet all day. The furniture has moved a little closer to the heater.",
+  "langSeen": "zu",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "hero-pairs-b-and-st-01-011",
+  "bt": "A real storm tonight. If you are towing a caravan, the caravan is the one driving.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "hero-pairs-b-and-st-01-012",
+  "bt": "It is really hot in the afternoon. Even the candles cannot stand upright.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "hero-pairs-b-and-st-01-013",
+  "bt": "Frost in the shade. The bus queue has moved into the sun.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "hero-pairs-b-and-st-01-014",
+  "bt": "Thick fog at the dam this morning. The fish see the same thing as you.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "hero-pairs-b-and-st-01-015",
+  "bt": "The hadedas are going home early [?kwangoko, or 'right away']. Follow them.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.65,
+  "note": ""
+ },
+ {
+  "id": "hero-pairs-b-and-st-01-016",
+  "bt": "It is cold, wet and grey. The car smells of vinegar. It is fine.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "hero-pairs-b-and-st-01-017",
+  "bt": "Big wind today. The avocado tree has a big sale.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "hero-pairs-b-and-st-01-018",
+  "bt": "Thick fog this morning. The [?izigcawu = scenes/sights] have always been busy the whole time.",
+  "langSeen": "xh",
+  "verdict": "drift",
+  "confidence": 0.5,
+  "note": "izigcawu reads as scenes/sights; English says spiders"
+ },
+ {
+  "id": "hero-pairs-b-and-st-01-019",
+  "bt": "It is so hot that the referee calls a water break every ten minutes.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "hero-pairs-b-and-st-01-020",
+  "bt": "It is cold and wet all day. The furniture has moved a little closer to the heater.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "hero-pairs-b-and-st-01-021",
+  "bt": "A few clouds have come to watch. Even they do not take part in the [?mabelo].",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.55,
+  "note": ""
+ },
+ {
+  "id": "hero-pairs-b-and-st-01-022",
+  "bt": "A small dust gust leads him/her ahead. It does not even push the pedals at all.",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "hero-pairs-b-and-st-01-023",
+  "bt": "Enough/moderate wind tonight. The [?menang] cannot sit down.",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.7,
+  "note": ""
+ },
+ {
+  "id": "hero-pairs-b-and-st-01-024",
+  "bt": "Big wind today. The avocado tree is selling everything at a low price.",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "hero-pairs-b-and-st-01-025",
+  "bt": "The sky is clear this morning. Anyone who drives facing east drives [?ka hlooho = with the head / head-down].",
+  "langSeen": "st",
+  "verdict": "loose",
+  "confidence": 0.5,
+  "note": ""
+ },
+ {
+  "id": "hero-pairs-b-and-st-01-026",
+  "bt": "A cloud above the mountain, a potjie under the lapa. Both need another hour.",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "hero-pairs-b-and-st-01-027",
+  "bt": "Clouds all afternoon, not a single drop. The hose goes back to work.",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "hero-pairs-b-and-st-01-028",
+  "bt": "Clouds for the sunset, sprinklers for the [?merara]. The farm makes its own rain.",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.7,
+  "note": ""
+ },
+ {
+  "id": "hero-pairs-b-and-st-01-029",
+  "bt": "It is cold and wet all day. The things in the house have moved closer to the heater slowly.",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "hero-pairs-b-and-st-01-030",
+  "bt": "It is cold, wet, grey. The car smells of vinegar. That is correct/right.",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "hero-pairs-b-and-st-01-031",
+  "bt": "Even the hadeda is quiet. The sky has shown the way.",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "hero-pairs-b-and-st-01-032",
+  "bt": "Even the people who swear that it is never cold believe it today.",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "hero-pairs-b-and-st-01-033",
+  "bt": "Every light in the street [?thekesela = flickers/wobbles]. Saturday night has some rhythm/buzz, just a little.",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "hero-pairs-b-and-st-01-034",
+  "bt": "The flags are stretched out straight, the wine is held tightly. It is a Monday that has gone quiet, going by the deck.",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "hero-pairs-b-and-st-01-035",
+  "bt": "Frost/cold in the shade. The bus queue has moved into the sun.",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.75,
+  "note": ""
+ },
+ {
+  "id": "hero-pairs-b-and-st-01-036",
+  "bt": "Nice rain. Grandfather has already phoned everyone: 'How much did you get?'",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "hero-pairs-b-and-st-01-037",
+  "bt": "The sky is grey, the jerseys are on, school is out. The weekend does not need the sun's permission.",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "hero-pairs-b-and-st-01-038",
+  "bt": "Half a moon, half a cloud, the bin is full. Tuesday night, as stated.",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "hero-pairs-b-and-st-01-039",
+  "bt": "Half of the stars are behind the clouds. The little lights stand in for them.",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "hero-pairs-b-and-st-01-040",
+  "bt": "A hand on the cap, step by step. The wind sets the pace for him/her.",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "hero-pairs-b-and-st-01-041",
+  "bt": "It is so hot that the referee/judge calls a water break every ten minutes.",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "hero-pairs-b-and-st-01-042",
+  "bt": "The sun was coming and going all day, and now this. We all know someone like that.",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "hero-pairs-b-and-st-01-043",
+  "bt": "It is the hour of [?botshelela] in the morning and the fridge is already the most loved room in the house.",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.75,
+  "note": ""
+ },
+ {
+  "id": "hero-pairs-b-and-st-01-044",
+  "bt": "It has looked like rain would fall since breakfast. It is still just looking.",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "hero-pairs-b-and-st-01-045",
+  "bt": "Moon behind a cloud, dog on the stoep. The Sunday service is over.",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "hero-pairs-b-and-st-01-046",
+  "bt": "Most of the time there is sun. Except above your yard/garden.",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "hero-pairs-b-and-st-01-047",
+  "bt": "No shadows, no shine, no spots/patches. Monday under a Tupperware lid.",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.65,
+  "note": ""
+ },
+ {
+  "id": "hero-pairs-b-and-st-01-048",
+  "bt": "No cloud all day. A single tree in the parking area is now valuable property.",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "hero-pairs-b-and-st-01-049",
+  "bt": "Not a single shade on the field all day. The referee/judge did not have a problem with the shine/glare.",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.75,
+  "note": ""
+ },
+ {
+  "id": "hero-pairs-b-and-st-01-050",
+  "bt": "A single cloud above the mountain is not a weather event. The fire is still burning.",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "hero-pairs-b-and-st-01-051",
+  "bt": "The wind is very strong tonight. If you are pulling a caravan, the caravan is the one driving.",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "hero-pairs-b-and-st-01-052",
+  "bt": "Real heat this afternoon. Even candles cannot stand upright.",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "hero-pairs-b-and-st-01-053",
+  "bt": "It is truly cold today. The cold that gets in through three jerseys as if they were not there.",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "hero-pairs-b-and-st-01-054",
+  "bt": "[?Pherese] on the ground, white in the sky. The colours of Friday are accepted.",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.7,
+  "note": ""
+ },
+ {
+  "id": "hero-pairs-b-and-st-01-055",
+  "bt": "It rains all night. The sprinkler has not noticed yet.",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "hero-pairs-b-and-st-01-056",
+  "bt": "The sea and the sky are grey in the same way. Only the pier lights made an effort.",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "hero-pairs-b-and-st-01-057",
+  "bt": "Shoes are holding the blanket so it does not fly away. Wind is welcome, sand is not welcome.",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "hero-pairs-b-and-st-01-058",
+  "bt": "The sky and the sea agree on a colour this morning. It is not a cheerful one.",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "hero-pairs-b-and-st-01-059",
+  "bt": "Someone forgot the washed clothes. The wind did not forget, and it does the job well.",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "hero-pairs-b-and-st-01-060",
+  "bt": "A calm wind comes from the neighbours' braai. You get everything except the meat.",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "hero-pairs-b-and-st-01-061",
+  "bt": "The sun goes in, it comes out. Monday starts slowly.",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "hero-pairs-b-and-st-01-062",
+  "bt": "Sunglasses on, off, on. Friday afternoon is exercise.",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "hero-pairs-b-and-st-01-063",
+  "bt": "The wind does all the work. The kite takes all the credit.",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "hero-pairs-b-and-st-01-064",
+  "bt": "The wind takes the jacaranda to the next street, [?lekgasi] by [?lekgasi]. The stoep agrees.",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "hero-pairs-b-and-st-01-065",
+  "bt": "The wind is still warm at this time. The sea leaves the heater on all night.",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "hero-pairs-b-and-st-01-066",
+  "bt": "The wind carries smoke down the street. The whole street knows what is being eaten this evening.",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "hero-pairs-b-and-st-01-067",
+  "bt": "The clouds pass slowly. It is Sunday; they are allowed.",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "hero-pairs-b-and-st-01-068",
+  "bt": "The clouds play with the moon. The balcony is happy to stand there.",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.6,
+  "note": ""
+ },
+ {
+  "id": "hero-pairs-b-and-st-01-069",
+  "bt": "The clouds gave the sun a rest on Tuesday. Nobody told the humidity.",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "hero-pairs-b-and-st-01-070",
+  "bt": "The clouds lingered only for the colours. Monday owed us that.",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "hero-pairs-b-and-st-01-071",
+  "bt": "The clouds turned nicely pink at the time of [?ho phutha thoto = collecting/picking up ?]. Nobody collected.",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.6,
+  "note": ""
+ },
+ {
+  "id": "hero-pairs-b-and-st-01-072",
+  "bt": "The flag at the corner [?hukung] clearly shows where the ball will [?kgelohela = veer/swerve].",
+  "langSeen": "st",
+  "verdict": "loose",
+  "confidence": 0.75,
+  "note": ""
+ },
+ {
+  "id": "hero-pairs-b-and-st-01-073",
+  "bt": "The dog has found the right line between sun and shade. It stays there.",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "hero-pairs-b-and-st-01-074",
+  "bt": "The dust shines like gold in the low light. The game goes on inside it.",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "hero-pairs-b-and-st-01-075",
+  "bt": "The flag gives a preview/forecast ahead to the surfers. It says: go.",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "hero-pairs-b-and-st-01-076",
+  "bt": "The flags are still chatting. The little [?diketswana] have finished the week.",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.4,
+  "note": ""
+ },
+ {
+  "id": "hero-pairs-b-and-st-01-077",
+  "bt": "The hadedas are going home early. Follow them.",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "hero-pairs-b-and-st-01-078",
+  "bt": "The [?leralla] moves in waves. The cattle have decided not to notice.",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.45,
+  "note": ""
+ },
+ {
+  "id": "hero-pairs-b-and-st-01-079",
+  "bt": "Jacaranda [?makgasi] also ride the bus. The wind has bought the tickets for them.",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "hero-pairs-b-and-st-01-080",
+  "bt": "The [?makgasi] keep shining on the security light. The dog has stopped getting up for them.",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "hero-pairs-b-and-st-01-081",
+  "bt": "The moon appears between the clouds. It can smell meat from up there.",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "hero-pairs-b-and-st-01-082",
+  "bt": "The moon keeps appearing to come and inspect the forecourt. Nothing is happening.",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "hero-pairs-b-and-st-01-083",
+  "bt": "The moon has dimmed in light tonight. The security light does not know how to dim.",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "hero-pairs-b-and-st-01-084",
+  "bt": "The mountain has covered itself with a blanket on the head. It is fine, it is Friday.",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "hero-pairs-b-and-st-01-085",
+  "bt": "The sand crosses the road slowly. Nobody is in a hurry here.",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "hero-pairs-b-and-st-01-086",
+  "bt": "The security light started shining early. The sun did not get to work properly.",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "hero-pairs-b-and-st-01-087",
+  "bt": "The shade comes down the lawn line by line. It is inspecting.",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "hero-pairs-b-and-st-01-088",
+  "bt": "The shed light is the sunset tonight. The cattle accept that reduction.",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "hero-pairs-b-and-st-01-089",
+  "bt": "The sheets are already dry. Now the wind is only showing off for the child.",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "hero-pairs-b-and-st-01-090",
+  "bt": "The sky has changed from light grey to dark grey. That is the whole show.",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "hero-pairs-b-and-st-01-091",
+  "bt": "The sky is quiet, and the queue is quiet. Monday has not yet found a sound.",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "hero-pairs-b-and-st-01-092",
+  "bt": "The sky puts on a show. The fish, as usual, do not do likewise.",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "hero-pairs-b-and-st-01-093",
+  "bt": "The smoke has found the neighbours' yard. A Saturday braai is a community event by law.",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "hero-pairs-b-and-st-01-094",
+  "bt": "The sun did not come out for sundowners. Everyone else came.",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "hero-pairs-b-and-st-01-095",
+  "bt": "The sun will not even bother to shine today. The car is satisfied with that.",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.6,
+  "note": ""
+ },
+ {
+  "id": "hero-pairs-b-and-st-01-096",
+  "bt": "The sun has finished the job. The clouds are still shining, and the balcony is still shining.",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "hero-pairs-b-and-st-01-097",
+  "bt": "The washing should have been brought in hours ago. The wind voted that it stay.",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "hero-pairs-b-and-st-01-098",
+  "bt": "The washing will be dry before the first break. The wind took the morning shift.",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "hero-pairs-b-and-st-01-099",
+  "bt": "The whole land has been reduced in colours. The sheep are counted the same regardless.",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "hero-pairs-b-and-st-01-100",
+  "bt": "The windpump does not agree at knock-off time. Even the dog does not agree.",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "hero-pairs-b-and-st-01-101",
+  "bt": "The windpump does the morning work. The grass just encourages it.",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "hero-pairs-b-and-st-01-102",
+  "bt": "Thick/dark fog at the dam this morning. The fish see the same as what you see.",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "hero-pairs-b-and-st-01-103",
+  "bt": "Thick/dark fog this morning. The [?dikgo] had been working all the time.",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.4,
+  "note": ""
+ },
+ {
+  "id": "hero-pairs-b-and-st-01-104",
+  "bt": "Those clouds are just passing. Even the maize knows not to get too happy.",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ }
+]

@@ -1,0 +1,1637 @@
+{
+ "set": "exam",
+ "lang": "zu",
+ "judge": null,
+ "built": "2026-10-11",
+ "exportedAt": 1791748386274,
+ "attempts": [
+  {
+   "built": "2026-10-11T19:53:06.273Z",
+   "again": null
+  }
+ ],
+ "inputs": {
+  "prompt": "cc0fc447a940fcd5cff66e4a59d47ce3893e1e15d3d8b1ff692bf2743055aa39",
+  "verdicts": "554a3c21ec0869fb7c6c1bb9a8ca5be6e87f90ad5d4baf02298b8056016c3e86",
+  "bundle": "52381b4b875533d1101036c209b0ae1fced41cd74bba18426bc0918eced7873e",
+  "code": "57b19a2a28735baddca1170c7e64e8d86626fb7811889b7692a36b335be15e16"
+ },
+ "files": {
+  "bundle-zu.md": "52381b4b875533d1101036c209b0ae1fced41cd74bba18426bc0918eced7873e",
+  "exam-zu-01-blind.json": "803b6e8c30c80e3abc27dd314e60822e94a04fd56d38a7b9c82ceddaee0c9686",
+  "exam-zu-02-blind.json": "a7953fbdb4ef69888fe66748e7e5d67c293e2fb9b07f3cecf1fdf076d336d16c",
+  "exam-zu-03-blind.json": "3f2dd3186a228348d091c8410ece8a7d54ba0f41612f71791e733c30c18d4389",
+  "exam-zu-04-blind.json": "b0bdf8193df251259aeea6fab71d936736d1834de7eabf0cbaf623c7387e2362",
+  "exam-zu-05-blind.json": "ecf16e0dcc0ea5aa23d61b8768a753464e61ded3e6fc935bcb2725b17c0c13f3",
+  "exam-zu-06-blind.json": "bd3c4e48a9538d485ba3842e1550413b3db7bfd620fe2723084e877d60a6fbfc",
+  "exam-zu-07-blind.json": "a14c3ca5516c2cf1ce17fd68c38f004d8595b670788294b577683a2dbbaef720",
+  "exam-zu-08-blind.json": "2790fa7ee0a0c9fde88c7a18068e86978fb4821610953fe9ac594553fbaddceb",
+  "exam-zu-09-blind.json": "337fe3e0819e05ba2dbf2852d8a6e8f23ffee5843d2e592eb2ca9bc036146eb4",
+  "exam-zu-10-blind.json": "3529bc8b5767aa46e8d5eade37308ec3349b48222be35232a0e2429cf41c200b"
+ },
+ "anchors": [
+  "zu-0237",
+  "zu-0129",
+  "zu-0082",
+  "zu-0049",
+  "zu-0140",
+  "zu-0463",
+  "zu-0290",
+  "zu-0174",
+  "zu-0191",
+  "zu-0176",
+  "zu-0189",
+  "zu-0183"
+ ],
+ "map": {
+  "zu01-01": {
+   "ref": "zu-0303",
+   "en": "Slowly becoming a puddle in the corner.",
+   "draft": "Kancane ngiba yichibi ekhoneni.",
+   "cond": "heat",
+   "set": "exam"
+  },
+  "zu01-02": {
+   "ref": "zu-0157",
+   "en": "The sky picked a vibe and the vibe is shrug.",
+   "draft": "Isibhakabhaka sikhethe i-vibe futhi i-vibe iwukunyusa amahlombe.",
+   "cond": "cloudy",
+   "set": "exam"
+  },
+  "zu01-03": {
+   "ref": "zu-0395",
+   "en": "Hair plans: cancelled.",
+   "draft": "Izinhlelo zezinwele: zikhanselelwe.",
+   "cond": "rain",
+   "set": "exam"
+  },
+  "zu01-04": {
+   "ref": "zu-0217",
+   "en": "The duvet understood the assignment.",
+   "draft": "I-duvet iyiqondile into edingekayo.",
+   "cond": "cold",
+   "set": "exam"
+  },
+  "zu01-05": {
+   "ref": "zu-0271",
+   "en": "The garden is somewhere out there. We trust the process.",
+   "draft": "Ingadi ikhona ngaphandle. Sithemba inqubo.",
+   "cond": "fog",
+   "set": "exam"
+  },
+  "zu01-06": {
+   "ref": "zu-0410",
+   "en": "Perfect excuse to cancel plans.",
+   "draft": "Isizathu esihle sokukhansela izinhlelo.",
+   "cond": "rain",
+   "set": "exam"
+  },
+  "zu01-07": {
+   "ref": "zu-0109",
+   "en": "This is why we live in South Africa.",
+   "draft": "Yingakho sihlala eNingizimu Afrika.",
+   "cond": "clear",
+   "set": "exam"
+  },
+  "zu01-08": {
+   "ref": "zu-0138",
+   "en": "It is what it is.",
+   "draft": "Kuyilokho okuyikho.",
+   "cond": "cloudy",
+   "set": "exam"
+  },
+  "zu01-09": {
+   "ref": "zu-0090",
+   "en": "Sky's looking moody. Could escalate.",
+   "draft": "Isibhakabhaka sibukeka sithukuthele. Kungakhula.",
+   "cond": "storm",
+   "set": "exam"
+  },
+  "zu01-10": {
+   "ref": "zu-0494",
+   "en": "Hold onto your hat! And your kids.",
+   "draft": "Bamba isigqoko sakho! Nabantwana bakho.",
+   "cond": "wind",
+   "set": "exam"
+  },
+  "zu01-11": {
+   "ref": "zu-0505",
+   "en": "Not a hairstyle in sight. Just survivors.",
+   "draft": "Akukho sitayela sezinwele esibonwayo. Abasindile kuphela.",
+   "cond": "wind",
+   "set": "exam"
+  },
+  "zu01-12": {
+   "ref": "zu-0065",
+   "en": "Clear-ish night. Don't hold us to the stars.",
+   "draft": "Ubusuku obuhle-ish. Ungasibambi ezinkanyezini.",
+   "cond": "night",
+   "set": "exam"
+  },
+  "zu01-13": {
+   "ref": "zu-0122",
+   "en": "A proper good one. Don't waste it.",
+   "draft": "Olungcono ngempela. Ungalumoshi.",
+   "cond": "clear",
+   "set": "exam"
+  },
+  "zu01-14": {
+   "ref": "zu-0436",
+   "en": "Unplug the things. The sky has plans.",
+   "draft": "Susa izinto eziphakwe ku-elektriki. Isibhakabhaka sinezinhlelo.",
+   "cond": "storm",
+   "set": "exam"
+  },
+  "zu01-15": {
+   "ref": "zu-0257",
+   "en": "The street signs gave up.",
+   "draft": "Izimpawu zomgwaqo ziyekile.",
+   "cond": "fog",
+   "set": "exam"
+  },
+  "zu01-16": {
+   "ref": "zu-0205",
+   "en": "This is not what the tourism brochure promised.",
+   "draft": "Lokhu akukhona okwethenjiswa yincwadi yokuvakasha.",
+   "cond": "cold",
+   "set": "exam"
+  },
+  "zu01-17": {
+   "ref": "zu-0230",
+   "en": "The shower was the highlight. It is downhill from here.",
+   "draft": "Ishawa kwakuyinto enhle. Konke kuya phansi manje.",
+   "cond": "cold",
+   "set": "exam"
+  },
+  "zu01-18": {
+   "ref": "zu-0178",
+   "en": "Tile floors are tonight's villain. Wear something on your feet.",
+   "draft": "Ama-tile floors yi-villain yanamuhla kusihlwa. Gqoka okuthile ezinyaweni.",
+   "cond": "cold-clear",
+   "set": "exam"
+  },
+  "zu01-19": {
+   "ref": "zu-0291",
+   "en": "Shorts weather? This is underwear weather.",
+   "draft": "Isimo sezulu samabhulukwe amafushane? Lesi isimo sezulu samangisi.",
+   "cond": "heat",
+   "set": "exam"
+  },
+  "zu01-20": {
+   "ref": "zu-0484",
+   "en": "Boerie roll for breakfast? On a weekend? Acceptable.",
+   "draft": "Iboerie roll yebhulakufesi? Ngempelasonto? Iyamukeleka.",
+   "cond": "weekend",
+   "set": "exam"
+  },
+  "zu01-21": {
+   "ref": "zu-0487",
+   "en": "Beach or braai? Yes.",
+   "draft": "Ibhishi noma ukosa? Yebo.",
+   "cond": "weekend",
+   "set": "exam"
+  },
+  "zu01-22": {
+   "ref": "zu-0439",
+   "en": "Beautiful and terrifying in equal measure.",
+   "draft": "Kuhle futhi kwesabisa ngokulinganayo.",
+   "cond": "storm",
+   "set": "exam"
+  },
+  "zu02-01": {
+   "ref": "zu-0307",
+   "en": "Even the shade is sweating.",
+   "draft": "Ngisho nomthunzi uyajuluka.",
+   "cond": "heat",
+   "set": "exam"
+  },
+  "zu02-02": {
+   "ref": "zu-0045",
+   "en": "Looks cold-ish. The thermometer's keeping us guessing.",
+   "draft": "Kubukeka kubanda. I-thermometer isenza siqagele.",
+   "cond": "cold",
+   "set": "exam"
+  },
+  "zu02-03": {
+   "ref": "zu-0412",
+   "en": "The N1 is now a waterpark.",
+   "draft": "I-N1 manje yi-waterpark.",
+   "cond": "rain",
+   "set": "exam"
+  },
+  "zu02-04": {
+   "ref": "zu-0359",
+   "en": "Clouds looking proper suspicious.",
+   "draft": "Amafu abukeka esolisa ngempela.",
+   "cond": "rain-possible",
+   "set": "exam"
+  },
+  "zu02-05": {
+   "ref": "zu-0252",
+   "en": "The fog doesn't care about your schedule.",
+   "draft": "Inkungu ayikhathaleli isheduli yakho.",
+   "cond": "fog",
+   "set": "exam"
+  },
+  "zu02-06": {
+   "ref": "zu-0394",
+   "en": "The puddle was deeper than it looked. It's always deeper.",
+   "draft": "Isiziba sasijule kunalokho ebesibukeka ngakho. Sihlala sijule.",
+   "cond": "rain",
+   "set": "exam"
+  },
+  "zu02-07": {
+   "ref": "zu-0076",
+   "en": "The sky's undecided. So are we.",
+   "draft": "Isibhakabhaka asinqumanga. Nathi futhi.",
+   "cond": "rain-possible",
+   "set": "exam"
+  },
+  "zu02-08": {
+   "ref": "zu-0078",
+   "en": "50/50 on the rain. Bring a jacket, just in case.",
+   "draft": "I-50/50 emvuleni. Thatha ibhantshi, uma kwenzeka.",
+   "cond": "rain-possible",
+   "set": "exam"
+  },
+  "zu02-09": {
+   "ref": "zu-0413",
+   "en": "Good soup weather, not gonna lie.",
+   "draft": "Isimo sezulu esihle sesobho.",
+   "cond": "rain",
+   "set": "exam"
+  },
+  "zu02-10": {
+   "ref": "zu-0372",
+   "en": "Don't trust those clouds. They're plotting.",
+   "draft": "Ungawathembi lawo mafu. Ayaceba.",
+   "cond": "rain-possible",
+   "set": "exam"
+  },
+  "zu02-11": {
+   "ref": "zu-0460",
+   "en": "Even the shade is warm. Good luck out there.",
+   "draft": "Ngisho nomthunzi ufudumele. Inhlanhla enhle.",
+   "cond": "uv",
+   "set": "exam"
+  },
+  "zu02-12": {
+   "ref": "zu-0438",
+   "en": "Wait it out indoors. The mountains aren't going anywhere.",
+   "draft": "Lindela phakathi. Izintaba aziyi ndawo.",
+   "cond": "storm",
+   "set": "exam"
+  },
+  "zu02-13": {
+   "ref": "zu-0133",
+   "en": "Postcard weather. You're welcome.",
+   "draft": "Isimo sezulu se-postcard. Wamukelekile.",
+   "cond": "clear",
+   "set": "exam"
+  },
+  "zu02-14": {
+   "ref": "zu-0218",
+   "en": "Your jacket has a jacket. It's that kind of day.",
+   "draft": "Ijazi lakho linebhantshi. Usuku olunjalo.",
+   "cond": "cold",
+   "set": "exam"
+  },
+  "zu02-15": {
+   "ref": "zu-0038",
+   "en": "Cloudy-ish. Don't bet the braai on it.",
+   "draft": "Kunamafu cishe. Ungabhejeli ukosa kukho.",
+   "cond": "cloudy",
+   "set": "exam"
+  },
+  "zu02-16": {
+   "ref": "zu-0297",
+   "en": "Everyone's suddenly your friend when you have a pool.",
+   "draft": "Bonke bangabangane bakho uma unepuli.",
+   "cond": "heat",
+   "set": "exam"
+  },
+  "zu02-17": {
+   "ref": "zu-0459",
+   "en": "Today's forecast: medium rare.",
+   "draft": "Isibikezelo sanamuhla: medium rare.",
+   "cond": "uv",
+   "set": "exam"
+  },
+  "zu02-18": {
+   "ref": "zu-0366",
+   "en": "Even the weather apps are arguing about this one.",
+   "draft": "Ngisho nama-app ezulu ayaphikisana ngalokhu.",
+   "cond": "rain-possible",
+   "set": "exam"
+  },
+  "zu02-19": {
+   "ref": "zu-0077",
+   "en": "Might spit a bit. Might not bother.",
+   "draft": "Kungakhihliza kancane. Kungase kungahluphi.",
+   "cond": "rain-possible",
+   "set": "exam"
+  },
+  "zu02-20": {
+   "ref": "zu-0424",
+   "en": "Not the time for hero moves, hey.",
+   "draft": "Akusona isikhathi sokuqhawe, hey.",
+   "cond": "storm",
+   "set": "exam"
+  },
+  "zu02-21": {
+   "ref": "zu-0409",
+   "en": "Joburg drivers are panicking already.",
+   "draft": "Abashayeli baseJoburg sebeyesaba.",
+   "cond": "rain",
+   "set": "exam"
+  },
+  "zu02-22": {
+   "ref": "zu-0173",
+   "en": "Bloemfontein at 6am: jersey, gown, scarf, takkies, and a brave face.",
+   "draft": "EBloemfontein ngo-6 ekuseni: i-jersey, i-gown, i-scarf, ama-takkies, nobuso obunesibindi.",
+   "cond": "cold-clear",
+   "set": "exam"
+  },
+  "zu02-23": {
+   "ref": "zu-0118",
+   "en": "Your excuse to stay inside just expired.",
+   "draft": "Isizathu sakho sokuhlala ngaphakathi sisanda kuphelelwa.",
+   "cond": "clear",
+   "set": "exam"
+  },
+  "zu03-01": {
+   "ref": "zu-0323",
+   "en": "Not a cloud. Just you and the Southern Cross.",
+   "draft": "Akukho lifu. Nguwe neSiphambano saseNingizimu kuphela.",
+   "cond": "night",
+   "set": "exam"
+  },
+  "zu03-02": {
+   "ref": "zu-0510",
+   "en": "The trees are doing involuntary yoga.",
+   "draft": "Izihlahla zenza i-yoga engafuneki.",
+   "cond": "wind",
+   "set": "exam"
+  },
+  "zu03-03": {
+   "ref": "zu-0154",
+   "en": "Perfect weather for existing without enthusiasm.",
+   "draft": "Isimo sezulu esihle sokuphila ngaphandle kwentshisekelo.",
+   "cond": "cloudy",
+   "set": "exam"
+  },
+  "zu03-04": {
+   "ref": "zu-0450",
+   "en": "SPF 50 or regret it by tonight.",
+   "draft": "I-SPF 50 noma uzozisola ngokuhlwa.",
+   "cond": "uv",
+   "set": "exam"
+  },
+  "zu03-05": {
+   "ref": "zu-0169",
+   "en": "Perfect weather for a Woolies run and Netflix.",
+   "draft": "Isimo sezulu esihle se-Woolies ne-Netflix.",
+   "cond": "cloudy",
+   "set": "exam"
+  },
+  "zu03-06": {
+   "ref": "zu-0192",
+   "en": "Even the cattle on the N1 are huddled like they paid for it.",
+   "draft": "Ngisho nezinkomo eziku-N1 zibuthene sengathi zikhokhele indawo.",
+   "cond": "cold-clear",
+   "set": "exam"
+  },
+  "zu03-07": {
+   "ref": "zu-0305",
+   "en": "Stay hydrated or become a biltong.",
+   "draft": "Hlala unamanzi noma ube yi-biltong.",
+   "cond": "heat",
+   "set": "exam"
+  },
+  "zu03-08": {
+   "ref": "zu-0298",
+   "en": "Water consumption: yes. All of it.",
+   "draft": "Ukuphuza amanzi: yebo. Konke.",
+   "cond": "heat",
+   "set": "exam"
+  },
+  "zu03-09": {
+   "ref": "zu-0429",
+   "en": "Somewhere a weather reporter is living their best life.",
+   "draft": "Endaweni ethile umethuli wezindaba zesimo sezulu uphila kahle.",
+   "cond": "storm",
+   "set": "exam"
+  },
+  "zu03-10": {
+   "ref": "zu-0509",
+   "en": "Kite surfers are having the time of their lives.",
+   "draft": "Abadlali be-kite bajabulile kakhulu.",
+   "cond": "wind",
+   "set": "exam"
+  },
+  "zu03-11": {
+   "ref": "zu-0458",
+   "en": "Sunscreen budget: higher than your data bill.",
+   "draft": "Isabiwezimali sesivikelo selanga: siphezulu kunebhili yakho yedatha.",
+   "cond": "uv",
+   "set": "exam"
+  },
+  "zu03-12": {
+   "ref": "zu-0452",
+   "en": "The UV index is higher than your expectations.",
+   "draft": "I-UV index iphezulu kunalokho okulindele.",
+   "cond": "uv",
+   "set": "exam"
+  },
+  "zu03-13": {
+   "ref": "zu-0104",
+   "en": "The Helderberg is showing off today.",
+   "draft": "I-Helderberg iziqhayisa namuhla.",
+   "cond": "clear",
+   "set": "exam"
+  },
+  "zu03-14": {
+   "ref": "zu-0148",
+   "en": "The sky's on mute. Nobody's complaining.",
+   "draft": "Isibhakabhaka sithulile. Akekho okhonondayo.",
+   "cond": "cloudy",
+   "set": "exam"
+  },
+  "zu03-15": {
+   "ref": "zu-0455",
+   "en": "The sun doesn't care about your plans.",
+   "draft": "Ilanga alikhathali ngezinhlelo zakho.",
+   "cond": "uv",
+   "set": "exam"
+  },
+  "zu03-16": {
+   "ref": "zu-0474",
+   "en": "Kuier weather. Get the people together.",
+   "draft": "Isimo sezulu sokuhlangana. Biza abantu.",
+   "cond": "weekend",
+   "set": "exam"
+  },
+  "zu03-17": {
+   "ref": "zu-0496",
+   "en": "The bins are on an adventure again.",
+   "draft": "Amabhini asohambweni futhi.",
+   "cond": "wind",
+   "set": "exam"
+  },
+  "zu03-18": {
+   "ref": "zu-0369",
+   "en": "Trust issues with the sky today.",
+   "draft": "Inkinga yokuthemba isibhakabhaka namuhla.",
+   "cond": "rain-possible",
+   "set": "exam"
+  },
+  "zu03-19": {
+   "ref": "zu-0058",
+   "en": "Probably a scorcher. A hat's not a bad idea.",
+   "draft": "Cishe usuku olushisayo. Isigqoko asilona icebo elibi.",
+   "cond": "heat",
+   "set": "exam"
+  },
+  "zu03-20": {
+   "ref": "zu-0041",
+   "en": "Cloud's the call. With an asterisk.",
+   "draft": "Amafu yiwo umbono. Kanye nophawu.",
+   "cond": "cloudy",
+   "set": "exam"
+  },
+  "zu03-21": {
+   "ref": "zu-0289",
+   "en": "The fridge is the coolest room in the house.",
+   "draft": "Ifriji iyindawo epholile kunayo yonke endlini.",
+   "cond": "heat",
+   "set": "exam"
+  },
+  "zu03-22": {
+   "ref": "zu-0171",
+   "en": "Even the weather can't be bothered today.",
+   "draft": "Ngisho nesimo sezulu asikwazi ukuziphatha namuhla.",
+   "cond": "cloudy",
+   "set": "exam"
+  },
+  "zu03-23": {
+   "ref": "zu-0306",
+   "en": "Whoever has a pool today is your new best friend.",
+   "draft": "Noma ngubani onepuli namuhla ngumngane wakho omusha omkhulu.",
+   "cond": "heat",
+   "set": "exam"
+  },
+  "zu04-01": {
+   "ref": "zu-0483",
+   "en": "The chops are calling. So is the chair.",
+   "draft": "Ama-chop ayabiza. Nesihlalo nawo.",
+   "cond": "weekend",
+   "set": "exam"
+  },
+  "zu04-02": {
+   "ref": "zu-0464",
+   "en": "The ozone layer called. It's on leave.",
+   "draft": "I-ozone layer ishayile. Iku-leave.",
+   "cond": "uv",
+   "set": "exam"
+  },
+  "zu04-03": {
+   "ref": "zu-0481",
+   "en": "The weather gods are showing off.",
+   "draft": "Izinkulunkulu zesimo sezulu ziyaziqhayisa.",
+   "cond": "weekend",
+   "set": "exam"
+  },
+  "zu04-04": {
+   "ref": "zu-0389",
+   "en": "The wipers are on max and it's still not enough.",
+   "draft": "Ama-wipers aku-max kodwa akwanele.",
+   "cond": "rain",
+   "set": "exam"
+  },
+  "zu04-05": {
+   "ref": "zu-0406",
+   "en": "The dog is staring at the rain like it's a personal insult.",
+   "draft": "Inja ibheka imvula sengathi inhlamba yomuntu siqu.",
+   "cond": "rain",
+   "set": "exam"
+  },
+  "zu04-06": {
+   "ref": "zu-0431",
+   "en": "Don't even think about driving somewhere.",
+   "draft": "Ungacabangi ngisho ngokushayela ndawo.",
+   "cond": "storm",
+   "set": "exam"
+  },
+  "zu04-07": {
+   "ref": "zu-0172",
+   "en": "Grey vibes. The sky matched my Monday.",
+   "draft": "I-grey vibes. Isibhakabhaka sifana noMsombuluko wami.",
+   "cond": "cloudy",
+   "set": "exam"
+  },
+  "zu04-08": {
+   "ref": "zu-0373",
+   "en": "Weather's being more indecisive than you at Spur.",
+   "draft": "Isimo sezulu asikwazi ukuzinquma njengawe eSpur.",
+   "cond": "rain-possible",
+   "set": "exam"
+  },
+  "zu04-09": {
+   "ref": "zu-0147",
+   "en": "Good day for a walk, bad day for a tan.",
+   "draft": "Usuku oluhle lokuhamba, olubi lokushisa.",
+   "cond": "cloudy",
+   "set": "exam"
+  },
+  "zu04-10": {
+   "ref": "zu-0149",
+   "en": "Not Instagram weather. Not the end of the world.",
+   "draft": "Akusona isimo sezulu se-Instagram. Akusikho ukuphela komhlaba.",
+   "cond": "cloudy",
+   "set": "exam"
+  },
+  "zu04-11": {
+   "ref": "zu-0146",
+   "en": "The clouds are here but they're not doing anything.",
+   "draft": "Amafu akhona kodwa awenzi lutho.",
+   "cond": "cloudy",
+   "set": "exam"
+  },
+  "zu04-12": {
+   "ref": "zu-0064",
+   "en": "Probably quiet skies. We're fairly sure.",
+   "draft": "Cishe izulu elithulile. Siqinisekile cishe.",
+   "cond": "night",
+   "set": "exam"
+  },
+  "zu04-13": {
+   "ref": "zu-0311",
+   "en": "Don't touch the seatbelt buckle. Trust us.",
+   "draft": "Ungalithinti ibhakili lebhande lokuvikela. Sithembe.",
+   "cond": "heat",
+   "set": "exam"
+  },
+  "zu04-14": {
+   "ref": "zu-0318",
+   "en": "Stars out, load shedding can't touch this.",
+   "draft": "Izinkanyezi zikhona, ukucisha akukwazi lokhu.",
+   "cond": "night",
+   "set": "exam"
+  },
+  "zu04-15": {
+   "ref": "zu-0155",
+   "en": "The clouds are committed to being average.",
+   "draft": "Amafu azibophezele ekubeni phakathi naphakathi.",
+   "cond": "cloudy",
+   "set": "exam"
+  },
+  "zu04-16": {
+   "ref": "zu-0111",
+   "en": "This is the weather you'll miss in December traffic.",
+   "draft": "Lesi yisimo sezulu ozosithanda ethrafikhini kaDisemba.",
+   "cond": "clear",
+   "set": "exam"
+  },
+  "zu04-17": {
+   "ref": "zu-0187",
+   "en": "The kind of cold that has you Googling 'underfloor heating Bloemfontein'.",
+   "draft": "Uhlobo lwamakhaza olukwenza ugcine usu-Google'a 'underfloor heating Bloemfontein'.",
+   "cond": "cold-clear",
+   "set": "exam"
+  },
+  "zu04-18": {
+   "ref": "zu-0152",
+   "en": "At least it's not raining. That's the bar.",
+   "draft": "Okungenani akulini. Yilokho okukhona.",
+   "cond": "cloudy",
+   "set": "exam"
+  },
+  "zu04-19": {
+   "ref": "zu-0446",
+   "en": "Thunder rolling in. Inside is the move.",
+   "draft": "Ukuduma kuyeza. Hlala phakathi.",
+   "cond": "thunder",
+   "set": "exam"
+  },
+  "zu04-20": {
+   "ref": "zu-0245",
+   "en": "The world got a soft filter this morning.",
+   "draft": "Umhlaba uthole ifilitha ethambile ekuseni.",
+   "cond": "fog",
+   "set": "exam"
+  },
+  "zu04-21": {
+   "ref": "zu-0485",
+   "en": "Slip-slops, shorts, sun. The trinity.",
+   "draft": "Izimbadada, amabhulukwe amafushane, ilanga. Inhlangano emithathu.",
+   "cond": "weekend",
+   "set": "exam"
+  },
+  "zu04-22": {
+   "ref": "zu-0084",
+   "en": "Wet conditions, probably. Don't quote us at the braai.",
+   "draft": "Izimo ezimanzi, cishe. Ungasicaphuni okosa.",
+   "cond": "rain",
+   "set": "exam"
+  },
+  "zu05-01": {
+   "ref": "zu-0334",
+   "en": "Good night, South Africa.",
+   "draft": "Hamba kahle, Ningizimu Afrika.",
+   "cond": "night",
+   "set": "exam"
+  },
+  "zu05-02": {
+   "ref": "zu-0200",
+   "en": "Frost on the lawn. Frost on the bakkie. Frost in the pet bowl.",
+   "draft": "Isithwathwa otshanini. Isithwathwa ku-bakkie. Isithwathwa ku-pet bowl.",
+   "cond": "cold-clear",
+   "set": "exam"
+  },
+  "zu05-03": {
+   "ref": "zu-0400",
+   "en": "The umbrella tax is now in effect.",
+   "draft": "Intela yesambulela isiyasebenza.",
+   "cond": "rain",
+   "set": "exam"
+  },
+  "zu05-04": {
+   "ref": "zu-0381",
+   "en": "Rain so heavy it should pay rent.",
+   "draft": "Imvula enzima kakhulu kufanele ikhokhe irenti.",
+   "cond": "rain",
+   "set": "exam"
+  },
+  "zu05-05": {
+   "ref": "zu-0204",
+   "en": "Time to dig out that ugly beanie.",
+   "draft": "Isikhathi sokumba i-beanie embi.",
+   "cond": "cold",
+   "set": "exam"
+  },
+  "zu05-06": {
+   "ref": "zu-0363",
+   "en": "This weather needs a life coach.",
+   "draft": "Lesi simo sezulu sidinga umqeqeshi wempilo.",
+   "cond": "rain-possible",
+   "set": "exam"
+  },
+  "zu05-07": {
+   "ref": "zu-0475",
+   "en": "The Weber's been waiting all week for this.",
+   "draft": "I-Weber ibelinde isonto lonke loku.",
+   "cond": "weekend",
+   "set": "exam"
+  },
+  "zu05-08": {
+   "ref": "zu-0239",
+   "en": "Your breath is doing special effects.",
+   "draft": "Umphefumulo wakho wenza i-special effects.",
+   "cond": "cold",
+   "set": "exam"
+  },
+  "zu05-09": {
+   "ref": "zu-0117",
+   "en": "This is the day the brochure was talking about.",
+   "draft": "Lolu usuku incwajana eyayikhuluma ngalo.",
+   "cond": "clear",
+   "set": "exam"
+  },
+  "zu05-10": {
+   "ref": "zu-0310",
+   "en": "The neighbours' pool has never looked so tempting.",
+   "draft": "Ipuli yomakhelwane ayikaze ibukeke ihehekayo kangaka.",
+   "cond": "heat",
+   "set": "exam"
+  },
+  "zu05-11": {
+   "ref": "zu-0327",
+   "en": "The frogs have entered the chat.",
+   "draft": "Amasele angene engxoxweni.",
+   "cond": "night",
+   "set": "exam"
+  },
+  "zu05-12": {
+   "ref": "zu-0043",
+   "en": "Probably cold. Take the jersey, you'll thank us.",
+   "draft": "Cishe kuyabanda. Thatha ijezi, uzosibonga.",
+   "cond": "cold",
+   "set": "exam"
+  },
+  "zu05-13": {
+   "ref": "zu-0069",
+   "en": "Some cloud, some sun. The ratio's anyone's guess.",
+   "draft": "Amafu akhona, ilanga likhona. Isilinganiso siwukuqagela.",
+   "cond": "partly-cloudy",
+   "set": "exam"
+  },
+  "zu05-14": {
+   "ref": "zu-0203",
+   "en": "Ja, it's jersey weather. Double jersey.",
+   "draft": "Yebo, yisikhathi sejezi. Ijezi ephindwe kabili.",
+   "cond": "cold",
+   "set": "exam"
+  },
+  "zu05-15": {
+   "ref": "zu-0241",
+   "en": "Can't see a thing. Not a thing.",
+   "draft": "Angiboni lutho. Lutho.",
+   "cond": "fog",
+   "set": "exam"
+  },
+  "zu05-16": {
+   "ref": "zu-0388",
+   "en": "At least the garden's happy. Someone has to be.",
+   "draft": "Okungenani ingadi iyajabula. Othile kumele ajabule.",
+   "cond": "rain",
+   "set": "exam"
+  },
+  "zu05-17": {
+   "ref": "zu-0211",
+   "en": "Rooibos consumption just doubled.",
+   "draft": "Ukusetshenziswa kwerooibos kusanda kuphindeka kabili.",
+   "cond": "cold",
+   "set": "exam"
+  },
+  "zu05-18": {
+   "ref": "zu-0335",
+   "en": "The moon's doing the most tonight.",
+   "draft": "Inyanga yenza konke namhlanje ebusuku.",
+   "cond": "night",
+   "set": "exam"
+  },
+  "zu05-19": {
+   "ref": "zu-0488",
+   "en": "Weekend vibes so strong they need their own playlist.",
+   "draft": "I-weekend vibes ezinamandla kakhulu zidinga i-playlist yazo.",
+   "cond": "weekend",
+   "set": "exam"
+  },
+  "zu05-20": {
+   "ref": "zu-0328",
+   "en": "Warm enough to leave the window open. Brave enough?",
+   "draft": "Kufudumele ngokwanele ukuvula ifasitela. Unesibindi?",
+   "cond": "night",
+   "set": "exam"
+  },
+  "zu05-21": {
+   "ref": "zu-0145",
+   "en": "Nobody's posting this sunset on Instagram.",
+   "draft": "Akekho ozoposta lokhu ku-Instagram.",
+   "cond": "cloudy",
+   "set": "exam"
+  },
+  "zu05-22": {
+   "ref": "zu-0181",
+   "en": "Karoo morning. The kind that makes you respect every farmer who chose this.",
+   "draft": "Ekuseni eKaroo. Uhlobo olwenza uhloniphe wonke umlimi okhethe lokhu.",
+   "cond": "cold-clear",
+   "set": "exam"
+  },
+  "zu05-23": {
+   "ref": "zu-0423",
+   "en": "Windows closed, kettle on, and wait.",
+   "draft": "Amafasitela avalwe, iketile ivuliwe, ulinde.",
+   "cond": "storm",
+   "set": "exam"
+  },
+  "zu06-01": {
+   "ref": "zu-0182",
+   "en": "The car's heater is the most important relationship in your life right now.",
+   "draft": "I-heater yemoto yiyona relationship ebaluleke kakhulu empilweni yakho njengamanje.",
+   "cond": "cold-clear",
+   "set": "exam"
+  },
+  "zu06-02": {
+   "ref": "zu-0397",
+   "en": "Nobody told the forecast. It just arrived.",
+   "draft": "Akekho otshele isibikezelo. Sivele safika.",
+   "cond": "rain",
+   "set": "exam"
+  },
+  "zu06-03": {
+   "ref": "zu-0235",
+   "en": "Layer up like you're climbing Sani Pass.",
+   "draft": "Gqoka izingubo eziningi njengokukhwela uSani Pass.",
+   "cond": "cold",
+   "set": "exam"
+  },
+  "zu06-04": {
+   "ref": "zu-0075",
+   "en": "Rain's possible. So is being completely wrong.",
+   "draft": "Imvula iyenzeka. Nokungabi yikho nhlobo kuyenzeka.",
+   "cond": "rain-possible",
+   "set": "exam"
+  },
+  "zu06-05": {
+   "ref": "zu-0210",
+   "en": "The car seats are freezing. Everything is freezing.",
+   "draft": "Izihlalo zemoto ziyaqanda. Yonke into iyaqanda.",
+   "cond": "cold",
+   "set": "exam"
+  },
+  "zu06-06": {
+   "ref": "zu-0272",
+   "en": "The morning forgot to render.",
+   "draft": "Ekuseni kukhohliwe ukurenda.",
+   "cond": "fog",
+   "set": "exam"
+  },
+  "zu06-07": {
+   "ref": "zu-0068",
+   "en": "Partly cloudy, partly guessing.",
+   "draft": "Kunamafu kancane, kuqagela kancane.",
+   "cond": "partly-cloudy",
+   "set": "exam"
+  },
+  "zu06-08": {
+   "ref": "zu-0322",
+   "en": "Perfect weather for pretending you'll go to bed early.",
+   "draft": "Isimo sezulu esihle sokuzenza uzolala kusenesikhathi.",
+   "cond": "night",
+   "set": "exam"
+  },
+  "zu06-09": {
+   "ref": "zu-0141",
+   "en": "A hoodie and an attitude. That's today.",
+   "draft": "I-hoodie nesimo sengqondo. Namuhla kunje.",
+   "cond": "cloudy",
+   "set": "exam"
+  },
+  "zu06-10": {
+   "ref": "zu-0403",
+   "en": "Solidarity to everyone with one wet shoe right now.",
+   "draft": "Ukuhlangana nabo bonke abanesicathulo esisodwa esimanzi manje.",
+   "cond": "rain",
+   "set": "exam"
+  },
+  "zu06-11": {
+   "ref": "zu-0411",
+   "en": "The dams are doing a happy dance.",
+   "draft": "Amadamu enza umdanso ojabulayo.",
+   "cond": "rain",
+   "set": "exam"
+  },
+  "zu06-12": {
+   "ref": "zu-0248",
+   "en": "Somewhere out there is the road. We think.",
+   "draft": "Endaweni ethile ngaphandle kunomgwaqo. Sicabanga.",
+   "cond": "fog",
+   "set": "exam"
+  },
+  "zu06-13": {
+   "ref": "zu-0196",
+   "en": "Highveld winter: the only place where you wear two jackets to fetch the post.",
+   "draft": "I-Highveld winter: indawo lapho ugqoka ama-jacket amabili uyolanda iposi.",
+   "cond": "cold-clear",
+   "set": "exam"
+  },
+  "zu06-14": {
+   "ref": "zu-0440",
+   "en": "The sky's having a full-on tantrum.",
+   "draft": "Isibhakabhaka sithukuthele ngempela.",
+   "cond": "storm",
+   "set": "exam"
+  },
+  "zu06-15": {
+   "ref": "zu-0135",
+   "en": "The sky's giving absolutely nothing.",
+   "draft": "Isibhakabhaka asiniki lutho.",
+   "cond": "cloudy",
+   "set": "exam"
+  },
+  "zu06-16": {
+   "ref": "zu-0383",
+   "en": "The commute just became a team sport.",
+   "draft": "Uhambo seluphenduke umdlalo weqembu.",
+   "cond": "rain",
+   "set": "exam"
+  },
+  "zu06-17": {
+   "ref": "zu-0473",
+   "en": "Your out-of-office is doing the heavy lifting.",
+   "draft": "I-out-of-office yakho yenza umsebenzi onzima.",
+   "cond": "weekend",
+   "set": "exam"
+  },
+  "zu06-18": {
+   "ref": "zu-0247",
+   "en": "The streetlights are trying their best.",
+   "draft": "Izibani zomgwaqo zizama ngakho konke.",
+   "cond": "fog",
+   "set": "exam"
+  },
+  "zu06-19": {
+   "ref": "zu-0185",
+   "en": "The car coughed twice before it agreed to start.",
+   "draft": "Imoto ikhwehlele kabili ngaphambi kokuvuma uku-starta.",
+   "cond": "cold-clear",
+   "set": "exam"
+  },
+  "zu06-20": {
+   "ref": "zu-0098",
+   "en": "Perfect day. No excuses. Get out.",
+   "draft": "Usuku oluphelele. Akukho zaba. Phuma.",
+   "cond": "clear",
+   "set": "exam"
+  },
+  "zu06-21": {
+   "ref": "zu-0242",
+   "en": "Driving slow is not a suggestion.",
+   "draft": "Ukushayela kancane akusona isiphakamiso.",
+   "cond": "fog",
+   "set": "exam"
+  },
+  "zu06-22": {
+   "ref": "zu-0312",
+   "en": "The pool is not optional.",
+   "draft": "Ipuli alikho ukukhetha.",
+   "cond": "heat",
+   "set": "exam"
+  },
+  "zu06-23": {
+   "ref": "zu-0088",
+   "en": "Probably brewing something. Stay close to a roof.",
+   "draft": "Cishe kukhona okuphekwayo. Hlala eduze nophahla.",
+   "cond": "storm",
+   "set": "exam"
+  },
+  "zu07-01": {
+   "ref": "zu-0179",
+   "en": "The kids still going to school in shorts. They know things we don't.",
+   "draft": "Izingane zisaya esikoleni ngama-shorts. Ziyazi izinto thina esingazazi.",
+   "cond": "cold-clear",
+   "set": "exam"
+  },
+  "zu07-02": {
+   "ref": "zu-0421",
+   "en": "Respect the thunder. It's earned it.",
+   "draft": "Hlonipha ukuduma. Kukufanele.",
+   "cond": "storm",
+   "set": "exam"
+  },
+  "zu07-03": {
+   "ref": "zu-0418",
+   "en": "Eskom wishes it had this power.",
+   "draft": "U-Eskom ufisa ukuba namandla anje.",
+   "cond": "storm",
+   "set": "exam"
+  },
+  "zu07-04": {
+   "ref": "zu-0499",
+   "en": "Ponytail holders are doing overtime.",
+   "draft": "Izibopho zezinwele zisebenza ngokweqile.",
+   "cond": "wind",
+   "set": "exam"
+  },
+  "zu07-05": {
+   "ref": "zu-0107",
+   "en": "The fynbos is loving it. You should too.",
+   "draft": "Ifynbos iyakuthanda. Nawe kufanele.",
+   "cond": "clear",
+   "set": "exam"
+  },
+  "zu07-06": {
+   "ref": "zu-0301",
+   "en": "Your makeup has an expiry date of 9am.",
+   "draft": "I-makeup yakho inesikhathi esiphelelayo sangu-9 ekuseni.",
+   "cond": "heat",
+   "set": "exam"
+  },
+  "zu07-07": {
+   "ref": "zu-0448",
+   "en": "Lightning's putting on a show — watch from the window.",
+   "draft": "Umbani uveza umboniso — bukela ngewindi.",
+   "cond": "thunder",
+   "set": "exam"
+  },
+  "zu07-08": {
+   "ref": "zu-0062",
+   "en": "Calm night, most likely. The sky reserves the right to change.",
+   "draft": "Ubusuku obuzolile, cishe. Isibhakabhaka singashintsha.",
+   "cond": "night",
+   "set": "exam"
+  },
+  "zu07-09": {
+   "ref": "zu-0105",
+   "en": "Days like this should come with a soundtrack.",
+   "draft": "Izinsuku ezinje kufanele zize ne-soundtrack.",
+   "cond": "clear",
+   "set": "exam"
+  },
+  "zu07-10": {
+   "ref": "zu-0057",
+   "en": "Hot-ish, likely. Keep the water close.",
+   "draft": "Kushisa cishe. Gcina amanzi eduze.",
+   "cond": "heat",
+   "set": "exam"
+  },
+  "zu07-11": {
+   "ref": "zu-0445",
+   "en": "The braai is cancelled. Yes, really.",
+   "draft": "Ukosa kukhanselelwe. Yebo, ngempela.",
+   "cond": "storm",
+   "set": "exam"
+  },
+  "zu07-12": {
+   "ref": "zu-0175",
+   "en": "The kind of day Joburg pretends it doesn't have until you're standing in it.",
+   "draft": "Uhlobo losuku iJoburg ezenza sengathi alukho, kuze kube usume phakathi kwalo.",
+   "cond": "cold-clear",
+   "set": "exam"
+  },
+  "zu07-13": {
+   "ref": "zu-0456",
+   "en": "Tan lines are not a personality trait.",
+   "draft": "Imigqa yokushisa ayisiyona ubuntu.",
+   "cond": "uv",
+   "set": "exam"
+  },
+  "zu07-14": {
+   "ref": "zu-0508",
+   "en": "Your hairstyle? Gone. Accept it.",
+   "draft": "Isitayela sakho sezinwele? Sihambile. Yamukela.",
+   "cond": "wind",
+   "set": "exam"
+  },
+  "zu07-15": {
+   "ref": "zu-0137",
+   "en": "Eskom-friendly weather. No solar today.",
+   "draft": "Isimo sezulu esilungele i-Eskom. Akukho solar.",
+   "cond": "cloudy",
+   "set": "exam"
+  },
+  "zu07-16": {
+   "ref": "zu-0061",
+   "en": "Probably a clear night. The stars haven't confirmed.",
+   "draft": "Cishe ubusuku obuhle. Izinkanyezi azikaqinisekisi.",
+   "cond": "night",
+   "set": "exam"
+  },
+  "zu07-17": {
+   "ref": "zu-0299",
+   "en": "Your steering wheel is a hot plate.",
+   "draft": "Isitelingi sakho siyisitsha esishisayo.",
+   "cond": "heat",
+   "set": "exam"
+  },
+  "zu07-18": {
+   "ref": "zu-0102",
+   "en": "Africa's sky just hits different.",
+   "draft": "Isibhakabhaka sase-Afrika sihlukile nje.",
+   "cond": "clear",
+   "set": "exam"
+  },
+  "zu07-19": {
+   "ref": "zu-0386",
+   "en": "Wet socks. The ultimate betrayal.",
+   "draft": "Amasokisi amanzi. Ukukhaphela okukhulu.",
+   "cond": "rain",
+   "set": "exam"
+  },
+  "zu07-20": {
+   "ref": "zu-0233",
+   "en": "Outside has betrayed you and you went anyway.",
+   "draft": "Ngaphandle kukukhaphele futhi noma kunjalo uhambile.",
+   "cond": "cold",
+   "set": "exam"
+  },
+  "zu07-21": {
+   "ref": "zu-0308",
+   "en": "The ceiling fan is doing its best, but its best is not enough.",
+   "draft": "Ifeni yophahla yenza okusemandleni ayo, kodwa okusemandleni ayo akwanele.",
+   "cond": "heat",
+   "set": "exam"
+  },
+  "zu07-22": {
+   "ref": "zu-0466",
+   "en": "The sun is personally attacking you.",
+   "draft": "Ilanga likuhlasela wena mathupha.",
+   "cond": "uv",
+   "set": "exam"
+  },
+  "zu08-01": {
+   "ref": "zu-0193",
+   "en": "The braai is happening. The braai always happens. We just pull the chairs closer.",
+   "draft": "I-braai iyenzeka. I-braai ihlala yenzeka. Sidonsa nje izihlalo zisondele.",
+   "cond": "cold-clear",
+   "set": "exam"
+  },
+  "zu08-02": {
+   "ref": "zu-0419",
+   "en": "Lightning's putting Eskom's grid to shame.",
+   "draft": "Umbani ubeka i-Eskom ehlazweni.",
+   "cond": "storm",
+   "set": "exam"
+  },
+  "zu08-03": {
+   "ref": "zu-0326",
+   "en": "Tomorrow's weather is tomorrow's problem.",
+   "draft": "Isimo sezulu sakusasa sinkinga yakusasa.",
+   "cond": "night",
+   "set": "exam"
+  },
+  "zu08-04": {
+   "ref": "zu-0261",
+   "en": "Your driveway is a mystery novel right now.",
+   "draft": "Indlela yakho yokungena iyinoveli yemfihlo manje.",
+   "cond": "fog",
+   "set": "exam"
+  },
+  "zu08-05": {
+   "ref": "zu-0054",
+   "en": "Watch for fog — it likes to arrive unannounced.",
+   "draft": "Qaphela inkungu — ithanda ukufika ingazange yazise.",
+   "cond": "fog",
+   "set": "exam"
+  },
+  "zu08-06": {
+   "ref": "zu-0083",
+   "en": "Rain on the way, give or take.",
+   "draft": "Imvula iyeza, cishe.",
+   "cond": "rain",
+   "set": "exam"
+  },
+  "zu08-07": {
+   "ref": "zu-0280",
+   "en": "Hail's down — cover the bakkie.",
+   "draft": "Isichotho siyawa — vala ibakkie.",
+   "cond": "hail",
+   "set": "exam"
+  },
+  "zu08-08": {
+   "ref": "zu-0074",
+   "en": "Could rain. Could just threaten to.",
+   "draft": "Kungana. Kungasongela nje.",
+   "cond": "rain-possible",
+   "set": "exam"
+  },
+  "zu08-09": {
+   "ref": "zu-0497",
+   "en": "Your washing just moved to the neighbour's yard.",
+   "draft": "Izingubo zakho zisanda kuthuthela egcekeni likamakhelwane.",
+   "cond": "wind",
+   "set": "exam"
+  },
+  "zu08-10": {
+   "ref": "zu-0321",
+   "en": "The neighbourhood cats have taken over.",
+   "draft": "Amakati akhelwane asethathile.",
+   "cond": "night",
+   "set": "exam"
+  },
+  "zu08-11": {
+   "ref": "zu-0480",
+   "en": "Saturday energy: maximum. Responsibilities: minimum.",
+   "draft": "Amandla angoMgqibelo: aphezulu. Imisebenzi: iphansi.",
+   "cond": "weekend",
+   "set": "exam"
+  },
+  "zu08-12": {
+   "ref": "zu-0279",
+   "en": "Sky's throwing rocks. Stay inside.",
+   "draft": "Isibhakabhaka silahla amatshe. Hlala phakathi.",
+   "cond": "hail",
+   "set": "exam"
+  },
+  "zu08-13": {
+   "ref": "zu-0100",
+   "en": "Save this one in the memory bank.",
+   "draft": "Gcina lolu suku enkumbulweni.",
+   "cond": "clear",
+   "set": "exam"
+  },
+  "zu08-14": {
+   "ref": "zu-0262",
+   "en": "The fog arrived unannounced. Classic fog.",
+   "draft": "Inkungu ifikile ingamenyiwe. Inkungu yoqobo.",
+   "cond": "fog",
+   "set": "exam"
+  },
+  "zu08-15": {
+   "ref": "zu-0470",
+   "en": "Fire up the Weber. It's the law.",
+   "draft": "Basa i-Weber. Kungumthetho.",
+   "cond": "weekend",
+   "set": "exam"
+  },
+  "zu08-16": {
+   "ref": "zu-0051",
+   "en": "Mist building, maybe. Headlights wouldn't hurt.",
+   "draft": "Inkungu iyakheka, mhlawumbe. Layita izibani.",
+   "cond": "fog",
+   "set": "exam"
+  },
+  "zu08-17": {
+   "ref": "zu-0243",
+   "en": "The fog ate the neighbourhood.",
+   "draft": "Inkungu idle indawo.",
+   "cond": "fog",
+   "set": "exam"
+  },
+  "zu08-18": {
+   "ref": "zu-0287",
+   "en": "Everyone with a pool just became very popular.",
+   "draft": "Bonke abanepuli basanda kuba nesithunzi kakhulu.",
+   "cond": "heat",
+   "set": "exam"
+  },
+  "zu08-19": {
+   "ref": "zu-0427",
+   "en": "Nature just reminded us of the pecking order.",
+   "draft": "Imvelo isanda kusikhumbuza ukuthi ubani ophambili.",
+   "cond": "storm",
+   "set": "exam"
+  },
+  "zu08-20": {
+   "ref": "zu-0158",
+   "en": "The sun's bunking today.",
+   "draft": "Ilanga liyabaleka namuhla.",
+   "cond": "cloudy",
+   "set": "exam"
+  },
+  "zu08-21": {
+   "ref": "zu-0269",
+   "en": "Walking to the bin is now an expedition.",
+   "draft": "Ukuhamba uye esikhongelweni manje kuwuhambo.",
+   "cond": "fog",
+   "set": "exam"
+  },
+  "zu08-22": {
+   "ref": "zu-0050",
+   "en": "Probably fog later. The Boland does this.",
+   "draft": "Cishe inkungu kamuva. I-Boland yenza lokhu.",
+   "cond": "fog",
+   "set": "exam"
+  },
+  "zu08-23": {
+   "ref": "zu-0221",
+   "en": "Your motivation froze on the way to the door.",
+   "draft": "Ugqozi lwakho luqande endleleni eya emnyango.",
+   "cond": "cold",
+   "set": "exam"
+  },
+  "zu09-01": {
+   "ref": "zu-0453",
+   "en": "Walking to the car counts as a sun hazard today.",
+   "draft": "Ukuhamba uye emotweni kubhekwa njengengozi yelanga namuhla.",
+   "cond": "uv",
+   "set": "exam"
+  },
+  "zu09-02": {
+   "ref": "zu-0391",
+   "en": "Your suede shoes chose today? Bold.",
+   "draft": "Izicathulo zakho zesuede zikhethe namuhla? Isibindi.",
+   "cond": "rain",
+   "set": "exam"
+  },
+  "zu09-03": {
+   "ref": "zu-0319",
+   "en": "Perfect night to actually see the Milky Way.",
+   "draft": "Ubusuku obuhle bokubona iNdlela yoSisi.",
+   "cond": "night",
+   "set": "exam"
+  },
+  "zu09-04": {
+   "ref": "zu-0039",
+   "en": "Grey skies, low conviction.",
+   "draft": "Izulu elimpunga, ukholo oluphansi.",
+   "cond": "cloudy",
+   "set": "exam"
+  },
+  "zu09-05": {
+   "ref": "zu-0216",
+   "en": "Getting out of bed was a mistake. A documented one.",
+   "draft": "Ukuvuka bekuyiphutha. Elibhaliwe phansi.",
+   "cond": "cold",
+   "set": "exam"
+  },
+  "zu09-06": {
+   "ref": "zu-0469",
+   "en": "Braai weather, boet! No excuses.",
+   "draft": "Izulu lokosa, boet! Akukho zaba.",
+   "cond": "weekend",
+   "set": "exam"
+  },
+  "zu09-07": {
+   "ref": "zu-0360",
+   "en": "Bring a jacket. Or sunscreen. Or both.",
+   "draft": "Letha ijazi. Noma isivikelo selanga. Noma kokubili.",
+   "cond": "rain-possible",
+   "set": "exam"
+  },
+  "zu09-08": {
+   "ref": "zu-0294",
+   "en": "Ice cream isn't a treat. It's survival.",
+   "draft": "I-ice cream ayisiyona isipho. Yikuphila.",
+   "cond": "heat",
+   "set": "exam"
+  },
+  "zu09-09": {
+   "ref": "zu-0161",
+   "en": "A perfectly average sky doing perfectly average things.",
+   "draft": "Isibhakabhaka esiphakathi nendawo esenza izinto eziphakathi nendawo.",
+   "cond": "cloudy",
+   "set": "exam"
+  },
+  "zu09-10": {
+   "ref": "zu-0283",
+   "en": "You could fry an egg on the N1.",
+   "draft": "Ungabhaka iqanda ku-N1.",
+   "cond": "heat",
+   "set": "exam"
+  },
+  "zu09-11": {
+   "ref": "zu-0278",
+   "en": "Table Mountain? What Table Mountain?",
+   "draft": "I-Table Mountain? Iyiphi i-Table Mountain?",
+   "cond": "fog",
+   "set": "exam"
+  },
+  "zu09-12": {
+   "ref": "zu-0108",
+   "en": "Blue sky, warm breeze. The simple stuff.",
+   "draft": "Isibhakabhaka esiluhlaza, umoya ofudumele. Izinto ezilula.",
+   "cond": "clear",
+   "set": "exam"
+  },
+  "zu09-13": {
+   "ref": "zu-0228",
+   "en": "Even the geyser is putting in extra hours.",
+   "draft": "Ngisho ne-geyser isebenza amahora engeziwe.",
+   "cond": "cold",
+   "set": "exam"
+  },
+  "zu09-14": {
+   "ref": "zu-0295",
+   "en": "The shade is working harder than you today.",
+   "draft": "Umthunzi usebenza ngamandla kunawe namuhla.",
+   "cond": "heat",
+   "set": "exam"
+  },
+  "zu09-15": {
+   "ref": "zu-0449",
+   "en": "Sunscreen is not optional, boet.",
+   "draft": "Ikhrimu yelanga ayikhona ukukhetha, boet.",
+   "cond": "uv",
+   "set": "exam"
+  },
+  "zu09-16": {
+   "ref": "zu-0186",
+   "en": "The koppies look like a postcard. Your feet feel like ice blocks.",
+   "draft": "Ama-koppies abukeka njenge-postcard. Izinyawo zakho zizwakala njenge-ice blocks.",
+   "cond": "cold-clear",
+   "set": "exam"
+  },
+  "zu09-17": {
+   "ref": "zu-0037",
+   "en": "Probably grey. Could lift, could thicken.",
+   "draft": "Cishe kumpunga. Kungaphakama, kungajiya.",
+   "cond": "cloudy",
+   "set": "exam"
+  },
+  "zu09-18": {
+   "ref": "zu-0274",
+   "en": "The world just... disappeared.",
+   "draft": "Umhlaba nje... wanyamalala.",
+   "cond": "fog",
+   "set": "exam"
+  },
+  "zu09-19": {
+   "ref": "zu-0070",
+   "en": "Mixed bag out there. We're hedging.",
+   "draft": "Usuku oluxubene. Asiqinisekile.",
+   "cond": "partly-cloudy",
+   "set": "exam"
+  },
+  "zu09-20": {
+   "ref": "zu-0281",
+   "en": "Tiny ice bombs falling. Indoors is the only plan.",
+   "draft": "Amabhomu eqhwa amancane ayawa. Phakathi yiyo kuphela inhlelo.",
+   "cond": "hail",
+   "set": "exam"
+  },
+  "zu09-21": {
+   "ref": "zu-0162",
+   "en": "The clouds RSVP'd 'maybe' and showed up anyway.",
+   "draft": "Amafu aphendule athi 'mhlawumbi' avele eza nje.",
+   "cond": "cloudy",
+   "set": "exam"
+  },
+  "zu09-22": {
+   "ref": "zu-0227",
+   "en": "The duvet is calling and the duvet is winning.",
+   "draft": "I-duvet iyabiza futhi i-duvet iyaphumelela.",
+   "cond": "cold",
+   "set": "exam"
+  },
+  "zu09-23": {
+   "ref": "zu-0053",
+   "en": "Could go misty. The dew point's flirting with it.",
+   "draft": "Kungaba nenkungu. Qaphela.",
+   "cond": "fog",
+   "set": "exam"
+  },
+  "zu10-01": {
+   "ref": "zu-0264",
+   "en": "Visibility: basically zero.",
+   "draft": "Ukubonakala: cishe iqanda.",
+   "cond": "fog",
+   "set": "exam"
+  },
+  "zu10-02": {
+   "ref": "zu-0094",
+   "en": "Breezy, probably. Maybe more.",
+   "draft": "Kunomoya omncane, cishe. Mhlawumbe okwengeziwe.",
+   "cond": "wind",
+   "set": "exam"
+  },
+  "zu10-03": {
+   "ref": "zu-0215",
+   "en": "Cold enough for soup. And a second soup.",
+   "draft": "Kubanda ngokwanele kwesobho. Nesobho lesibili.",
+   "cond": "cold",
+   "set": "exam"
+  },
+  "zu10-04": {
+   "ref": "zu-0096",
+   "en": "Some wind expected. Strength still TBC.",
+   "draft": "Kulindeleke umoya othile. Amandla awakaqinisekiswa.",
+   "cond": "wind",
+   "set": "exam"
+  },
+  "zu10-05": {
+   "ref": "zu-0260",
+   "en": "The traffic lights are vibing in the mist.",
+   "draft": "Izibani zomgwaqo ziyavuma enkungu.",
+   "cond": "fog",
+   "set": "exam"
+  },
+  "zu10-06": {
+   "ref": "zu-0250",
+   "en": "Everything looks like a film scene. A creepy one.",
+   "draft": "Yonke into ibukeka njengomfanekiso wefilimu. Eyesabekayo.",
+   "cond": "fog",
+   "set": "exam"
+  },
+  "zu10-07": {
+   "ref": "zu-0220",
+   "en": "Nobody signed up for this temperature.",
+   "draft": "Akekho ozibhalisele leli zinga lokushisa.",
+   "cond": "cold",
+   "set": "exam"
+  },
+  "zu10-08": {
+   "ref": "zu-0110",
+   "en": "The sky's giving everything today.",
+   "draft": "Isibhakabhaka sinikeza konke namuhla.",
+   "cond": "clear",
+   "set": "exam"
+  },
+  "zu10-09": {
+   "ref": "zu-0081",
+   "en": "Looks wet. The models are fairly sure, not certain.",
+   "draft": "Kubukeka kumanzi. Amamodeli aqinisekile cishe, hhayi ngokugcwele.",
+   "cond": "rain",
+   "set": "exam"
+  },
+  "zu10-10": {
+   "ref": "zu-0382",
+   "en": "Your shoes are about to have a bad day.",
+   "draft": "Izicathulo zakho zizoba nosuku olubi.",
+   "cond": "rain",
+   "set": "exam"
+  },
+  "zu10-11": {
+   "ref": "zu-0315",
+   "en": "Your car seat is a weapon right now.",
+   "draft": "Isihlalo semoto sakho siyisikhali manje.",
+   "cond": "heat",
+   "set": "exam"
+  },
+  "zu10-12": {
+   "ref": "zu-0263",
+   "en": "The car is out there. Allegedly.",
+   "draft": "Imoto ikhona ngaphandle. Kuthiwa nje.",
+   "cond": "fog",
+   "set": "exam"
+  },
+  "zu10-13": {
+   "ref": "zu-0387",
+   "en": "You'll dry. Eventually. Probably.",
+   "draft": "Uzokoma. Ekugcineni. Cishe.",
+   "cond": "rain",
+   "set": "exam"
+  },
+  "zu10-14": {
+   "ref": "zu-0202",
+   "en": "Sun's out. Don't be fooled. Nature is lying.",
+   "draft": "Ilanga liphumile. Ungakhohliswa. Imvelo iqamba amanga.",
+   "cond": "cold-clear",
+   "set": "exam"
+  },
+  "zu10-15": {
+   "ref": "zu-0253",
+   "en": "Silent Hill vibes. Without the monsters. Hopefully.",
+   "draft": "I-Silent Hill vibes. Ngaphandle kwezimanga. Sithemba.",
+   "cond": "fog",
+   "set": "exam"
+  },
+  "zu10-16": {
+   "ref": "zu-0066",
+   "en": "Night looks calm. Models permitting.",
+   "draft": "Ubusuku bubukeka buzolile. Uma amamodeli evuma.",
+   "cond": "night",
+   "set": "exam"
+  },
+  "zu10-17": {
+   "ref": "zu-0198",
+   "en": "Welkom-cold today. The kind that goes through three jerseys like they aren't there.",
+   "draft": "Kubanda okweWelkom namuhla. Amakhaza angena kuma-jersey amathathu sengathi awekho.",
+   "cond": "cold-clear",
+   "set": "exam"
+  },
+  "zu10-18": {
+   "ref": "zu-0375",
+   "en": "The sky can't make up its mind. Join the club.",
+   "draft": "Isibhakabhaka asikwazi ukuzinquma. Joyina iklabhu.",
+   "cond": "rain-possible",
+   "set": "exam"
+  },
+  "zu10-19": {
+   "ref": "zu-0163",
+   "en": "Today's weather: still loading.",
+   "draft": "Isimo sezulu sanamuhla: sisalayisha.",
+   "cond": "cloudy",
+   "set": "exam"
+  },
+  "zu10-20": {
+   "ref": "zu-0159",
+   "en": "Cloud cover with a side of who-cares.",
+   "draft": "Amafu nohlangothi lokuthi ubani onendaba.",
+   "cond": "cloudy",
+   "set": "exam"
+  },
+  "zu10-21": {
+   "ref": "zu-0255",
+   "en": "Visibility sponsored by nobody.",
+   "draft": "Ukubonakala kuxhaswe ngubani. Muntu.",
+   "cond": "fog",
+   "set": "exam"
+  },
+  "zu10-22": {
+   "ref": "zu-0416",
+   "en": "Somewhere a roof is someone's new kite.",
+   "draft": "Endaweni ethile uphahla lungumkhumbi omusha.",
+   "cond": "storm",
+   "set": "exam"
+  },
+  "zu10-23": {
+   "ref": "zu-0313",
+   "en": "Hotter than a bakkie dashboard at noon.",
+   "draft": "Kushisa ukudlula i-dashboard yebakkie emini.",
+   "cond": "heat",
+   "set": "exam"
+  }
+ }
+}

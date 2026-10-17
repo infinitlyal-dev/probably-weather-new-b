@@ -8,7 +8,7 @@ import { COPY_BANK, loadCopyBank, isCopyBankLoaded } from './copy-loader.js';
 import { WITTY_DAY_TAGS, contextTagAllows, eligibleWittyPool, resolveNightAwareCopyCondition } from './witty-day-tags.js';
 import { isWesternCape } from './geo-regions.js';
 import { getWeatherBackgroundFallbackFolder, getWeatherBackgroundFolder } from './weather-visuals.js';
-import { getRotationDay, getRotationWeek, buildPickerPaths } from './image-picker.js';
+import { getRotationDay, getRotationWeek, buildPickerPaths, pickHeroPair, heroPairPath } from './image-picker.js';
 import { pickConditionIconForTime, pickHourlyIcon, parseLocalIsoMinutes, isHourDaylight } from './weather-emoji.js';
 import { weatherIconSvg, ICON_CONDITION } from './weather-icons.js';
 import { heroCropFor, applyHeroCrop, heroCropKey, heroCropDesktopFor, applyHeroCropDesktop } from './hero-crop.js';
@@ -2299,6 +2299,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const BESPOKE_TABLES = {
     en: { load: () => import('./hero-lines.js') },
     af: { load: () => import('./hero-lines-af.js'), line: (mod, english) => mod.heroLineAf(english) },
+    // isiXhosa (9 Oct 2026): PROVISIONAL drafts through the rebuilt lang-check, pending a native reader
+    // (scripts/lang-check/apply-hero-lines-provisional.mjs); photographs without a row keep the condition bank line.
+    xh: { load: () => import('./hero-lines-xh.js'), line: (mod, english) => mod.heroLine(english) },
+    // isiZulu (10 Oct 2026): the same, after isiZulu passed the re-run October exam.
+    zu: { load: () => import('./hero-lines-zu.js'), line: (mod, english) => mod.heroLine(english) },
+    // Sesotho (14 Oct 2026): the same, after Sesotho passed the re-run October exam (review/sesotho-exam-fix-2026-10-14.md).
+    st: { load: () => import('./hero-lines-st.js'), line: (mod, english) => mod.heroLine(english) },
   };
   const bespokeTables = {};
   const bespokeTableLoads = {};
@@ -2380,9 +2387,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const timeOfDay = getTimeOfDay();
     const week = getRotationWeek();
     const r = getRotationDay();
-    const chain = buildPickerPaths(folder, fallbackFolder, timeOfDay, week, r);
+    // A hero pair (Al + Maat, 14 Oct 2026) carries its own rules instead of a slot and takes this cell on one of its
+    // days each week (image-picker.js pickHeroPair); the slot's chain stays behind it as the fallback.
+    const pair = pickHeroPair(folder, timeOfDay);
+    const slotChain = buildPickerPaths(folder, fallbackFolder, timeOfDay, week, r);
+    const chain = pair ? [heroPairPath(pair), ...slotChain] : slotChain;
 
-    debugLog(`[Image picker] condition=${condition} folder=${folder} week=${week} time=${timeOfDay} day=${r}/7 (SAST weekday, Mon=1) → ${chain[0]}`);
+    debugLog(`[Image picker] condition=${condition} folder=${folder} week=${week} time=${timeOfDay} day=${r}/7 (SAST weekday, Mon=1)${pair ? ` hero pair ${pair.id}` : ''} → ${chain[0]}`);
 
     // Applied against the INTENDED image, synchronously, in the same tick that
     // renderHome set the condition line — so the caption is written once and

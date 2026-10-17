@@ -30,3 +30,15 @@ voice, not an error (see errors-observed.md).
 - Contemporary Lesedi FM / SA-Sesotho social weather-humour samples for register calibration.
 - Confirm any remaining nature/animal terms before drafting relies on them (cf. tsie/tswiritswiri,
   dikgogo/merubisi corrections — the model's animal vocabulary was unreliable).
+
+## 2026-10-09 — counts from current text (Vonk; `node scripts/lang-check/fetch-corpora.mjs ngrams`)
+Stored as word / pair / triple counts only (`.lang-check-cache/ngrams/st.json`); no sentence was kept. What each source gave:
+gov.za Sesotho pages 115 pages → 8 544 tokens. No current Sesotho news source answered: SABC News loops its redirects
+for any client without a browser (not worked around); PanSALB's orthography rules are behind a robots.txt that disallows
+all (not fetched). Local corpora counted the same way: 1.25 M tokens.
+Paraphrased observations:
+- The SA orthography holds in print: jwale 869 against joale 85; lehodimo 119 against leholimo 39; kajeno 326, the
+  Setswana gompieno 0, bosiu 155 and bosigo 0.
+- But "thata" (Setswana "very") is attested 250 times in the Sesotho corpora against haholo 1 657: the corpora carry
+  Setswana strays, which is why the checker misses "Ho tjhesa thata" — a native rule (haholo, not thata) beats the count.
+- ho a bata 2, ho a chesa 0 as triples: the corpora hold little conversational weather Sesotho.

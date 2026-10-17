@@ -7,6 +7,8 @@
 //        (or a JSONL file with one such object per line)
 //   node scripts/lang-check.mjs --build-index [zu xh st af tn nso nl en]
 //   node scripts/lang-check.mjs --sources          # what each index was built from, with licences
+//   add --v2 to any check: the rebuilt checker of 9 Oct 2026 (lib/checker-v2.mjs — concord, attestation in context,
+//   and the back-translation record from data/bt-cache.jsonl; scripts/lang-check/bt.mjs makes those records)
 //
 // Verdict shape (see scripts/lang-check/lib/checker.mjs):
 //   { lang, en, text, key, confidence, action: pass|triage|triage-high, ok, findings: [
@@ -45,7 +47,8 @@ async function main() {
     for (const [k, s] of Object.entries(SOURCES)) console.log(`  ${k}: ${s.name} — ${s.licence} — ${s.url}`);
     return;
   }
-  const { check, formatVerdict } = await import('./lang-check/lib/checker.mjs');
+  const { check: check1, formatVerdict } = await import('./lang-check/lib/checker.mjs');
+  const check = has('--v2') ? (await import('./lang-check/lib/checker-v2.mjs')).checkV2 : check1;
   const verbose = has('--verbose');
   let items = [];
   if (val('--file')) {

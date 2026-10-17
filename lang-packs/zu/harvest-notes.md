@@ -31,3 +31,16 @@ Keep braai, brand names, tech words, place names as loans. `Source: literator.or
 - Confirmed everyday terms for: seagulls, kite, "expectations" (the calque casualties in
   errors-observed.md) — need a native or a strong corpus hit, not a model guess.
 - Contemporary weather-humour samples from Isolezwe/Ukhozi social feeds (register calibration).
+
+## 2026-10-09 — counts from current text (Vonk; `node scripts/lang-check/fetch-corpora.mjs ngrams`)
+Stored as word / pair / triple counts only (`.lang-check-cache/ngrams/zu.json`); no sentence was kept. What each source gave:
+Isolezwe 300 article pages → 75 464 tokens of isiZulu paragraphs; gov.za isiZulu pages 63 pages → 3 070 tokens (most of
+the section is English); SABC News unreachable (its site loops redirects for any client without a browser — not worked
+around); PanSALB's orthography rules not fetched (robots.txt disallows all). Local corpora counted the same way: 5.5 M tokens.
+Paraphrased observations:
+- Both "today" forms are current: namuhla (1 428) leads namhlanje (954) — neither is wrong in a line.
+- Weather nouns in news and web text: umoya 1 627, ilanga 832, izulu 351, imvula 326; "isimo sezulu" as a phrase 174.
+- Cold: amakhaza (54) is the running-text form; makhaza (7) and kuyabanda (5) are rare in prose but are the native
+  reviewer's label forms — register, not error.
+- Storm plural iziphepho is thin (7) against isiphepho (32): the plural the reviewer asked for is right, just rarely printed.
+- licwebile (clear sky, the reviewer's correction) is attested once: a native word the corpus barely holds — protect it.

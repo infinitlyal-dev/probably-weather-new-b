@@ -125,7 +125,8 @@ describe('the shipped table + the wiring', () => {
     else if (value < 0 || value > 100) faults.push(`${key}: ${value} is not a percentage`);
     else if (value === 78) faults.push(`${key}: restates the CSS default`);
     if (key.includes('assets/images/')) faults.push(`${key}: still carries the asset prefix`);
-    if (!key.startsWith('bg/') && !key.startsWith('bg-canonical/')) faults.push(`${key}: not a key shape the picker emits`);
+    // bg-pairs/<id>.webp: the hero pairs served outside the grid (14 Oct 2026, review/hero-pairs.json).
+    if (!key.startsWith('bg/') && !key.startsWith('bg-canonical/') && !key.startsWith('bg-pairs/')) faults.push(`${key}: not a key shape the picker emits`);
     return faults;
   });
 
@@ -161,7 +162,14 @@ describe('the shipped table + the wiring', () => {
     // Every shipped VALUE must be one Al set. A regenerate that invented a
     // number — or carried a stale one — fails here.
     const ruledValues = new Set(ruled.map((o) => o.anchorY));
+    // A hero pair's anchor is recorded with the pair Al approved on the phone (review/hero-pairs.json), and only its
+    // own key may carry it.
+    const pairs = JSON.parse(readFileSync(new URL('../review/hero-pairs.json', import.meta.url), 'utf8')).pairs;
+    for (const p of pairs) {
+      expect(HERO_CROP_OFFSETS[`bg-pairs/${p.id}.webp`] ?? null, `${p.id} ships an anchor its record does not have`).toBe(p.crop);
+    }
     for (const [key, y] of Object.entries(HERO_CROP_OFFSETS)) {
+      if (key.startsWith('bg-pairs/')) continue;
       expect(ruledValues.has(y), `${key} ships ${y}%, which is not a value Al ruled`).toBe(true);
     }
 

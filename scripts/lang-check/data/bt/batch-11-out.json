@@ -1,0 +1,2082 @@
+[
+ {
+  "id": "b11-001",
+  "bt": "Everyone else on this promenade went home about twenty minutes ago.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-002",
+  "bt": "There may be wind. The forecast is [?hlephile] here.",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.6,
+  "note": "hlephile unverified"
+ },
+ {
+  "id": "b11-003",
+  "bt": "It is cold, the sky is clear.",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-004",
+  "bt": "The oldest tree has the best seats. As always.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-005",
+  "bt": "The boy is playing sick today.",
+  "langSeen": "af",
+  "verdict": "drift",
+  "confidence": 0.9,
+  "note": "seun (boy) instead of son (sun)"
+ },
+ {
+  "id": "b11-006",
+  "bt": "Sleep well. The wind will look after the house. Hard.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-007",
+  "bt": "Days like this are why we put up with load shedding.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-008",
+  "bt": "The moon is on a dimmer tonight. The security light doesn't have such a knob.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-009",
+  "bt": "The breeze is still warm at this hour. The sea leaves the heating on all night.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-010",
+  "bt": "The sky cannot make a decision.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-011",
+  "bt": "Hotter than a bakkie's dashboard at noon.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-012",
+  "bt": "You of tomorrow morning will thank you for the sunscreen.",
+  "langSeen": "zu",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-013",
+  "bt": "The Doctor does his morning rounds. No appointment needed, unfortunately.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-014",
+  "bt": "Everyone has forgotten how it is driven (how to drive). Again.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-015",
+  "bt": "It is cold enough that the milk-bottle-on-the-stoep is now a cooler box.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-016",
+  "bt": "Shoes for slipping on tar were a mistake.",
+  "langSeen": "zu",
+  "verdict": "loose",
+  "confidence": 0.6,
+  "note": "flip-flops became slip shoes"
+ },
+ {
+  "id": "b11-017",
+  "bt": "The braai is cancelled. Yes, truly.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-018",
+  "bt": "Maybe rain, maybe not. The usual.",
+  "langSeen": "zu",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-019",
+  "bt": "It is cold, but the sky is nice.",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-020",
+  "bt": "The sky has the colour of an old Tupperware lid.",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-021",
+  "bt": "Ice cream is not a gift. It is life.",
+  "langSeen": "st",
+  "verdict": "loose",
+  "confidence": 0.7,
+  "note": ""
+ },
+ {
+  "id": "b11-022",
+  "bt": "Mist in the vineyards: the grapes' spa evening.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-023",
+  "bt": "The Free State has just remembered that it too has a winter mood.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-024",
+  "bt": "Running weather, honestly: cool, grey, and the sea does the soundtrack.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-025",
+  "bt": "The geyser trips at night. Yes, of course.",
+  "langSeen": "zu",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-026",
+  "bt": "Your washing has moved to the neighbour's yard.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-027",
+  "bt": "He rides downhill and still works for every metre of it.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-028",
+  "bt": "It is weather that suits a frightening film.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-029",
+  "bt": "Every farmer in the Boland is smiling in his sleep now.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-030",
+  "bt": "Tuesday is rubbish day, and the wind has clearly read the schedule too.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-031",
+  "bt": "Loose things are now part of the weather.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-032",
+  "bt": "The beach has become one colour, and it's the cold one.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-033",
+  "bt": "Sunday, and none of them is going any further than that.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-034",
+  "bt": "Your shoes are going to have a bad day.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-035",
+  "bt": "Wet conditions, probably. Don't quote us at the braai.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-036",
+  "bt": "No alarm. No agenda. Just vibes.",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-037",
+  "bt": "Stargazing has become the harder sport tonight.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.55,
+  "note": "bt said stargazing; toeskou means spectating"
+ },
+ {
+  "id": "b11-038",
+  "bt": "There may be mist. Be careful.",
+  "langSeen": "st",
+  "verdict": "loose",
+  "confidence": 0.7,
+  "note": ""
+ },
+ {
+  "id": "b11-039",
+  "bt": "In Welkom, Sasolburg, Koroonstad: the [?ibhanti] of heat does its heat things.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.55,
+  "note": "ingqele means cold; bt misread as heat"
+ },
+ {
+  "id": "b11-040",
+  "bt": "Cape Town sends strength. And an extra cap.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-041",
+  "bt": "Nice weather.",
+  "langSeen": "zu",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-042",
+  "bt": "The war of the office aircon has begun.",
+  "langSeen": "zu",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-043",
+  "bt": "Winter in Mzansi does colour like nobody else.",
+  "langSeen": "af",
+  "verdict": "loose",
+  "confidence": 0.6,
+  "note": ""
+ },
+ {
+  "id": "b11-044",
+  "bt": "The duvet had a better idea this morning.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-045",
+  "bt": "A grey patch usually starts burning off on the coast by ten o'clock. Usually.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-046",
+  "bt": "Try the coach now; your excuse has improved.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-047",
+  "bt": "Clouds make a small statement.",
+  "langSeen": "zu",
+  "verdict": "loose",
+  "confidence": 0.7,
+  "note": ""
+ },
+ {
+  "id": "b11-048",
+  "bt": "There is no cloud. Just you and the Southern Cross.",
+  "langSeen": "zu",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-049",
+  "bt": "The sun won't come to inspect the shine today. The car is satisfied.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-050",
+  "bt": "We don't talk about today. Today is over. We are proud of ourselves.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-051",
+  "bt": "Rain so heavy it should pay rent.",
+  "langSeen": "af",
+  "verdict": "untranslated",
+  "confidence": 0.75,
+  "note": "English 'Rain' left in Afrikaans line"
+ },
+ {
+  "id": "b11-052",
+  "bt": "Outside: 2 degrees. Inside: 9 degrees and a very good fire. SA houses, hey.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-053",
+  "bt": "Anyone with a pool today is your big new friend.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-054",
+  "bt": "The duvet had the right idea for morning.",
+  "langSeen": "zu",
+  "verdict": "untranslated",
+  "confidence": 0.45,
+  "note": "'morning' left in English"
+ },
+ {
+  "id": "b11-055",
+  "bt": "Grey vibes. The sky is like my Monday.",
+  "langSeen": "zu",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-056",
+  "bt": "The dog has already booked his spot under the bed.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-057",
+  "bt": "Your scorecard can stop getting worse now.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-058",
+  "bt": "The fridge is the coolest room in the house.",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-059",
+  "bt": "Nearly a nice night. The stars have not yet confirmed.",
+  "langSeen": "zu",
+  "verdict": "loose",
+  "confidence": 0.55,
+  "note": "clear night became nice night"
+ },
+ {
+  "id": "b11-060",
+  "bt": "Cool, grey and windless — honestly the best running weather this city sells.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-061",
+  "bt": "Respect the thunder. It deserves it.",
+  "langSeen": "zu",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-062",
+  "bt": "It looks wet. The models are sure, maybe, no, not entirely.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-063",
+  "bt": "Free fireworks. No tickets. Best seats in the house.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-064",
+  "bt": "Thunder so close the walls shook. Respect.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-065",
+  "bt": "The sun has done more for that lawn this month than any lawnmower ever will.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-066",
+  "bt": "Storm on the horizon. It's your deadline.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-067",
+  "bt": "Every neon sign in the street is doubled tonight on the wet tar.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-068",
+  "bt": "Nobody is going to be on time today.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-069",
+  "bt": "It is hot.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-070",
+  "bt": "Everyone has forgotten how to [?otlela]. Again.",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.4,
+  "note": "otlela unverified; inferred drive"
+ },
+ {
+  "id": "b11-071",
+  "bt": "Blue on the left, serious business on the right, and the line is shifting toward you.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-072",
+  "bt": "The ordinary sky is just doing ordinary things.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-073",
+  "bt": "That mug is steaming, because Joburg mornings under the clouds are getting properly cold.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-074",
+  "bt": "The sun clocked out without saying goodbye. Rude, but relatable.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-075",
+  "bt": "Cricket until the light is gone, and light like this takes its time to go.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-076",
+  "bt": "Everything looks 4K today. The sky is in ultra mode.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-077",
+  "bt": "Monday got the prettiest sky of the week and wastes it on a farm road.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-078",
+  "bt": "Fog this thick, and the goalkeeper is defending a rumour.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-079",
+  "bt": "It is hot.",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-080",
+  "bt": "Slowly, slowly I am turning into a dam in the corner.",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-081",
+  "bt": "The aircon remote is now public property. Negotiate/talk it out.",
+  "langSeen": "zu",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-082",
+  "bt": "Everything out here is either properly rooted or already gone.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-083",
+  "bt": "It is not [?depressing]. But... it is not interesting at all.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-084",
+  "bt": "Use this sunscreen or it will be hard on you.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-085",
+  "bt": "Your jacket has a jacket. It's that kind of day.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-086",
+  "bt": "Somewhere a grasshopper is truly giving itself up.",
+  "langSeen": "zu",
+  "verdict": "same",
+  "confidence": 0.55,
+  "note": ""
+ },
+ {
+  "id": "b11-087",
+  "bt": "Not Wedding Photo again. Not the end of the world.",
+  "langSeen": "af",
+  "verdict": "loose",
+  "confidence": 0.6,
+  "note": "wedding photo instead of Instagram"
+ },
+ {
+  "id": "b11-088",
+  "bt": "The jacket argument is holding up breakfast.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-089",
+  "bt": "Every leaf on that mat showed up without an invitation.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-090",
+  "bt": "Nature is doing its switching-off (going out).",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-091",
+  "bt": "Her hair goes one way, the palm goes the same way, and neither was asked.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-092",
+  "bt": "School shoes' greatest enemy has just landed.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-093",
+  "bt": "The mountains went to sleep early tonight.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-094",
+  "bt": "The table has a view. Rather ask for the menu.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-095",
+  "bt": "No wind on the water this morning, and out there that is worth more than sunshine.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-096",
+  "bt": "You could think about driving somewhere.",
+  "langSeen": "xh",
+  "verdict": "drift",
+  "confidence": 0.45,
+  "note": "reads as permission, not warning against driving"
+ },
+ {
+  "id": "b11-097",
+  "bt": "There are clouds but they are not doing anything.",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-098",
+  "bt": "You are already missing your bed but you have only been out twelve minutes.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-099",
+  "bt": "Fingerless gloves at a laptop: winter has entered the home office.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-100",
+  "bt": "Night-shift clouds: they only keep the place warm until the sun is back.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-101",
+  "bt": "Somewhere the foghorn blares and a thousand people say 'oh no' in unison.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-102",
+  "bt": "'Just an hour at the beach.' Four hours later...",
+  "langSeen": "af",
+  "verdict": "loose",
+  "confidence": 0.7,
+  "note": ""
+ },
+ {
+  "id": "b11-103",
+  "bt": "The weather moved the office to the roof, and productivity can argue later.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-104",
+  "bt": "The world just... disappeared.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-105",
+  "bt": "Everything on that line was already dry ten minutes ago. The wind is just showing off now.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-106",
+  "bt": "The whole street smells of someone else's food. The fog keeps the secret.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-107",
+  "bt": "It's cold.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-108",
+  "bt": "The garden is moving and he decided the door is far enough.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-109",
+  "bt": "Three pairs of socks but still they [?did not suffice].",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.6,
+  "note": ""
+ },
+ {
+  "id": "b11-110",
+  "bt": "Bring in the washing. Then thaw your fingers.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-111",
+  "bt": "That jacket argument is over before breakfast.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-112",
+  "bt": "That palm has been bent for so long that it thinks it stands upright.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-113",
+  "bt": "Sunshine: 10/10. Feeling: rather don't ask.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-114",
+  "bt": "The clouds race as if they are late for something.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-115",
+  "bt": "The cloud arrived about four minutes after the towel was put down, and that's policy.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-116",
+  "bt": "Wet jeans all day. The usual punishment.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-117",
+  "bt": "A boerie roll for breakfast? On the weekend? Welcome.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-118",
+  "bt": "Your evening braai has got an indoor committee.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-119",
+  "bt": "Even your phone overheats.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-120",
+  "bt": "Drinking water: yes. Everyone.",
+  "langSeen": "xh",
+  "verdict": "loose",
+  "confidence": 0.7,
+  "note": ""
+ },
+ {
+  "id": "b11-121",
+  "bt": "The AC begs for mercy.",
+  "langSeen": "zu",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-122",
+  "bt": "Even the plains are keeping secrets today.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-123",
+  "bt": "Looks overcast. The sources are not unanimous.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-124",
+  "bt": "The morning's second kettle has nothing to do with tea.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-125",
+  "bt": "You're not cold, you're 'nicely cold'. Big difference.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-126",
+  "bt": "Somewhere here is a view. The brochure promised.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-127",
+  "bt": "Your hands are in your pockets and they are not coming out.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-128",
+  "bt": "That window has the best programme this morning, and it's just rain.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-129",
+  "bt": "The sun has signed off. The clouds still glow, and so does the balcony.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-130",
+  "bt": "Grey, nearly. We have just seen it, and it surprises us.",
+  "langSeen": "zu",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-131",
+  "bt": "The line at the petrol station has just folded/multiplied three times.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-132",
+  "bt": "The plan was ten minutes. The nose gave in after two.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-133",
+  "bt": "Your suede shoes chose today? Courage.",
+  "langSeen": "zu",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-134",
+  "bt": "The kite flyers are very happy.",
+  "langSeen": "zu",
+  "verdict": "same",
+  "confidence": 0.7,
+  "note": ""
+ },
+ {
+  "id": "b11-135",
+  "bt": "The bread that is clear.",
+  "langSeen": "st",
+  "verdict": "drift",
+  "confidence": 0.85,
+  "note": "'bohobe' (bread) instead of night"
+ },
+ {
+  "id": "b11-136",
+  "bt": "There are clouds and sun. The estimate is not certain.",
+  "langSeen": "xh",
+  "verdict": "loose",
+  "confidence": 0.7,
+  "note": ""
+ },
+ {
+  "id": "b11-137",
+  "bt": "The long road home? Hard to say tonight.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-138",
+  "bt": "Morning tasks. Start by looking for the washing line.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-139",
+  "bt": "Nobody gave the forecast. It just showed up.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-140",
+  "bt": "One slipper is already out of the game and the overcoat still wins.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-141",
+  "bt": "The rain hasn't clocked out.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-142",
+  "bt": "Your car asked to work from home.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-143",
+  "bt": "Monday, and breakfast in this town was dealt with by an engine bonnet.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-144",
+  "bt": "All of them can be your friends if you have a pool.",
+  "langSeen": "zu",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-145",
+  "bt": "Clouds all afternoon, not a drop. The garden hose is back on duty.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-146",
+  "bt": "Sunscreen is not a matter of choosing (not optional), boet.",
+  "langSeen": "zu",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-147",
+  "bt": "The Highveld doesn't like subtle and we are grateful.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-148",
+  "bt": "The kick-off is being reviewed by the only official higher than the referee.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-149",
+  "bt": "Finally a decent excuse for your scorecard.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-150",
+  "bt": "By twelve o'clock this water is bath temperature. Plan accordingly.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-151",
+  "bt": "The mountain glows like a hearth. Unfortunately it only works for the eyes.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-152",
+  "bt": "Maybe it's cold. Take a jersey, you will thank us.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-153",
+  "bt": "The palms have been making that noise for hours and nobody is awake to care.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-154",
+  "bt": "The car seats are freezing. Everything is freezing.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-155",
+  "bt": "A perfect sun. No reasons. Go.",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-156",
+  "bt": "The sun is on a tea break. No ETA.",
+  "langSeen": "zu",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-157",
+  "bt": "Overcast, but it isn't really putting in any effort.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-158",
+  "bt": "Nature shows itself and we are here.",
+  "langSeen": "tn",
+  "verdict": "loose",
+  "confidence": 0.5,
+  "note": "'mme' looks Setswana; otherwise Sesotho"
+ },
+ {
+  "id": "b11-159",
+  "bt": "Lightning (electricity) puts on a show — look through the window.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-160",
+  "bt": "Highveld winter: the only place where you put on two coats to fetch the post.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-161",
+  "bt": "A warm day is medicine, maybe.",
+  "langSeen": "xh",
+  "verdict": "loose",
+  "confidence": 0.7,
+  "note": ""
+ },
+ {
+  "id": "b11-162",
+  "bt": "The sky loved by Eskom. No solar today.",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-163",
+  "bt": "The car is outside. So they say.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-164",
+  "bt": "Nobody stands at the coals for the food. We stand for the heat.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-165",
+  "bt": "Very strong weekend vibes want their own playlist.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-166",
+  "bt": "The day hasn't done anything wrong yet. Give it a chance.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-167",
+  "bt": "A quiet night, maybe. The sky could change.",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-168",
+  "bt": "The chops are calling. The chair too.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-169",
+  "bt": "Your team owes your washing machine an apology.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-170",
+  "bt": "Nobody is going to post this on Instagram.",
+  "langSeen": "zu",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-171",
+  "bt": "The sky is wearing its overalls: grey, neat, says nothing.",
+  "langSeen": "af",
+  "verdict": "loose",
+  "confidence": 0.5,
+  "note": "overalls vs interview suit"
+ },
+ {
+  "id": "b11-172",
+  "bt": "The Karoo's coldest hour comes just before its prettiest one.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-173",
+  "bt": "Pillow turned over. Negotiations continue.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-174",
+  "bt": "One gust, and every napkin in the café leaves at once.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-175",
+  "bt": "Rain that stands (stays) very much should pay rent.",
+  "langSeen": "zu",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-176",
+  "bt": "Grey sky, low faith.",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-177",
+  "bt": "Thursday, and she is the only thing on this road not going sideways.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-178",
+  "bt": "The one animal that can match the sky's mood has no trouble today.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-179",
+  "bt": "Hot-chocolate weather diagnoses itself. The marshmallows are the second opinion.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-180",
+  "bt": "Washing your car was a waste of money.",
+  "langSeen": "zu",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-181",
+  "bt": "Clouds with head-boy syndrome.",
+  "langSeen": "af",
+  "verdict": "loose",
+  "confidence": 0.8,
+  "note": ""
+ },
+ {
+  "id": "b11-182",
+  "bt": "Too hot to argue. Too hot to function.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-183",
+  "bt": "Clear night",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-184",
+  "bt": "One thin streak of light on the horizon, and the whole sky leans on it.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-185",
+  "bt": "Don't touch the seatbelt buckle. Trust us.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-186",
+  "bt": "The sky's CV has just been updated.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-187",
+  "bt": "The night has cooled nothing yet; even the water sweats.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-188",
+  "bt": "Fog has swallowed the mountain.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-189",
+  "bt": "The clouds look doubtful, truly.",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-190",
+  "bt": "Your fingers have lodged a formal (legal) complaint.",
+  "langSeen": "st",
+  "verdict": "loose",
+  "confidence": 0.5,
+  "note": "fingers vs toes"
+ },
+ {
+  "id": "b11-191",
+  "bt": "The rumbling of the sky is measuring (testing).",
+  "langSeen": "zu",
+  "verdict": "same",
+  "confidence": 0.6,
+  "note": "kuyeza means is coming"
+ },
+ {
+  "id": "b11-192",
+  "bt": "Your nose will sell you out at 3pm.",
+  "langSeen": "zu",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-193",
+  "bt": "Africa shows itself again. In peace, in [?melting].",
+  "langSeen": "st",
+  "verdict": "loose",
+  "confidence": 0.7,
+  "note": ""
+ },
+ {
+  "id": "b11-194",
+  "bt": "There are clouds.",
+  "langSeen": "zu",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-195",
+  "bt": "Don't even think about driving anywhere.",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-196",
+  "bt": "Look at the weather in {city} — South Africa's weather in your language: {url}",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.3,
+  "note": "English source empty; share template"
+ },
+ {
+  "id": "b11-197",
+  "bt": "Maybe rain, maybe not. The usual.",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-198",
+  "bt": "The thunder nearby made the walls [?shake]. Respect.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-199",
+  "bt": "Fog has eaten the surroundings (environment).",
+  "langSeen": "st",
+  "verdict": "untranslated",
+  "confidence": 0.6,
+  "note": "English 'Fog' left in Sesotho line"
+ },
+ {
+  "id": "b11-200",
+  "bt": "Bring a coat. Or sunscreen. Or both.",
+  "langSeen": "zu",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-201",
+  "bt": "It looks calm. Nearly.",
+  "langSeen": "zu",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-202",
+  "bt": "Outside betrayed you and you went anyway.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-203",
+  "bt": "The dust goes for gold in the last light. The match plays on through it.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-204",
+  "bt": "Quiet out there. Almost suspicious.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-205",
+  "bt": "Pool access is the new currency.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-206",
+  "bt": "Tonight you don't count sheep, you count wind gusts.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-207",
+  "bt": "Rain today",
+  "langSeen": "zu",
+  "verdict": "drift",
+  "confidence": 0.85,
+  "note": "today instead of tonight"
+ },
+ {
+  "id": "b11-208",
+  "bt": "Someone's trampoline is now two streets away.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-209",
+  "bt": "Ghost town. But it's just Tuesday.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-210",
+  "bt": "You can fry an egg on the N1.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-211",
+  "bt": "That tree was shaped by one wind over about forty years.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-212",
+  "bt": "The windmill does the morning's work. The grass just gets blown along.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-213",
+  "bt": "The sky reminds us who the owner is.",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-214",
+  "bt": "Maybe rain, maybe not. Classic.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-215",
+  "bt": "Shop later. The last cookie will have to stretch.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-216",
+  "bt": "Probably hot. We'll all find out together.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-217",
+  "bt": "The CV of the sky has just been updated.",
+  "langSeen": "zu",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-218",
+  "bt": "It sounds as if the country is in a good state.",
+  "langSeen": "xh",
+  "verdict": "loose",
+  "confidence": 0.7,
+  "note": ""
+ },
+ {
+  "id": "b11-219",
+  "bt": "Wind is possible. Hold on to the cover for roasting meat.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-220",
+  "bt": "Soup weather, I won't lie.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-221",
+  "bt": "You boil the kettle twice — once for coffee, once to warm your hands.",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-222",
+  "bt": "The hot water bottle is the real hero today.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-223",
+  "bt": "Protect that face! It's the only one you have.",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-224",
+  "bt": "It is very nice outside.",
+  "langSeen": "zu",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-225",
+  "bt": "Fog may come in. Watch the mountain.",
+  "langSeen": "zu",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-226",
+  "bt": "Your evening plans are within shouting distance.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-227",
+  "bt": "The flag gives the forecast ahead of the surfboard riders. It says: go.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-228",
+  "bt": "Cloudy night. Nobody is going out, officially.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-229",
+  "bt": "Pretoria-bare-jacaranda energy. It's beautiful, but grey.",
+  "langSeen": "st",
+  "verdict": "loose",
+  "confidence": 0.7,
+  "note": ""
+ },
+ {
+  "id": "b11-230",
+  "bt": "The clouds rehearse all day for a storm that never shows up for the audition.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-231",
+  "bt": "Someone drove all the way here to look at this, and then drove off again.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-232",
+  "bt": "The view will wait while you look for a towel.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-233",
+  "bt": "It's heater season, and the best seat in the house has fur on.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-234",
+  "bt": "Saturday, and none of them wants to admit the wind wins.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-235",
+  "bt": "Wet conditions",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-236",
+  "bt": "The sky gives nothing.",
+  "langSeen": "zu",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-237",
+  "bt": "The moon is out and the palms haven't stopped moving since sunset.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-238",
+  "bt": "The town has set itself to whisper volume.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-239",
+  "bt": "It appears: just vibes.",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-240",
+  "bt": "Sunny with a hundred percent chance of shivering.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-241",
+  "bt": "Morning sun that looks like this makes even Monday bearable.",
+  "langSeen": "af",
+  "verdict": "loose",
+  "confidence": 0.7,
+  "note": ""
+ },
+ {
+  "id": "b11-242",
+  "bt": "The sun attacks you personally.",
+  "langSeen": "zu",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-243",
+  "bt": "Days like these are what make us cheer on load shedding.",
+  "langSeen": "zu",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-244",
+  "bt": "Outing over. Everyone has a different version.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-245",
+  "bt": "The storm was awake before you. Just in the mood for trouble.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-246",
+  "bt": "Wednesday morning, and the walk from the parking is now the hard part.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-247",
+  "bt": "Frost on the grass, frost on the bakkie, frost on my courage.",
+  "langSeen": "af",
+  "verdict": "loose",
+  "confidence": 0.7,
+  "note": ""
+ },
+ {
+  "id": "b11-248",
+  "bt": "The city noise is down tonight; fog is the best sound dampening there is.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-249",
+  "bt": "Clouds cover the sky, moving with an air of indifference.",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-250",
+  "bt": "Your candles may finally justify that drawer.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-251",
+  "bt": "Your bicycle may enjoy being taken for a walk.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-252",
+  "bt": "The morning has forgotten to [?rent].",
+  "langSeen": "xh",
+  "verdict": "same",
+  "confidence": 0.55,
+  "note": ""
+ },
+ {
+  "id": "b11-253",
+  "bt": "Half-willingly cloudy.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-254",
+  "bt": "Ten thousand streetlights down there, and the sky still wins tonight.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-255",
+  "bt": "That lawn stopped asking the sky for rain somewhere around the beginning of November.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-256",
+  "bt": "None of them is going to be the one to suggest turning around.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-257",
+  "bt": "The duvet calls and the duvet wins.",
+  "langSeen": "st",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-258",
+  "bt": "The water did not cool down last night and he has already gone to look.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-259",
+  "bt": "Still warm enough at sunset that the ice cream does the sweating.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ },
+ {
+  "id": "b11-260",
+  "bt": "You signed up for running, not for numb fingers.",
+  "langSeen": "af",
+  "verdict": "same",
+  "confidence": 0.85,
+  "note": ""
+ }
+]

@@ -4,6 +4,10 @@
 //
 //   node scripts/lang-check/fetch-corpora.mjs            # download + unpack everything reachable
 //   node scripts/lang-check/lang-check.mjs --build-index # then compile the indexes
+//   node scripts/lang-check/fetch-corpora.mjs ngrams     # (9 Oct 2026) current web text + the local corpora → word and
+//                                                        # n-gram COUNTS per language (.lang-check-cache/ngrams/<l>.json);
+//                                                        # needs the indexes (it keeps only paragraphs in the language);
+//                                                        # add --local to skip the web, --only zu,af to limit languages
 //
 // Needs: node 24 (fetch), system `tar`, and — optional, for three conversions — python 3 with
 // `pymupdf` (constitution PDFs → text), `xlrd` (NCHLT .xls annotations → tsv). Without python the
@@ -18,10 +22,12 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { execFileSync } from 'node:child_process';
 import { CACHE } from './lib/build-index.mjs';
+import { WEB_SOURCES, harvest, localCounts, writeNgrams, NGRAM_DIR } from './lib/web-ngrams.mjs';
+import { LangIndex } from './lib/checker.mjs';
 
 const UA = 'ProbablyWeather-langcheck/0.1 (infinitlyal@gmail.com)';
 const only = process.argv.slice(2);
-const want = (k) => !only.length || only.includes(k);
+const want = (k) => (!only.length && k !== 'ngrams') || only.includes(k);
 const mk = (p) => fs.mkdirSync(p, { recursive: true });
 
 async function dl(url, dest, { skipIfExists = true } = {}) {
@@ -137,6 +143,25 @@ for w,code in [('zuwiki','zu'),('xhwiki','xh'),('stwiki','st')]:
   if (want('hunspell')) {
     console.log('Hunspell dictionaries (LibreOffice)');
     for (const [d, dir] of [['af_ZA', 'af_ZA'], ['nl_NL', 'nl_NL'], ['en_US', 'en']]) for (const ext of ['dic', 'aff']) await dl(`https://raw.githubusercontent.com/LibreOffice/dictionaries/master/${dir}/${d}.${ext}`, path.join(CACHE, 'hunspell', `${d}.${ext}`));
+  }
+  if (want('ngrams')) {
+    const LOCAL_ONLY = process.argv.includes('--local');
+    const langs = process.argv.includes('--only') ? process.argv[process.argv.indexOf('--only') + 1].split(',') : ['af', 'zu', 'xh', 'st'];
+    const enIdx = LangIndex.load('en');
+    const sourcesReport = [];
+    // hosts run side by side; each host keeps its own 1.5 s spacing
+    await Promise.all(langs.map(async (lang) => {
+      const idx = LangIndex.load(lang);
+      console.log(`ngrams ${lang}: local corpora`);
+      const { counts, reports } = localCounts(lang);
+      if (!LOCAL_ONLY) for (const src of WEB_SOURCES.filter((s) => s.lang === lang)) {
+        const { report, counts: c } = await harvest(src, { idx, enIdx });
+        counts.merge(c); reports.push(report); sourcesReport.push(report);
+      }
+      const n = writeNgrams(lang, counts, reports);
+      console.log(`  ${lang}: ${counts.tokens} tokens → ${n.uni} words, ${n.bi} bigrams, ${n.tri} trigrams (kept ≥2)`);
+    }));
+    if (!LOCAL_ONLY) fs.writeFileSync(path.join(NGRAM_DIR, 'web-sources.json'), JSON.stringify({ fetched: new Date().toISOString(), sources: [...sourcesReport, ...WEB_SOURCES.filter((s) => s.refused || s.unreachable).map((s) => ({ id: s.id, name: s.name, note: s.refused || s.unreachable }))] }, null, 1));
   }
   console.log('done. next: node scripts/lang-check.mjs --build-index');
 }

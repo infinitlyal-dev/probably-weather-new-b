@@ -1,0 +1,343 @@
+{
+ "generated": "2026-10-14T18:43:18.151Z",
+ "threshold": 0.25,
+ "elapsedMs": 14847,
+ "excludedAdversarial": 6,
+ "inputs": {
+  "scripts/lang-check/gold-set.json": "35506d016089e152905e80bac1c8d1ad1aca11cc00f50666e29bd35cfe28b980",
+  "scripts/lang-check/exam-2026-10.mjs": "147b64cdad2aeb41504334a335533f86bd7d6407e6ea78a6e8f4684c0fadd768",
+  "scripts/lang-check/lib/checker.mjs": "edcf2126c1b6e02ad27e1f42dbdb992800f805ee10ca83527861297c8a78e216",
+  "scripts/lang-check/lib/checker-v2.mjs": "f3bcf95f81c78f3c8530543d4e7028cd96e8f8a90fa7cc977acef9bb3514d779",
+  "scripts/lang-check/lib/concord.mjs": "8097786d7db8f0e0eb559bd8b8b90c60f8d84fae7eb3d088027c674de2ff6a33",
+  "scripts/lang-check/lib/ngram-attest.mjs": "99bc4d21ecb94fde45d92b181439ae1a4a7f11626c0fe13755945f524a23fa88",
+  "scripts/lang-check/lib/text.mjs": "17d0f376fdbe4d4d12524e73006792cdb1cf64291aca2661f2d21971fa396177",
+  "scripts/lang-check/lib/exam-inputs.mjs": "5794843d3569ae323afcfff5548c85e3583db2394b464b4154465701401e199e"
+ },
+ "perLanguage": {
+  "zu": {
+   "before": {
+    "tp": 58,
+    "fp": 47,
+    "fn": 38,
+    "tn": 454,
+    "precision": 0.5523809523809524,
+    "recall": 0.6041666666666666
+   },
+   "after": {
+    "tp": 64,
+    "fp": 50,
+    "fn": 32,
+    "tn": 451,
+    "precision": 0.5614035087719298,
+    "recall": 0.6666666666666666
+   },
+   "afterNoBt": {
+    "tp": 58,
+    "fp": 47,
+    "fn": 38,
+    "tn": 454,
+    "precision": 0.5523809523809524,
+    "recall": 0.6041666666666666
+   },
+   "classes": {
+    "wrong-sense": {
+     "n": 30,
+     "before": 0.36666666666666664,
+     "after": 0.5333333333333333,
+     "noBt": 0.36666666666666664
+    },
+    "wrong-language": {
+     "n": 19,
+     "before": 0.8421052631578947,
+     "after": 0.8947368421052632,
+     "noBt": 0.8421052631578947
+    },
+    "untranslated": {
+     "n": 24,
+     "before": 0.6666666666666666,
+     "after": 0.6666666666666666,
+     "noBt": 0.6666666666666666
+    },
+    "boundary": {
+     "n": 19,
+     "before": 0.7894736842105263,
+     "after": 0.7894736842105263,
+     "noBt": 0.7894736842105263
+    },
+    "morphology": {
+     "n": 2,
+     "before": 0,
+     "after": 0,
+     "noBt": 0
+    },
+    "register": {
+     "n": 2,
+     "before": 0,
+     "after": 0,
+     "noBt": 0
+    }
+   },
+   "btCoverage": "597/597"
+  },
+  "xh": {
+   "before": {
+    "tp": 65,
+    "fp": 116,
+    "fn": 14,
+    "tn": 402,
+    "precision": 0.35911602209944754,
+    "recall": 0.8227848101265823
+   },
+   "after": {
+    "tp": 69,
+    "fp": 121,
+    "fn": 10,
+    "tn": 397,
+    "precision": 0.3631578947368421,
+    "recall": 0.8734177215189873
+   },
+   "afterNoBt": {
+    "tp": 65,
+    "fp": 116,
+    "fn": 14,
+    "tn": 402,
+    "precision": 0.35911602209944754,
+    "recall": 0.8227848101265823
+   },
+   "classes": {
+    "wrong-sense": {
+     "n": 21,
+     "before": 0.6190476190476191,
+     "after": 0.8095238095238095,
+     "noBt": 0.6190476190476191
+    },
+    "wrong-language": {
+     "n": 18,
+     "before": 1,
+     "after": 1,
+     "noBt": 1
+    },
+    "untranslated": {
+     "n": 17,
+     "before": 1,
+     "after": 1,
+     "noBt": 1
+    },
+    "spelling": {
+     "n": 4,
+     "before": 0.25,
+     "after": 0.25,
+     "noBt": 0.25
+    },
+    "boundary": {
+     "n": 19,
+     "before": 0.8421052631578947,
+     "after": 0.8421052631578947,
+     "noBt": 0.8421052631578947
+    }
+   },
+   "btCoverage": "597/597"
+  },
+  "st": {
+   "before": {
+    "tp": 59,
+    "fp": 98,
+    "fn": 13,
+    "tn": 388,
+    "precision": 0.37579617834394907,
+    "recall": 0.8194444444444444
+   },
+   "after": {
+    "tp": 65,
+    "fp": 101,
+    "fn": 7,
+    "tn": 385,
+    "precision": 0.39156626506024095,
+    "recall": 0.9027777777777778
+   },
+   "afterNoBt": {
+    "tp": 60,
+    "fp": 91,
+    "fn": 12,
+    "tn": 395,
+    "precision": 0.3973509933774834,
+    "recall": 0.8333333333333334
+   },
+   "classes": {
+    "wrong-sense": {
+     "n": 26,
+     "before": 0.5384615384615384,
+     "after": 0.7307692307692307,
+     "noBt": 0.5384615384615384
+    },
+    "wrong-language": {
+     "n": 19,
+     "before": 0.9473684210526315,
+     "after": 1,
+     "noBt": 1
+    },
+    "untranslated": {
+     "n": 18,
+     "before": 1,
+     "after": 1,
+     "noBt": 1
+    },
+    "spelling": {
+     "n": 3,
+     "before": 1,
+     "after": 1,
+     "noBt": 1
+    },
+    "calque": {
+     "n": 4,
+     "before": 1,
+     "after": 1,
+     "noBt": 1
+    },
+    "register": {
+     "n": 1,
+     "before": 1,
+     "after": 1,
+     "noBt": 1
+    },
+    "wrong-dialect": {
+     "n": 1,
+     "before": 1,
+     "after": 1,
+     "noBt": 1
+    }
+   },
+   "btCoverage": "558/558"
+  },
+  "af": {
+   "before": {
+    "tp": 57,
+    "fp": 28,
+    "fn": 17,
+    "tn": 962,
+    "precision": 0.6705882352941176,
+    "recall": 0.7702702702702703
+   },
+   "after": {
+    "tp": 64,
+    "fp": 29,
+    "fn": 10,
+    "tn": 961,
+    "precision": 0.6881720430107527,
+    "recall": 0.8648648648648649
+   },
+   "afterNoBt": {
+    "tp": 57,
+    "fp": 27,
+    "fn": 17,
+    "tn": 963,
+    "precision": 0.6785714285714286,
+    "recall": 0.7702702702702703
+   },
+   "classes": {
+    "wrong-sense": {
+     "n": 18,
+     "before": 0.5,
+     "after": 0.8333333333333334,
+     "noBt": 0.5
+    },
+    "wrong-language": {
+     "n": 18,
+     "before": 1,
+     "after": 1,
+     "noBt": 1
+    },
+    "untranslated": {
+     "n": 17,
+     "before": 0.9411764705882353,
+     "after": 1,
+     "noBt": 0.9411764705882353
+    },
+    "diacritic": {
+     "n": 17,
+     "before": 0.6470588235294118,
+     "after": 0.6470588235294118,
+     "noBt": 0.6470588235294118
+    },
+    "spelling": {
+     "n": 3,
+     "before": 1,
+     "after": 1,
+     "noBt": 1
+    },
+    "calque": {
+     "n": 1,
+     "before": 0,
+     "after": 0,
+     "noBt": 0
+    }
+   },
+   "btCoverage": "1064/1064"
+  }
+ },
+ "pass": {
+  "zu": {
+   "pass": true,
+   "precisionHeld": true,
+   "recallUp": [
+    true,
+    true
+   ],
+   "ceiling": [
+    false,
+    false
+   ],
+   "alFewer": true
+  },
+  "xh": {
+   "pass": true,
+   "precisionHeld": true,
+   "recallUp": [
+    true,
+    true
+   ],
+   "ceiling": [
+    false,
+    true
+   ],
+   "alFewer": true
+  },
+  "st": {
+   "pass": true,
+   "precisionHeld": true,
+   "recallUp": [
+    true,
+    true
+   ],
+   "ceiling": [
+    false,
+    false
+   ],
+   "alFewer": true
+  },
+  "af": {
+   "pass": true,
+   "precisionHeld": true,
+   "recallUp": [
+    true,
+    true
+   ],
+   "ceiling": [
+    false,
+    true
+   ],
+   "alFewer": true
+  }
+ },
+ "alAccepted": {
+  "n": 1687,
+  "before": 44,
+  "after": 35,
+  "afterNoBt": 33,
+  "ownN": 459,
+  "ownBefore": 17,
+  "ownAfter": 16,
+  "btCoverage": 1683
+ },
+ "overall": true
+}
