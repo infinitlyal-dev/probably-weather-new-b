@@ -2269,8 +2269,12 @@ export default async function handler(req, res) {
         && breezySources >= BREEZY_MIN_SOURCES;
       // 17 Oct 2026 (Al): a Windy hour now shows the wind icon too, so the hourly row stops showing a sun under a
       // stronger wind than the hero called Breezy. Same line the hero's Windy rung reads for this hour (windLine); a
-      // wet hour (50 %+ rain, or rain in the sources' words), storm, fog and snow keep their own icons.
-      const hourWindy = !hourBreezy
+      // wet hour (50 %+ rain, or rain in the sources' words), storm, fog and snow keep their own icons. Two sources' own
+      // wind (with the hour's correction) must reach the line, as Breezy needs two at its line — one model's spike is
+      // not a Windy hour. The hero's gust route is not mirrored: only Open-Meteo has hourly gusts (fewer icons, never
+      // a wrong one).
+      const windySources = hourlies.filter((h) => h && isNum(h.winds[i]) && h.winds[i] * hourRatio >= hourWindyLine).length;
+      const hourWindy = !hourBreezy && windySources >= 2
         && (hourCondition === 'clear' || hourCondition === 'cloudy' || hourCondition === null)
         && !(isNum(hourRainChance) && hourRainChance >= 50)
         && isNum(effectiveHourlyWind) && effectiveHourlyWind >= hourWindyLine;

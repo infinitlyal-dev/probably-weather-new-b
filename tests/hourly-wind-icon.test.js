@@ -12,6 +12,10 @@ describe('hourly row: Windy hours show the wind icon', () => {
     expect(pickHourlyIcon({ rainPct: 60, cloudPct: 90, tempC: 22, isNight: false, condition: 'storm' })).toBe('storm');
     expect(pickHourlyIcon({ rainPct: 5, cloudPct: 90, tempC: 12, isNight: false, condition: 'fog' })).toBe('fog');
   });
+  it('freezing and 35 °C+ hours keep the cold and heat icons over wind (the hero ranks them above wind)', () => {
+    expect(pickHourlyIcon({ rainPct: 5, cloudPct: 10, tempC: -1, isNight: false, condition: 'wind' })).toBe('cold');
+    expect(pickHourlyIcon({ rainPct: 5, cloudPct: 10, tempC: 36, isNight: false, condition: 'wind' })).toBe('heat');
+  });
   it('an unmarked hour keeps the old ladder (no wind icon from the client on its own)', () => {
     expect(pickHourlyIcon({ rainPct: 5, cloudPct: 10, tempC: 22, isNight: false, condition: 'clear' })).not.toBe('wind');
   });
